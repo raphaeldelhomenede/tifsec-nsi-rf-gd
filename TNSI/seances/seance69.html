@@ -1,0 +1,141 @@
+<link rel="stylesheet" href="https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/css/style.css">
+<section id="session69" class="content-section">
+            <h2>Séance 69 : Révision des Concepts de Sécurité et Cryptographie</h2>
+        
+            <h3>Objectif Global :</h3>
+            <p>
+                Cette séance a pour but de réviser les concepts 
+fondamentaux de la sécurité informatique et de la cryptographie. Les 
+élèves consolideront leurs connaissances sur les notions de sécurité des
+ données, d’algorithmes cryptographiques et de bonnes pratiques en 
+matière de sécurité.
+            </p>
+        
+            <h3>Partie 1 : Concepts Fondamentaux de la Sécurité (30 min)</h3>
+        
+            <h4>1. Principes de Sécurité Informatique :</h4>
+            <p>
+                Les trois piliers de la sécurité informatique sont :
+            </p>
+            <ul>
+                <li><strong>Confidentialité :</strong> Garantir que les données sont accessibles uniquement aux personnes autorisées.</li>
+                <li><strong>Intégrité :</strong> Assurer que les données n’ont pas été modifiées ou altérées de manière non autorisée.</li>
+                <li><strong>Disponibilité :</strong> Garantir que les données et les systèmes sont accessibles lorsque nécessaire.</li>
+            </ul>
+        
+            <h4>2. Menaces Courantes :</h4>
+            <p>
+                Les élèves doivent comprendre les menaces auxquelles un système peut être confronté :
+            </p>
+            <ul>
+                <li><strong>Phishing :</strong> Tentative de voler des informations sensibles via des communications frauduleuses.</li>
+                <li><strong>Attaques par force brute :</strong> Essayer toutes les combinaisons possibles pour deviner un mot de passe.</li>
+                <li><strong>Malware :</strong> Programmes malveillants conçus pour nuire, comme les virus, les ransomwares et les chevaux de Troie.</li>
+            </ul>
+        
+            <h4>3. Bonnes Pratiques en Sécurité :</h4>
+            <ul>
+                <li>Utiliser des mots de passe complexes et uniques pour chaque compte.</li>
+                <li>Activer l’authentification à deux facteurs (2FA).</li>
+                <li>Maintenir les logiciels et systèmes à jour.</li>
+                <li>Éviter de cliquer sur des liens suspects ou d’ouvrir des pièces jointes inconnues.</li>
+            </ul>
+        
+            <h3>Partie 2 : Révision des Concepts de Cryptographie (40 min)</h3>
+        
+            <h4>1. Définitions Clés :</h4>
+            <ul>
+                <li><strong>Cryptographie :</strong> L’art de protéger les informations en les rendant illisibles pour toute personne non autorisée.</li>
+                <li><strong>Clé :</strong> Une donnée utilisée pour chiffrer ou déchiffrer des informations.</li>
+                <li><strong>Chiffrement Symétrique :</strong> Utilisation d’une clé unique pour le chiffrement et le déchiffrement.</li>
+                <li><strong>Chiffrement Asymétrique :</strong> Utilisation d’une paire de clés (publique et privée) pour le chiffrement et le déchiffrement.</li>
+            </ul>
+        
+            <h4>2. Algorithmes Cryptographiques :</h4>
+            <ul>
+                <li><strong>Chiffrement Symétrique :</strong> 
+                    <ul>
+                        <li><strong>AES (Advanced Encryption Standard) :</strong> Algorithme rapide et sécurisé pour le chiffrement des données.</li>
+                        <li><strong>DES (Data Encryption Standard) :</strong> Ancien standard remplacé par AES, considéré comme moins sûr aujourd’hui.</li>
+                    </ul>
+                </li>
+                <li><strong>Chiffrement Asymétrique :</strong> 
+                    <ul>
+                        <li><strong>RSA :</strong> Utilisé pour sécuriser les communications (par ex., HTTPS).</li>
+                        <li><strong>Elliptic Curve Cryptography (ECC) :</strong> Alternative efficace à RSA avec des clés plus courtes.</li>
+                    </ul>
+                </li>
+                <li><strong>Fonctions de Hachage :</strong>
+                    <ul>
+                        <li><strong>SHA-256 :</strong> Algorithme de hachage utilisé dans la blockchain.</li>
+                        <li><strong>MD5 :</strong> Ancien algorithme de hachage désormais considéré comme peu sécurisé.</li>
+                    </ul>
+                </li>
+            </ul>
+        
+            <h4>3. Exercice Pratique :</h4>
+            <p>Les élèves devront mettre en œuvre les concepts de cryptographie en Python.</p>
+            <pre><code class="python">
+        # Exemple de chiffrement symétrique avec Fernet (bibliothèque cryptography)
+        from cryptography.fernet import Fernet
+        
+        # Générer une clé
+        cle = Fernet.generate_key()
+        cipher_suite = Fernet(cle)
+        
+        # Chiffrer un message
+        message = b"Secret important"
+        chiffre = cipher_suite.encrypt(message)
+        print("Message chiffré :", chiffre)
+        
+        # Déchiffrer le message
+        dechiffre = cipher_suite.decrypt(chiffre)
+        print("Message déchiffré :", dechiffre.decode())
+            </code></pre>
+        
+            <p><strong>Défi :</strong> Modifiez le programme pour que l’utilisateur entre son propre message et voyez comment il est chiffré puis déchiffré.</p>
+        
+            <h3>Partie 3 : Étude de Cas (30 min)</h3>
+        
+            <h4>Contexte :</h4>
+            <p>
+                Imaginez que vous travaillez pour une banque. Votre 
+mission est de sécuriser les communications entre les employés et les 
+serveurs de la banque en utilisant un chiffrement asymétrique.
+            </p>
+        
+            <h4>Exercice :</h4>
+            <p>Implémentez un système de chiffrement et de déchiffrement RSA en Python.</p>
+            <pre><code class="python">
+        from Crypto.PublicKey import RSA
+        from Crypto.Cipher import PKCS1_OAEP
+        
+        # Générer une paire de clés RSA
+        cle_privee = RSA.generate(2048)
+        cle_publique = cle_privee.publickey()
+        
+        # Message à chiffrer
+        message = b"Transaction confidentielle"
+        
+        # Chiffrement avec la clé publique
+        cipher = PKCS1_OAEP.new(cle_publique)
+        chiffre = cipher.encrypt(message)
+        print("Message chiffré :", chiffre)
+        
+        # Déchiffrement avec la clé privée
+        decrypt_cipher = PKCS1_OAEP.new(cle_privee)
+        dechiffre = decrypt_cipher.decrypt(chiffre)
+        print("Message déchiffré :", dechiffre.decode())
+            </code></pre>
+        
+            <p><strong>Défi :</strong> Ajoutez une validation des signatures numériques pour garantir que le message provient d’un expéditeur légitime.</p>
+        
+            <h3>Conclusion :</h3>
+            <p>
+                À la fin de cette séance, les élèves auront révisé les 
+concepts fondamentaux de la sécurité et de la cryptographie. Ils auront 
+appliqué ces notions dans des exercices pratiques, consolidant leur 
+compréhension des menaces, des algorithmes cryptographiques et des 
+bonnes pratiques de sécurité.
+            </p>
+        </section>

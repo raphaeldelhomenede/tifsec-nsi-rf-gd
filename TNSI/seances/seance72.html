@@ -1,0 +1,366 @@
+<link rel="stylesheet" href="https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/css/style.css">
+<section id="session72" class="content-section">
+            <h2>Séance 72 : Bases de l’Utilisation de Linux</h2>
+
+            <h3>Objectifs :</h3>
+            <ul>
+                <li>Comprendre ce qu’est Linux et pourquoi il est utilisé.</li>
+                <li>Découvrir l’interface en ligne de commande (CLI).</li>
+                <li>Apprendre les commandes de base pour naviguer, manipuler des fichiers et gérer le système.</li>
+            </ul>
+
+            <h3>1. Qu’est-ce que Linux ?</h3>
+            <p>
+                Linux est un système d’exploitation open-source, souvent
+ utilisé dans les serveurs, l’embarqué, et comme OS principal pour les 
+développeurs.
+            </p>
+
+            <h4>Caractéristiques :</h4>
+            <ul>
+                <li><strong>Open-source :</strong> Le code source est accessible à tous.</li>
+                <li><strong>Sécurisé :</strong> Conçu pour être robuste et résistant aux attaques.</li>
+                <li><strong>Multi-utilisateur :</strong> Plusieurs utilisateurs peuvent utiliser le système simultanément.</li>
+                <li><strong>Personnalisable :</strong> De nombreuses distributions (Ubuntu, Fedora, Debian) existent pour différents besoins.</li>
+            </ul>
+
+            <h4>Pourquoi apprendre Linux ?</h4>
+            <ul>
+                <li>Utilisé dans de nombreux serveurs, appareils IoT, et environnements de développement.</li>
+                <li>Offre un contrôle précis grâce à l’interface en ligne de commande (CLI).</li>
+                <li>Favorise une compréhension profonde du fonctionnement des systèmes d’exploitation.</li>
+            </ul>
+
+            <h3>2. Interface en Ligne de Commande (CLI) (20 min)</h3>
+            <p>La ligne de commande est une interface où vous pouvez saisir des instructions textuelles pour interagir avec le système.</p>
+
+            <h4>Premiers Pas :</h4>
+            <a href="https://distrosea.com/fr/start/ubuntu-24.10-default/" target="_blank" rel="noopener noreferrer">Allez sur ce site</a>
+            <ul>
+                <li>Ouvrir un terminal (Ctrl + Alt + T sous Ubuntu).</li>
+                <li>Tester une commande simple : <code>ls</code> (liste les fichiers du répertoire courant).</li>
+                <li>Affichage de l’invite de commande : <code>user@machine:~$</code> (indique l’utilisateur et le répertoire actuel).</li>
+            </ul>
+
+            <h4>Quelques Commandes de Base :</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Commande</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>pwd</code></td>
+                        <td>Affiche le répertoire courant.</td>
+                    </tr>
+                    <tr>
+                        <td><code>ls</code></td>
+                        <td>Liste les fichiers et dossiers du répertoire courant.</td>
+                    </tr>
+                    <tr>
+                        <td><code>cd [dossier]</code></td>
+                        <td>Change le répertoire actuel.</td>
+                    </tr>
+                    <tr>
+                        <td><code>touch [fichier]</code></td>
+                        <td>Crée un fichier vide.</td>
+                    </tr>
+                    <tr>
+                        <td><code>mkdir [dossier]</code></td>
+                        <td>Crée un dossier.</td>
+                    </tr>
+                    <tr>
+                        <td><code>rm [fichier]</code></td>
+                        <td>Supprime un fichier.</td>
+                    </tr>
+                    <tr>
+                        <td><code>rmdir [dossier]</code></td>
+                        <td>Supprime un dossier vide.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>3. Activité Pratique : Manipulation de Fichiers et Répertoires (30 min)</h3>
+            <h4>Objectif :</h4>
+            <p>Les élèves doivent pratiquer les commandes de base pour naviguer et manipuler des fichiers et dossiers.</p>
+
+            <h4>Étapes :</h4>
+            <ol>
+                <li>Afficher le répertoire courant avec <code>pwd</code>.</li>
+                <li>Créer un répertoire appelé <code>projet</code> avec <code>mkdir projet</code>.</li>
+                <li>Naviguer dans ce répertoire avec <code>cd projet</code>.</li>
+                <li>Créer un fichier <code>notes.txt</code> avec <code>touch notes.txt</code>.</li>
+                <li>Lister les fichiers avec <code>ls</code>.</li>
+                <li>Supprimer le fichier avec <code>rm notes.txt</code>.</li>
+                <li>Revenir au répertoire parent avec <code>cd ..</code>.</li>
+            </ol>
+
+            <h3>4. Gestion des Droits et Permissions (20 min)</h3>
+            <p>Linux utilise un système de permissions pour contrôler l’accès aux fichiers et répertoires.</p>
+
+            <h4>Structure des Permissions :</h4>
+            <pre><code>
+        -rw-r--r--  1 user group 1234 date fichier.txt
+            </code></pre>
+            <ul>
+                <li>Le premier caractère (<code>-</code>, <code>d</code>) indique si c’est un fichier ou un dossier.</li>
+                <li>Les 9 caractères suivants indiquent les permissions pour :
+                    <ul>
+                        <li><strong>Utilisateur :</strong> propriétaire du fichier.</li>
+                        <li><strong>Groupe :</strong> groupe auquel appartient le fichier.</li>
+                        <li><strong>Autres :</strong> tous les autres utilisateurs.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h4>Commandes Utiles :</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Commande</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>ls -l</code></td>
+                        <td>Affiche les permissions des fichiers et dossiers.</td>
+                    </tr>
+                    <tr>
+                        <td><code>chmod [permissions] [fichier]</code></td>
+                        <td>Modifie les permissions.</td>
+                    </tr>
+                    <tr>
+                        <td><code>chown [utilisateur] [fichier]</code></td>
+                        <td>Change le propriétaire d’un fichier.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>5. Discussion et Réflexion (10 min)</h3>
+            <ul>
+                <li>Quels sont les avantages de l’utilisation de Linux pour les développeurs ?</li>
+                <li>Pourquoi est-il important de comprendre les permissions des fichiers ?</li>
+                <li>Quels sont les cas où l’utilisation de la CLI est préférable à une interface graphique ?</li>
+            </ul>
+
+            <h3>Conclusion :</h3>
+            <p>
+                À la fin de cette séance, les élèves auront acquis les 
+bases pour utiliser Linux en ligne de commande. Ils seront capables de 
+naviguer dans les répertoires, manipuler des fichiers et comprendre les 
+permissions, des compétences fondamentales pour travailler dans des 
+environnements de développement ou administrer des serveurs.
+            </p>
+            <hr>
+            <h2>Approfondissement sur Linux</h2>
+
+            <h3>Objectifs :</h3>
+            <ul>
+                <li>Explorer des concepts avancés, comme la gestion des utilisateurs et des processus.</li>
+                <li>Comprendre les permissions, les groupes et les droits d’accès.</li>
+                <li>Utiliser des outils courants pour surveiller et administrer un système Linux.</li>
+            </ul>
+
+            <h3>1. Gestion des Utilisateurs et Groupes (30 min)</h3>
+
+            <h4>Concepts de Base :</h4>
+            <p>
+                Linux est un système multi-utilisateurs. Chaque 
+utilisateur a un identifiant unique (UID) et appartient à un ou 
+plusieurs groupes pour gérer ses permissions.
+            </p>
+
+            <h4>Commandes Essentielles :</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Commande</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>whoami</code></td>
+                        <td>Affiche l'utilisateur connecté actuellement.</td>
+                    </tr>
+                    <tr>
+                        <td><code>id</code></td>
+                        <td>Affiche les informations de l'utilisateur et de ses groupes.</td>
+                    </tr>
+                    <tr>
+                        <td><code>adduser [nom]</code></td>
+                        <td>Ajoute un nouvel utilisateur.</td>
+                    </tr>
+                    <tr>
+                        <td><code>deluser [nom]</code></td>
+                        <td>Supprime un utilisateur.</td>
+                    </tr>
+                    <tr>
+                        <td><code>usermod</code></td>
+                        <td>Modifie les attributs d’un utilisateur.</td>
+                    </tr>
+                    <tr>
+                        <td><code>groupadd [nom]</code></td>
+                        <td>Ajoute un nouveau groupe.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Activité Pratique :</h4>
+            <ul>
+                <li>Créer un utilisateur <code>testuser</code> avec <code>adduser testuser</code>.</li>
+                <li>Attribuer cet utilisateur à un nouveau groupe <code>devs</code>.</li>
+                <li>Vérifier ses groupes avec <code>id testuser</code>.</li>
+            </ul>
+
+            <h3>2. Permissions et Droits d’Accès (30 min)</h3>
+
+            <h4>Structure des Permissions :</h4>
+            <pre><code>
+        -rwxr-xr--  1 user group 1234 date fichier.txt
+            </code></pre>
+            <ul>
+                <li>Les trois blocs <code>rwx</code> représentent les permissions pour l’utilisateur, le groupe et les autres.</li>
+                <li><code>r</code> : Lecture, <code>w</code> : Écriture, <code>x</code> : Exécution.</li>
+            </ul>
+
+            <h4>Commandes pour Modifier les Permissions :</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Commande</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>chmod [permissions] [fichier]</code></td>
+                        <td>Change les permissions d’un fichier.</td>
+                    </tr>
+                    <tr>
+                        <td><code>chown [utilisateur] [fichier]</code></td>
+                        <td>Change le propriétaire d’un fichier.</td>
+                    </tr>
+                    <tr>
+                        <td><code>chgrp [groupe] [fichier]</code></td>
+                        <td>Change le groupe d’un fichier.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Activité Pratique :</h4>
+            <ul>
+                <li>Créer un fichier <code>test.txt</code>.</li>
+                <li>Modifier ses permissions pour le rendre accessible en lecture seule à tous les utilisateurs : <code>chmod 444 test.txt</code>.</li>
+                <li>Changer le propriétaire du fichier avec <code>chown testuser test.txt</code>.</li>
+            </ul>
+
+            <h3>3. Gestion des Processus (30 min)</h3>
+
+            <h4>Commandes Essentielles :</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Commande</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>ps</code></td>
+                        <td>Affiche les processus en cours d'exécution pour l'utilisateur actuel.</td>
+                    </tr>
+                    <tr>
+                        <td><code>top</code></td>
+                        <td>Affiche les processus en temps réel.</td>
+                    </tr>
+                    <tr>
+                        <td><code>kill [PID]</code></td>
+                        <td>Termine un processus en utilisant son identifiant.</td>
+                    </tr>
+                    <tr>
+                        <td><code>jobs</code></td>
+                        <td>Liste les processus en arrière-plan pour l’utilisateur actuel.</td>
+                    </tr>
+                    <tr>
+                        <td><code>fg</code></td>
+                        <td>Ramène un processus en avant-plan.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Activité Pratique :</h4>
+            <ul>
+                <li>Exécuter un programme en arrière-plan avec <code>sleep 60 &amp;</code>.</li>
+                <li>Identifier son PID avec <code>ps</code>.</li>
+                <li>Terminer le processus avec <code>kill [PID]</code>.</li>
+            </ul>
+
+            <h3>4. Introduction à la Gestion des Paquets (20 min)</h3>
+
+            <h4>Concept :</h4>
+            <p>
+                Linux utilise des gestionnaires de paquets pour 
+installer, mettre à jour et supprimer des logiciels. Les gestionnaires 
+les plus courants sont :
+            </p>
+            <ul>
+                <li><strong>apt :</strong> Utilisé par les distributions basées sur Debian (ex : Ubuntu).</li>
+                <li><strong>yum ou dnf :</strong> Utilisés par Fedora et CentOS.</li>
+                <li><strong>pacman :</strong> Utilisé par Arch Linux.</li>
+            </ul>
+
+            <h4>Commandes Apt :</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Commande</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>sudo apt update</code></td>
+                        <td>Met à jour la liste des paquets disponibles.</td>
+                    </tr>
+                    <tr>
+                        <td><code>sudo apt upgrade</code></td>
+                        <td>Met à jour les paquets installés.</td>
+                    </tr>
+                    <tr>
+                        <td><code>sudo apt install [paquet]</code></td>
+                        <td>Installe un paquet.</td>
+                    </tr>
+                    <tr>
+                        <td><code>sudo apt remove [paquet]</code></td>
+                        <td>Supprime un paquet.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Activité Pratique :</h4>
+            <ul>
+                <li>Mettre à jour la liste des paquets avec <code>sudo apt update</code>.</li>
+                <li>Installer un paquet comme <code>htop</code> avec <code>sudo apt install htop</code>.</li>
+                <li>Lancer <code>htop</code> pour explorer les processus en temps réel.</li>
+            </ul>
+
+            <h3>5. Discussion et Réflexion (10 min)</h3>
+            <ul>
+                <li>Quels avantages offre Linux par rapport aux autres systèmes d’exploitation ?</li>
+                <li>Comment les permissions renforcent-elles la sécurité du système ?</li>
+                <li>Pourquoi est-il important de gérer correctement les processus et les utilisateurs ?</li>
+            </ul>
+
+            <h3>Conclusion :</h3>
+            <p>
+                Avec ces bases avancées, les élèves disposent d’un 
+bagage solide pour explorer Linux de manière autonome. Ils comprennent 
+les concepts fondamentaux de gestion des utilisateurs, des processus et 
+des permissions, tout en maîtrisant des outils essentiels pour 
+l’administration système.
+            </p>
+        </section>

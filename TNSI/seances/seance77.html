@@ -1,0 +1,158 @@
+<link rel="stylesheet" href="https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/css/style.css">
+<section id="session77" class="content-section">
+            <h2>Séance 77 : Sécurisation des Échanges Réseau avec SSL/TLS</h2>
+
+            <h3>Objectif Global :</h3>
+            <p>
+                Cette séance a pour but d’expliquer le fonctionnement du protocole de sécurisation <strong>SSL/TLS</strong> et son importance pour la protection des communications sur Internet.
+                Nous verrons comment il fonctionne, les concepts de chiffrement, d'authentification et d'intégrité des données.
+                Enfin, nous mettrons en place une communication sécurisée en Python.
+            </p>
+        
+            <h3>1. Introduction à SSL/TLS</h3>
+        
+            <h4>Définition</h4>
+            <p>
+                <strong>SSL (Secure Sockets Layer)</strong> et <strong>TLS (Transport Layer Security)</strong> sont des protocoles qui garantissent la sécurité des communications sur un réseau.
+                TLS est une évolution de SSL et est aujourd’hui la norme utilisée pour protéger les connexions sur Internet.
+            </p>
+        
+            <h4>Schéma Illustratif :</h4>
+            <p><img src="https://learn.microsoft.com/fr-fr/azure/postgresql/flexible-server/media/concepts-networking/tls-1-2.png" alt="Schéma SSL/TLS" width="600"></p>
+            <p><small>Illustration du processus de handshake SSL/TLS entre un client et un serveur.</small></p>
+            <p><small><a href="https://learn.microsoft.com/fr-fr/azure/postgresql/flexible-server/concepts-networking-ssl-tls" target="_blank">Lien du graphique</a></small></p>
+        
+            <h4>Pourquoi SSL/TLS est-il important ?</h4>
+            <ul>
+                <li><strong>Chiffrement :</strong> Les données envoyées entre le client et le serveur sont protégées contre les interceptions.</li>
+                <li><strong>Authentification :</strong> Garantit que le client communique avec le bon serveur (évite les attaques de type "man-in-the-middle").</li>
+                <li><strong>Intégrité :</strong> Assure que les données ne sont pas altérées lors de la transmission.</li>
+            </ul>
+        
+            <h4>Exemples d’utilisation :</h4>
+            <ul>
+                <li>Sites web sécurisés avec HTTPS (ex: banques, e-commerce).</li>
+                <li>Messagerie instantanée (WhatsApp, Signal).</li>
+                <li>VPN et tunnels sécurisés.</li>
+            </ul>
+        
+            <h3>2. Fonctionnement de SSL/TLS</h3>
+        
+            <h4>Le Handshake TLS</h4>
+            <p>Le handshake TLS est le processus par lequel le client et le serveur établissent une connexion sécurisée. Il comprend plusieurs étapes :</p>
+            <ol>
+                <li><strong>Client Hello :</strong> Le client envoie une requête avec les versions TLS supportées et un identifiant unique.</li>
+                <li><strong>Server Hello :</strong> Le serveur répond avec la version TLS choisie et un certificat pour s’authentifier.</li>
+                <li><strong>Vérification du certificat :</strong> Le client vérifie la validité du certificat du serveur.</li>
+                <li><strong>Échange de clés :</strong> Une clé de session est générée pour chiffrer les échanges.</li>
+                <li><strong>Connexion sécurisée :</strong> Les données sont échangées sous forme chiffrée.</li>
+            </ol>
+        
+            <h4>Schéma du Handshake TLS :</h4>
+            <p><img src="https://www.researchgate.net/profile/Wazen-Shbair/publication/298065605/figure/fig1/AS:357056767905792@1462140375566/TLS-handshake-protocol.png" alt="Handshake TLS" width="600"></p>
+            <p><small><a href="https://www.researchgate.net/figure/TLS-handshake-protocol_fig1_298065605" target="_blank">Lien du graphique</a></small></p>
+
+            <h3>3. Sécurisation d’un Serveur avec SSL/TLS en Python</h3>
+        
+            <h4>Implémentation d’un Serveur Sécurisé</h4>
+            <p>Nous allons créer un serveur sécurisé avec <code>ssl</code> en Python.</p>
+        
+            <pre><code class="python">
+        import socket
+        import ssl
+        
+        # Création du socket serveur
+        serveur = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        serveur.bind(("127.0.0.1", 12345))
+        serveur.listen(5)
+        
+        # Chargement du certificat SSL
+        contexte_ssl = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
+        contexte_ssl.load_cert_chain(certfile="cert.pem", keyfile="key.pem")
+        
+        # Acceptation des connexions sécurisées
+        while True:
+            conn, addr = serveur.accept()
+            secure_conn = contexte_ssl.wrap_socket(conn, server_side=True)
+            print(f"Connexion sécurisée de {addr}")
+            secure_conn.sendall("Connexion sécurisée avec SSL/TLS.".encode())
+            secure_conn.close()
+            </code></pre>
+        
+            <h4>Implémentation d’un Client Sécurisé</h4>
+            <pre><code class="python">
+        import socket
+        import ssl
+        
+        # Création du socket client
+        client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        contexte_ssl = ssl.create_default_context()
+        
+        # Connexion au serveur sécurisé
+        secure_client = contexte_ssl.wrap_socket(client, server_hostname="127.0.0.1")
+        secure_client.connect(("127.0.0.1", 12345))
+        
+        # Réception du message du serveur
+        print(secure_client.recv(1024).decode())
+        
+        secure_client.close()
+            </code></pre>
+        
+            <h4>Explication :</h4>
+            <ul>
+                <li>Le serveur charge un **certificat SSL** pour sécuriser la connexion.</li>
+                <li>Le client utilise **SSL/TLS** pour chiffrer les données envoyées et reçues.</li>
+            </ul>
+        
+            <h3>4. Obtenir un Certificat SSL</h3>
+            <p>Pour tester SSL en local, nous pouvons générer un certificat auto-signé :</p>
+        
+            <pre><code class="bash">
+        openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -nodes
+            </code></pre>
+        
+            <p>Ce certificat pourra ensuite être utilisé pour chiffrer les échanges.</p>
+        
+            <h3>5. Problèmes Courants et Solutions</h3>
+        
+            <h4>Erreur : Certificat non valide</h4>
+            <p>Si vous utilisez un certificat auto-signé, le client peut le refuser. Pour contourner ce problème :</p>
+            <pre><code class="python">
+        contexte_ssl = ssl.create_default_context()
+        contexte_ssl.check_hostname = False
+        contexte_ssl.verify_mode = ssl.CERT_NONE
+            </code></pre>
+        
+            <h4>Expiration des certificats</h4>
+            <p>Les certificats expirent après une certaine période. Pour éviter les interruptions de service, utilisez <a href="https://letsencrypt.org/" target="_blank">Let's Encrypt</a>.</p>
+        
+            <h3>6. Comparaison HTTP vs HTTPS</h3>
+            <table border="1" cellpadding="5">
+                <tr>
+                    <th>Critères</th>
+                    <th>HTTP</th>
+                    <th>HTTPS</th>
+                </tr>
+                <tr>
+                    <td>Sécurité</td>
+                    <td>Aucune, les données sont en clair</td>
+                    <td>Chiffrement avec TLS</td>
+                </tr>
+                <tr>
+                    <td>Authentification</td>
+                    <td>Non, risque d'attaques</td>
+                    <td>Oui, grâce aux certificats</td>
+                </tr>
+                <tr>
+                    <td>Utilisation</td>
+                    <td>Sites non sécurisés</td>
+                    <td>Banques, e-commerce, réseaux sociaux</td>
+                </tr>
+            </table>
+        
+            <h3>7. Conclusion</h3>
+            <p>
+                Grâce à cette séance, les élèves ont appris comment SSL/TLS sécurise les échanges réseau et comment l’implémenter en Python.
+                Comprendre ces concepts est essentiel pour développer des applications sécurisées et protéger les données des utilisateurs.
+            </p>
+        </section>

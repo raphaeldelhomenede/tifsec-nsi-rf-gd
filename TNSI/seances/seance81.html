@@ -1,0 +1,151 @@
+<link rel="stylesheet" href="https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/css/style.css">
+<section id="session81" class="content-section">
+            <h2>Séance 81 : Mise en place d’une infrastructure réseau sécurisée</h2>
+
+            <h3>Objectif Global :</h3>
+            <p>
+                Cette séance vise à apprendre comment concevoir et sécuriser une infrastructure réseau. 
+                Les élèves découvriront les principes de la **sécurité des réseaux**, les **bonnes pratiques**, et comment mettre en place une **architecture sécurisée** en entreprise.
+            </p>
+        
+            <h3>1. Introduction à la Sécurité des Réseaux</h3>
+        
+            <h4>Pourquoi sécuriser un réseau ?</h4>
+            <p>
+                Un réseau informatique est exposé à diverses menaces (piratage, vol de données, attaques DDoS, malwares, etc.). Il est essentiel de mettre en place des mesures de sécurité pour protéger les données et garantir la continuité des services.
+            </p>
+        
+            <h4>Principaux Risques :</h4>
+            <ul>
+                <li><strong>Intrusions :</strong> Accès non autorisé aux systèmes.</li>
+                <li><strong>Vol de données :</strong> Piratage des informations sensibles.</li>
+                <li><strong>Attaques DDoS :</strong> Surcharge des serveurs pour les rendre inaccessibles.</li>
+                <li><strong>Malwares :</strong> Virus, ransomwares, chevaux de Troie.</li>
+                <li><strong>Ingénierie sociale :</strong> Tentatives de manipulation pour obtenir des accès (phishing).</li>
+            </ul>
+        
+            <h3>2. Architecture d’un Réseau Sécurisé</h3>
+        
+            <h4>Schéma Typique d’une Infrastructure Réseau Sécurisée :</h4>
+            <p><img src="https://www.it-connect.fr/wp-content-itc/uploads/2021/12/schema-dmz-04.png" alt="Schéma d'une infrastructure réseau sécurisée" width="600"></p>
+            <p><small>Exemple d’une infrastructure réseau sécurisée avec un pare-feu et une zone DMZ.</small></p>
+            <p><small><a href="https://www.it-connect.fr/informatique-cest-quoi-une-dmz/" target="_blank">Lien du graphique</a></small></p>
+        
+            <h4>Composants Clés :</h4>
+            <ul>
+                <li><strong>Pare-feu (Firewall) :</strong> Filtre le trafic entrant et sortant pour bloquer les connexions suspectes.</li>
+                <li><strong>DMZ (Zone Démilitarisée) :</strong> Espace sécurisé entre le réseau interne et Internet (utilisé pour les serveurs web, mail, etc.).</li>
+                <li><strong>VLAN (Virtual LAN) :</strong> Sépare logiquement les services pour limiter les accès entre machines.</li>
+                <li><strong>VPN (Virtual Private Network) :</strong> Permet aux utilisateurs distants de se connecter en toute sécurité.</li>
+                <li><strong>Serveurs sécurisés :</strong> Hébergent les applications sensibles avec des contrôles d’accès stricts.</li>
+            </ul>
+        
+            <h3>3. Bonnes Pratiques pour Sécuriser un Réseau</h3>
+        
+            <h4>Contrôle des Accès</h4>
+            <ul>
+                <li>Utiliser des mots de passe robustes et l’authentification multifactorielle (MFA).</li>
+                <li>Restreindre les accès aux ressources sensibles (serveurs, bases de données).</li>
+                <li>Appliquer le principe du **moindre privilège** (limiter les droits utilisateurs au strict nécessaire).</li>
+            </ul>
+        
+            <h4>Mise en Place d’un Pare-feu</h4>
+            <ul>
+                <li>Bloquer tout trafic non essentiel.</li>
+                <li>Autoriser uniquement les ports et protocoles nécessaires.</li>
+                <li>Mettre en place des règles spécifiques pour les applications internes.</li>
+            </ul>
+        
+            <h4>Chiffrement des Communications</h4>
+            <ul>
+                <li>Utiliser HTTPS (TLS) pour sécuriser les échanges web.</li>
+                <li>Configurer un VPN pour les connexions à distance.</li>
+                <li>Activer le chiffrement des emails sensibles.</li>
+            </ul>
+        
+            <h4>Surveillance et Journalisation</h4>
+            <ul>
+                <li>Surveiller les connexions suspectes via un IDS (Intrusion Detection System).</li>
+                <li>Analyser les logs des pare-feu et serveurs régulièrement.</li>
+                <li>Mettre en place une alerte en cas d’anomalies.</li>
+            </ul>
+        
+            <h3>4. Exercice Pratique : Mise en Place d’un Pare-feu avec Iptables</h3>
+        
+            <h4>Configuration de Base :</h4>
+            <pre><code class="bash">
+        # Autoriser uniquement les connexions SSH (port 22), HTTP (port 80), et HTTPS (port 443)
+        sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+        sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+        sudo iptables -A INPUT -p tcp --dport 443 -j ACCEPT
+        
+        # Bloquer tout le reste
+        sudo iptables -P INPUT DROP
+        sudo iptables -P FORWARD DROP
+        sudo iptables -P OUTPUT ACCEPT
+        
+        # Sauvegarder la configuration
+        sudo iptables-save > /etc/iptables/rules.v4
+            </code></pre>
+        
+            <h4>Test :</h4>
+            <pre><code class="bash">
+        # Vérifier les règles appliquées
+        sudo iptables -L -v
+            </code></pre>
+        
+            <h3>5. Exercice Pratique : Mise en Place d’un VPN avec OpenVPN</h3>
+        
+            <p>
+                Un VPN permet de créer un tunnel sécurisé entre un utilisateur distant et le réseau interne d’une entreprise. Voici un aperçu de l’installation d’OpenVPN :
+            </p>
+        
+            <h4>Installation d’OpenVPN :</h4>
+            <pre><code class="bash">
+        # Installation d’OpenVPN
+        sudo apt update && sudo apt install openvpn -y
+            </code></pre>
+        
+            <h4>Démarrage du Service :</h4>
+            <pre><code class="bash">
+        # Lancer OpenVPN
+        sudo systemctl start openvpn
+        sudo systemctl enable openvpn
+            </code></pre>
+        
+            <h3>6. Surveillance du Réseau avec Wireshark</h3>
+        
+            <p>
+                Wireshark est un outil d’analyse du trafic réseau qui permet de détecter les anomalies et les attaques potentielles.
+            </p>
+        
+            <h4>Installation :</h4>
+            <pre><code class="bash">
+        sudo apt install wireshark
+            </code></pre>
+        
+            <h4>Capture de Trafic :</h4>
+            <pre><code class="bash">
+        sudo wireshark
+            </code></pre>
+        
+            <h3>7. Conclusion</h3>
+            <p>
+                Cette séance a permis d’explorer les **fondamentaux de la sécurité des réseaux**, avec des pratiques concrètes comme la mise en place d’un pare-feu, d’un VPN et l’analyse du trafic réseau.
+            </p>
+            <ul>
+                <li>Les infrastructures réseau doivent être sécurisées avec des <strong>pare-feu</strong> et des <strong>contrôles d’accès</strong>.</li>
+                <li>Le <strong>chiffrement</strong> est essentiel pour protéger les communications.</li>
+                <li>Les outils comme <strong>Wireshark</strong> permettent de surveiller l’activité du réseau et détecter les menaces.</li>
+            </ul>
+        
+            <h3>Défi pour Aller Plus Loin :</h3>
+            <p>
+                Les élèves doivent créer un script qui :
+            </p>
+            <ul>
+                <li>Ajoute automatiquement des règles de pare-feu adaptées à leur réseau.</li>
+                <li>Vérifie si un utilisateur se connecte avec un VPN.</li>
+                <li>Génère un rapport d’activité du réseau.</li>
+            </ul>
+        </section>

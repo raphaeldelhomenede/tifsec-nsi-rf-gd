@@ -1,0 +1,212 @@
+<link rel="stylesheet" href="https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/css/style.css">
+<section id="session68" class="content-section">
+            <h2>Séance 68 : Pratique - Protection des données d’une application de gestion d’actualité</h2>
+        
+            <h3>Objectif Global :</h3>
+            <p>
+                Les élèves apprendront à protéger les données sensibles 
+dans une application de gestion d’actualité en utilisant les principes 
+de l’encapsulation. Ils mettront en œuvre des pratiques comme 
+l’utilisation d’attributs privés, la validation des entrées, et la 
+sécurisation des accès aux données à travers des méthodes dédiées.
+            </p>
+        
+            <h3>Contexte du Projet :</h3>
+            <p>
+                Vous développez une application de gestion d’actualité 
+pour un journal. Cette application stocke et gère des articles, avec des
+ informations sensibles telles que l’auteur, le contenu, et la date de 
+publication. Les élèves devront :
+            </p>
+            <ul>
+                <li>Créer une classe <code>Article</code> avec des attributs privés pour protéger les données.</li>
+                <li>Mettre en œuvre des getters et setters avec validation pour les attributs critiques.</li>
+                <li>Gérer une liste d’articles à travers une classe <code>GestionActualites</code> qui sécurise les opérations.</li>
+            </ul>
+        
+            <h3>Étape 1 : Création de la Classe Article (30 min)</h3>
+        
+            <h4>Exercice :</h4>
+            <p>
+                Créez une classe <code>Article</code> avec les attributs suivants :
+            </p>
+            <ul>
+                <li><code>titre</code> : Le titre de l’article (chaîne de caractères).</li>
+                <li><code>auteur</code> : L’auteur de l’article (chaîne de caractères).</li>
+                <li><code>contenu</code> : Le contenu de l’article (chaîne de caractères).</li>
+                <li><code>date_publication</code> : La date de publication (format YYYY-MM-DD).</li>
+            </ul>
+            <p>
+                Ces attributs doivent être <strong>privés</strong> et accessibles uniquement via des getters et setters, avec validation pour garantir leur validité.
+            </p>
+        
+            <h4>Implémentation Initiale :</h4>
+            <pre><code class="python">
+        from datetime import datetime
+        
+        class Article:
+            def __init__(self, titre, auteur, contenu, date_publication):
+                self.__titre = titre
+                self.__auteur = auteur
+                self.__contenu = contenu
+                self.__date_publication = self.__valider_date(date_publication)
+        
+            # Getter et setter pour titre
+            @property
+            def titre(self):
+                return self.__titre
+        
+            @titre.setter
+            def titre(self, nouveau_titre):
+                if isinstance(nouveau_titre, str) and len(nouveau_titre) &gt; 0:
+                    self.__titre = nouveau_titre
+                else:
+                    print("Erreur : Le titre doit être une chaîne non vide.")
+        
+            # Getter et setter pour auteur
+            @property
+            def auteur(self):
+                return self.__auteur
+        
+            @auteur.setter
+            def auteur(self, nouvel_auteur):
+                if isinstance(nouvel_auteur, str) and len(nouvel_auteur) &gt; 0:
+                    self.__auteur = nouvel_auteur
+                else:
+                    print("Erreur : L'auteur doit être une chaîne non vide.")
+        
+            # Getter et setter pour contenu
+            @property
+            def contenu(self):
+                return self.__contenu
+        
+            @contenu.setter
+            def contenu(self, nouveau_contenu):
+                if isinstance(nouveau_contenu, str) and len(nouveau_contenu) &gt; 0:
+                    self.__contenu = nouveau_contenu
+                else:
+                    print("Erreur : Le contenu doit être une chaîne non vide.")
+        
+            # Getter et validation pour date_publication
+            @property
+            def date_publication(self):
+                return self.__date_publication
+        
+            @date_publication.setter
+            def date_publication(self, nouvelle_date):
+                self.__date_publication = self.__valider_date(nouvelle_date)
+        
+            def __valider_date(self, date_str):
+                try:
+                    return datetime.strptime(date_str, "%Y-%m-%d")
+                except ValueError:
+                    print("Erreur : La date doit être au format YYYY-MM-DD.")
+                    return None
+            </code></pre>
+        
+            <h4>Test Initial :</h4>
+            <pre><code class="python">
+        # Création d'un article
+        article = Article("Titre de l'article", "Alice", "Ceci est le contenu.", "2025-01-01")
+        
+        # Affichage des informations
+        print(article.titre)  # Titre de l'article
+        print(article.date_publication)  # 2025-01-01
+        
+        # Modifications avec validation
+        article.titre = ""  # Erreur : Le titre doit être une chaîne non vide.
+        article.date_publication = "2025-15-01"  # Erreur : La date doit être au format YYYY-MM-DD.
+            </code></pre>
+        
+            <h3>Étape 2 : Gestion des Articles avec GestionActualites (30 min)</h3>
+        
+            <h4>Exercice :</h4>
+            <p>
+                Créez une classe <code>GestionActualites</code> pour gérer une liste d’articles. Cette classe doit inclure :
+            </p>
+            <ul>
+                <li><code>ajouter_article(article)</code> : Ajoute un article à la liste.</li>
+                <li><code>supprimer_article(titre)</code> : Supprime un article par son titre.</li>
+                <li><code>afficher_articles()</code> : Affiche les détails de tous les articles.</li>
+            </ul>
+        
+            <h4>Implémentation :</h4>
+            <pre><code class="python">
+        class GestionActualites:
+            def __init__(self):
+                self.__articles = []  # Liste privée d'articles
+        
+            def ajouter_article(self, article):
+                if isinstance(article, Article):
+                    self.__articles.append(article)
+                else:
+                    print("Erreur : L'objet doit être une instance de la classe Article.")
+        
+            def supprimer_article(self, titre):
+                for article in self.__articles:
+                    if article.titre == titre:
+                        self.__articles.remove(article)
+                        print(f"L'article '{titre}' a été supprimé.")
+                        return
+                print(f"Erreur : Aucun article trouvé avec le titre '{titre}'.")
+        
+            def afficher_articles(self):
+                if not self.__articles:
+                    print("Aucun article disponible.")
+                    return
+                for article in self.__articles:
+                    print(f"Titre : {article.titre}")
+                    print(f"Auteur : {article.auteur}")
+                    print(f"Date : {article.date_publication.strftime('%Y-%m-%d')}")
+                    print(f"Contenu : {article.contenu}")
+                    print("-" * 40)
+            </code></pre>
+        
+            <h4>Test :</h4>
+            <pre><code class="python">
+        # Gestion des actualités
+        gestion = GestionActualites()
+        
+        # Création d'articles
+        article1 = Article("Titre 1", "Bob", "Contenu 1", "2025-01-02")
+        article2 = Article("Titre 2", "Alice", "Contenu 2", "2025-01-03")
+        
+        # Ajout des articles
+        gestion.ajouter_article(article1)
+        gestion.ajouter_article(article2)
+        
+        # Affichage des articles
+        gestion.afficher_articles()
+        
+        # Suppression d'un article
+        gestion.supprimer_article("Titre 1")
+        gestion.afficher_articles()
+            </code></pre>
+        
+            <h3>Étape 3 : Sécurisation des Opérations (30 min)</h3>
+            <p>
+                Ajoutez des fonctionnalités supplémentaires pour protéger les données :
+            </p>
+            <ul>
+                <li>Empêcher l’ajout d’un article avec un titre déjà existant.</li>
+                <li>Ajouter une méthode pour rechercher un article par auteur ou par date.</li>
+            </ul>
+        
+            <h4>Exemple :</h4>
+            <pre><code class="python">
+        def rechercher_articles_par_auteur(self, auteur):
+            resultats = [article for article in self.__articles if article.auteur == auteur]
+            if resultats:
+                for article in resultats:
+                    print(f"Titre : {article.titre}")
+            else:
+                print(f"Aucun article trouvé pour l'auteur '{auteur}'.")
+            </code></pre>
+        
+            <h3>Conclusion :</h3>
+            <ul>
+                <li>Les élèves auront appris à protéger les données sensibles en utilisant des attributs privés et des getters/setters.</li>
+                <li>Ils auront mis en œuvre une logique métier dans une application réelle.</li>
+                <li>Ils auront exploré des scénarios pratiques de gestion d’actualité tout en assurant la sécurité et la validité des données.</li>
+            </ul>
+        </section>

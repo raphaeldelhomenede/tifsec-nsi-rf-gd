@@ -1,0 +1,195 @@
+<link rel="stylesheet" href="https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/css/style.css">
+<section id="session67" class="content-section">
+            <h2>Séance 67 : Signature numérique et validation de l’intégrité des données</h2>
+        
+            <h3>Objectif Global :</h3>
+            <p>
+                Les élèves découvriront les concepts de signature 
+numérique et de validation de l’intégrité des données. Ils apprendront à
+ utiliser des algorithmes de hachage et des clés cryptographiques pour 
+vérifier l’authenticité et la non-altération des données dans un système
+ sécurisé.
+            </p>
+        
+            <h3>Introduction (15 min)</h3>
+        
+            <h4>1. Qu’est-ce qu’une Signature Numérique ?</h4>
+            <p>
+                Une signature numérique est un mécanisme cryptographique
+ qui permet de garantir l’authenticité et l’intégrité des données ou des
+ messages. Elle joue un rôle similaire à une signature manuscrite dans 
+le monde numérique.
+            </p>
+            <ul>
+                <li><strong>Authenticité :</strong> Vérifie que les données proviennent d’un expéditeur légitime.</li>
+                <li><strong>Intégrité :</strong> Garantit que les données n’ont pas été modifiées depuis leur création.</li>
+                <li><strong>Non-répudiation :</strong> Empêche l’expéditeur de nier avoir envoyé les données.</li>
+            </ul>
+        
+            <h4>2. Algorithmes Clés :</h4>
+            <p>Les signatures numériques reposent sur deux mécanismes principaux :</p>
+            <ul>
+                <li><strong>Algorithmes de hachage :</strong> Ils transforment des données en une empreinte unique (exemple : SHA-256).</li>
+                <li><strong>Cryptographie asymétrique :</strong> Utilise une paire de clés (publique et privée) pour signer et vérifier les données.</li>
+            </ul>
+        
+            <h3>Étape 1 : Algorithmes de Hachage (30 min)</h3>
+        
+            <h4>1. Concept de Hachage :</h4>
+            <p>
+                Un algorithme de hachage prend une entrée (un message ou
+ des données) et produit une empreinte unique et fixe, appelée <strong>hash</strong>. Les propriétés d’un bon algorithme de hachage sont :
+            </p>
+            <ul>
+                <li><strong>Unidirectionnel :</strong> Impossible de retrouver l’entrée à partir du hash.</li>
+                <li><strong>Sensible :</strong> Une petite modification de l’entrée entraîne un hash complètement différent.</li>
+                <li><strong>Collisions rares :</strong> Deux entrées différentes ne doivent pas produire le même hash.</li>
+            </ul>
+        
+            <h4>2. Exemple avec SHA-256 :</h4>
+            <pre><code class="python">
+        import hashlib
+        
+        # Données à hacher
+        message = "Bonjour, monde !"
+        
+        # Calcul du hash avec SHA-256
+        hash_message = hashlib.sha256(message.encode()).hexdigest()
+        
+        print(f"Message : {message}")
+        print(f"Hash (SHA-256) : {hash_message}")
+            </code></pre>
+        
+            <h4>Exercice :</h4>
+            <p>
+                Modifiez le message d’entrée et observez comment le hash
+ change complètement. Discutez de l'importance de cette sensibilité dans
+ la validation de l'intégrité.
+            </p>
+        
+            <h3>Étape 2 : Création et Vérification de Signatures Numériques (40 min)</h3>
+        
+            <h4>1. Principe :</h4>
+            <p>Une signature numérique utilise la cryptographie asymétrique pour signer un message et vérifier son authenticité :</p>
+            <ul>
+                <li><strong>Clé privée :</strong> Utilisée pour signer le message.</li>
+                <li><strong>Clé publique :</strong> Utilisée pour vérifier la signature.</li>
+            </ul>
+        
+            <h4>2. Exemple Pratique :</h4>
+            <p>
+                Utilisons la bibliothèque <code>cryptography</code> pour générer une signature numérique et vérifier l'intégrité des données.
+            </p>
+            <pre><code class="python">
+        from cryptography.hazmat.primitives.asymmetric import rsa, padding
+        from cryptography.hazmat.primitives import hashes
+        
+        # Génération d'une paire de clés
+        cle_privee = rsa.generate_private_key(public_exponent=65537, key_size=2048)
+        cle_publique = cle_privee.public_key()
+        
+        # Données à signer
+        message = b"Voici un message important."
+        
+        # Création de la signature numérique
+        signature = cle_privee.sign(
+            message,
+            padding.PSS(
+                mgf=padding.MGF1(hashes.SHA256()),
+                salt_length=padding.PSS.MAX_LENGTH
+            ),
+            hashes.SHA256()
+        )
+        
+        print("Signature créée avec succès.")
+        
+        # Vérification de la signature
+        try:
+            cle_publique.verify(
+                signature,
+                message,
+                padding.PSS(
+                    mgf=padding.MGF1(hashes.SHA256()),
+                    salt_length=padding.PSS.MAX_LENGTH
+                ),
+                hashes.SHA256()
+            )
+            print("Signature vérifiée avec succès. Intégrité garantie.")
+        except Exception as e:
+            print("La vérification a échoué :", e)
+            </code></pre>
+        
+            <h4>Exercice :</h4>
+            <p>
+                Modifiez le message d’entrée ou la clé publique et 
+observez comment la vérification échoue. Discutez de l'importance de ce 
+processus dans la détection de modifications non autorisées.
+            </p>
+        
+            <h3>Étape 3 : Application Pratique (30 min)</h3>
+        
+            <h4>Scénario :</h4>
+            <p>
+                Créez une application où un utilisateur envoie un 
+fichier signé numériquement à un autre utilisateur. L'application doit :
+            </p>
+            <ul>
+                <li>Générer une signature numérique pour le fichier.</li>
+                <li>Permettre à l’utilisateur destinataire de vérifier la signature et l’intégrité du fichier.</li>
+            </ul>
+        
+            <h4>Exemple de Code :</h4>
+            <pre><code class="python">
+        # Exemple d'application de signature pour un fichier
+        from cryptography.hazmat.primitives.asymmetric import rsa, padding
+        from cryptography.hazmat.primitives import hashes
+        
+        # Génération de clés
+        cle_privee = rsa.generate_private_key(public_exponent=65537, key_size=2048)
+        cle_publique = cle_privee.public_key()
+        
+        # Lecture d'un fichier
+        with open("fichier.txt", "rb") as f:
+            contenu = f.read()
+        
+        # Création de la signature
+        signature = cle_privee.sign(
+            contenu,
+            padding.PSS(
+                mgf=padding.MGF1(hashes.SHA256()),
+                salt_length=padding.PSS.MAX_LENGTH
+            ),
+            hashes.SHA256()
+        )
+        
+        print("Fichier signé.")
+        
+        # Vérification de la signature
+        try:
+            cle_publique.verify(
+                signature,
+                contenu,
+                padding.PSS(
+                    mgf=padding.MGF1(hashes.SHA256()),
+                    salt_length=padding.PSS.MAX_LENGTH
+                ),
+                hashes.SHA256()
+            )
+            print("Signature valide. Le fichier n'a pas été altéré.")
+        except Exception as e:
+            print("La vérification a échoué :", e)
+            </code></pre>
+        
+            <h4>Défi :</h4>
+            <ul>
+                <li>Ajoutez une interface utilisateur simple (ex. : en ligne de commande) pour signer et vérifier les fichiers.</li>
+                <li>Gérez les cas d'erreur, comme un fichier corrompu ou une clé publique incorrecte.</li>
+            </ul>
+        
+            <h3>Conclusion et Discussion (15 min)</h3>
+            <ul>
+                <li>Les signatures numériques garantissent l’intégrité et l’authenticité des données dans des systèmes sécurisés.</li>
+                <li>Les algorithmes de hachage et la cryptographie asymétrique sont les piliers de ces mécanismes.</li>
+                <li>Discussion : Quels autres usages de la signature numérique pouvez-vous imaginer (e-mails sécurisés, certificats SSL, etc.) ?</li>
+            </ul>
+        </section>
