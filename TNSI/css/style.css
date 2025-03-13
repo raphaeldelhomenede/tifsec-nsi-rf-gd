@@ -73,8 +73,8 @@ ul li::before {
     left: 0; /* Positionne la puce tout à gauche de l'élément */
     top: 50%; /* Centre la puce verticalement */
     transform: translateY(-50%); /* Corrige le centrage vertical */
-    width: 10px; /* Largeur de la puce */
-    height: 10px; /* Hauteur de la puce */
+    width: 5px; /* Largeur de la puce */
+    height: 5px; /* Hauteur de la puce */
     background-color: black; /* Couleur de remplissage noire */
     border: 2px solid black; /* Contour noir autour de la puce */
     border-radius: 50%; /* Forme de la puce : cercle */
