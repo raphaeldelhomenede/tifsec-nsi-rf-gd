@@ -64,7 +64,7 @@ ul {
 
 ul li {
     position: relative; /* On positionne l'élément li pour pouvoir ajouter la puce */
-    padding-left: 25px; /* Ajoute un espace à gauche pour la puce */
+    padding-left: 10px; /* Ajoute un espace à gauche pour la puce */
 }
 
 ul li::before {
