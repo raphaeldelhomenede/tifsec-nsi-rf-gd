@@ -58,13 +58,26 @@ aside::-webkit-scrollbar {
 }
 
 ul {
-    list-style: none;  /* Puces circulaires */
+    list-style: none; /* On supprime les puces par défaut */
     padding: 0;
-    margin-left: 20px;   /* Ajouter un petit espace à gauche pour laisser de la place aux puces */
 }
 
 ul li {
-    padding: 10px;
+    position: relative; /* On positionne l'élément li pour pouvoir ajouter la puce */
+    padding-left: 25px; /* Ajoute un espace à gauche pour la puce */
+}
+
+ul li::before {
+    content: ''; /* Nécessaire pour afficher le pseud-élément */
+    position: absolute;
+    left: 0; /* Positionne la puce tout à gauche de l'élément */
+    top: 50%; /* Centre la puce verticalement */
+    transform: translateY(-50%); /* Corrige le centrage vertical */
+    width: 10px; /* Largeur de la puce */
+    height: 10px; /* Hauteur de la puce */
+    background-color: black; /* Couleur de remplissage noire */
+    border: 2px solid black; /* Contour noir autour de la puce */
+    border-radius: 50%; /* Forme de la puce : cercle */
 }
 
 aside ul li a {
