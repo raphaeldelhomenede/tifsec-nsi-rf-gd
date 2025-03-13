@@ -17,6 +17,10 @@ header {
     padding: 1rem;
 }
 
+p {
+    padding-left: 10px;
+}
+
 main {
     margin-left: 200px;
     padding: 20px;
