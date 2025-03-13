@@ -57,12 +57,12 @@ aside::-webkit-scrollbar {
     display: none; /* Masque la barre de défilement pour Chrome, Safari, et Opera */
 }
 
-aside ul {
+ul {
     list-style: none;
     padding: 0;
 }
 
-aside ul li {
+ul li {
     padding: 10px;
 }
 
