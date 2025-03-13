@@ -58,7 +58,7 @@ aside::-webkit-scrollbar {
 }
 
 ul {
-    list-style: circle;  /* Puces circulaires */
+    list-style: none;  /* Puces circulaires */
     padding: 0;
     margin-left: 20px;   /* Ajouter un petit espace à gauche pour laisser de la place aux puces */
 }
