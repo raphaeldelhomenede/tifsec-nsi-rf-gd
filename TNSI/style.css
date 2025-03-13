@@ -115,6 +115,11 @@ body {
         z-index: 3;
         display: none;
     }
+
+    aside ul li {
+        padding: 10px;
+    }
+
     @media (max-width: 512px) {
         .logoNSI {
         width: 100% !important;
