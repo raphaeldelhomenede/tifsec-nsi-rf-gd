@@ -1,141 +1,164 @@
 <link rel="stylesheet" href="https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/css/style.css">
 <section id="session69" class="content-section">
-            <h2>Séance 69 : Révision des Concepts de Sécurité et Cryptographie</h2>
-        
-            <h3>Objectif Global :</h3>
-            <p>
-                Cette séance a pour but de réviser les concepts 
-fondamentaux de la sécurité informatique et de la cryptographie. Les 
-élèves consolideront leurs connaissances sur les notions de sécurité des
- données, d’algorithmes cryptographiques et de bonnes pratiques en 
-matière de sécurité.
-            </p>
-        
-            <h3>Partie 1 : Concepts Fondamentaux de la Sécurité (30 min)</h3>
-        
-            <h4>1. Principes de Sécurité Informatique :</h4>
-            <p>
-                Les trois piliers de la sécurité informatique sont :
-            </p>
-            <ul>
-                <li><strong>Confidentialité :</strong> Garantir que les données sont accessibles uniquement aux personnes autorisées.</li>
-                <li><strong>Intégrité :</strong> Assurer que les données n’ont pas été modifiées ou altérées de manière non autorisée.</li>
-                <li><strong>Disponibilité :</strong> Garantir que les données et les systèmes sont accessibles lorsque nécessaire.</li>
-            </ul>
-        
-            <h4>2. Menaces Courantes :</h4>
-            <p>
-                Les élèves doivent comprendre les menaces auxquelles un système peut être confronté :
-            </p>
-            <ul>
-                <li><strong>Phishing :</strong> Tentative de voler des informations sensibles via des communications frauduleuses.</li>
-                <li><strong>Attaques par force brute :</strong> Essayer toutes les combinaisons possibles pour deviner un mot de passe.</li>
-                <li><strong>Malware :</strong> Programmes malveillants conçus pour nuire, comme les virus, les ransomwares et les chevaux de Troie.</li>
-            </ul>
-        
-            <h4>3. Bonnes Pratiques en Sécurité :</h4>
-            <ul>
-                <li>Utiliser des mots de passe complexes et uniques pour chaque compte.</li>
-                <li>Activer l’authentification à deux facteurs (2FA).</li>
-                <li>Maintenir les logiciels et systèmes à jour.</li>
-                <li>Éviter de cliquer sur des liens suspects ou d’ouvrir des pièces jointes inconnues.</li>
-            </ul>
-        
-            <h3>Partie 2 : Révision des Concepts de Cryptographie (40 min)</h3>
-        
-            <h4>1. Définitions Clés :</h4>
-            <ul>
-                <li><strong>Cryptographie :</strong> L’art de protéger les informations en les rendant illisibles pour toute personne non autorisée.</li>
-                <li><strong>Clé :</strong> Une donnée utilisée pour chiffrer ou déchiffrer des informations.</li>
-                <li><strong>Chiffrement Symétrique :</strong> Utilisation d’une clé unique pour le chiffrement et le déchiffrement.</li>
-                <li><strong>Chiffrement Asymétrique :</strong> Utilisation d’une paire de clés (publique et privée) pour le chiffrement et le déchiffrement.</li>
-            </ul>
-        
-            <h4>2. Algorithmes Cryptographiques :</h4>
-            <ul>
-                <li><strong>Chiffrement Symétrique :</strong> 
-                    <ul>
-                        <li><strong>AES (Advanced Encryption Standard) :</strong> Algorithme rapide et sécurisé pour le chiffrement des données.</li>
-                        <li><strong>DES (Data Encryption Standard) :</strong> Ancien standard remplacé par AES, considéré comme moins sûr aujourd’hui.</li>
-                    </ul>
-                </li>
-                <li><strong>Chiffrement Asymétrique :</strong> 
-                    <ul>
-                        <li><strong>RSA :</strong> Utilisé pour sécuriser les communications (par ex., HTTPS).</li>
-                        <li><strong>Elliptic Curve Cryptography (ECC) :</strong> Alternative efficace à RSA avec des clés plus courtes.</li>
-                    </ul>
-                </li>
-                <li><strong>Fonctions de Hachage :</strong>
-                    <ul>
-                        <li><strong>SHA-256 :</strong> Algorithme de hachage utilisé dans la blockchain.</li>
-                        <li><strong>MD5 :</strong> Ancien algorithme de hachage désormais considéré comme peu sécurisé.</li>
-                    </ul>
-                </li>
-            </ul>
-        
-            <h4>3. Exercice Pratique :</h4>
-            <p>Les élèves devront mettre en œuvre les concepts de cryptographie en Python.</p>
-            <pre><code class="python">
-        # Exemple de chiffrement symétrique avec Fernet (bibliothèque cryptography)
-        from cryptography.fernet import Fernet
-        
-        # Générer une clé
-        cle = Fernet.generate_key()
-        cipher_suite = Fernet(cle)
-        
-        # Chiffrer un message
-        message = b"Secret important"
-        chiffre = cipher_suite.encrypt(message)
-        print("Message chiffré :", chiffre)
-        
-        # Déchiffrer le message
-        dechiffre = cipher_suite.decrypt(chiffre)
-        print("Message déchiffré :", dechiffre.decode())
-            </code></pre>
-        
-            <p><strong>Défi :</strong> Modifiez le programme pour que l’utilisateur entre son propre message et voyez comment il est chiffré puis déchiffré.</p>
-        
-            <h3>Partie 3 : Étude de Cas (30 min)</h3>
-        
-            <h4>Contexte :</h4>
-            <p>
-                Imaginez que vous travaillez pour une banque. Votre 
-mission est de sécuriser les communications entre les employés et les 
-serveurs de la banque en utilisant un chiffrement asymétrique.
-            </p>
-        
-            <h4>Exercice :</h4>
-            <p>Implémentez un système de chiffrement et de déchiffrement RSA en Python.</p>
-            <pre><code class="python">
-        from Crypto.PublicKey import RSA
-        from Crypto.Cipher import PKCS1_OAEP
-        
-        # Générer une paire de clés RSA
-        cle_privee = RSA.generate(2048)
-        cle_publique = cle_privee.publickey()
-        
-        # Message à chiffrer
-        message = b"Transaction confidentielle"
-        
-        # Chiffrement avec la clé publique
-        cipher = PKCS1_OAEP.new(cle_publique)
-        chiffre = cipher.encrypt(message)
-        print("Message chiffré :", chiffre)
-        
-        # Déchiffrement avec la clé privée
-        decrypt_cipher = PKCS1_OAEP.new(cle_privee)
-        dechiffre = decrypt_cipher.decrypt(chiffre)
-        print("Message déchiffré :", dechiffre.decode())
-            </code></pre>
-        
-            <p><strong>Défi :</strong> Ajoutez une validation des signatures numériques pour garantir que le message provient d’un expéditeur légitime.</p>
-        
-            <h3>Conclusion :</h3>
-            <p>
-                À la fin de cette séance, les élèves auront révisé les 
-concepts fondamentaux de la sécurité et de la cryptographie. Ils auront 
-appliqué ces notions dans des exercices pratiques, consolidant leur 
-compréhension des menaces, des algorithmes cryptographiques et des 
-bonnes pratiques de sécurité.
-            </p>
-        </section>
+    <h2>Séance 69 : Exploration des FPGA et de la logique programmable</h2>
+
+    <h3>🎯 Objectif Global :</h3>
+    <p>
+        Les élèves vont découvrir le fonctionnement des FPGA (Field-Programmable Gate Arrays) et comprendre leur différence avec les CPU et GPU. 
+        Ils apprendront à manipuler un FPGA en construisant un circuit reconfigurable et une ALU (Unité Logique et Arithmétique) simple.
+    </p>
+
+    <h3>📺 1. Vidéo interactive sur les FPGA</h3>
+
+    <p>
+        Introduction :
+        <br>
+        <a href="https://www.youtube.com/watch?v=qu5Y6QrxqvI" target="_blank" rel="noopener noreferrer">Courte vidéo qui explique le rôle des FPGA.</a>
+        <br>
+        <a href="https://www.youtube.com/watch?v=lfGMyvWE_aM" target="_blank" rel="noopener noreferrer">Différence entre les CPU et GPU</a>
+    </p>
+
+    <h4>💡 Différences entre CPU, GPU et FPGA :</h4>
+    <ul>
+        <li><strong>CPU (Processeur classique) :</strong> Conçu pour exécuter des tâches générales.</li>
+        <li><strong>GPU (Processeur graphique) :</strong> Optimisé pour le calcul parallèle (idéal pour l’IA et le rendu graphique).</li>
+        <li><strong>FPGA :</strong> Circuits reconfigurables capables d’exécuter des tâches spécialisées avec une efficacité maximale.</li>
+    </ul>
+
+    <h4>📌 Pourquoi utilise-t-on les FPGA ?</h4>
+    <p>
+        Les FPGA sont présents dans de nombreux domaines, notamment :
+    </p>
+    <ul>
+        <li><strong>Voitures autonomes :</strong> Traitement rapide des données des capteurs.</li>
+        <li><strong>Cryptomonnaies :</strong> Accélération des calculs pour le minage (ex. Bitcoin).</li>
+        <li><strong>Télécommunications :</strong> Optimisation des signaux et traitement réseau.</li>
+    </ul>
+
+    <h3>🔬 2. Expérience interactive : Construire un circuit reconfigurable</h3>
+
+    <p>
+        Les élèves vont utiliser un simulateur FPGA (Logisim) pour concevoir un circuit programmable capable de réaliser deux opérations distinctes :
+    </p>
+
+    <h4>✅ Objectifs :</h4>
+    <ul>
+        <li>Comprendre comment les FPGA permettent de modifier leur configuration à la volée.</li>
+        <li>Concevoir un circuit simple qui peut effectuer une addition OU une comparaison selon un paramètre.</li>
+    </ul>
+
+    <h4>🛠️ Étape 1 : Configuration du simulateur</h4>
+
+    <ul>
+        <li>Créer un nouveau projet.</li>
+        <li>Ajouter des entrées (A et B) et une sortie (S).</li>
+        <li>Ajouter un multiplexeur qui choisit entre l'addition et la comparaison.</li>
+    </ul>
+
+    <h4>🛠️ Étape 2 : Construction du circuit</h4>
+    <ul>
+        <li>Ajouter une additionneur 2 bits.</li>
+        <li>Ajouter un comparateur (A > B ?).</li>
+        <li>Relier le multiplexeur pour choisir entre les deux opérations.</li>
+        <li>Tester en changeant les entrées et observer la sortie.</li>
+    </ul>
+
+    <h4>🎯 Défi : Ajouter une LED qui s’allume quand A > B</h4>
+    <p>
+        Les élèves doivent ajouter une LED qui s’active uniquement si A est supérieur à B.
+    </p>
+
+    <hr>
+
+    <h2>Projet - Un mini-processeur en FPGA</h2>
+
+    <h3>⚙️ 1. Conception d’une ALU simple</h3>
+
+    <p>
+        Une ALU (Arithmetic Logic Unit) est le cœur d’un processeur. Elle exécute les opérations mathématiques et logiques.
+    </p>
+
+    <h4>✅ Objectifs :</h4>
+    <ul>
+        <li>Construire une ALU simplifiée capable d’effectuer une addition ET une comparaison.</li>
+        <li>Découvrir comment un processeur exécute des opérations en modifiant ses entrées.</li>
+    </ul>
+
+    <h4>🛠️ Étape 1 : Création des opérations de base</h4>
+    <p>
+        Les élèves doivent ajouter deux modules principaux :
+    </p>
+    <ul>
+        <li>Un additionneur 2 bits (utilisant des portes logiques OU et ET).</li>
+        <li>Un comparateur (A > B, A < B, A = B).</li>
+    </ul>
+
+    <h4>🛠️ Étape 2 : Sélection des opérations</h4>
+    <p>
+        Ajout d’un multiplexeur qui sélectionne :
+    </p>
+    <ul>
+        <li><strong>Mode 0 :</strong> L'ALU effectue une addition.</li>
+        <li><strong>Mode 1 :</strong> L'ALU effectue une comparaison.</li>
+    </ul>
+
+    <pre><code class="python">
+# Exemple de code pour une ALU en langage VHDL (FPGA)
+process(A, B, mode)
+begin
+  if mode = '0' then
+    S <= A + B; -- Addition
+  else
+    if A > B then
+      S <= "01"; -- A > B
+    elsif A = B then
+      S <= "00"; -- A = B
+    else
+      S <= "10"; -- A < B
+    end if;
+  end if;
+end process;
+    </code></pre>
+
+    <h4>🎯 Défi : Ajout d’une opération XOR ou inversion des bits</h4>
+    <p>
+        Pour aller plus loin, les élèves peuvent ajouter une opération XOR en utilisant des portes logiques XOR.
+    </p>
+
+    <hr>
+
+    <h2>📊 Comparaison des performances</h2>
+
+    <p>
+        À la fin de la séance, les élèves comparent les performances des différentes conceptions et discutent :
+    </p>
+
+    <ul>
+        <li>Quelle version est la plus rapide ?</li>
+        <li>Quel circuit est le plus simple ?</li>
+        <li>Comment optimiser les circuits logiques ?</li>
+    </ul>
+
+    <hr>
+
+    <h2>🔎 Conclusion et Bilan de la Séance</h2>
+
+    <p>
+        Cette séance a permis aux élèves de :
+    </p>
+    <ul>
+        <li>Comprendre la **différence entre CPU, GPU et FPGA**.</li>
+        <li>Expérimenter avec un **simulateur FPGA**.</li>
+        <li>Construire une **ALU simple et programmable**.</li>
+        <li>Optimiser un circuit en ajoutant de nouvelles **opérations logiques**.</li>
+    </ul>
+
+    <h3>🎯 Défi pour la maison :</h3>
+    <p>
+        Les élèves doivent améliorer leur ALU en ajoutant :
+    </p>
+    <ul>
+        <li>Une opération de soustraction.</li>
+        <li>Une opération logique supplémentaire (AND, OR, XOR).</li>
+    </ul>
+</section>
