@@ -1,265 +1,179 @@
 <link rel="stylesheet" href="https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/css/style.css">
 <section id="session71" class="content-section">
-            <h2>Séance 71 : Introduction aux Systèmes d’Exploitation</h2>
-        
-            <h3>Objectif Global :</h3>
-            <p>
-                Cette séance vise à familiariser les élèves avec les 
-concepts de base des systèmes d’exploitation (OS). Ils apprendront :
-            </p>
-        
-            <h3>1. Qu’est-ce qu’un Système d’Exploitation ? (30 min)</h3>
-        
-            <h4>Définition :</h4>
-            <p>
-                Un système d’exploitation (Operating System ou OS) est 
-un logiciel qui agit comme une interface entre l’utilisateur, le 
-matériel et les logiciels. Il permet de gérer les ressources matérielles
- et logicielles de manière efficace.
-            </p>
-        
-            <h4>Rôles principaux :</h4>
-            <ul>
-                <li><strong>Gestion du matériel :</strong> Coordonne l’utilisation des ressources matérielles comme le processeur, la mémoire, les disques durs et les périphériques.</li>
-                <li><strong>Gestion des logiciels :</strong> Exécute les applications et assure la communication entre elles.</li>
-                <li><strong>Interface utilisateur :</strong> Fournit un moyen pour les utilisateurs d’interagir avec l’ordinateur (ligne de commande ou interface graphique).</li>
-            </ul>
-        
-            <h4>Exemples de Systèmes d’Exploitation :</h4>
-            <ul>
-                <li><strong>Pour les ordinateurs :</strong> Windows, macOS, Linux.</li>
-                <li><strong>Pour les smartphones :</strong> Android, iOS.</li>
-                <li><strong>Pour les systèmes embarqués :</strong> FreeRTOS, VxWorks.</li>
-            </ul>
-        
-            <h4>Diagramme Simplifié :</h4>
-            <p>
-                Voici une représentation simplifiée des interactions dans un système d’exploitation :
-            </p>
-            <pre><code>
-        Utilisateur ↔ Système d’Exploitation ↔ Matériel
-            </code></pre>
-        
-            <h3>2. Les Principaux Composants d’un OS (40 min)</h3>
-        
-            <h4>1. Le Kernel :</h4>
-            <p>
-                Le cœur de l’OS. Il gère directement les ressources 
-matérielles et offre des services de base aux autres parties du système.
- Il est responsable de :
-            </p>
-            <ul>
-                <li>La gestion des processus (création, planification, terminaison).</li>
-                <li>La gestion de la mémoire (allocation et libération).</li>
-                <li>Le contrôle des périphériques.</li>
-            </ul>
-        
-            <h4>2. La Gestion des Processus :</h4>
-            <p>
-                Un processus est un programme en cours d'exécution. L’OS doit :
-            </p>
-            <ul>
-                <li>Créer et planifier les processus.</li>
-                <li>Attribuer des ressources (CPU, mémoire).</li>
-                <li>Gérer les processus concurrents (multitâche).</li>
-            </ul>
-        
-            <h4>3. La Gestion de la Mémoire :</h4>
-            <p>
-                L’OS gère l’accès à la mémoire vive (RAM) pour éviter 
-les conflits et optimiser les performances. Principales tâches :
-            </p>
-            <ul>
-                <li>Allocation et libération de mémoire.</li>
-                <li>Gestion de la mémoire virtuelle (échange entre RAM et disque).</li>
-            </ul>
-        
-            <h4>4. Le Système de Fichiers :</h4>
-            <p>
-                L’OS organise les données sur les disques sous forme de fichiers et de dossiers. Principales responsabilités :
-            </p>
-            <ul>
-                <li>Création, lecture, écriture et suppression de fichiers.</li>
-                <li>Organisation hiérarchique des fichiers.</li>
-                <li>Contrôle des permissions (lecture, écriture, exécution).</li>
-            </ul>
-        
-            <h4>5. Les Périphériques :</h4>
-            <p>
-                L’OS gère les interactions entre les périphériques (clavier, souris, imprimante) et les logiciels.
-            </p>
-        
-            <h3>3. Activité Pratique : Exploration d’un Système d’Exploitation (40 min)</h3>
-        
-            <h4>Objectif :</h4>
-            <p>
-                Les élèves exploreront un OS (Windows, macOS ou Linux) pour observer les concepts vus en théorie.
-            </p>
-        
-            <h4>Étape 1 : Découvrir le Gestionnaire de Tâches ou l’Équivalent</h4>
-            <ul>
-                <li>Ouvrir le gestionnaire de tâches (Ctrl + Shift + Esc sous Windows, "Activity Monitor" sous macOS, ou <code>top</code> sous Linux).</li>
-                <li>Identifier les processus actifs, leur utilisation du processeur et de la mémoire.</li>
-                <li>Observer les processus du système vs les processus utilisateur.</li>
-            </ul>
-        
-            <h4>Étape 2 : Explorer le Système de Fichiers</h4>
-            <ul>
-                <li>Naviguer dans les fichiers via l’explorateur (ou le gestionnaire de fichiers).</li>
-                <li>Créer, modifier et supprimer des fichiers/dossiers.</li>
-                <li>Observer les permissions (sous Linux : <code>ls -l</code>).</li>
-            </ul>
-        
-            <h4>Étape 3 : Observation des Périphériques</h4>
-            <ul>
-                <li>Afficher les périphériques connectés (imprimantes, disques, etc.).</li>
-                <li>Sous Windows : Gestionnaire de périphériques.</li>
-                <li>Sous Linux : Commandes <code>lsblk</code> ou <code>lspci</code>.</li>
-            </ul>
-        
-            <h3>4. Discussion et Réflexion (10 min)</h3>
-            <ul>
-                <li>Pourquoi est-il important de comprendre le fonctionnement d’un système d’exploitation ?</li>
-                <li>Quels aspects du système d’exploitation sont les plus visibles pour un utilisateur ?</li>
-                <li>Quels types de problèmes peuvent être évités grâce à une bonne gestion des ressources par l’OS ?</li>
-            </ul>
-            <hr>
-            <h2>Gestion des Processus dans un Système d’Exploitation</h2>
+    <h2>Séance 71 : L’Intelligence Artificielle dans les Systèmes Embarqués</h2>
 
-            <h3>1. Qu’est-ce qu’un Processus ?</h3>
-            <p>Un processus est une instance d’un programme en cours 
-d’exécution. Lorsqu’un programme est lancé, il devient un processus, 
-c’est-à-dire une entité dynamique qui utilise des ressources matérielles
- et logicielles.</p>
+    <h3>🎯 Objectif :</h3>
+    <p>Découvrir et tester l’IA appliquée aux systèmes embarqués en utilisant <strong>OpenCV</strong> pour la reconnaissance d’objets, mais sans nécessiter un Raspberry Pi.</p>
 
-            <h4>États d’un processus :</h4>
-            <ul>
-                <li><strong>Nouveau :</strong> Le processus est en cours de création.</li>
-                <li><strong>Prêt :</strong> Le processus attend d’être exécuté par le processeur.</li>
-                <li><strong>En cours d’exécution :</strong> Le processus utilise actuellement le processeur.</li>
-                <li><strong>En attente :</strong> Le processus attend une ressource ou un événement.</li>
-                <li><strong>Terminé :</strong> Le processus a fini son exécution.</li>
-            </ul>
+    <h4>💡 Introduction à l’IA embarquée</h4>
+    <p>Les systèmes embarqués sont des appareils électroniques qui exécutent des tâches spécifiques en autonomie. Exemples : voitures autonomes, caméras de surveillance intelligentes, robots domestiques.</p>
+    <ul>
+        <li>Comment l’IA est utilisée sur ces appareils ?</li>
+        <li>Quels sont les défis liés à l’IA embarquée ? (puissance de calcul, consommation d’énergie, temps réel)</li>
+    </ul>
 
-            <h3>2. Planification des Processus</h3>
-            <p>Le système d’exploitation utilise un <strong>ordonnanceur</strong>
- pour décider quel processus sera exécuté par le processeur. L’objectif 
-est de maximiser l’efficacité et de minimiser le temps d’attente.</p>
+    <h4>⚙️ Démo : Une IA qui reconnaît des objets</h4>
+    <p>Nous allons utiliser la bibliothèque <strong>OpenCV</strong> pour exécuter une IA capable de détecter des objets à l’aide d’une caméra.</p>
 
-            <h4>Exemples d’algorithmes de planification :</h4>
-            <ul>
-                <li><strong>First-Come, First-Served (FCFS) :</strong> Les processus sont exécutés dans l’ordre où ils arrivent.</li>
-                <li><strong>Round-Robin (RR) :</strong> Chaque processus a une "quantum" de temps fixe pour s’exécuter, après quoi il retourne dans la file d’attente.</li>
-                <li><strong>Priorité :</strong> Les processus ayant une priorité plus élevée sont exécutés en premier.</li>
-            </ul>
+    <h4>📌 Différence entre CPU et TPU</h4>
+    <table border="1" cellpadding="5">
+        <tr>
+            <th>Type de processeur</th>
+            <th>Fonction</th>
+            <th>Avantages</th>
+            <th>Inconvénients</th>
+        </tr>
+        <tr>
+            <td>CPU (Central Processing Unit)</td>
+            <td>Processeur généraliste</td>
+            <td>Bonne flexibilité pour différentes tâches</td>
+            <td>Pas optimisé pour le deep learning</td>
+        </tr>
+        <tr>
+            <td>TPU (Tensor Processing Unit)</td>
+            <td>Optimisé pour l'IA</td>
+            <td>Beaucoup plus rapide pour l'apprentissage des modèles</td>
+            <td>Nécessite du matériel spécialisé</td>
+        </tr>
+    </table>
 
-            <h3>3. Activité Pratique : Observation des Processus</h3>
-            <h4>Étape 1 : Utiliser le Gestionnaire de Tâches (ou Équivalent)</h4>
-            <ul>
-                <li>Sous Windows : Ouvrir le gestionnaire de tâches (Ctrl + Shift + Esc).</li>
-                <li>Sous Linux : Utiliser la commande <code>top</code> ou <code>htop</code>.</li>
-                <li>Sous macOS : Utiliser "Activity Monitor".</li>
-            </ul>
-            <p>Questions pour les élèves :</p>
-            <ul>
-                <li>Quels sont les processus en cours d’exécution ?</li>
-                <li>Quels processus consomment le plus de ressources CPU et mémoire ?</li>
-            </ul>
+    <h4>🛠️ Installation d’OpenCV et des Dépendances</h4>
+    <p>Pour utiliser OpenCV, nous devons installer les bibliothèques suivantes :</p>
+    <pre><code class="bash">
+# Installation d’OpenCV
+pip install opencv-python numpy imutils
+    </code></pre>
 
-            <h4>Étape 2 : Simulation avec Python</h4>
-            <p>
-                Créez un script Python qui simule la gestion de plusieurs processus en utilisant des threads.
-            </p>
-            <pre><code class="python">
-        import threading
-        import time
+    <h4>🎥 Test de la Caméra et Détection de Mouvements</h4>
+    <p>Nous allons exécuter un script Python qui :</p>
+    <ul>
+        <li>Active la webcam.</li>
+        <li>Affiche le flux vidéo en temps réel.</li>
+        <li>Détecte les mouvements.</li>
+    </ul>
 
-        def processus(nom):
-            print(f"Le processus {nom} commence.")
-            time.sleep(2)
-            print(f"Le processus {nom} se termine.")
+    <pre><code class="python">
+import cv2
 
-        # Création de threads pour simuler des processus
-        threads = []
-        for i in range(3):
-            t = threading.Thread(target=processus, args=(f"Processus-{i+1}",))
-            threads.append(t)
-            t.start()
+# Activation de la caméra
+cap = cv2.VideoCapture(0)
 
-        # Attendre la fin de tous les processus
-        for t in threads:
-            t.join()
+while True:
+    ret, frame = cap.read()
+    if not ret:
+        break
 
-        print("Tous les processus sont terminés.")
-            </code></pre>
+    # Conversion en niveaux de gris
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
-            <h3>4. Discussion et Conclusion</h3>
-            <ul>
-                <li>Comment le système d’exploitation gère-t-il les processus pour éviter les conflits ?</li>
-                <li>Quels sont les avantages et les inconvénients des différents algorithmes de planification ?</li>
-            </ul>
-            <hr>
-            <h2>Gestion de la Mémoire dans un Système d’Exploitation</h2>
+    # Affichage du flux vidéo
+    cv2.imshow("Flux vidéo", gray)
 
-            <h3>1. Introduction à la Gestion de la Mémoire</h3>
-            <p>
-                L’un des rôles principaux d’un système d’exploitation 
-est de gérer l’utilisation de la mémoire vive (RAM) par les processus. 
-Chaque processus a besoin de mémoire pour stocker ses données et son 
-code.
-            </p>
+    # Quitter avec la touche 'q'
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
 
-            <h4>Problèmes à résoudre :</h4>
-            <ul>
-                <li>Éviter les conflits entre les processus.</li>
-                <li>Maximiser l’utilisation de la mémoire disponible.</li>
-                <li>Gérer les processus dont la taille dépasse celle de la mémoire physique.</li>
-            </ul>
+cap.release()
+cv2.destroyAllWindows()
+    </code></pre>
 
-            <h3>2. La Mémoire Virtuelle</h3>
-            <p>
-                La mémoire virtuelle permet de simuler une mémoire plus 
-grande que la mémoire physique (RAM) en utilisant le disque dur. Cela 
-permet d’exécuter des programmes nécessitant plus de mémoire que ce qui 
-est physiquement disponible.
-            </p>
+    <h4>🔎 Explication :</h4>
+    <ul>
+        <li>La caméra capture les images en continu.</li>
+        <li>Nous convertissons l’image en niveaux de gris pour alléger les calculs.</li>
+        <li>Le flux vidéo s’affiche dans une fenêtre.</li>
+        <li>L’utilisateur peut quitter le programme en appuyant sur "q".</li>
+    </ul>
 
-            <h4>Pagination :</h4>
-            <p>
-                La mémoire est divisée en blocs appelés <strong>pages</strong>. Les pages actives sont chargées en mémoire vive, tandis que les pages inactives restent sur le disque.
-            </p>
+    <hr>
+    <br>
 
-            <h3>3. Activité Pratique : Simuler la Pagination</h3>
-            <p>
-                Créez un programme Python qui simule un système de 
-pagination. Vous pouvez utiliser un tableau pour représenter la mémoire 
-physique et une file d’attente pour représenter les pages en attente.
-            </p>
-            <pre><code class="python">
-        from collections import deque
+    <h4>🛠️ Modification du Programme pour la Détection de Formes</h4>
+    <p>Nous allons maintenant modifier le programme pour détecter des formes spécifiques (exemple : un rond rouge).</p>
 
-        # Simulation de la mémoire
-        taille_memoire = 3  # Nombre maximum de pages en mémoire
-        memoire = deque()
+    <pre><code class="python">
+import cv2
+import numpy as np
 
-        # Fonction pour charger une page
-        def charger_page(page):
-            if page not in memoire:
-                if len(memoire) &gt;= taille_memoire:
-                    memoire.popleft()  # Retirer la page la plus ancienne
-                memoire.append(page)
-            print(f"Mémoire actuelle : {list(memoire)}")
+cap = cv2.VideoCapture(0)
 
-        # Simulation de chargement de pages
-        pages = [1, 2, 3, 4, 2, 5, 1, 3]
-        for p in pages:
-            print(f"Chargement de la page {p}")
-            charger_page(p)
-            </code></pre>
+while True:
+    ret, frame = cap.read()
+    if not ret:
+        break
 
-            <h3>4. Discussion</h3>
-            <ul>
-                <li>Quels sont les avantages de la mémoire virtuelle ?</li>
-                <li>Quelles sont les limites d’un système de pagination ?</li>
-            </ul>
-        </section>
+    # Conversion en HSV (Teinte, Saturation, Valeur)
+    hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+
+    # Définition de la plage de couleurs pour détecter le rouge
+    rouge_basse = np.array([0, 120, 70])
+    rouge_haute = np.array([10, 255, 255])
+
+    masque = cv2.inRange(hsv, rouge_basse, rouge_haute)
+
+    # Détection des contours
+    contours, _ = cv2.findContours(masque, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    
+    for contour in contours:
+        approx = cv2.approxPolyDP(contour, 0.02*cv2.arcLength(contour, True), True)
+        if len(approx) > 8:  # Vérifier si c'est un rond
+            cv2.drawContours(frame, [approx], 0, (0, 255, 0), 5)
+
+    cv2.imshow("Détection de formes", frame)
+
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+
+cap.release()
+cv2.destroyAllWindows()
+    </code></pre>
+
+    <h4>📌 Explication :</h4>
+    <ul>
+        <li>On convertit l’image en mode **HSV** pour mieux détecter les couleurs.</li>
+        <li>Un **filtre rouge** est appliqué pour ne garder que les objets rouges.</li>
+        <li>On identifie les **contours** des objets.</li>
+        <li>Si la forme détectée a plus de **8 côtés**, on la considère comme un rond.</li>
+        <li>On trace un **contour vert** autour des objets détectés.</li>
+    </ul>
+
+    <h4>🔥 Défi Avancé : Ajouter une Alarme</h4>
+    <p>Le script peut être amélioré pour :</p>
+    <ul>
+        <li>Émettre un **son d’alerte** lorsque la forme rouge est détectée.</li>
+        <li>Envoyer une **notification par email** si un objet suspect apparaît.</li>
+    </ul>
+
+    <h4>🎵 Ajout d’un Son d’Alerte :</h4>
+    <pre><code class="python">
+import winsound  # Utilisation sur Windows uniquement
+
+if len(approx) > 8:
+    winsound.Beep(1000, 500)  # Fréquence : 1000 Hz, Durée : 500 ms
+    </code></pre>
+
+    <h4>📧 Envoi d’une Notification Email :</h4>
+    <pre><code class="python">
+import smtplib
+
+def envoyer_alerte():
+    server = smtplib.SMTP("smtp.gmail.com", 587)
+    server.starttls()
+    server.login("ton_email@gmail.com", "ton_mot_de_passe")
+    server.sendmail("ton_email@gmail.com", "destinataire@gmail.com", "Alerte : Objet rouge détecté !")
+    server.quit()
+
+if len(approx) > 8:
+    envoyer_alerte()
+    </code></pre>
+
+    <h3>✅ Conclusion</h3>
+    <p>Les élèves auront appris à :</p>
+    <ul>
+        <li>Utiliser <strong>OpenCV</strong> pour l’analyse d’images.</li>
+        <li>Détecter **des objets et des formes** dans un flux vidéo.</li>
+        <li>Améliorer leur programme avec **une alerte sonore et des notifications**.</li>
+    </ul>
+
+    <p><strong>Pour aller plus loin :</strong> Essayer de détecter d'autres couleurs ou d’utiliser **un modèle d’IA pré-entraîné**.</p>        
+</section>

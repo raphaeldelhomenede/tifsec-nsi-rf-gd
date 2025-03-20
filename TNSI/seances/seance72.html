@@ -1,366 +1,286 @@
 <link rel="stylesheet" href="https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/css/style.css">
 <section id="session72" class="content-section">
-            <h2>Séance 72 : Bases de l’Utilisation de Linux</h2>
+    <h2>Séance 72 : Challenge NSI - Mission "Ultimate Tech Lab"</h2>
 
-            <h3>Objectifs :</h3>
-            <ul>
-                <li>Comprendre ce qu’est Linux et pourquoi il est utilisé.</li>
-                <li>Découvrir l’interface en ligne de commande (CLI).</li>
-                <li>Apprendre les commandes de base pour naviguer, manipuler des fichiers et gérer le système.</li>
-            </ul>
+    <h3>Objectif Global :</h3>
+    <p>
+        Cette séance sert de récapitulatif et de mise en pratique des notions abordées dans les 5 dernières séances. 
+        Les élèves devront relever une série de défis pour prouver leurs compétences en <strong>circuits logiques, microcontrôleurs, FPGA, 
+        mémoire et intelligence artificielle embarquée</strong>. 
+        Tout se déroule sous forme d’un grand challenge interactif où chaque élève devra concevoir et optimiser un <strong>système embarqué complet</strong>.
+    </p>
 
-            <h3>1. Qu’est-ce que Linux ?</h3>
-            <p>
-                Linux est un système d’exploitation open-source, souvent
- utilisé dans les serveurs, l’embarqué, et comme OS principal pour les 
-développeurs.
-            </p>
+    <h3>📜 Contexte de la Mission :</h3>
+    <p>
+        <em>Vous faites partie des ingénieurs d’une société de haute technologie, "Ultimate Tech Lab". 
+        Un client prestigieux vous a commandé la conception d’un <strong>système intelligent embarqué</strong> capable de <strong>gérer un circuit logique optimisé,
+        analyser des données en temps réel et prendre des décisions basées sur l’intelligence artificielle</strong>. 
+        Vous n’avez que <strong>2 heures</strong> pour présenter un prototype fonctionnel !</em>
+    </p>
 
-            <h4>Caractéristiques :</h4>
-            <ul>
-                <li><strong>Open-source :</strong> Le code source est accessible à tous.</li>
-                <li><strong>Sécurisé :</strong> Conçu pour être robuste et résistant aux attaques.</li>
-                <li><strong>Multi-utilisateur :</strong> Plusieurs utilisateurs peuvent utiliser le système simultanément.</li>
-                <li><strong>Personnalisable :</strong> De nombreuses distributions (Ubuntu, Fedora, Debian) existent pour différents besoins.</li>
-            </ul>
+    <h3>🛠️ Organisation de la Séance :</h3>
+    <ul>
+        <li>⏳ <strong>20 min</strong> – Briefing</li>
+        <li>⚙️ <strong>60 min</strong> – Développement du prototype en 3 défis</li>
+        <li>🚀 <strong>30 min</strong> – Tests et optimisation</li>
+        <li>🎤 <strong>10 min</strong> – Présentation et évaluation des projets</li>
+    </ul>
 
-            <h4>Pourquoi apprendre Linux ?</h4>
-            <ul>
-                <li>Utilisé dans de nombreux serveurs, appareils IoT, et environnements de développement.</li>
-                <li>Offre un contrôle précis grâce à l’interface en ligne de commande (CLI).</li>
-                <li>Favorise une compréhension profonde du fonctionnement des systèmes d’exploitation.</li>
-            </ul>
+    <!-- <h3>👥 Formation des Équipes :</h3>
+    <p>
+        Les élèves sont divisés en groupes de 3 à 5 personnes. Chaque groupe doit attribuer des rôles :
+    </p>
+    <ul>
+        <li>🔌 <strong>Ingénieur Électronique</strong> : Responsable des circuits logiques et du FPGA</li>
+        <li>💾 <strong>Spécialiste Mémoire</strong> : Gère l’optimisation des données et du stockage</li>
+        <li>🤖 <strong>Développeur IA</strong> : Implémente la reconnaissance et la prise de décision automatique</li>
+        <li>🛠️ <strong>Coordinateur Projet</strong> : S’assure que tout fonctionne ensemble</li>
+    </ul> -->
+    <hr><br>
 
-            <h3>2. Interface en Ligne de Commande (CLI) (20 min)</h3>
-            <p>La ligne de commande est une interface où vous pouvez saisir des instructions textuelles pour interagir avec le système.</p>
+    <h3>🔍 Étape 1 : Défi FPGA - Optimisation des Circuits Logiques (20 min)</h3>
+    <p>
+        <strong>Mission :</strong> Les élèves doivent concevoir et optimiser un <strong>circuit combinatoire programmable</strong> sur Logisim ou CircuitVerse.
+    </p>
+    <p>Objectifs :</p>
+    <ul>
+        <li>Créer un circuit réalisant une opération de calcul (additionneur, comparateur, etc.)</li>
+        <li>Utiliser le <strong>minimum de portes logiques</strong></li>
+        <li>Simuler le fonctionnement et valider les résultats</li>
+    </ul>
+    <pre><code class="python">
+# Exemple : Additionneur 1 bit
+def additionneur(a, b, c_in):
+    somme = a ^ b ^ c_in
+    c_out = (a & b) | (c_in & (a ^ b))
+    return somme, c_out
+    </code></pre>
 
-            <h4>Premiers Pas :</h4>
-            <a href="https://distrosea.com/fr/start/ubuntu-24.10-default/" target="_blank" rel="noopener noreferrer">Allez sur ce site</a>
-            <ul>
-                <li>Ouvrir un terminal (Ctrl + Alt + T sous Ubuntu).</li>
-                <li>Tester une commande simple : <code>ls</code> (liste les fichiers du répertoire courant).</li>
-                <li>Affichage de l’invite de commande : <code>user@machine:~$</code> (indique l’utilisateur et le répertoire actuel).</li>
-            </ul>
+    <!-- <h3>🔍 Étape 2 : Défi Microcontrôleurs - Détection de Séquence (20 min)</h3>
+    <p>
+        <strong>Mission :</strong> Sur une carte Arduino, implémenter un programme où un <strong>capteur de lumière</strong> allume une LED 
+        lorsqu’un seuil est atteint.
+    </p>
+    <p>Objectifs :</p>
+    <ul>
+        <li>Programmer l’Arduino pour détecter un changement de luminosité</li>
+        <li>Faire réagir la LED à une variation de lumière</li>
+        <li>Ajouter une alerte sonore en cas de détection</li>
+    </ul>
+    <pre><code class="c">
+int capteur = A0;
+int led = 13;
+int seuil = 500;
 
-            <h4>Quelques Commandes de Base :</h4>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Commande</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><code>pwd</code></td>
-                        <td>Affiche le répertoire courant.</td>
-                    </tr>
-                    <tr>
-                        <td><code>ls</code></td>
-                        <td>Liste les fichiers et dossiers du répertoire courant.</td>
-                    </tr>
-                    <tr>
-                        <td><code>cd [dossier]</code></td>
-                        <td>Change le répertoire actuel.</td>
-                    </tr>
-                    <tr>
-                        <td><code>touch [fichier]</code></td>
-                        <td>Crée un fichier vide.</td>
-                    </tr>
-                    <tr>
-                        <td><code>mkdir [dossier]</code></td>
-                        <td>Crée un dossier.</td>
-                    </tr>
-                    <tr>
-                        <td><code>rm [fichier]</code></td>
-                        <td>Supprime un fichier.</td>
-                    </tr>
-                    <tr>
-                        <td><code>rmdir [dossier]</code></td>
-                        <td>Supprime un dossier vide.</td>
-                    </tr>
-                </tbody>
-            </table>
+void setup() {
+    pinMode(led, OUTPUT);
+    Serial.begin(9600);
+}
 
-            <h3>3. Activité Pratique : Manipulation de Fichiers et Répertoires (30 min)</h3>
-            <h4>Objectif :</h4>
-            <p>Les élèves doivent pratiquer les commandes de base pour naviguer et manipuler des fichiers et dossiers.</p>
+void loop() {
+    int valeur = analogRead(capteur);
+    if (valeur > seuil) {
+        digitalWrite(led, HIGH);
+        Serial.println("Alerte : Lumière détectée !");
+    } else {
+        digitalWrite(led, LOW);
+    }
+    delay(100);
+}
+    </code></pre> -->
+    <br>
+    <hr><br>
 
-            <h4>Étapes :</h4>
-            <ol>
-                <li>Afficher le répertoire courant avec <code>pwd</code>.</li>
-                <li>Créer un répertoire appelé <code>projet</code> avec <code>mkdir projet</code>.</li>
-                <li>Naviguer dans ce répertoire avec <code>cd projet</code>.</li>
-                <li>Créer un fichier <code>notes.txt</code> avec <code>touch notes.txt</code>.</li>
-                <li>Lister les fichiers avec <code>ls</code>.</li>
-                <li>Supprimer le fichier avec <code>rm notes.txt</code>.</li>
-                <li>Revenir au répertoire parent avec <code>cd ..</code>.</li>
-            </ol>
+    <h3>🔍 Étape 2 : Défi Simulation Microcontrôleurs - Détection de Séquence (20 min)</h3>
 
-            <h3>4. Gestion des Droits et Permissions (20 min)</h3>
-            <p>Linux utilise un système de permissions pour contrôler l’accès aux fichiers et répertoires.</p>
+    <h4>🎯 Mission :</h4>
+    <p>
+        À l'aide de Python, implémentez un programme qui simule un **capteur de lumière**.
+        L'écran représente la luminosité : lorsque l'utilisateur appuie sur une touche pour "augmenter la lumière",
+        une LED virtuelle s'allume et un son d'alerte peut être joué.
+    </p>
 
-            <h4>Structure des Permissions :</h4>
-            <pre><code>
-        -rw-r--r--  1 user group 1234 date fichier.txt
-            </code></pre>
-            <ul>
-                <li>Le premier caractère (<code>-</code>, <code>d</code>) indique si c’est un fichier ou un dossier.</li>
-                <li>Les 9 caractères suivants indiquent les permissions pour :
-                    <ul>
-                        <li><strong>Utilisateur :</strong> propriétaire du fichier.</li>
-                        <li><strong>Groupe :</strong> groupe auquel appartient le fichier.</li>
-                        <li><strong>Autres :</strong> tous les autres utilisateurs.</li>
-                    </ul>
-                </li>
-            </ul>
+    <h4>📌 Objectifs :</h4>
+    <ul>
+        <li>Simuler un capteur de lumière avec une valeur de luminosité.</li>
+        <li>Changer l’état d’une LED virtuelle en fonction de la luminosité.</li>
+        <li>Ajouter une alerte sonore lorsque la lumière atteint un seuil.</li>
+    </ul>
 
-            <h4>Commandes Utiles :</h4>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Commande</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><code>ls -l</code></td>
-                        <td>Affiche les permissions des fichiers et dossiers.</td>
-                    </tr>
-                    <tr>
-                        <td><code>chmod [permissions] [fichier]</code></td>
-                        <td>Modifie les permissions.</td>
-                    </tr>
-                    <tr>
-                        <td><code>chown [utilisateur] [fichier]</code></td>
-                        <td>Change le propriétaire d’un fichier.</td>
-                    </tr>
-                </tbody>
-            </table>
+    <h4>🔧 Implémentation en Python :</h4>
+    <p>
+        Nous allons utiliser <code>Pygame</code> pour afficher une LED virtuelle qui change de couleur selon la luminosité détectée.
+        Un son d’alerte sera joué lorsque la luminosité dépasse un seuil défini.
+    </p>
 
-            <h3>5. Discussion et Réflexion (10 min)</h3>
-            <ul>
-                <li>Quels sont les avantages de l’utilisation de Linux pour les développeurs ?</li>
-                <li>Pourquoi est-il important de comprendre les permissions des fichiers ?</li>
-                <li>Quels sont les cas où l’utilisation de la CLI est préférable à une interface graphique ?</li>
-            </ul>
+    <pre><code class="python">
+import pygame
+import time
 
-            <h3>Conclusion :</h3>
-            <p>
-                À la fin de cette séance, les élèves auront acquis les 
-bases pour utiliser Linux en ligne de commande. Ils seront capables de 
-naviguer dans les répertoires, manipuler des fichiers et comprendre les 
-permissions, des compétences fondamentales pour travailler dans des 
-environnements de développement ou administrer des serveurs.
-            </p>
-            <hr>
-            <h2>Approfondissement sur Linux</h2>
+# Initialisation de Pygame
+pygame.init()
 
-            <h3>Objectifs :</h3>
-            <ul>
-                <li>Explorer des concepts avancés, comme la gestion des utilisateurs et des processus.</li>
-                <li>Comprendre les permissions, les groupes et les droits d’accès.</li>
-                <li>Utiliser des outils courants pour surveiller et administrer un système Linux.</li>
-            </ul>
+# Paramètres d'affichage
+largeur, hauteur = 400, 300
+fenetre = pygame.display.set_mode((largeur, hauteur))
+pygame.display.set_caption("Détection de Lumière - Simulation")
 
-            <h3>1. Gestion des Utilisateurs et Groupes (30 min)</h3>
+# Définition des couleurs
+NOIR = (0, 0, 0)
+BLANC = (255, 255, 255)
+ROUGE = (255, 0, 0)
+VERT = (0, 255, 0)
 
-            <h4>Concepts de Base :</h4>
-            <p>
-                Linux est un système multi-utilisateurs. Chaque 
-utilisateur a un identifiant unique (UID) et appartient à un ou 
-plusieurs groupes pour gérer ses permissions.
-            </p>
+# Chargement du son d'alerte (ajoutez un fichier son "alerte.wav" dans le même dossier)
+try:
+    pygame.mixer.init()
+    alerte_son = pygame.mixer.Sound("alerte.wav")
+except:
+    alerte_son = None  # Désactive l’alerte sonore si le fichier est introuvable
 
-            <h4>Commandes Essentielles :</h4>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Commande</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><code>whoami</code></td>
-                        <td>Affiche l'utilisateur connecté actuellement.</td>
-                    </tr>
-                    <tr>
-                        <td><code>id</code></td>
-                        <td>Affiche les informations de l'utilisateur et de ses groupes.</td>
-                    </tr>
-                    <tr>
-                        <td><code>adduser [nom]</code></td>
-                        <td>Ajoute un nouvel utilisateur.</td>
-                    </tr>
-                    <tr>
-                        <td><code>deluser [nom]</code></td>
-                        <td>Supprime un utilisateur.</td>
-                    </tr>
-                    <tr>
-                        <td><code>usermod</code></td>
-                        <td>Modifie les attributs d’un utilisateur.</td>
-                    </tr>
-                    <tr>
-                        <td><code>groupadd [nom]</code></td>
-                        <td>Ajoute un nouveau groupe.</td>
-                    </tr>
-                </tbody>
-            </table>
+# Paramètres de simulation
+luminosite = 100  # Valeur initiale de la lumière (0-1000)
+seuil = 500  # Seuil pour activer l'alerte
+led_allumee = False  # État de la LED virtuelle
 
-            <h4>Activité Pratique :</h4>
-            <ul>
-                <li>Créer un utilisateur <code>testuser</code> avec <code>adduser testuser</code>.</li>
-                <li>Attribuer cet utilisateur à un nouveau groupe <code>devs</code>.</li>
-                <li>Vérifier ses groupes avec <code>id testuser</code>.</li>
-            </ul>
+# Boucle principale
+running = True
+while running:
+    fenetre.fill(NOIR)  # Fond noir
+    
+    # Gestion des événements
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_UP:  # Augmenter la lumière
+                luminosite += 50
+            elif event.key == pygame.K_DOWN:  # Diminuer la lumière
+                luminosite -= 50
+    
+    # Vérifier le seuil
+    if luminosite > seuil:
+        led_allumee = True
+        if alerte_son:
+            alerte_son.play()
+    else:
+        led_allumee = False
 
-            <h3>2. Permissions et Droits d’Accès (30 min)</h3>
+    # Affichage de la LED virtuelle
+    couleur_led = VERT if led_allumee else ROUGE
+    pygame.draw.circle(fenetre, couleur_led, (largeur//2, hauteur//2), 50)
 
-            <h4>Structure des Permissions :</h4>
-            <pre><code>
-        -rwxr-xr--  1 user group 1234 date fichier.txt
-            </code></pre>
-            <ul>
-                <li>Les trois blocs <code>rwx</code> représentent les permissions pour l’utilisateur, le groupe et les autres.</li>
-                <li><code>r</code> : Lecture, <code>w</code> : Écriture, <code>x</code> : Exécution.</li>
-            </ul>
+    # Affichage du texte
+    font = pygame.font.Font(None, 36)
+    texte = font.render(f"Luminosité : {luminosite}", True, BLANC)
+    fenetre.blit(texte, (50, 50))
 
-            <h4>Commandes pour Modifier les Permissions :</h4>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Commande</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><code>chmod [permissions] [fichier]</code></td>
-                        <td>Change les permissions d’un fichier.</td>
-                    </tr>
-                    <tr>
-                        <td><code>chown [utilisateur] [fichier]</code></td>
-                        <td>Change le propriétaire d’un fichier.</td>
-                    </tr>
-                    <tr>
-                        <td><code>chgrp [groupe] [fichier]</code></td>
-                        <td>Change le groupe d’un fichier.</td>
-                    </tr>
-                </tbody>
-            </table>
+    # Mise à jour de l'affichage
+    pygame.display.flip()
+    time.sleep(0.1)
 
-            <h4>Activité Pratique :</h4>
-            <ul>
-                <li>Créer un fichier <code>test.txt</code>.</li>
-                <li>Modifier ses permissions pour le rendre accessible en lecture seule à tous les utilisateurs : <code>chmod 444 test.txt</code>.</li>
-                <li>Changer le propriétaire du fichier avec <code>chown testuser test.txt</code>.</li>
-            </ul>
+# Fermeture de Pygame
+pygame.quit()
+    </code></pre>
 
-            <h3>3. Gestion des Processus (30 min)</h3>
+    <h4>🚀 Comment l’utiliser ?</h4>
+    <p>
+        1️⃣ **Lancer le programme Python**  
+        2️⃣ **Appuyer sur les flèches haut/bas** pour modifier la luminosité.  
+        3️⃣ **Quand la luminosité dépasse 500**, la LED devient **verte** et un **son d'alerte** est joué.  
+        4️⃣ **Quitter avec la croix de la fenêtre.**  
+    </p>
 
-            <h4>Commandes Essentielles :</h4>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Commande</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><code>ps</code></td>
-                        <td>Affiche les processus en cours d'exécution pour l'utilisateur actuel.</td>
-                    </tr>
-                    <tr>
-                        <td><code>top</code></td>
-                        <td>Affiche les processus en temps réel.</td>
-                    </tr>
-                    <tr>
-                        <td><code>kill [PID]</code></td>
-                        <td>Termine un processus en utilisant son identifiant.</td>
-                    </tr>
-                    <tr>
-                        <td><code>jobs</code></td>
-                        <td>Liste les processus en arrière-plan pour l’utilisateur actuel.</td>
-                    </tr>
-                    <tr>
-                        <td><code>fg</code></td>
-                        <td>Ramène un processus en avant-plan.</td>
-                    </tr>
-                </tbody>
-            </table>
+    <h4>📝 Explication du Code :</h4>
+    <ul>
+        <li>Utilisation de **Pygame** pour l'affichage et la gestion des événements clavier.</li>
+        <li>Une variable **luminosité** (simulant un capteur) est contrôlée par les touches <code>Haut</code> et <code>Bas</code>.</li>
+        <li>Si la luminosité dépasse un seuil, une LED virtuelle change de couleur et un **son d’alerte** est joué.</li>
+    </ul>
 
-            <h4>Activité Pratique :</h4>
-            <ul>
-                <li>Exécuter un programme en arrière-plan avec <code>sleep 60 &amp;</code>.</li>
-                <li>Identifier son PID avec <code>ps</code>.</li>
-                <li>Terminer le processus avec <code>kill [PID]</code>.</li>
-            </ul>
+    <h4>🎯 Objectif Pédagogique :</h4>
+    <ul>
+        <li>Comprendre le fonctionnement d’un **capteur et d’un actionneur**.</li>
+        <li>Apprendre à **détecter une valeur seuil et déclencher une action**.</li>
+        <li>Expérimenter la **réactivité d’un système embarqué simulé**.</li>
+    </ul>
 
-            <h3>4. Introduction à la Gestion des Paquets (20 min)</h3>
+    <h4>🔬 Pour Aller Plus Loin :</h4>
+    <ul>
+        <li>Ajouter un **affichage graphique dynamique** pour montrer la variation de la lumière en temps réel.</li>
+        <li>Implémenter une **mémoire tampon** qui enregistre l’évolution de la luminosité.</li>
+        <li>Utiliser un fichier texte pour **sauvegarder les niveaux de luminosité** mesurés.</li>
+    </ul>
 
-            <h4>Concept :</h4>
-            <p>
-                Linux utilise des gestionnaires de paquets pour 
-installer, mettre à jour et supprimer des logiciels. Les gestionnaires 
-les plus courants sont :
-            </p>
-            <ul>
-                <li><strong>apt :</strong> Utilisé par les distributions basées sur Debian (ex : Ubuntu).</li>
-                <li><strong>yum ou dnf :</strong> Utilisés par Fedora et CentOS.</li>
-                <li><strong>pacman :</strong> Utilisé par Arch Linux.</li>
-            </ul>
+    <hr><br>
 
-            <h4>Commandes Apt :</h4>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Commande</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><code>sudo apt update</code></td>
-                        <td>Met à jour la liste des paquets disponibles.</td>
-                    </tr>
-                    <tr>
-                        <td><code>sudo apt upgrade</code></td>
-                        <td>Met à jour les paquets installés.</td>
-                    </tr>
-                    <tr>
-                        <td><code>sudo apt install [paquet]</code></td>
-                        <td>Installe un paquet.</td>
-                    </tr>
-                    <tr>
-                        <td><code>sudo apt remove [paquet]</code></td>
-                        <td>Supprime un paquet.</td>
-                    </tr>
-                </tbody>
-            </table>
+    <h3>🔍 Étape 3 : Défi Intelligence Artificielle - Reconnaissance de Formes (20 min)</h3>
+    <p>
+        <strong>Mission :</strong> Utiliser OpenCV sur un Raspberry Pi pour détecter un <strong>cercle rouge</strong> sur une image en temps réel.
+    </p>
+    <p>Objectifs :</p>
+    <ul>
+        <li>Utiliser OpenCV pour capturer une image</li>
+        <li>Détecter les formes circulaires d’une couleur spécifique</li>
+        <li>Afficher un message lorsqu’un cercle rouge est détecté</li>
+    </ul>
+    <pre><code class="python">
+import cv2
+import numpy as np
 
-            <h4>Activité Pratique :</h4>
-            <ul>
-                <li>Mettre à jour la liste des paquets avec <code>sudo apt update</code>.</li>
-                <li>Installer un paquet comme <code>htop</code> avec <code>sudo apt install htop</code>.</li>
-                <li>Lancer <code>htop</code> pour explorer les processus en temps réel.</li>
-            </ul>
+cap = cv2.VideoCapture(0)
 
-            <h3>5. Discussion et Réflexion (10 min)</h3>
-            <ul>
-                <li>Quels avantages offre Linux par rapport aux autres systèmes d’exploitation ?</li>
-                <li>Comment les permissions renforcent-elles la sécurité du système ?</li>
-                <li>Pourquoi est-il important de gérer correctement les processus et les utilisateurs ?</li>
-            </ul>
+while True:
+    _, frame = cap.read()
+    hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
 
-            <h3>Conclusion :</h3>
-            <p>
-                Avec ces bases avancées, les élèves disposent d’un 
-bagage solide pour explorer Linux de manière autonome. Ils comprennent 
-les concepts fondamentaux de gestion des utilisateurs, des processus et 
-des permissions, tout en maîtrisant des outils essentiels pour 
-l’administration système.
-            </p>
-        </section>
+    rouge_min = np.array([0, 120, 70])
+    rouge_max = np.array([10, 255, 255])
+    masque = cv2.inRange(hsv, rouge_min, rouge_max)
+
+    contours, _ = cv2.findContours(masque, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    for cnt in contours:
+        (x, y), rayon = cv2.minEnclosingCircle(cnt)
+        if rayon > 10:
+            cv2.circle(frame, (int(x), int(y)), int(rayon), (0, 255, 0), 2)
+            print("Cercle rouge détecté !")
+
+    cv2.imshow("Détection", frame)
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+
+cap.release()
+cv2.destroyAllWindows()
+    </code></pre>
+    <br>
+    <hr><br>
+
+    <h3>🛠️ Étape 4 : Test et Optimisation (30 min)</h3>
+    <ul>
+        <li>💡 <strong>Vérification du bon fonctionnement</strong> de chaque partie du système</li>
+        <li>🔍 <strong>Optimisation du code</strong> pour améliorer la performance</li>
+        <li>🚀 <strong>Finalisation du prototype</strong> en combinant toutes les parties</li>
+    </ul>
+
+    <hr><br>
+
+    <h3>🎤 Étape 5 : Présentation et Débriefing (10 min)</h3>
+    <p>
+        Chaque élève doit présenter son projet en 3 minutes. Les autres élèves posent des questions et donnent des feedbacks.
+    </p>
+    <p>Critères d’évaluation :</p>
+    <ul>
+        <li>⚙️ Fonctionnalité et bon fonctionnement</li>
+        <li>🛠️ Optimisation et efficacité</li>
+        <li>🎭 Présentation claire et convaincante</li>
+    </ul>
+
+    <p>
+        Félicitations à tous les participants ! 🎉 Cette séance a permis de :
+    </p>
+    <ul>
+        <li>🔍 Revoir toutes les notions apprises en 5 séances.</li>
+        <li>🤖 Expérimenter en équipe et renforcer la pratique.</li>
+        <li>🚀 Appliquer les concepts dans un projet réaliste.</li>
+    </ul>
+</section>
