@@ -1,8 +1,15 @@
+@font-face {
+    font-family: 'BakaTaida';
+    src: url('bakataida-s-writting.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Calibri, sans-serif;
+    font-family: 'BakaTaida', sans-serif;
 }
 
 body {
