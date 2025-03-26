@@ -4,20 +4,20 @@
         "linkcss": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/css/t/bakataida.css",
         "link2": "/?font=BakaTaida",
         "link3": "&font=BakaTaida",
-        "link4": ""
+        "html1": "<td $class class='$todayClass11'><a href='?session={$seance[\"id\"]}&font={$_GET[\"font\"]}'>{$seance[\"titre\"]}</a></td>"
     },
     "yunranofont": {
         "name": "yunranofont",
         "linkcss": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/css/t/yunranofont.css",
         "link2": "/?font=yunranofont",
         "link3": "&font=yunranofont",
-        "link4": ""
+        "html1": "<td $class class='$todayClass11'><a href='?session={$seance[\"id\"]}&font={$_GET[\"font\"]}'>{$seance[\"titre\"]}</a></td>"
     },
     "default": {
         "name": "default",
         "linkcss": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/style.css",
         "link2": "",
         "link3": "",
-        "link4": ""
+        "html1": "<td $class class='$todayClass11'><a href='?session={$seance[\"id\"]}'>{$seance[\"titre\"]}</a></td>"
     }
 }
