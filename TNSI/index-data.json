@@ -13,7 +13,7 @@
         "programme2": "<iframe src=\"https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/programmes/programme2.html?font=<?php echo $_GET[\"font\"]; ?>\" class=\"tifsecpdf\" frameborder=\"0\" width=\"100%\" height=\"600px\"></iframe>",
         "programme3": "<iframe src=\"https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/programmes/programme3.html?font=<?php echo $_GET[\"font\"]; ?>\" class=\"tifsecpdf\" frameborder=\"0\" width=\"100%\" height=\"600px\"></iframe>",
         "programme4": "<iframe src=\"https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/programmes/programme4.html?font=<?php echo $_GET[\"font\"]; ?>\" class=\"tifsecpdf\" frameborder=\"0\" width=\"100%\" height=\"600px\"></iframe>",
-        "seances1": "<iframe src=\"https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/seance' . $seance_num . '.html?font='.$_GET[\"font\"].'\" class=\"tifsec1\" frameborder=\"0\"></iframe>",
+        "seances1": "<iframe src=\"https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/seance' . $seance_num . '.html?font='.$_GET[\"font\"].'\" class=\"tifsec1\" frameborder=\"0\"></iframe>"
     },
     "yunranofont": {
         "name": "yunranofont",
