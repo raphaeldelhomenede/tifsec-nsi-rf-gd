@@ -1,17 +1,14 @@
 {
     "BakaTaida": {
         "name": "BakaTaida",
-        "linkcss": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/css/t/bakataida.css",
-        "link2": "'https://' . $_SERVER['HTTP_HOST'] . '/TNSI/?font=' . $_GET['font']"
+        "linkcss": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/css/t/bakataida.css"
     },
     "yunranofont": {
         "name": "yunranofont",
-        "linkcss": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/css/t/yunranofont.css",
-        "link2": "'https://' . $_SERVER['HTTP_HOST'] . '/TNSI/?font=' . $_GET['font']"
+        "linkcss": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/css/t/yunranofont.css"
     },
     "default": {
         "name": "default",
-        "linkcss": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/style.css",
-        "link2": "'https://' . $_SERVER['HTTP_HOST'] . '/TNSI'"
+        "linkcss": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/style.css"
     }
 }
