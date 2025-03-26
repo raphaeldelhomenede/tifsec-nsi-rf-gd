@@ -1,29 +1,4 @@
-<script>
-    // Fonction pour récupérer un paramètre GET dans l'URL
-    function getQueryParam(param) {
-        const urlParams = new URLSearchParams(window.location.search);
-        return urlParams.get(param);
-    }
-
-    // Charger le fichier JSON et appliquer la feuille de style
-    fetch('data-fonts.json')
-        .then(response => response.json())
-        .then(fontStyles => {
-            let font = getQueryParam('font'); // Récupérer la police demandée
-            let link = document.createElement('link');
-            link.rel = 'stylesheet';
-
-            // Vérifier si la police demandée existe dans le JSON
-            if (fontStyles[font]) {
-                link.href = fontStyles[font].link;
-            } else {
-                link.href = fontStyles["default"].link;
-            }
-
-            document.head.appendChild(link);
-        })
-        .catch(error => console.error("Erreur de chargement du JSON:", error));
-</script>
+<script src="script.js"></script>
 <section id="session1" class="content-section">
             <h2 style="margin-top: 30px; margin-bottom: 20px;">Séance 1 : Introduction à la Récursivité (Concepts de Base)</h2>
         
