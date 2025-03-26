@@ -16,7 +16,8 @@
         "seances1": "<iframe src=\"https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/seance' . $seance_num . '.html?font='.$_GET[\"font\"].'\" class=\"tifsec1\" frameborder=\"0\"></iframe>",
         "link4": "?font=BakaTaida",
         "link5": "<script>window.location.href = 'https://' + window.location.host + '/TNSI/?font=BakaTaida';</script>",
-        "toto1": "toto1.php"
+        "toto1": "toto1.php",
+        "link6": ["<script>window.location.href = window.location.protocol + '//' + window.location.host + '/TNSI/?session=", "&font=", "';</script>"]
     },
     "yunranofont": {
         "name": "yunranofont",
@@ -35,7 +36,8 @@
         "seances1": "<iframe src=\"https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/seance' . $seance_num . '.html?font='.$_GET[\"font\"].'\" class=\"tifsec1\" frameborder=\"0\"></iframe>",
         "link4": "?font=yunranofont",
         "link5": "<script>window.location.href = 'https://' + window.location.host + '/TNSI/?font=yunranofont';</script>",
-        "toto1": "toto2.php"
+        "toto1": "toto2.php",
+        "link6": ["<script>window.location.href = window.location.protocol + '//' + window.location.host + '/TNSI/?session=", "&font=", "';</script>"]
     },
     "default": {
         "name": "default",
@@ -54,6 +56,7 @@
         "seances1": "<iframe src=\"https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/seance' . $seance_num . '.html\" class=\"tifsec1\" frameborder=\"0\"></iframe>",
         "link4": "",
         "link5": "<<script>window.location.href = 'https://' + window.location.host + '/TNSI/';</script>",
-        "toto1": "toto.php"
+        "toto1": "toto.php",
+        "link6": ["<script>window.location.href = window.location.protocol + '//' + window.location.host + '/TNSI/?session=", "';</script>"]
     }
 }
