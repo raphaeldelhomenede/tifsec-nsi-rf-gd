@@ -2,12 +2,12 @@
     "BakaTaida": {
         "name": "BakaTaida",
         "linkcss": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/css/t/bakataida.css",
-        "link2": "BakaTaida"
+        "link2": "?font=BakaTaida"
     },
     "yunranofont": {
         "name": "yunranofont",
         "linkcss": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/css/t/yunranofont.css",
-        "link2": "yunranofont"
+        "link2": "?font=yunranofont"
     },
     "default": {
         "name": "default",
