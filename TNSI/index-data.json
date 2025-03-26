@@ -2,16 +2,19 @@
     "BakaTaida": {
         "name": "BakaTaida",
         "linkcss": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/css/t/bakataida.css",
-        "link2": "?font=BakaTaida"
+        "link2": "/?font=BakaTaida",
+        "link3": "&font=BakaTaida"
     },
     "yunranofont": {
         "name": "yunranofont",
         "linkcss": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/css/t/yunranofont.css",
-        "link2": "?font=yunranofont"
+        "link2": "/?font=yunranofont",
+        "link3": "&font=yunranofont"
     },
     "default": {
         "name": "default",
         "linkcss": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/style.css",
-        "link2": ""
+        "link2": "",
+        "link3": ""
     }
 }
