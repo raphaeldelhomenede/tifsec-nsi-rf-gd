@@ -15,7 +15,7 @@
         "programme4": "<iframe src=\"https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/programmes/programme4.html?font=<?php echo $_GET[\"font\"]; ?>\" class=\"tifsecpdf\" frameborder=\"0\" width=\"100%\" height=\"600px\"></iframe>",
         "seances1": "<iframe src=\"https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/seance' . $seance_num . '.html?font='.$_GET[\"font\"].'\" class=\"tifsec1\" frameborder=\"0\"></iframe>",
         "link4": "?font=BakaTaida",
-        "link5": "<script>window.location.href = 'https://' + window.location.host + '/TNSI/?font=\".$_GET['font'].\"';</script>"
+        "link5": "<script>window.location.href = 'https://' + window.location.host + '/TNSI/?font=\"BakaTaida\"';</script>"
     },
     "yunranofont": {
         "name": "yunranofont",
@@ -33,7 +33,7 @@
         "programme4": "<iframe src=\"https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/programmes/programme4.html?font=<?php echo urlencode($_GET[\"font\"]); ?>\" class=\"tifsecpdf\" frameborder=\"0\" width=\"100%\" height=\"600px\"></iframe>",
         "seances1": "<iframe src=\"https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/seance' . $seance_num . '.html?font='.$_GET[\"font\"].'\" class=\"tifsec1\" frameborder=\"0\"></iframe>",
         "link4": "?font=yunranofont",
-        "link5": "<script>window.location.href = 'https://' + window.location.host + '/TNSI/?font=\".$_GET['font'].\"';</script>"
+        "link5": "<script>window.location.href = 'https://' + window.location.host + '/TNSI/?font=\"yunranofont\"';</script>"
     },
     "default": {
         "name": "default",
