@@ -23,11 +23,26 @@
         {"date": "18/10/2024", "titre": "Séance 21 : Algorithmes de Parcours d’Arbres (Pré-ordre, En-ordre, Post-ordre)", "id": "seance21"}
     ],
     [
-        {"date": "23/10/2024", "class": "vacation", "titre": "Vacances de la Toussaint", "id": ""},
-        {"date": "24/10/2024", "class": "vacation", "titre": "Vacances de la Toussaint", "id": ""},
-        {"date": "25/10/2024", "class": "vacation", "titre": "Vacances de la Toussaint", "id": ""},
-        {"date": "30/10/2024", "class": "vacation", "titre": "Vacances de la Toussaint", "id": ""},
-        {"date": "31/10/2024", "class": "vacation", "titre": "Vacances de la Toussaint", "id": ""},
-        {"date": "01/11/2024", "class": "vacation", "titre": "Vacances de la Toussaint", "id": ""}
+        {"date": "06/11/2024", "titre": "Séance 22 : Approfondissement sur les Algorithmes de Parcours d’Arbres", "id": "seance22"},
+        {"date": "07/11/2024", "titre": "Séance 23 : Pratique - Création d’un Arbre de Décision pour un Jeu de Rôle (Jeu Vidéo)", "id": "seance23"},
+        {"date": "08/11/2024", "titre": "Séance 24 : Analyse des performances et avantages des arbres dans la recherche et le tri", "id": "seance24"},
+        {"date": "13/11/2024", "titre": "Séance 25 : Introduction au Tri Rapide (Quicksort)", "id": "seance25"},
+        {"date": "14/11/2024", "titre": "Séance 26 : Pratique - Implémentation du Quicksort pour trier des scores de jeu vidéo", "id": "seance26"},
+        {"date": "15/11/2024", "titre": "Séance 27 : Comparaison de la complexité des différents algorithmes de tri", "id": "seance27"},
+        {"date": "20/11/2024", "titre": "Séance 28 : Introduction au tri par tas (Heapsort)", "id": "seance28"},
+        {"date": "21/11/2024", "titre": "Séance 29 : Pratique - Utilisation du Heapsort pour organiser un inventaire dans un jeu vidéo", "id": "seance29"},
+        {"date": "22/11/2024", "titre": "Séance 30 : Analyse de la Complexité du Heapsort et de ses Applications", "id": "seance30"},
+        {"date": "27/11/2024", "titre": "Séance 31 : Introduction au Tri Fusion (Merge Sort)", "id": "seance31"},
+        {"date": "28/11/2024", "titre": "Séance 32 : Pratique - Implémentation du Tri Fusion pour Classer des Mangas par Popularité", "id": "seance32"},
+        {"date": "29/11/2024", "titre": "Séance 33 : Étude comparative des algorithmes de tri avancés (Quicksort, Heapsort, Merge Sort)", "id": "seance33"},
+        {"date": "04/12/2024", "titre": "Séance 34 : Optimisation des Algorithmes de Tri dans des Contextes Réels", "id": "seance34"},
+        {"date": "05/12/2024", "titre": "Séance 35 : Pratique - Choisir et implémenter l’algorithme de tri le plus efficace pour différentes situations", "id": "seance35"},
+        {"date": "06/12/2024", "titre": "Séance 36 : Révision et consolidation des concepts d'algorithmes de tri", "id": "seance36"},
+        {"date": "11/12/2024", "titre": "Séance 37 : Introduction à la Programmation Orientée Objet (POO) – Classes, Objets, Méthodes", "id": "seance37"},
+        {"date": "12/12/2024", "titre": "Séance 38 : Pratique - Modélisation d’un personnage de jeu vidéo en POO", "id": "seance38"},
+        {"date": "13/12/2024", "titre": "Séance 39 : Héritage et Polymorphisme (Théorie)", "id": "seance39"},
+        {"date": "18/12/2024", "titre": "Séance 40 : Pratique - Implémentation d’un Système d’Héritage dans une Application de Gestion de Personnages (Jeu Vidéo)", "id": "seance40"},
+        {"date": "19/12/2024", "titre": "Séance 41 : Introduction aux Design Patterns - Singleton et Factory", "id": "seance41"},
+        {"date": "20/12/2024", "titre": "Séance 42 : Pratique - Utilisation de Design Patterns pour Optimiser la Gestion des Niveaux d’un Jeu Vidéo", "id": "seance42"}
     ]
 ]
