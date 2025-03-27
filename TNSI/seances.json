@@ -44,5 +44,28 @@
         {"date": "18/12/2024", "titre": "Séance 40 : Pratique - Implémentation d’un Système d’Héritage dans une Application de Gestion de Personnages (Jeu Vidéo)", "id": "seance40"},
         {"date": "19/12/2024", "titre": "Séance 41 : Introduction aux Design Patterns - Singleton et Factory", "id": "seance41"},
         {"date": "20/12/2024", "titre": "Séance 42 : Pratique - Utilisation de Design Patterns pour Optimiser la Gestion des Niveaux d’un Jeu Vidéo", "id": "seance42"}
+    ],
+    [
+        {"date": "08/01/2025", "titre": "Séance 43 : Théorie - Encapsulation, Accès aux Attributs, Getters et Setters", "id": "seance43"},
+        {"date": "09/01/2025", "titre": "Séance 44 : Pratique - Gestion d’attributs privés dans une application", "id": "seance44"},
+        {"date": "10/01/2025", "titre": "Séance 45 : Gestion de la mémoire en POO", "id": "seance45"},
+        {"date": "15/01/2025", "titre": "Séance 46 : Optimisation d’une application POO (jeu vidéo)", "id": "seance46"},
+        {"date": "16/01/2025", "titre": "Séance 47 : Pratique - Réorganisation d’un projet pour améliorer l’efficacité et la gestion des ressources", "id": "seance47"},
+        {"date": "17/01/2025", "titre": "Séance 48 : Analyse des performances dans des projets orientés objet", "id": "seance48"},
+        {"date": "22/01/2025", "titre": "Séance 49 : Introduction aux bases de données relationnelles et SQL", "id": "seance49"},
+        {"date": "23/01/2025", "titre": "Séance 50 : Requêtes SQL de base (SELECT, INSERT, UPDATE, DELETE)", "id": "seance50"},
+        {"date": "24/01/2025", "titre": "Séance 51 : Pratique - Création d’une base de données pour gérer des scores de jeu vidéo", "id": "seance51"},
+        {"date": "29/01/2025", "titre": "Séance 52 : Requêtes SQL avancées (JOIN, GROUP BY)", "id": "seance52"},
+        {"date": "30/01/2025", "titre": "Séance 53 : Pratique - Interrogation complexe d'une base de données pour récupérer des données sur les personnages d’un manga", "id": "seance53"},
+        {"date": "31/01/2025", "titre": "Séance 54 : Optimisation des requêtes SQL", "id": "seance54"},
+        {"date": "05/02/2025", "titre": "Séance 55 : Introduction à la normalisation (1NF, 2NF, 3NF)", "id": "seance55"},
+        {"date": "06/02/2025", "titre": "Séance 56 : Pratique - Réorganisation d’une base de données pour une meilleure gestion des données", "id": "seance56"},
+        {"date": "07/02/2025", "titre": "Séance 57 : Cas pratiques de normalisation dans des projets réels (jeu vidéo, actualité)", "id": "seance57"},
+        {"date": "12/02/2025", "titre": "Séance 58 : Introduction à l’indexation et optimisation des bases de données", "id": "seance58"},
+        {"date": "13/02/2025", "titre": "Séance 59 : Schéma Relationnel", "id": "seance59"},
+        {"date": "14/02/2025", "titre": "Séance 60 : Test sur les Bases de Données et Python", "id": "seance60"},
+        {"date": "19/02/2025", "titre": "Séance 61 : Introduction à la cryptographie (chiffrement symétrique)", "id": "seance61"},
+        {"date": "20/02/2025", "titre": "Séance 62 : Pratique - Implémentation d’un chiffrement simple pour protéger les données d’un jeu vidéo", "id": "seance62"},
+        {"date": "21/02/2025", "titre": "Séance 63 : Algorithmes de chiffrement asymétrique (RSA)", "id": "seance63"}
     ]
 ]
