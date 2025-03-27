@@ -101,9 +101,11 @@
         "programme4": ""
     },
     [
-        {"bo": "bo1"},
-        {"sujetA": "sujetA1"},
-        {"sujetB": "sujetB1"},
-        {"ressources": "ressources1"}
+        {
+            "bo": "bo1",
+            "sujetA": "sujetA1",
+            "sujetB": "sujetB1",
+            "ressources": "ressources1"
+        }
     ]
 ]
