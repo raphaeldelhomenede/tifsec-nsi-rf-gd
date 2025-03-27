@@ -20,4 +20,12 @@
     {"date": "16/10/2024", "titre": "Séance 19 : Introduction aux Arbres Binaires et leurs Applications", "id": "seance19"},
     {"date": "17/10/2024", "titre": "Séance 20 : Pratique - Utilisation d’arbres pour organiser une base de données de personnages de manga", "id": "seance20"},
     {"date": "18/10/2024", "titre": "Séance 21 : Algorithmes de Parcours d’Arbres (Pré-ordre, En-ordre, Post-ordre)", "id": "seance21"}
+],
+[
+    {"date": "23/10/2024", "class": "vacation", "titre": "Vacances de la Toussaint", "id": ""},
+    {"date": "24/10/2024", "class": "vacation", "titre": "Vacances de la Toussaint", "id": ""},
+    {"date": "25/10/2024", "class": "vacation", "titre": "Vacances de la Toussaint", "id": ""},
+    {"date": "30/10/2024", "class": "vacation", "titre": "Vacances de la Toussaint", "id": ""},
+    {"date": "31/10/2024", "class": "vacation", "titre": "Vacances de la Toussaint", "id": ""},
+    {"date": "01/11/2024", "class": "vacation", "titre": "Vacances de la Toussaint", "id": ""}
 ]
