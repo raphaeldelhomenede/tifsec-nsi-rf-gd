@@ -85,7 +85,7 @@
         {"date": "26/03/2025", "titre": "Séance 70 : Les Mémoires et Stockage - Escape Game Numérique", "id": "seance70"},
         {"date": "27/03/2025", "titre": "Séance 71 : L’Intelligence Artificielle dans les Systèmes Embarqués", "id": "seance71"}
     ],
-    [
+    {
         "calendar": "Calendrier de cours des Tle NSI - 2024/2025",
         "bo": "",
         "sujetA": "",
@@ -96,5 +96,5 @@
         "programme2": "",
         "programme3": "",
         "programme4": ""
-    ]
+    }
 ]
