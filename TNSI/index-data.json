@@ -17,7 +17,9 @@
         "link4": "?font=BakaTaida",
         "link5": "<script>window.location.href = 'https://' + window.location.host + '/TNSI/?font=BakaTaida';</script>",
         "toto1": "toto1.php",
-        "link6": ["<script>window.location.href = window.location.protocol + '//' + window.location.host + '/TNSI/?session=", "&font=BakaTaida';</script>"]
+        "link6": ["<script>window.location.href = window.location.protocol + '//' + window.location.host + '/TNSI/?session=", "&font=BakaTaida';</script>"],
+        "link7": ["<script>let targetURL6566rhgtrdhr658th = window.location.protocol + '//' + window.location.host + '/TNSI/?font=BakaTaida#", 
+                  "';window.location.replace(targetURL6566rhgtrdhr658th);</script>"]
     },
     "yunranofont": {
         "name": "yunranofont",
@@ -37,7 +39,9 @@
         "link4": "?font=yunranofont",
         "link5": "<script>window.location.href = 'https://' + window.location.host + '/TNSI/?font=yunranofont';</script>",
         "toto1": "toto2.php",
-        "link6": ["<script>window.location.href = window.location.protocol + '//' + window.location.host + '/TNSI/?session=", "&font=yunranofont';</script>"]
+        "link6": ["<script>window.location.href = window.location.protocol + '//' + window.location.host + '/TNSI/?session=", "&font=yunranofont';</script>"],
+        "link7": ["<script>let targetURL6566rhgtrdhr658th = window.location.protocol + '//' + window.location.host + '/TNSI/?font=yunranofont#", 
+                  "';window.location.replace(targetURL6566rhgtrdhr658th);</script>"]
     },
     "default": {
         "name": "default",
@@ -57,6 +61,8 @@
         "link4": "",
         "link5": "<<script>window.location.href = 'https://' + window.location.host + '/TNSI/';</script>",
         "toto1": "toto.php",
-        "link6": ["<script>window.location.href = window.location.protocol + '//' + window.location.host + '/TNSI/?session=", "';</script>"]
+        "link6": ["<script>window.location.href = window.location.protocol + '//' + window.location.host + '/TNSI/?session=", "';</script>"],
+        "link7": ["<script>let targetURL6566rhgtrdhr658th = window.location.protocol + '//' + window.location.host + '/TNSI/#", 
+                  "';window.location.replace(targetURL6566rhgtrdhr658th);</script>"]
     }
 }
