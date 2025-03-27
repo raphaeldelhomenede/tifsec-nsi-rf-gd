@@ -18,7 +18,7 @@
         "link5": "<script>window.location.href = 'https://' + window.location.host + '/TNSI/?font=BakaTaida';</script>",
         "toto1": "toto1.php",
         "link6": ["<script>window.location.href = window.location.protocol + '//' + window.location.host + '/TNSI/?session=", "&font=BakaTaida';</script>"],
-        "link7": ["<script>let targetURL6566rhgtrdhr658th = window.location.protocol + '//' + window.location.host + window.location.pathname + '/?font=BakaTaida#", 
+        "link7": ["<script>let targetURL6566rhgtrdhr658th = window.location.protocol + '//' + window.location.host + window.location.pathname + '?font=BakaTaida#", 
                   "';window.location.replace(targetURL6566rhgtrdhr658th);</script>"]
     },
     "yunranofont": {
@@ -40,7 +40,7 @@
         "link5": "<script>window.location.href = 'https://' + window.location.host + '/TNSI/?font=yunranofont';</script>",
         "toto1": "toto2.php",
         "link6": ["<script>window.location.href = window.location.protocol + '//' + window.location.host + '/TNSI/?session=", "&font=yunranofont';</script>"],
-        "link7": ["<script>let targetURL6566rhgtrdhr658th = window.location.protocol + '//' + window.location.host + window.location.pathname + '/?font=yunranofont#", 
+        "link7": ["<script>let targetURL6566rhgtrdhr658th = window.location.protocol + '//' + window.location.host + window.location.pathname + '?font=yunranofont#", 
                   "';window.location.replace(targetURL6566rhgtrdhr658th);</script>"]
     },
     "default": {
@@ -62,7 +62,7 @@
         "link5": "<<script>window.location.href = 'https://' + window.location.host + '/TNSI/';</script>",
         "toto1": "toto.php",
         "link6": ["<script>window.location.href = window.location.protocol + '//' + window.location.host + '/TNSI/?session=", "';</script>"],
-        "link7": ["<script>let targetURL6566rhgtrdhr658th = window.location.protocol + '//' + window.location.host + '/' + window.location.pathname + '/#", 
+        "link7": ["<script>let targetURL6566rhgtrdhr658th = window.location.protocol + '//' + window.location.host + window.location.pathname + '#", 
                   "';window.location.replace(targetURL6566rhgtrdhr658th);</script>"]
     }
 }
