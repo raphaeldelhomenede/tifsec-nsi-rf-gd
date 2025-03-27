@@ -99,5 +99,11 @@
         "programme2": "",
         "programme3": "",
         "programme4": ""
-    }
+    },
+    [
+        {"bo": "bo1"},
+        {"sujetA": "sujetA1"},
+        {"sujetB": "sujetB1"},
+        {"ressources": "ressources1"}
+    ]
 ]
