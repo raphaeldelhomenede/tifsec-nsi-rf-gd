@@ -74,5 +74,15 @@
         ["26/02/2025", "27/02/2025", "28/02/2025", "05/03/2025", "06/03/2025", "07/03/2025"],
         [["23/04/2025", "24/04/2025", "25/04/2025", "30/04/2025"], ["01/05/2025"], ["02/05/2025"]],
         ["09/07/2025", "10/07/2025", "11/07/2025"]
+    ],
+    [
+        {"date": "12/03/2025", "titre": "Séance 64 : Introduction aux protocoles de sécurité (SSL, HTTPS)", "id": "seance64"},
+        {"date": "13/03/2025", "titre": "Séance 65 : Pratique - Sécurisation des échanges entre un serveur de jeu et un client", "id": "seance65"},
+        {"date": "14/03/2025", "titre": "Séance 66 : Algorithmes de hachage et intégrité des données", "id": "seance66"},
+        {"date": "19/03/2025", "titre": "Séance 67 : Découverte des Circuits Intégrés", "id": "seance67"},
+        {"date": "20/03/2025", "titre": "Séance 68 : Les circuits logiques", "id": "seance68"},
+        {"date": "21/03/2025", "titre": "Séance 69 : Exploration des FPGA et de la logique programmable", "id": "seance69"},
+        {"date": "26/03/2025", "titre": "Séance 70 : Les Mémoires et Stockage - Escape Game Numérique", "id": "seance70"},
+        {"date": "27/03/2025", "titre": "Séance 71 : L’Intelligence Artificielle dans les Systèmes Embarqués", "id": "seance71"}
     ]
 ]
