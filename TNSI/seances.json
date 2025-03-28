@@ -86,7 +86,8 @@
         {"date": "20/03/2025", "titre": "Séance 68 : Les circuits logiques", "id": "seance68"},
         {"date": "21/03/2025", "titre": "Séance 69 : Exploration des FPGA et de la logique programmable", "id": "seance69"},
         {"date": "26/03/2025", "titre": "Séance 70 : Les Mémoires et Stockage - Escape Game Numérique", "id": "seance70"},
-        {"date": "27/03/2025", "titre": "Séance 71 : L’Intelligence Artificielle dans les Systèmes Embarqués", "id": "seance71"}
+        {"date": "27/03/2025", "titre": "Séance 71 : L’Intelligence Artificielle dans les Systèmes Embarqués", "id": "seance71"},
+        {"date": "28/03/2025", "titre": "Séance 72 : Challenge NSI - Mission \"Ultimate Tech Lab\"", "id": "seance72"}
     ],
     {
         "calendar": "Calendrier de cours des Tle NSI - 2024/2025",
