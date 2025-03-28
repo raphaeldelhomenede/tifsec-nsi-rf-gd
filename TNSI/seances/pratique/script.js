@@ -3,7 +3,7 @@ function getQueryParam(param) {
     return urlParams.get(param);
 }
 
-fetch('data-fonts.json')
+fetch('https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/data-fonts.json')
     .then(response => response.json())
     .then(fontStyles => {
         let font = getQueryParam('font');
