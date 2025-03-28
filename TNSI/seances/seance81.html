@@ -1,151 +1,148 @@
 <script src="script.js"></script>
 <section id="session81" class="content-section">
-            <h2>Séance 81 : Mise en place d’une infrastructure réseau sécurisée</h2>
-
+            <h2>Séance 81 : Protocole HTTP et API REST</h2>
+        
             <h3>Objectif Global :</h3>
             <p>
-                Cette séance vise à apprendre comment concevoir et sécuriser une infrastructure réseau. 
-                Les élèves découvriront les principes de la **sécurité des réseaux**, les **bonnes pratiques**, et comment mettre en place une **architecture sécurisée** en entreprise.
+                Les élèves apprendront les principes fondamentaux du protocole HTTP, la structure des requêtes et des réponses HTTP, et la manière d'interagir avec des API REST. À travers des exemples pratiques, ils comprendront comment consommer des API pour récupérer ou envoyer des données.
             </p>
         
-            <h3>1. Introduction à la Sécurité des Réseaux</h3>
+            <h3>Partie 1 : Introduction au Protocole HTTP (30 min)</h3>
         
-            <h4>Pourquoi sécuriser un réseau ?</h4>
+            <h4>1. Qu’est-ce que HTTP ?</h4>
             <p>
-                Un réseau informatique est exposé à diverses menaces (piratage, vol de données, attaques DDoS, malwares, etc.). Il est essentiel de mettre en place des mesures de sécurité pour protéger les données et garantir la continuité des services.
+                HTTP (HyperText Transfer Protocol) est un protocole de communication utilisé pour échanger des données sur le web. Les navigateurs utilisent HTTP pour récupérer les pages web, et les applications modernes l’utilisent pour communiquer avec des serveurs via des API.
             </p>
-        
-            <h4>Principaux Risques :</h4>
+            <p>HTTP fonctionne sur un modèle <strong>client-serveur</strong> :</p>
             <ul>
-                <li><strong>Intrusions :</strong> Accès non autorisé aux systèmes.</li>
-                <li><strong>Vol de données :</strong> Piratage des informations sensibles.</li>
-                <li><strong>Attaques DDoS :</strong> Surcharge des serveurs pour les rendre inaccessibles.</li>
-                <li><strong>Malwares :</strong> Virus, ransomwares, chevaux de Troie.</li>
-                <li><strong>Ingénierie sociale :</strong> Tentatives de manipulation pour obtenir des accès (phishing).</li>
+                <li>Le <strong>client</strong> envoie une requête (exemple : un navigateur ou une application).</li>
+                <li>Le <strong>serveur</strong> répond avec des données ou des messages d’état.</li>
             </ul>
         
-            <h3>2. Architecture d’un Réseau Sécurisé</h3>
-        
-            <h4>Schéma Typique d’une Infrastructure Réseau Sécurisée :</h4>
-            <p><img src="https://www.it-connect.fr/wp-content-itc/uploads/2021/12/schema-dmz-04.png" alt="Schéma d'une infrastructure réseau sécurisée" width="600"></p>
-            <p><small>Exemple d’une infrastructure réseau sécurisée avec un pare-feu et une zone DMZ.</small></p>
-            <p><small><a href="https://www.it-connect.fr/informatique-cest-quoi-une-dmz/" target="_blank">Lien du graphique</a></small></p>
-        
-            <h4>Composants Clés :</h4>
+            <h4>2. Structure d’une Requête HTTP :</h4>
+            <p>Une requête HTTP contient :</p>
             <ul>
-                <li><strong>Pare-feu (Firewall) :</strong> Filtre le trafic entrant et sortant pour bloquer les connexions suspectes.</li>
-                <li><strong>DMZ (Zone Démilitarisée) :</strong> Espace sécurisé entre le réseau interne et Internet (utilisé pour les serveurs web, mail, etc.).</li>
-                <li><strong>VLAN (Virtual LAN) :</strong> Sépare logiquement les services pour limiter les accès entre machines.</li>
-                <li><strong>VPN (Virtual Private Network) :</strong> Permet aux utilisateurs distants de se connecter en toute sécurité.</li>
-                <li><strong>Serveurs sécurisés :</strong> Hébergent les applications sensibles avec des contrôles d’accès stricts.</li>
+                <li><strong>Méthode :</strong> Détermine l’action à effectuer (GET, POST, PUT, DELETE).</li>
+                <li><strong>URL :</strong> L’adresse de la ressource demandée.</li>
+                <li><strong>Headers :</strong> Métadonnées pour la requête (ex. : format des données).</li>
+                <li><strong>Corps (Body) :</strong> Contient les données envoyées (utilisé principalement avec POST et PUT).</li>
             </ul>
         
-            <h3>3. Bonnes Pratiques pour Sécuriser un Réseau</h3>
-        
-            <h4>Contrôle des Accès</h4>
-            <ul>
-                <li>Utiliser des mots de passe robustes et l’authentification multifactorielle (MFA).</li>
-                <li>Restreindre les accès aux ressources sensibles (serveurs, bases de données).</li>
-                <li>Appliquer le principe du **moindre privilège** (limiter les droits utilisateurs au strict nécessaire).</li>
-            </ul>
-        
-            <h4>Mise en Place d’un Pare-feu</h4>
-            <ul>
-                <li>Bloquer tout trafic non essentiel.</li>
-                <li>Autoriser uniquement les ports et protocoles nécessaires.</li>
-                <li>Mettre en place des règles spécifiques pour les applications internes.</li>
-            </ul>
-        
-            <h4>Chiffrement des Communications</h4>
-            <ul>
-                <li>Utiliser HTTPS (TLS) pour sécuriser les échanges web.</li>
-                <li>Configurer un VPN pour les connexions à distance.</li>
-                <li>Activer le chiffrement des emails sensibles.</li>
-            </ul>
-        
-            <h4>Surveillance et Journalisation</h4>
-            <ul>
-                <li>Surveiller les connexions suspectes via un IDS (Intrusion Detection System).</li>
-                <li>Analyser les logs des pare-feu et serveurs régulièrement.</li>
-                <li>Mettre en place une alerte en cas d’anomalies.</li>
-            </ul>
-        
-            <h3>4. Exercice Pratique : Mise en Place d’un Pare-feu avec Iptables</h3>
-        
-            <h4>Configuration de Base :</h4>
-            <pre><code class="bash">
-        # Autoriser uniquement les connexions SSH (port 22), HTTP (port 80), et HTTPS (port 443)
-        sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT
-        sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
-        sudo iptables -A INPUT -p tcp --dport 443 -j ACCEPT
-        
-        # Bloquer tout le reste
-        sudo iptables -P INPUT DROP
-        sudo iptables -P FORWARD DROP
-        sudo iptables -P OUTPUT ACCEPT
-        
-        # Sauvegarder la configuration
-        sudo iptables-save > /etc/iptables/rules.v4
+            <h4>Exemple de Requête HTTP GET :</h4>
+            <pre><code>
+        GET /api/v1/produits HTTP/1.1
+        Host: www.example.com
+        Authorization: Bearer <token>
             </code></pre>
         
-            <h4>Test :</h4>
-            <pre><code class="bash">
-        # Vérifier les règles appliquées
-        sudo iptables -L -v
+            <h4>3. Structure d’une Réponse HTTP :</h4>
+            <p>Une réponse HTTP contient :</p>
+            <ul>
+                <li><strong>Code de statut :</strong> Indique le résultat de la requête (ex. : 200 pour OK, 404 pour Not Found).</li>
+                <li><strong>Headers :</strong> Informations sur la réponse (ex. : type de contenu).</li>
+                <li><strong>Corps (Body) :</strong> Contient les données retournées par le serveur.</li>
+            </ul>
+        
+            <h4>Exemple de Réponse HTTP :</h4>
+            <pre><code>
+        HTTP/1.1 200 OK
+        Content-Type: application/json
+        
+        {
+            "produits": [
+                {"id": 1, "nom": "Produit A", "prix": 10.0},
+                {"id": 2, "nom": "Produit B", "prix": 20.0}
+            ]
+        }
             </code></pre>
         
-            <h3>5. Exercice Pratique : Mise en Place d’un VPN avec OpenVPN</h3>
+            <h3>Partie 2 : Introduction aux API REST (30 min)</h3>
         
+            <h4>1. Qu’est-ce qu’une API REST ?</h4>
             <p>
-                Un VPN permet de créer un tunnel sécurisé entre un utilisateur distant et le réseau interne d’une entreprise. Voici un aperçu de l’installation d’OpenVPN :
-            </p>
-        
-            <h4>Installation d’OpenVPN :</h4>
-            <pre><code class="bash">
-        # Installation d’OpenVPN
-        sudo apt update && sudo apt install openvpn -y
-            </code></pre>
-        
-            <h4>Démarrage du Service :</h4>
-            <pre><code class="bash">
-        # Lancer OpenVPN
-        sudo systemctl start openvpn
-        sudo systemctl enable openvpn
-            </code></pre>
-        
-            <h3>6. Surveillance du Réseau avec Wireshark</h3>
-        
-            <p>
-                Wireshark est un outil d’analyse du trafic réseau qui permet de détecter les anomalies et les attaques potentielles.
-            </p>
-        
-            <h4>Installation :</h4>
-            <pre><code class="bash">
-        sudo apt install wireshark
-            </code></pre>
-        
-            <h4>Capture de Trafic :</h4>
-            <pre><code class="bash">
-        sudo wireshark
-            </code></pre>
-        
-            <h3>7. Conclusion</h3>
-            <p>
-                Cette séance a permis d’explorer les **fondamentaux de la sécurité des réseaux**, avec des pratiques concrètes comme la mise en place d’un pare-feu, d’un VPN et l’analyse du trafic réseau.
+                Une API (Application Programming Interface) REST (REpresentational State Transfer) est une interface qui permet aux applications de communiquer entre elles via HTTP. Elle repose sur des principes simples, tels que :
             </p>
             <ul>
-                <li>Les infrastructures réseau doivent être sécurisées avec des <strong>pare-feu</strong> et des <strong>contrôles d’accès</strong>.</li>
-                <li>Le <strong>chiffrement</strong> est essentiel pour protéger les communications.</li>
-                <li>Les outils comme <strong>Wireshark</strong> permettent de surveiller l’activité du réseau et détecter les menaces.</li>
+                <li><strong>Ressources :</strong> Tout est traité comme une ressource (ex. : utilisateurs, produits).</li>
+                <li><strong>Méthodes HTTP :</strong> Les actions sur les ressources sont définies par les méthodes HTTP (GET, POST, PUT, DELETE).</li>
+                <li><strong>Stateless :</strong> Chaque requête est indépendante des autres.</li>
             </ul>
         
-            <h3>Défi pour Aller Plus Loin :</h3>
-            <p>
-                Les élèves doivent créer un script qui :
-            </p>
+            <h4>2. Principales Méthodes HTTP pour REST :</h4>
             <ul>
-                <li>Ajoute automatiquement des règles de pare-feu adaptées à leur réseau.</li>
-                <li>Vérifie si un utilisateur se connecte avec un VPN.</li>
-                <li>Génère un rapport d’activité du réseau.</li>
+                <li><strong>GET :</strong> Récupérer des données (lecture).</li>
+                <li><strong>POST :</strong> Ajouter de nouvelles données (création).</li>
+                <li><strong>PUT :</strong> Mettre à jour des données existantes.</li>
+                <li><strong>DELETE :</strong> Supprimer des données.</li>
+            </ul>
+        
+            <h4>3. Exemple d’API REST :</h4>
+            <p>Supposons une API pour gérer des utilisateurs. Voici les routes disponibles :</p>
+            <ul>
+                <li><code>GET /api/v1/utilisateurs</code> : Récupère tous les utilisateurs.</li>
+                <li><code>GET /api/v1/utilisateurs/{id}</code> : Récupère un utilisateur par ID.</li>
+                <li><code>POST /api/v1/utilisateurs</code> : Ajoute un nouvel utilisateur.</li>
+                <li><code>PUT /api/v1/utilisateurs/{id}</code> : Met à jour les informations d’un utilisateur.</li>
+                <li><code>DELETE /api/v1/utilisateurs/{id}</code> : Supprime un utilisateur.</li>
+            </ul>
+        
+            <h3>Partie 3 : Pratique - Consommer une API REST en Python (1h)</h3>
+        
+            <h4>1. Utilisation de la Bibliothèque <code>requests</code> :</h4>
+            <p>
+                En Python, la bibliothèque <code>requests</code> permet d’envoyer facilement des requêtes HTTP. Voici comment l’installer :
+            </p>
+            <pre><code>
+        pip install requests
+            </code></pre>
+        
+            <h4>2. Exemple Pratique :</h4>
+            <p>Récupérez une liste d’utilisateurs depuis une API publique (par exemple : <a href="https://jsonplaceholder.typicode.com">https://jsonplaceholder.typicode.com</a>).</p>
+            <pre><code class="python">
+        import requests
+        
+        # Envoi d'une requête GET
+        url = "https://jsonplaceholder.typicode.com/users"
+        response = requests.get(url)
+        
+        # Vérification du code de statut
+        if response.status_code == 200:
+            utilisateurs = response.json()  # Convertir la réponse JSON en objet Python
+            for utilisateur in utilisateurs:
+                print(f"Nom : {utilisateur['name']}, Email : {utilisateur['email']}")
+        else:
+            print("Erreur lors de la récupération des utilisateurs.")
+            </code></pre>
+        
+            <h4>3. Exercice Pratique :</h4>
+            <p>En groupe, réalisez les tâches suivantes :</p>
+            <ul>
+                <li>Créez une fonction pour ajouter un nouvel utilisateur (requête POST).</li>
+                <li>Créez une fonction pour mettre à jour les informations d’un utilisateur (requête PUT).</li>
+                <li>Créez une fonction pour supprimer un utilisateur (requête DELETE).</li>
+            </ul>
+        
+            <h4>Exemple pour POST :</h4>
+            <pre><code class="python">
+        # Envoi d'une requête POST pour ajouter un utilisateur
+        url = "https://jsonplaceholder.typicode.com/users"
+        nouvel_utilisateur = {
+            "name": "Alice Dupont",
+            "email": "alice@example.com",
+            "phone": "123-456-7890"
+        }
+        response = requests.post(url, json=nouvel_utilisateur)
+        
+        if response.status_code == 201:  # Code de création réussie
+            print("Utilisateur ajouté avec succès :", response.json())
+        else:
+            print("Erreur lors de l'ajout de l'utilisateur.")
+            </code></pre>
+        
+            <h3>Conclusion et Réflexion (10 min)</h3>
+            <ul>
+                <li>Les élèves auront appris à interagir avec des API REST via des requêtes HTTP.</li>
+                <li>Discussion : Comment les API REST sont utilisées dans des applications modernes (ex. : communication entre une application mobile et un serveur) ?</li>
+                <li>Extension : Introduction aux API sécurisées avec des jetons d’authentification (Bearer Token).</li>
             </ul>
         </section>
