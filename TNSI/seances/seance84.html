@@ -1,1 +1,184 @@
 <script src="script.js"></script>
+<section id="session84" class="content-section">
+            <h2>🧠 Séance 84 — Introduction aux Processus</h2>
+
+            <h3>🎯 Objectif pédagogique :</h3>
+            <p>
+                Comprendre ce qu’est un <strong>processus</strong>, comment il est <strong>créé</strong>, <strong>exécuté</strong>, et quelles sont ses <strong>caractéristiques de base</strong> dans un système d’exploitation.
+                À la fin de cette séance, les élèves sauront identifier les processus en cours d'exécution et lire les informations associées via des commandes système.
+            </p>
+
+            <h2>🕐 Première heure (60 min) — Découverte de la notion de processus</h2>
+
+            <h3>1. 🧠 Définition & Explication Guidée</h3>
+            <ul>
+                <li><strong>Programme :</strong> fichier exécutable ou script enregistré sur le disque.</li>
+                <li><strong>Processus :</strong> instance de ce programme en cours d'exécution, <em>avec sa propre mémoire, son identifiant (PID), son état</em>.</li>
+            </ul>
+
+            <p><strong>Exemple :</strong></p>
+            <pre><code># Un fichier programme :
+            /usr/bin/firefox
+
+            # Lorsqu'on exécute Firefox :
+            → processus PID 4910 (Firefox), PID 4912 (Web Content), etc.</code></pre>
+
+            <h4>📘 Présentation visuelle :</h4>
+            <p>Afficher (ou dessiner) un schéma simplifié d’un processus :</p>
+            <ul>
+                <li>Nom</li>
+                <li>PID (Process ID)</li>
+                <li>État (running, sleeping...)</li>
+                <li>Espace mémoire (pile, tas, code, données)</li>
+                <li>Utilisateurs, priorités, etc.</li>
+            </ul>
+
+            <h4>✏️ Mini-exercice 1 : "Je décris un processus"</h4>
+            <p>
+                Donne à l’élève un programme imaginaire (ex : "lecteur_audio"), demande-lui de décrire ce qu’il deviendrait en tant que processus une fois lancé (PID ? état ? utilisateur ? ressources ?).
+            </p>
+
+            <h3>2. 🔁 Cycle de Vie d’un Processus (sans jeu de rôle)</h3>
+            <p>Explique les états classiques d’un processus :</p>
+            <ul>
+                <li><strong>prêt</strong> (ready)</li>
+                <li><strong>en cours</strong> d'exécution (running)</li>
+                <li><strong>bloqué</strong> (waiting)</li>
+                <li><strong>zombie</strong></li>
+                <li><strong>terminé</strong></li>
+            </ul>
+
+            <p><strong>Schéma :</strong> Représente un graphe simple : prêt → en cours → bloqué / terminé / zombie, etc.</p>
+
+            <h4>✏️ Mini-exercice 2 : "Je retrace la vie d’un processus"</h4>
+            <p>
+                Donne un scénario : "Lancement de Firefox, ouverture d’un onglet, téléchargement d’un fichier, fermeture."  
+                → L’élève écrit les états successifs du processus principal (et des éventuels sous-processus).
+            </p>
+
+            <h3>3. ✅ Mini-quizz de vérification</h3>
+            <p>QCM rapide (oral ou papier) :</p>
+            <ul>
+                <li>Qu’est-ce qu’un processus ?</li>
+                <li>Un programme peut-il créer plusieurs processus ?</li>
+                <li>À quoi sert le PID ?</li>
+                <li>Différence entre processus et thread ? (optionnel, ou mention pour plus tard)</li>
+            </ul>
+          
+            <hr>
+          
+            <h2>Observation réelle des processus</h2>
+
+            <h3>1. 🔧 Observation des processus avec <code>ps</code></h3>
+            <p>
+                Ouvre un terminal sous Linux (ou WSL sous Windows), puis :
+            </p>
+            <pre><code>ps aux | less</code></pre>
+            <p>Analyse ensemble :</p>
+            <ul>
+                <li><code>USER</code> : qui a lancé le processus</li>
+                <li><code>PID</code> : identifiant du processus</li>
+                <li><code>%CPU</code>, <code>%MEM</code></li>
+                <li><code>STAT</code> (état du processus : S = sleeping, R = running...)</li>
+                <li><code>COMMAND</code> : nom du programme</li>
+            </ul>
+
+            <h4>✏️ Mini-exercice 3 : "Je cherche dans la liste" 🔍</h4>
+            <p>Demander aux élèves :</p>
+            <ul>
+                <li>Trouve ton terminal dans la liste. Quel est son PID ?</li>
+                <li>Quel processus consomme le plus de mémoire ?</li>
+                <li>Quel est le statut du navigateur ?</li>
+            </ul>
+
+            <h3>2. 👀 Utilisation de la commande <code>top</code></h3>
+            <pre><code>top</code></pre>
+            <p>Les élèves voient les processus mis à jour en temps réel.</p>
+            <ul>
+                <li>Observer les changements en direct.</li>
+                <li>Repérer un processus lorsqu’on ouvre un nouvel onglet ou une application.</li>
+            </ul>
+
+            <h4>✏️ Mini-exercice 4 : "Suivi d’un processus"</h4>
+            <p>
+                Ouvre un éditeur de texte. Trouve son PID dans <code>top</code>. Laisse-le ouvert 30 secondes. Ferme-le. Observe la disparition du processus.
+            </p>
+
+            <h3>3. 🧪 Mission pratique finale : Tableau d’observation</h3>
+            <p>
+                L’élève ouvre 3 applications au choix (ex : éditeur de texte, navigateur, terminal), puis remplit ce tableau :
+            </p>
+
+            <table border="1" cellpadding="5">
+                <thead>
+                <tr>
+                    <th>Application</th>
+                    <th>PID</th>
+                    <th>État</th>
+                    <th>%CPU</th>
+                    <th>%MEM</th>
+                    <th>Utilisateur</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Terminal</td>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                </tr>
+                <tr>
+                    <td>Navigateur</td>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                </tr>
+                <tr>
+                    <td>Éditeur</td>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <p><strong>Question bonus :</strong> Trouve un processus "zombie". Est-il visible ? Comment peut-on en créer un ? (approche avancée en fin d’année)</p>
+          
+            <h3>3. Mission finale pratique 🕵️‍♀️</h3>
+            <p><strong>Objectif :</strong> Mener une enquête complète sur les processus de son poste.</p>
+          
+            <ul>
+              <li>Lancer 3 programmes de son choix</li>
+              <li>Identifier leurs PID</li>
+              <li>Vérifier leur état (S, R, Z)</li>
+              <li>Noter la consommation mémoire et CPU</li>
+              <li>Compléter une fiche de suivi</li>
+            </ul>
+          
+            <p><strong>Fiche à remplir :</strong></p>
+            <ul>
+              <li>Quel est le processus le plus gourmand ?</li>
+              <li>Quel processus est inactif ?</li>
+              <li>Y a-t-il des processus zombies ?</li>
+            </ul>
+          
+            <hr>
+          
+            <h2>✅ Bilan de la séance :</h2>
+            <p>À l’issue de la séance, les élèves sauront :</p>
+            <ul>
+              <li>Faire la différence entre programme et processus</li>
+              <li>Identifier un processus via son PID</li>
+              <li>Lire l’état et les ressources d’un processus dans <code>ps</code> et <code>top</code></li>
+              <li>Observer en pratique la gestion des processus par le système</li>
+            </ul>
+          
+            <p><strong>🧠 Prolongement possible :</strong> Initiation à la gestion des processus en Python avec <code>os.fork()</code> ou <code>multiprocessing</code>.</p>
+          
+        </section>
