@@ -101,18 +101,27 @@
         "programme3": "",
         "programme4": ""
     },
-    [
-        {
-            "bo": "bo1",
-            "sujetA": "sujetA1",
-            "sujetB": "sujetB1",
-            "ressources": "ressources1",
-            "programme1": "programme1",
-            "programme2": "programme2",
-            "programme3": "programme3",
-            "programme4": "programme4",
-            "pratique.html": "pratique.html"
-        },
-        ["Date Mercredi", "Cours Mercredi", "Date Jeudi", "Cours Jeudi", "Date Vendredi", "Cours Vendredi"]
-    ]
+    {
+    "seances": [
+            {
+                "bo": "bo1",
+                "sujetA": "sujetA1",
+                "sujetB": "sujetB1",
+                "ressources": "ressources1",
+                "programme1": "programme1",
+                "programme2": "programme2",
+                "programme3": "programme3",
+                "programme4": "programme4",
+                "pratique": "pratique.html"
+            }
+        ],
+        "headers": [
+            "Date Mercredi",
+            "Cours Mercredi",
+            "Date Jeudi",
+            "Cours Jeudi",
+            "Date Vendredi",
+            "Cours Vendredi"
+        ]
+    }
 ]
