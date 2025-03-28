@@ -1,195 +1,163 @@
 <script src="script.js"></script>
 <section id="session79" class="content-section">
-            <h2>Séance 79 : Utilisation des Algorithmes de Chiffrement dans les Applications Réseau</h2>
-
+            <h2>Séance 79 : Introduction aux protocoles réseau (TCP, UDP, IP) et modèle OSI</h2>
+        
             <h3>Objectif Global :</h3>
             <p>
-                Cette séance a pour but de comprendre le fonctionnement du chiffrement dans les applications réseau. 
-                Nous allons étudier les principes du chiffrement **symétrique** et **asymétrique**, leurs différences, 
-                et les appliquer dans des communications sécurisées en Python.
+                Cette séance introduit les concepts fondamentaux des réseaux informatiques, notamment les protocoles <strong>TCP</strong>, <strong>UDP</strong>, <strong>IP</strong>, et le <strong>modèle OSI</strong>. Les élèves découvriront le rôle de ces protocoles dans la communication réseau et comprendront comment les données circulent entre ordinateurs.
             </p>
         
-            <h3>1. Introduction au Chiffrement</h3>
+            <h3>Plan de la Séance :</h3>
+            <ul>
+                <li><strong>Partie 1 :</strong> Introduction aux protocoles réseau et au modèle OSI (30 min).</li>
+                <li><strong>Partie 2 :</strong> Fonctionnement des protocoles TCP, UDP et IP (40 min).</li>
+                <li><strong>Partie 3 :</strong> Activité pratique : Simulation de communications réseau (40 min).</li>
+            </ul>
         
-            <h4>Pourquoi Chiffrer les Communications Réseau ?</h4>
+            <h3>1. Introduction aux Protocoles Réseau et au Modèle OSI (30 min)</h3>
+            <h4>Qu’est-ce qu’un protocole réseau ?</h4>
             <p>
-                Les communications sur Internet peuvent être interceptées par des pirates informatiques. Le chiffrement permet de :
+                Un protocole réseau est un ensemble de règles qui définit comment les données sont transmises sur un réseau. Ces règles garantissent que deux ordinateurs ou appareils peuvent communiquer efficacement, peu importe leur fabricant ou leur système d'exploitation.
             </p>
-            <ul>
-                <li>Protéger la confidentialité des données.</li>
-                <li>Garantir l’intégrité des messages échangés.</li>
-                <li>Empêcher les attaques de type "Man-in-the-Middle".</li>
-            </ul>
         
-            <h3>2. Algorithmes de Chiffrement</h3>
-        
-            <h4>Chiffrement Symétrique</h4>
+            <h4>Le Modèle OSI :</h4>
             <p>
-                Le chiffrement symétrique utilise une <strong>clé unique</strong> pour chiffrer et déchiffrer un message. 
-                L’expéditeur et le destinataire doivent tous deux posséder cette clé secrète.
+                Le modèle OSI (<strong>Open Systems Interconnection</strong>) est une structure en 7 couches qui décrit comment les données circulent sur un réseau. Chaque couche a une fonction spécifique, et elles travaillent ensemble pour assurer une communication fluide.
             </p>
         
-            <h4>Exemples d’algorithmes :</h4>
+            <h4>Les 7 couches du modèle OSI :</h4>
+            <ol>
+                <li><strong>Application :</strong> Interface utilisateur (exemple : HTTP, FTP).</li>
+                <li><strong>Présentation :</strong> Traduction des données (exemple : cryptage).</li>
+                <li><strong>Session :</strong> Gestion des connexions (exemple : ouverture/fermeture de sessions).</li>
+                <li><strong>Transport :</strong> Gestion de la fiabilité et de l'ordre des données (exemple : TCP, UDP).</li>
+                <li><strong>Réseau :</strong> Routage des paquets (exemple : IP).</li>
+                <li><strong>Liaison de données :</strong> Communication directe entre deux nœuds (exemple : Ethernet).</li>
+                <li><strong>Physique :</strong> Transmission brute des bits (exemple : câbles, signaux).</li>
+            </ol>
+        
+            <h4>Résumé graphique :</h4>
+            <p>Imaginez que vous envoyez une lettre :</p>
             <ul>
-                <li><strong>AES (Advanced Encryption Standard)</strong> : Utilisé pour la plupart des communications sécurisées.</li>
-                <li><strong>DES (Data Encryption Standard)</strong> : Ancien standard, aujourd’hui obsolète.</li>
-                <li><strong>ChaCha20</strong> : Utilisé pour des performances élevées.</li>
+                <li>La couche Application écrit le contenu.</li>
+                <li>La couche Présentation traduit le contenu dans une langue compréhensible par le destinataire.</li>
+                <li>La couche Transport s'assure que toutes les lettres arrivent dans le bon ordre.</li>
+                <li>La couche Réseau décide du chemin à emprunter.</li>
+                <li>Les couches Liaison et Physique s'occupent de la transmission réelle de la lettre.</li>
             </ul>
         
-            <h4>Avantages :</h4>
-            <ul>
-                <li>Rapide et efficace.</li>
-                <li>Requiert peu de ressources.</li>
-            </ul>
+            <h3>2. Fonctionnement des Protocoles TCP, UDP et IP (40 min)</h3>
         
-            <h4>Inconvénients :</h4>
-            <ul>
-                <li>La clé doit être partagée en toute sécurité.</li>
-                <li>Si la clé est compromise, toutes les communications sont vulnérables.</li>
-            </ul>
+            <h4>Protocole IP :</h4>
+            <p>
+                <strong>Internet Protocol (IP)</strong> est responsable de l'adressage et du routage des paquets de données. Chaque appareil sur Internet a une adresse IP unique, comme une adresse postale.
+            </p>
+            <p><strong>Exemple :</strong> Un ordinateur avec l’adresse IP <code>192.168.1.1</code> envoie des données à un autre appareil avec l’adresse <code>192.168.1.2</code>.</p>
         
-            <h4>Implémentation du Chiffrement Symétrique en Python</h4>
+            <h4>Protocole TCP :</h4>
+            <p>
+                <strong>Transmission Control Protocol (TCP)</strong> garantit une communication fiable entre deux appareils. Il vérifie que toutes les données sont envoyées et reçues dans le bon ordre.
+            </p>
+            <ul>
+                <li><strong>Avantages :</strong> Fiabilité, correction des erreurs.</li>
+                <li><strong>Inconvénients :</strong> Plus lent à cause des vérifications constantes.</li>
+            </ul>
+            <p><strong>Exemple :</strong> Télécharger un fichier où chaque partie doit être reçue dans le bon ordre.</p>
+        
+            <h4>Protocole UDP :</h4>
+            <p>
+                <strong>User Datagram Protocol (UDP)</strong> est un protocole rapide mais moins fiable. Il n’assure pas que tous les paquets arrivent ni qu’ils soient dans le bon ordre.
+            </p>
+            <ul>
+                <li><strong>Avantages :</strong> Rapidité, faible latence.</li>
+                <li><strong>Inconvénients :</strong> Pas de garantie de livraison.</li>
+            </ul>
+            <p><strong>Exemple :</strong> Streaming vidéo ou jeux en ligne, où la rapidité est plus importante que la fiabilité.</p>
+        
+            <h4>Comparaison entre TCP et UDP :</h4>
+            <table border="1" cellpadding="5">
+                <thead>
+                    <tr>
+                        <th>Caractéristique</th>
+                        <th>TCP</th>
+                        <th>UDP</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Fiabilité</td>
+                        <td>Oui</td>
+                        <td>Non</td>
+                    </tr>
+                    <tr>
+                        <td>Vitesse</td>
+                        <td>Plus lent</td>
+                        <td>Très rapide</td>
+                    </tr>
+                    <tr>
+                        <td>Utilisation</td>
+                        <td>Téléchargement de fichiers, emails</td>
+                        <td>Streaming, jeux vidéo</td>
+                    </tr>
+                </tbody>
+            </table>
+        
+            <h3>3. Activité Pratique : Simulation de Communications Réseau (40 min)</h3>
+        
+            <h4>Exercice 1 : Simulation avec TCP</h4>
+            <p>Créez un script Python où un serveur envoie un message à un client en utilisant TCP.</p>
             <pre><code class="python">
-        from cryptography.fernet import Fernet
-        
-        # Générer une clé secrète
-        cle_secrete = Fernet.generate_key()
-        cipher = Fernet(cle_secrete)
-        
-        # Chiffrement du message
-        message = "Données confidentielles"
-        message_chiffre = cipher.encrypt(message.encode())
-        
-        # Déchiffrement du message
-        message_dechiffre = cipher.decrypt(message_chiffre).decode()
-        
-        print(f"Message original : {message}")
-        print(f"Message chiffré : {message_chiffre}")
-        print(f"Message déchiffré : {message_dechiffre}")
-            </code></pre>
-        
-            <h3>3. Chiffrement Asymétrique</h3>
-        
-            <h4>Définition</h4>
-            <p>
-                Le chiffrement asymétrique utilise une **paire de clés** : 
-                une clé publique pour chiffrer les messages et une clé privée pour les déchiffrer.
-            </p>
-        
-            <h4>Exemples d’algorithmes :</h4>
-            <ul>
-                <li><strong>RSA (Rivest-Shamir-Adleman)</strong> : Utilisé pour le chiffrement des e-mails et SSL/TLS.</li>
-                <li><strong>ECC (Elliptic Curve Cryptography)</strong> : Plus rapide et sécurisé pour les mobiles.</li>
-            </ul>
-        
-            <h4>Avantages :</h4>
-            <ul>
-                <li>Permet un échange sécurisé sans partager une clé secrète.</li>
-                <li>Utilisé pour les signatures numériques et l’authentification.</li>
-            </ul>
-        
-            <h4>Inconvénients :</h4>
-            <ul>
-                <li>Plus lent que le chiffrement symétrique.</li>
-                <li>Requiert des clés plus grandes pour une sécurité équivalente.</li>
-            </ul>
-        
-            <h4>Implémentation du Chiffrement Asymétrique en Python</h4>
-            <pre><code class="python">
-        from cryptography.hazmat.primitives.asymmetric import rsa
-        from cryptography.hazmat.primitives import serialization
-        from cryptography.hazmat.primitives.asymmetric import padding
-        from cryptography.hazmat.primitives import hashes
-        
-        # Générer une paire de clés
-        cle_privee = rsa.generate_private_key(
-            public_exponent=65537,
-            key_size=2048
-        )
-        cle_publique = cle_privee.public_key()
-        
-        # Chiffrement avec la clé publique
-        message = b"Message secret"
-        message_chiffre = cle_publique.encrypt(
-            message,
-            padding.OAEP(
-                mgf=padding.MGF1(algorithm=hashes.SHA256()),
-                algorithm=hashes.SHA256(),
-                label=None
-            )
-        )
-        
-        # Déchiffrement avec la clé privée
-        message_dechiffre = cle_privee.decrypt(
-            message_chiffre,
-            padding.OAEP(
-                mgf=padding.MGF1(algorithm=hashes.SHA256()),
-                algorithm=hashes.SHA256(),
-                label=None
-            )
-        )
-        
-        print(f"Message chiffré : {message_chiffre}")
-        print(f"Message déchiffré : {message_dechiffre.decode()}")
-            </code></pre>
-        
-            <h3>4. Application : Communication Sécurisée en Réseau</h3>
-        
-            <h4>Scénario :</h4>
-            <p>
-                Un client envoie un message chiffré au serveur. Le serveur déchiffre et répond.
-            </p>
-        
-            <h4>Code du Serveur :</h4>
-            <pre><code class="python">
+        # Serveur TCP
         import socket
-        from cryptography.fernet import Fernet
-        
-        # Générer une clé
-        cle_secrete = Fernet.generate_key()
-        cipher = Fernet(cle_secrete)
         
         serveur = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        serveur.bind(("127.0.0.1", 12345))
+        serveur.bind(("127.0.0.1", 65432))
         serveur.listen(1)
+        print("Serveur en attente de connexion...")
         
-        print("Serveur en attente...")
         conn, addr = serveur.accept()
-        message_recu = conn.recv(1024)
-        message_dechiffre = cipher.decrypt(message_recu).decode()
-        
-        print(f"Message reçu : {message_dechiffre}")
-        
-        conn.sendall(cipher.encrypt("Réponse sécurisée".encode()))
+        print(f"Connexion établie avec {addr}")
+        message = "Bonjour, client !"
+        conn.sendall(message.encode())
         conn.close()
-        serveur.close()
             </code></pre>
         
-            <h4>Code du Client :</h4>
             <pre><code class="python">
+        # Client TCP
         import socket
-        from cryptography.fernet import Fernet
-        
-        # Récupérer la clé
-        cipher = Fernet(cle_secrete)
         
         client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        client.connect(("127.0.0.1", 12345))
-        
-        message = "Données sécurisées"
-        client.sendall(cipher.encrypt(message.encode()))
-        
-        reponse_chiffree = client.recv(1024)
-        reponse = cipher.decrypt(reponse_chiffree).decode()
-        
-        print(f"Réponse du serveur : {reponse}")
-        
+        client.connect(("127.0.0.1", 65432))
+        data = client.recv(1024)
+        print(f"Message reçu du serveur : {data.decode()}")
         client.close()
             </code></pre>
         
-            <h3>Conclusion</h3>
+            <h4>Exercice 2 : Simulation avec UDP</h4>
+            <p>Créez un script Python où un client envoie un message à un serveur en utilisant UDP.</p>
+            <pre><code class="python">
+        # Serveur UDP
+        import socket
+        
+        serveur = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        serveur.bind(("127.0.0.1", 65433))
+        print("Serveur UDP en attente de message...")
+        
+        data, addr = serveur.recvfrom(1024)
+        print(f"Message reçu de {addr} : {data.decode()}")
+            </code></pre>
+        
+            <pre><code class="python">
+        # Client UDP
+        import socket
+        
+        client = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        message = "Bonjour, serveur UDP !"
+        client.sendto(message.encode(), ("127.0.0.1", 65433))
+            </code></pre>
+        
+            <h3>Conclusion :</h3>
             <p>
-                Nous avons exploré les concepts du chiffrement et leur application aux communications réseau.
-                Le chiffrement symétrique est rapide, tandis que l’asymétrique permet des échanges sécurisés sans partage de clé secrète.
+                À la fin de cette séance, les élèves auront une compréhension claire des protocoles réseau TCP, UDP, et IP, ainsi que du modèle OSI. Ils auront également pratiqué la création de scripts Python pour simuler des communications réseau.
             </p>
         </section>
