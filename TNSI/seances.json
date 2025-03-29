@@ -120,6 +120,15 @@
             "Cours Jeudi",
             "Date Vendredi",
             "Cours Vendredi"
-        ]
+        ],
+        {
+              "BakaTaida": {
+                "pycharm": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/pycharm.html?font=BakaTaida",
+                "wampserver": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/wampserver.html?font=BakaTaida",
+                "FirefoxDeveloperEdition": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/FirefoxDeveloperEdition.html?font=BakaTaida",
+                "vscode": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/vscode.html?font=BakaTaida",
+                "download": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/download.html?font=BakaTaida"
+              }
+        }
     ]
 ]
