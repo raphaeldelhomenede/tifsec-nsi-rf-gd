@@ -20,12 +20,7 @@
         "toto1": "toto1.php",
         "link6": ["<script>window.location.href = window.location.protocol + '//' + window.location.host + window.location.pathname + '?session=", "&font=BakaTaida';</script>"],
         "link7": ["<script>let targetURL6566rhgtrdhr658th = window.location.protocol + '//' + window.location.host + window.location.pathname + '?font=BakaTaida#", 
-                  "';window.location.replace(targetURL6566rhgtrdhr658th);</script>"],
-        "pycharm": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/pycharm.html?font=BakaTaida",
-        "wampserver": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/wampserver.html?font=BakaTaida",
-        "FirefoxDeveloperEdition": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/FirefoxDeveloperEdition.html?font=BakaTaida",
-        "vscode": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/vscode.html?font=BakaTaida",
-        "download": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/download.html?font=BakaTaida"
+                  "';window.location.replace(targetURL6566rhgtrdhr658th);</script>"]
     },
     "yunranofont": {
         "name": "yunranofont",
