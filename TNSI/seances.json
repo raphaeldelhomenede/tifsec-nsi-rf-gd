@@ -122,27 +122,31 @@
             "Cours Vendredi"
         ],
         {
-          "BakaTaida": {
-            "pycharm": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/pycharm.html?font=BakaTaida",
-            "wampserver": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/wampserver.html?font=BakaTaida",
-            "FirefoxDeveloperEdition": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/FirefoxDeveloperEdition.html?font=BakaTaida",
-            "vscode": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/vscode.html?font=BakaTaida",
-            "download": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/download.html?font=BakaTaida"
-          },
-          "yunranofont": {
-            "pycharm": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/pycharm.html?font=yunranofont",
-            "wampserver": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/wampserver.html?font=yunranofont",
-            "FirefoxDeveloperEdition": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/FirefoxDeveloperEdition.html?font=yunranofont",
-            "vscode": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/vscode.html?font=yunranofont",
-            "download": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/download.html?font=yunranofont"
-          },
-          "default": {
-            "pycharm": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/pycharm.html",
-            "wampserver": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/wampserver.html",
-            "FirefoxDeveloperEdition": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/FirefoxDeveloperEdition.html",
-            "vscode": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/vscode.html",
-            "download": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/download.html"
-          }
+            "pycharm": {
+                "BakaTaida": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/pycharm.html?font=BakaTaida",
+                "yunranofont": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/pycharm.html?font=yunranofont",
+                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/pycharm.html"
+            },
+            "wampserver": {
+                "BakaTaida": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/wampserver.html?font=BakaTaida",
+                "yunranofont": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/wampserver.html?font=yunranofont",
+                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/wampserver.html"
+            },
+            "FirefoxDeveloperEdition": {
+                "BakaTaida": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/FirefoxDeveloperEdition.html?font=BakaTaida",
+                "yunranofont": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/FirefoxDeveloperEdition.html?font=yunranofont",
+                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/FirefoxDeveloperEdition.html"
+            },
+            "vscode": {
+                "BakaTaida": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/vscode.html?font=BakaTaida",
+                "yunranofont": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/vscode.html?font=yunranofont",
+                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/vscode.html"
+            },
+            "download": {
+                "BakaTaida": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/download.html?font=BakaTaida",
+                "yunranofont": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/download.html?font=yunranofont",
+                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/download.html"
+            }
         }
     ]
 ]
