@@ -43,12 +43,7 @@
         "toto1": "toto2.php",
         "link6": ["<script>window.location.href = window.location.protocol + '//' + window.location.host + window.location.pathname + '?session=", "&font=yunranofont';</script>"],
         "link7": ["<script>let targetURL6566rhgtrdhr658th = window.location.protocol + '//' + window.location.host + window.location.pathname + '?font=yunranofont#", 
-                  "';window.location.replace(targetURL6566rhgtrdhr658th);</script>"],
-        "pycharm": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/pycharm.html?font=yunranofont",
-        "wampserver": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/wampserver.html?font=yunranofont",
-        "FirefoxDeveloperEdition": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/FirefoxDeveloperEdition.html?font=yunranofont",
-        "vscode": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/vscode.html?font=yunranofont",
-        "download": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/download.html?font=yunranofont"
+                  "';window.location.replace(targetURL6566rhgtrdhr658th);</script>"]
     },
     "default": {
         "name": "default",
@@ -71,11 +66,6 @@
         "toto1": "toto.php",
         "link6": ["<script>window.location.href = window.location.protocol + '//' + window.location.host + window.location.pathname + '?session=", "';</script>"],
         "link7": ["<script>let targetURL6566rhgtrdhr658th = window.location.protocol + '//' + window.location.host + window.location.pathname + '#", 
-                  "';window.location.replace(targetURL6566rhgtrdhr658th);</script>"],
-        "pycharm": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/pycharm.html",
-        "wampserver": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/wampserver.html",
-        "FirefoxDeveloperEdition": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/FirefoxDeveloperEdition.html",
-        "vscode": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/vscode.html",
-        "download": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/download.html"
+                  "';window.location.replace(targetURL6566rhgtrdhr658th);</script>"]
     }
 }
