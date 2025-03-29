@@ -1,185 +1,75 @@
-* {
+/* Styles généraux */
+body {
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: Calibri, sans-serif;
-}
-
-body {
-    line-height: 1.6;
-    background-color: #f4f4f4;
-}
-
-header {
-    background-color: #4CAF50;
-    color: white;
+    background-color: #1e1e1e; /* Couleur sombre pour imiter Firefox */
+    color: #fff; /* Texte en blanc */
     text-align: center;
-    padding: 1rem;
 }
 
-main {
-    margin-left: 200px;
-    padding: 20px;
-    min-height: 80vh;
+h1 {
+    color: #ff9500; /* Couleur orange typique de Firefox */
+    margin-top: 5vh; /* Utilisation de vh pour l'espacement */
+    font-size: 6vw; /* Taille de police responsive avec vw */
 }
 
-a{
-    color: black;
+p {
+    color: #c7c7c7; /* Gris clair pour le texte */
+    margin-top: 2vh;
+    font-size: 2vw; /* Taille de police responsive avec vw */
 }
 
-a:hover{
-    color: orange;
+/* Conteneur principal */
+.container {
+    max-width: 90vw;
+    margin: 0 auto;
+    padding: 5vw;
+    background-color: #2b2b2b; /* Fond sombre pour le conteneur */
+    border-radius: 2vw;
+    box-shadow: 0 2vh 5vw rgba(0, 0, 0, 0.2);
 }
 
-/*.content-section {
-    display: none;
-}*/
-
-.content-section.active {
-    display: block;
-}
-
-aside {
-    position: fixed;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 200px;
-    background-color: #333;
+/* Bouton de téléchargement */
+.download-btn {
+    background-color: #ff9500; /* Couleur orange de Firefox */
     color: white;
-    padding-top: 20px;
-    transition: width 0.3s ease;
-    overflow-y: auto;
-    scrollbar-width: none; /* Masque la barre de défilement pour Firefox */
-}
-
-aside::-webkit-scrollbar {
-    display: none; /* Masque la barre de défilement pour Chrome, Safari, et Opera */
-}
-
-aside ul {
-    list-style: none;
-    padding: 0;
-}
-
-aside ul li {
-    padding: 10px;
-}
-
-aside ul li a {
-    color: white;
-    text-decoration: none;
-    display: block;
-    padding: 10px;
-}
-
-/* Style pour l'élément de menu actif (séance en cours) */
-aside ul li a.active {
-    background-color: #4CAF50; /* Couleur pour l'élément actif */
-    color: white;
-    font-weight: bold;
-}
-
-aside ul li a:hover {
-    background-color: #555;
-}
-
-.hamburger {
-    background-color: #4CAF50;
-    color: white;
+    padding: 3vw 6vw; /* Padding en fonction de la taille de l'écran */
+    font-size: 2.5vw; /* Taille de police du bouton avec vw */
     border: none;
-    width: 100%;
-    padding: 15px;
-    text-align: left;
+    border-radius: 1vw;
     cursor: pointer;
+    margin-top: 5vh;
+    text-decoration: none;
+    display: inline-block;
 }
 
-footer {
-    background-color: #4CAF50;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+.download-btn:hover {
+    background-color: #cc7b00; /* Couleur orange plus sombre au survol */
 }
 
-h2, h3, h4, h5{
-    text-align: center;
+/* Style pour le lien */
+a {
+    color: inherit;
+    text-decoration: none;
 }
 
-h2 {
-    color: #333;
-    margin-bottom: 15px;
-}
+/* Media query pour les petits écrans */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 8vw;
+    }
 
-h4, h5, p, ul{
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
+    p {
+        font-size: 4vw;
+    }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 10px 0;
-}
+    .container {
+        padding: 8vw;
+    }
 
-table, th, td {
-    border: 1px solid black;
-}
-
-th, td {
-    padding: 10px;
-    text-align: center;
-}
-
-img {
-    max-width: 100%;
-    height: auto;
-}
-
-/* Styles spécifiques pour le calendrier */
-table.calendar {
-    margin: 20px auto;
-    border-collapse: collapse;
-    width: 80%;
-}
-
-th, td {
-    padding: 10px;
-    text-align: center;
-    border: 1px solid #ccc;
-}
-
-.current-week {
-    background-color: #add8e6; /* Couleur bleue clair pour la semaine en cours */
-}
-
-pre{
-    background-color: black;
-    color: white;
-}
-
-.today {
-    background-color: #007BFF; /* Bleu vif pour le jour actuel */
-    color: white; /* Texte blanc pour le contraste */
-}
-
-.vacation {
-    background-color: #B2E4A6; /* Vert pastel pour les vacances */
-    color: black; /* Texte noir ou foncé pour la lisibilité */
-}
-
-.holiday {
-    background-color: #FF6B6B; /* Rouge clair pour les jours fériés */
-    color: white; /* Texte blanc ou clair */
-}
-
-iframe{
-    width: 87vw;
-    height: 42vw;
-}
-
-.rep {
-    visibility: hidden;
+    .download-btn {
+        padding: 4vw 8vw;
+        font-size: 4vw;
+    }
 }
