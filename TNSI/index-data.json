@@ -48,7 +48,11 @@
             ["https://tifsec-nsi.rf.gd/TNSI/?session=", "&font=yunranofont"],
             ["http://localhost/document/TNSI/?session=", "&font=yunranofont"]
         ],
-        "link7": ["<script>let targetURL6566rhgtrdhr658th = window.location.protocol + '//' + window.location.host + window.location.pathname + '?font=yunranofont#", 
+        "link7": [
+            ["https://tifsec-nsi.rf.gd/TNSI/?font=yunranofont#="],
+            ["http://localhost/document/TNSI/?session=", "&font=yunranofont"]
+        ],
+        "toooooo": ["<script>let targetURL6566rhgtrdhr658th = window.location.protocol + '//' + window.location.host + window.location.pathname + '?font=yunranofont#", 
                   "';window.location.replace(targetURL6566rhgtrdhr658th);</script>"]
     },
     "default": {
