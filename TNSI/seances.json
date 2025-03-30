@@ -147,6 +147,11 @@
                 "yunranofont": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/download.html?font=yunranofont",
                 "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/download.html"
             }
-        }
+        },
+        [
+            {
+                "github": "<script>window.location.href=\"https://github.com/raphaeldelhomenede/tifsec-nsi-rf-gd/blob/main/TNSI\";</script>"
+            }
+        ]
     ]
 ]
