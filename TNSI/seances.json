@@ -157,11 +157,11 @@
                     "seances": [
                         {
                           "range": [73, 76],
-                          "text": "<h2>Séance %d : Pratique BAC</h2>"
+                          "text": ["<h2>Séance ", " : Pratique BAC</h2>"]
                         },
                         {
                           "range": [76, 79],
-                          "text": "<h2>Séance %d : Élèves absent</h2>"
+                          "text": ["<h2>Séance ", " : Élèves absent</h2>"]
                         },
                         {
                           "range": [87, 107],
