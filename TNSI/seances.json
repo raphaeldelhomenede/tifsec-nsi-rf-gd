@@ -155,18 +155,16 @@
                 },
                 {
                     "seances": [
-                        {
-                          "range": [73, 76],
-                          "text": ["<h2>Séance ", " : Pratique BAC</h2>"]
-                        },
-                        {
-                          "range": [76, 79],
-                          "text": ["<h2>Séance ", " : Élèves absent</h2>"]
-                        },
-                        {
-                          "range": [87, 107],
-                          "text": "<h2>Séance en cours de construction</h2>"
-                        }
+                        "range": [
+                            [73, 76],
+                            [76, 79],
+                            [87, 107]
+                        ],
+                        "text": [
+                            ["<h2>Séance ", " : Pratique BAC</h2>"],
+                            ["<h2>Séance ", " : Élèves absent</h2>"],
+                            ["<h2>Séance en cours de construction</h2>", ""]
+                        ]
                     ]
                 }
             ]
