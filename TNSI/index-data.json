@@ -21,13 +21,7 @@
         "link6": [
             ["https://tifsec-nsi.rf.gd/TNSI/?session=", "&font=BakaTaida"],
             ["http://localhost/document/TNSI/?session=", "&font=BakaTaida"]
-        ],
-        "link7": [
-            ["https://tifsec-nsi.rf.gd/TNSI/?font=BakaTaida#"],
-            ["http://localhost/document/TNSI/?font=BakaTaida#"]
-        ],
-        "tjr": ["<script>let targetURL6566rhgtrdhr658th = window.location.protocol + '//' + window.location.host + window.location.pathname + '?font=BakaTaida#", 
-                  "';window.location.replace(targetURL6566rhgtrdhr658th);</script>"]
+        ]
     },
     "yunranofont": {
         "name": "yunranofont",
@@ -51,13 +45,7 @@
         "link6": [
             ["https://tifsec-nsi.rf.gd/TNSI/?session=", "&font=yunranofont"],
             ["http://localhost/document/TNSI/?session=", "&font=yunranofont"]
-        ],
-        "link7": [
-            ["https://tifsec-nsi.rf.gd/TNSI/?font=yunranofont#"],
-            ["http://localhost/document/TNSI/?font=yunranofont#"]
-        ],
-        "toooooo": ["<script>let targetURL6566rhgtrdhr658th = window.location.protocol + '//' + window.location.host + window.location.pathname + '?font=yunranofont#", 
-                  "';window.location.replace(targetURL6566rhgtrdhr658th);</script>"]
+        ]
     },
     "default": {
         "name": "default",
@@ -81,12 +69,6 @@
         "link6": [
             ["https://tifsec-nsi.rf.gd/TNSI/?session=", ""],
             ["http://localhost/document/TNSI/?session=", ""]
-        ],
-        "link7": [
-            ["https://tifsec-nsi.rf.gd/TNSI/#"],
-            ["http://localhost/document/TNSI/#"]
-        ],
-        "jhgk": ["<script>let targetURL6566rhgtrdhr658th = window.location.protocol + '//' + window.location.host + window.location.pathname + '#", 
-                  "';window.location.replace(targetURL6566rhgtrdhr658th);</script>"]
+        ]
     }
 }
