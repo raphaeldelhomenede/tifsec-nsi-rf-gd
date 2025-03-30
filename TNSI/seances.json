@@ -152,19 +152,31 @@
             [
                 {
                     "github": "https://github.com/raphaeldelhomenede/tifsec-nsi-rf-gd/blob/main/TNSI"
-                }
-            ],
-            [
-                [
-                    [
-                        [73, 76],
-                        [76, 79]
-                    ],
-                    [
-                        ["<h2>Séance ", " : Pratique BAC</h2>"],
-                        ["<h2>Séance ", " : Élèves absent</h2>"]
+                },
+                {
+                    "seances": [
+                        {
+                          "range": [0, 73],
+                          "text": "<iframe src=\"https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/seance%d.html\" class=\"tifsec1\" frameborder=\"0\"></iframe>"
+                        },
+                        {
+                          "range": [73, 76],
+                          "text": "<h2>Séance %d : Pratique BAC</h2>"
+                        },
+                        {
+                          "range": [76, 79],
+                          "text": "<h2>Séance %d : Élèves absent</h2>"
+                        },
+                        {
+                          "range": [79, 87],
+                          "text": "<iframe src=\"https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/seance%d.html\" class=\"tifsec1\" frameborder=\"0\"></iframe>"
+                        },
+                        {
+                          "range": [87, 107],
+                          "text": "<h2>Séance en cours de construction</h2>"
+                        }
                     ]
-                ]
+                }
             ]
         ]
     ]
