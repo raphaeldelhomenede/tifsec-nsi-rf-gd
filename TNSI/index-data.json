@@ -18,7 +18,10 @@
         "link4": "?font=BakaTaida",
         "link5": "<script>window.location.href = 'https://' + window.location.host + window.location.pathname + '?font=BakaTaida';</script>",
         "toto1": "toto1.php",
-        "link6": ["<script>window.location.href = window.location.protocol + '//' + window.location.host + window.location.pathname + '?session=", "&font=BakaTaida';</script>"],
+        "link6": [
+            ["https://tifsec-nsi.rf.gd/TNSI/?session=", "&font=BakaTaida"],
+            ["http://localhost/document/TNSI/?session=", "&font=BakaTaida"]
+        ],
         "link7": ["<script>let targetURL6566rhgtrdhr658th = window.location.protocol + '//' + window.location.host + window.location.pathname + '?font=BakaTaida#", 
                   "';window.location.replace(targetURL6566rhgtrdhr658th);</script>"]
     },
@@ -41,7 +44,10 @@
         "link4": "?font=yunranofont",
         "link5": "<script>window.location.href = 'https://' + window.location.host + window.location.pathname + '?font=yunranofont';</script>",
         "toto1": "toto2.php",
-        "link6": ["<script>window.location.href = window.location.protocol + '//' + window.location.host + window.location.pathname + '?session=", "&font=yunranofont';</script>"],
+        "link6": [
+            ["https://tifsec-nsi.rf.gd/TNSI/?session=", "&font=yunranofont"],
+            ["http://localhost/document/TNSI/?session=", "&font=yunranofont"]
+        ],
         "link7": ["<script>let targetURL6566rhgtrdhr658th = window.location.protocol + '//' + window.location.host + window.location.pathname + '?font=yunranofont#", 
                   "';window.location.replace(targetURL6566rhgtrdhr658th);</script>"]
     },
@@ -64,7 +70,10 @@
         "link4": "",
         "link5": "<<script>window.location.href = 'https://' + window.location.host + window.location.pathname;</script>",
         "toto1": "toto.php",
-        "link6": ["<script>window.location.href = window.location.protocol + '//' + window.location.host + window.location.pathname + '?session=", "';</script>"],
+        "link6": [
+            ["https://tifsec-nsi.rf.gd/TNSI/?session=", ""],
+            ["http://localhost/document/TNSI/?session=", ""]
+        ],
         "link7": ["<script>let targetURL6566rhgtrdhr658th = window.location.protocol + '//' + window.location.host + window.location.pathname + '#", 
                   "';window.location.replace(targetURL6566rhgtrdhr658th);</script>"]
     }
