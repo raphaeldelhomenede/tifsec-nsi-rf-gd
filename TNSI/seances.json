@@ -153,6 +153,18 @@
                 {
                     "github": "https://github.com/raphaeldelhomenede/tifsec-nsi-rf-gd/blob/main/TNSI"
                 }
+            ],
+            [
+                [
+                    [
+                        [73, 76],
+                        [76, 79]
+                    ],
+                    [
+                        ["<h2>Séance ", " : Pratique BAC</h2>"],
+                        ["<h2>Séance ", " : Élèves absent</h2>"]
+                    ]
+                ]
             ]
         ]
     ]
