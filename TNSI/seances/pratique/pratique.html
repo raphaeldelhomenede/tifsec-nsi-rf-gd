@@ -9,7 +9,7 @@
         window.onload = function() {
             const images = document.querySelectorAll('img');
             images.forEach(image => {
-                image.src = image.alt;
+                image.alt = image.src;
             });
         }
     </script>
