@@ -160,6 +160,17 @@
                     {
                         "github": "https://github.com/raphaeldelhomenede/tifsec-nsi-rf-gd/blob/main/TNSI"
                     }
+                ],
+                [
+                    {
+                        "calendar": "Calendrier de cours",
+                        "bo": "BO",
+                        "sujetA": "Sujet A",
+                        "sujetB": "Sujet B",
+                        "ressources": "Python par les jeux",
+                        "revision": "Pour réviser",
+                        "pratique.html": "Pratique"
+                    }
                 ]
             ]
         ]
