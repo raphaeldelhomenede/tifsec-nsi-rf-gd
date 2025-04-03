@@ -87,7 +87,13 @@
         {"date": "21/03/2025", "titre": "Séance 69 : Exploration des FPGA et de la logique programmable", "id": "seance69"},
         {"date": "26/03/2025", "titre": "Séance 70 : Les Mémoires et Stockage - Escape Game Numérique", "id": "seance70"},
         {"date": "27/03/2025", "titre": "Séance 71 : L’Intelligence Artificielle dans les Systèmes Embarqués", "id": "seance71"},
-        {"date": "28/03/2025", "titre": "Séance 72 : Challenge NSI - Mission \"Ultimate Tech Lab\"", "id": "seance72"}
+        {"date": "28/03/2025", "titre": "Séance 72 : Challenge NSI - Mission \"Ultimate Tech Lab\"", "id": "seance72"},
+        {"date": "02/04/2025", "titre": "Séance 73 : Pratique BAC", "id": "seance73"},
+        {"date": "03/04/2025", "titre": "Séance 74 : Pratique BAC", "id": "seance74"},
+        {"date": "04/04/2025", "titre": "Séance 75 : Pratique BAC", "id": "seance75"},
+        {"date": "09/04/2025", "titre": "Séance 76 : Absence élèves", "id": "seance76"},
+        {"date": "10/04/2025", "titre": "Séance 77 : Absence élèves", "id": "seance77"},
+        {"date": "11/04/2025", "titre": "Séance 78 : Absence élèves", "id": "seance78"}
     ],
     {
         "calendar": "Calendrier de cours des Tle NSI - 2024/2025",
