@@ -152,11 +152,6 @@
                 "BakaTaida": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/download.html?font=BakaTaida",
                 "yunranofont": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/download.html?font=yunranofont",
                 "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/download.html"
-            },
-            "IlFautAvoirDesCouillesPourDireLaVérité": {
-                "BakaTaida": "https://thesevendeadlysinsds.github.io/audio-mp3/FDownloader.Net_AQM3ZWCxyv86fpu9vuBvE0tYUudTFii5zbQHo9-NUwhJgdJIuQg2hl6DYqP51e29zf9KpC6AjcyRv_cteJHd2fET_720p_(HD).mp4",
-                "yunranofont": "https://thesevendeadlysinsds.github.io/audio-mp3/FDownloader.Net_AQM3ZWCxyv86fpu9vuBvE0tYUudTFii5zbQHo9-NUwhJgdJIuQg2hl6DYqP51e29zf9KpC6AjcyRv_cteJHd2fET_720p_(HD).mp4",
-                "default": "https://thesevendeadlysinsds.github.io/audio-mp3/FDownloader.Net_AQM3ZWCxyv86fpu9vuBvE0tYUudTFii5zbQHo9-NUwhJgdJIuQg2hl6DYqP51e29zf9KpC6AjcyRv_cteJHd2fET_720p_(HD).mp4"
             }
         },
         [
@@ -167,7 +162,9 @@
                         "Site_T": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/Site_T/",
                         "Site_1": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/Site_1/",
                         "Site_SNT": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/SNT/",
-                        "Anciennes Versions": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/anciennes-versions/"
+                        "Anciennes Versions": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/anciennes-versions/",
+                        "Nouvelles Versions": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/nouvelles-versions/",
+                        "IlFautAvoirLesCouillesPourDireLaVérité": "https://t.co/8fbiPo9TOq"
                     },
                     {
                         "calendar": "Calendrier de cours",
