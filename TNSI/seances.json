@@ -152,6 +152,11 @@
                 "BakaTaida": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/download.html?font=BakaTaida",
                 "yunranofont": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/download.html?font=yunranofont",
                 "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/download.html"
+            },
+            "Réseaux": {
+                "BakaTaida": "https://raphaeldelhomenede.github.io/tifsec/tifsec.github.io/R%C3%A9seaux/",
+                "yunranofont": "https://raphaeldelhomenede.github.io/tifsec/tifsec.github.io/R%C3%A9seaux/",
+                "default": "https://raphaeldelhomenede.github.io/tifsec/tifsec.github.io/R%C3%A9seaux/"
             }
         },
         [
