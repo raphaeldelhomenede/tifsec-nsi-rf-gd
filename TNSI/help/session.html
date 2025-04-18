@@ -67,6 +67,11 @@
       const font = document.getElementById('fontSelect').value;
       const baseUrl = "https://tifsec-nsi.rf.gd/TNSI/";
 
+      if (!session) {
+        result.innerHTML = `<a href="${baseUrl}" target="_blank">${baseUrl}</a>`;
+        return;
+      }
+
       const params = new URLSearchParams();
       params.append("session", session);
       if (font !== "Default") {
