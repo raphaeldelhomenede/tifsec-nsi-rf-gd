@@ -26,9 +26,14 @@
     }
     #result {
       margin-top: 1.5rem;
-      word-break: break-all;
+    }
+    #result a {
+      color: #0077cc;
+      text-decoration: none;
       font-weight: bold;
-      color: #333;
+    }
+    #result a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
@@ -36,7 +41,7 @@
   <div class="container">
     <form id="tnsiForm">
       <label for="sessionInput">Session (ex: id:today)</label>
-      <input type="text" id="sessionInput" name="session" placeholder="id:today">
+      <input type="text" id="sessionInput" name="session" placeholder="id:today" required>
 
       <label for="fontSelect">Choisir une police :</label>
       <select id="fontSelect" name="font">
@@ -60,20 +65,21 @@
 
       const session = document.getElementById('sessionInput').value.trim();
       const font = document.getElementById('fontSelect').value;
-
       const baseUrl = "https://tifsec-nsi.rf.gd/TNSI/";
-      const params = new URLSearchParams();
 
-      if (session) {
-        params.append("session", session);
+      if (!session) {
+        result.innerHTML = "<span style='color:red'>Veuillez entrer une session.</span>";
+        return;
       }
-      if (font) {
+
+      const params = new URLSearchParams();
+      params.append("session", session);
+      if (font !== "Default") {
         params.append("font", font);
       }
 
       const fullUrl = `${baseUrl}?${params.toString()}`;
-      result.textContent = fullUrl;
-      result.style.color = "blue";
+      result.innerHTML = `<a href="${fullUrl}" target="_blank">${fullUrl}</a>`;
     });
   </script>
 </body>
