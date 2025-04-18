@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Options Dynamiques</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 2rem;
+      background: #f7f7f7;
+    }
+    .container {
+      max-width: 400px;
+      margin: auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    label, select, input {
+      display: block;
+      width: 100%;
+      margin-top: 1rem;
+      padding: 0.5rem;
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <label for="mainSelect">Choisir une option :</label>
+    <select id="mainSelect">
+      <option value="">-- Sélectionner --</option>
+      <option value="session">Session</option>
+      <option value="font">Font</option>
+    </select>
+
+    <div id="dynamicField"></div>
+  </div>
+
+  <script>
+    const mainSelect = document.getElementById('mainSelect');
+    const dynamicField = document.getElementById('dynamicField');
+
+    mainSelect.addEventListener('change', function () {
+      const value = this.value;
+      dynamicField.innerHTML = ''; // Clear previous
+
+      if (value === 'session') {
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.placeholder = 'Nom de session';
+        dynamicField.appendChild(input);
+      } else if (value === 'font') {
+        const fontSelect = document.createElement('select');
+        const fonts = ['Default', 'BakaTaida', 'yunranofont'];
+
+        fonts.forEach(font => {
+          const option = document.createElement('option');
+          option.value = font;
+          option.textContent = font;
+          fontSelect.appendChild(option);
+        });
+
+        dynamicField.appendChild(fontSelect);
+      }
+    });
+  </script>
+</body>
+</html>
