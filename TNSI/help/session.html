@@ -43,7 +43,6 @@
       <label for="sessionType">Type de session :</label>
       <select id="sessionType">
         <option value="text">Texte personnalisé</option>
-        <option value="select">Liste prédéfinie</option>
         <option value="date">Date</option>
       </select>
 
@@ -82,7 +81,6 @@
         sessionField.innerHTML = `
           <select id="sessionInput">
             <option value="id:today">id:today</option>
-            <option value="id:demo">id:demo</option>
             <option value="id:test">id:test</option>
           </select>`;
       } else if (type === "date") {
