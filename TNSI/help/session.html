@@ -1,70 +1,79 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Options Dynamiques</title>
+  <meta charset="UTF-8">
+  <title>Générateur d'URL TNSI</title>
   <style>
     body {
       font-family: sans-serif;
+      background-color: #f9f9f9;
       padding: 2rem;
-      background: #f7f7f7;
     }
     .container {
-      max-width: 400px;
+      max-width: 500px;
       margin: auto;
       background: white;
       padding: 2rem;
       border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
     }
-    label, select, input {
+    label, select, input, button {
       display: block;
       width: 100%;
       margin-top: 1rem;
-      padding: 0.5rem;
+      padding: 0.6rem;
       font-size: 1rem;
+    }
+    #result {
+      margin-top: 1.5rem;
+      word-break: break-all;
+      font-weight: bold;
+      color: #333;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <label for="mainSelect">Choisir une option :</label>
-    <select id="mainSelect">
-      <option value="">-- Sélectionner --</option>
-      <option value="session">Session</option>
-      <option value="font">Font</option>
-    </select>
+    <form id="tnsiForm">
+      <label for="sessionInput">Session (ex: id:today)</label>
+      <input type="text" id="sessionInput" name="session" placeholder="id:today">
 
-    <div id="dynamicField"></div>
+      <label for="fontSelect">Choisir une police :</label>
+      <select id="fontSelect" name="font">
+        <option value="Default">Default</option>
+        <option value="BakaTaida">BakaTaida</option>
+        <option value="yunranofont">yunranofont</option>
+      </select>
+
+      <button type="submit">Générer le lien</button>
+    </form>
+
+    <div id="result"></div>
   </div>
 
   <script>
-    const mainSelect = document.getElementById('mainSelect');
-    const dynamicField = document.getElementById('dynamicField');
+    const form = document.getElementById('tnsiForm');
+    const result = document.getElementById('result');
 
-    mainSelect.addEventListener('change', function () {
-      const value = this.value;
-      dynamicField.innerHTML = ''; // Clear previous
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
 
-      if (value === 'session') {
-        const input = document.createElement('input');
-        input.type = 'text';
-        input.placeholder = 'Nom de session';
-        dynamicField.appendChild(input);
-      } else if (value === 'font') {
-        const fontSelect = document.createElement('select');
-        const fonts = ['Default', 'BakaTaida', 'yunranofont'];
+      const session = document.getElementById('sessionInput').value.trim();
+      const font = document.getElementById('fontSelect').value;
 
-        fonts.forEach(font => {
-          const option = document.createElement('option');
-          option.value = font;
-          option.textContent = font;
-          fontSelect.appendChild(option);
-        });
+      const baseUrl = "https://tifsec-nsi.rf.gd/TNSI/";
+      const params = new URLSearchParams();
 
-        dynamicField.appendChild(fontSelect);
+      if (session) {
+        params.append("session", session);
       }
+      if (font) {
+        params.append("font", font);
+      }
+
+      const fullUrl = `${baseUrl}?${params.toString()}`;
+      result.textContent = fullUrl;
+      result.style.color = "blue";
     });
   </script>
 </body>
