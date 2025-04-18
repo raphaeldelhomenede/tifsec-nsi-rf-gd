@@ -103,11 +103,11 @@
 
       const params = new URLSearchParams();
 
-      // Ajouter session uniquement si elle est remplie
       if (session) {
-        // Pour les dates, ajouter le préfixe "id:" si tu veux
+        // Pour les dates, reformater en jj/mm/aaaa et ajouter "id:"
         if (sessionType.value === "date") {
-          session = "id:" + session;
+          const [year, month, day] = session.split("-");
+          session = `${day}/${month}/${year}`;
         }
         params.append("session", session);
       }
