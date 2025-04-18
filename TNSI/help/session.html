@@ -69,6 +69,11 @@
 
       if (!session) {
         result.innerHTML = `<a href="${baseUrl}" target="_blank">${baseUrl}</a>`;
+        const params = new URLSearchParams();
+        params.append("session", session);
+        if (font !== "Default") {
+          params.append("font", font);
+        }
         return;
       }
 
