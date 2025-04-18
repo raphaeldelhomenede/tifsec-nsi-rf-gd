@@ -40,8 +40,17 @@
 <body>
   <div class="container">
     <form id="tnsiForm">
-      <label for="sessionInput">Session</label>
-      <input type="text" id="sessionInput" name="session" placeholder="entre la session que vous voulez!">
+      <label for="sessionType">Type de session :</label>
+      <select id="sessionType">
+        <option value="text">Texte personnalisé</option>
+        <option value="select">Liste prédéfinie</option>
+        <option value="date">Date</option>
+      </select>
+
+      <div id="sessionField">
+        <!-- Champ dynamique ici -->
+        <input type="text" id="sessionInput" placeholder="Entrez la session...">
+      </div>
 
       <label for="fontSelect">Choisir une police :</label>
       <select id="fontSelect" name="font">
@@ -59,30 +68,57 @@
   <script>
     const form = document.getElementById('tnsiForm');
     const result = document.getElementById('result');
-    
+    const sessionType = document.getElementById('sessionType');
+    const sessionField = document.getElementById('sessionField');
+
+    // Fonction pour afficher le bon champ selon le type sélectionné
+    function updateSessionInput() {
+      const type = sessionType.value;
+      sessionField.innerHTML = "";
+
+      if (type === "text") {
+        sessionField.innerHTML = `<input type="text" id="sessionInput" placeholder="Entrez la session...">`;
+      } else if (type === "select") {
+        sessionField.innerHTML = `
+          <select id="sessionInput">
+            <option value="id:today">id:today</option>
+            <option value="id:demo">id:demo</option>
+            <option value="id:test">id:test</option>
+          </select>`;
+      } else if (type === "date") {
+        sessionField.innerHTML = `<input type="date" id="sessionInput">`;
+      }
+    }
+
+    // Mettre à jour au changement de type
+    sessionType.addEventListener('change', updateSessionInput);
+    // Initialiser
+    updateSessionInput();
+
     form.addEventListener('submit', function(e) {
       e.preventDefault();
-    
-      const session = document.getElementById('sessionInput').value.trim();
+
+      const sessionInput = document.getElementById('sessionInput');
+      let session = sessionInput.value.trim();
       const font = document.getElementById('fontSelect').value;
       const baseUrl = "https://tifsec-nsi.rf.gd/TNSI/";
-    
+
       const params = new URLSearchParams();
-    
+
       // Ajouter session uniquement si elle est remplie
       if (session) {
+        // Pour les dates, ajouter le préfixe "id:" si tu veux
+        if (sessionType.value === "date") {
+          session = "id:" + session;
+        }
         params.append("session", session);
       }
-    
-      // Ajouter font uniquement si ≠ Default
+
       if (font !== "Default") {
         params.append("font", font);
       }
-    
-      // Construire l'URL
+
       const fullUrl = params.toString() ? `${baseUrl}?${params.toString()}` : baseUrl;
-    
-      // Afficher le lien cliquable
       result.innerHTML = `<a href="${fullUrl}" target="_blank">${fullUrl}</a>`;
     });
   </script>
