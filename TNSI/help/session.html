@@ -46,6 +46,12 @@
         <option value="date">Date</option>
       </select>
 
+      <label for="popularSessions">Sessions populaires :</label>
+      <div id="popularSessions" style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem;">
+        <!-- Les boutons seront ajoutés ici avec JS -->
+      </div>
+
+
       <div id="sessionField">
         <!-- Champ dynamique ici -->
         <input type="text" id="sessionInput" placeholder="Entrez la session...">
@@ -118,6 +124,41 @@
 
       const fullUrl = params.toString() ? `${baseUrl}?${params.toString()}` : baseUrl;
       result.innerHTML = `<a href="${fullUrl}" target="_blank">${fullUrl}</a>`;
+    });
+
+    // Liste des sessions populaires
+    const popularSessionList = [
+      "bo", "sujetA", "sujetB", "ressources", "revision", "pratique.html",
+      "Réseaux", "id:today", "today", "github", "Site_T", "Site_1", "Site_SNT",
+      "Anciennes Versions", "Nouvelles Versions",
+      "IlFautAvoirLesCouillesPourDireLaVérité",
+      "pycharm", "wampserver", "FirefoxDeveloperEdition", "vscode", "download",
+      "programme1", "programme2", "programme3", "programme4"
+    ];
+    
+    const popularContainer = document.getElementById("popularSessions");
+    
+    // Générer les boutons et gérer les clics
+    popularSessionList.forEach(item => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.textContent = item;
+      btn.style.padding = "0.4rem 0.7rem";
+      btn.style.fontSize = "0.85rem";
+      btn.style.borderRadius = "6px";
+      btn.style.border = "1px solid #ccc";
+      btn.style.background = "#eee";
+      btn.style.cursor = "pointer";
+    
+      btn.addEventListener("click", () => {
+        updateSessionInput(); // s'assurer que le champ est affiché
+        const sessionInput = document.getElementById("sessionInput");
+        if (sessionInput) {
+          sessionInput.value = item;
+        }
+      });
+    
+      popularContainer.appendChild(btn);
     });
   </script>
 </body>
