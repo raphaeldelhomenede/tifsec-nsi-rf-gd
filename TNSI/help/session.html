@@ -43,14 +43,9 @@
       <label for="sessionType">Type de session :</label>
       <select id="sessionType">
         <option value="text">Texte personnalisé</option>
+        <option value="popular">Session populaire</option>
         <option value="date">Date</option>
       </select>
-
-      <label for="popularSessions">Sessions populaires :</label>
-      <div id="popularSessions" style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem;">
-        <!-- Les boutons seront ajoutés ici avec JS -->
-      </div>
-
 
       <div id="sessionField">
         <!-- Champ dynamique ici -->
@@ -76,21 +71,48 @@
     const sessionType = document.getElementById('sessionType');
     const sessionField = document.getElementById('sessionField');
 
-    // Fonction pour afficher le bon champ selon le type sélectionné
     function updateSessionInput() {
       const type = sessionType.value;
       sessionField.innerHTML = "";
-
+    
       if (type === "text") {
         sessionField.innerHTML = `<input type="text" id="sessionInput" placeholder="Entrez la session...">`;
-      } else if (type === "select") {
-        sessionField.innerHTML = `
-          <select id="sessionInput">
-            <option value="id:today">id:today</option>
-            <option value="id:test">id:test</option>
-          </select>`;
       } else if (type === "date") {
         sessionField.innerHTML = `<input type="date" id="sessionInput">`;
+      } else if (type === "popular") {
+        const container = document.createElement("div");
+        container.style.display = "flex";
+        container.style.flexWrap = "wrap";
+        container.style.gap = "0.5rem";
+        container.style.marginTop = "0.5rem";
+    
+        popularSessionList.forEach(item => {
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.textContent = item;
+          btn.style.padding = "0.4rem 0.7rem";
+          btn.style.fontSize = "0.85rem";
+          btn.style.borderRadius = "6px";
+          btn.style.border = "1px solid #ccc";
+          btn.style.background = "#eee";
+          btn.style.cursor = "pointer";
+    
+          btn.addEventListener("click", () => {
+            // Créer un champ caché pour transmettre la valeur
+            let hiddenInput = document.getElementById("sessionInput");
+            if (!hiddenInput) {
+              hiddenInput = document.createElement("input");
+              hiddenInput.type = "hidden";
+              hiddenInput.id = "sessionInput";
+              container.appendChild(hiddenInput);
+            }
+            hiddenInput.value = item;
+          });
+    
+          container.appendChild(btn);
+        });
+    
+        sessionField.appendChild(container);
       }
     }
 
@@ -124,41 +146,6 @@
 
       const fullUrl = params.toString() ? `${baseUrl}?${params.toString()}` : baseUrl;
       result.innerHTML = `<a href="${fullUrl}" target="_blank">${fullUrl}</a>`;
-    });
-
-    // Liste des sessions populaires
-    const popularSessionList = [
-      "bo", "sujetA", "sujetB", "ressources", "revision", "pratique.html",
-      "Réseaux", "id:today", "today", "github", "Site_T", "Site_1", "Site_SNT",
-      "Anciennes Versions", "Nouvelles Versions",
-      "IlFautAvoirLesCouillesPourDireLaVérité",
-      "pycharm", "wampserver", "FirefoxDeveloperEdition", "vscode", "download",
-      "programme1", "programme2", "programme3", "programme4"
-    ];
-    
-    const popularContainer = document.getElementById("popularSessions");
-    
-    // Générer les boutons et gérer les clics
-    popularSessionList.forEach(item => {
-      const btn = document.createElement("button");
-      btn.type = "button";
-      btn.textContent = item;
-      btn.style.padding = "0.4rem 0.7rem";
-      btn.style.fontSize = "0.85rem";
-      btn.style.borderRadius = "6px";
-      btn.style.border = "1px solid #ccc";
-      btn.style.background = "#eee";
-      btn.style.cursor = "pointer";
-    
-      btn.addEventListener("click", () => {
-        updateSessionInput(); // s'assurer que le champ est affiché
-        const sessionInput = document.getElementById("sessionInput");
-        if (sessionInput) {
-          sessionInput.value = item;
-        }
-      });
-    
-      popularContainer.appendChild(btn);
     });
   </script>
 </body>
