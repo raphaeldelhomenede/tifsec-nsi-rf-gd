@@ -88,39 +88,40 @@
       } else if (type === "date") {
         sessionField.innerHTML = `<input type="date" id="sessionInput">`;
       } else if (type === "popular") {
-        const container = document.createElement("div");
-        container.style.display = "flex";
-        container.style.flexWrap = "wrap";
-        container.style.gap = "0.5rem";
-        container.style.marginTop = "0.5rem";
-    
+        const select = document.createElement("select");
+        select.id = "sessionInput";
+        select.style.marginTop = "0.5rem";
+        select.style.padding = "0.5rem";
+        select.style.fontSize = "1rem";
+      
+        const defaultOption = document.createElement("option");
+        defaultOption.textContent = "Choisir une session populaire...";
+        defaultOption.disabled = true;
+        defaultOption.selected = true;
+        select.appendChild(defaultOption);
+      
         popularSessionList.forEach(item => {
-          const btn = document.createElement("button");
-          btn.type = "button";
-          btn.textContent = item;
-          btn.style.padding = "0.4rem 0.7rem";
-          btn.style.fontSize = "0.85rem";
-          btn.style.borderRadius = "6px";
-          btn.style.border = "1px solid #ccc";
-          btn.style.background = "#eee";
-          btn.style.cursor = "pointer";
-    
-          btn.addEventListener("click", () => {
-            // Créer un champ caché pour transmettre la valeur
-            let hiddenInput = document.getElementById("sessionInput");
-            if (!hiddenInput) {
-              hiddenInput = document.createElement("input");
-              hiddenInput.type = "hidden";
-              hiddenInput.id = "sessionInput";
-              container.appendChild(hiddenInput);
-            }
-            hiddenInput.value = item;
-          });
-    
-          container.appendChild(btn);
+          const opt = document.createElement("option");
+          opt.value = item;
+          opt.textContent = item;
+          select.appendChild(opt);
         });
-    
-        sessionField.appendChild(container);
+      
+        sessionField.appendChild(select);
+      
+        // Génère le lien automatiquement au choix
+        select.addEventListener("change", () => {
+          const session = select.value;
+          const font = document.getElementById("fontSelect").value;
+          const baseUrl = "https://tifsec-nsi.rf.gd/TNSI/";
+      
+          const params = new URLSearchParams();
+          if (session) params.append("session", session);
+          if (font !== "Default") params.append("font", font);
+      
+          const fullUrl = params.toString() ? `${baseUrl}?${params.toString()}` : baseUrl;
+          result.innerHTML = `<a href="${fullUrl}" target="_blank">${fullUrl}</a>`;
+        });
       }
     }
 
