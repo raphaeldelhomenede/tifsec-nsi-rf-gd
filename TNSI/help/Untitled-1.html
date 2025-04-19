@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Générateur de fond TNSI</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      height: 100vh;
+      align-items: center;
+      justify-content: center;
+      background: #f0f0f0;
+      margin: 0;
+    }
+
+    .box {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.7rem;
+      font-size: 1rem;
+      margin-top: 1rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      margin-top: 1rem;
+      padding: 0.7rem 1.5rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .url-preview {
+      margin-top: 1rem;
+      word-break: break-all;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <h2>Générateur d’URL avec fond</h2>
+    <input type="url" id="imageUrl" placeholder="Colle ici le lien de ton image">
+    <button onclick="generate()">Générer le lien</button>
+    <div class="url-preview" id="result"></div>
+  </div>
+
+  <script>
+    function generate() {
+      const url = document.getElementById('imageUrl').value.trim();
+      if (!url.startsWith("http")) {
+        alert("Entre un lien valide !");
+        return;
+      }
+
+      const finalUrl = `https://tifsec-nsi.rf.gd/TNSI/?background=${encodeURIComponent(url)}`;
+      document.getElementById('result').innerHTML = `
+        <p>🔗 Lien généré :</p>
+        <a href="${finalUrl}" target="_blank">${finalUrl}</a>
+      `;
+    }
+  </script>
+
+</body>
+</html>
