@@ -59,6 +59,9 @@
         <option value="yunranofont">yunranofont</option>
       </select>
 
+      <label for="bgInput">Image de fond (URL) :</label>
+      <input type="url" id="bgInput" placeholder="https://exemple.com/image.png">
+
       <button type="submit">Générer le lien</button>
     </form>
 
@@ -156,6 +159,14 @@
       const fullUrl = params.toString() ? `${baseUrl}?${params.toString()}` : baseUrl;
       result.innerHTML = `<a href="${fullUrl}" target="_blank">${fullUrl}</a>`;
     });
+
+    const bgInput = document.getElementById('bgInput').value.trim();
+
+    if (bgInput) {
+      params.append("background", bgInput);
+    }
+    const bgInput = document.getElementById("bgInput").value.trim();
+    if (bgInput) params.append("background", bgInput);
   </script>
 </body>
 </html>
