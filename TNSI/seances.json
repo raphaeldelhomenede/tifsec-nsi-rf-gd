@@ -178,6 +178,33 @@
             },
             "Sujet4Exercice1": {
                 "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet4Exercice1.html"
+            },
+            "Sujet4Exercice2": {
+                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet4Exercice2.html"
+            },
+            "Sujet5Exercice1": {
+                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet5Exercice1.html"
+            },
+            "Sujet5Exercice2": {
+                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet5Exercice2.html"
+            },
+            "Sujet6Exercice1": {
+                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet6Exercice1.html"
+            },
+            "Sujet6Exercice2": {
+                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet6Exercice2.html"
+            },
+            "Sujet7Exercice1": {
+                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet7Exercice1.html"
+            },
+            "Sujet7Exercice2": {
+                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet7Exercice2.html"
+            },
+            "Sujet8Exercice1": {
+                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet8Exercice1.html"
+            },
+            "Sujet8Exercice2": {
+                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet8Exercice2.html"
             }
         },
         [
