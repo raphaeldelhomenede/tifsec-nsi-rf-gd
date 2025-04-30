@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Affichage Image Double en Pleine Largeur</title>
+  <title>Deux Images avec Espacement</title>
   <style>
     body {
       margin: 0;
@@ -13,21 +13,29 @@
     }
 
     .wrapper {
-      max-width: 100%;
-      padding: 20px;
       display: flex;
-      justify-content: center;
-      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 20px;
+      gap: 10%;
     }
 
     .image-double {
-      width: 50%;
-      max-width: 1200px; /* Largeur maximale confortable */
+      width: 45%;
       height: auto;
-      display: block;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       border: 1px solid #ccc;
+    }
+
+    @media (max-width: 800px) {
+      .image-double {
+        width: 100%;
+      }
+
+      .wrapper {
+        gap: 20px;
+      }
     }
   </style>
 </head>
@@ -36,12 +44,12 @@
     <img
       class="image-double"
       src="https://web.archive.org/web/20250330003636if_/https://tifsec.github.io/TNSI/pratique/1-2.png"
-      alt="Exercice TNSI 1-2"
+      alt="Exercice TNSI 1"
     />
     <img
       class="image-double"
       src="https://web.archive.org/web/20250330003636if_/https://tifsec.github.io/TNSI/pratique/1-2.png"
-      alt="Exercice TNSI 1-2"
+      alt="Exercice TNSI 2"
     />
   </div>
 </body>
