@@ -3,33 +3,41 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Image Responsive</title>
+  <title>Affichage Image Double en Pleine Largeur</title>
   <style>
     body {
       margin: 0;
-      padding: 20px;
+      padding: 0;
+      background-color: #f4f4f4;
       font-family: sans-serif;
-      background-color: #f9f9f9;
     }
 
-    .image-container {
+    .wrapper {
       max-width: 100%;
-      text-align: center;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
-    .image-container img {
+    .image-double {
       width: 100%;
+      max-width: 1200px; /* Largeur maximale confortable */
       height: auto;
-      max-width: 100%;
+      display: block;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       border: 1px solid #ccc;
-      border-radius: 8px;
     }
   </style>
 </head>
 <body>
-  <h1>Image Responsive</h1>
-  <div class="image-container">
-    <img src="https://web.archive.org/web/20250330003636if_/https://tifsec.github.io/TNSI/pratique/1-2.png" alt="Exercice TNSI" />
+  <div class="wrapper">
+    <img
+      class="image-double"
+      src="https://web.archive.org/web/20250330003636if_/https://tifsec.github.io/TNSI/pratique/1-2.png"
+      alt="Exercice TNSI 1-2"
+    />
   </div>
 </body>
 </html>
