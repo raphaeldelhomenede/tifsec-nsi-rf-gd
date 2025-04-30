@@ -175,6 +175,9 @@
             },
             "Sujet3Exercice2": {
                 "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet3Exercice2.html"
+            },
+            "Sujet4Exercice1": {
+                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet4Exercice1.html"
             }
         },
         [
