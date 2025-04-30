@@ -157,6 +157,12 @@
                 "BakaTaida": "https://raphaeldelhomenede.github.io/tifsec/tifsec.github.io/R%C3%A9seaux/",
                 "yunranofont": "https://raphaeldelhomenede.github.io/tifsec/tifsec.github.io/R%C3%A9seaux/",
                 "default": "https://raphaeldelhomenede.github.io/tifsec/tifsec.github.io/R%C3%A9seaux/"
+            },
+            "Sujet1Exercice2": {
+                "default": "https://web.archive.org/web/20250330003636if_/https://tifsec.github.io/TNSI/pratique/1-2.png"
+            },
+            "Sujet2Exercice2": {
+                "default": "https://web.archive.org/web/20250330003636if_/https://tifsec.github.io/TNSI/pratique/1-2.png"
             }
         },
         [
