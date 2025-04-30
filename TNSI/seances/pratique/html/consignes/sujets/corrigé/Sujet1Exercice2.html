@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sujet 1 Exercice 2 - Corrigé</title>
+  <style>
+    body {
+      background-color: #f9f9f9;
+      font-family: monospace, sans-serif;
+      padding: 20px;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    pre {
+      background-color: #272822;
+      color: #f8f8f2;
+      padding: 20px;
+      border-radius: 10px;
+      overflow-x: auto;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .download-link {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .download-link a {
+      text-decoration: none;
+      font-size: 16px;
+      color: #1a73e8;
+    }
+
+    .download-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>Sujet 1 Exercice 2 - Corrigé</h1>
+
+  <pre><code>def echange(tab, i, j):
+    """Echange les éléments d'indice i et j dans le tableau tab."""
+    temp = tab[i]
+    tab[i] = tab[j]
+    tab[j] = temp
+
+def tri_bulles(tab):
+    """Trie le tableau tab dans l'ordre croissant par la méthode du tri à bulles."""
+    n = len(tab)
+    for i in range(n - 1):
+        for j in range(n - 1 - i):
+            if  tab[j] > tab[j + 1]:
+                echange(tab, j, j+1)
+
+tab = []
+tri_bulles(tab)
+print(tab)</code></pre>
+
+  <div class="download-link">
+    📄 <a href="sujet%201%20exercice%202%20-%20corrigé.py" download>sujet 1 exercice 2 - corrigé.py</a>
+  </div>
+</body>
+</html>
