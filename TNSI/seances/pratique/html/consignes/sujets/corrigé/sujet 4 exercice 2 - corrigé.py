@@ -13,4 +13,4 @@ def crible(n):
                 multiple = multiple + i
     return premiers
 
-print(crible(5))
+print(crible(7))
