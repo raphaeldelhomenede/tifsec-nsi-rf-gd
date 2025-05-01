@@ -40,16 +40,16 @@
     premiers = []
     tab = [True] * n
     tab[0], tab[1] = False, False
-    for i in range(2, n):  # On commence à 2 car 0 et 1 ne sont pas premiers
+    for i in range(n):
         if tab[i]:
             premiers.append(i)
-            multiple = 2 * i  # On commence à 2*i pour ne pas annuler le nombre lui-même
-            while multiple &lt; n:
+            multiple = i * 1
+            while multiple < n:
                 tab[multiple] = False
                 multiple = multiple + i
     return premiers
 
-print(crible(5))  # Affiche : [2, 3]</code></pre>
+print(crible(7))</code></pre>
 
   <a href="sujet 4 exercice 2 - corrigé.py" download>Télécharger le fichier corrigé</a>
 </body>
