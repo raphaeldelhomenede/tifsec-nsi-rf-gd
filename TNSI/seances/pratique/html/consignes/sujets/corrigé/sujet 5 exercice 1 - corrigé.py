@@ -1,6 +1,6 @@
-def nbr_occurrences(lettres, chaine_de_caracteres):
+def nbr_occurrences(lettres=None, chaine_de_caracteres=None):
     if type(chaine_de_caracteres) != str or type(lettres) != str:
-        return "ceci est une chaine de caractères"
+        return "Ceci est une chaine de caractères"
     else:
         occurrences = 0
         for lettre in chaine_de_caracteres:
