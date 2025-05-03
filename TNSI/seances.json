@@ -208,6 +208,9 @@
             },
             "Sujet8Exercice2": {
                 "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet8Exercice2.html"
+            },
+            "chatGPT.com": {
+                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/chatGPT.com.html"
             }
         },
         [
