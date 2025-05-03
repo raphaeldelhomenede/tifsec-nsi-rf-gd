@@ -35,9 +35,9 @@
 </head>
 <body>
   <h1>Sujet 5 Exercice 1 - Corrigé</h1>
-  <pre><code>def nbr_occurrences(lettres, chaine_de_caracteres):
+  <pre><code>def nbr_occurrences(lettres=None, chaine_de_caracteres=None):
     if type(chaine_de_caracteres) != str or type(lettres) != str:
-        return "ceci est une chaine de caractères"
+        return "Ceci est une chaine de caractères"
     else:
         occurrences = 0
         for lettre in chaine_de_caracteres:
