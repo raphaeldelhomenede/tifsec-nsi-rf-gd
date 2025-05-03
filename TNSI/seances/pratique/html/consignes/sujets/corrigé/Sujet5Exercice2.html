@@ -36,7 +36,25 @@
 <body>
   <h1>Sujet 5 Exercice 2 - Corrigé</h1>
   <pre><code>
-    
+    """ Les consignes sont sur https://tifsec-nsi.rf.gd/TNSI/?session=Sujet5Exercice2 """
+def dichotomie(tab, x):
+    """
+    tab: tableau d'entiers trié dans l'ordre croissant
+    x : nombre entier
+    La fonction renvoie True si tab contient x et False sinon """
+    debut = 0
+    fin = len(tab) - 1
+    while debut <= fin:
+        m = (debut + fin) // 2
+        if x == tab[m]:
+            return True
+        if x > tab[m]:
+            debut = m + 1
+        else:
+            fin = m - 1
+    return False
+
+print(dichotomie([15, 16, 18, 19, 23, 24, 28, 29, 31, 33], 28))
   </code></pre>
 
   <a href="sujet 5 exercice 2 - corrigé.py" download>Télécharger le fichier corrigé</a>
