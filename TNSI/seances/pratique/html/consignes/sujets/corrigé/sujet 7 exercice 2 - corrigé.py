@@ -26,12 +26,6 @@ def fusion(tab1, tab2):
         i = i + 1
     return tab12
 
-class console:
-    @staticmethod
-    def log(*args):
-        print(*args)
-
-
-console.log(fusion([1, 2, 3], []))
-console.log(fusion([], []))
-console.log(fusion([1, 6, 10], [0, 7, 8, 9]))
+print(fusion([1, 2, 3], []))
+print(fusion([], []))
+print(fusion([1, 6, 10], [0, 7, 8, 9]))

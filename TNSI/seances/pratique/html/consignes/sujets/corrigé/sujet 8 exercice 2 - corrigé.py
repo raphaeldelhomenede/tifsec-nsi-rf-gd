@@ -33,10 +33,6 @@ def bon_parenthesage(ch):
                 p.depiler()
     return p.est_vide()
 
-class console:
-    def log(*args):
-        print(*args)
-
-console.log(bon_parenthesage("((()())(()))"))
-console.log(bon_parenthesage("())(()"))
-console.log(bon_parenthesage("(())(()"))
+print(bon_parenthesage("((()())(()))"))
+print(bon_parenthesage("())(()"))
+print(bon_parenthesage("(())(()"))

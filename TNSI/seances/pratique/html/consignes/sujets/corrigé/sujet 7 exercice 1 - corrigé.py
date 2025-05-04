@@ -8,12 +8,7 @@ def multiplication(n1, n2):
             var += n1
     return var
 
-class console:
-    @staticmethod
-    def log(*args):
-        print(*args)
-
-console.log(multiplication(3, 5))
-console.log(multiplication(-4, -8))
-console.log(multiplication(-2, 6))
-console.log(multiplication(-2, 0))
+print(multiplication(3, 5))
+print(multiplication(-4, -8))
+print(multiplication(-2, 6))
+print(multiplication(-2, 0))

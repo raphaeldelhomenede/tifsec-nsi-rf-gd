@@ -5,9 +5,5 @@ def recherche(tab, n):
         if i == n:
             return count
 
-class console:
-    def log(*args):
-        print(*args)
-
-console.log(recherche([2, 3, 4, 5, 6], 5))
-console.log(recherche([2, 3, 4, 6, 7], 5))
+print(recherche([2, 3, 4, 5, 6], 5))
+print(recherche([2, 3, 4, 6, 7], 5))
