@@ -36,7 +36,7 @@
 <body>
   <h1>Sujet 7 Exercice 1 - Corrigé</h1>
   <pre><code>
-  def multiplication(n1, n2):
+def multiplication(n1, n2):
     var = 0
     if (n1 < 0 and n2 < 0) or (n2 < 0 < n1):
         for _ in range(-n2):
@@ -46,11 +46,12 @@
             var += n1
     return var
 
-  class console:
-    def log(self):
-        print(self)
+class console:
+    @staticmethod
+    def log(*args):
+        print(*args)
 
-  console.log(multiplication(-2,0))
+console.log(multiplication(-2, 0))
   </code></pre>
 
   <a href="sujet 7 exercice 1 - corrigé.py" download>Télécharger le fichier corrigé</a>
