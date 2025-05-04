@@ -20,11 +20,28 @@
     }
 
     .image-double {
-      width: 80%;
+      width: 45%;
       height: auto;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       border: 1px solid #ccc;
+    }
+
+    image-double-left {
+      margin-right: 5%;
+    }
+
+    image-double-right {
+      margin-left: 5%;
+    }
+
+    @media (max-width: 800px) {
+      .image-double,
+      .image-double.second {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 20px;
+      }
     }
 
     .download-link {
@@ -48,7 +65,6 @@
     .download-link .btn-blue:hover {
       background-color: #155fa0;
     }
-
   </style>
 </head>
 <body>
