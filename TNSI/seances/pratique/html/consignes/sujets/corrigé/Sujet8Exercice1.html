@@ -36,7 +36,19 @@
 <body>
   <h1>Sujet 8 Exercice 1 - Corrigé</h1>
   <pre><code>
-    
+def recherche(tab, n):
+    count = -1
+    for i in tab:
+        count += 1
+        if i == n:
+            return count
+
+class console:
+    def log(*args):
+        print(*args)
+
+console.log(recherche([2, 3, 4, 5, 6], 5))
+console.log(recherche([2, 3, 4, 6, 7], 5))
   </code></pre>
 
   <a href="sujet 8 exercice 1 - corrigé.py" download>Télécharger le fichier corrigé</a>
