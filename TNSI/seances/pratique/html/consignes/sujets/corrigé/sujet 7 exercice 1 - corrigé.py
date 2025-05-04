@@ -13,4 +13,7 @@ class console:
     def log(*args):
         print(*args)
 
+console.log(multiplication(3, 5))
+console.log(multiplication(-4, -8))
+console.log(multiplication(-2, 6))
 console.log(multiplication(-2, 0))
