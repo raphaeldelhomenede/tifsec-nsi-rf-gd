@@ -22,7 +22,7 @@ class Pile:
 
 def bon_parenthesage(ch):
     """Renvoie un booléen indiquant si le chaine ch est bien parenthésée"""
-    p = pile()
+    p = Pile()
     for c in ch:
         if c == ...:
             p.empiler(c)
