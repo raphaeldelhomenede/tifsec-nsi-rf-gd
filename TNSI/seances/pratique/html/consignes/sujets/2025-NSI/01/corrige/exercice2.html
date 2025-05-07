@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Correction Sujet 2 - Exercice 2</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #f9f9f9;
+            padding: 20px;
+        }
+        pre {
+            background-color: #eee;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+        h1 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Correction Sujet 2 - Exercice 2:</h1>
+    <p>Cette fonction applique le principe de lecture d'un nombre (suite de Conway).</p>
+    <pre><code>def nombre_suivant(s):
+    '''Renvoie le nombre suivant de celui représenté par s
+    en appliquant le procédé de lecture.'''
+    resultat = ''
+    chiffre = s[0]
+    compte = 1
+    for i in range(1, len(s)): 
+        if s[i] == chiffre:
+            compte += 1
+        else:
+            resultat += str(compte) + chiffre
+            chiffre = s[i]
+            compte = 1
+    lecture_chiffre = str(compte) + chiffre
+    resultat += lecture_chiffre
+    return resultat
+    </code></pre>
+</body>
+</html>
