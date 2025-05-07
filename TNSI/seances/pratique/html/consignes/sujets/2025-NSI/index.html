@@ -47,27 +47,32 @@
 
   <script>
     const container = document.getElementById("contenu");
-
+  
     for (let i = 1; i <= 48; i++) {
       const num = i.toString().padStart(2, '0');
       const sujetDiv = document.createElement("div");
       sujetDiv.className = "sujet";
       sujetDiv.innerHTML = `<h2>Sujet ${num}</h2>`;
-
+  
       const exoDiv = document.createElement("div");
       exoDiv.className = "exercice";
       exoDiv.innerHTML = `
-        <h3>Sujet ${num}</h3>
-        <iframe src="${num}/25-NSI-${i}"></iframe>
+        <h3>Exercice 1</h3>
+        <iframe src="${num}/25-NSI-1.pdf"></iframe>
         <div class="liens">
-          🔗 <a href="${num}/25-NSI-${i}.py" target="_blank">Télécharger le fichier Python</a>
-          ✅ <a href="${num}/corrige/exercice1.html">Voir le corrigé de l'exercice1</a>
-          ✅ <a href="${num}/corrige/exercice2.html">Voir le corrigé de l'exercice2</a>
+          🔗 <a href="${num}/25-NSI-1.py" target="_blank">Télécharger le fichier Python</a>
+          ✅ <a href="corrige/exercice1.html">Voir le corrigé de l'exercice 1</a>
+        </div>
+  
+        <h3>Exercice 2</h3>
+        <iframe src="${num}/25-NSI-2.pdf"></iframe>
+        <div class="liens">
+          🔗 <a href="${num}/25-NSI-2.py" target="_blank">Télécharger le fichier Python</a>
+          ✅ <a href="corrige/exercice2.html">Voir le corrigé de l'exercice 2</a>
         </div>
       `;
       sujetDiv.appendChild(exoDiv);
-      
-
+  
       container.appendChild(sujetDiv);
     }
   </script>
