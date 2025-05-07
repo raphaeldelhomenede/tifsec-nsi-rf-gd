@@ -1,1 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Correction Sujet 1 - Exercice 1 : Fonction Python Fonction voisins_entrants</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        pre {
+            background-color: #eee;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            overflow-x: auto;
+        }
+        h1 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Correction Sujet 1 - Exercice 1 : Fonction Python <code>voisins_entrants</code></h1>
+    <p>Voici la correction de l'exercice demandé. La fonction <code>voisins_entrants</code> renvoie la liste des sommets ayant une arête dirigée vers le sommet <code>x</code>.</p>
+    <pre><code>def voisins_entrants(adj, x):
+    voisins = []
+    for i in range(len(adj)):
+        if x in adj[i]:
+            voisins.append(i)
+    return voisins
 
+# Exemples d'utilisation
+print(voisins_entrants([[1, 2], [2], [0], [0]], 0))  # [2, 3]
+print(voisins_entrants([[1, 2], [2], [0], [0]], 1))  # [0]
+    </code></pre>
+</body>
+</html>
