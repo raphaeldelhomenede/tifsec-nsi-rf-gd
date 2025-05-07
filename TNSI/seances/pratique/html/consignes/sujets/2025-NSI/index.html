@@ -43,6 +43,14 @@
 </head>
 <body>
   <h1>Sujets NSI - 48 Sujets, 2 exercices chacun</h1>
+  <div>
+    <label for="sujetSelect"><strong>Aller au sujet :</strong></label>
+    <select id="sujetSelect">
+      <option value="">-- Tous les sujets --</option>
+      <!-- Options générées par JS -->
+    </select>
+  </div>
+
   <div id="contenu"></div>
 
   <script>
@@ -68,6 +76,41 @@
   
       container.appendChild(sujetDiv);
     }
+      // Lecture du paramètre "sujet" dans l'URL
+  const params = new URLSearchParams(window.location.search);
+  const sujetParam = params.get("sujet");
+
+  // Créer les options du menu
+  const select = document.getElementById("sujetSelect");
+  for (let i = 1; i <= 48; i++) {
+    const num = i.toString().padStart(2, '0');
+    const option = document.createElement("option");
+    option.value = i;
+    option.textContent = `Sujet ${num}`;
+    if (sujetParam == i) option.selected = true;
+    select.appendChild(option);
+  }
+
+  // Rediriger si l'utilisateur choisit un autre sujet
+  select.addEventListener("change", () => {
+    const selected = select.value;
+    if (selected) {
+      window.location.href = `?sujet=${selected}`;
+    } else {
+      window.location.href = window.location.pathname; // reset sans paramètre
+    }
+  });
+
+  // Masquer les autres sujets si un sujet est demandé
+  if (sujetParam) {
+    const sujets = document.querySelectorAll(".sujet");
+    sujets.forEach((s, index) => {
+      const num = index + 1;
+      if (num != parseInt(sujetParam)) {
+        s.style.display = "none";
+      }
+    });
+  }
   </script>  
 </body>
 </html>
