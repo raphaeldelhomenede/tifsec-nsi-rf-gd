@@ -54,23 +54,19 @@
       sujetDiv.className = "sujet";
       sujetDiv.innerHTML = `<h2>Sujet ${num}</h2>`;
 
-      for (let ex = 1; ex <= 2; ex++) {
-        const pdf = `${num}/25-NSI-${ex}.pdf`;
-        const py = `${num}/25-NSI-${ex}.py`;
-        const correction = `corrige/exercice${ex}.html`;
-
-        const exoDiv = document.createElement("div");
-        exoDiv.className = "exercice";
-        exoDiv.innerHTML = `
-          <h3>Exercice ${ex}</h3>
-          <iframe src="${pdf}"></iframe>
-          <div class="liens">
-            🔗 <a href="${py}" target="_blank">Télécharger le fichier Python</a>
-            ✅ <a href="${correction}">Voir le corrigé</a>
-          </div>
-        `;
-        sujetDiv.appendChild(exoDiv);
-      }
+      const exoDiv = document.createElement("div");
+      exoDiv.className = "exercice";
+      exoDiv.innerHTML = `
+        <h3>Sujet ${num}</h3>
+        <iframe src="${num}/25-NSI-${i}"></iframe>
+        <div class="liens">
+          🔗 <a href="${num}/25-NSI-${i}.py" target="_blank">Télécharger le fichier Python</a>
+          ✅ <a href="${num}/corrige/exercice1.html">Voir le corrigé de l'exercice1</a>
+          ✅ <a href="${num}/corrige/exercice2.html">Voir le corrigé de l'exercice2</a>
+        </div>
+      `;
+      sujetDiv.appendChild(exoDiv);
+      
 
       container.appendChild(sujetDiv);
     }
