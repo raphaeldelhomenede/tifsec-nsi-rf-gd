@@ -245,6 +245,11 @@
                       "Sujet7Exercice1", "Sujet7Exercice2",
                       "Sujet8Exercice1", "Sujet8Exercice2",
                       "pratique/chatGPT.com"
+                    ],
+                    [
+                      {"date": "07/05/2025", "titre": "Séance 82 : Modèle Client-Serveur et P2P (Peer-to-Peer)", "id": "seance82"},
+                      {"date": "08/05/2025", "titre": "Victoire 1945", "id": "calendar", "class": "holiday"},
+                      {"date": "09/05/2025", "titre": "Séance 83 : Pont", "id": "seance83"}
                     ]
                 ]
             ]
