@@ -2,34 +2,39 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Exercices NSI</title>
+  <title>Sujets NSI</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 20px;
-      background-color: #f4f4f4;
+      background-color: #f9f9f9;
     }
-    .exercice {
-      background-color: white;
-      border-radius: 10px;
-      padding: 15px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      margin-bottom: 30px;
+    .sujet {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      margin-bottom: 40px;
+    }
+    h2 {
+      margin-bottom: 10px;
     }
     iframe {
       width: 100%;
-      height: 500px;
+      height: 400px;
       border: 1px solid #ccc;
       border-radius: 8px;
     }
+    .exercice {
+      margin-top: 20px;
+    }
     .liens {
-      margin-top: 10px;
+      margin-top: 8px;
     }
     a {
       color: #007BFF;
       text-decoration: none;
-      display: block;
-      margin-top: 5px;
+      margin-right: 15px;
     }
     a:hover {
       text-decoration: underline;
@@ -37,7 +42,7 @@
   </style>
 </head>
 <body>
-  <h1>Exercices NSI (01 à 48)</h1>
+  <h1>Sujets NSI - 48 Sujets, 2 exercices chacun</h1>
   <div id="contenu"></div>
 
   <script>
@@ -45,22 +50,29 @@
 
     for (let i = 1; i <= 48; i++) {
       const num = i.toString().padStart(2, '0');
-      const version = i % 2 === 0 ? 2 : 1;
-      const pdfFile = `25-NSI-${version}.pdf`;
-      const pyFile = `25-NSI-${version}.py`;
-      const correctionFile = `corrige/exercice${version}.html`; // global correction folder
+      const sujetDiv = document.createElement("div");
+      sujetDiv.className = "sujet";
+      sujetDiv.innerHTML = `<h2>Sujet ${num}</h2>`;
 
-      const exerciceDiv = document.createElement("div");
-      exerciceDiv.className = "exercice";
-      exerciceDiv.innerHTML = `
-        <h2>Exercice ${num}</h2>
-        <iframe src="${num}/${pdfFile}"></iframe>
-        <div class="liens">
-          🔗 <a href="${num}/${pyFile}" target="_blank">Télécharger le fichier Python</a>
-          ✅ <a href="${correctionFile}">Voir le corrigé</a>
-        </div>
-      `;
-      container.appendChild(exerciceDiv);
+      for (let ex = 1; ex <= 2; ex++) {
+        const pdf = `${num}/25-NSI-${ex}.pdf`;
+        const py = `${num}/25-NSI-${ex}.py`;
+        const correction = `corrige/exercice${ex}.html`;
+
+        const exoDiv = document.createElement("div");
+        exoDiv.className = "exercice";
+        exoDiv.innerHTML = `
+          <h3>Exercice ${ex}</h3>
+          <iframe src="${pdf}"></iframe>
+          <div class="liens">
+            🔗 <a href="${py}" target="_blank">Télécharger le fichier Python</a>
+            ✅ <a href="${correction}">Voir le corrigé</a>
+          </div>
+        `;
+        sujetDiv.appendChild(exoDiv);
+      }
+
+      container.appendChild(sujetDiv);
     }
   </script>
 </body>
