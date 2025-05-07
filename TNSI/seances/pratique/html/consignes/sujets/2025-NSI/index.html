@@ -57,17 +57,10 @@
       const exoDiv = document.createElement("div");
       exoDiv.className = "exercice";
       exoDiv.innerHTML = `
-        <h3>Exercice 1</h3>
-        <iframe src="${num}/25-NSI-1.pdf"></iframe>
+        <iframe src="${num}/25-NSI-${i}.pdf"></iframe>
         <div class="liens">
-          🔗 <a href="${num}/25-NSI-1.py" target="_blank">Télécharger le fichier Python</a>
+          🔗 <a href="${num}/25-NSI-${i}.py" target="_blank">Télécharger le fichier Python</a>
           ✅ <a href="corrige/exercice1.html">Voir le corrigé de l'exercice 1</a>
-        </div>
-  
-        <h3>Exercice 2</h3>
-        <iframe src="${num}/25-NSI-2.pdf"></iframe>
-        <div class="liens">
-          🔗 <a href="${num}/25-NSI-2.py" target="_blank">Télécharger le fichier Python</a>
           ✅ <a href="corrige/exercice2.html">Voir le corrigé de l'exercice 2</a>
         </div>
       `;
@@ -75,6 +68,6 @@
   
       container.appendChild(sujetDiv);
     }
-  </script>
+  </script>  
 </body>
 </html>
