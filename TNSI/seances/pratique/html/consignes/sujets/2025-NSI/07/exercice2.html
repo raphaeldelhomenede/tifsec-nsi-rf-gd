@@ -24,6 +24,7 @@
       color: #ffb86c;
       padding: 2px 6px;
       margin: 0 4px;
+      height: 25px;
     }
     .draggable {
       display: inline-block;
@@ -80,14 +81,14 @@ def fusion(tab1, tab2):<br>
 
 <h3>🧩 Blocs de code à glisser :</h3>
 <div id="pieces">
-  <span class="draggable" draggable="true" ondragstart="drag(event)" id="p1">tab1[i1]< n2</span>
-  <span class="draggable" draggable="true" ondragstart="drag(event)" id="p2">tab2[i2]</span>
-  <span class="draggable" draggable="true" ondragstart="drag(event)" id="p3">i2</span>
-  <span class="draggable" draggable="true" ondragstart="drag(event)" id="p4">i2 + 1</span>
-  <span class="draggable" draggable="true" ondragstart="drag(event)" id="p5">tab1[i1]</span>
-  <span class="draggable" draggable="true" ondragstart="drag(event)" id="p6">i + 1</span>
-  <span class="draggable" draggable="true" ondragstart="drag(event)" id="p7">i1 + 1</span>
-  <span class="draggable" draggable="true" ondragstart="drag(event)" id="p8">i + 1</span>
+  <span class="draggable" draggable="true" ondragstart="drag(event)" id="p1">tab2[i2]</span>
+  <span class="draggable" draggable="true" ondragstart="drag(event)" id="p2">i2 + 1</span>
+  <span class="draggable" draggable="true" ondragstart="drag(event)" id="p3">tab1[i1]</span>
+  <span class="draggable" draggable="true" ondragstart="drag(event)" id="p4">i1 + 1</span>
+  <span class="draggable" draggable="true" ondragstart="drag(event)" id="p5">i + 1</span>
+  <span class="draggable" draggable="true" ondragstart="drag(event)" id="p6">i2 < n2</span>
+  <span class="draggable" draggable="true" ondragstart="drag(event)" id="p7">tab2[i2]</span>
+  <span class="draggable" draggable="true" ondragstart="drag(event)" id="p8">tab1[i1]</span>
 </div>
 
 <button onclick="verifier()">Vérifier</button>
@@ -108,6 +109,18 @@ function drop(ev) {
     ev.target.appendChild(dropped);
   }
 }
+
+// Fonction pour mélanger les éléments dans le div "pieces"
+function melangerPieces() {
+  var pieces = document.querySelectorAll('.draggable');
+  var arrayPieces = Array.from(pieces);
+  arrayPieces.sort(() => Math.random() - 0.5); // Mélange aléatoire des blocs
+  var container = document.getElementById('pieces');
+  arrayPieces.forEach(piece => {
+    container.appendChild(piece); // Remet chaque bloc mélangé dans l'élément "pieces"
+  });
+}
+
 function verifier() {
   const zones = document.querySelectorAll(".drop");
   let correct = 0;
@@ -123,13 +136,16 @@ function verifier() {
   });
   const result = document.getElementById("resultat");
   if (correct === zones.length) {
-    result.textContent = "✅ Bien joué ! Tout est correct.";
+    result.textContent = "<a href="https://www.youtube.com/watch?v=ROmPjNbaweI">✅ Bien joué ! Tout est correct.</a>";
     result.className = "correct";
   } else {
     result.textContent = `❌ ${correct}/${zones.length} bons placements. Essaie encore.`;
     result.className = "incorrect";
   }
 }
+
+// Appel de la fonction de mélange des blocs dès le chargement de la page
+window.onload = melangerPieces;
 </script>
 
 </body>
