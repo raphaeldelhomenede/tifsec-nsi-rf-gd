@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Complète la fonction bon_parenthesage</title>
+  <title>Complète le code - Pile</title>
   <style>
     body {
       font-family: monospace;
@@ -41,16 +41,34 @@
       margin-top: 15px;
       padding: 5px 10px;
     }
-    .correct { color: limegreen; }
-    .incorrect { color: red; }
+    .correct { color: limegreen; font-weight: bold; }
+    .incorrect { color: red; font-weight: bold; }
   </style>
 </head>
 <body>
 
-<h2>🧩 Glisse les blocs de code aux bons endroits</h2>
+<h2>🧩 Complète la fonction <code>bon_parenthesage</code></h2>
 
 <div class="code-block">
 <code>
+class Pile:<br>
+    """Classe définissant une structure de pile."""<br>
+    def __init__(self):<br>
+        self.contenu = []<br><br>
+
+    def est_vide(self):<br>
+        """Renvoie un booléen indiquant si la pile est vide."""<br>
+        return self.contenu == []<br><br>
+
+    def empiler(self, v):<br>
+        """Place l'élément v au sommet de la pile."""<br>
+        self.contenu.append(v)<br><br>
+
+    def depiler(self):<br>
+        """Retire et renvoie l'élément placé au sommet de la pile."""<br>
+        assert not self.est_vide()<br>
+        return self.contenu.pop()<br><br>
+
 def bon_parenthesage(ch):<br>
     p = Pile()<br>
     for c in ch:<br>
@@ -58,20 +76,20 @@ def bon_parenthesage(ch):<br>
             p.empiler(c)<br>
         elif c == <span class="drop" data-answer="')'" ondrop="drop(event)" ondragover="allowDrop(event)"></span>:<br>
             if p.est_vide():<br>
-                <span class="drop" data-answer="return False" ondrop="drop(event)" ondragover="allowDrop(event)"></span><br>
+                return <span class="drop" data-answer="False" ondrop="drop(event)" ondragover="allowDrop(event)"></span><br>
             else:<br>
                 <span class="drop" data-answer="p.depiler()" ondrop="drop(event)" ondragover="allowDrop(event)"></span><br>
     return <span class="drop" data-answer="p.est_vide()" ondrop="drop(event)" ondragover="allowDrop(event)"></span>
 </code>
 </div>
 
-<h3>🧩 Blocs de code à glisser :</h3>
+<h3>🧩 Blocs à glisser :</h3>
 <div id="pieces">
   <span class="draggable" draggable="true" ondragstart="drag(event)" id="p1">'('</span>
   <span class="draggable" draggable="true" ondragstart="drag(event)" id="p2">')'</span>
-  <span class="draggable" draggable="true" ondragstart="drag(event)" id="p3">return False</span>
-  <span class="draggable" draggable="true" ondragstart="drag(event)" id="p4">p.depiler()</span>
-  <span class="draggable" draggable="true" ondragstart="drag(event)" id="p5">p.est_vide()</span>
+  <span class="draggable" draggable="true" ondragstart="drag(event)" id="p3">p.depiler()</span>
+  <span class="draggable" draggable="true" ondragstart="drag(event)" id="p4">p.est_vide()</span>
+  <span class="draggable" draggable="true" ondragstart="drag(event)" id="p5">False</span>
 </div>
 
 <button onclick="verifier()">Vérifier</button>
@@ -86,8 +104,8 @@ function drag(ev) {
 }
 function drop(ev) {
   ev.preventDefault();
-  let data = ev.dataTransfer.getData("text");
-  let dropped = document.getElementById(data);
+  const data = ev.dataTransfer.getData("text");
+  const dropped = document.getElementById(data);
   if (!ev.target.hasChildNodes()) {
     ev.target.appendChild(dropped);
   }
@@ -95,6 +113,7 @@ function drop(ev) {
 function verifier() {
   const zones = document.querySelectorAll(".drop");
   let correct = 0;
+
   zones.forEach(zone => {
     const expected = zone.dataset.answer;
     const inserted = zone.textContent.trim();
@@ -105,9 +124,10 @@ function verifier() {
       zone.style.border = "2px solid red";
     }
   });
+
   const result = document.getElementById("resultat");
   if (correct === zones.length) {
-    result.textContent = "✅ Bien joué ! Tout est correct.";
+    result.textContent = "<a href="https://www.youtube.com/watch?v=ROmPjNbaweI">🎉 Bravo ! Tout est correct !</a>";
     result.className = "correct";
   } else {
     result.textContent = `❌ ${correct}/${zones.length} bons placements. Essaie encore.`;
