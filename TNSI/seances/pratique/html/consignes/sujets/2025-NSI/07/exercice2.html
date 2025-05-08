@@ -136,7 +136,7 @@ function verifier() {
   });
   const result = document.getElementById("resultat");
   if (correct === zones.length) {
-    result.innerHTML = '<a href="https://www.youtube.com/watch?v=ROmPjNbaweI" target="_blank">✅ Bien joué ! Tout est correct.</a>';
+    result.innerHTML = '✅ Bien joué ! Tout est correct.';
     result.className = "correct";
   } else {
     result.textContent = `❌ ${correct}/${zones.length} bons placements. Essaie encore.`;
