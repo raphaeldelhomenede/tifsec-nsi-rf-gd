@@ -53,15 +53,15 @@
 <code>
 def nombre_suivant(s):<br>
 &nbsp;&nbsp;&nbsp;&nbsp;resultat = ''<br>
-&nbsp;&nbsp;&nbsp;&nbsp;chiffre = <span class="drop" data-answer="s[0]" ondrop="drop(event)" ondragover="allowDrop(event)"></span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;compte = <span class="drop" data-answer="1" ondrop="drop(event)" ondragover="allowDrop(event)"></span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;for i in range(<span class="drop" data-answer="1" ondrop="drop(event)" ondragover="allowDrop(event)"></span>, <span class="drop" data-answer="len(s)" ondrop="drop(event)" ondragover="allowDrop(event)"></span>):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;chiffre = s[0]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;compte = 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;for i in range(<span class="drop" data-answer="1, len(s)" ondrop="drop(event)" ondragover="allowDrop(event)"></span>):<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if s[i] == chiffre:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;compte = <span class="drop" data-answer="compte + 1" ondrop="drop(event)" ondragover="allowDrop(event)"></span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;resultat += <span class="drop" data-answer='f"{compte}"' ondrop="drop(event)" ondragover="allowDrop(event)"></span> + <span class="drop" data-answer="chiffre" ondrop="drop(event)" ondragover="allowDrop(event)"></span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;chiffre = <span class="drop" data-answer="s[i]" ondrop="drop(event)" ondragover="allowDrop(event)"></span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;lecture_chiffre = <span class="drop" data-answer='f"{compte}"' ondrop="drop(event)" ondragover="allowDrop(event)"></span> + <span class="drop" data-answer="chiffre" ondrop="drop(event)" ondragover="allowDrop(event)"></span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;lecture_<span class="drop" data-answer='chiffre' ondrop="drop(event)" ondragover="allowDrop(event)"></span> = <span class="drop" data-answer='f"{compte}"' ondrop="drop(event)" ondragover="allowDrop(event)"></span> + <span class="drop" data-answer="chiffre" ondrop="drop(event)" ondragover="allowDrop(event)"></span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;resultat += lecture_chiffre<br>
 &nbsp;&nbsp;&nbsp;&nbsp;return resultat
 </code>
@@ -70,7 +70,7 @@ def nombre_suivant(s):<br>
 <h3>🧩 Blocs de code à glisser :</h3>
 <div id="pieces">
   <span class="draggable" draggable="true" ondragstart="drag(event)" id="p1">1</span>
-  <span class="draggable" draggable="true" ondragstart="drag(event)" id="p2">len(s)</span>
+  <span class="draggable" draggable="true" ondragstart="drag(event)" id="p2">1, len(s)</span>
   <span class="draggable" draggable="true" ondragstart="drag(event)" id="p3">compte + 1</span>
   <span class="draggable" draggable="true" ondragstart="drag(event)" id="p4">f"{compte}"</span>
   <span class="draggable" draggable="true" ondragstart="drag(event)" id="p5">chiffre</span>
