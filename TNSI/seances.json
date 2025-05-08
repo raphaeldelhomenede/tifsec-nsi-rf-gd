@@ -256,25 +256,25 @@
                     ],
                     [
                       [
-                        "seances_data3[3][0]",
+                        "$seances_data3[3][0]",
                         "Vacances de la Toussaint"
                       ],
                       [
-                        "seances_data3[3][1][0]",
+                        "$seances_data3[3][1][0]",
                         "Noël",
                         "holiday"
                       ],
                       [
-                        "seances_data3[3][1][1]",
+                        "$seances_data3[3][1][1]",
                         "Vacances de Noël"
                       ],
                       [
-                        "seances_data3[3][1][2]",
+                        "$seances_data3[3][1][2]",
                         "Jour de l'An",
                         "holiday"
                       ],
                       [
-                        "seances_data3[3][1][3]",
+                        "$seances_data3[3][1][3]",
                         "Vacances de Noël"
                       ],
                       [
@@ -291,11 +291,11 @@
                         "holiday"
                       ],
                       [
-                        "seances_data3[3][3][2]",
+                        "$seances_data3[3][3][2]",
                         "Vacances de printemps"
                       ],
                       [
-                        "seances_data3[3][4]",
+                        "$seances_data3[3][4]",
                         "Vacances d'été"
                       ]
                     ]
