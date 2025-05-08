@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Complète la fonction bon_parenthesage</title>
+  <style>
+    body {
+      font-family: monospace;
+      background-color: #f0f0f0;
+      padding: 20px;
+    }
+    .code-block {
+      background: #2d2d2d;
+      color: #f8f8f2;
+      padding: 15px;
+      border-radius: 8px;
+      white-space: pre;
+    }
+    .drop {
+      display: inline-block;
+      min-width: 80px;
+      background-color: #444;
+      border: 1px dashed #888;
+      color: #ffb86c;
+      padding: 2px 6px;
+      margin: 0 4px;
+    }
+    .draggable {
+      display: inline-block;
+      background: #61afef;
+      color: white;
+      padding: 4px 8px;
+      margin: 5px;
+      border-radius: 5px;
+      cursor: move;
+    }
+    #pieces {
+      margin-top: 20px;
+    }
+    button {
+      margin-top: 15px;
+      padding: 5px 10px;
+    }
+    .correct { color: limegreen; }
+    .incorrect { color: red; }
+  </style>
+</head>
+<body>
+
+<h2>🧩 Glisse les blocs de code aux bons endroits</h2>
+
+<div class="code-block">
+<code>
+def bon_parenthesage(ch):<br>
+    p = Pile()<br>
+    for c in ch:<br>
+        if c == <span class="drop" data-answer="'('" ondrop="drop(event)" ondragover="allowDrop(event)"></span>:<br>
+            p.empiler(c)<br>
+        elif c == <span class="drop" data-answer="')'" ondrop="drop(event)" ondragover="allowDrop(event)"></span>:<br>
+            if p.est_vide():<br>
+                <span class="drop" data-answer="return False" ondrop="drop(event)" ondragover="allowDrop(event)"></span><br>
+            else:<br>
+                <span class="drop" data-answer="p.depiler()" ondrop="drop(event)" ondragover="allowDrop(event)"></span><br>
+    return <span class="drop" data-answer="p.est_vide()" ondrop="drop(event)" ondragover="allowDrop(event)"></span>
+</code>
+</div>
+
+<h3>🧩 Blocs de code à glisser :</h3>
+<div id="pieces">
+  <span class="draggable" draggable="true" ondragstart="drag(event)" id="p1">'('</span>
+  <span class="draggable" draggable="true" ondragstart="drag(event)" id="p2">')'</span>
+  <span class="draggable" draggable="true" ondragstart="drag(event)" id="p3">return False</span>
+  <span class="draggable" draggable="true" ondragstart="drag(event)" id="p4">p.depiler()</span>
+  <span class="draggable" draggable="true" ondragstart="drag(event)" id="p5">p.est_vide()</span>
+</div>
+
+<button onclick="verifier()">Vérifier</button>
+<p id="resultat"></p>
+
+<script>
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+function drop(ev) {
+  ev.preventDefault();
+  let data = ev.dataTransfer.getData("text");
+  let dropped = document.getElementById(data);
+  if (!ev.target.hasChildNodes()) {
+    ev.target.appendChild(dropped);
+  }
+}
+function verifier() {
+  const zones = document.querySelectorAll(".drop");
+  let correct = 0;
+  zones.forEach(zone => {
+    const expected = zone.dataset.answer;
+    const inserted = zone.textContent.trim();
+    if (inserted === expected) {
+      zone.style.border = "2px solid limegreen";
+      correct++;
+    } else {
+      zone.style.border = "2px solid red";
+    }
+  });
+  const result = document.getElementById("resultat");
+  if (correct === zones.length) {
+    result.textContent = "✅ Bien joué ! Tout est correct.";
+    result.className = "correct";
+  } else {
+    result.textContent = `❌ ${correct}/${zones.length} bons placements. Essaie encore.`;
+    result.className = "incorrect";
+  }
+}
+</script>
+
+</body>
+</html>
