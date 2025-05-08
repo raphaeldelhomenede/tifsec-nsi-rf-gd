@@ -253,6 +253,51 @@
                       {"date": "07/05/2025", "titre": "Séance 82 : Modèle Client-Serveur et P2P (Peer-to-Peer)", "id": "seance82"},
                       {"date": "08/05/2025", "titre": "Victoire 1945", "id": "calendar", "class": "holiday"},
                       {"date": "09/05/2025", "titre": "Séance 83 : Pont", "id": "seance83"}
+                    ],
+                    [
+                      [
+                        "seances_data3[3][0]",
+                        "Vacances de la Toussaint"
+                      ],
+                      [
+                        "seances_data3[3][1][0]",
+                        "Noël",
+                        "holiday"
+                      ],
+                      [
+                        "seances_data3[3][1][1]",
+                        "Vacances de Noël"
+                      ],
+                      [
+                        "seances_data3[3][1][2]",
+                        "Jour de l'An",
+                        "holiday"
+                      ],
+                      [
+                        "seances_data3[3][1][3]",
+                        "Vacances de Noël"
+                      ],
+                      [
+                        "seances_data3[3][2]",
+                        "Vacances d'hiver"
+                      ],
+                      [
+                        "seances_data3[3][3][0]",
+                        "Vacances de printemps"
+                      ],
+                      [
+                        "seances_data3[3][3][1]",
+                        "Fête du Travail",
+                        "holiday"
+                      ],
+                      [
+                        "seances_data3[3][3][2]",
+                        "Vacances de printemps"
+                      ],
+                      [
+                        "seances_data3[3][4]",
+                        "Vacances d'été"
+                      ]
                     ]
                 ]
             ]
