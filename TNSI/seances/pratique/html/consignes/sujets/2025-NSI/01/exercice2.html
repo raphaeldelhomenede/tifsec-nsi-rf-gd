@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>QCM - Complète le code Python</title>
+  <style>
+    body {
+      font-family: monospace;
+      background-color: #f5f5f5;
+      padding: 20px;
+    }
+    .code-block {
+      background-color: #272822;
+      color: #f8f8f2;
+      padding: 15px;
+      border-radius: 8px;
+      white-space: pre-wrap;
+    }
+    select {
+      font-family: monospace;
+      margin: 2px;
+    }
+    button {
+      margin-top: 10px;
+      padding: 5px 10px;
+    }
+    .correct { color: limegreen; }
+    .incorrect { color: red; }
+  </style>
+</head>
+<body>
+
+<h2>Complète le code Python avec les bonnes options</h2>
+
+<div class="code-block">
+<code>
+def nombre_suivant(s):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;resultat = ''<br>
+&nbsp;&nbsp;&nbsp;&nbsp;chiffre = s[0]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;compte = 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;for i in 
+<select id="A">
+  <option value="">--choisir--</option>
+  <option value="b">range(1, len(s))</option>
+  <option value="a">0</option>
+  <option value="c">range(len(s) - 1)</option>
+</select>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if s[i] == chiffre:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;compte = 
+<select id="B">
+  <option value="">--choisir--</option>
+  <option value="a">compte + 1</option>
+  <option value="b">1</option>
+  <option value="c">compte * 2</option>
+</select><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;resultat += 
+<select id="C">
+  <option value="">--choisir--</option>
+  <option value="a">str(compte)</option>
+  <option value="b">chiffre</option>
+  <option value="c">"compte"</option>
+</select> + 
+<select id="D">
+  <option value="">--choisir--</option>
+  <option value="a">str(chiffre)</option>
+  <option value="b">chiffre</option>
+  <option value="c">s[i]</option>
+</select><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;chiffre = 
+<select id="E">
+  <option value="">--choisir--</option>
+  <option value="a">s[i]</option>
+  <option value="b">chiffre</option>
+  <option value="c">s[0]</option>
+</select><br>
+&nbsp;&nbsp;&nbsp;&nbsp;lecture_chiffre = 
+<select id="F">
+  <option value="">--choisir--</option>
+  <option value="a">str(compte)</option>
+  <option value="b">str(i)</option>
+  <option value="c">compte</option>
+</select> + 
+<select id="G">
+  <option value="">--choisir--</option>
+  <option value="a">chiffre</option>
+  <option value="b">str(chiffre)</option>
+  <option value="c">s[i]</option>
+</select><br>
+&nbsp;&nbsp;&nbsp;&nbsp;resultat += lecture_chiffre<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return resultat
+</code>
+</div>
+
+<button onclick="verifier()">Vérifier</button>
+<p id="resultat"></p>
+
+<script>
+function verifier() {
+  const reponsesCorrectes = {
+    A: "b",
+    B: "a",
+    C: "a",
+    D: "b",
+    E: "a",
+    F: "a",
+    G: "a"
+  };
+
+  let score = 0;
+  let total = Object.keys(reponsesCorrectes).length;
+
+  for (let id in reponsesCorrectes) {
+    let select = document.getElementById(id);
+    if (select.value === reponsesCorrectes[id]) {
+      score++;
+      select.style.border = "2px solid limegreen";
+    } else {
+      select.style.border = "2px solid red";
+    }
+  }
+
+  const message = document.getElementById("resultat");
+  if (score === total) {
+    message.innerHTML = "✅ Bravo ! Toutes les réponses sont correctes.";
+    message.className = "correct";
+  } else {
+    message.innerHTML = `❌ Il y a des erreurs (${score} / ${total})`;
+    message.className = "incorrect";
+  }
+}
+</script>
+
+</body>
+</html>
