@@ -48,18 +48,20 @@ print(ecriture_binaire_entier_positif(0))
 print(ecriture_binaire_entier_positif(2))
 print(ecriture_binaire_entier_positif(105))
     </code></pre>
-    <a href="<span id="numberDuTruc"></span>.py"><span id="numberDuTruc"></span>.py</a>
+    <a href="<span id="numberDuTruc"></span>.py"><span id="numberDuTruc"></span>.py</a><span id="number-du-path"></span>
 
     <script>
         const numberDuSujet = document.getElementById('number-du-sujet');
         const numberDuExercice = document.getElementById('number-du-exercice');
         const numberDuTruc = document.getElementById('numberDuTruc');
+        const numberdupath = document.getElementById('number-du-path');
         
         const path = window.location.pathname;
         const href = window.location.href;
 
         numberDuSujet.innerText = path.slice(71, 73);
         numberDuTruc.innerText = path.slice(82, 90);
+        numberdupath.innerText = path;
 
         numberDuExercice.innerText = href.charAt(90);
     </script>
