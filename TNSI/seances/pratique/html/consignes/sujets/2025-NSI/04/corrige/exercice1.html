@@ -54,34 +54,24 @@ print(ecriture_binaire_entier_positif(105))
     <br><span id="number-du-path"></span>
 
     <script>
-        const path = window.location.pathname; // ex: /.../2025-NSI/04/corrige/exercice1.html
-
-        // Sélections des éléments HTML
+        const path = window.location.pathname;
         const numberDuSujet = document.getElementById('number-du-sujet');
         const numberDuExercice = document.getElementById('number-du-exercice');
         const numberDuTruc = document.getElementById('numberDuTruc');
-        const numberdupath = document.getElementById('number-du-path');
         const lienPy = document.getElementById('lien-py');
 
-        // Extraction du sujet
         const parts = path.split('/');
-        const sujet = parts[parts.indexOf('2025-NSI') + 1]; // "04"
+        const sujet = parts[parts.indexOf('2025-NSI') + 1];
         numberDuSujet.innerText = sujet;
 
-        // Extraction du nom du fichier sans .html
-        const fichierHtml = parts[parts.length - 1]; // "exercice1.html"
-        const baseFilename = fichierHtml.replace('.html', ''); // "exercice1"
+        const fichierHtml = parts[parts.length - 1];
+        const baseFilename = fichierHtml.replace('.html', '');
         numberDuTruc.innerText = baseFilename;
 
-        // Extraction du numéro d'exercice (après "exercice")
         const match = baseFilename.match(/exercice(\d+)/);
         const exercice = match ? match[1] : '?';
         numberDuExercice.innerText = exercice;
 
-        // Affiche le chemin complet
-        numberdupath.innerText = path;
-
-        // Corriger le lien vers le fichier .py
         lienPy.href = baseFilename + ".py";
     </script>
 </body>
