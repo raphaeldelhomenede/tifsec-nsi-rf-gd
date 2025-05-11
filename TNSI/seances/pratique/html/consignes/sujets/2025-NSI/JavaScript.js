@@ -18,3 +18,9 @@ numberDuExercice.innerText = exercice;
 
 lienPy.href = baseFilename + ".py";
 document.title = "Correction Sujet " + sujet + " - Exercice " + exercice;
+
+const link = document.createElement('link');
+link.rel = 'icon';
+link.type = 'image/x-icon';
+link.href = 'https://www.umbro.fr/img/favicon.ico?1740388190';
+document.head.appendChild(link);
