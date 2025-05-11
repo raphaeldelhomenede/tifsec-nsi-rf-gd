@@ -8,26 +8,57 @@
     <h1>Correction Sujet <span id="number-du-sujet"></span> - Exercice <span id="number-du-exercice"></span></h1>
     
     <pre><code id="code-python">
-        
+        <script>
+            const fichierHtml = window.location.pathname.split('/').pop();
+            const baseFilename = fichierHtml.replace('.html', '');
+            const pyUrl = baseFilename + '.py';
+            
+            fetch(pyUrl)
+                .then(response => response.text())
+                .then(code => {
+                    document.getElementById('code-python').innerText = code;
+                })
+                .catch(error => {
+                    document.getElementById('code-python').innerText = "Erreur de chargement du code.";
+                    console.error("Erreur lors du chargement du fichier Python :", error);
+                });
+        </script>
     </code></pre>
 
     <a id="lien-py" href=""><span id="numberDuTruc"></span>.py</a>
     <br><span id="number-du-path"></span>
-    <script src="https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/2025-NSI/JavaScript.js"></script>
     <script>
-        const fichierHtml = window.location.pathname.split('/').pop();
-        const baseFilename = fichierHtml.replace('.html', '');
-        const pyUrl = baseFilename + '.py';
+        const path = window.location.pathname;
+        const numberDuSujet = document.getElementById('number-du-sujet');
+        const numberDuExercice = document.getElementById('number-du-exercice');
+        const numberDuTruc = document.getElementById('numberDuTruc');
+        const lienPy = document.getElementById('lien-py');
         
-        fetch(pyUrl)
-            .then(response => response.text())
-            .then(code => {
-                document.getElementById('code-python').innerText = code;
-            })
-            .catch(error => {
-                document.getElementById('code-python').innerText = "Erreur de chargement du code.";
-                console.error("Erreur lors du chargement du fichier Python :", error);
-            });
+        const parts = path.split('/');
+        const sujet = parts[parts.indexOf('2025-NSI') + 1];
+        numberDuSujet.innerText = sujet;
+        
+        const fichierHtml = parts[parts.length - 1];
+        const baseFilename = fichierHtml.replace('.html', '');
+        numberDuTruc.innerText = baseFilename;
+        
+        const match = baseFilename.match(/exercice(\d+)/);
+        const exercice = match ? match[1] : '?';
+        numberDuExercice.innerText = exercice;
+        
+        lienPy.href = baseFilename + ".py";
+        document.title = "Correction Sujet " + sujet + " - Exercice " + exercice;
+        
+        const favicon = document.createElement('link');
+        favicon.rel = 'icon';
+        favicon.type = 'image/x-icon';
+        favicon.href = 'https://www.umbro.fr/img/favicon.ico?1740388190';
+        document.head.appendChild(favicon);
+        
+        const stylesheet = document.createElement('link');
+        stylesheet.rel = 'stylesheet';
+        stylesheet.href = 'https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/2025-NSI/JavaScript.css';
+        document.head.appendChild(stylesheet);
     </script>
 </body>
 </html>
