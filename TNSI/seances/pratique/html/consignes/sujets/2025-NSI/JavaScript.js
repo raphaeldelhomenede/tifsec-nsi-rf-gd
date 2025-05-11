@@ -24,3 +24,8 @@ link.rel = 'icon';
 link.type = 'image/x-icon';
 link.href = 'https://www.umbro.fr/img/favicon.ico?1740388190';
 document.head.appendChild(link);
+
+const link = document.createElement('link');
+link.rel = 'stylesheet';
+link.href = 'https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/2025-NSI/JavaScript.css';
+document.head.appendChild(link);
