@@ -2,35 +2,15 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title id="dynamic-title">Correction</title>
+    <title id="dynamic-title"></title>
 </head>
 <body>
     <h1>Correction Sujet <span id="number-du-sujet"></span> - Exercice <span id="number-du-exercice"></span></h1>
     
-    <pre><code>
-def nombre_suivant(s):
-    '''Renvoie le nombre suivant de celui representé par s
-    en appliquant le procédé de lecture.'''
-    resultat = ''
-    chiffre = s[0]
-    compte = 1
-    for i in range(1, len(s)):
-        if s[i] == chiffre:
-            compte = compte + 1
-        else:
-            resultat += f"{compte}" + chiffre
-            chiffre = s[i]
-            compte = 1
-    lecture_chiffre = f"{compte}" + chiffre
-    resultat += lecture_chiffre
-    return resultat
-
-print(nombre_suivant('1211'))
-print(nombre_suivant('311'))
-    </code></pre>
+    <pre><code id="code-python"></code></pre>
 
     <a id="lien-py" href=""><span id="numberDuTruc"></span>.py</a>
-    <br><span id="number-du-path"></span>
+
     <script src="https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/2025-NSI/JavaScript.js"></script>
 </body>
 </html>
