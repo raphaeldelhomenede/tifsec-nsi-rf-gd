@@ -1,1 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Correction Sujet 2 - Exercice 1</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        pre {
+            background-color: #eee;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            overflow-x: auto;
+        }
+        h1 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Correction Sujet 2 - Exercice 1</h1>
+    <pre><code>def max_et_indice(tab):
+    max = tab[0]
+    indice = 0
+    attemps = 0
+    for i in tab:
+        if i > max:
+            max = i
+            indice = attemps
+        attemps += 1
+    return max, indice
 
+print(max_et_indice([1, 5, 6, 9, 1, 2, 3, 7, 9, 8]))
+print(max_et_indice([-2]))
+print(max_et_indice([-1, -1, 3, 3, 3]))
+print(max_et_indice([1, 1, 1, 1]))
+    </code></pre>
+    <a href="exercice1.py">exercice1.py</a>
+</body>
+</html>
