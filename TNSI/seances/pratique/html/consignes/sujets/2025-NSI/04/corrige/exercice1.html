@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Correction Sujet <span id="number-du-sujet"></span> - Exercice <span id="number-du-exercice"></span></title>
+    <title id="dynamic-title">Correction</title>
     <style>
         body {
             font-family: 'Courier New', monospace;
@@ -73,6 +73,7 @@ print(ecriture_binaire_entier_positif(105))
         numberDuExercice.innerText = exercice;
 
         lienPy.href = baseFilename + ".py";
+        document.title = "Correction Sujet " + sujet + " - Exercice " + exercice;
     </script>
 </body>
 </html>
