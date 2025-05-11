@@ -1,1 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Correction Sujet 3 - Exercice 1</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        pre {
+            background-color: #eee;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            overflow-x: auto;
+        }
+        h1 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Correction Sujet 3 - Exercice 1</h1>
+    <pre><code>
+def fibonacci(n):
+    if n < 3:
+        return 1
+    else:
+        return fibonacci(n-1) + fibonacci(n-2)
 
+print(fibonacci(1))
+print(fibonacci(2))
+print(fibonacci(25))
+    </code></pre>
+    <a href="exercice1.py">exercice1.py</a>
+</body>
+</html>
