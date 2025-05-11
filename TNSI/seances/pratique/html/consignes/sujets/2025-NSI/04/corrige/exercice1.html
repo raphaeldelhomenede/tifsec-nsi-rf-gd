@@ -23,6 +23,7 @@
 </head>
 <body>
     <h1>Correction Sujet <span id="number-du-sujet"></span> - Exercice <span id="number-du-exercice"></span></h1>
+    
     <pre><code>
 def ecriture_binaire_entier_positif(n):
     if n == 0:
@@ -48,22 +49,40 @@ print(ecriture_binaire_entier_positif(0))
 print(ecriture_binaire_entier_positif(2))
 print(ecriture_binaire_entier_positif(105))
     </code></pre>
-    <a href="<span id="numberDuTruc"></span>.py"><span id="numberDuTruc"></span>.py</a><span id="number-du-path"></span>
+
+    <a id="lien-py" href=""><span id="numberDuTruc"></span>.py</a>
+    <br><span id="number-du-path"></span>
 
     <script>
+        const path = window.location.pathname; // ex: /.../2025-NSI/04/corrige/exercice1.html
+
+        // Sélections des éléments HTML
         const numberDuSujet = document.getElementById('number-du-sujet');
         const numberDuExercice = document.getElementById('number-du-exercice');
         const numberDuTruc = document.getElementById('numberDuTruc');
         const numberdupath = document.getElementById('number-du-path');
-        
-        const path = window.location.pathname;
-        const href = window.location.href;
+        const lienPy = document.getElementById('lien-py');
 
-        numberDuSujet.innerText = path.slice(71, 73);
-        numberDuTruc.innerText = path.slice(82, 90);
+        // Extraction du sujet
+        const parts = path.split('/');
+        const sujet = parts[parts.indexOf('2025-NSI') + 1]; // "04"
+        numberDuSujet.innerText = sujet;
+
+        // Extraction du nom du fichier sans .html
+        const fichierHtml = parts[parts.length - 1]; // "exercice1.html"
+        const baseFilename = fichierHtml.replace('.html', ''); // "exercice1"
+        numberDuTruc.innerText = baseFilename;
+
+        // Extraction du numéro d'exercice (après "exercice")
+        const match = baseFilename.match(/exercice(\d+)/);
+        const exercice = match ? match[1] : '?';
+        numberDuExercice.innerText = exercice;
+
+        // Affiche le chemin complet
         numberdupath.innerText = path;
 
-        numberDuExercice.innerText = href.charAt(91);
+        // Corriger le lien vers le fichier .py
+        lienPy.href = baseFilename + ".py";
     </script>
 </body>
 </html>
