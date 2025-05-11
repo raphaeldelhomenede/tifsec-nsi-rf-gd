@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Correction Sujet 4 - Exercice 1</title>
+    <title>Correction Sujet <span id="number-du-sujet"></span> - Exercice <span id="number-du-exercice"></span></title>
     <style>
         body {
             font-family: 'Courier New', monospace;
@@ -22,7 +22,7 @@
     </style>
 </head>
 <body>
-    <h1>Correction Sujet 4 - Exercice 1</h1>
+    <h1>Correction Sujet <span id="number-du-sujet"></span> - Exercice <span id="number-du-exercice"></span></h1>
     <pre><code>
 def ecriture_binaire_entier_positif(n):
     if n == 0:
@@ -48,7 +48,20 @@ print(ecriture_binaire_entier_positif(0))
 print(ecriture_binaire_entier_positif(2))
 print(ecriture_binaire_entier_positif(105))
     </code></pre>
-    <a href="exercice1.py">exercice1.py</a>
+    <a href="<span id="numberDuTruc"></span>.py"><span id="numberDuTruc"></span>.py</a>
+
+    <script>
+        const numberDuSujet = document.getElementById('number-du-sujet');
+        const numberDuExercice = document.getElementById('number-du-exercice');
+        const numberDuTruc = document.getElementById('numberDuTruc');
+        
+        const path = window.location.pathname;
+        const href = window.location.href;
+
+        numberDuSujet.innerText = path.slice(70, 72);
+        numberDuTruc.innerText = path.slice(82, 90);
+
+        numberDuExercice.innerText = href.charAt(89);
+    </script>
 </body>
 </html>
-
