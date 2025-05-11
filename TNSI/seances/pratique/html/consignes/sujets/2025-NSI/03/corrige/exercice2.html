@@ -2,7 +2,8 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Correction Sujet 3 - Exercice 2</title>
+    <title id="dynamic-title">Correction</title>
+    <link rel="icon" href="https://www.umbro.fr/img/favicon.ico?1740388190" type="image/x-icon">
     <style>
         body {
             font-family: 'Courier New', monospace;
@@ -22,25 +23,14 @@
     </style>
 </head>
 <body>
-    <h1>Correction Sujet 3 - Exercice 2</h1>
+    <h1>Correction Sujet <span id="number-du-sujet"></span> - Exercice <span id="number-du-exercice"></span></h1>
+    
     <pre><code>
-def eleves_du_mois(eleves, notes):
-    note_maxi = 0
-    meilleurs_eleves = []
 
-    for i in range(len(notes)):
-        if notes[i] == note_maxi:
-            meilleurs_eleves.append(eleves[i])
-        elif notes[i] > note_maxi:
-            note_maxi = notes[i]
-            meilleurs_eleves = [eleves[i]]
-
-    return note_maxi, meilleurs_eleves
-
-eleves_nsi = ['a','b','c','d','e','f','g','h','i','j']
-notes_nsi = [30, 40, 80, 60, 58, 80, 75, 80, 60, 24]
-print(eleves_du_mois(eleves_nsi, notes_nsi))
     </code></pre>
-    <a href="exercice2.py">exercice2.py</a>
+
+    <a id="lien-py" href=""><span id="numberDuTruc"></span>.py</a>
+    <br><span id="number-du-path"></span>
+    <script src="https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/2025-NSI/JavaScript.js"></script>
 </body>
 </html>
