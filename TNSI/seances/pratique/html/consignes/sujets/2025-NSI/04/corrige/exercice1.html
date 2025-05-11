@@ -3,53 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title id="dynamic-title">Correction</title>
-    <style>
-        body {
-            font-family: 'Courier New', monospace;
-            background-color: #f4f4f4;
-            padding: 20px;
-        }
-        pre {
-            background-color: #eee;
-            padding: 15px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-            overflow-x: auto;
-        }
-        h1 {
-            color: #333;
-        }
-    </style>
 </head>
 <body>
     <h1>Correction Sujet <span id="number-du-sujet"></span> - Exercice <span id="number-du-exercice"></span></h1>
     
-    <pre><code>
-def ecriture_binaire_entier_positif(n):
-    if n == 0:
-        return "0"
-
-    puissance_2 = 1
-    tab = []
-    while puissance_2 <= n:
-        tab.append(puissance_2)
-        puissance_2 *= 2
-
-    var = ""
-    for i in tab[::-1]:
-        if i <= n:
-            var += "1"
-            n -= i
-        else:
-            var += "0"
-
-    return var
-
-print(ecriture_binaire_entier_positif(0))
-print(ecriture_binaire_entier_positif(2))
-print(ecriture_binaire_entier_positif(105))
+    <pre><code id="code-python">
+        Chargement en cours...
     </code></pre>
 
+    <script>
+        const fichierHtml = window.location.pathname.split('/').pop();
+        const baseFilename = fichierHtml.replace('.html', '');
+        const pyUrl = baseFilename + '.py';
+        
+        fetch(pyUrl)
+            .then(response => response.text())
+            .then(code => {
+                document.getElementById('code-python').innerText = code;
+            })
+            .catch(error => {
+                document.getElementById('code-python').innerText = "Erreur de chargement du code.";
+                console.error("Erreur lors du chargement du fichier Python :", error);
+            });
+    </script>
     <a id="lien-py" href=""><span id="numberDuTruc"></span>.py</a>
     <br><span id="number-du-path"></span>
     <script src="https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/2025-NSI/JavaScript.js"></script>
