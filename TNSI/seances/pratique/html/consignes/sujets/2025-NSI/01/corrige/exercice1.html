@@ -2,7 +2,8 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Correction Sujet 1 - Exercice 1</title>
+    <title id="dynamic-title">Correction</title>
+    <link rel="icon" href="https://www.umbro.fr/img/favicon.ico?1740388190" type="image/x-icon">
     <style>
         body {
             font-family: 'Courier New', monospace;
@@ -22,19 +23,14 @@
     </style>
 </head>
 <body>
-    <h1>Correction Sujet 1 - Exercice 1 : Fonction Python <code>voisins_entrants</code></h1>
-    <p>La fonction <code>voisins_entrants</code> renvoie la liste des sommets ayant une arête dirigée vers le sommet <code>x</code>.</p>
-    <pre><code>def voisins_entrants(adj, x):
-    voisins = []
-    for i in range(len(adj)):
-        if x in adj[i]:
-            voisins.append(i)
-    return voisins
+    <h1>Correction Sujet <span id="number-du-sujet"></span> - Exercice <span id="number-du-exercice"></span></h1>
+    
+    <pre><code>
 
-# Exemples d'utilisation
-print(voisins_entrants([[1, 2], [2], [0], [0]], 0))  # [2, 3]
-print(voisins_entrants([[1, 2], [2], [0], [0]], 1))  # [0]
     </code></pre>
-    <a href="exercice1.py">exercice1.py</a>
+
+    <a id="lien-py" href=""><span id="numberDuTruc"></span>.py</a>
+    <br><span id="number-du-path"></span>
+    <script src="https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/2025-NSI/JavaScript.js"></script>
 </body>
 </html>

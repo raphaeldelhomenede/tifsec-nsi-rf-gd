@@ -2,11 +2,12 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Correction Sujet 2 - Exercice 2</title>
+    <title id="dynamic-title">Correction</title>
+    <link rel="icon" href="https://www.umbro.fr/img/favicon.ico?1740388190" type="image/x-icon">
     <style>
         body {
             font-family: 'Courier New', monospace;
-            background-color: #f9f9f9;
+            background-color: #f4f4f4;
             padding: 20px;
         }
         pre {
@@ -14,6 +15,7 @@
             padding: 15px;
             border-radius: 8px;
             border: 1px solid #ccc;
+            overflow-x: auto;
         }
         h1 {
             color: #333;
@@ -21,28 +23,14 @@
     </style>
 </head>
 <body>
-    <h1>Correction Sujet 2 - Exercice 2:</h1>
-    <p>Cette fonction applique le principe de lecture d'un nombre (suite de Conway).</p>
-    <pre><code>def nombre_suivant(s):
-    '''Renvoie le nombre suivant de celui representé par s
-    en appliquant le procédé de lecture.'''
-    resultat = ''
-    chiffre = s[0]
-    compte = 1
-    for i in range(1, len(s)):
-        if s[i] == chiffre:
-            compte = compte + 1
-        else:
-            resultat += f"{compte}" + chiffre
-            chiffre = s[i]
-            compte = 1
-    lecture_chiffre = f"{compte}" + chiffre
-    resultat += lecture_chiffre
-    return resultat
+    <h1>Correction Sujet <span id="number-du-sujet"></span> - Exercice <span id="number-du-exercice"></span></h1>
+    
+    <pre><code>
 
-print(nombre_suivant('1211'))
-print(nombre_suivant('311'))
     </code></pre>
-    <a href="exercice2.py">exercice2.py</a>
+
+    <a id="lien-py" href=""><span id="numberDuTruc"></span>.py</a>
+    <br><span id="number-du-path"></span>
+    <script src="https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/2025-NSI/JavaScript.js"></script>
 </body>
 </html>
