@@ -2,7 +2,8 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Correction Sujet 4 - Exercice 2</title>
+    <title id="dynamic-title">Correction</title>
+    <link rel="icon" href="https://www.umbro.fr/img/favicon.ico?1740388190" type="image/x-icon">
     <style>
         body {
             font-family: 'Courier New', monospace;
@@ -22,29 +23,14 @@
     </style>
 </head>
 <body>
-    <h1>Correction Sujet 4 - Exercice 2</h1>
+    <h1>Correction Sujet <span id="number-du-sujet"></span> - Exercice <span id="number-du-exercice"></span></h1>
+    
     <pre><code>
-def echange(tab, i, j):
-    '''Echange les éléments d'indice i et j dans le tableau tab.'''
-    temp = tab[i]
-    tab[i] = tab[j]
-    tab[j] = temp
 
-def tri_bulles(tab):
-    '''Trie le tableau tab dans l'ordre croissant
-    par la méthode du tri à bulles.'''
-    n = len(tab)
-    for i in range(n-1):
-        for j in range(n-1-i):
-            if tab[j] > tab[j+1]:
-                echange(tab, j, j+1)
-
-    return tab
-
-print(tri_bulles([]))
-print(tri_bulles([9, 3, 7, 2, 3, 1, 6]))
-print(tri_bulles([9, 7, 4, 3]))
     </code></pre>
-    <a href="exercice2.py">exercice2.py</a>
+
+    <a id="lien-py" href=""><span id="numberDuTruc"></span>.py</a>
+    <br><span id="number-du-path"></span>
+    <script src="https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/2025-NSI/JavaScript.js"></script>
 </body>
 </html>
