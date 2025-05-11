@@ -19,13 +19,13 @@ numberDuExercice.innerText = exercice;
 lienPy.href = baseFilename + ".py";
 document.title = "Correction Sujet " + sujet + " - Exercice " + exercice;
 
-let link = document.createElement('link');
-link.rel = 'icon';
-link.type = 'image/x-icon';
-link.href = 'https://www.umbro.fr/img/favicon.ico?1740388190';
-document.head.appendChild(link);
+const favicon = document.createElement('link');
+favicon.rel = 'icon';
+favicon.type = 'image/x-icon';
+favicon.href = 'https://www.umbro.fr/img/favicon.ico?1740388190';
+document.head.appendChild(favicon);
 
-let link = document.createElement('link');
-link.rel = 'stylesheet';
-link.href = 'https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/2025-NSI/JavaScript.css';
-document.head.appendChild(link);
+const stylesheet = document.createElement('link');
+stylesheet.rel = 'stylesheet';
+stylesheet.href = 'https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/2025-NSI/JavaScript.css';
+document.head.appendChild(stylesheet);
