@@ -22,5 +22,5 @@ document.title = "Correction Sujet " + sujet + " - Exercice " + exercice;
 const link = document.createElement('link');
 link.rel = 'icon';
 link.type = 'image/x-icon';
-link.href = 'https://www.umbro.fr/img/favicon.ico?1740388190';
+link.href = '';
 document.head.appendChild(link);
