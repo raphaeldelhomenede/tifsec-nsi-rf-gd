@@ -12,6 +12,10 @@ def multiplication(n1, n2):
         for _ in range(n2):
             result += n1
         return result
+    elif n1 > 0 > n2:
+        for _ in range(-n2):
+            result -= n1
+        return result
     if n1 == 0 or n2 == 0:
         return 0
 
