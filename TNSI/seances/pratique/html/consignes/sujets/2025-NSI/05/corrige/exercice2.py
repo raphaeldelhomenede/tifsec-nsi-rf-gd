@@ -7,7 +7,7 @@ def crible(n):
     for i in range(n):
         if tab[i]:
             premiers.append(i)
-            multiple = i * 1
+            multiple = i
             while multiple < n:
                 tab[multiple] = False
                 multiple = multiple + i
