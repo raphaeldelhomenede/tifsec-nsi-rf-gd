@@ -1,20 +1,3 @@
 {
-  "hosts": {
-    "localhost": {
-      "today": {
-        "prefix": "http://localhost/document/TNSI/",
-        "link_index": 1
-      },
-      "id_today": "http://localhost/document/TNSI/",
-      "default_id": "toto"
-    },
-    "tifsec-nsi.rf.gd": {
-      "today": {
-        "prefix": "https://tifsec-nsi.rf.gd/TNSI/",
-        "link_index": 0
-      },
-      "id_today": "https://tifsec-nsi.rf.gd/TNSI/",
-      "default_id": "toto"
-    }
-  }
+  "pratique_sujet": "<?php if (preg_match('/^pratique\\/sujet(\\d+)$/', $session_actuelle, $matches)) :\n  $num = (int)$matches[1];\n  if ($num >= 1 && $num <= 48) :\n    $sujet = str_pad($num, 2, \"0\", STR_PAD_LEFT);\n    if (isset($_GET['correction']) && in_array($_GET['correction'], ['exercice1', 'exercice2'])) : ?>\n      <div style=\"margin: 0; padding: 0; height: 100vh;\">\n        <iframe src=\"https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/2025-NSI/<?php echo $sujet; ?>/corrige/<?php echo htmlspecialchars($_GET['correction']); ?>.html\" style=\"border: none; width:100%; height:100%;\"></iframe>\n      </div>\n    <?php else : ?>\n      <div>\n        <h3>🔍 Consignes & Exercices</h3>\n        🔗 <a href=\"https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/2025-NSI/<?php echo $sujet; ?>/sujet-<?php echo $num; ?>.py\">Télécharger le fichier Python</a><br>\n        🔗 <a href=\"https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/2025-NSI/<?php echo $sujet; ?>/exercice2.html\">Compléter l'exercice 2 en ligne</a>\n      </div>\n\n      <div style=\"margin: 1em 0; height: 100vh;\">\n        <iframe src=\"https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/2025-NSI/<?php echo $sujet; ?>/25-NSI-<?php echo $num; ?>.pdf\" style=\"border:1px solid #ccc; border-radius:8px; width:100%; height:100%;\"></iframe>\n      </div>\n\n      <div>\n        <h3>✅ Corrections</h3>\n        🔗 <a href=\"?session=<?php echo htmlspecialchars($_GET['session']); ?>&correction=exercice1\">Voir le corrigé de l'exercice 1</a><br>\n        🔗 <a href=\"?session=<?php echo htmlspecialchars($_GET['session']); ?>&correction=exercice2\">Voir le corrigé de l'exercice 2</a>\n      </div>\n    <?php endif; ?>\n  <?php endif; ?>\n<?php endif; ?>"
 }
