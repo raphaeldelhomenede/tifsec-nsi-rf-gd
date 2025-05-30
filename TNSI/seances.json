@@ -337,6 +337,9 @@
                           "https://www.deviantart.com/bakataida/art/Korufuyuki-Emojis-923220296": {
                             "default": "https://i.imgur.com/OVezGHu.jpeg"
                           }
+                        },
+                        {
+                          "toggleMenu": "<script>\nfunction toggleMenu() {\n    const menu = document.getElementById(\"session-nav\");\n    menu.style.display = menu.style.display === \"block\" ? \"none\" : \"block\";\n}\n</script>"
                         }
                     ]
                 ]
