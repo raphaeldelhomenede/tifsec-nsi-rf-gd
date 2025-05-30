@@ -343,6 +343,26 @@
                         },
                         {
                           "background_style": "<style>main { background-image: url(BACKGROUND_URL); background-repeat: repeat-y; background-size: 100% auto; background-position: top center; min-height: 100vh; }</style>"
+                        },
+                        {
+                          "hosts": {
+                            "localhost": {
+                              "today": {
+                                "prefix": "http://localhost/document/TNSI/",
+                                "link_index": 1
+                              },
+                              "id_today": "http://localhost/document/TNSI/",
+                              "default_id": "toto"
+                            },
+                            "tifsec-nsi.rf.gd": {
+                              "today": {
+                                "prefix": "https://tifsec-nsi.rf.gd/TNSI/",
+                                "link_index": 0
+                              },
+                              "id_today": "https://tifsec-nsi.rf.gd/TNSI/",
+                              "default_id": "toto"
+                            }
+                          }
                         }
                     ]
                 ]
