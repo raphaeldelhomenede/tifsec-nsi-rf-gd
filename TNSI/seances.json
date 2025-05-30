@@ -356,10 +356,10 @@
                             },
                             "tifsec-nsi.rf.gd": {
                               "today": {
-                                "prefix": "https://tifsec-nsi.rf.gd/TNSI/",
+                                "prefix": "https://tifsec-nscie.rf.gd/TNSI/",
                                 "link_index": 0
                               },
-                              "id_today": "https://tifsec-nsi.rf.gd/TNSI/",
+                              "id_today": "https://tifsec-nscie.rf.gd/TNSI/",
                               "default_id": "toto"
                             }
                           }
