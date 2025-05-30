@@ -260,7 +260,7 @@
                         { "date": "22/05/2025", "titre": "Séance à définir", "id": "seance88" },
                         { "date": "23/05/2025", "titre": "Séance à définir", "id": "seance89" },
                         { "date": "28/05/2025", "titre": "Séance à définir", "id": "seance90" },
-                        { "date": "29/05/2025", "titre": "Ascension", "id": "calendar", "type": "holiday" },
+                        { "date": "29/05/2025", "titre": "Ascension", "id": "calendar", "class": "holiday" },
                         { "date": "30/05/2025", "titre": "Séance à définir", "id": "seance91" },
                         { "date": "04/06/2025", "titre": "Séance à définir", "id": "seance92" },
                         { "date": "05/06/2025", "titre": "Séance à définir", "id": "seance93" },
