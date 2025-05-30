@@ -1,5 +1,5 @@
 window.addEventListener('DOMContentLoaded', () => {
-    const path = window.location.pathname;
+    const path = window.cheminCorrection || window.location.pathname;
     const parts = path.split('/');
 
     const numberDuSujet = document.getElementById('number-du-sujet');
