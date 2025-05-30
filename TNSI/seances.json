@@ -340,7 +340,7 @@
                         },
                         {
                           "toggleMenu": "<script>\nfunction toggleMenu() {\n    const menu = document.getElementById(\"session-nav\");\n    menu.style.display = menu.style.display === \"block\" ? \"none\" : \"block\";\n}\n</script>"
-                        }
+                        },
                         {
                           "background_style": "<style>main { background-image: url(<?= \\$_GET['background'] ?>); background-repeat: repeat-y; background-size: 100% auto; background-position: top center; min-height: 100vh; }</style>"
                         }
