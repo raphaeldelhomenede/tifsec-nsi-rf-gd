@@ -1,0 +1,20 @@
+{
+  "hosts": {
+    "localhost": {
+      "today": {
+        "prefix": "http://localhost/document/TNSI/",
+        "link_index": 1
+      },
+      "id_today": "http://localhost/document/TNSI/",
+      "default_id": "toto"
+    },
+    "tifsec-nsi.rf.gd": {
+      "today": {
+        "prefix": "https://tifsec-nsi.rf.gd/TNSI/",
+        "link_index": 0
+      },
+      "id_today": "https://tifsec-nsi.rf.gd/TNSI/",
+      "default_id": "toto"
+    }
+  }
+}
