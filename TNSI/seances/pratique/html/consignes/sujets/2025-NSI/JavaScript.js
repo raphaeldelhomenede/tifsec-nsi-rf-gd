@@ -1,7 +1,6 @@
 window.addEventListener('DOMContentLoaded', () => {
-    const chemin = window.cheminCorrection || window.location.href;
-    const url = new URL(chemin);
-    const parts = url.pathname.split('/').filter(Boolean);
+    const path = window.cheminCorrection || window.location.pathname;
+    const parts = path.split('/');
 
     const numberDuSujet = document.getElementById('number-du-sujet');
     const numberDuExercice = document.getElementById('number-du-exercice');
