@@ -366,10 +366,10 @@
                           "3": "<?php\nheader(\"Location: \" . ((!empty(\\$_SERVER['HTTPS']) && \\$_SERVER['HTTPS'] !== 'off') ? \"https\" : \"http\") . \"://\" . \\$_SERVER['HTTP_HOST'] . \"/TNSI/?session=Joyeux-anniversaire\");\nexit;\n?>"
                         },
                         {
-                            "programme1": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/programmes/programme1.html",
-                            "programme2": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/programmes/programme2.html",
-                            "programme3": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/programmes/programme3.html",
-                            "programme4": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/programmes/programme4.html"
+                            "programme1": "programme1",
+                            "programme2": "programme2",
+                            "programme3": "programme3",
+                            "programme4": "programme4"
                         },
                         {
                             "bo": "bo1",
