@@ -375,6 +375,9 @@
                             "bo": "bo1",
                             "sujetA": "sujetA1",
                             "sujetB": "sujetB1"
+                        },
+                        {
+                          "html": "<a href='?session=pratique.html' class='session-link {{active_class}}' id='session-link' data-link-one='TNSI/?session=pratique.html' data-link-two='/TNSI/?session=pratique/Sujet'>{{title}}</a><script src='https://thesevendeadlysinsds.github.io/nsi.rf.gd/js/2025-05-08/pratique.js'></script>"
                         }
                     ]
                 ]
