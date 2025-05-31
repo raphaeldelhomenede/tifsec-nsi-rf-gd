@@ -10,7 +10,7 @@
         return urlParams.get(param);
     }
     
-    fetch('data-fonts.json')
+    fetch('https://thesevendeadlysinsds.github.io/nsi.rf.gd/json/data-fonts.json')
         .then(response => response.json())
         .then(fontStyles => {
             let font = getQueryParam('font');
