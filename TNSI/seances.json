@@ -115,11 +115,7 @@
             "bo": "bo1",
             "sujetA": "sujetA1",
             "sujetB": "sujetB1",
-            "ressources": "ressources1",
-            "programme1": "programme1",
-            "programme2": "programme2",
-            "programme3": "programme3",
-            "programme4": "programme4"
+            "ressources": "ressources1"
         },
         [
             "Date Mercredi",
@@ -371,6 +367,12 @@
                           "1": "<?php $variable242 = $seances_data3[6][3][0][0][5][1][$session_actuelle][$font1]; ?>\n<img src=\"<?= htmlspecialchars($variable242); ?>\" alt=\"<?= htmlspecialchars($variable242); ?>\">",
                           "2": "<?php $variable242 = $seances_data3[6][2][$session_actuelle][$font1]; ?>\n<iframe src=\"<?= htmlspecialchars($variable242); ?>\" class=\"tifsec1\" frameborder=\"0\" \n        allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\"\n        referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen style=\"margin-left: -12px;\">\n</iframe>",
                           "3": "<?php\nheader(\"Location: \" . ((!empty(\\$_SERVER['HTTPS']) && \\$_SERVER['HTTPS'] !== 'off') ? \"https\" : \"http\") . \"://\" . \\$_SERVER['HTTP_HOST'] . \"/TNSI/?session=Joyeux-anniversaire\");\nexit;\n?>"
+                        },
+                        {
+                            "programme1": "programme1",
+                            "programme2": "programme2",
+                            "programme3": "programme3",
+                            "programme4": "programme4"
                         }
                     ]
                 ]
