@@ -1,0 +1,45 @@
+<script src="script.js"></script>
+<section id="session60" class="content-section">
+            <h2>Séance 60 : Test sur les Bases de Données et Python</h2>
+
+            <h3>Exercice 1 : Modélisation et requêtes SQL (8 points)</h3>
+            <br>
+            <p>Une entreprise gère une base de données contenant des informations sur ses employés et leurs projets. La base de données comporte les tables suivantes :</p>
+            <ul>
+                <li>Employe(id_employe, nom, prenom, date_naissance, salaire)</li>
+                <li>Projet(id_projet, nom_projet, budget)</li>
+                <li>Travaille(id_employe, id_projet, heures_travaillees)</li>
+            </ul>
+            <ol>
+                <li>(2 pts) Ecrire une requête SQL permettant d'afficher le nom et le prénom de tous les employés qui travaillent sur au moins un projet.</li>
+                <li>(2 pts) Ecrire une requête SQL pour afficher le nom des projets dont le budget est supérieur à 50 000.</li>
+                <li>(2 pts) Ecrire une requête SQL permettant de calculer le nombre total d'heures travaillées par employé.</li>
+                <li>(2 pts) Quelle clé étrangère est présente dans la table Travaille ? Justifiez votre réponse.</li>
+                <li>(2 pts) Écrire une requête SQL permettant d'afficher les employés qui travaillent sur plus d’un projet.</li>
+            </ol>
+            <br>
+            <h3>Exercice 2 : Manipulation de bases de données en Python (8 points)</h3>
+            <br>
+            <p>On utilise SQLite3 pour interagir avec la base de données en Python.</p>
+
+            <ol>
+                <li>(4 pts) Créer le code Python qui premettra d'afficher la liste des employés ayant un salaire supérieur à 3000 euros.</li>
+                <li>(4 pts) Ecrire un programme Python permettant d'insérer un nouvel employé dans la base de données avec les informations suivantes :</li>
+            </ol>
+            <br>
+            <h3>Exercice 3 : Algorithmique en Python (6 points)</h3>
+            <br>
+            <p>On souhaite écrire une fonction Python qui permet de calculer la moyenne des salaires des employés et d'afficher les employés ayant un salaire supérieur à cette moyenne.</p>
+
+            <ol>
+                <li>(3 pts) Ecrire une fonction moyenne_salaire(cursor) qui retourne la moyenne des salaires des employés. (AVG)</li>
+                <li>(3 pts) A partir de la question précédente, créer une fonction pour afficher les employés ayant un salaire supérieur à la moyenne.</li>
+            </ol>
+            <br>
+            <h3>Exercice 4 : Conception de base de données (6 points)</h3>
+            <br>
+            <ol>
+                <li>(3 pts) Proposez un schéma relationnel pour une base de données gérant une bibliothèque, incluant les tables Livre, Auteur, Emprunt et Abonné.</li>
+                <li>(3 pts) Écrivez une requête SQL permettant d'afficher les titres des livres empruntés par un abonné spécifique identifié par son id_abonné.</li>
+            </ol>
+        </section>

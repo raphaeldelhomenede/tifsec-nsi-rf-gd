@@ -1,0 +1,154 @@
+<script src="script.js"></script>
+<section id="session58" class="content-section">
+            <h2>Séance 58 : Introduction à l’indexation et optimisation des bases de données</h2>
+        
+            <h3>Objectif Global :</h3>
+            <p>
+                Cette séance vise à introduire les concepts fondamentaux
+ de l’indexation et de l’optimisation des bases de données 
+relationnelles. Les élèves apprendront comment l’indexation améliore les
+ performances des requêtes et découvriront des techniques pratiques pour
+ optimiser les bases de données.
+            </p>
+        
+            <h3>Introduction à l’Indexation (30 min)</h3>
+        
+            <h4>1. Qu’est-ce qu’un index dans une base de données ?</h4>
+            <p>
+                Un <strong>index</strong> est une structure de données 
+qui accélère les recherches dans une table en fournissant un chemin 
+rapide vers les données. Il fonctionne comme un index dans un livre : au
+ lieu de chercher à chaque page, vous consultez l’index pour localiser 
+directement la section souhaitée.
+            </p>
+            <ul>
+                <li><strong>Utilisation :</strong> Un index est généralement créé sur des colonnes fréquemment utilisées dans les clauses <code>WHERE</code> ou <code>JOIN</code>.</li>
+                <li><strong>Avantages :</strong> Réduction du temps de recherche.</li>
+                <li><strong>Inconvénients :</strong> Consommation supplémentaire d’espace disque et de temps lors des insertions, mises à jour et suppressions.</li>
+            </ul>
+        
+            <h4>2. Comment fonctionne un index ?</h4>
+            <p>
+                Les bases de données utilisent souvent des structures comme les <strong>B-trees</strong> ou les <strong>hash maps</strong> pour implémenter des index.
+            </p>
+            <ul>
+                <li>Les B-trees permettent des recherches rapides en maintenant les données triées.</li>
+                <li>Les hash maps permettent des recherches rapides sur des valeurs exactes, mais sont moins efficaces pour des plages de valeurs.</li>
+            </ul>
+        
+            <h4>3. Exemple d’utilisation d’un index :</h4>
+            <pre><code class="sql">
+        -- Création d’un index sur une colonne
+        CREATE INDEX idx_nom_sur_table_employes ON employes(nom);
+        
+        -- Exemple de requête utilisant l’index
+        SELECT * FROM employes WHERE nom = 'Dupont';
+            </code></pre>
+        
+            <p>Dans cet exemple, l’index sur la colonne <code>nom</code> accélère les recherches par rapport à une recherche classique.</p>
+        
+            <h3>Optimisation des Bases de Données (30 min)</h3>
+        
+            <h4>1. Techniques d’optimisation :</h4>
+            <ul>
+                <li><strong>Analyse des requêtes :</strong> Utilisez des outils comme <code>EXPLAIN</code> ou <code>ANALYZE</code> pour comprendre comment une requête est exécutée.</li>
+                <li><strong>Indexation stratégique :</strong> Créez des index uniquement sur les colonnes utilisées dans des recherches fréquentes.</li>
+                <li><strong>Normalisation :</strong> Réduisez la redondance des données en suivant les formes normales (1NF, 2NF, 3NF, etc.).</li>
+                <li><strong>Désnormalisation :</strong> Ajoutez des redondances pour optimiser les lectures dans certains cas spécifiques.</li>
+                <li><strong>Requêtes optimisées :</strong> Évitez les requêtes inutiles ou redondantes, utilisez des jointures efficaces et des sous-requêtes judicieuses.</li>
+            </ul>
+        
+            <h4>2. Exemple avec l’analyse d’une requête :</h4>
+            <pre><code class="sql">
+        -- Requête simple
+        SELECT * FROM employes WHERE salaire &gt; 50000;
+        
+        -- Analyse de la requête
+        EXPLAIN SELECT * FROM employes WHERE salaire &gt; 50000;
+        
+        -- Résultat (exemple simplifié)
+        -- Utilisation d'un scan complet si aucun index n'existe sur 'salaire'.
+        -- Ajout d'un index pour optimiser :
+        CREATE INDEX idx_salaire ON employes(salaire);
+            </code></pre>
+        
+            <p>Avec l’index <code>idx_salaire</code>, la base de données peut réduire significativement le temps de traitement de la requête.</p>
+        
+            <h3>Étape Pratique : Implémentation et Analyse d’Index (40 min)</h3>
+        
+            <h4>Exercice :</h4>
+            <p>Les élèves travailleront sur une table fictive <code>produits</code>, contenant les colonnes suivantes :</p>
+            <ul>
+                <li><code>id</code> : Identifiant unique.</li>
+                <li><code>nom</code> : Nom du produit.</li>
+                <li><code>prix</code> : Prix du produit.</li>
+                <li><code>categorie</code> : Catégorie du produit.</li>
+            </ul>
+        
+            <h4>Tâches :</h4>
+            <ol>
+                <li>Créer un index sur la colonne <code>categorie</code> pour accélérer les recherches par catégorie.</li>
+                <li>Analyser une requête sans index et avec index pour observer la différence de performances.</li>
+                <li>Ajouter un index sur la colonne <code>prix</code> pour optimiser les recherches de produits dans une plage de prix.</li>
+            </ol>
+        
+            <h4>Implémentation :</h4>
+            <pre><code class="sql">
+        -- Création de la table
+        CREATE TABLE produits (
+            id INT PRIMARY KEY,
+            nom VARCHAR(100),
+            prix DECIMAL(10, 2),
+            categorie VARCHAR(50)
+        );
+        
+        -- Insertion de données fictives
+        INSERT INTO produits (id, nom, prix, categorie) VALUES
+        (1, 'Téléphone', 699.99, 'Électronique'),
+        (2, 'Tablette', 499.99, 'Électronique'),
+        (3, 'Chaise', 89.99, 'Mobilier'),
+        (4, 'Table', 199.99, 'Mobilier'),
+        (5, 'Ordinateur', 999.99, 'Électronique');
+        
+        -- Requête initiale sans index
+        EXPLAIN SELECT * FROM produits WHERE categorie = 'Électronique';
+        
+        -- Création d’un index sur la colonne 'categorie'
+        CREATE INDEX idx_categorie ON produits(categorie);
+        
+        -- Requête après indexation
+        EXPLAIN SELECT * FROM produits WHERE categorie = 'Électronique';
+            </code></pre>
+        
+            <h4>Analyse attendue :</h4>
+            <ul>
+                <li>Les élèves remarqueront que l’utilisation de l’index réduit le temps de recherche en éliminant les scans complets de la table.</li>
+                <li>Ils pourront observer dans le plan d’exécution que l’index est utilisé.</li>
+            </ul>
+        
+            <h3>Discussion et Conclusion (20 min)</h3>
+        
+            <h4>Points Clés :</h4>
+            <ul>
+                <li>Les index sont essentiels pour améliorer les 
+performances des bases de données, mais ils ont un coût en espace disque
+ et en temps de mise à jour.</li>
+                <li>Il est important de créer des index uniquement là où ils apportent une réelle valeur ajoutée.</li>
+                <li>La normalisation et la désnormalisation sont des 
+outils complémentaires pour optimiser les bases de données en fonction 
+des besoins.</li>
+            </ul>
+        
+            <h4>Questions pour les élèves :</h4>
+            <ul>
+                <li>Quels types de colonnes bénéficient le plus des index ?</li>
+                <li>Quels sont les inconvénients de l’utilisation excessive d’index ?</li>
+                <li>Comment choisir entre normalisation et désnormalisation ?</li>
+            </ul>
+        
+            <p>
+                À la fin de cette séance, les élèves seront capables de 
+comprendre le rôle des index dans les bases de données, de les créer et 
+de les analyser pour optimiser les performances des requêtes.
+            </p>
+        </section>

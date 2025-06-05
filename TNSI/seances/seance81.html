@@ -1,0 +1,148 @@
+<script src="script.js"></script>
+<section id="session81" class="content-section">
+            <h2>Séance 81 : Protocole HTTP et API REST</h2>
+        
+            <h3>Objectif Global :</h3>
+            <p>
+                Les élèves apprendront les principes fondamentaux du protocole HTTP, la structure des requêtes et des réponses HTTP, et la manière d'interagir avec des API REST. À travers des exemples pratiques, ils comprendront comment consommer des API pour récupérer ou envoyer des données.
+            </p>
+        
+            <h3>Partie 1 : Introduction au Protocole HTTP (30 min)</h3>
+        
+            <h4>1. Qu’est-ce que HTTP ?</h4>
+            <p>
+                HTTP (HyperText Transfer Protocol) est un protocole de communication utilisé pour échanger des données sur le web. Les navigateurs utilisent HTTP pour récupérer les pages web, et les applications modernes l’utilisent pour communiquer avec des serveurs via des API.
+            </p>
+            <p>HTTP fonctionne sur un modèle <strong>client-serveur</strong> :</p>
+            <ul>
+                <li>Le <strong>client</strong> envoie une requête (exemple : un navigateur ou une application).</li>
+                <li>Le <strong>serveur</strong> répond avec des données ou des messages d’état.</li>
+            </ul>
+        
+            <h4>2. Structure d’une Requête HTTP :</h4>
+            <p>Une requête HTTP contient :</p>
+            <ul>
+                <li><strong>Méthode :</strong> Détermine l’action à effectuer (GET, POST, PUT, DELETE).</li>
+                <li><strong>URL :</strong> L’adresse de la ressource demandée.</li>
+                <li><strong>Headers :</strong> Métadonnées pour la requête (ex. : format des données).</li>
+                <li><strong>Corps (Body) :</strong> Contient les données envoyées (utilisé principalement avec POST et PUT).</li>
+            </ul>
+        
+            <h4>Exemple de Requête HTTP GET :</h4>
+            <pre><code>
+        GET /api/v1/produits HTTP/1.1
+        Host: www.example.com
+        Authorization: Bearer <token>
+            </code></pre>
+        
+            <h4>3. Structure d’une Réponse HTTP :</h4>
+            <p>Une réponse HTTP contient :</p>
+            <ul>
+                <li><strong>Code de statut :</strong> Indique le résultat de la requête (ex. : 200 pour OK, 404 pour Not Found).</li>
+                <li><strong>Headers :</strong> Informations sur la réponse (ex. : type de contenu).</li>
+                <li><strong>Corps (Body) :</strong> Contient les données retournées par le serveur.</li>
+            </ul>
+        
+            <h4>Exemple de Réponse HTTP :</h4>
+            <pre><code>
+        HTTP/1.1 200 OK
+        Content-Type: application/json
+        
+        {
+            "produits": [
+                {"id": 1, "nom": "Produit A", "prix": 10.0},
+                {"id": 2, "nom": "Produit B", "prix": 20.0}
+            ]
+        }
+            </code></pre>
+        
+            <h3>Partie 2 : Introduction aux API REST (30 min)</h3>
+        
+            <h4>1. Qu’est-ce qu’une API REST ?</h4>
+            <p>
+                Une API (Application Programming Interface) REST (REpresentational State Transfer) est une interface qui permet aux applications de communiquer entre elles via HTTP. Elle repose sur des principes simples, tels que :
+            </p>
+            <ul>
+                <li><strong>Ressources :</strong> Tout est traité comme une ressource (ex. : utilisateurs, produits).</li>
+                <li><strong>Méthodes HTTP :</strong> Les actions sur les ressources sont définies par les méthodes HTTP (GET, POST, PUT, DELETE).</li>
+                <li><strong>Stateless :</strong> Chaque requête est indépendante des autres.</li>
+            </ul>
+        
+            <h4>2. Principales Méthodes HTTP pour REST :</h4>
+            <ul>
+                <li><strong>GET :</strong> Récupérer des données (lecture).</li>
+                <li><strong>POST :</strong> Ajouter de nouvelles données (création).</li>
+                <li><strong>PUT :</strong> Mettre à jour des données existantes.</li>
+                <li><strong>DELETE :</strong> Supprimer des données.</li>
+            </ul>
+        
+            <h4>3. Exemple d’API REST :</h4>
+            <p>Supposons une API pour gérer des utilisateurs. Voici les routes disponibles :</p>
+            <ul>
+                <li><code>GET /api/v1/utilisateurs</code> : Récupère tous les utilisateurs.</li>
+                <li><code>GET /api/v1/utilisateurs/{id}</code> : Récupère un utilisateur par ID.</li>
+                <li><code>POST /api/v1/utilisateurs</code> : Ajoute un nouvel utilisateur.</li>
+                <li><code>PUT /api/v1/utilisateurs/{id}</code> : Met à jour les informations d’un utilisateur.</li>
+                <li><code>DELETE /api/v1/utilisateurs/{id}</code> : Supprime un utilisateur.</li>
+            </ul>
+        
+            <h3>Partie 3 : Pratique - Consommer une API REST en Python (1h)</h3>
+        
+            <h4>1. Utilisation de la Bibliothèque <code>requests</code> :</h4>
+            <p>
+                En Python, la bibliothèque <code>requests</code> permet d’envoyer facilement des requêtes HTTP. Voici comment l’installer :
+            </p>
+            <pre><code>
+        pip install requests
+            </code></pre>
+        
+            <h4>2. Exemple Pratique :</h4>
+            <p>Récupérez une liste d’utilisateurs depuis une API publique (par exemple : <a href="https://jsonplaceholder.typicode.com">https://jsonplaceholder.typicode.com</a>).</p>
+            <pre><code class="python">
+        import requests
+        
+        # Envoi d'une requête GET
+        url = "https://jsonplaceholder.typicode.com/users"
+        response = requests.get(url)
+        
+        # Vérification du code de statut
+        if response.status_code == 200:
+            utilisateurs = response.json()  # Convertir la réponse JSON en objet Python
+            for utilisateur in utilisateurs:
+                print(f"Nom : {utilisateur['name']}, Email : {utilisateur['email']}")
+        else:
+            print("Erreur lors de la récupération des utilisateurs.")
+            </code></pre>
+        
+            <h4>3. Exercice Pratique :</h4>
+            <p>En groupe, réalisez les tâches suivantes :</p>
+            <ul>
+                <li>Créez une fonction pour ajouter un nouvel utilisateur (requête POST).</li>
+                <li>Créez une fonction pour mettre à jour les informations d’un utilisateur (requête PUT).</li>
+                <li>Créez une fonction pour supprimer un utilisateur (requête DELETE).</li>
+            </ul>
+        
+            <h4>Exemple pour POST :</h4>
+            <pre><code class="python">
+        # Envoi d'une requête POST pour ajouter un utilisateur
+        url = "https://jsonplaceholder.typicode.com/users"
+        nouvel_utilisateur = {
+            "name": "Alice Dupont",
+            "email": "alice@example.com",
+            "phone": "123-456-7890"
+        }
+        response = requests.post(url, json=nouvel_utilisateur)
+        
+        if response.status_code == 201:  # Code de création réussie
+            print("Utilisateur ajouté avec succès :", response.json())
+        else:
+            print("Erreur lors de l'ajout de l'utilisateur.")
+            </code></pre>
+        
+            <h3>Conclusion et Réflexion (10 min)</h3>
+            <ul>
+                <li>Les élèves auront appris à interagir avec des API REST via des requêtes HTTP.</li>
+                <li>Discussion : Comment les API REST sont utilisées dans des applications modernes (ex. : communication entre une application mobile et un serveur) ?</li>
+                <li>Extension : Introduction aux API sécurisées avec des jetons d’authentification (Bearer Token).</li>
+            </ul>
+        </section>

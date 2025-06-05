@@ -1,0 +1,176 @@
+<script src="script.js"></script>
+<section id="session56" class="content-section">
+            <h2>Séance 56 : Pratique - Réorganisation d’une base de données pour une meilleure gestion des données</h2>
+        
+            <h3>Objectif Global :</h3>
+            <p>
+                Les élèves apprendront à analyser une base de données 
+existante, identifier ses problèmes structurels, et appliquer des 
+techniques de normalisation pour améliorer sa gestion. L’objectif est 
+d’optimiser les performances et la cohérence des données.
+            </p>
+        
+            <h3>Contexte du Projet :</h3>
+            <p>
+                Une base de données pour une bibliothèque contient des 
+informations sur les livres, les abonnés, et les emprunts. Cependant, la
+ structure actuelle pose plusieurs problèmes :
+            </p>
+            <ul>
+                <li>Les données sont redondantes.</li>
+                <li>Des anomalies se produisent lors des mises à jour ou des suppressions.</li>
+                <li>La recherche d’informations est inefficace.</li>
+            </ul>
+            <p>
+                Les élèves vont réorganiser cette base pour appliquer 
+les principes de la **normalisation** et améliorer sa gestion.
+            </p>
+        
+            <h3>Étape 1 : Analyse de la Base de Données Existante (30 min)</h3>
+        
+            <h4>Structure actuelle :</h4>
+            <p>
+                La base est contenue dans une seule table appelée <code>Bibliotheque</code>, avec les colonnes suivantes :
+            </p>
+            <pre><code>
+        ID | NomLivre      | Auteur         | AbonneNom     | AbonneEmail         | DateEmprunt
+        --------------------------------------------------------------------------------------
+        1  | Python Basics | John Doe       | Alice Dupont  | alice@mail.com      | 2023-01-10
+        2  | Python Basics | John Doe       | Bob Martin    | bob@mail.com        | 2023-01-11
+        3  | AI Advanced   | Jane Smith     | Alice Dupont  | alice@mail.com      | 2023-01-12
+            </code></pre>
+        
+            <h4>Problèmes observés :</h4>
+            <ul>
+                <li><strong>Redondance :</strong> Le même livre ou abonné apparaît plusieurs fois.</li>
+                <li><strong>Manque de normalisation :</strong> Les informations sur les livres et abonnés sont mélangées.</li>
+                <li><strong>Anomalies potentielles :</strong> Modifier l’email d’un abonné nécessite de changer plusieurs lignes.</li>
+            </ul>
+        
+            <h4>Objectifs :</h4>
+            <ul>
+                <li>Réduire les redondances en divisant la base en plusieurs tables liées.</li>
+                <li>Appliquer les principes de la **1ère Forme Normale (1NF)**, **2ème Forme Normale (2NF)**, et **3ème Forme Normale (3NF)**.</li>
+            </ul>
+        
+            <h3>Étape 2 : Réorganisation en Suivant les Formes Normales (40 min)</h3>
+        
+            <h4>1. Première Forme Normale (1NF) :</h4>
+            <p>
+                Chaque cellule doit contenir une valeur unique et chaque
+ ligne doit être identifiable de manière unique. Les colonnes <code>NomLivre</code> et <code>AbonneNom</code> contenant des données redondantes doivent être divisées.
+            </p>
+        
+            <h4>Structure après 1NF :</h4>
+            <pre><code>
+        Livres
+        ID_Livre | NomLivre       | Auteur
+        -----------------------------------
+        1        | Python Basics  | John Doe
+        2        | AI Advanced    | Jane Smith
+        
+        Abonnes
+        ID_Abonne | NomAbonne     | Email
+        -------------------------------------
+        1         | Alice Dupont  | alice@mail.com
+        2         | Bob Martin    | bob@mail.com
+        
+        Emprunts
+        ID_Emprunt | ID_Livre | ID_Abonne | DateEmprunt
+        -----------------------------------------------
+        1           | 1        | 1         | 2023-01-10
+        2           | 1        | 2         | 2023-01-11
+        3           | 2        | 1         | 2023-01-12
+            </code></pre>
+        
+            <h4>2. Deuxième Forme Normale (2NF) :</h4>
+            <p>
+                Tous les attributs non-clés doivent dépendre entièrement
+ de la clé primaire. Par exemple, les informations sur les livres ne 
+doivent pas être répétées dans plusieurs lignes.
+            </p>
+        
+            <h4>Structure après 2NF :</h4>
+            <p>Pas de changement majeur dans cet exemple, car nous avons déjà séparé les informations en tables liées.</p>
+        
+            <h4>3. Troisième Forme Normale (3NF) :</h4>
+            <p>
+                Aucun attribut ne doit dépendre transitivement de la clé
+ primaire. Par exemple, les emails des abonnés ne doivent pas être 
+stockés ailleurs que dans la table des abonnés.
+            </p>
+            <p>La structure après la 1NF respecte déjà cette règle.</p>
+        
+            <h3>Étape 3 : Implémentation en SQL (40 min)</h3>
+        
+            <h4>Création des Tables :</h4>
+            <pre><code class="sql">
+        CREATE TABLE Livres (
+            ID_Livre INT PRIMARY KEY,
+            NomLivre VARCHAR(100),
+            Auteur VARCHAR(100)
+        );
+        
+        CREATE TABLE Abonnes (
+            ID_Abonne INT PRIMARY KEY,
+            NomAbonne VARCHAR(100),
+            Email VARCHAR(100)
+        );
+        
+        CREATE TABLE Emprunts (
+            ID_Emprunt INT PRIMARY KEY,
+            ID_Livre INT,
+            ID_Abonne INT,
+            DateEmprunt DATE,
+            FOREIGN KEY (ID_Livre) REFERENCES Livres(ID_Livre),
+            FOREIGN KEY (ID_Abonne) REFERENCES Abonnes(ID_Abonne)
+        );
+            </code></pre>
+        
+            <h4>Insertion des Données :</h4>
+            <pre><code class="sql">
+        INSERT INTO Livres (ID_Livre, NomLivre, Auteur) VALUES
+        (1, 'Python Basics', 'John Doe'),
+        (2, 'AI Advanced', 'Jane Smith');
+        
+        INSERT INTO Abonnes (ID_Abonne, NomAbonne, Email) VALUES
+        (1, 'Alice Dupont', 'alice@mail.com'),
+        (2, 'Bob Martin', 'bob@mail.com');
+        
+        INSERT INTO Emprunts (ID_Emprunt, ID_Livre, ID_Abonne, DateEmprunt) VALUES
+        (1, 1, 1, '2023-01-10'),
+        (2, 1, 2, '2023-01-11'),
+        (3, 2, 1, '2023-01-12');
+            </code></pre>
+        
+            <h4>Requêtes Pratiques :</h4>
+            <p>Les élèves devront exécuter des requêtes pour tester la nouvelle structure :</p>
+            <ul>
+                <li><strong>Afficher tous les livres empruntés :</strong></li>
+                <pre><code class="sql">
+        SELECT Emprunts.ID_Emprunt, Livres.NomLivre, Abonnes.NomAbonne, Emprunts.DateEmprunt
+        FROM Emprunts
+        JOIN Livres ON Emprunts.ID_Livre = Livres.ID_Livre
+        JOIN Abonnes ON Emprunts.ID_Abonne = Abonnes.ID_Abonne;
+                </code></pre>
+        
+                <li><strong>Modifier l’email d’un abonné :</strong></li>
+                <pre><code class="sql">
+        UPDATE Abonnes
+        SET Email = 'nouvel_email@mail.com'
+        WHERE ID_Abonne = 1;
+                </code></pre>
+            </ul>
+        
+            <h3>Conclusion :</h3>
+            <p>
+                À la fin de cette séance, les élèves auront appris à :
+            </p>
+            <ul>
+                <li>Analyser les problèmes d’une base de données existante.</li>
+                <li>Appliquer les principes de normalisation pour réduire les redondances et les anomalies.</li>
+                <li>Réorganiser une base en utilisant plusieurs tables liées.</li>
+                <li>Écrire des requêtes SQL pour manipuler efficacement les données.</li>
+            </ul>
+            <p>Ce projet montre l'importance de la structure des bases de données pour garantir leur performance et leur fiabilité.</p>
+        </section>

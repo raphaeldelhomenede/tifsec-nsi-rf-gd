@@ -1,0 +1,164 @@
+<script src="script.js"></script>
+<section id="session69" class="content-section">
+    <h2>Séance 69 : Exploration des FPGA et de la logique programmable</h2>
+
+    <h3>🎯 Objectif Global :</h3>
+    <p>
+        Les élèves vont découvrir le fonctionnement des FPGA (Field-Programmable Gate Arrays) et comprendre leur différence avec les CPU et GPU. 
+        Ils apprendront à manipuler un FPGA en construisant un circuit reconfigurable et une ALU (Unité Logique et Arithmétique) simple.
+    </p>
+
+    <h3>📺 1. Vidéo interactive sur les FPGA</h3>
+
+    <p>
+        Introduction :
+        <br>
+        <a href="https://www.youtube.com/watch?v=qu5Y6QrxqvI" target="_blank" rel="noopener noreferrer">Courte vidéo qui explique le rôle des FPGA.</a>
+        <br>
+        <a href="https://www.youtube.com/watch?v=lfGMyvWE_aM" target="_blank" rel="noopener noreferrer">Différence entre les CPU et GPU</a>
+    </p>
+
+    <h4>💡 Différences entre CPU, GPU et FPGA :</h4>
+    <ul>
+        <li><strong>CPU (Processeur classique) :</strong> Conçu pour exécuter des tâches générales.</li>
+        <li><strong>GPU (Processeur graphique) :</strong> Optimisé pour le calcul parallèle (idéal pour l’IA et le rendu graphique).</li>
+        <li><strong>FPGA :</strong> Circuits reconfigurables capables d’exécuter des tâches spécialisées avec une efficacité maximale.</li>
+    </ul>
+
+    <h4>📌 Pourquoi utilise-t-on les FPGA ?</h4>
+    <p>
+        Les FPGA sont présents dans de nombreux domaines, notamment :
+    </p>
+    <ul>
+        <li><strong>Voitures autonomes :</strong> Traitement rapide des données des capteurs.</li>
+        <li><strong>Cryptomonnaies :</strong> Accélération des calculs pour le minage (ex. Bitcoin).</li>
+        <li><strong>Télécommunications :</strong> Optimisation des signaux et traitement réseau.</li>
+    </ul>
+
+    <h3>🔬 2. Expérience interactive : Construire un circuit reconfigurable</h3>
+
+    <p>
+        Les élèves vont utiliser un simulateur FPGA (Logisim) pour concevoir un circuit programmable capable de réaliser deux opérations distinctes :
+    </p>
+
+    <h4>✅ Objectifs :</h4>
+    <ul>
+        <li>Comprendre comment les FPGA permettent de modifier leur configuration à la volée.</li>
+        <li>Concevoir un circuit simple qui peut effectuer une addition OU une comparaison selon un paramètre.</li>
+    </ul>
+
+    <h4>🛠️ Étape 1 : Configuration du simulateur</h4>
+
+    <ul>
+        <li>Créer un nouveau projet.</li>
+        <li>Ajouter des entrées (A et B) et une sortie (S).</li>
+        <li>Ajouter un multiplexeur qui choisit entre l'addition et la comparaison.</li>
+    </ul>
+
+    <h4>🛠️ Étape 2 : Construction du circuit</h4>
+    <ul>
+        <li>Ajouter une additionneur 2 bits.</li>
+        <li>Ajouter un comparateur (A > B ?).</li>
+        <li>Relier le multiplexeur pour choisir entre les deux opérations.</li>
+        <li>Tester en changeant les entrées et observer la sortie.</li>
+    </ul>
+
+    <h4>🎯 Défi : Ajouter une LED qui s’allume quand A > B</h4>
+    <p>
+        Les élèves doivent ajouter une LED qui s’active uniquement si A est supérieur à B.
+    </p>
+
+    <hr>
+
+    <h2>Projet - Un mini-processeur en FPGA</h2>
+
+    <h3>⚙️ 1. Conception d’une ALU simple</h3>
+
+    <p>
+        Une ALU (Arithmetic Logic Unit) est le cœur d’un processeur. Elle exécute les opérations mathématiques et logiques.
+    </p>
+
+    <h4>✅ Objectifs :</h4>
+    <ul>
+        <li>Construire une ALU simplifiée capable d’effectuer une addition ET une comparaison.</li>
+        <li>Découvrir comment un processeur exécute des opérations en modifiant ses entrées.</li>
+    </ul>
+
+    <h4>🛠️ Étape 1 : Création des opérations de base</h4>
+    <p>
+        Les élèves doivent ajouter deux modules principaux :
+    </p>
+    <ul>
+        <li>Un additionneur 2 bits (utilisant des portes logiques OU et ET).</li>
+        <li>Un comparateur (A > B, A < B, A = B).</li>
+    </ul>
+
+    <h4>🛠️ Étape 2 : Sélection des opérations</h4>
+    <p>
+        Ajout d’un multiplexeur qui sélectionne :
+    </p>
+    <ul>
+        <li><strong>Mode 0 :</strong> L'ALU effectue une addition.</li>
+        <li><strong>Mode 1 :</strong> L'ALU effectue une comparaison.</li>
+    </ul>
+
+    <pre><code class="python">
+# Exemple de code pour une ALU en langage VHDL (FPGA)
+process(A, B, mode)
+begin
+  if mode = '0' then
+    S <= A + B; -- Addition
+  else
+    if A > B then
+      S <= "01"; -- A > B
+    elsif A = B then
+      S <= "00"; -- A = B
+    else
+      S <= "10"; -- A < B
+    end if;
+  end if;
+end process;
+    </code></pre>
+
+    <h4>🎯 Défi : Ajout d’une opération XOR ou inversion des bits</h4>
+    <p>
+        Pour aller plus loin, les élèves peuvent ajouter une opération XOR en utilisant des portes logiques XOR.
+    </p>
+
+    <hr>
+
+    <h2>📊 Comparaison des performances</h2>
+
+    <p>
+        À la fin de la séance, les élèves comparent les performances des différentes conceptions et discutent :
+    </p>
+
+    <ul>
+        <li>Quelle version est la plus rapide ?</li>
+        <li>Quel circuit est le plus simple ?</li>
+        <li>Comment optimiser les circuits logiques ?</li>
+    </ul>
+
+    <hr>
+
+    <h2>🔎 Conclusion et Bilan de la Séance</h2>
+
+    <p>
+        Cette séance a permis aux élèves de :
+    </p>
+    <ul>
+        <li>Comprendre la **différence entre CPU, GPU et FPGA**.</li>
+        <li>Expérimenter avec un **simulateur FPGA**.</li>
+        <li>Construire une **ALU simple et programmable**.</li>
+        <li>Optimiser un circuit en ajoutant de nouvelles **opérations logiques**.</li>
+    </ul>
+
+    <h3>🎯 Défi pour la maison :</h3>
+    <p>
+        Les élèves doivent améliorer leur ALU en ajoutant :
+    </p>
+    <ul>
+        <li>Une opération de soustraction.</li>
+        <li>Une opération logique supplémentaire (AND, OR, XOR).</li>
+    </ul>
+</section>

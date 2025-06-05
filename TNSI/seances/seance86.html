@@ -1,0 +1,175 @@
+<script src="script.js"></script>
+<section id="session86" class="content-section">
+    <h2>🖥️ Séance 86 — Commandes avancées de gestion de processus</h2>
+
+    <h3>🎯 Objectif pédagogique :</h3>
+    <p>
+      Apprendre à surveiller, gérer et interagir efficacement avec les processus sous un système Linux. Les élèves découvriront comment afficher, trier, modifier et tuer des processus à l’aide de commandes puissantes et concrètes.
+    </p>
+  
+    <hr>
+  
+    <h2>Comprendre et manipuler les processus Linux</h2>
+  
+    <h3>🔎 1. Introduction — C’est quoi un processus ?</h3>
+    <p>
+      Un processus est un programme en cours d’exécution. Chaque fois que vous lancez une application (éditeur de texte, navigateur, terminal...), le système crée un ou plusieurs <strong>processus</strong>.
+    </p>
+  
+    <p>
+      Le système d’exploitation (ici Linux) doit constamment :
+      <ul>
+        <li>🎯 Suivre les processus actifs</li>
+        <li>🧠 Décider lesquels ont la priorité</li>
+        <li>🛑 Les suspendre, les relancer, ou les tuer si besoin</li>
+      </ul>
+    </p>
+  
+    <h3>💻 2. Commandes essentielles et avancées</h3>
+  
+    <h4><code>htop</code> — Un gestionnaire visuel en terminal</h4>
+    <p>
+      <strong>htop</strong> est un outil interactif pour voir tous les processus du système. Il affiche la mémoire utilisée, le pourcentage CPU, le nom du processus, son PID (Process ID), son utilisateur, etc.
+    </p>
+  
+    <p><strong>Commande :</strong> <code>htop</code></p>
+  
+    <h4><code>nice</code> — Lancer un processus avec une priorité personnalisée</h4>
+    <p>
+      <code>nice</code> permet de lancer un programme avec une priorité définie (appelée "valeur nice"). Plus la valeur est haute, moins le processus est prioritaire.
+    </p>
+  
+    <pre><code class="bash">
+  nice -n 10 python script_lourd.py
+    </code></pre>
+  
+    <p>
+      <strong>Vulgarisation :</strong> on peut dire à Linux : "Ce programme peut attendre un peu, ne le fais passer qu’après les autres."
+    </p>
+  
+    <h4><code>renice</code> — Modifier la priorité d’un processus existant</h4>
+    <p>
+      Exemple : on veut baisser la priorité d’un processus qui consomme trop de ressources.
+    </p>
+  
+    <pre><code class="bash">
+  renice 15 -p 12345
+  # 12345 étant le PID du processus
+    </code></pre>
+  
+    <h4><code>pgrep</code> — Trouver le PID à partir du nom d’un processus</h4>
+    <p>
+      Exemples :
+      <pre><code class="bash">
+  pgrep firefox
+  pgrep python
+      </code></pre>
+    </p>
+  
+    <h4><code>kill</code> / <code>killall</code> — Terminer un processus</h4>
+    <ul>
+      <li><code>kill</code> + PID → tue un processus spécifique</li>
+      <li><code>killall</code> + nom → tue tous les processus avec ce nom</li>
+    </ul>
+  
+    <pre><code class="bash">
+  kill 12345
+  killall firefox
+    </code></pre>
+  
+    <h3>🛠️ 3. Micro-exercices pratiques (à faire directement en terminal)</h3>
+  
+    <ol>
+      <li>Lancez deux scripts Python qui tournent en boucle :
+        <pre><code class="bash">
+  python3 script1.py &
+  python3 script2.py &
+        </code></pre>
+      </li>
+      <li>Ouvrez <code>htop</code>. Repérez vos deux scripts.</li>
+      <li>Utilisez <code>renice</code> pour modifier leur priorité.
+        <br>Comparez la consommation CPU après modification.
+      </li>
+      <li>Trouvez le processus qui consomme le plus de mémoire.</li>
+      <li>Trouvez le processus qui tourne depuis le plus longtemps.</li>
+      <li>Utilisez <code>pgrep</code> et <code>kill</code> pour arrêter un script.</li>
+    </ol>
+  
+    <h4>💡 Astuces bonus :</h4>
+    <ul>
+      <li>Appuyez sur <code>F6</code> dans <code>htop</code> pour trier selon une colonne (ex : %MEM, TIME+)</li>
+      <li>Utilisez <code>htop --sort-key=TIME+</code> pour lister les processus les plus anciens</li>
+    </ul>
+  
+    <hr>
+  
+    <h2>Projet SimuTaskManager (console Python)</h2>
+  
+    <h3>📋 Objectif :</h3>
+    <p>
+      Créer un gestionnaire de processus <strong>fictifs</strong> en Python pour simuler le comportement d’un système d’exploitation.
+    </p>
+  
+    <h3>1. Structure du mini-projet :</h3>
+  
+    <ul>
+      <li>💾 Une liste de processus simulés (dictionnaires Python)</li>
+      <li>🎛️ Affichage en console : PID, nom, %CPU, état (RUNNING, STOPPED)</li>
+      <li>🧭 Menu avec actions : "tuer", "changer priorité", "mettre en pause", "reprendre"</li>
+    </ul>
+  
+    <h3>2. Exemple de structure de processus :</h3>
+    <pre><code class="python">
+  processus = [
+      {"pid": 101, "nom": "Calculatrice", "etat": "RUNNING", "priorite": 10, "cpu": 12.5},
+      {"pid": 102, "nom": "Mise à jour", "etat": "STOPPED", "priorite": 5, "cpu": 0.0},
+      {"pid": 103, "nom": "Musique", "etat": "RUNNING", "priorite": 15, "cpu": 8.7}
+  ]
+    </code></pre>
+  
+    <h3>3. Exemples d’actions à coder :</h3>
+  
+    <ul>
+      <li><code>pause_process(pid)</code> → change <code>etat</code> en <code>"STOPPED"</code></li>
+      <li><code>resume_process(pid)</code> → change <code>etat</code> en <code>"RUNNING"</code></li>
+      <li><code>kill_process(pid)</code> → supprime le processus de la liste</li>
+      <li><code>renice_process(pid, nouvelle_priorite)</code> → modifie la priorité</li>
+    </ul>
+  
+    <h3>4. Micro-exercices :</h3>
+  
+    <ol>
+      <li>Affichez tous les processus avec leur priorité.</li>
+      <li>Suspendez tous les processus ayant une priorité supérieure à 10.</li>
+      <li>Tuez le processus utilisant le plus de CPU.</li>
+      <li>Ajoutez une fonction pour "relancer tous les processus stoppés".</li>
+    </ol>
+  
+    <h3>5. Variante papier (si pas de machine)</h3>
+    <p>
+      Donnez une fiche avec 6 processus fictifs.
+      Les élèves doivent :
+      <ul>
+        <li>📌 Identifier les processus inutiles ou dangereux</li>
+        <li>🛑 Décider lesquels tuer, suspendre ou relancer</li>
+        <li>🔧 Justifier chaque action</li>
+      </ul>
+    </p>
+  
+    <hr>
+  
+    <h2>✅ Bilan de la séance</h2>
+    <ul>
+      <li>✔ Compréhension concrète de ce qu’est un processus sous Linux</li>
+      <li>✔ Maîtrise de commandes puissantes comme <code>htop</code>, <code>renice</code>, <code>kill</code>, <code>pgrep</code></li>
+      <li>✔ Capacité à modifier la priorité, l’état et l'existence d’un processus</li>
+      <li>✔ Pratique avec un projet Python simple simulant la gestion des processus</li>
+    </ul>
+  
+    <h3>🔄 Pour aller plus loin :</h3>
+    <ul>
+      <li>🔍 Étudier les signaux Unix (<code>SIGTERM</code>, <code>SIGKILL</code>)</li>
+      <li>📈 Suivre en temps réel l’impact d’un script sur le système avec <code>htop</code></li>
+      <li>👨‍💻 Modifier un vrai programme pour qu’il réagisse aux signaux reçus</li>
+    </ul>
+</section>

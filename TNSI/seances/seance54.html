@@ -1,0 +1,180 @@
+<script src="script.js"></script>
+<section id="session54" class="content-section">
+            <h2>Séance 54 : Optimisation des Requêtes SQL</h2>
+        
+            <h3>Objectif Global :</h3>
+            <p>
+                Les élèves apprendront à identifier les problèmes de 
+performance dans les requêtes SQL et à utiliser des techniques 
+d’optimisation. L'objectif est d'améliorer l'efficacité des requêtes 
+pour manipuler des bases de données volumineuses.
+            </p>
+        
+            <h3>Introduction (15 min)</h3>
+        
+            <h4>Pourquoi optimiser les requêtes SQL ?</h4>
+            <p>
+                L’optimisation des requêtes SQL est essentielle pour 
+améliorer la vitesse et réduire la charge sur les bases de données, en 
+particulier dans les applications à grande échelle. Des requêtes 
+inefficaces peuvent ralentir une application et consommer beaucoup de 
+ressources.
+            </p>
+        
+            <h4>Concepts Clés :</h4>
+            <ul>
+                <li><strong>Index :</strong> Structures de données qui permettent de retrouver rapidement des lignes dans une table.</li>
+                <li><strong>Analyse des plans d’exécution :</strong> Outils pour comprendre comment une requête est traitée par le moteur SQL.</li>
+                <li><strong>Requêtes non optimisées :</strong> Exemples de requêtes lentes à cause de jointures ou de filtres inefficaces.</li>
+            </ul>
+        
+            <h3>Étape 1 : Analyse des Problèmes de Performance (20 min)</h3>
+        
+            <h4>Exercice :</h4>
+            <p>
+                Donnez une base de données simple avec deux tables :
+            </p>
+            <pre><code class="sql">
+        CREATE TABLE Employes (
+            id INT PRIMARY KEY,
+            nom VARCHAR(50),
+            salaire DECIMAL(10, 2),
+            departement_id INT
+        );
+        
+        CREATE TABLE Departements (
+            id INT PRIMARY KEY,
+            nom VARCHAR(50)
+        );
+        
+        -- Insertion de données
+        INSERT INTO Employes VALUES (1, 'Alice', 50000, 1);
+        INSERT INTO Employes VALUES (2, 'Bob', 60000, 2);
+        INSERT INTO Departements VALUES (1, 'Informatique');
+        INSERT INTO Departements VALUES (2, 'Ressources Humaines');
+            </code></pre>
+        
+            <p>Requête initiale :</p>
+            <pre><code class="sql">
+        SELECT Employes.nom, Departements.nom
+        FROM Employes
+        JOIN Departements ON Employes.departement_id = Departements.id;
+            </code></pre>
+        
+            <p><strong>Problème :</strong> Si la base contient beaucoup de données, cette requête peut devenir lente.</p>
+        
+            <h4>Analyse avec EXPLAIN :</h4>
+            <p>
+                Utilisez la commande <code>EXPLAIN</code> pour comprendre comment le moteur SQL exécute cette requête.
+            </p>
+            <pre><code class="sql">
+        EXPLAIN SELECT Employes.nom, Departements.nom
+        FROM Employes
+        JOIN Departements ON Employes.departement_id = Departements.id;
+            </code></pre>
+        
+            <p>Analyse des résultats :</p>
+            <ul>
+                <li>Regardez le type de jointure utilisé (ex. : <code>ALL</code>, <code>INDEX</code>, <code>REF</code>).</li>
+                <li>Identifiez les colonnes non indexées qui ralentissent la recherche.</li>
+            </ul>
+        
+            <h3>Étape 2 : Utilisation des Index pour Améliorer les Performances (30 min)</h3>
+        
+            <h4>Qu’est-ce qu’un Index ?</h4>
+            <p>
+                Un index est une structure de données qui permet 
+d’accélérer les recherches dans une table en réduisant le nombre de 
+lignes à parcourir.
+            </p>
+        
+            <h4>Création d’un Index :</h4>
+            <pre><code class="sql">
+        -- Création d'un index sur la colonne departement_id
+        CREATE INDEX idx_departement_id ON Employes(departement_id);
+            </code></pre>
+        
+            <h4>Test de Performance :</h4>
+            <p>Exécutez à nouveau la requête après avoir créé l’index et analysez les résultats avec <code>EXPLAIN</code>.</p>
+            <pre><code class="sql">
+        EXPLAIN SELECT Employes.nom, Departements.nom
+        FROM Employes
+        JOIN Departements ON Employes.departement_id = Departements.id;
+            </code></pre>
+        
+            <h4>Comparaison :</h4>
+            <ul>
+                <li>Notez les différences dans le type de jointure utilisé (ex. : utilisation de l’index).</li>
+                <li>Observez la réduction du temps d’exécution.</li>
+            </ul>
+        
+            <h3>Étape 3 : Optimisation des Filtres et des Jointures (30 min)</h3>
+        
+            <h4>Filtres Inefficaces :</h4>
+            <p>
+                Les requêtes avec des conditions non optimisées peuvent être lentes, par exemple :
+            </p>
+            <pre><code class="sql">
+        SELECT * FROM Employes WHERE salaire * 2 &gt; 100000;
+            </code></pre>
+        
+            <p><strong>Problème :</strong> L’utilisation d’une opération sur la colonne (<code>salaire * 2</code>) empêche l’utilisation d’un index.</p>
+        
+            <h4>Solution :</h4>
+            <p>
+                Réécrivez la requête pour éviter les opérations sur les colonnes :
+            </p>
+            <pre><code class="sql">
+        SELECT * FROM Employes WHERE salaire &gt; 50000;
+            </code></pre>
+        
+            <h4>Optimisation des Jointures :</h4>
+            <p>
+                Les jointures entre plusieurs tables peuvent ralentir 
+les requêtes si elles ne sont pas bien conçues. Assurez-vous que les 
+colonnes utilisées pour les jointures sont indexées.
+            </p>
+            <pre><code class="sql">
+        -- Exemple avec une jointure optimisée
+        SELECT Employes.nom, Departements.nom
+        FROM Employes
+        JOIN Departements ON Employes.departement_id = Departements.id
+        WHERE Departements.nom = 'Informatique';
+            </code></pre>
+        
+            <h3>Étape 4 : Utilisation de LIMIT et Pagination (20 min)</h3>
+        
+            <h4>Pourquoi utiliser LIMIT ?</h4>
+            <p>
+                Lorsqu’une requête renvoie un grand nombre de résultats,
+ afficher uniquement une partie des données améliore les performances.
+            </p>
+        
+            <h4>Exemple :</h4>
+            <pre><code class="sql">
+        -- Limiter les résultats à 10 lignes
+        SELECT * FROM Employes LIMIT 10;
+        
+        -- Pagination : afficher les résultats de la page 2 (10 lignes par page)
+        SELECT * FROM Employes LIMIT 10 OFFSET 10;
+            </code></pre>
+        
+            <h4>Défi Pratique :</h4>
+            <p>Ajoutez la pagination à une requête complexe pour afficher les employés par tranche de 10.</p>
+        
+            <h3>Conclusion et Discussion (10 min)</h3>
+        
+            <ul>
+                <li><strong>Analyse :</strong> Utilisez <code>EXPLAIN</code> pour identifier les goulots d’étranglement dans les requêtes.</li>
+                <li><strong>Indexation :</strong> Créez des index sur les colonnes utilisées dans les conditions ou les jointures.</li>
+                <li><strong>Filtres :</strong> Évitez les calculs sur les colonnes dans les clauses <code>WHERE</code>.</li>
+                <li><strong>Pagination :</strong> Utilisez <code>LIMIT</code> pour afficher les résultats par petits lots.</li>
+            </ul>
+        
+            <p>
+                À la fin de cette séance, les élèves auront appris à 
+identifier et résoudre les problèmes de performance dans les requêtes 
+SQL, en appliquant des techniques pratiques adaptées à des scénarios 
+réels.
+            </p>
+        </section>

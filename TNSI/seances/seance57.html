@@ -1,0 +1,174 @@
+<script src="script.js"></script>
+<section id="session57" class="content-section">
+            <h2>Séance 57 : Cas pratiques de normalisation dans des projets réels (jeu vidéo, actualité)</h2>
+        
+            <h3>Objectif Global :</h3>
+            <p>
+                Les élèves apprendront à appliquer les concepts de 
+normalisation dans des bases de données à travers des cas pratiques. 
+                Ils verront comment organiser les données efficacement 
+pour éviter la redondance et garantir l'intégrité des données, 
+                avec deux scénarios spécifiques : un jeu vidéo et une 
+application d’actualité.
+            </p>
+        
+            <h3>Introduction à la Normalisation (10 min)</h3>
+            <p>
+                La normalisation est un processus de structuration des 
+tables d’une base de données pour réduire les redondances 
+                et améliorer l’intégrité des données. Elle repose sur 
+plusieurs formes normales (FN), parmi lesquelles :
+            </p>
+            <ul>
+                <li><strong>1ère Forme Normale (1FN) :</strong> Toutes les colonnes contiennent des valeurs atomiques.</li>
+                <li><strong>2ème Forme Normale (2FN) :</strong> Chaque colonne dépend de la clé primaire.</li>
+                <li><strong>3ème Forme Normale (3FN) :</strong> Élimine les dépendances transitives entre colonnes.</li>
+            </ul>
+        
+            <h3>Étape 1 : Cas Pratique - Base de Données pour un Jeu Vidéo (40 min)</h3>
+        
+            <h4>Contexte :</h4>
+            <p>
+                Un jeu vidéo contient des personnages, des armes, et des niveaux. Nous devons concevoir une base de données 
+                pour stocker ces informations tout en respectant les règles de normalisation.
+            </p>
+        
+            <h4>Exemple Initial Non Normalisé :</h4>
+            <pre><code class="sql">
+        Table Personnages :
+        +----+-------------+--------+-----------------+-------------+
+        | ID | Nom         | Niveau | Nom_Arme       | Type_Arme   |
+        +----+-------------+--------+-----------------+-------------+
+        | 1  | Guerrier    | 10     | Épée Lourde    | Tranchante  |
+        | 2  | Archer      | 5      | Arc Long       | Projectile  |
+        | 3  | Mage        | 8      | Bâton Magique  | Magique     |
+        +----+-------------+--------+-----------------+-------------+
+            </code></pre>
+        
+            <p><strong>Problèmes :</strong></p>
+            <ul>
+                <li>Les informations sur les armes sont répétées pour chaque personnage.</li>
+                <li>Si le type d’arme change, il faut modifier plusieurs lignes, ce qui augmente le risque d’erreur.</li>
+            </ul>
+        
+            <h4>Solution Normalisée :</h4>
+            <p>
+                Pour normaliser cette base de données, nous allons :
+            </p>
+            <ul>
+                <li>Créer une table pour les personnages avec une clé étrangère vers les armes.</li>
+                <li>Créer une table séparée pour les armes avec leurs types.</li>
+            </ul>
+        
+            <h4>Tables Normalisées :</h4>
+            <pre><code class="sql">
+        Table Personnages :
+        +----+-------------+--------+-------+
+        | ID | Nom         | Niveau | Arme  |
+        +----+-------------+--------+-------+
+        | 1  | Guerrier    | 10     | 1     |
+        | 2  | Archer      | 5      | 2     |
+        | 3  | Mage        | 8      | 3     |
+        +----+-------------+--------+-------+
+        
+        Table Armes :
+        +----+-----------------+-------------+
+        | ID | Nom_Arme        | Type_Arme   |
+        +----+-----------------+-------------+
+        | 1  | Épée Lourde     | Tranchante  |
+        | 2  | Arc Long        | Projectile  |
+        | 3  | Bâton Magique   | Magique     |
+        +----+-----------------+-------------+
+            </code></pre>
+        
+            <h4>Avantages :</h4>
+            <ul>
+                <li>Les informations sur les armes sont centralisées, ce qui réduit les risques d’incohérences.</li>
+                <li>Les modifications, comme le changement de type d’arme, sont plus faciles.</li>
+                <li>La structure respecte la 3ème Forme Normale (3FN).</li>
+            </ul>
+        
+            <h3>Étape 2 : Cas Pratique - Base de Données pour une Application d’Actualité (40 min)</h3>
+        
+            <h4>Contexte :</h4>
+            <p>
+                Une application d’actualité gère des articles, des auteurs et des catégories. 
+                Nous devons concevoir une base de données pour organiser ces informations et éviter les redondances.
+            </p>
+        
+            <h4>Exemple Initial Non Normalisé :</h4>
+            <pre><code class="sql">
+        Table Articles :
+        +----+----------------------+----------+-----------+-----------------+
+        | ID | Titre               | Auteur   | Catégorie | Description     |
+        +----+----------------------+----------+-----------+-----------------+
+        | 1  | Nouveaux Jeux Vidéo | Alice    | Technologie | Jeux récents   |
+        | 2  | Économie 2025       | Bob      | Finance    | Analyse du PIB |
+        | 3  | IA en 2025          | Alice    | Technologie | Innovation IA  |
+        +----+----------------------+----------+-----------+-----------------+
+            </code></pre>
+        
+            <p><strong>Problèmes :</strong></p>
+            <ul>
+                <li>Les noms d’auteurs et de catégories sont répétés.</li>
+                <li>Les descriptions des catégories sont redondantes.</li>
+            </ul>
+        
+            <h4>Solution Normalisée :</h4>
+            <p>
+                Pour normaliser cette base de données, nous allons :
+            </p>
+            <ul>
+                <li>Créer une table pour les articles avec des clés étrangères vers les auteurs et les catégories.</li>
+                <li>Créer des tables séparées pour les auteurs et les catégories.</li>
+            </ul>
+        
+            <h4>Tables Normalisées :</h4>
+            <pre><code class="sql">
+        Table Articles :
+        +----+----------------------+--------+----------+
+        | ID | Titre               | Auteur | Catégorie|
+        +----+----------------------+--------+----------+
+        | 1  | Nouveaux Jeux Vidéo | 1      | 1        |
+        | 2  | Économie 2025       | 2      | 2        |
+        | 3  | IA en 2025          | 1      | 1        |
+        +----+----------------------+--------+----------+
+        
+        Table Auteurs :
+        +----+----------+
+        | ID | Nom      |
+        +----+----------+
+        | 1  | Alice    |
+        | 2  | Bob      |
+        +----+----------+
+        
+        Table Catégories :
+        +----+-------------+-----------------+
+        | ID | Nom         | Description     |
+        +----+-------------+-----------------+
+        | 1  | Technologie | Jeux récents    |
+        | 2  | Finance     | Analyse du PIB  |
+        +----+-------------+-----------------+
+            </code></pre>
+        
+            <h4>Avantages :</h4>
+            <ul>
+                <li>Les informations sur les auteurs et les catégories sont centralisées.</li>
+                <li>Les données redondantes sont éliminées.</li>
+                <li>La structure respecte la 3ème Forme Normale (3FN).</li>
+            </ul>
+        
+            <h3>Conclusion et Discussion (10 min)</h3>
+            <p>
+                La normalisation est essentielle pour concevoir des 
+bases de données robustes, éviter les redondances et garantir 
+l’intégrité des données. 
+                Ces cas pratiques montrent comment appliquer la 
+normalisation dans des projets concrets et réels.
+            </p>
+            <p>Points de réflexion pour les élèves :</p>
+            <ul>
+                <li>Quels sont les compromis entre normalisation et performance ?</li>
+                <li>Comment dénormaliser pour optimiser certaines requêtes tout en gardant une structure logique ?</li>
+            </ul>
+        </section>

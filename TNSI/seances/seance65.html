@@ -1,0 +1,224 @@
+<script src="script.js"></script>
+<section id="session65" class="content-section">
+            <h2>Séance 65 : Pratique - Sécurisation des échanges entre un serveur de jeu et un client</h2>
+        
+            <h3>Objectif Global :</h3>
+            <p>
+                Les élèves apprendront à sécuriser les échanges de 
+données entre un serveur de jeu et un client en utilisant des techniques
+ telles que le chiffrement, les protocoles sécurisés et les clés API. 
+Ils mettront en œuvre ces concepts dans une application client-serveur 
+simplifiée.
+            </p>
+        
+            <h3>Contexte du Projet :</h3>
+            <p>
+                Imaginez un jeu multijoueur où le client envoie des 
+informations (comme les scores ou les mouvements du joueur) au serveur. 
+Ces échanges doivent être sécurisés pour éviter les attaques, comme 
+l’interception ou la falsification des données. L’objectif est de créer 
+un petit système client-serveur où :
+            </p>
+            <ul>
+                <li>Le client communique avec le serveur en utilisant un protocole sécurisé (chiffrement des données).</li>
+                <li>Le serveur vérifie l’identité du client à l’aide d’une clé API unique.</li>
+                <li>Les données transmises sont protégées contre les attaques "man-in-the-middle".</li>
+            </ul>
+        
+            <h3>Étape 1 : Création de la Structure Client-Serveur (30 min)</h3>
+        
+            <h4>Exercice :</h4>
+            <p>
+                Configurez une application client-serveur de base en 
+utilisant Python et les sockets pour établir une communication simple.
+            </p>
+        
+            <h4>Code du Serveur :</h4>
+            <pre><code class="python">
+        import socket
+        
+        # Configuration du serveur
+        HOST = '127.0.0.1'  # Adresse IP locale
+        PORT = 65432        # Port à utiliser
+        
+        # Création du socket
+        server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        server_socket.bind((HOST, PORT))
+        server_socket.listen()
+        
+        print("Serveur en attente de connexion...")
+        
+        # Acceptation d'une connexion client
+        conn, addr = server_socket.accept()
+        print(f"Connexion établie avec {addr}")
+        
+        # Réception et affichage des données
+        data = conn.recv(1024).decode('utf-8')
+        print(f"Données reçues : {data}")
+        
+        # Envoi de réponse au client
+        conn.sendall("Données reçues avec succès.".encode('utf-8'))
+        
+        # Fermeture de la connexion
+        conn.close()
+            </code></pre>
+        
+            <h4>Code du Client :</h4>
+            <pre><code class="python">
+        import socket
+        
+        # Configuration du client
+        HOST = '127.0.0.1'  # Adresse IP du serveur
+        PORT = 65432        # Port à utiliser
+        
+        # Création du socket
+        client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        client_socket.connect((HOST, PORT))
+        
+        # Envoi des données au serveur
+        message = "Bonjour, serveur !"
+        client_socket.sendall(message.encode('utf-8'))
+        
+        # Réception de la réponse
+        response = client_socket.recv(1024).decode('utf-8')
+        print(f"Réponse du serveur : {response}")
+        
+        # Fermeture de la connexion
+        client_socket.close()
+            </code></pre>
+        
+            <p><strong>Test :</strong> Lancer d'abord le serveur, puis le client, et observez les échanges de données dans la console.</p>
+        
+            <h3>Étape 2 : Ajout de Chiffrement des Données (30 min)</h3>
+        
+            <h4>Exercice :</h4>
+            <p>
+                Intégrez un chiffrement simple en utilisant la bibliothèque Python <code>cryptography</code> pour sécuriser les échanges entre le client et le serveur.
+            </p>
+        
+            <h4>Installation de la bibliothèque :</h4>
+            <pre><code>pip install cryptography</code></pre>
+        
+            <h4>Code Mise à Jour :</h4>
+            <h5>Serveur :</h5>
+            <pre><code class="python">
+        from cryptography.fernet import Fernet
+        import socket
+        
+        # Génération et stockage de la clé de chiffrement
+        key = Fernet.generate_key()
+        cipher_suite = Fernet(key)
+        
+        # Configuration du serveur
+        HOST = '127.0.0.1'
+        PORT = 65432
+        
+        server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        server_socket.bind((HOST, PORT))
+        server_socket.listen()
+        
+        print("Serveur en attente de connexion...")
+        
+        conn, addr = server_socket.accept()
+        print(f"Connexion établie avec {addr}")
+        
+        # Envoi de la clé au client
+        conn.sendall(key)
+        
+        # Réception et déchiffrement des données
+        data = conn.recv(1024)
+        decrypted_data = cipher_suite.decrypt(data).decode('utf-8')
+        print(f"Données reçues : {decrypted_data}")
+        
+        # Réponse chiffrée au client
+        response = cipher_suite.encrypt("Données reçues avec succès.".encode('utf-8'))
+        conn.sendall(response)
+        
+        conn.close()
+            </code></pre>
+        
+            <h5>Client :</h5>
+            <pre><code class="python">
+        from cryptography.fernet import Fernet
+        import socket
+        
+        # Configuration du client
+        HOST = '127.0.0.1'
+        PORT = 65432
+        
+        client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        client_socket.connect((HOST, PORT))
+        
+        # Réception de la clé de chiffrement
+        key = client_socket.recv(1024)
+        cipher_suite = Fernet(key)
+        
+        # Envoi des données chiffrées
+        message = "Bonjour, serveur sécurisé !"
+        encrypted_message = cipher_suite.encrypt(message.encode('utf-8'))
+        client_socket.sendall(encrypted_message)
+        
+        # Réception et déchiffrement de la réponse
+        response = client_socket.recv(1024)
+        decrypted_response = cipher_suite.decrypt(response).decode('utf-8')
+        print(f"Réponse du serveur : {decrypted_response}")
+        
+        client_socket.close()
+            </code></pre>
+        
+            <p><strong>Test :</strong> Reprenez le test précédent et observez que les données sont chiffrées lors des échanges.</p>
+        
+            <h3>Étape 3 : Sécurisation avec une Clé API (30 min)</h3>
+        
+            <h4>Exercice :</h4>
+            <p>
+                Ajoutez une vérification par clé API pour valider 
+l’identité du client avant d’autoriser les échanges de données.
+            </p>
+        
+            <h4>Ajout au Serveur :</h4>
+            <pre><code class="python">
+        VALID_API_KEY = "my_secure_api_key"
+        
+        # Réception de la clé API
+        client_api_key = conn.recv(1024).decode('utf-8')
+        if client_api_key != VALID_API_KEY:
+            conn.sendall("Clé API invalide".encode('utf-8'))
+            conn.close()
+        else:
+            conn.sendall("Clé API valide, connexion autorisée.".encode('utf-8'))
+            # Suite des échanges sécurisés...
+            </code></pre>
+        
+            <h4>Ajout au Client :</h4>
+            <pre><code class="python">
+        API_KEY = "my_secure_api_key"
+        
+        # Envoi de la clé API
+        client_socket.sendall(API_KEY.encode('utf-8'))
+        
+        # Vérification de la réponse du serveur
+        response = client_socket.recv(1024).decode('utf-8')
+        if "Clé API invalide" in response:
+            print("Connexion refusée par le serveur.")
+            client_socket.close()
+        else:
+            print("Connexion autorisée par le serveur.")
+            # Suite des échanges sécurisés...
+            </code></pre>
+        
+            <h3>Conclusion :</h3>
+            <p>
+                À la fin de cette séance, les élèves auront appris à :
+            </p>
+            <ul>
+                <li>Créer une communication client-serveur avec Python et les sockets.</li>
+                <li>Intégrer un chiffrement des données pour sécuriser les échanges.</li>
+                <li>Utiliser une clé API pour authentifier les clients.</li>
+            </ul>
+            <p>
+                Ces techniques sont essentielles pour sécuriser les 
+communications dans des applications réseau, en particulier dans le 
+contexte des jeux multijoueurs.
+            </p>
+        </section>

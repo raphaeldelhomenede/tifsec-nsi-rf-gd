@@ -1,0 +1,141 @@
+<script src="script.js"></script>
+<section id="session61" class="content-section">
+            <h2>Séance 61 : Introduction à la Cryptographie - Chiffrement Symétrique</h2>
+        
+            <h3>Objectif Global :</h3>
+            <p>Comprendre les bases de la cryptographie et découvrir le 
+chiffrement symétrique. Les élèves apprendront les concepts 
+fondamentaux, suivis d’une mise en pratique pour chiffrer et déchiffrer 
+des messages en utilisant des algorithmes simples.</p>
+        
+            <h3>1. Introduction à la Cryptographie (20 min)</h3>
+            <h4>Qu’est-ce que la cryptographie ?</h4>
+            <p>
+                La cryptographie est l’art et la science de protéger les
+ informations en les rendant illisibles pour les personnes non 
+autorisées. Elle est utilisée pour garantir la confidentialité, 
+l’intégrité et l’authenticité des données.
+            </p>
+        
+            <h4>Applications Pratiques :</h4>
+            <ul>
+                <li>Sécuriser les communications (emails, messageries).</li>
+                <li>Protéger les transactions bancaires en ligne.</li>
+                <li>Authentifier des utilisateurs et des systèmes.</li>
+            </ul>
+        
+            <h4>Types de Cryptographie :</h4>
+            <p>
+                La cryptographie se divise en deux grandes catégories :
+            </p>
+            <ul>
+                <li><strong>Chiffrement symétrique :</strong> Une même clé est utilisée pour chiffrer et déchiffrer un message.</li>
+                <li><strong>Chiffrement asymétrique :</strong> Une paire de clés (publique et privée) est utilisée. Ce type sera abordé dans une séance ultérieure.</li>
+            </ul>
+        
+            <h4>Focus sur le Chiffrement Symétrique :</h4>
+            <p>
+                Le chiffrement symétrique est simple et rapide. Il est 
+idéal pour des systèmes où les deux parties peuvent partager une clé 
+secrète.
+            </p>
+            <p>Exemple d’algorithme : le chiffrement par substitution ou le chiffrement de César.</p>
+        
+            <h3>2. Chiffrement de César (30 min)</h3>
+            <h4>Principe :</h4>
+            <p>
+                Le chiffrement de César est une méthode classique où 
+chaque lettre du message est décalée d’un certain nombre de positions 
+dans l’alphabet.
+            </p>
+            <p>Par exemple, avec un décalage de 3 :</p>
+            <ul>
+                <li><code>A</code> devient <code>D</code>, <code>B</code> devient <code>E</code>, et ainsi de suite.</li>
+            </ul>
+        
+            <h4>Implémentation de Base :</h4>
+            <pre><code class="python">
+        def chiffrer_cesar(message, cle):
+            resultat = ""
+            for caractere in message:
+                if caractere.isalpha():  # Vérifie si c'est une lettre
+                    base = ord('A') if caractere.isupper() else ord('a')
+                    decalage = (ord(caractere) - base + cle) % 26
+                    resultat += chr(base + decalage)
+                else:
+                    resultat += caractere  # Garde les caractères non alphabétiques inchangés
+            return resultat
+        
+        def dechiffrer_cesar(message, cle):
+            return chiffrer_cesar(message, -cle)
+        
+        # Exemple d'utilisation
+        message = "Bonjour tout le monde"
+        cle = 3
+        
+        message_chiffre = chiffrer_cesar(message, cle)
+        print("Message chiffré :", message_chiffre)
+        
+        message_dechiffre = dechiffrer_cesar(message_chiffre, cle)
+        print("Message déchiffré :", message_dechiffre)
+            </code></pre>
+        
+            <h4>Exercice Pratique :</h4>
+            <p>
+                Implémentez un programme qui demande à l’utilisateur de saisir un message et une clé, puis :
+            </p>
+            <ul>
+                <li>Chiffre le message en utilisant le chiffrement de César.</li>
+                <li>Déchiffre le message pour retrouver le texte original.</li>
+            </ul>
+        
+            <h3>3. Chiffrement Symétrique Avancé avec une Bibliothèque (40 min)</h3>
+        
+            <h4>Utilisation de la Bibliothèque <code>cryptography</code> :</h4>
+            <p>
+                Python propose des bibliothèques puissantes comme <code>cryptography</code> pour des implémentations modernes de chiffrement symétrique, telles que l’AES (Advanced Encryption Standard).
+            </p>
+        
+            <h4>Installation :</h4>
+            <p>Assurez-vous d’avoir installé la bibliothèque :</p>
+            <pre><code>pip install cryptography</code></pre>
+        
+            <h4>Exemple de Chiffrement avec AES :</h4>
+            <pre><code class="python">
+        from cryptography.fernet import Fernet
+        
+        # Générer une clé et l'enregistrer
+        cle = Fernet.generate_key()
+        chiffreur = Fernet(cle)
+        
+        # Message à chiffrer
+        message = "Ceci est un message secret"
+        message_bytes = message.encode()
+        
+        # Chiffrement
+        message_chiffre = chiffreur.encrypt(message_bytes)
+        print("Message chiffré :", message_chiffre)
+        
+        # Déchiffrement
+        message_dechiffre = chiffreur.decrypt(message_chiffre).decode()
+        print("Message déchiffré :", message_dechiffre)
+            </code></pre>
+        
+            <h4>Exercice Pratique :</h4>
+            <ul>
+                <li>Générez une clé et sauvegardez-la dans un fichier pour la réutiliser.</li>
+                <li>Créez un programme qui chiffre un message et l’enregistre dans un fichier.</li>
+                <li>Ajoutez une fonctionnalité pour lire un fichier chiffré et le déchiffrer.</li>
+            </ul>
+        
+            <h3>4. Conclusion et Discussion (10 min)</h3>
+            <ul>
+                <li>Le chiffrement symétrique est rapide mais nécessite un partage sécurisé de la clé.</li>
+                <li>Des algorithmes simples comme le chiffrement de 
+César aident à comprendre les bases, tandis que des bibliothèques 
+modernes offrent une sécurité robuste pour des applications réelles.</li>
+                <li>Discussion : Quels sont les avantages et les 
+inconvénients du chiffrement symétrique ? Dans quels cas 
+utiliseriez-vous cette méthode ?</li>
+            </ul>
+        </section>

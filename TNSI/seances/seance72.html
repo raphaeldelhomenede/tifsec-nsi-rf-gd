@@ -1,0 +1,286 @@
+<script src="script.js"></script>
+<section id="session72" class="content-section">
+    <h2>Séance 72 : Challenge NSI - Mission "Ultimate Tech Lab"</h2>
+
+    <h3>Objectif Global :</h3>
+    <p>
+        Cette séance sert de récapitulatif et de mise en pratique des notions abordées dans les 5 dernières séances. 
+        Les élèves devront relever une série de défis pour prouver leurs compétences en <strong>circuits logiques, microcontrôleurs, FPGA, 
+        mémoire et intelligence artificielle embarquée</strong>. 
+        Tout se déroule sous forme d’un grand challenge interactif où chaque élève devra concevoir et optimiser un <strong>système embarqué complet</strong>.
+    </p>
+
+    <h3>📜 Contexte de la Mission :</h3>
+    <p>
+        <em>Vous faites partie des ingénieurs d’une société de haute technologie, "Ultimate Tech Lab". 
+        Un client prestigieux vous a commandé la conception d’un <strong>système intelligent embarqué</strong> capable de <strong>gérer un circuit logique optimisé,
+        analyser des données en temps réel et prendre des décisions basées sur l’intelligence artificielle</strong>. 
+        Vous n’avez que <strong>2 heures</strong> pour présenter un prototype fonctionnel !</em>
+    </p>
+
+    <h3>🛠️ Organisation de la Séance :</h3>
+    <ul>
+        <li>⏳ <strong>20 min</strong> – Briefing</li>
+        <li>⚙️ <strong>60 min</strong> – Développement du prototype en 3 défis</li>
+        <li>🚀 <strong>30 min</strong> – Tests et optimisation</li>
+        <li>🎤 <strong>10 min</strong> – Présentation et évaluation des projets</li>
+    </ul>
+
+    <!-- <h3>👥 Formation des Équipes :</h3>
+    <p>
+        Les élèves sont divisés en groupes de 3 à 5 personnes. Chaque groupe doit attribuer des rôles :
+    </p>
+    <ul>
+        <li>🔌 <strong>Ingénieur Électronique</strong> : Responsable des circuits logiques et du FPGA</li>
+        <li>💾 <strong>Spécialiste Mémoire</strong> : Gère l’optimisation des données et du stockage</li>
+        <li>🤖 <strong>Développeur IA</strong> : Implémente la reconnaissance et la prise de décision automatique</li>
+        <li>🛠️ <strong>Coordinateur Projet</strong> : S’assure que tout fonctionne ensemble</li>
+    </ul> -->
+    <hr><br>
+
+    <h3>🔍 Étape 1 : Défi FPGA - Optimisation des Circuits Logiques (20 min)</h3>
+    <p>
+        <strong>Mission :</strong> Les élèves doivent concevoir et optimiser un <strong>circuit combinatoire programmable</strong> sur Logisim ou CircuitVerse.
+    </p>
+    <p>Objectifs :</p>
+    <ul>
+        <li>Créer un circuit réalisant une opération de calcul (additionneur, comparateur, etc.)</li>
+        <li>Utiliser le <strong>minimum de portes logiques</strong></li>
+        <li>Simuler le fonctionnement et valider les résultats</li>
+    </ul>
+    <pre><code class="python">
+# Exemple : Additionneur 1 bit
+def additionneur(a, b, c_in):
+    somme = a ^ b ^ c_in
+    c_out = (a & b) | (c_in & (a ^ b))
+    return somme, c_out
+    </code></pre>
+
+    <!-- <h3>🔍 Étape 2 : Défi Microcontrôleurs - Détection de Séquence (20 min)</h3>
+    <p>
+        <strong>Mission :</strong> Sur une carte Arduino, implémenter un programme où un <strong>capteur de lumière</strong> allume une LED 
+        lorsqu’un seuil est atteint.
+    </p>
+    <p>Objectifs :</p>
+    <ul>
+        <li>Programmer l’Arduino pour détecter un changement de luminosité</li>
+        <li>Faire réagir la LED à une variation de lumière</li>
+        <li>Ajouter une alerte sonore en cas de détection</li>
+    </ul>
+    <pre><code class="c">
+int capteur = A0;
+int led = 13;
+int seuil = 500;
+
+void setup() {
+    pinMode(led, OUTPUT);
+    Serial.begin(9600);
+}
+
+void loop() {
+    int valeur = analogRead(capteur);
+    if (valeur > seuil) {
+        digitalWrite(led, HIGH);
+        Serial.println("Alerte : Lumière détectée !");
+    } else {
+        digitalWrite(led, LOW);
+    }
+    delay(100);
+}
+    </code></pre> -->
+    <br>
+    <hr><br>
+
+    <h3>🔍 Étape 2 : Défi Simulation Microcontrôleurs - Détection de Séquence (20 min)</h3>
+
+    <h4>🎯 Mission :</h4>
+    <p>
+        À l'aide de Python, implémentez un programme qui simule un **capteur de lumière**.
+        L'écran représente la luminosité : lorsque l'utilisateur appuie sur une touche pour "augmenter la lumière",
+        une LED virtuelle s'allume et un son d'alerte peut être joué.
+    </p>
+
+    <h4>📌 Objectifs :</h4>
+    <ul>
+        <li>Simuler un capteur de lumière avec une valeur de luminosité.</li>
+        <li>Changer l’état d’une LED virtuelle en fonction de la luminosité.</li>
+        <li>Ajouter une alerte sonore lorsque la lumière atteint un seuil.</li>
+    </ul>
+
+    <h4>🔧 Implémentation en Python :</h4>
+    <p>
+        Nous allons utiliser <code>Pygame</code> pour afficher une LED virtuelle qui change de couleur selon la luminosité détectée.
+        Un son d’alerte sera joué lorsque la luminosité dépasse un seuil défini.
+    </p>
+
+    <pre><code class="python">
+import pygame
+import time
+
+# Initialisation de Pygame
+pygame.init()
+
+# Paramètres d'affichage
+largeur, hauteur = 400, 300
+fenetre = pygame.display.set_mode((largeur, hauteur))
+pygame.display.set_caption("Détection de Lumière - Simulation")
+
+# Définition des couleurs
+NOIR = (0, 0, 0)
+BLANC = (255, 255, 255)
+ROUGE = (255, 0, 0)
+VERT = (0, 255, 0)
+
+# Chargement du son d'alerte (ajoutez un fichier son "alerte.wav" dans le même dossier)
+try:
+    pygame.mixer.init()
+    alerte_son = pygame.mixer.Sound("alerte.wav")
+except:
+    alerte_son = None  # Désactive l’alerte sonore si le fichier est introuvable
+
+# Paramètres de simulation
+luminosite = 100  # Valeur initiale de la lumière (0-1000)
+seuil = 500  # Seuil pour activer l'alerte
+led_allumee = False  # État de la LED virtuelle
+
+# Boucle principale
+running = True
+while running:
+    fenetre.fill(NOIR)  # Fond noir
+    
+    # Gestion des événements
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_UP:  # Augmenter la lumière
+                luminosite += 50
+            elif event.key == pygame.K_DOWN:  # Diminuer la lumière
+                luminosite -= 50
+    
+    # Vérifier le seuil
+    if luminosite > seuil:
+        led_allumee = True
+        if alerte_son:
+            alerte_son.play()
+    else:
+        led_allumee = False
+
+    # Affichage de la LED virtuelle
+    couleur_led = VERT if led_allumee else ROUGE
+    pygame.draw.circle(fenetre, couleur_led, (largeur//2, hauteur//2), 50)
+
+    # Affichage du texte
+    font = pygame.font.Font(None, 36)
+    texte = font.render(f"Luminosité : {luminosite}", True, BLANC)
+    fenetre.blit(texte, (50, 50))
+
+    # Mise à jour de l'affichage
+    pygame.display.flip()
+    time.sleep(0.1)
+
+# Fermeture de Pygame
+pygame.quit()
+    </code></pre>
+
+    <h4>🚀 Comment l’utiliser ?</h4>
+    <p>
+        1️⃣ **Lancer le programme Python**  
+        2️⃣ **Appuyer sur les flèches haut/bas** pour modifier la luminosité.  
+        3️⃣ **Quand la luminosité dépasse 500**, la LED devient **verte** et un **son d'alerte** est joué.  
+        4️⃣ **Quitter avec la croix de la fenêtre.**  
+    </p>
+
+    <h4>📝 Explication du Code :</h4>
+    <ul>
+        <li>Utilisation de **Pygame** pour l'affichage et la gestion des événements clavier.</li>
+        <li>Une variable **luminosité** (simulant un capteur) est contrôlée par les touches <code>Haut</code> et <code>Bas</code>.</li>
+        <li>Si la luminosité dépasse un seuil, une LED virtuelle change de couleur et un **son d’alerte** est joué.</li>
+    </ul>
+
+    <h4>🎯 Objectif Pédagogique :</h4>
+    <ul>
+        <li>Comprendre le fonctionnement d’un **capteur et d’un actionneur**.</li>
+        <li>Apprendre à **détecter une valeur seuil et déclencher une action**.</li>
+        <li>Expérimenter la **réactivité d’un système embarqué simulé**.</li>
+    </ul>
+
+    <h4>🔬 Pour Aller Plus Loin :</h4>
+    <ul>
+        <li>Ajouter un **affichage graphique dynamique** pour montrer la variation de la lumière en temps réel.</li>
+        <li>Implémenter une **mémoire tampon** qui enregistre l’évolution de la luminosité.</li>
+        <li>Utiliser un fichier texte pour **sauvegarder les niveaux de luminosité** mesurés.</li>
+    </ul>
+
+    <hr><br>
+
+    <h3>🔍 Étape 3 : Défi Intelligence Artificielle - Reconnaissance de Formes (20 min)</h3>
+    <p>
+        <strong>Mission :</strong> Utiliser OpenCV sur un Raspberry Pi pour détecter un <strong>cercle rouge</strong> sur une image en temps réel.
+    </p>
+    <p>Objectifs :</p>
+    <ul>
+        <li>Utiliser OpenCV pour capturer une image</li>
+        <li>Détecter les formes circulaires d’une couleur spécifique</li>
+        <li>Afficher un message lorsqu’un cercle rouge est détecté</li>
+    </ul>
+    <pre><code class="python">
+import cv2
+import numpy as np
+
+cap = cv2.VideoCapture(0)
+
+while True:
+    _, frame = cap.read()
+    hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+
+    rouge_min = np.array([0, 120, 70])
+    rouge_max = np.array([10, 255, 255])
+    masque = cv2.inRange(hsv, rouge_min, rouge_max)
+
+    contours, _ = cv2.findContours(masque, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    for cnt in contours:
+        (x, y), rayon = cv2.minEnclosingCircle(cnt)
+        if rayon > 10:
+            cv2.circle(frame, (int(x), int(y)), int(rayon), (0, 255, 0), 2)
+            print("Cercle rouge détecté !")
+
+    cv2.imshow("Détection", frame)
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+
+cap.release()
+cv2.destroyAllWindows()
+    </code></pre>
+    <br>
+    <hr><br>
+
+    <h3>🛠️ Étape 4 : Test et Optimisation (30 min)</h3>
+    <ul>
+        <li>💡 <strong>Vérification du bon fonctionnement</strong> de chaque partie du système</li>
+        <li>🔍 <strong>Optimisation du code</strong> pour améliorer la performance</li>
+        <li>🚀 <strong>Finalisation du prototype</strong> en combinant toutes les parties</li>
+    </ul>
+
+    <hr><br>
+
+    <h3>🎤 Étape 5 : Présentation et Débriefing (10 min)</h3>
+    <p>
+        Chaque élève doit présenter son projet en 3 minutes. Les autres élèves posent des questions et donnent des feedbacks.
+    </p>
+    <p>Critères d’évaluation :</p>
+    <ul>
+        <li>⚙️ Fonctionnalité et bon fonctionnement</li>
+        <li>🛠️ Optimisation et efficacité</li>
+        <li>🎭 Présentation claire et convaincante</li>
+    </ul>
+
+    <p>
+        Félicitations à tous les participants ! 🎉 Cette séance a permis de :
+    </p>
+    <ul>
+        <li>🔍 Revoir toutes les notions apprises en 5 séances.</li>
+        <li>🤖 Expérimenter en équipe et renforcer la pratique.</li>
+        <li>🚀 Appliquer les concepts dans un projet réaliste.</li>
+    </ul>
+</section>

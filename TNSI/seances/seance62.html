@@ -1,0 +1,164 @@
+<script src="script.js"></script>
+<section id="session62" class="content-section">
+            <h2>Séance 62 : Pratique - Implémentation d’un chiffrement simple pour protéger les données d’un jeu vidéo</h2>
+        
+            <h3>Objectif Global :</h3>
+            <p>
+                Les élèves apprendront à implémenter un chiffrement 
+simple pour protéger les données sensibles d’un jeu vidéo (par exemple :
+ scores, informations de joueur ou configurations). Cette séance vise à 
+introduire des concepts de cryptographie pratique et leur application 
+dans un contexte ludique.
+            </p>
+        
+            <h3>Contexte :</h3>
+            <p>
+                Imaginez un jeu vidéo où les scores des joueurs et leurs
+ données personnelles sont enregistrés dans un fichier. Pour empêcher la
+ triche ou la modification non autorisée des données, il est nécessaire 
+de les protéger en les chiffrant.
+            </p>
+            <ul>
+                <li><strong>Chiffrement :</strong> Transformer les données pour qu’elles soient illisibles sans une clé.</li>
+                <li><strong>Déchiffrement :</strong> Reconvertir les données chiffrées en leur forme lisible en utilisant la clé correcte.</li>
+            </ul>
+        
+            <h3>Étape 1 : Comprendre le Chiffrement Simple (30 min)</h3>
+        
+            <h4>Introduction :</h4>
+            <p>
+                Pour cette séance, nous allons utiliser un chiffrement par substitution basé sur un décalage, appelé <strong>chiffrement de César</strong>. Chaque caractère d’un texte est remplacé par un autre caractère situé à un nombre fixe de positions dans l’alphabet.
+            </p>
+        
+            <h4>Exemple :</h4>
+            <p>Avec un décalage de 3 :</p>
+            <ul>
+                <li>Le caractère <code>A</code> devient <code>D</code>.</li>
+                <li>Le mot <code>JEU</code> devient <code>MHX</code>.</li>
+                <li>Le déchiffrement inverse cette transformation.</li>
+            </ul>
+        
+            <h4>Fonctions Python :</h4>
+            <p>Voici comment coder un chiffrement et un déchiffrement basiques :</p>
+            <pre><code class="python">
+        def chiffrer_cesar(texte, decalage):
+            resultat = ""
+            for caractere in texte:
+                if caractere.isalpha():  # Vérifie si c'est une lettre
+                    base = ord('A') if caractere.isupper() else ord('a')
+                    resultat += chr((ord(caractere) - base + decalage) % 26 + base)
+                else:
+                    resultat += caractere  # Conserve les autres caractères (espaces, chiffres)
+            return resultat
+        
+        def dechiffrer_cesar(texte, decalage):
+            return chiffrer_cesar(texte, -decalage)
+        
+        # Test
+        message = "BONJOUR"
+        message_chiffre = chiffrer_cesar(message, 3)
+        print("Message chiffré :", message_chiffre)  # EONMRXU
+        message_dechiffre = dechiffrer_cesar(message_chiffre, 3)
+        print("Message déchiffré :", message_dechiffre)  # BONJOUR
+            </code></pre>
+        
+            <h3>Étape 2 : Application au Jeu Vidéo (40 min)</h3>
+        
+            <h4>Contexte Pratique :</h4>
+            <p>
+                Dans un jeu vidéo, les données sensibles à protéger pourraient inclure :
+            </p>
+            <ul>
+                <li>Le nom des joueurs.</li>
+                <li>Leurs scores.</li>
+                <li>Les paramètres de configuration (niveau de difficulté, progression).</li>
+            </ul>
+            <p>Nous allons créer un programme pour chiffrer et enregistrer ces données dans un fichier, puis les déchiffrer pour les lire.</p>
+        
+            <h4>Exercice :</h4>
+            <p>
+                Implémentez une classe <code>GestionDonnees</code> avec les fonctionnalités suivantes :
+            </p>
+            <ul>
+                <li><code>chiffrer_donnees</code> : Chiffre les données d’un joueur.</li>
+                <li><code>dechiffrer_donnees</code> : Déchiffre les données chiffrées.</li>
+                <li><code>enregistrer_donnees</code> : Sauvegarde les données chiffrées dans un fichier.</li>
+                <li><code>lire_donnees</code> : Lit les données d’un fichier et les déchiffre.</li>
+            </ul>
+        
+            <h4>Implémentation :</h4>
+            <pre><code class="python">
+        class GestionDonnees:
+            def __init__(self, cle_decalage):
+                self.cle = cle_decalage  # Clé utilisée pour le chiffrement
+        
+            def chiffrer_donnees(self, texte):
+                resultat = ""
+                for caractere in texte:
+                    if caractere.isalpha():
+                        base = ord('A') if caractere.isupper() else ord('a')
+                        resultat += chr((ord(caractere) - base + self.cle) % 26 + base)
+                    else:
+                        resultat += caractere
+                return resultat
+        
+            def dechiffrer_donnees(self, texte):
+                return self.chiffrer_donnees(texte, -self.cle)
+        
+            def enregistrer_donnees(self, nom_fichier, donnees):
+                with open(nom_fichier, "w") as fichier:
+                    fichier.write(self.chiffrer_donnees(donnees))
+        
+            def lire_donnees(self, nom_fichier):
+                with open(nom_fichier, "r") as fichier:
+                    donnees_chiffrees = fichier.read()
+                return self.dechiffrer_donnees(donnees_chiffrees)
+        
+        # Utilisation
+        gestion = GestionDonnees(3)
+        nom_joueur = "Alice"
+        score = "1500"
+        
+        donnees = f"Joueur: {nom_joueur}, Score: {score}"
+        gestion.enregistrer_donnees("donnees.txt", donnees)
+        
+        donnees_recuperees = gestion.lire_donnees("donnees.txt")
+        print("Données récupérées :", donnees_recuperees)
+            </code></pre>
+        
+            <h3>Étape 3 : Extension (30 min)</h3>
+        
+            <h4>Challenge :</h4>
+            <p>
+                Les élèves doivent améliorer le programme en :
+            </p>
+            <ul>
+                <li>Ajoutant une protection par mot de passe pour déchiffrer les données.</li>
+                <li>Permettant de chiffrer plusieurs joueurs dans un fichier JSON.</li>
+            </ul>
+        
+            <h4>Exemple de format JSON :</h4>
+            <pre><code class="json">
+        {
+            "joueurs": [
+                {"nom": "Alice", "score": "1500"},
+                {"nom": "Bob", "score": "2000"}
+            ]
+        }
+            </code></pre>
+        
+            <h4>Discussion :</h4>
+            <p>Pourquoi le chiffrement est-il essentiel dans les jeux 
+vidéo (anti-triche, confidentialité) ? Quels sont ses avantages et 
+limites ?</p>
+        
+            <h3>Conclusion :</h3>
+            <p>
+                À la fin de cette séance, les élèves sauront :
+            </p>
+            <ul>
+                <li>Implémenter un chiffrement simple avec Python.</li>
+                <li>Appliquer ce chiffrement pour protéger des données sensibles dans un jeu.</li>
+                <li>Utiliser des concepts de cryptographie pratique dans un contexte ludique.</li>
+            </ul>
+        </section>

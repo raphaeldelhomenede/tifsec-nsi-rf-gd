@@ -1,0 +1,191 @@
+<script src="script.js"></script>
+<section id="session55" class="content-section">
+            <h2>Séance 55 : Introduction à la Normalisation (1NF, 2NF, 3NF)</h2>
+        
+            <h3>Objectif Global :</h3>
+            <p>
+                Les élèves comprendront les principes de la 
+normalisation des bases de données relationnelles. Ils apprendront les 
+règles associées aux trois premières formes normales (1NF, 2NF, 3NF) et 
+appliqueront ces principes pour concevoir des bases de données 
+optimisées et cohérentes.
+            </p>
+        
+            <h3>Introduction à la Normalisation</h3>
+            <p>
+                La normalisation est un processus en base de données visant à organiser les tables pour :
+            </p>
+            <ul>
+                <li>Réduire la redondance des données.</li>
+                <li>Améliorer l'intégrité des données.</li>
+                <li>Faciliter la maintenance et la mise à jour des données.</li>
+            </ul>
+            <p>
+                Elle repose sur une série de règles appelées "formes 
+normales", chaque niveau résolvant des problèmes spécifiques.
+            </p>
+        
+            <h3>1NF : Première Forme Normale</h3>
+            <h4>Définition :</h4>
+            <p>
+                Une table est en première forme normale (1NF) si :
+            </p>
+            <ul>
+                <li>Toutes les colonnes contiennent des valeurs atomiques (non divisibles).</li>
+                <li>Chaque ligne est unique et identifiable par une clé primaire.</li>
+            </ul>
+        
+            <h4>Exemple :</h4>
+            <p>Table non normalisée :</p>
+            <pre><code>
+        Étudiant   | Cours
+        -----------|---------------------
+        Alice      | Math, Physique
+        Bob        | Biologie
+        Charlie    | Math, Biologie
+            </code></pre>
+        
+            <p>Problèmes :</p>
+            <ul>
+                <li>Les colonnes contiennent plusieurs valeurs (Math, Physique).</li>
+                <li>Les données ne sont pas atomiques.</li>
+            </ul>
+        
+            <p>Table normalisée en 1NF :</p>
+            <pre><code>
+        Étudiant   | Cours
+        -----------|---------
+        Alice      | Math
+        Alice      | Physique
+        Bob        | Biologie
+        Charlie    | Math
+        Charlie    | Biologie
+            </code></pre>
+        
+            <h4>Exercice 1 :</h4>
+            <p>Normalisez la table suivante en 1NF :</p>
+            <pre><code>
+        Commande   | Articles
+        -----------|----------------
+        001        | Livre, Stylo
+        002        | Cahier
+        003        | Livre, Cahier
+            </code></pre>
+        
+            <h3>2NF : Deuxième Forme Normale</h3>
+            <h4>Définition :</h4>
+            <p>
+                Une table est en deuxième forme normale (2NF) si elle 
+est en 1NF et que toutes les colonnes non clés dépendent entièrement de 
+la clé primaire.
+            </p>
+            <p>
+                Une dépendance partielle se produit lorsqu'une colonne 
+non clé dépend d'une partie de la clé primaire (dans le cas de clés 
+composées).
+            </p>
+        
+            <h4>Exemple :</h4>
+            <p>Table en 1NF mais pas en 2NF :</p>
+            <pre><code>
+        Commande   | Article    | Prix
+        -----------|------------|-----
+        001        | Livre      | 10
+        001        | Stylo      | 2
+        002        | Cahier     | 5
+        003        | Livre      | 10
+        003        | Cahier     | 5
+            </code></pre>
+        
+            <p>Problème :</p>
+            <ul>
+                <li>Le prix d’un article dépend uniquement de l’Article, pas de la commande complète.</li>
+            </ul>
+        
+            <p>Table normalisée en 2NF :</p>
+            <pre><code>
+        Commande   | Article
+        -----------|---------
+        001        | Livre
+        001        | Stylo
+        002        | Cahier
+        003        | Livre
+        003        | Cahier
+        
+        Article    | Prix
+        -----------|-----
+        Livre      | 10
+        Stylo      | 2
+        Cahier     | 5
+            </code></pre>
+        
+            <h4>Exercice 2 :</h4>
+            <p>Normalisez la table suivante en 2NF :</p>
+            <pre><code>
+        Commande   | Article    | Quantité | Fournisseur
+        -----------|------------|----------|------------
+        001        | Livre      | 2        | A
+        002        | Cahier     | 5        | B
+        003        | Stylo      | 1        | A
+            </code></pre>
+        
+            <h3>3NF : Troisième Forme Normale</h3>
+            <h4>Définition :</h4>
+            <p>
+                Une table est en troisième forme normale (3NF) si elle 
+est en 2NF et qu’aucune colonne non clé ne dépend d’une autre colonne 
+non clé (pas de dépendance transitive).
+            </p>
+        
+            <h4>Exemple :</h4>
+            <p>Table en 2NF mais pas en 3NF :</p>
+            <pre><code>
+        Étudiant   | Département  | Chef
+        -----------|--------------|-----
+        Alice      | Math         | Dr. X
+        Bob        | Physique     | Dr. Y
+        Charlie    | Math         | Dr. X
+            </code></pre>
+        
+            <p>Problème :</p>
+            <ul>
+                <li>Le chef de département dépend du département, pas de l’étudiant.</li>
+            </ul>
+        
+            <p>Table normalisée en 3NF :</p>
+            <pre><code>
+        Étudiant   | Département
+        -----------|--------------
+        Alice      | Math
+        Bob        | Physique
+        Charlie    | Math
+        
+        Département  | Chef
+        -------------|--------
+        Math         | Dr. X
+        Physique     | Dr. Y
+            </code></pre>
+        
+            <h4>Exercice 3 :</h4>
+            <p>Normalisez la table suivante en 3NF :</p>
+            <pre><code>
+        Produit     | Fournisseur  | Ville
+        ------------|--------------|--------
+        Livre       | A            | Paris
+        Cahier      | B            | Lyon
+        Stylo       | A            | Paris
+            </code></pre>
+        
+            <h3>Conclusion et Discussion :</h3>
+            <p>À la fin de cette séance, les élèves devraient être capables de :</p>
+            <ul>
+                <li>Identifier les problèmes de redondance et de dépendance dans des tables de bases de données.</li>
+                <li>Appliquer les principes des trois premières formes normales (1NF, 2NF, 3NF).</li>
+                <li>Expliquer pourquoi la normalisation est importante pour l’intégrité et la maintenance des bases de données.</li>
+            </ul>
+            <p>
+                La discussion pourrait inclure les avantages de la 
+normalisation (cohérence, réduction de la redondance) et ses limites 
+(complexité accrue des requêtes).
+            </p>
+        </section>

@@ -1,0 +1,198 @@
+<script src="script.js"></script>
+<section id="session85" class="content-section">
+            <h2>🧠 Séance 85 — États d’un processus & gestion du CPU</h2>
+
+            <h3>🎯 Objectif pédagogique :</h3>
+            <p>
+                Comprendre ce qu’est un <strong>processus</strong>, quels sont ses <strong>états</strong>, comment il circule entre ces états, 
+                et comment le système d’exploitation (<em>OS</em>) les gère à l’aide du processeur (<em>CPU</em>).
+            </p>
+
+            <hr>
+
+            <h2>🕐 Première heure : Comprendre les états d’un processus</h2>
+
+            <h3>1. Qu’est-ce qu’un processus ?</h3>
+            <p>
+                ➤ <strong>Définition simple :</strong> Un processus est un <em>programme en cours d'exécution</em>.  
+                Il a besoin de mémoire, d’un identifiant (PID), et du processeur pour être exécuté.
+            </p>
+
+            <p>
+                ➤ <strong>Exemple concret :</strong>  
+                Quand tu ouvres un navigateur, tu ne fais pas "lancer un fichier" mais "lancer un programme" : il devient un processus actif.  
+                Le système crée un processus pour gérer cette exécution.
+            </p>
+
+            <h3>2. Les 5 états principaux d’un processus</h3>
+            <p>
+                Voici les états qu’un processus peut traverser :
+            </p>
+
+            <pre><code>
+                    +---------+
+                    |  New    |
+                    +---------+
+                        |
+                        v
+                    +-------------+
+                    |   Ready     |
+                    +-------------+
+                        |
+                        v
+                    +-------------+
+                    |  Running    |
+                    +-------------+
+                    ^         |
+                    |         v
+                +--------+  +-----------+
+                |Waiting|  | Terminated |
+                +--------+  +-----------+
+            </code></pre>
+
+            <ul>
+                <li><strong>New</strong> : Le processus est en train d’être créé (chargement en mémoire).</li>
+                <li><strong>Ready</strong> : Le processus est prêt à être exécuté, mais il attend que le CPU soit libre.</li>
+                <li><strong>Running</strong> : Le processus est en cours d'exécution sur le CPU.</li>
+                <li><strong>Waiting</strong> : Le processus est en attente d’une ressource (ex : lecture d’un fichier, réseau...).</li>
+                <li><strong>Terminated</strong> : Le processus s’est terminé (normalement ou par erreur).</li>
+            </ul>
+
+            <h3>3. Exemples concrets</h3>
+            <p><strong>📌 Exemple 1 : Lancer un navigateur</strong></p>
+            <ul>
+                <li>État <strong>new</strong> : Le système charge le programme en mémoire.</li>
+                <li>État <strong>ready</strong> : Il est prêt, mais le CPU est occupé.</li>
+                <li>État <strong>running</strong> : Il est exécuté par le processeur.</li>
+                <li>État <strong>waiting</strong> : Il attend qu’une page se charge (accès réseau).</li>
+                <li>État <strong>terminated</strong> : L’utilisateur ferme le navigateur.</li>
+            </ul>
+
+            <p><strong>📌 Exemple 2 : Téléchargement d’un fichier</strong></p>
+            <ul>
+                <li>Le processus est <strong>running</strong>, puis <strong>waiting</strong> quand il attend les données du serveur distant.</li>
+            </ul>
+
+            <h3>4. 📝 Micro-exercice - Associer un état à chaque situation</h3>
+            <p>Associe chaque situation à l’état du processus correspondant :</p>
+            <ul>
+                <li><em>Le programme est en train de charger en mémoire</em> → <strong>New</strong></li>
+                <li><em>Le programme attend son tour sur le CPU</em> → <strong>Ready</strong></li>
+                <li><em>Le programme lit un fichier sur le disque dur</em> → <strong>Waiting</strong></li>
+                <li><em>Le programme s’exécute sur le processeur</em> → <strong>Running</strong></li>
+                <li><em>Le programme est fermé</em> → <strong>Terminated</strong></li>
+            </ul>
+
+            <p>📌 <strong>Variante à faire ensemble :</strong> Le professeur propose des situations en oral, les élèves répondent par l’état correspondant.</p>
+          
+            <hr>
+          
+            <h3>1. 🖥️ Commandes de base pour interagir avec les processus</h3>
+
+            <pre><code class="bash">
+            # Voir tous les processus en cours
+            ps aux
+
+            # Arrêter temporairement un processus (état "stopped")
+            kill -STOP <pid>
+
+            # Reprendre un processus mis en pause
+            kill -CONT <pid>
+
+            # Terminer un processus
+            kill <pid>
+            </code></pre>
+
+            <h4>📌 Explication des commandes :</h4>
+            <ul>
+                <li><code>ps aux</code> : liste tous les processus avec leur PID, utilisateur, % CPU, etc.</li>
+                <li><code>kill -STOP</code> : met un processus en pause → il ne consomme plus de CPU.</li>
+                <li><code>kill -CONT</code> : relance un processus arrêté.</li>
+                <li><code>kill</code> : termine proprement un processus.</li>
+            </ul>
+
+            <h3>2. TP guidé : Créer, gérer, arrêter un processus</h3>
+            <h4>Étape 1 : Créer un processus Python</h4>
+            <pre><code class="python">
+            # process_infini.py
+            import time
+
+            while True:
+                print("Je tourne...")
+                time.sleep(1)
+            </code></pre>
+
+            <p>📌 <strong>Lancer le processus dans un terminal :</strong></p>
+            <pre><code class="bash">
+            python3 process_infini.py
+            </code></pre>
+
+            <h4>Étape 2 : Identifier le processus</h4>
+            <pre><code class="bash">
+            ps aux | grep process_infini
+            </code></pre>
+
+            <h4>Étape 3 : Le mettre en pause</h4>
+            <pre><code class="bash">
+            kill -STOP <pid>
+            </code></pre>
+
+            <h4>Étape 4 : Le reprendre</h4>
+            <pre><code class="bash">
+            kill -CONT <pid>
+            </code></pre>
+
+            <h4>Étape 5 : Le terminer</h4>
+            <pre><code class="bash">
+            kill <pid>
+            </code></pre>
+
+            <h4>💡 Questions de compréhension :</h4>
+            <ul>
+                <li>Que fait le processus quand il est "stoppé" ?</li>
+                <li>Est-il toujours visible dans <code>ps aux</code> ?</li>
+                <li>Peut-on interagir avec lui tant qu’il est stoppé ?</li>
+            </ul>
+
+            <h3>3. 🛠️ Défi final : Sauver le système</h3>
+
+            <p>
+                Le professeur lance un script Python qui consomme tout le CPU :
+            </p>
+            <pre><code class="python">
+            # mangeur_cpu.py
+            while True:
+                pass
+            </code></pre>
+
+            <p>
+                <strong>Mission :</strong> Les élèves doivent :
+            </p>
+            <ol>
+                <li>Identifier le processus qui consomme 100% du CPU.</li>
+                <li>Le stopper temporairement.</li>
+                <li>Le relancer, puis l’arrêter proprement.</li>
+                <li>Expliquer ce qu’ils ont observé à chaque étape.</li>
+            </ol>
+
+            <p>👉 Astuce : utiliser <code>top</code> pour voir les processus en direct et les ressources consommées.</p>
+
+            <h3>🔍 Pour aller plus loin :</h3>
+            <ul>
+                <li>Qu’est-ce qu’un "zombie process" ?</li>
+                <li>Quelle est la différence entre "kill -9" et "kill" ?</li>
+                <li>Peut-on tuer un processus appartenant à un autre utilisateur ?</li>
+            </ul>
+
+            <hr>
+
+            <h2>✅ Conclusion de la séance</h2>
+            <ul>
+                <li>📌 Un processus est un programme en cours d'exécution, géré par le système d’exploitation.</li>
+                <li>📌 Il passe par plusieurs états : création, attente, exécution, pause, fin.</li>
+                <li>📌 On peut interagir avec ces états grâce à des commandes simples (<code>kill -STOP</code>, <code>kill -CONT</code>).</li>
+                <li>📌 Les outils comme <code>ps</code> et <code>top</code> permettent de voir l’état des processus en temps réel.</li>
+            </ul>
+          
+            <p>🔄 <strong>Prolongement possible :</strong> écrire un petit outil Python qui affiche son propre PID et change d’état (bonus).</p>          
+        </section>

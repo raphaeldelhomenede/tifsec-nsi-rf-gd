@@ -1,0 +1,185 @@
+<script src="script.js"></script>
+<section id="session66" class="content-section">
+            <h2>Séance 66 : Algorithmes de Hachage et Intégrité des Données</h2>
+        
+            <h3>Objectif Global :</h3>
+            <p>
+                Cette séance introduit les <strong>algorithmes de hachage</strong>,
+ leur fonctionnement, et leur rôle dans la vérification de l’intégrité 
+des données et la sécurité informatique. Les élèves apprendront à 
+utiliser des fonctions de hachage comme <code>SHA-256</code> dans Python pour garantir l’intégrité et détecter des altérations potentielles des données.
+            </p>
+        
+            <h3>Introduction aux Algorithmes de Hachage (30 min)</h3>
+        
+            <h4>Qu’est-ce qu’un Algorithme de Hachage ?</h4>
+            <ul>
+                <li>Un algorithme de hachage est une fonction qui 
+convertit une entrée (texte, fichier, etc.) en une chaîne de caractères 
+fixe appelée <strong>empreinte</strong> ou <strong>hash</strong>.</li>
+                <li>Les propriétés principales d’un bon algorithme de hachage sont :</li>
+                <ul>
+                    <li><strong>Déterminisme :</strong> La même entrée produit toujours le même hash.</li>
+                    <li><strong>Rapidité :</strong> Le calcul du hash est rapide.</li>
+                    <li><strong>Unicité :</strong> Deux entrées différentes produisent des hash différents (très peu de collisions).</li>
+                    <li><strong>Irréversibilité :</strong> Impossible de retrouver l’entrée d’origine à partir du hash.</li>
+                </ul>
+            </ul>
+        
+            <h4>Applications des Algorithmes de Hachage :</h4>
+            <ul>
+                <li><strong>Vérification de l’intégrité :</strong> Garantir qu’un fichier ou un message n’a pas été altéré.</li>
+                <li><strong>Sécurité des mots de passe :</strong> Stocker des mots de passe de manière sécurisée (hachés au lieu de texte brut).</li>
+                <li><strong>Signatures numériques :</strong> Vérifier l’identité d’un utilisateur ou l’authenticité d’un document.</li>
+            </ul>
+        
+            <h4>Exemples d’Algorithmes de Hachage :</h4>
+            <ul>
+                <li><code>MD5</code> : Obsolète, peu sécurisé.</li>
+                <li><code>SHA-1</code> : Plus sécurisé que MD5, mais des failles existent.</li>
+                <li><code>SHA-256</code> : Algorithme largement utilisé pour sa robustesse.</li>
+            </ul>
+        
+            <h3>Étape 1 : Utilisation de SHA-256 dans Python (30 min)</h3>
+        
+            <h4>Exemple Simple :</h4>
+            <p>
+                Nous allons utiliser le module <code>hashlib</code> de Python pour calculer le hash d’une chaîne de caractères.
+            </p>
+            <pre><code class="python">
+        import hashlib
+        
+        # Texte à hacher
+        texte = "Bonjour, monde !"
+        
+        # Calcul du hash SHA-256
+        hash_object = hashlib.sha256(texte.encode())
+        hash_hex = hash_object.hexdigest()
+        
+        print(f"Texte original : {texte}")
+        print(f"Hash SHA-256 : {hash_hex}")
+            </code></pre>
+        
+            <h4>Explication du Code :</h4>
+            <ul>
+                <li><code>hashlib.sha256</code> : Fonction pour calculer un hash SHA-256.</li>
+                <li><code>encode()</code> : Convertit le texte en bytes (nécessaire pour le calcul du hash).</li>
+                <li><code>hexdigest()</code> : Retourne l’empreinte sous forme de chaîne hexadécimale.</li>
+            </ul>
+        
+            <h4>Test :</h4>
+            <p>Modifiez le texte d’origine et observez comment le hash 
+change complètement, même si la modification est minime (effet 
+avalanche).</p>
+        
+            <h3>Étape 2 : Vérification de l’Intégrité des Fichiers (40 min)</h3>
+        
+            <h4>Exercice :</h4>
+            <p>
+                Écrivez un programme qui vérifie si un fichier a été 
+modifié en comparant son hash actuel avec un hash de référence.
+            </p>
+        
+            <h4>Implémentation :</h4>
+            <pre><code class="python">
+        import hashlib
+        
+        def calculer_hash_fichier(nom_fichier):
+            """Calcule le hash SHA-256 d'un fichier."""
+            sha256 = hashlib.sha256()
+            try:
+                with open(nom_fichier, "rb") as f:
+                    while chunk := f.read(4096):
+                        sha256.update(chunk)
+                return sha256.hexdigest()
+            except FileNotFoundError:
+                print("Fichier introuvable.")
+                return None
+        
+        # Comparer le hash d'origine avec celui recalculé
+        fichier = "document.txt"
+        hash_original = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        
+        hash_actuel = calculer_hash_fichier(fichier)
+        
+        if hash_actuel == hash_original:
+            print("Le fichier est intact.")
+        else:
+            print("Le fichier a été modifié.")
+            </code></pre>
+        
+            <h4>Explication du Code :</h4>
+            <ul>
+                <li><code>open(nom_fichier, "rb")</code> : Ouvre le fichier en mode binaire pour lire son contenu brut.</li>
+                <li><code>sha256.update(chunk)</code> : Met à jour le calcul du hash avec des blocs successifs de données (évite de charger de gros fichiers en mémoire).</li>
+                <li><code>hash_original</code> : Hash de référence pour vérifier l’intégrité du fichier.</li>
+            </ul>
+        
+            <h4>Test :</h4>
+            <p>
+                Créez un fichier texte avec un contenu connu. Calculez 
+son hash et modifiez légèrement le fichier. Recalculez le hash pour voir
+ la différence.
+            </p>
+        
+            <h3>Étape 3 : Application Pratique - Stockage de Mots de Passe Sécurisé (40 min)</h3>
+        
+            <h4>Exercice :</h4>
+            <p>
+                Écrivez un programme qui stocke les mots de passe sous 
+forme hachée et vérifie si un mot de passe saisi correspond à celui 
+enregistré.
+            </p>
+        
+            <h4>Implémentation :</h4>
+            <pre><code class="python">
+        import hashlib
+        
+        # Fonction pour hacher un mot de passe
+        def hacher_mot_de_passe(mot_de_passe):
+            return hashlib.sha256(mot_de_passe.encode()).hexdigest()
+        
+        # Fonction pour vérifier un mot de passe
+        def verifier_mot_de_passe(mot_de_passe, hash_enregistre):
+            return hacher_mot_de_passe(mot_de_passe) == hash_enregistre
+        
+        # Enregistrement d'un mot de passe
+        mot_de_passe = "monSuperMotDePasse"
+        hash_enregistre = hacher_mot_de_passe(mot_de_passe)
+        print(f"Hash enregistré : {hash_enregistre}")
+        
+        # Vérification d'un mot de passe
+        mot_de_passe_saisi = "monSuperMotDePasse"
+        if verifier_mot_de_passe(mot_de_passe_saisi, hash_enregistre):
+            print("Mot de passe correct.")
+        else:
+            print("Mot de passe incorrect.")
+            </code></pre>
+        
+            <h4>Explication du Code :</h4>
+            <ul>
+                <li><code>hacher_mot_de_passe</code> : Retourne le hash SHA-256 d’un mot de passe.</li>
+                <li><code>verifier_mot_de_passe</code> : Compare un mot de passe saisi avec le hash enregistré.</li>
+            </ul>
+        
+            <h4>Test :</h4>
+            <p>
+                Testez avec le mot de passe correct, puis avec un mot de
+ passe incorrect pour vérifier le comportement du programme.
+            </p>
+        
+            <h3>Conclusion et Discussion (10 min)</h3>
+            <p>
+                À la fin de cette séance, les élèves auront appris :
+            </p>
+            <ul>
+                <li>Les concepts clés des algorithmes de hachage et leur utilité.</li>
+                <li>Comment utiliser les fonctions de hachage dans Python pour vérifier l’intégrité des données.</li>
+                <li>Comment sécuriser des mots de passe grâce au hachage.</li>
+            </ul>
+            <p>
+                Discutez des limitations des algorithmes de hachage, 
+comme les attaques par collision, et introduisez des concepts plus 
+avancés comme les "salts" et les "pepper" pour améliorer la sécurité.
+            </p>
+        </section>

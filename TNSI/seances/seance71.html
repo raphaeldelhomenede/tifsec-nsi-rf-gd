@@ -1,0 +1,179 @@
+<script src="script.js"></script>
+<section id="session71" class="content-section">
+    <h2>Séance 71 : L’Intelligence Artificielle dans les Systèmes Embarqués</h2>
+
+    <h3>🎯 Objectif :</h3>
+    <p>Découvrir et tester l’IA appliquée aux systèmes embarqués en utilisant <strong>OpenCV</strong> pour la reconnaissance d’objets, mais sans nécessiter un Raspberry Pi.</p>
+
+    <h4>💡 Introduction à l’IA embarquée</h4>
+    <p>Les systèmes embarqués sont des appareils électroniques qui exécutent des tâches spécifiques en autonomie. Exemples : voitures autonomes, caméras de surveillance intelligentes, robots domestiques.</p>
+    <ul>
+        <li>Comment l’IA est utilisée sur ces appareils ?</li>
+        <li>Quels sont les défis liés à l’IA embarquée ? (puissance de calcul, consommation d’énergie, temps réel)</li>
+    </ul>
+
+    <h4>⚙️ Démo : Une IA qui reconnaît des objets</h4>
+    <p>Nous allons utiliser la bibliothèque <strong>OpenCV</strong> pour exécuter une IA capable de détecter des objets à l’aide d’une caméra.</p>
+
+    <h4>📌 Différence entre CPU et TPU</h4>
+    <table border="1" cellpadding="5">
+        <tr>
+            <th>Type de processeur</th>
+            <th>Fonction</th>
+            <th>Avantages</th>
+            <th>Inconvénients</th>
+        </tr>
+        <tr>
+            <td>CPU (Central Processing Unit)</td>
+            <td>Processeur généraliste</td>
+            <td>Bonne flexibilité pour différentes tâches</td>
+            <td>Pas optimisé pour le deep learning</td>
+        </tr>
+        <tr>
+            <td>TPU (Tensor Processing Unit)</td>
+            <td>Optimisé pour l'IA</td>
+            <td>Beaucoup plus rapide pour l'apprentissage des modèles</td>
+            <td>Nécessite du matériel spécialisé</td>
+        </tr>
+    </table>
+
+    <h4>🛠️ Installation d’OpenCV et des Dépendances</h4>
+    <p>Pour utiliser OpenCV, nous devons installer les bibliothèques suivantes :</p>
+    <pre><code class="bash">
+# Installation d’OpenCV
+pip install opencv-python numpy imutils
+    </code></pre>
+
+    <h4>🎥 Test de la Caméra et Détection de Mouvements</h4>
+    <p>Nous allons exécuter un script Python qui :</p>
+    <ul>
+        <li>Active la webcam.</li>
+        <li>Affiche le flux vidéo en temps réel.</li>
+        <li>Détecte les mouvements.</li>
+    </ul>
+
+    <pre><code class="python">
+import cv2
+
+# Activation de la caméra
+cap = cv2.VideoCapture(0)
+
+while True:
+    ret, frame = cap.read()
+    if not ret:
+        break
+
+    # Conversion en niveaux de gris
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+
+    # Affichage du flux vidéo
+    cv2.imshow("Flux vidéo", gray)
+
+    # Quitter avec la touche 'q'
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+
+cap.release()
+cv2.destroyAllWindows()
+    </code></pre>
+
+    <h4>🔎 Explication :</h4>
+    <ul>
+        <li>La caméra capture les images en continu.</li>
+        <li>Nous convertissons l’image en niveaux de gris pour alléger les calculs.</li>
+        <li>Le flux vidéo s’affiche dans une fenêtre.</li>
+        <li>L’utilisateur peut quitter le programme en appuyant sur "q".</li>
+    </ul>
+
+    <hr>
+    <br>
+
+    <h4>🛠️ Modification du Programme pour la Détection de Formes</h4>
+    <p>Nous allons maintenant modifier le programme pour détecter des formes spécifiques (exemple : un rond rouge).</p>
+
+    <pre><code class="python">
+import cv2
+import numpy as np
+
+cap = cv2.VideoCapture(0)
+
+while True:
+    ret, frame = cap.read()
+    if not ret:
+        break
+
+    # Conversion en HSV (Teinte, Saturation, Valeur)
+    hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+
+    # Définition de la plage de couleurs pour détecter le rouge
+    rouge_basse = np.array([0, 120, 70])
+    rouge_haute = np.array([10, 255, 255])
+
+    masque = cv2.inRange(hsv, rouge_basse, rouge_haute)
+
+    # Détection des contours
+    contours, _ = cv2.findContours(masque, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    
+    for contour in contours:
+        approx = cv2.approxPolyDP(contour, 0.02*cv2.arcLength(contour, True), True)
+        if len(approx) > 8:  # Vérifier si c'est un rond
+            cv2.drawContours(frame, [approx], 0, (0, 255, 0), 5)
+
+    cv2.imshow("Détection de formes", frame)
+
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+
+cap.release()
+cv2.destroyAllWindows()
+    </code></pre>
+
+    <h4>📌 Explication :</h4>
+    <ul>
+        <li>On convertit l’image en mode **HSV** pour mieux détecter les couleurs.</li>
+        <li>Un **filtre rouge** est appliqué pour ne garder que les objets rouges.</li>
+        <li>On identifie les **contours** des objets.</li>
+        <li>Si la forme détectée a plus de **8 côtés**, on la considère comme un rond.</li>
+        <li>On trace un **contour vert** autour des objets détectés.</li>
+    </ul>
+
+    <h4>🔥 Défi Avancé : Ajouter une Alarme</h4>
+    <p>Le script peut être amélioré pour :</p>
+    <ul>
+        <li>Émettre un **son d’alerte** lorsque la forme rouge est détectée.</li>
+        <li>Envoyer une **notification par email** si un objet suspect apparaît.</li>
+    </ul>
+
+    <h4>🎵 Ajout d’un Son d’Alerte :</h4>
+    <pre><code class="python">
+import winsound  # Utilisation sur Windows uniquement
+
+if len(approx) > 8:
+    winsound.Beep(1000, 500)  # Fréquence : 1000 Hz, Durée : 500 ms
+    </code></pre>
+
+    <h4>📧 Envoi d’une Notification Email :</h4>
+    <pre><code class="python">
+import smtplib
+
+def envoyer_alerte():
+    server = smtplib.SMTP("smtp.gmail.com", 587)
+    server.starttls()
+    server.login("ton_email@gmail.com", "ton_mot_de_passe")
+    server.sendmail("ton_email@gmail.com", "destinataire@gmail.com", "Alerte : Objet rouge détecté !")
+    server.quit()
+
+if len(approx) > 8:
+    envoyer_alerte()
+    </code></pre>
+
+    <h3>✅ Conclusion</h3>
+    <p>Les élèves auront appris à :</p>
+    <ul>
+        <li>Utiliser <strong>OpenCV</strong> pour l’analyse d’images.</li>
+        <li>Détecter **des objets et des formes** dans un flux vidéo.</li>
+        <li>Améliorer leur programme avec **une alerte sonore et des notifications**.</li>
+    </ul>
+
+    <p><strong>Pour aller plus loin :</strong> Essayer de détecter d'autres couleurs ou d’utiliser **un modèle d’IA pré-entraîné**.</p>        
+</section>

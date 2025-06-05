@@ -1,0 +1,172 @@
+<script src="script.js"></script>
+<section id="session52" class="content-section">
+            <h2>Séance 52 : Requêtes SQL Avancées (JOIN, GROUP BY)</h2>
+        
+            <h3>Objectif Global :</h3>
+            <p>
+                Cette séance vise à introduire les élèves aux requêtes SQL avancées, avec un accent sur les opérations <code>JOIN</code> pour relier plusieurs tables et <code>GROUP BY</code>
+ pour agréger des données. Les élèves apprendront à manipuler des bases 
+de données complexes et à extraire des informations pertinentes.
+            </p>
+        
+            <h3>Pré-requis :</h3>
+            <ul>
+                <li>Connaissances de base en SQL (SELECT, WHERE, INSERT, UPDATE).</li>
+                <li>Compréhension des concepts de tables et de relations dans une base de données.</li>
+            </ul>
+        
+            <h3>Introduction aux Concepts Avancés (20 min)</h3>
+        
+            <h4>1. Qu’est-ce qu’un <code>JOIN</code> ?</h4>
+            <p>
+                En SQL, un <code>JOIN</code> permet de combiner des colonnes de deux ou plusieurs tables en utilisant une relation entre elles. Les types principaux de <code>JOIN</code> sont :
+            </p>
+            <ul>
+                <li><strong>INNER JOIN :</strong> Retourne les lignes où il y a une correspondance dans les deux tables.</li>
+                <li><strong>LEFT JOIN :</strong> Retourne toutes les 
+lignes de la table de gauche, avec les correspondances de la table de 
+droite (ou NULL si aucune correspondance).</li>
+                <li><strong>RIGHT JOIN :</strong> Semblable au LEFT JOIN, mais retourne toutes les lignes de la table de droite.</li>
+                <li><strong>FULL OUTER JOIN :</strong> Retourne toutes les lignes lorsqu’il y a une correspondance dans l’une des tables.</li>
+            </ul>
+        
+            <h4>2. Qu’est-ce que <code>GROUP BY</code> ?</h4>
+            <p>
+                Le <code>GROUP BY</code> est utilisé pour regrouper des 
+lignes ayant les mêmes valeurs dans des colonnes spécifiées. Il est 
+souvent utilisé avec des fonctions d’agrégation (SUM, AVG, COUNT, MAX, 
+MIN) pour produire des résultats résumés.
+            </p>
+        
+            <h3>Étape 1 : Pratique avec les <code>JOIN</code> (40 min)</h3>
+        
+            <h4>Base de Données Exemple :</h4>
+            <p>
+                Les élèves travailleront avec deux tables liées dans une base de données de gestion d’une librairie :
+            </p>
+        
+            <pre><code>
+            Table : Livres
+            +----+-------------------+--------+
+            | ID | Titre             | Auteur |
+            +----+-------------------+--------+
+            | 1  | Python pour Débutants | 101    |
+            | 2  | SQL Avancé        | 102    |
+            | 3  | Algorithmes       | 103    |
+            +----+-------------------+--------+
+        
+            Table : Auteurs
+            +----+--------------------+
+            | ID | Nom               |
+            +----+--------------------+
+            | 101| Alice             |
+            | 102| Bob               |
+            | 103| Charlie           |
+            +----+--------------------+
+            </code></pre>
+        
+            <h4>Exemple d’un <code>INNER JOIN</code> :</h4>
+            <p>Combinez les informations des livres avec leurs auteurs :</p>
+            <pre><code class="sql">
+            SELECT Livres.Titre, Auteurs.Nom
+            FROM Livres
+            INNER JOIN Auteurs
+            ON Livres.Auteur = Auteurs.ID;
+            </code></pre>
+        
+            <p><strong>Résultat :</strong></p>
+            <pre><code>
+            +-------------------+---------+
+            | Titre             | Nom     |
+            +-------------------+---------+
+            | Python pour Débutants | Alice   |
+            | SQL Avancé        | Bob     |
+            | Algorithmes       | Charlie |
+            +-------------------+---------+
+            </code></pre>
+        
+            <h4>Exercice :</h4>
+            <p>Modifiez la requête pour inclure uniquement les livres écrits par "Alice".</p>
+            <pre><code class="sql">
+            SELECT Livres.Titre
+            FROM Livres
+            INNER JOIN Auteurs
+            ON Livres.Auteur = Auteurs.ID
+            WHERE Auteurs.Nom = 'Alice';
+            </code></pre>
+        
+            <h4>Exemple d’un <code>LEFT JOIN</code> :</h4>
+            <p>Affichez tous les livres, même ceux sans auteur (imaginons qu’un auteur soit supprimé) :</p>
+            <pre><code class="sql">
+            SELECT Livres.Titre, Auteurs.Nom
+            FROM Livres
+            LEFT JOIN Auteurs
+            ON Livres.Auteur = Auteurs.ID;
+            </code></pre>
+        
+            <h3>Étape 2 : Pratique avec <code>GROUP BY</code> (40 min)</h3>
+        
+            <h4>Base de Données Exemple :</h4>
+            <p>
+                Ajoutons une table des ventes pour regrouper les données sur les livres vendus :
+            </p>
+        
+            <pre><code>
+            Table : Ventes
+            +----+---------+--------+
+            | ID | LivreID | Quantité |
+            +----+---------+--------+
+            | 1  | 1       | 5      |
+            | 2  | 1       | 3      |
+            | 3  | 2       | 8      |
+            | 4  | 3       | 2      |
+            +----+---------+--------+
+            </code></pre>
+        
+            <h4>Exemple de <code>GROUP BY</code> :</h4>
+            <p>Regroupez les données pour afficher le total des ventes par livre :</p>
+            <pre><code class="sql">
+            SELECT Livres.Titre, SUM(Ventes.Quantité) AS TotalVentes
+            FROM Ventes
+            INNER JOIN Livres
+            ON Ventes.LivreID = Livres.ID
+            GROUP BY Livres.Titre;
+            </code></pre>
+        
+            <p><strong>Résultat :</strong></p>
+            <pre><code>
+            +-------------------+-------------+
+            | Titre             | TotalVentes |
+            +-------------------+-------------+
+            | Python pour Débutants | 8           |
+            | SQL Avancé        | 8           |
+            | Algorithmes       | 2           |
+            +-------------------+-------------+
+            </code></pre>
+        
+            <h4>Exercice :</h4>
+            <p>
+                Affichez uniquement les livres ayant vendu plus de 5 exemplaires :
+            </p>
+            <pre><code class="sql">
+            SELECT Livres.Titre, SUM(Ventes.Quantité) AS TotalVentes
+            FROM Ventes
+            INNER JOIN Livres
+            ON Ventes.LivreID = Livres.ID
+            GROUP BY Livres.Titre
+            HAVING SUM(Ventes.Quantité) &gt; 5;
+            </code></pre>
+        
+            <h3>Conclusion :</h3>
+            <p>
+                À la fin de cette séance, les élèves sauront utiliser :
+            </p>
+            <ul>
+                <li><strong>JOIN :</strong> Combiner des données de plusieurs tables pour obtenir des informations complètes.</li>
+                <li><strong>GROUP BY :</strong> Résumer et agréger des données pour des analyses statistiques.</li>
+                <li><strong>HAVING :</strong> Filtrer des groupes après l'agrégation.</li>
+            </ul>
+            <p>Ces compétences permettent de manipuler efficacement des 
+bases de données complexes et d’extraire des informations pertinentes 
+dans des contextes réels.</p>
+        </section>

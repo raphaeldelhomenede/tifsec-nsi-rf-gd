@@ -1,0 +1,181 @@
+<script src="script.js"></script>
+<section id="session82" class="content-section">
+            <h2>Séance 82 : Modèle Client-Serveur et P2P (Peer-to-Peer)</h2>
+
+            <h3>Objectif Global :</h3>
+            <p>
+                Cette séance a pour but d’expliquer en détail les modèles de communication <strong>client-serveur</strong> et <strong>pair-à-pair (P2P)</strong>. 
+                Nous verrons comment ces architectures fonctionnent, leurs avantages et inconvénients, et nous les illustrerons à l’aide d’exemples concrets.
+            </p>
+
+            <h3>1. Modèle Client-Serveur</h3>
+
+            <h4>Définition</h4>
+            <p>
+                Le modèle <strong>client-serveur</strong> repose sur une structure centralisée où un serveur unique (ou un groupe de serveurs) fournit des services à plusieurs clients. 
+                Les clients demandent des informations ou des ressources, et le serveur les traite et répond aux requêtes.
+            </p>
+
+            <h4>Schéma Illustratif :</h4>
+            <p><img src="https://www.geonov.fr/fig/client-server/client-server-small.png" alt="Schéma Client-Serveur" width="600"></p>
+            <p><small>Illustration du modèle client-serveur où plusieurs clients communiquent avec un serveur central.</small></p>
+            <p><small><a href="https://www.geonov.fr/architecture-client-serveur/" target="_blank">Lien du graphique</a></small></p>
+
+            <h4>Exemples d’Utilisation :</h4>
+            <ul>
+                <li><strong>Web :</strong> Un navigateur (client) demande une page web à un serveur.</li>
+                <li><strong>Jeux en ligne :</strong> Un serveur de jeu gère les interactions entre joueurs.</li>
+                <li><strong>Services de messagerie :</strong> Les emails et chats centralisés (Gmail, Facebook Messenger).</li>
+            </ul>
+
+            <h4>Avantages :</h4>
+            <ul>
+                <li>Facile à sécuriser et administrer.</li>
+                <li>Fiabilité garantie si les serveurs sont bien gérés.</li>
+                <li>Permet un contrôle total sur les données.</li>
+            </ul>
+
+            <h4>Inconvénients :</h4>
+            <ul>
+                <li>Point unique de défaillance : si le serveur tombe, tous les clients sont affectés.</li>
+                <li>Coûteux en infrastructures (serveurs puissants, maintenance).</li>
+                <li>Peut devenir un goulot d’étranglement en cas de surcharge.</li>
+            </ul>
+
+            <h3>2. Modèle P2P (Peer-to-Peer)</h3>
+
+            <h4>Définition</h4>
+            <p>
+                Le modèle <strong>Peer-to-Peer (P2P)</strong> est une architecture distribuée où chaque participant (appelé <strong>pair</strong>) joue à la fois le rôle de client et de serveur.
+                Les pairs communiquent directement entre eux sans passer par un serveur centralisé.
+            </p>
+
+            <h4>Schéma Illustratif :</h4>
+            <p><img src="https://lh3.googleusercontent.com/proxy/vTVWa8LBlSHiNGBRp2_36YALTt5Wx9pHWfG33vwUnypnmeNON86JYKVihabRcgKNbkGIpHO-Aj1f9TR4VUSrK8SnbGbABLBubcJmBhUR" alt="Schéma P2P" width="600"></p>
+            <p><small>Illustration du modèle P2P où chaque pair échange directement avec les autres.</small></p>
+            <p><small><a href="http://princehenri.centerblog.net/5-le-peer-to-peer-une-technologie-inovante" target="_blank">Lien du graphique</a></small></p>
+
+            <h4>Exemples d’Utilisation :</h4>
+            <ul>
+                <li><strong>Partage de fichiers :</strong> BitTorrent, eMule, Kazaa.</li>
+                <li><strong>Cryptomonnaies :</strong> Bitcoin et blockchain.</li>
+                <li><strong>Messagerie décentralisée :</strong> Session, Tox, RetroShare.</li>
+            </ul>
+
+            <h4>Avantages :</h4>
+            <ul>
+                <li>Pas de point unique de défaillance : si un pair tombe, les autres continuent.</li>
+                <li>Évolutif sans besoin de serveurs coûteux.</li>
+                <li>Meilleure distribution de la charge.</li>
+            </ul>
+
+            <h4>Inconvénients :</h4>
+            <ul>
+                <li>Plus difficile à sécuriser (chaque pair est un potentiel point vulnérable).</li>
+                <li>Les performances varient en fonction de la connexion des pairs.</li>
+                <li>Gestion complexe des connexions et des fichiers.</li>
+            </ul>
+
+            <h3>3. Comparaison Client-Serveur vs P2P</h3>
+
+            <table border="1" cellpadding="5">
+                <tr>
+                    <th>Critères</th>
+                    <th>Client-Serveur</th>
+                    <th>P2P</th>
+                </tr>
+                <tr>
+                    <td>Organisation</td>
+                    <td>Centralisée</td>
+                    <td>Décentralisée</td>
+                </tr>
+                <tr>
+                    <td>Fiabilité</td>
+                    <td>Le serveur doit être disponible</td>
+                    <td>Chaque pair peut fonctionner indépendamment</td>
+                </tr>
+                <tr>
+                    <td>Coût</td>
+                    <td>Infrastructure serveur coûteuse</td>
+                    <td>Réduction des coûts d’infrastructure</td>
+                </tr>
+                <tr>
+                    <td>Scalabilité</td>
+                    <td>Limité par la puissance du serveur</td>
+                    <td>Plus évolutif, chaque pair contribue</td>
+                </tr>
+                <tr>
+                    <td>Sécurité</td>
+                    <td>Facile à sécuriser</td>
+                    <td>Plus difficile (menace de machines non fiables)</td>
+                </tr>
+            </table>
+
+            <h3>4. Exercice Pratique : Mise en Œuvre d’un Client-Serveur en Python</h3>
+
+            <h4>Implémentation d’un Serveur TCP</h4>
+            <pre><code class="python">
+        import socket
+
+        serveur = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        serveur.bind(("127.0.0.1", 12345))
+        serveur.listen(1)
+
+        print("Serveur en attente de connexion...")
+
+        conn, addr = serveur.accept()
+        print(f"Connexion établie avec {addr}")
+
+        while True:
+            data = conn.recv(1024).decode()
+            if not data:
+                break
+            print(f"Message reçu : {data}")
+            conn.sendall("Message reçu !".encode())
+
+        conn.close()
+        serveur.close()
+            </code></pre>
+
+            <h4>Implémentation d’un Client TCP</h4>
+            <pre><code class="python">
+        import socket
+
+        client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        client.connect(("127.0.0.1", 12345))
+
+        client.sendall("Bonjour, serveur !".encode())
+        reponse = client.recv(1024).decode()
+        print(f"Réponse du serveur : {reponse}")
+
+        client.close()
+            </code></pre>
+
+            <h3>5. Exercice : Mise en Œuvre d’une Communication P2P</h3>
+
+            <h4>Implémentation d’un Système P2P Simple</h4>
+            <pre><code class="python">
+        import socket
+
+        def pair_serveur():
+            serveur = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+            serveur.bind(("127.0.0.1", 12345))
+            print("Pair en attente de messages...")
+
+            while True:
+                data, addr = serveur.recvfrom(1024)
+                print(f"Message reçu de {addr}: {data.decode()}")
+                serveur.sendto("Message reçu".encode(), addr)
+
+        def pair_client():
+            client = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+            client.sendto("Salut, pair !".encode(), ("127.0.0.1", 12345))
+            data, _ = client.recvfrom(1024)
+            print(f"Réponse : {data.decode()}")
+            </code></pre>
+
+            <h3>Conclusion</h3>
+            <p>
+                Cette séance a permis d'explorer deux architectures majeures et d'expérimenter des communications réseau en Python.
+            </p>
+        </section>

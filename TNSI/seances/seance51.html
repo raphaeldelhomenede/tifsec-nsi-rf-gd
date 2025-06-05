@@ -1,0 +1,208 @@
+<script src="script.js"></script>
+<section id="session51" class="content-section">
+            <h2>Séance 50 : Pratique - Création d’une base de données pour gérer des scores de jeu vidéo</h2>
+        
+            <h3>Objectif Global :</h3>
+            <p>
+                Les élèves apprendront à concevoir et à utiliser une 
+base de données relationnelle pour gérer les scores des joueurs d’un jeu
+ vidéo. Ils découvriront comment créer une base de données, ajouter des 
+données, effectuer des requêtes et mettre à jour les scores.
+            </p>
+        
+            <h3>Contexte du Projet :</h3>
+            <p>
+                Imaginez un jeu vidéo où plusieurs joueurs s’affrontent 
+pour obtenir le meilleur score. Vous devez créer un système de gestion 
+des scores, où les données des joueurs (nom, score, date) sont stockées 
+dans une base de données relationnelle.
+            </p>
+        
+            <ul>
+                <li>Les élèves utiliseront SQLite, une base de données légère et simple à intégrer avec Python.</li>
+                <li>Ils apprendront à interagir avec la base de données en utilisant la bibliothèque <code>sqlite3</code>.</li>
+            </ul>
+        
+            <h3>Étape 1 : Conception de la Base de Données (20 min)</h3>
+        
+            <h4>Structure de la Table :</h4>
+            <p>La base de données contiendra une table <code>scores</code> avec les colonnes suivantes :</p>
+            <ul>
+                <li><code>id</code> (entier, clé primaire) : Identifiant unique pour chaque joueur.</li>
+                <li><code>nom</code> (texte) : Nom du joueur.</li>
+                <li><code>score</code> (entier) : Score du joueur.</li>
+                <li><code>date</code> (texte) : Date du score (format AAAA-MM-JJ).</li>
+            </ul>
+        
+            <h4>Représentation SQL :</h4>
+            <pre><code class="sql">
+        CREATE TABLE scores (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            nom TEXT NOT NULL,
+            score INTEGER NOT NULL,
+            date TEXT NOT NULL
+        );
+            </code></pre>
+        
+            <h3>Étape 2 : Création de la Base de Données et de la Table (30 min)</h3>
+        
+            <h4>Exercice :</h4>
+            <p>
+                Utilisez Python et <code>sqlite3</code> pour créer une base de données nommée <code>jeux.db</code> et y ajouter une table <code>scores</code>.
+            </p>
+        
+            <h4>Code Python :</h4>
+            <pre><code class="python">
+        import sqlite3
+        
+        # Connexion à la base de données (création si elle n'existe pas)
+        connexion = sqlite3.connect("jeux.db")
+        
+        # Création d'un curseur pour exécuter des commandes SQL
+        curseur = connexion.cursor()
+        
+        # Création de la table 'scores'
+        curseur.execute("""
+        CREATE TABLE IF NOT EXISTS scores (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            nom TEXT NOT NULL,
+            score INTEGER NOT NULL,
+            date TEXT NOT NULL
+        )
+        """)
+        
+        # Enregistrement des modifications et fermeture de la connexion
+        connexion.commit()
+        connexion.close()
+        
+        print("Base de données et table 'scores' créées avec succès.")
+            </code></pre>
+        
+            <h3>Étape 3 : Ajout de Données dans la Base de Données (30 min)</h3>
+        
+            <h4>Exercice :</h4>
+            <p>
+                Créez un script pour ajouter les scores de plusieurs joueurs à la table <code>scores</code>.
+            </p>
+        
+            <h4>Code Python :</h4>
+            <pre><code class="python">
+        import sqlite3
+        from datetime import datetime
+        
+        # Connexion à la base de données
+        connexion = sqlite3.connect("jeux.db")
+        curseur = connexion.cursor()
+        
+        # Données des joueurs
+        joueurs = [
+            ("Alice", 1200, datetime.now().strftime("%Y-%m-%d")),
+            ("Bob", 950, datetime.now().strftime("%Y-%m-%d")),
+            ("Charlie", 1600, datetime.now().strftime("%Y-%m-%d"))
+        ]
+        
+        # Ajout des données
+        curseur.executemany("""
+        INSERT INTO scores (nom, score, date)
+        VALUES (?, ?, ?)
+        """, joueurs)
+        
+        # Enregistrement des modifications et fermeture de la connexion
+        connexion.commit()
+        connexion.close()
+        
+        print("Données insérées avec succès.")
+            </code></pre>
+        
+            <h3>Étape 4 : Consultation et Mise à Jour des Scores (30 min)</h3>
+        
+            <h4>Exercice 1 :</h4>
+            <p>Affichez tous les scores enregistrés dans la base de données.</p>
+        
+            <h4>Code Python :</h4>
+            <pre><code class="python">
+        # Connexion à la base de données
+        connexion = sqlite3.connect("jeux.db")
+        curseur = connexion.cursor()
+        
+        # Récupération des scores
+        curseur.execute("SELECT * FROM scores")
+        resultats = curseur.fetchall()
+        
+        # Affichage des scores
+        print("Scores des joueurs :")
+        for ligne in resultats:
+            print(f"ID: {ligne[0]}, Nom: {ligne[1]}, Score: {ligne[2]}, Date: {ligne[3]}")
+        
+        # Fermeture de la connexion
+        connexion.close()
+            </code></pre>
+        
+            <h4>Exercice 2 :</h4>
+            <p>
+                Mettez à jour le score d’un joueur en fonction de son nom.
+            </p>
+        
+            <h4>Code Python :</h4>
+            <pre><code class="python">
+        # Connexion à la base de données
+        connexion = sqlite3.connect("jeux.db")
+        curseur = connexion.cursor()
+        
+        # Mise à jour du score
+        nom_joueur = "Alice"
+        nouveau_score = 1350
+        curseur.execute("""
+        UPDATE scores
+        SET score = ?
+        WHERE nom = ?
+        """, (nouveau_score, nom_joueur))
+        
+        # Vérification de la mise à jour
+        curseur.execute("SELECT * FROM scores WHERE nom = ?", (nom_joueur,))
+        print("Score mis à jour :", curseur.fetchone())
+        
+        # Enregistrement des modifications et fermeture de la connexion
+        connexion.commit()
+        connexion.close()
+            </code></pre>
+        
+            <h3>Étape 5 : Suppression des Données (20 min)</h3>
+        
+            <h4>Exercice :</h4>
+            <p>Créez un script pour supprimer les scores d’un joueur en fonction de son nom.</p>
+        
+            <h4>Code Python :</h4>
+            <pre><code class="python">
+        # Connexion à la base de données
+        connexion = sqlite3.connect("jeux.db")
+        curseur = connexion.cursor()
+        
+        # Suppression d'un joueur
+        nom_joueur = "Charlie"
+        curseur.execute("DELETE FROM scores WHERE nom = ?", (nom_joueur,))
+        
+        # Vérification de la suppression
+        curseur.execute("SELECT * FROM scores")
+        print("Données restantes :", curseur.fetchall())
+        
+        # Enregistrement des modifications et fermeture de la connexion
+        connexion.commit()
+        connexion.close()
+            </code></pre>
+        
+            <h3>Conclusion :</h3>
+            <p>
+                À la fin de cette séance, les élèves auront appris à :
+            </p>
+            <ul>
+                <li>Créer une base de données et une table en SQL via Python.</li>
+                <li>Ajouter, consulter, mettre à jour et supprimer des données dans une base de données.</li>
+                <li>Utiliser SQLite pour gérer des données de manière efficace dans une application de jeu vidéo.</li>
+            </ul>
+            <p>
+                Ce projet montre comment appliquer les bases de données 
+pour gérer des données complexes, tout en intégrant des pratiques 
+professionnelles.
+            </p>
+        </section>

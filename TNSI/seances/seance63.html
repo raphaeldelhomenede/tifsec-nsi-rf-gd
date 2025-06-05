@@ -1,0 +1,146 @@
+<script src="script.js"></script>
+<section id="session63" class="content-section">
+            <h2>Séance 63 : Algorithmes de chiffrement asymétrique (RSA)</h2>
+        
+            <h3>Objectif Global :</h3>
+            <p>
+                Les élèves apprendront le fonctionnement de l’algorithme
+ de chiffrement asymétrique RSA, son importance en cryptographie, et 
+comment l’implémenter dans un contexte simplifié. Cette séance combine 
+théorie et pratique pour explorer les concepts de clés publiques/privées
+ et leur utilisation pour sécuriser les communications.
+            </p>
+        
+            <h3>1. Introduction au Chiffrement Asymétrique (20 min)</h3>
+            <p>
+                Le chiffrement asymétrique est une méthode de cryptographie où deux clés distinctes sont utilisées :
+            </p>
+            <ul>
+                <li><strong>Clé publique :</strong> utilisée pour chiffrer les données. Elle est accessible à tous.</li>
+                <li><strong>Clé privée :</strong> utilisée pour déchiffrer les données. Elle est gardée secrète.</li>
+            </ul>
+        
+            <h4>Pourquoi RSA ?</h4>
+            <p>RSA (Rivest-Shamir-Adleman) est l’un des premiers 
+algorithmes de chiffrement asymétrique et reste largement utilisé pour 
+sécuriser les communications en ligne, comme dans HTTPS.</p>
+        
+            <h4>Principe de RSA :</h4>
+            <ol>
+                <li>Deux nombres premiers très grands (<code>p</code> et <code>q</code>) sont choisis pour générer les clés.</li>
+                <li>Une clé publique (<code>e, n</code>) est utilisée pour chiffrer les messages.</li>
+                <li>Une clé privée (<code>d, n</code>) est utilisée pour déchiffrer les messages.</li>
+            </ol>
+        
+            <p><strong>Formules importantes :</strong></p>
+            <ul>
+                <li><code>n = p × q</code></li>
+                <li><code>φ(n) = (p - 1) × (q - 1)</code> (fonction indicatrice d’Euler)</li>
+                <li><code>e</code> : un entier tel que <code>1 &lt; e &lt; φ(n)</code> et <code>e</code> soit copremier avec <code>φ(n)</code>.</li>
+                <li><code>d</code> : l’inverse modulaire de <code>e</code> modulo <code>φ(n)</code>.</li>
+            </ul>
+        
+            <h3>2. Implémentation Simplifiée de RSA (40 min)</h3>
+        
+            <h4>Étape 1 : Génération des Clés</h4>
+            <pre><code class="python">
+        import random
+        from math import gcd
+        
+        # Générer un nombre premier simple
+        def est_premier(n):
+            if n &lt; 2:
+                return False
+            for i in range(2, int(n ** 0.5) + 1):
+                if n % i == 0:
+                    return False
+            return True
+        
+        def generer_premier():
+            while True:
+                nombre = random.randint(10, 50)  # Petit intervalle pour simplifier
+                if est_premier(nombre):
+                    return nombre
+        
+        # Génération des clés RSA
+        def generer_cles():
+            p = generer_premier()
+            q = generer_premier()
+            while q == p:  # S'assurer que p != q
+                q = generer_premier()
+        
+            n = p * q
+            phi = (p - 1) * (q - 1)
+        
+            # Trouver e (copremier avec phi)
+            e = random.randint(2, phi - 1)
+            while gcd(e, phi) != 1:
+                e = random.randint(2, phi - 1)
+        
+            # Calculer d (l'inverse modulaire de e mod phi)
+            d = pow(e, -1, phi)
+        
+            return (e, n), (d, n)  # Clé publique, Clé privée
+        
+        # Générer les clés
+        cle_publique, cle_privee = generer_cles()
+        print("Clé publique :", cle_publique)
+        print("Clé privée :", cle_privee)
+            </code></pre>
+        
+            <h4>Étape 2 : Chiffrement et Déchiffrement</h4>
+            <pre><code class="python">
+        # Fonction de chiffrement
+        def chiffrer(message, cle_publique):
+            e, n = cle_publique
+            return [pow(ord(char), e, n) for char in message]
+        
+        # Fonction de déchiffrement
+        def dechiffrer(message_chiffre, cle_privee):
+            d, n = cle_privee
+            return ''.join([chr(pow(char, d, n)) for char in message_chiffre])
+        
+        # Exemple de test
+        message = "HELLO"
+        message_chiffre = chiffrer(message, cle_publique)
+        print("Message chiffré :", message_chiffre)
+        
+        message_dechiffre = dechiffrer(message_chiffre, cle_privee)
+        print("Message déchiffré :", message_dechiffre)
+            </code></pre>
+        
+            <h4>Explication :</h4>
+            <ul>
+                <li><strong>Chiffrement :</strong> Chaque caractère du message est transformé en un entier à l’aide de la clé publique.</li>
+                <li><strong>Déchiffrement :</strong> Les entiers sont reconvertis en caractères à l’aide de la clé privée.</li>
+            </ul>
+        
+            <h3>3. Activité Pratique (40 min)</h3>
+            <p>
+                Les élèves devront écrire un programme Python qui :
+            </p>
+            <ul>
+                <li>Génère des clés publiques et privées RSA.</li>
+                <li>Permet à un utilisateur d’entrer un message à chiffrer.</li>
+                <li>Affiche le message chiffré et déchiffré.</li>
+            </ul>
+        
+            <h4>Défi supplémentaire :</h4>
+            <ul>
+                <li>Améliorez la sécurité en utilisant des nombres premiers plus grands (ex. : dans l’intervalle [100, 500]).</li>
+                <li>Ajoutez des vérifications pour empêcher l’utilisateur de chiffrer un message trop long pour <code>n</code>.</li>
+            </ul>
+        
+            <h3>4. Conclusion et Discussion (20 min)</h3>
+            <p>Points à discuter :</p>
+            <ul>
+                <li>Pourquoi le chiffrement asymétrique est-il plus sécurisé que le chiffrement symétrique ?</li>
+                <li>Quels sont les inconvénients de RSA (par exemple, la lenteur pour de grandes quantités de données) ?</li>
+                <li>Dans quels cas RSA est-il utilisé (certificats SSL, signatures numériques, etc.) ?</li>
+            </ul>
+            <p>
+                Les élèves doivent également réfléchir à comment 
+combiner RSA avec des algorithmes symétriques (comme AES) pour maximiser
+ sécurité et performance.
+            </p>
+        </section>

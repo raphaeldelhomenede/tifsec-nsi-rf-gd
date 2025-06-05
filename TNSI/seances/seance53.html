@@ -1,0 +1,179 @@
+<script src="script.js"></script>
+<section id="session53" class="content-section">
+            <h2>Séance 53 : Pratique - Interrogation complexe d'une base de données pour récupérer des données sur les personnages d’un manga</h2>
+        
+            <h3>Objectif Global :</h3>
+            <p>Les élèves apprendront à interroger une base de données 
+relationnelle avec des requêtes SQL complexes, comprenant des filtres, 
+des jointures, et des agrégations. Le contexte pratique sera basé sur 
+une base de données contenant des informations sur les personnages, les 
+arcs narratifs, et les capacités spéciales des personnages d’un manga.</p>
+        
+            <h3>Contexte du Projet :</h3>
+            <p>
+                Imaginez une base de données pour un manga populaire. La base contient les tables suivantes :
+            </p>
+            <ul>
+                <li><strong>Personnages :</strong> Informations générales sur les personnages.</li>
+                <li><strong>Arcs_Narratifs :</strong> Détails sur les arcs du manga.</li>
+                <li><strong>Capacites_Speciales :</strong> Capacités spéciales associées aux personnages.</li>
+                <li><strong>Personnage_Arc :</strong> Relation entre les personnages et les arcs narratifs.</li>
+            </ul>
+        
+            <h3>Structure de la Base de Données :</h3>
+            <pre><code class="sql">
+        -- Table des personnages
+        CREATE TABLE Personnages (
+            id INT PRIMARY KEY,
+            nom VARCHAR(100),
+            niveau_puissance INT,
+            clan VARCHAR(100)
+        );
+        
+        -- Table des arcs narratifs
+        CREATE TABLE Arcs_Narratifs (
+            id INT PRIMARY KEY,
+            nom VARCHAR(100),
+            debut_episode INT,
+            fin_episode INT
+        );
+        
+        -- Table des capacités spéciales
+        CREATE TABLE Capacites_Speciales (
+            id INT PRIMARY KEY,
+            nom VARCHAR(100),
+            description TEXT
+        );
+        
+        -- Table pour relier les personnages et les arcs
+        CREATE TABLE Personnage_Arc (
+            id_personnage INT,
+            id_arc INT,
+            FOREIGN KEY (id_personnage) REFERENCES Personnages(id),
+            FOREIGN KEY (id_arc) REFERENCES Arcs_Narratifs(id)
+        );
+            </code></pre>
+        
+            <h3>Étape 1 : Préparation de la Base de Données (20 min)</h3>
+        
+            <h4>Exercice :</h4>
+            <p>Insérez des données dans les tables pour représenter les personnages et les arcs d’un manga. Par exemple :</p>
+        
+            <pre><code class="sql">
+        -- Données pour la table Personnages
+        INSERT INTO Personnages (id, nom, niveau_puissance, clan) VALUES
+        (1, 'Naruto Uzumaki', 9000, 'Konoha'),
+        (2, 'Sasuke Uchiha', 9500, 'Konoha'),
+        (3, 'Gaara', 8000, 'Suna'),
+        (4, 'Madara Uchiha', 12000, 'Konoha');
+        
+        -- Données pour la table Arcs_Narratifs
+        INSERT INTO Arcs_Narratifs (id, nom, debut_episode, fin_episode) VALUES
+        (1, 'Examen Chunin', 1, 20),
+        (2, 'Invasion de Konoha', 21, 50),
+        (3, 'Grande Guerre Ninja', 51, 100);
+        
+        -- Données pour la table Capacites_Speciales
+        INSERT INTO Capacites_Speciales (id, nom, description) VALUES
+        (1, 'Rasengan', 'Technique de concentration de chakra.'),
+        (2, 'Sharingan', 'Technique héréditaire du clan Uchiha.'),
+        (3, 'Sabaku no Tate', 'Bouclier de sable automatique.');
+        
+        -- Données pour la table Personnage_Arc
+        INSERT INTO Personnage_Arc (id_personnage, id_arc) VALUES
+        (1, 1),
+        (2, 1),
+        (1, 2),
+        (3, 2),
+        (4, 3);
+            </code></pre>
+        
+            <p>Les élèves doivent vérifier que les données ont été insérées correctement en utilisant des requêtes simples comme :</p>
+            <pre><code class="sql">
+        SELECT * FROM Personnages;
+        SELECT * FROM Arcs_Narratifs;
+        SELECT * FROM Personnage_Arc;
+            </code></pre>
+        
+            <h3>Étape 2 : Requêtes SQL Complexes (40 min)</h3>
+        
+            <h4>Exercice :</h4>
+            <p>Les élèves doivent écrire des requêtes SQL pour extraire des informations complexes. Voici quelques exemples de scénarios :</p>
+        
+            <h5>1. Récupérer les personnages d’un arc narratif donné :</h5>
+            <pre><code class="sql">
+        SELECT p.nom
+        FROM Personnages p
+        JOIN Personnage_Arc pa ON p.id = pa.id_personnage
+        JOIN Arcs_Narratifs a ON pa.id_arc = a.id
+        WHERE a.nom = 'Invasion de Konoha';
+            </code></pre>
+        
+            <h5>2. Trouver le personnage avec le niveau de puissance le plus élevé :</h5>
+            <pre><code class="sql">
+        SELECT nom, niveau_puissance
+        FROM Personnages
+        ORDER BY niveau_puissance DESC
+        LIMIT 1;
+            </code></pre>
+        
+            <h5>3. Lister tous les personnages avec leurs capacités spéciales :</h5>
+            <pre><code class="sql">
+        SELECT p.nom AS personnage, c.nom AS capacite
+        FROM Personnages p
+        JOIN Capacites_Speciales c ON p.id = c.id
+        ORDER BY p.nom;
+            </code></pre>
+        
+            <h5>4. Compter le nombre de personnages par clan :</h5>
+            <pre><code class="sql">
+        SELECT clan, COUNT(*) AS nombre_personnages
+        FROM Personnages
+        GROUP BY clan;
+            </code></pre>
+        
+            <h5>5. Récupérer les arcs dans lesquels un personnage spécifique apparaît :</h5>
+            <pre><code class="sql">
+        SELECT a.nom AS arc
+        FROM Arcs_Narratifs a
+        JOIN Personnage_Arc pa ON a.id = pa.id_arc
+        JOIN Personnages p ON pa.id_personnage = p.id
+        WHERE p.nom = 'Naruto Uzumaki';
+            </code></pre>
+        
+            <h3>Étape 3 : Application Pratique et Défi (40 min)</h3>
+        
+            <h4>Exercice :</h4>
+            <p>
+                Les élèves doivent répondre aux questions suivantes en écrivant les requêtes SQL correspondantes :
+            </p>
+            <ul>
+                <li><strong>Quels personnages apparaissent dans plus d’un arc narratif ?</strong></li>
+                <li><strong>Quels arcs narratifs incluent uniquement des personnages de Konoha ?</strong></li>
+                <li><strong>Quelle est la capacité spéciale la plus courante parmi les personnages ?</strong></li>
+            </ul>
+        
+            <h4>Défi Bonus :</h4>
+            <p>Créez une vue SQL pour simplifier l’accès aux informations sur les personnages et les arcs :</p>
+            <pre><code class="sql">
+        CREATE VIEW Vue_Personnages_Arcs AS
+        SELECT p.nom AS personnage, a.nom AS arc, p.niveau_puissance, p.clan
+        FROM Personnages p
+        JOIN Personnage_Arc pa ON p.id = pa.id_personnage
+        JOIN Arcs_Narratifs a ON pa.id_arc = a.id;
+            </code></pre>
+            <p>Les élèves peuvent ensuite interroger cette vue :</p>
+            <pre><code class="sql">
+        SELECT * FROM Vue_Personnages_Arcs WHERE clan = 'Konoha';
+            </code></pre>
+        
+            <h3>Conclusion :</h3>
+            <p>
+                À la fin de cette séance, les élèves auront appris à :
+            </p>
+            <ul>
+                <li>Créer et manipuler une base de données relationnelle.</li>
+                <li>Écrire des requêtes SQL complexes incluant des jointures, des filtres et des agrégations.</li>
+                <li>Appliquer ces compétences dans un contexte concret et engageant basé sur un manga populaire.</li>
+            </ul>
+        </section>

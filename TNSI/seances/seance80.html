@@ -1,0 +1,164 @@
+<script src="script.js"></script>
+<section id="session80" class="content-section">
+            <h2>Séance 80 : Les adresses IP et le routage (avec Filius)</h2>
+
+            <a href="https://www.lernsoftware-filius.de/Herunterladen" target="_blank" rel="noopener noreferrer">Télécharger Filius</a>
+        
+            <h3>Objectif Global :</h3>
+            <p>Les élèves apprendront les concepts fondamentaux des adresses IP, des sous-réseaux et du routage. Ils utiliseront le logiciel <strong>Filius</strong> pour configurer et simuler un réseau avec plusieurs sous-réseaux et routeurs.</p>
+        
+            <h3>1. Introduction aux Adresses IP</h3>
+            <h4>Qu’est-ce qu’une adresse IP ?</h4>
+            <p>
+                Une adresse IP est une <strong>adresse unique</strong> permettant d’identifier un appareil sur un réseau. Elle est essentielle pour la communication entre appareils.
+            </p>
+            <p>Exemple : <code>192.168.1.1</code></p>
+        
+            <h4>Structure d’une adresse IPv4 :</h4>
+            <ul>
+                <li>4 octets séparés par des points (ex. : <code>192.168.0.1</code>).</li>
+                <li>Chaque octet est un nombre compris entre 0 et 255.</li>
+            </ul>
+        
+            <h4>Exercice :</h4>
+            <ul>
+                <li>Donnez un exemple d’adresse IP valide.</li>
+                <li>Indiquez si <code>192.300.1.1</code> est valide.</li>
+            </ul>
+        
+            <h3>2. Les Sous-Réseaux et Masques de Sous-Réseaux</h3>
+            <h4>Définition :</h4>
+            <p>
+                Un sous-réseau divise un réseau plus grand en segments plus petits pour améliorer la gestion et réduire les collisions.
+            </p>
+            <p>
+                Un masque de sous-réseau détermine la partie d’une adresse IP qui correspond au réseau et la partie qui correspond aux appareils.
+            </p>
+            <ul>
+                <li>Exemple de masque : <code>255.255.255.0</code></li>
+                <li>Notation CIDR : <code>192.168.1.0/24</code> (24 bits pour le réseau).</li>
+            </ul>
+        
+            <h4>Exercice :</h4>
+            <p>
+                Divisez le réseau <code>192.168.1.0/24</code> en deux sous-réseaux. Déterminez les plages d’adresses pour chaque sous-réseau.
+            </p>
+        
+            <h3>3. Le Routage</h3>
+            <h4>Qu’est-ce que le routage ?</h4>
+            <p>
+                Le routage est le processus par lequel les données sont envoyées d’un appareil source à un appareil destination. Les routeurs utilisent des tables de routage pour décider où envoyer les paquets.
+            </p>
+        
+            <h4>Types de Routage :</h4>
+            <ul>
+                <li><strong>Statique :</strong> Configuré manuellement.</li>
+                <li><strong>Dynamique :</strong> Apprend automatiquement les routes grâce à des protocoles.</li>
+            </ul>
+        
+            <h3>4. Atelier Pratique avec Filius (1 heure)</h3>
+            <h4>Objectif :</h4>
+            <p>
+                Configurer un réseau simulé dans Filius avec deux sous-réseaux et un routeur pour permettre la communication entre eux.
+            </p>
+        
+            <h4>Étape 1 : Créez un réseau avec Filius</h4>
+            <ol>
+                <li>
+                    Ajoutez deux sous-réseaux :
+                    <ul>
+                        <li><strong>Sous-réseau 1 :</strong> <code>192.168.1.0/25</code></li>
+                        <li><strong>Sous-réseau 2 :</strong> <code>192.168.1.128/25</code></li>
+                    </ul>
+                </li>
+                <li>
+                    Ajoutez deux appareils à chaque sous-réseau :
+                    <ul>
+                        <li>Sous-réseau 1 : <code>192.168.1.10</code> et <code>192.168.1.20</code></li>
+                        <li>Sous-réseau 2 : <code>192.168.1.130</code> et <code>192.168.1.140</code></li>
+                    </ul>
+                </li>
+                <li>Ajoutez un routeur pour interconnecter les deux sous-réseaux.</li>
+            </ol>
+        
+            <h4>Étape 2 : Configurez les appareils</h4>
+            <ol>
+                <li>Attribuez des adresses IP aux appareils et au routeur.</li>
+                <li>Configurez les passerelles par défaut des appareils pour pointer vers le routeur.</li>
+            </ol>
+        
+            <h4>Étape 3 : Configurez le routage</h4>
+            <p>Ajoutez des routes sur le routeur pour permettre la communication entre les deux sous-réseaux.</p>
+            <ul>
+                <li>Interface 1 : <code>192.168.1.1</code> (connecté au sous-réseau 1)</li>
+                <li>Interface 2 : <code>192.168.1.129</code> (connecté au sous-réseau 2)</li>
+            </ul>
+        
+            <h4>Étape 4 : Testez la connectivité</h4>
+            <ul>
+                <li>Envoyez un ping entre un appareil du sous-réseau 1 et un appareil du sous-réseau 2.</li>
+                <li>Corrigez les erreurs si la communication échoue.</li>
+            </ul>
+            <hr>
+            <h3>Atelier Pratique en Python : Communication entre deux réseaux</h3>
+            <h4>Objectif :</h4>
+            <p>
+                Les élèves doivent créer un simulateur réseau en Python avec deux sous-réseaux interconnectés par un "routeur logiciel". Ils apprendront à simuler le routage et à transmettre des messages entre les deux réseaux.
+            </p>
+
+            <h4>Étape 1 : Créez deux sous-réseaux en Python</h4>
+            <p>Utilisez des dictionnaires pour représenter les sous-réseaux. Chaque clé représente une adresse IP, et la valeur correspond à un appareil.</p>
+            <pre><code class="python">
+        # Définition des deux sous-réseaux
+        reseau1 = {
+            "192.168.1.10": "Appareil A",
+            "192.168.1.20": "Appareil B"
+        }
+
+        reseau2 = {
+            "192.168.2.10": "Appareil C",
+            "192.168.2.20": "Appareil D"
+        }
+            </code></pre>
+
+            <h4>Étape 2 : Implémentez un "routeur logiciel"</h4>
+            <p>Le routeur est une fonction qui prend une adresse IP source, une adresse IP destination, et une table de routage pour transmettre les données au bon réseau.</p>
+            <pre><code class="python">
+        # Table de routage
+        table_routage = {
+            "192.168.1.0/24": reseau1,
+            "192.168.2.0/24": reseau2
+        }
+
+        # Routeur logiciel
+        def routeur(ip_source, ip_destination, table_routage):
+            # Identifier le réseau de destination
+            for reseau, appareils in table_routage.items():
+                prefixe, masque = reseau.split("/")
+                if ip_destination.startswith(prefixe):
+                    # Vérifier si l'adresse existe dans le réseau
+                    if ip_destination in appareils:
+                        print(f"Message de {ip_source} à {ip_destination} : Transmis avec succès !")
+                    else:
+                        print(f"Erreur : {ip_destination} n'existe pas dans {reseau}.")
+                    return
+            print(f"Erreur : Réseau pour {ip_destination} introuvable.")
+            </code></pre>
+
+            <h4>Étape 3 : Simulez la communication entre les appareils</h4>
+            <p>Testez la fonction <code>routeur</code> pour transmettre des messages entre deux appareils de réseaux différents.</p>
+            <pre><code class="python">
+        # Simulation de communication
+        routeur("192.168.1.10", "192.168.2.10", table_routage)  # Succès
+        routeur("192.168.1.10", "192.168.3.10", table_routage)  # Erreur : Réseau introuvable
+        routeur("192.168.2.20", "192.168.1.20", table_routage)  # Succès
+            </code></pre>
+
+            <h4>Étape 4 : Ajoutez des fonctionnalités</h4>
+            <p>Proposez aux élèves d’améliorer le programme :</p>
+            <ul>
+                <li>Ajoutez des messages entre les appareils (par exemple, "Bonjour de Appareil A").</li>
+                <li>Ajoutez un troisième réseau et mettez à jour la table de routage.</li>
+                <li>Simulez des délais ou des pannes de réseau.</li>
+            </ul>
+        </section>
