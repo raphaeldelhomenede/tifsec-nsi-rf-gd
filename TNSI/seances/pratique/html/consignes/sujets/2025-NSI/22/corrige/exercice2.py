@@ -25,7 +25,6 @@ class AdresseIP:
         return AdresseIP('192.168.0.' + str(octet_nouveau))
 
 
-
 adresse1 = AdresseIP('192.168.0.1')
 adresse2 = AdresseIP('192.168.0.2')
 adresse3 = AdresseIP('192.168.0.0')
