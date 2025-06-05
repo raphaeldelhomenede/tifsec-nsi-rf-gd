@@ -1,0 +1,387 @@
+[
+    [
+        {"date": "04/09/2024", "titre": "Séance 1 : Introduction à la récursivité (concepts de base)", "id": "seance1"},
+        {"date": "05/09/2024", "titre": "Séance 2 : Pratique - Implémentation d’une fonction récursive pour calculer une suite mathématique", "id": "seance2"},
+        {"date": "06/09/2024", "titre": "Séance 3 : Applications pratiques de la récursivité (problèmes simples)", "id": "seance3"},
+        {"date": "11/09/2024", "titre": "Séance 4 : Introduction aux Algorithmes de Recherche Récursive – Recherche Binaire", "id": "seance4"},
+        {"date": "12/09/2024", "titre": "Séance 5 : Pratique – Recherche d’un Personnage de Manga avec un Algorithme de Recherche Binaire", "id": "seance5"},
+        {"date": "13/09/2024", "titre": "Séance 6 : Analyse de la Complexité d’un Algorithme de Recherche Récursive", "id": "seance6"},
+        {"date": "18/09/2024", "titre": "Séance 7 : Introduction au Backtracking (Concepts de Base)", "id": "seance7"},
+        {"date": "19/09/2024", "titre": "Séance 8 : Pratique - Résolution d'un Labyrinthe avec Backtracking (Jeu Vidéo)", "id": "seance8"},
+        {"date": "20/09/2024", "titre": "Séance 9 : Étude des Cas Où le Backtracking Est Utile et de Ses Limitations", "id": "seance9"},
+        {"date": "25/09/2024", "titre": "Séance 10 : Introduction à la Complexité Algorithmique – Notation Big-O", "id": "seance10"},
+        {"date": "26/09/2024", "titre": "Séance 11 : Pratique - Comparaison des Algorithmes de Tri Simples (Insertion, Sélection)", "id": "seance11"},
+        {"date": "27/09/2024", "titre": "Séance 12 : Exercices d’Analyse de la Complexité des Algorithmes dans des Jeux Vidéo et la Vie Réelle", "id": "seance12"},
+        {"date": "02/10/2024", "titre": "Séance 13 : Introduction aux Graphes et à leurs Applications", "id": "seance13"},
+        {"date": "03/10/2024", "titre": "Séance 14 : Pratique - Représentation d'un Réseau de Routes dans un Jeu Vidéo avec des Graphes", "id": "seance14"},
+        {"date": "04/10/2024", "titre": "Séance 15 : Algorithmes de Parcours de Graphes – DFS et BFS", "id": "seance15"},
+        {"date": "09/10/2024", "titre": "Séance 16 : Approfondissement sur l’algorithme DFS (Depth-First Search)", "id": "seance16"},
+        {"date": "10/10/2024", "titre": "Séance 17 : Pratique - Exploration d’un Monde Ouvert (Jeu Vidéo) avec DFS", "id": "seance17"},
+        {"date": "11/10/2024", "titre": "Séance 18 : Applications Réelles des Graphes (Réseaux Sociaux, Chemins dans les Transports)", "id": "seance18"},
+        {"date": "16/10/2024", "titre": "Séance 19 : Introduction aux Arbres Binaires et leurs Applications", "id": "seance19"},
+        {"date": "17/10/2024", "titre": "Séance 20 : Pratique - Utilisation d’arbres pour organiser une base de données de personnages de manga", "id": "seance20"},
+        {"date": "18/10/2024", "titre": "Séance 21 : Algorithmes de Parcours d’Arbres (Pré-ordre, En-ordre, Post-ordre)", "id": "seance21"}
+    ],
+    [
+        {"date": "06/11/2024", "titre": "Séance 22 : Approfondissement sur les Algorithmes de Parcours d’Arbres", "id": "seance22"},
+        {"date": "07/11/2024", "titre": "Séance 23 : Pratique - Création d’un Arbre de Décision pour un Jeu de Rôle (Jeu Vidéo)", "id": "seance23"},
+        {"date": "08/11/2024", "titre": "Séance 24 : Analyse des performances et avantages des arbres dans la recherche et le tri", "id": "seance24"},
+        {"date": "13/11/2024", "titre": "Séance 25 : Introduction au Tri Rapide (Quicksort)", "id": "seance25"},
+        {"date": "14/11/2024", "titre": "Séance 26 : Pratique - Implémentation du Quicksort pour trier des scores de jeu vidéo", "id": "seance26"},
+        {"date": "15/11/2024", "titre": "Séance 27 : Comparaison de la complexité des différents algorithmes de tri", "id": "seance27"},
+        {"date": "20/11/2024", "titre": "Séance 28 : Introduction au tri par tas (Heapsort)", "id": "seance28"},
+        {"date": "21/11/2024", "titre": "Séance 29 : Pratique - Utilisation du Heapsort pour organiser un inventaire dans un jeu vidéo", "id": "seance29"},
+        {"date": "22/11/2024", "titre": "Séance 30 : Analyse de la Complexité du Heapsort et de ses Applications", "id": "seance30"},
+        {"date": "27/11/2024", "titre": "Séance 31 : Introduction au Tri Fusion (Merge Sort)", "id": "seance31"},
+        {"date": "28/11/2024", "titre": "Séance 32 : Pratique - Implémentation du Tri Fusion pour Classer des Mangas par Popularité", "id": "seance32"},
+        {"date": "29/11/2024", "titre": "Séance 33 : Étude comparative des algorithmes de tri avancés (Quicksort, Heapsort, Merge Sort)", "id": "seance33"},
+        {"date": "04/12/2024", "titre": "Séance 34 : Optimisation des Algorithmes de Tri dans des Contextes Réels", "id": "seance34"},
+        {"date": "05/12/2024", "titre": "Séance 35 : Pratique - Choisir et implémenter l’algorithme de tri le plus efficace pour différentes situations", "id": "seance35"},
+        {"date": "06/12/2024", "titre": "Séance 36 : Révision et consolidation des concepts d'algorithmes de tri", "id": "seance36"},
+        {"date": "11/12/2024", "titre": "Séance 37 : Introduction à la Programmation Orientée Objet (POO) – Classes, Objets, Méthodes", "id": "seance37"},
+        {"date": "12/12/2024", "titre": "Séance 38 : Pratique - Modélisation d’un personnage de jeu vidéo en POO", "id": "seance38"},
+        {"date": "13/12/2024", "titre": "Séance 39 : Héritage et Polymorphisme (Théorie)", "id": "seance39"},
+        {"date": "18/12/2024", "titre": "Séance 40 : Pratique - Implémentation d’un Système d’Héritage dans une Application de Gestion de Personnages (Jeu Vidéo)", "id": "seance40"},
+        {"date": "19/12/2024", "titre": "Séance 41 : Introduction aux Design Patterns - Singleton et Factory", "id": "seance41"},
+        {"date": "20/12/2024", "titre": "Séance 42 : Pratique - Utilisation de Design Patterns pour Optimiser la Gestion des Niveaux d’un Jeu Vidéo", "id": "seance42"}
+    ],
+    [
+        {"date": "08/01/2025", "titre": "Séance 43 : Théorie - Encapsulation, Accès aux Attributs, Getters et Setters", "id": "seance43"},
+        {"date": "09/01/2025", "titre": "Séance 44 : Pratique - Gestion d’attributs privés dans une application", "id": "seance44"},
+        {"date": "10/01/2025", "titre": "Séance 45 : Gestion de la mémoire en POO", "id": "seance45"},
+        {"date": "15/01/2025", "titre": "Séance 46 : Optimisation d’une application POO (jeu vidéo)", "id": "seance46"},
+        {"date": "16/01/2025", "titre": "Séance 47 : Pratique - Réorganisation d’un projet pour améliorer l’efficacité et la gestion des ressources", "id": "seance47"},
+        {"date": "17/01/2025", "titre": "Séance 48 : Analyse des performances dans des projets orientés objet", "id": "seance48"},
+        {"date": "22/01/2025", "titre": "Séance 49 : Introduction aux bases de données relationnelles et SQL", "id": "seance49"},
+        {"date": "23/01/2025", "titre": "Séance 50 : Requêtes SQL de base (SELECT, INSERT, UPDATE, DELETE)", "id": "seance50"},
+        {"date": "24/01/2025", "titre": "Séance 51 : Pratique - Création d’une base de données pour gérer des scores de jeu vidéo", "id": "seance51"},
+        {"date": "29/01/2025", "titre": "Séance 52 : Requêtes SQL avancées (JOIN, GROUP BY)", "id": "seance52"},
+        {"date": "30/01/2025", "titre": "Séance 53 : Pratique - Interrogation complexe d'une base de données pour récupérer des données sur les personnages d’un manga", "id": "seance53"},
+        {"date": "31/01/2025", "titre": "Séance 54 : Optimisation des requêtes SQL", "id": "seance54"},
+        {"date": "05/02/2025", "titre": "Séance 55 : Introduction à la normalisation (1NF, 2NF, 3NF)", "id": "seance55"},
+        {"date": "06/02/2025", "titre": "Séance 56 : Pratique - Réorganisation d’une base de données pour une meilleure gestion des données", "id": "seance56"},
+        {"date": "07/02/2025", "titre": "Séance 57 : Cas pratiques de normalisation dans des projets réels (jeu vidéo, actualité)", "id": "seance57"},
+        {"date": "12/02/2025", "titre": "Séance 58 : Introduction à l’indexation et optimisation des bases de données", "id": "seance58"},
+        {"date": "13/02/2025", "titre": "Séance 59 : Schéma Relationnel", "id": "seance59"},
+        {"date": "14/02/2025", "titre": "Séance 60 : Test sur les Bases de Données et Python", "id": "seance60"},
+        {"date": "19/02/2025", "titre": "Séance 61 : Introduction à la cryptographie (chiffrement symétrique)", "id": "seance61"},
+        {"date": "20/02/2025", "titre": "Séance 62 : Pratique - Implémentation d’un chiffrement simple pour protéger les données d’un jeu vidéo", "id": "seance62"},
+        {"date": "21/02/2025", "titre": "Séance 63 : Algorithmes de chiffrement asymétrique (RSA)", "id": "seance63"}
+    ],
+    [
+        ["23/10/2024", "24/10/2024", "25/10/2024", "30/10/2024", "31/10/2024", "01/11/2024"],
+        [["25/12/2024"], ["26/12/2024", "27/12/2024"], ["01/01/2025"], ["02/01/2025", "03/01/2025"]],
+        ["26/02/2025", "27/02/2025", "28/02/2025", "05/03/2025", "06/03/2025", "07/03/2025"],
+        [["23/04/2025", "24/04/2025", "25/04/2025", "30/04/2025"], ["01/05/2025"], ["02/05/2025"]],
+        ["09/07/2025", "10/07/2025", "11/07/2025"],
+        ["23/10/2024", "24/10/2024", "25/10/2024", "30/10/2024", "31/10/2024", "01/11/2024", "25/12/2024", "26/12/2024", "27/12/2024", "01/01/2025", 
+        "02/01/2025", "03/01/2025", "26/02/2025", "27/02/2025", "28/02/2025", "05/03/2025", "06/03/2025", "07/03/2025", "23/04/2025", "24/04/2025", 
+        "25/04/2025", "30/04/2025", "01/05/2025", "02/05/2025", "08/05/2025", "29/05/2025", "09/07/2025", "10/07/2025", "11/07/2025"]
+    ],
+    [
+        {"date": "12/03/2025", "titre": "Séance 64 : Introduction aux protocoles de sécurité (SSL, HTTPS)", "id": "seance64"},
+        {"date": "13/03/2025", "titre": "Séance 65 : Pratique - Sécurisation des échanges entre un serveur de jeu et un client", "id": "seance65"},
+        {"date": "14/03/2025", "titre": "Séance 66 : Algorithmes de hachage et intégrité des données", "id": "seance66"},
+        {"date": "19/03/2025", "titre": "Séance 67 : Découverte des Circuits Intégrés", "id": "seance67"},
+        {"date": "20/03/2025", "titre": "Séance 68 : Les circuits logiques", "id": "seance68"},
+        {"date": "21/03/2025", "titre": "Séance 69 : Exploration des FPGA et de la logique programmable", "id": "seance69"},
+        {"date": "26/03/2025", "titre": "Séance 70 : Les Mémoires et Stockage - Escape Game Numérique", "id": "seance70"},
+        {"date": "27/03/2025", "titre": "Séance 71 : L’Intelligence Artificielle dans les Systèmes Embarqués", "id": "seance71"},
+        {"date": "28/03/2025", "titre": "Séance 72 : Challenge NSI - Mission \"Ultimate Tech Lab\"", "id": "seance72"},
+        {"date": "02/04/2025", "titre": "Séance 73 : Pratique BAC", "id": "seance73"},
+        {"date": "03/04/2025", "titre": "Séance 74 : Pratique BAC", "id": "seance74"},
+        {"date": "04/04/2025", "titre": "Séance 75 : Pratique BAC", "id": "seance75"},
+        {"date": "09/04/2025", "titre": "Séance 76 : Absence élèves", "id": "seance76"},
+        {"date": "10/04/2025", "titre": "Séance 77 : Absence élèves", "id": "seance77"},
+        {"date": "11/04/2025", "titre": "Séance 78 : Absence élèves", "id": "seance78"},
+        {"date": "16/04/2025", "titre": "Séance 79 : Introduction aux protocoles réseau (TCP, UDP, IP) et modèle OSI", "id": "seance79"},
+        {"date": "17/04/2025", "titre": "Séance 80 : Les adresses IP et le routage", "id": "seance80"},
+        {"date": "18/04/2025", "titre": "Séance 81 : Protocole HTTP et API REST", "id": "seance81"}
+    ],
+    {
+        "calendar": "Calendrier de cours des Tle NSI - 2024/2025",
+        "bo": "",
+        "sujetA": "",
+        "sujetB": "",
+        "ressources": "",
+        "revision": "",
+        "programme1": "",
+        "programme2": "",
+        "programme3": "",
+        "programme4": ""
+    },
+    [
+        {
+            "ressources": "ressources1"
+        },
+        [
+            "Date Mercredi",
+            "Cours Mercredi",
+            "Date Jeudi",
+            "Cours Jeudi",
+            "Date Vendredi",
+            "Cours Vendredi"
+        ],
+        {
+            "pycharm": {
+                "BakaTaida": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/pycharm.html?font=BakaTaida",
+                "yunranofont": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/pycharm.html?font=yunranofont",
+                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/pycharm.html"
+            },
+            "wampserver": {
+                "BakaTaida": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/wampserver.html?font=BakaTaida",
+                "yunranofont": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/wampserver.html?font=yunranofont",
+                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/wampserver.html"
+            },
+            "FirefoxDeveloperEdition": {
+                "BakaTaida": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/FirefoxDeveloperEdition.html?font=BakaTaida",
+                "yunranofont": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/FirefoxDeveloperEdition.html?font=yunranofont",
+                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/FirefoxDeveloperEdition.html"
+            },
+            "vscode": {
+                "BakaTaida": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/vscode.html?font=BakaTaida",
+                "yunranofont": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/vscode.html?font=yunranofont",
+                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/vscode.html"
+            },
+            "download": {
+                "BakaTaida": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/download.html?font=BakaTaida",
+                "yunranofont": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/download.html?font=yunranofont",
+                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/download.html"
+            },
+            "Réseaux": {
+                "BakaTaida": "https://raphaeldelhomenede.github.io/tifsec/tifsec.github.io/R%C3%A9seaux/",
+                "yunranofont": "https://raphaeldelhomenede.github.io/tifsec/tifsec.github.io/R%C3%A9seaux/",
+                "default": "https://raphaeldelhomenede.github.io/tifsec/tifsec.github.io/R%C3%A9seaux/"
+            },
+            "Sujet1Exercice1": {
+                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet1Exercice1.html"
+            },
+            "Sujet1Exercice2": {
+                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet1Exercice2.html"
+            },
+            "Sujet2Exercice1": {
+                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet2Exercice1.html"
+            },
+            "Sujet2Exercice2": {
+                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet2Exercice2.html"
+            },
+            "Sujet3Exercice1": {
+                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet3Exercice1.html"
+            },
+            "Sujet3Exercice2": {
+                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet3Exercice2.html"
+            },
+            "Sujet4Exercice1": {
+                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet4Exercice1.html"
+            },
+            "Sujet4Exercice2": {
+                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet4Exercice2.html"
+            },
+            "Sujet5Exercice1": {
+                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet5Exercice1.html"
+            },
+            "Sujet5Exercice2": {
+                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet5Exercice2.html"
+            },
+            "Sujet6Exercice1": {
+                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet6Exercice1.html"
+            },
+            "Sujet6Exercice2": {
+                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet6Exercice2.html"
+            },
+            "Sujet7Exercice1": {
+                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet7Exercice1.html"
+            },
+            "Sujet7Exercice2": {
+                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet7Exercice2.html"
+            },
+            "Sujet8Exercice1": {
+                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet8Exercice1.html"
+            },
+            "Sujet8Exercice2": {
+                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet8Exercice2.html"
+            },
+            "pratique/chatGPT.com": {
+                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/chatGPT.com.html"
+            },
+            "pratique/sujet": {
+                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/2025-NSI/"
+            }
+        },
+        [
+            [
+                [
+                    {
+                        "github": "https://github.com/raphaeldelhomenede/tifsec-nsi-rf-gd/blob/main/TNSI",
+                        "Site_T": "https://raphaeldelhomenede.github.io/tifsec/AnciensCours/Site_T",
+                        "Site_1": "https://raphaeldelhomenede.github.io/tifsec/AnciensCours/Site_1",
+                        "Site_SNT": "https://raphaeldelhomenede.github.io/tifsec/AnciensCours/SNT",
+                        "Anciennes Versions": "https://raphaeldelhomenede.github.io/tifsec/AnciensCours",
+                        "Nouvelles Versions": "https://raphaeldelhomenede.github.io/tifsec/AnciensCours/nouvelles-versions",
+                        "IlFautAvoirLesCouillesPourDireLaVérité": "https://t.co/8fbiPo9TOq",
+                        "!help": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/help/session.html"
+                    },
+                    {
+                        "calendar": "Calendrier de cours",
+                        "bo": "BO",
+                        "sujetA": "Sujet A",
+                        "sujetB": "Sujet B",
+                        "ressources": "Python par les jeux",
+                        "revision": "Pour réviser",
+                        "pratique.html": "Pratique"
+                    },
+                    [
+                      "Sujet1Exercice1", "Sujet1Exercice2",
+                      "Sujet2Exercice1", "Sujet2Exercice2",
+                      "Sujet3Exercice1", "Sujet3Exercice2",
+                      "Sujet4Exercice1", "Sujet4Exercice2",
+                      "Sujet5Exercice1", "Sujet5Exercice2",
+                      "Sujet6Exercice1", "Sujet6Exercice2",
+                      "Sujet7Exercice1", "Sujet7Exercice2",
+                      "Sujet8Exercice1", "Sujet8Exercice2",
+                      "pratique/chatGPT.com"
+                    ],
+                    [
+                        {"date": "07/05/2025", "titre": "Séance 82 : Modèle Client-Serveur et P2P (Peer-to-Peer)", "id": "seance82"},
+                        {"date": "08/05/2025", "titre": "Victoire 1945", "id": "calendar", "class": "holiday"},
+                        {"date": "09/05/2025", "titre": "Séance 83 : Pont", "id": "seance83"},
+                        {"date": "14/05/2025", "titre": "Séance 84 : Introduction aux Processus", "id": "seance84"},
+                        {"date": "15/05/2025", "titre": "Séance 85 : États d’un processus & gestion du CPU", "id": "seance85"},
+                        {"date": "16/05/2025", "titre": "Séance 86 : Commandes avancées de gestion de processus", "id": "seance86"},
+                        { "date": "21/05/2025", "titre": "Séance à définir", "id": "seance87" },
+                        { "date": "22/05/2025", "titre": "Séance à définir", "id": "seance88" },
+                        { "date": "23/05/2025", "titre": "Séance à définir", "id": "seance89" },
+                        { "date": "28/05/2025", "titre": "Séance à définir", "id": "seance90" },
+                        { "date": "29/05/2025", "titre": "Ascension", "id": "calendar", "class": "holiday" },
+                        { "date": "30/05/2025", "titre": "Séance à définir", "id": "seance91" },
+                        { "date": "04/06/2025", "titre": "Séance à définir", "id": "seance92" },
+                        { "date": "05/06/2025", "titre": "Séance à définir", "id": "seance93" },
+                        { "date": "06/06/2025", "titre": "Séance à définir", "id": "seance94" },
+                        { "date": "11/06/2025", "titre": "Séance à définir", "id": "seance95" },
+                        { "date": "12/06/2025", "titre": "Séance à définir", "id": "seance96" },
+                        { "date": "13/06/2025", "titre": "Séance à définir", "id": "seance97" },
+                        { "date": "18/06/2025", "titre": "Séance à définir", "id": "seance98" },
+                        { "date": "19/06/2025", "titre": "Séance à définir", "id": "seance99" },
+                        { "date": "20/06/2025", "titre": "Séance à définir", "id": "seance100" },
+                        { "date": "25/06/2025", "titre": "Séance à définir", "id": "seance101" },
+                        { "date": "26/06/2025", "titre": "Séance à définir", "id": "seance102" },
+                        { "date": "27/06/2025", "titre": "Séance à définir", "id": "seance103" },
+                        { "date": "02/07/2025", "titre": "Séance à définir", "id": "seance104" },
+                        { "date": "03/07/2025", "titre": "Séance à définir", "id": "seance105" },
+                        { "date": "04/07/2025", "titre": "Séance à définir", "id": "seance106" }
+                    ],
+                    [
+                      [
+                        "$seances_data3[3][0]",
+                        "Vacances de la Toussaint"
+                      ],
+                      [
+                        "$seances_data3[3][1][0]",
+                        "Noël",
+                        "holiday"
+                      ],
+                      [
+                        "$seances_data3[3][1][1]",
+                        "Vacances de Noël"
+                      ],
+                      [
+                        "$seances_data3[3][1][2]",
+                        "Jour de l'An",
+                        "holiday"
+                      ],
+                      [
+                        "$seances_data3[3][1][3]",
+                        "Vacances de Noël"
+                      ],
+                      [
+                        "seances_data3[3][2]",
+                        "Vacances d'hiver"
+                      ],
+                      [
+                        "seances_data3[3][3][0]",
+                        "Vacances de printemps"
+                      ],
+                      [
+                        "seances_data3[3][3][1]",
+                        "Fête du Travail",
+                        "holiday"
+                      ],
+                      [
+                        "$seances_data3[3][3][2]",
+                        "Vacances de printemps"
+                      ],
+                      [
+                        "$seances_data3[3][4]",
+                        "Vacances d'été"
+                      ]
+                    ],
+                    [
+                        [
+                            "Sujet", "Voir le sujet", "Sujet", "Voir le sujet", "Sujet", "Voir le sujet"
+                        ],
+                        {
+                          "https://baka-wiki.rf.gd/character/korufuyuki": {
+                            "default": "https://i.imgur.com/MVKPHcR.png"
+                          },
+                          "https://korufuyuki.electricite.infinityfreeapp.com": {
+                            "default": "https://i.imgur.com/Fi1m0gT.png"
+                          },
+                          "https://www.deviantart.com/bakataida/art/Korufuyuki-Emojis-923220296": {
+                            "default": "https://i.imgur.com/OVezGHu.jpeg"
+                          }
+                        },
+                        {
+                          "toggleMenu": "<script>\nfunction toggleMenu() {\n    const menu = document.getElementById(\"session-nav\");\n    menu.style.display = menu.style.display === \"block\" ? \"none\" : \"block\";\n}\n</script>"
+                        },
+                        {
+                          "background_style": "<style>main { background-image: url(BACKGROUND_URL); background-repeat: repeat-y; background-size: 100% auto; background-position: top center; min-height: 100vh; }</style>"
+                        },
+                        {
+                          "hosts": {
+                            "localhost": {
+                              "today": {
+                                "prefix": "http://localhost/document/TNSI/",
+                                "link_index": 1
+                              },
+                              "id_today": "http://localhost/document/TNSI/",
+                              "default_id": "toto"
+                            },
+                            "tifsec-nsi.rf.gd": {
+                              "today": {
+                                "prefix": "https://tifsec-nsi.rf.gd/TNSI/",
+                                "link_index": 0
+                              },
+                              "id_today": "https://tifsec-nsi.rf.gd/TNSI/",
+                              "default_id": "toto"
+                            }
+                          }
+                        },
+                        {
+                          "pratique_sujet_html": "<div>\n  <h3>\uD83D\uDD0D Consignes & Exercices</h3>\n  \uD83D\uDD17 <a href=\"https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/2025-NSI/<?php echo $sujet; ?>/sujet-<?php echo $num; ?>.py\">Télécharger le fichier Python</a><br>\n  \uD83D\uDD17 <a href=\"https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/2025-NSI/<?php echo $sujet; ?>/exercice2.html\">Compléter l'exercice 2 en ligne</a>\n</div>\n\n<div style=\"margin: 1em 0; height: 100vh;\">\n  <iframe \n    src=\"https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/2025-NSI/<?php echo $sujet; ?>/25-NSI-<?php echo $num; ?>.pdf\" \n    style=\"border:1px solid #ccc; border-radius:8px; width:100%; height:100%;\">\n  </iframe>\n</div>\n\n<div>\n  <h3>\u2705 Corrections</h3>\n  \uD83D\uDD17 <a href=\"?session=<?php echo htmlspecialchars($_GET['session']); ?>&correction=exercice1\">Voir le corrigé de l'exercice 1</a><br>\n  \uD83D\uDD17 <a href=\"?session=<?php echo htmlspecialchars($_GET['session']); ?>&correction=exercice2\">Voir le corrigé de l'exercice 2</a>\n</div>",
+                          "pratique_sujet_correction": "<div style=\"margin: 0; padding: 0; height: 100vh;\"><style>pre {background-color: #eee; color: black; padding: 15px; border-radius: 8px; border: 1px solid #ccc; overflow-x: auto;} .qJM_S3P-7Rs {color: #333;}</style><h1 class=\"qJM_S3P-7Rs\">Correction Sujet <?= htmlspecialchars($sujet) ?> - Exercice <?= htmlspecialchars($_GET['correction'][8] ?? '?') ?></h1><pre><code id=\"code-python\"></code></pre><a id=\"lien-py\" href=\"\"><span id=\"numberDuTruc\"><?= htmlspecialchars($_GET['correction']) ?></span>.py</a><script>window.addEventListener('DOMContentLoaded', () => {const lienPy = document.getElementById('lien-py');const codePython = document.getElementById('code-python');const sujetPhp = \"<?= addslashes(htmlspecialchars($sujet)) ?>\";const correctionPhp = \"<?= addslashes(htmlspecialchars($_GET['correction'][8] ?? '?')) ?>\";const baseUrl = `https://tifsec-nsi.rf.gd/TNSI/watch/f.php?fichier=${sujetPhp}/corrige/`;if (lienPy) {lienPy.href = `https://tifsec-nsi.rf.gd/TNSI/watch/f.php?fichier=${sujetPhp}/corrige/exercice${correctionPhp}.py`; }const realPyUrl = `${baseUrl}exercice${correctionPhp}.py`;document.title = `Correction Sujet ${sujetPhp} - Exercice ${correctionPhp}`;fetch(realPyUrl).then(response => {if (!response.ok) throw new Error('Fichier non trouvé');return response.text();}).then(code => {codePython.innerText = code;}).catch(error => {codePython.innerText = \"Erreur de chargement du code.\";console.error(\"Erreur lors du chargement du fichier Python :\", error);});});</script></div>",
+                          "pratique_sujet_table": "<table class=\"calendar\">\n  <thead>\n    <tr>\n      <?php foreach ($seances_data3[6][3][0][0][5][0] as $rgh1665) { echo \"<th>\" . htmlspecialchars($rgh1665) . \"</th>\"; } ?>\n    </tr>\n  </thead>\n  <tbody id=\"calendar-body\">\n    <?php\n    for ($i = 1; $i <= 48; $i++) {\n      if (($i - 1) % 3 == 0) echo '<tr>';\n      echo \"<td>Sujet $i</td>\";\n      echo \"<td><a href='https://tifsec-nsi.rf.gd/TNSI/?session=pratique/sujet$i'>Voir le sujet $i</a></td>\";\n      if ($i % 3 == 0) echo '</tr>';\n    }\n    if ($i % 3 != 1) echo '</tr>';\n    ?>\n  </tbody>\n</table>",
+                          "joyeux_anniversaire_html": "<div style=\"position: relative; width: 100%; height: 0; padding-bottom: 56.25%;\">\n  <iframe src=\"https://www.youtube-nocookie.com/embed/HjXxvooa-0g?controls=0\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen style=\"position: absolute; top: -30px; left: -15px; width: 100%; height: 85%;\"></iframe>\n</div>",
+                          "1": "<?php $variable242 = $seances_data3[6][3][0][0][5][1][$session_actuelle][$font1]; ?>\n<img src=\"<?= htmlspecialchars($variable242); ?>\" alt=\"<?= htmlspecialchars($variable242); ?>\">",
+                          "2": "<?php $variable242 = $seances_data3[6][2][$session_actuelle][$font1]; ?>\n<iframe src=\"<?= htmlspecialchars($variable242); ?>\" class=\"tifsec1\" frameborder=\"0\" \n        allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\"\n        referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen style=\"margin-left: -12px;\">\n</iframe>",
+                          "3": "<?php\nheader(\"Location: \" . ((!empty(\\$_SERVER['HTTPS']) && \\$_SERVER['HTTPS'] !== 'off') ? \"https\" : \"http\") . \"://\" . \\$_SERVER['HTTP_HOST'] . \"/TNSI/?session=Joyeux-anniversaire\");\nexit;\n?>"
+                        },
+                        {
+                            "programme1": "programme1",
+                            "programme2": "programme2",
+                            "programme3": "programme3",
+                            "programme4": "programme4"
+                        },
+                        {
+                            "bo": "bo1",
+                            "sujetA": "sujetA1",
+                            "sujetB": "sujetB1"
+                        },
+                        {
+                          "html": "<a href='?session=pratique.html' class='session-link {{active_class}}' id='session-link' data-link-one='TNSI/?session=pratique.html' data-link-two='/TNSI/?session=pratique/Sujet'>{{title}}</a><script src='https://thesevendeadlysinsds.github.io/nsi.rf.gd/js/2025-05-08/pratique.js'></script>"
+                        }
+                    ]
+                ]
+            ]
+        ]
+    ]
+]

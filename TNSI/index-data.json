@@ -1,0 +1,71 @@
+{
+    "BakaTaida": {
+        "name": "BakaTaida",
+        "linkcss": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/css/t/bakataida.css",
+        "link2": "/?font=BakaTaida",
+        "link3": "&font=BakaTaida",
+        "html1": "<td $class class='$todayClass11'><a href='?session={$seance[\"id\"]}&font={$_GET[\"font\"]}'>{$seance[\"titre\"]}</a></td>",
+        "bo1": "<iframe src=\"https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/Programme_NSI_Tle_fichiers/bakataida/spe247_annexe_1158933_002_bakataida.pdf\" class=\"tifsecpdf\" frameborder=\"0\" width=\"100%\" height=\"600px\"></iframe>",
+        "sujetA1": "<iframe src=\"https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/Programme_NSI_Tle_fichiers/bakataida/bac_nsi_2024_sujet0a_002_bakataida.pdf\" class=\"tifsecpdf\" frameborder=\"0\" width=\"100%\" height=\"600px\"></iframe>",
+        "sujetB1": "<iframe src=\"https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/Programme_NSI_Tle_fichiers/bakataida/bac_nsi_2024_sujet0b_002_bakataida.pdf\" class=\"tifsecpdf\" frameborder=\"0\" width=\"100%\" height=\"600px\"></iframe>",
+        "ressources1": "<iframe src=\"https://thesevendeadlysinsds.github.io/nsi.rf.gd/TNSI/pdf/Python_3_objectif_jeux/Python%203%20objectif%20jeux_bakataida.pdf\" class=\"tifsecpdf\" frameborder=\"0\" width=\"100%\" height=\"600px\"></iframe>",
+        "programme1": "<iframe src=\"https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/programmes/programme1.html?font=BakaTaida\" class=\"tifsecpdf\" frameborder=\"0\" width=\"100%\" height=\"600px\"></iframe>",
+        "programme2": "<iframe src=\"https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/programmes/programme2.html?font=BakaTaida\" class=\"tifsecpdf\" frameborder=\"0\" width=\"100%\" height=\"600px\"></iframe>",
+        "programme3": "<iframe src=\"https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/programmes/programme3.html?font=BakaTaida\" class=\"tifsecpdf\" frameborder=\"0\" width=\"100%\" height=\"600px\"></iframe>",
+        "programme4": "<iframe src=\"https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/programmes/programme4.html?font=BakaTaida\" class=\"tifsecpdf\" frameborder=\"0\" width=\"100%\" height=\"600px\"></iframe>",
+        "seances1": "<iframe src=\"https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/seance' . $seance_num . '.html?font=BakaTaida\" class=\"tifsec1\" frameborder=\"0\"></iframe>",
+        "link4": "?font=BakaTaida",
+        "link5": "<script>window.location.href = 'https://' + window.location.host + window.location.pathname + '?font=BakaTaida';</script>",
+        "toto1": "toto1.php",
+        "link6": [
+            ["https://tifsec-nsi.rf.gd/TNSI/?session=", "&font=BakaTaida"],
+            ["http://localhost/document/TNSI/?session=", "&font=BakaTaida"]
+        ]
+    },
+    "yunranofont": {
+        "name": "yunranofont",
+        "linkcss": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/css/t/yunranofont.css",
+        "link2": "/?font=yunranofont",
+        "link3": "&font=yunranofont",
+        "html1": "<td $class class='$todayClass11'><a href='?session={$seance[\"id\"]}&font={$_GET[\"font\"]}'>{$seance[\"titre\"]}</a></td>",
+        "bo1": "<iframe src=\"https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/Programme_NSI_Tle_fichiers/yunranofont/spe247_annexe_1158933_002_yunranofont.pdf\" class=\"tifsecpdf\" frameborder=\"0\" width=\"100%\" height=\"600px\"></iframe>",
+        "sujetA1": "<iframe src=\"https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/Programme_NSI_Tle_fichiers/yunranofont/bac_nsi_2024_sujet0a_002_yunranofont.pdf\" class=\"tifsecpdf\" frameborder=\"0\" width=\"100%\" height=\"600px\"></iframe>",
+        "sujetB1": "<iframe src=\"https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/Programme_NSI_Tle_fichiers/yunranofont/bac_nsi_2024_sujet0b_002_yunranofont.pdf\" class=\"tifsecpdf\" frameborder=\"0\" width=\"100%\" height=\"600px\"></iframe>",
+        "ressources1": "<iframe src=\"https://thesevendeadlysinsds.github.io/nsi.rf.gd/TNSI/pdf/Python_3_objectif_jeux/Python%203%20objectif%20jeux_yunranofont.pdf\" class=\"tifsecpdf\" frameborder=\"0\" width=\"100%\" height=\"600px\"></iframe>",
+        "programme1": "<iframe src=\"https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/programmes/programme1.html?font=yunranofont\" class=\"tifsecpdf\" frameborder=\"0\" width=\"100%\" height=\"600px\"></iframe>",
+        "programme2": "<iframe src=\"https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/programmes/programme2.html?font=yunranofont\" class=\"tifsecpdf\" frameborder=\"0\" width=\"100%\" height=\"600px\"></iframe>",
+        "programme3": "<iframe src=\"https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/programmes/programme3.html?font=yunranofont\" class=\"tifsecpdf\" frameborder=\"0\" width=\"100%\" height=\"600px\"></iframe>",
+        "programme4": "<iframe src=\"https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/programmes/programme4.html?font=yunranofont\" class=\"tifsecpdf\" frameborder=\"0\" width=\"100%\" height=\"600px\"></iframe>",
+        "seances1": "<iframe src=\"https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/seance' . $seance_num . '.html?font='.$_GET[\"font\"].'\" class=\"tifsec1\" frameborder=\"0\"></iframe>",
+        "link4": "?font=yunranofont",
+        "link5": "<script>window.location.href = 'https://' + window.location.host + window.location.pathname + '?font=yunranofont';</script>",
+        "toto1": "toto2.php",
+        "link6": [
+            ["https://tifsec-nsi.rf.gd/TNSI/?session=", "&font=yunranofont"],
+            ["http://localhost/document/TNSI/?session=", "&font=yunranofont"]
+        ]
+    },
+    "default": {
+        "name": "default",
+        "linkcss": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/style.css",
+        "link2": "",
+        "link3": "",
+        "html1": "<td $class class='$todayClass11'><a href='?session={$seance[\"id\"]}'>{$seance[\"titre\"]}</a></td>",
+        "bo1": "<iframe src=\"https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/Programme_NSI_Tle_fichiers/spe247_annexe_1158933_002.pdf\" class=\"tifsecpdf\" frameborder=\"0\" width=\"100%\" height=\"600px\"></iframe>",
+        "sujetA1": "<iframe src=\"https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/Programme_NSI_Tle_fichiers/bac_nsi_2024_sujet0a_002.pdf\" class=\"tifsecpdf\" frameborder=\"0\" width=\"100%\" height=\"600px\"></iframe>",
+        "sujetB1": "<iframe src=\"https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/Programme_NSI_Tle_fichiers/bac_nsi_2024_sujet0b_002.pdf\" class=\"tifsecpdf\" frameborder=\"0\" width=\"100%\" height=\"600px\"></iframe>",
+        "ressources1": "<iframe src=\"https://thesevendeadlysinsds.github.io/nsi.rf.gd/TNSI/pdf/Python_3_objectif_jeux/Python%203%20objectif%20jeux.pdf\" class=\"tifsecpdf\" frameborder=\"0\" width=\"100%\" height=\"600px\"></iframe>",
+        "programme1": "<iframe src=\"https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/programmes/programme1.html\" class=\"tifsecpdf\" frameborder=\"0\" width=\"100%\" height=\"600px\"></iframe>",
+        "programme2": "<iframe src=\"https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/programmes/programme2.html\" class=\"tifsecpdf\" frameborder=\"0\" width=\"100%\" height=\"600px\"></iframe>",
+        "programme3": "<iframe src=\"https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/programmes/programme3.html\" class=\"tifsecpdf\" frameborder=\"0\" width=\"100%\" height=\"600px\"></iframe>",
+        "programme4": "<iframe src=\"https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/programmes/programme4.html\" class=\"tifsecpdf\" frameborder=\"0\" width=\"100%\" height=\"600px\"></iframe>",
+        "seances1": "<iframe src=\"https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/seance' . $seance_num . '.html\" class=\"tifsec1\" frameborder=\"0\"></iframe>",
+        "link4": "",
+        "link5": "<<script>window.location.href = 'https://' + window.location.host + window.location.pathname;</script>",
+        "toto1": "toto.php",
+        "link6": [
+            ["https://tifsec-nsi.rf.gd/TNSI/?session=", ""],
+            ["http://localhost/document/TNSI/?session=", ""]
+        ]
+    }
+}
