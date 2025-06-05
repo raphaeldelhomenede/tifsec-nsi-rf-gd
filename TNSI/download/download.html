@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Page de Téléchargement</title>
+    <script src="script.js"></script>
+    <style>
+        /* Styles généraux */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #2b2b2b; /* Couleur sombre de fond */
+            color: #fff; /* Texte en blanc */
+            text-align: center;
+        }
+
+        h1 {
+            color: #3a6ea5; /* Couleur bleu clair */
+            margin-top: 5vh;
+            font-size: 6vw; /* Taille de police responsive */
+        }
+
+        p {
+            color: #c7c7c7;
+            margin-top: 2vh;
+            font-size: 2vw; /* Taille de police responsive */
+        }
+
+        /* Conteneur principal */
+        .container {
+            max-width: 90vw;
+            margin: 0 auto;
+            padding: 5vw;
+            background-color: #1e1e1e; /* Fond sombre pour le conteneur */
+            border-radius: 2vw;
+            box-shadow: 0 2vh 5vw rgba(0, 0, 0, 0.2);
+        }
+
+        /* Bouton de téléchargement */
+        .download-btn {
+            background-color: #3a6ea5; /* Couleur bleue */
+            color: white;
+            padding: 3vw 6vw;
+            font-size: 2.5vw;
+            border: none;
+            border-radius: 1vw;
+            cursor: pointer;
+            margin-top: 5vh;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .download-btn:hover {
+            background-color: #1d4b6e; /* Couleur plus sombre au survol */
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Style pour chaque section de téléchargement */
+        .download-section {
+            margin-bottom: 4vh;
+        }
+
+        /* Media query pour les petits écrans */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 8vw;
+            }
+
+            p {
+                font-size: 4vw;
+            }
+
+            .container {
+                padding: 8vw;
+            }
+
+            .download-btn {
+                padding: 4vw 8vw;
+                font-size: 4vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Page de Téléchargement</h1>
+        <p>Choisissez le programme que vous souhaitez télécharger :</p>
+
+        <!-- Section PyCharm -->
+        <div class="download-section">
+            <h2>Télécharger PyCharm</h2>
+            <p>PyCharm est l'un des meilleurs environnements de développement pour Python.</p>
+            <a href="https://tifsec-nsi.rf.gd/TNSI/?session=pycharm" class="download-btn" target="_blank">
+                Télécharger PyCharm
+            </a>
+        </div>
+
+        <!-- Section WampServer -->
+        <div class="download-section">
+            <h2>Télécharger WampServer</h2>
+            <p>WampServer est un environnement de développement pour PHP, MySQL et Apache.</p>
+            <a href="https://tifsec-nsi.rf.gd/TNSI/?session=wampserver" class="download-btn" target="_blank">
+                Télécharger WampServer
+            </a>
+        </div>
+
+        <!-- Section Firefox Developer Edition -->
+        <div class="download-section">
+            <h2>Télécharger Firefox Developer Edition</h2>
+            <p>Firefox Developer Edition est une version spéciale de Firefox pour les développeurs.</p>
+            <a href="https://tifsec-nsi.rf.gd/TNSI/?session=FirefoxDeveloperEdition" class="download-btn" target="_blank">
+                Télécharger Firefox Developer Edition
+            </a>
+        </div>
+
+        <!-- Section VS Code -->
+        <div class="download-section">
+            <h2>Télécharger VS Code</h2>
+            <p>VS Code est un éditeur de code populaire pour les développeurs.</p>
+            <a href="https://tifsec-nsi.rf.gd/TNSI/?session=vscode" class="download-btn" target="_blank">
+                Télécharger VS Code
+            </a>
+        </div>
+
+    </div>
+</body>
+</html>

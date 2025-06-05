@@ -1,1 +1,13 @@
+@font-face {
+    font-family: 'BakaTaida';
+    src: url('https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/fonts/bakataida-s-writting.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'BakaTaida', sans-serif;
+}

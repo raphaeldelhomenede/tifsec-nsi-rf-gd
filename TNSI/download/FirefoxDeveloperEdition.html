@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Télécharger Firefox Developer Edition</title>
+    <script src="script.js"></script>
+    <style>
+        /* Styles généraux */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #1e1e1e; /* Couleur sombre pour imiter Firefox */
+            color: #fff; /* Texte en blanc */
+            text-align: center;
+        }
+        
+        h1 {
+            color: #ff9500; /* Couleur orange typique de Firefox */
+            margin-top: 5vh; /* Utilisation de vh pour l'espacement */
+            font-size: 6vw; /* Taille de police responsive avec vw */
+        }
+        
+        p {
+            color: #c7c7c7; /* Gris clair pour le texte */
+            margin-top: 2vh;
+            font-size: 2vw; /* Taille de police responsive avec vw */
+        }
+        
+        /* Conteneur principal */
+        .container {
+            max-width: 90vw;
+            margin: 0 auto;
+            padding: 5vw;
+            background-color: #2b2b2b; /* Fond sombre pour le conteneur */
+            border-radius: 2vw;
+            box-shadow: 0 2vh 5vw rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Bouton de téléchargement */
+        .download-btn {
+            background-color: #ff9500; /* Couleur orange de Firefox */
+            color: white;
+            padding: 3vw 6vw; /* Padding en fonction de la taille de l'écran */
+            font-size: 2.5vw; /* Taille de police du bouton avec vw */
+            border: none;
+            border-radius: 1vw;
+            cursor: pointer;
+            margin-top: 5vh;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .download-btn:hover {
+            background-color: #cc7b00; /* Couleur orange plus sombre au survol */
+        }
+        
+        /* Style pour le lien */
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        /* Media query pour les petits écrans */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 8vw;
+            }
+        
+            p {
+                font-size: 4vw;
+            }
+        
+            .container {
+                padding: 8vw;
+            }
+        
+            .download-btn {
+                padding: 4vw 8vw;
+                font-size: 4vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Téléchargez Firefox Developer Edition</h1>
+        <p>Firefox Developer Edition est une version spéciale de Firefox pour les développeurs. Cliquez sur le bouton ci-dessous pour le télécharger.</p>
+        <a href="https://drive.google.com/uc?export=download&id=13GM2Zd6IAkHoV9eekkWyeL4pwJuXd5vF" class="download-btn">
+            Télécharger Firefox Developer Edition
+        </a>
+    </div>
+</body>
+</html>
