@@ -6,3 +6,7 @@ def enumere(tab):
         else:
             d[tab[i]] = [i]
     return d
+
+print(enumere([]))
+print(enumere([1, 2, 3]))
+print(enumere([1, 1, 2, 3, 2, 1]))
