@@ -28,3 +28,14 @@ def insere(arbre, cle):
         else:
             arbre.droit = insere(arbre.droit, cle)
         return arbre
+
+a = Noeud(5, None, None)
+a = insere(a, 2)
+a = insere(a, 3)
+a = insere(a, 7)
+print(parcours(a, []))
+a = insere(a, 1)
+a = insere(a, 4)
+a = insere(a, 6)
+a = insere(a, 8)
+print(parcours(a, []))
