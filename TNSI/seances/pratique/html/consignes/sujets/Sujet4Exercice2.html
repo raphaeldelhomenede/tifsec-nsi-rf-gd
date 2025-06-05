@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sujet 4 Exercice 2</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      font-family: sans-serif;
+    }
+
+    .wrapper {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 20px;
+    }
+
+    .image-double {
+      width: 45%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border: 1px solid #ccc;
+    }
+
+    image-double-left {
+      margin-right: 5%;
+    }
+
+    image-double-right {
+      margin-left: 5%;
+    }
+
+    .download-link {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 16px;
+    }
+
+    .download-link a {
+      background-color: #007BFF;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      transition: all 0.3s ease;
+    }
+
+    .download-link a:hover {
+      background-color: #0056b3;
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 800px) {
+      .image-double,
+      .image-double.second {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <img
+      class="image-double"
+      src="https://web.archive.org/web/20250330004427if_/https://tifsec.github.io/TNSI/pratique/4-2.png"
+      alt="Exercice TNSI 1"
+    />
+    <!--<img
+      class="image-double image-double-left"
+      src="https://web.archive.org/web/20250330003636if_/https://tifsec.github.io/TNSI/pratique/1-2.png"
+      alt="Exercice TNSI 1"
+    />
+    <img
+      class="image-double image-double-right"
+      src="https://web.archive.org/web/20250330003636if_/https://tifsec.github.io/TNSI/pratique/1-2.png"
+      alt="Exercice TNSI 2"
+    />-->
+  </div>
+
+  <div class="download-link">
+    <a href="sujet 4 exercice 2.py" download>sujet 4 exercice 2.py</a>
+  </div>
+  <div class="download-link">
+    <a href="corrigé/Sujet4Exercice2.html">Voir la correction</a>
+  </div>
+  <br>
+  <br>
+</body>
+</html>

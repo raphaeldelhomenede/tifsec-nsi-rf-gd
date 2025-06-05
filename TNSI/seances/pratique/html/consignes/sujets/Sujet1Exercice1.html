@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sujet 1 Exercice 1</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      font-family: sans-serif;
+    }
+
+    .wrapper {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 20px;
+    }
+
+    .image-double {
+      width: 45%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border: 1px solid #ccc;
+    }
+
+    image-double-left {
+      margin-right: 5%;
+    }
+
+    image-double-right {
+      margin-left: 5%;
+    }
+
+    .correction-link {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .correction-link a {
+      background-color: #007BFF;
+      color: white;
+      padding: 10px 15px;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+
+    .correction-link a:hover {
+      background-color: #0056b3;
+    }
+
+    @media (max-width: 800px) {
+      .image-double,
+      .image-double.second {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <img
+      class="image-double"
+      src="https://web.archive.org/web/20250330003412if_/https://tifsec.github.io/TNSI/pratique/1-1.png"
+      alt="Exercice TNSI 1"
+    />
+    <!--<img
+      class="image-double image-double-left"
+      src="https://web.archive.org/web/20250330003636if_/https://tifsec.github.io/TNSI/pratique/1-2.png"
+      alt="Exercice TNSI 1"
+    />
+    <img
+      class="image-double image-double-right"
+      src="https://web.archive.org/web/20250330003636if_/https://tifsec.github.io/TNSI/pratique/1-2.png"
+      alt="Exercice TNSI 2"
+    />-->
+  </div>
+
+  <div class="correction-link">
+    <a href="corrigé/Sujet1Exercice1.html">Voir la correction</a>
+  </div>
+</body>
+</html>

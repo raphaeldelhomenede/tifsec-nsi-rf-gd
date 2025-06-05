@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sujet 1 Exercice 2</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      font-family: sans-serif;
+    }
+
+    .wrapper {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 20px;
+    }
+
+    .image-double {
+      width: 45%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border: 1px solid #ccc;
+    }
+
+    .bouton-style {
+      text-align: center;
+    }
+    
+    .bouton-style .btn {
+      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+      color: white;
+      padding: 12px 25px;
+      text-decoration: none;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: bold;
+      transition: background 0.3s ease, transform 0.2s ease;
+      display: inline-block;
+    }
+    
+    .bouton-style .btn:hover {
+      background: linear-gradient(135deg, #5b0eb4 0%, #1e60c1 100%);
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 800px) {
+      .image-double {
+        width: 100%;
+        margin: 0;
+        margin-top: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <img
+      class="image-double"
+      src="https://web.archive.org/web/20250330003636if_/https://tifsec.github.io/TNSI/pratique/1-2.png"
+      alt="Exercice TNSI 1"
+    />
+  </div>
+
+  <div class="bouton-style">
+    <a href="sujet%201%20exercice%202.py" class="btn" download>sujet 1 exercice 2.py</a>
+  </div>
+  <div class="bouton-style" style="margin-top: 20px;">
+    <a href="corrigé/Sujet1Exercice2.html" class="btn">Voir la correction</a>
+  </div>
+</body>
+</html>

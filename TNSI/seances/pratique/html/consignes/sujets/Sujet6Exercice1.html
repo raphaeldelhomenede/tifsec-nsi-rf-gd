@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sujet 6 Exercice 1</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      font-family: sans-serif;
+    }
+
+    .wrapper {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 20px;
+    }
+
+    .image-double {
+      width: 45%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border: 1px solid #ccc;
+    }
+
+    image-double-left {
+      margin-right: 5%;
+    }
+
+    image-double-right {
+      margin-left: 5%;
+    }
+
+    @media (max-width: 800px) {
+      .image-double,
+      .image-double.second {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 20px;
+      }
+    }
+
+    .download-link {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 16px;
+    }
+
+    .download-link a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    .download-link .btn-blue {
+      background-color: #1a73e8;
+    }
+
+    .download-link .btn-blue:hover {
+      background-color: #155fa0;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <img
+      class="image-double"
+      src="https://web.archive.org/web/20250402141925if_/https://tifsec.github.io/TNSI/pratique/6-1.png"
+      alt="Exercice TNSI 1"
+    />
+    <!--<img
+      class="image-double image-double-left"
+      src="https://web.archive.org/web/20250330003636if_/https://tifsec.github.io/TNSI/pratique/1-2.png"
+      alt="Exercice TNSI 1"
+    />
+    <img
+      class="image-double image-double-right"
+      src="https://web.archive.org/web/20250330003636if_/https://tifsec.github.io/TNSI/pratique/1-2.png"
+      alt="Exercice TNSI 2"
+    />-->
+  </div>
+
+  <!-- Bouton bleu pour voir la correction -->
+  <div class="download-link">
+    <a href="corrigé/Sujet6Exercice1.html" class="btn-blue">
+      Voir la correction
+    </a>
+  </div>
+</body>
+</html>
