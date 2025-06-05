@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sujet 8 Exercice 2 - Corrigé</title>
+  <style>
+    body {
+      background-color: #121212;
+      font-family: monospace;
+      color: #f5f5f5;
+      padding: 20px;
+    }
+    pre {
+      background-color: #1e1e1e;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      overflow-x: auto;
+      color: #dcdcdc;
+    }
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      background: #007BFF;
+      color: white;
+      padding: 10px 15px;
+      text-decoration: none;
+      border-radius: 6px;
+    }
+    a:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Sujet 8 Exercice 2 - Corrigé</h1>
+  <pre><code>
+class Pile:
+    """Classe définissant une structure de pile."""
+    def __init__(self):
+        self.contenu = []
+
+    def est_vide(self):
+        """Renvoie un booléen indiquant si la pile est vide."""
+        return self.contenu == []
+
+    def empiler(self, v):
+        """Place l'élément v au sommet de la pile."""
+        self.contenu.append(v)
+
+    def depiler(self):
+        """
+        Retire et renvoie l'élément placé au sommet de la pile,
+        si la pile n'est pas vide. Produit une erreur sinon.
+        """
+        assert not self.est_vide()
+        return self.contenu.pop()
+
+def bon_parenthesage(ch):
+    """Renvoie un booléen indiquant si le chaine ch est bien parenthésée"""
+    p = Pile()
+    for c in ch:
+        if c == "(":
+            p.empiler(c)
+        elif c == ")":
+            if p.est_vide():
+                return False
+            else:
+                p.depiler()
+    return p.est_vide()
+
+print(bon_parenthesage("((()())(()))"))
+print(bon_parenthesage("())(()"))
+print(bon_parenthesage("(())(()"))
+  </code></pre>
+
+  <a href="sujet 8 exercice 2 - corrigé.py" download>Télécharger le fichier corrigé</a>
+</body>
+</html>

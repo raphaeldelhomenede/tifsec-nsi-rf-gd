@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sujet 7 Exercice 2 - Corrigé</title>
+  <style>
+    body {
+      background-color: #121212;
+      font-family: monospace;
+      color: #f5f5f5;
+      padding: 20px;
+    }
+    pre {
+      background-color: #1e1e1e;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      overflow-x: auto;
+      color: #dcdcdc;
+    }
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      background: #007BFF;
+      color: white;
+      padding: 10px 15px;
+      text-decoration: none;
+      border-radius: 6px;
+    }
+    a:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Sujet 7 Exercice 2 - Corrigé</h1>
+  <pre><code>
+def fusion(tab1, tab2):
+    """Fusionne deux tableaux triés et renvoie
+    le nouveau tableau trié."""
+    n1 = len(tab1)
+    n2 = len(tab2)
+    tab12 = [0] * (n1 + n2)
+    i1 = 0
+    i2 = 0
+    i = 0
+    while i1 < n1 and i2 < n2:
+        if tab1[i1] < tab2[i2]:
+            tab12[i] = tab1[i1]
+            i1 = i1 + 1
+        else:
+            tab12[i] = tab2[i2]
+            i2 = i2 + 1
+        i += 1
+    while i1 < n1:
+        tab12[i] = tab1[i1]
+        i1 = i1 + 1
+        i = i + 1
+    while i2 < n2:
+        tab12[i] = tab2[i2]
+        i2 = i2 + 1
+        i = i + 1
+    return tab12
+
+print(fusion([1, 2, 3], []))
+print(fusion([], []))
+print(fusion([1, 6, 10], [0, 7, 8, 9]))
+  </code></pre>
+
+  <a href="sujet 7 exercice 2 - corrigé.py" download>Télécharger le fichier corrigé</a>
+</body>
+</html>

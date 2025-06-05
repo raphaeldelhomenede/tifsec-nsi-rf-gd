@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sujet 4 Exercice 2 - Corrigé</title>
+  <style>
+    body {
+      background-color: #121212;
+      font-family: monospace;
+      color: #f5f5f5;
+      padding: 20px;
+    }
+    pre {
+      background-color: #1e1e1e;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      overflow-x: auto;
+      color: #dcdcdc;
+    }
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      background: #007BFF;
+      color: white;
+      padding: 10px 15px;
+      text-decoration: none;
+      border-radius: 6px;
+    }
+    a:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Sujet 4 Exercice 2 - Corrigé</h1>
+  <pre><code>def crible(n):
+    """Renvoie un tableau contenant tous les nombres premiers plus petits que n."""
+    premiers = []
+    tab = [True] * n
+    tab[0], tab[1] = False, False
+    for i in range(n):
+        if tab[i]:
+            premiers.append(i)
+            multiple = i * 1
+            while multiple < n:
+                tab[multiple] = False
+                multiple = multiple + i
+    return premiers
+
+print(crible(7))</code></pre>
+
+  <a href="sujet 4 exercice 2 - corrigé.py" download>Télécharger le fichier corrigé</a>
+</body>
+</html>

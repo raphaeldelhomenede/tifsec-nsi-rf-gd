@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Fibonacci - Corrigé</title>
+  <style>
+    body {
+      background-color: #1e1e1e;
+      color: #dcdcdc;
+      font-family: Consolas, monospace;
+      padding: 20px;
+    }
+    .code-box {
+      background-color: #2d2d2d;
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid #444;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      white-space: pre;
+      overflow-x: auto;
+      margin-bottom: 20px;
+    }
+    a.download-link {
+      color: #4fc3f7;
+      text-decoration: none;
+      font-size: 16px;
+    }
+    a.download-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="code-box">
+def fibonacci(n):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if n &lt; 3:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;else:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return fibonacci(n - 1) + fibonacci(n - 2)<br><br>
+print(fibonacci(25))
+  </div>
+
+  <a class="download-link" href="sujet%201%20exercice%201%20-%20corrigé.py" download>
+    📄 Télécharger : sujet 1 exercice 1 - corrigé.py
+  </a>
+</body>
+</html>

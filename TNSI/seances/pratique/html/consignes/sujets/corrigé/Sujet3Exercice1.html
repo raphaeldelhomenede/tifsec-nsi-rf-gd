@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sujet 3 Exercice 1 - Corrigé</title>
+  <style>
+    body {
+      background-color: #121212;
+      font-family: monospace;
+      color: #f5f5f5;
+      padding: 20px;
+    }
+    pre {
+      background-color: #1e1e1e;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      overflow-x: auto;
+      color: #dcdcdc;
+    }
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      background: #007BFF;
+      color: white;
+      padding: 10px 15px;
+      text-decoration: none;
+      border-radius: 6px;
+    }
+    a:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Sujet 3 Exercice 1 - Corrigé</h1>
+  <pre><code>def liste_puissances(a, n):
+    result = 1
+    tab = []
+    for _ in range(n):
+        result *= a
+        tab.append(result)
+    return tab
+
+def liste_puissances_borne(a, n):
+    if a >= 2:
+        result = 1
+        tab = []
+        while result * a < n:
+            result *= a
+            tab.append(result)
+
+        return tab
+
+print(liste_puissances(3, 5))
+print(liste_puissances_borne(2, 16))</code></pre>
+
+  <a href="sujet 3 exercice 1 - corrigé.py" download>Télécharger le fichier corrigé</a>
+</body>
+</html>

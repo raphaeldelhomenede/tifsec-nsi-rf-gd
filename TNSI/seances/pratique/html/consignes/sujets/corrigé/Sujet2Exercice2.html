@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sujet 2 Exercice 2 - Corrigé</title>
+  <style>
+    body {
+      background-color: #121212;
+      font-family: monospace;
+      padding: 20px;
+      color: #f5f5f5;
+    }
+    pre {
+      background-color: #1e1e1e;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      overflow-x: auto;
+      color: #dcdcdc;
+    }
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      background: #007BFF;
+      color: white;
+      padding: 10px 15px;
+      text-decoration: none;
+      border-radius: 6px;
+    }
+    a:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Sujet 2 Exercice 2 - Corrigé</h1>
+  <pre><code>dico = {"A": 1, "B": 2, "C": 3, "D": 4, "E": 5, "F": 6, "G": 7, "H": 8, "I": 9, "J":10, "K":11, "L": 12, "M": 13,
+        "N": 14, "O": 15, "P": 16, "Q": 17, "R": 18, "S": 19, "T": 20, "U": 21, "V": 22, "W": 23, "X":24, "Y":25,
+        "Z":26}
+
+def codes_parfait(mot):
+    """ Revoie un triplet
+    (code_additionne, code_concatene, mot_est_parfait) où :
+     - code_additionne est la somme des codes des lettres du mot ;
+     - code_concatene est le code des lettres du mot concaténées ;
+     - mot_est_parfait est un booléen indiquant si le mot est parfait."""
+    code_concatene = ""
+    code_additionne = 0
+    for c in mot:
+        code_concatene = code_concatene + f"{dico[c]}"
+        code_additionne = code_additionne + dico[c]
+    code_concatene = int(code_concatene)
+    if code_concatene % code_additionne == 0:
+        mot_est_parfait = True
+    else:
+        mot_est_parfait = False
+    return code_additionne, code_concatene, mot_est_parfait
+  </code></pre>
+
+  <a href="sujet 2 exercice 2 - corrigé.py" download>Télécharger le fichier corrigé</a>
+</body>
+</html>

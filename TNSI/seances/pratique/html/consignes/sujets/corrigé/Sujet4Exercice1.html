@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sujet 4 Exercice 1 - Corrigé</title>
+  <style>
+    body {
+      background-color: #121212;
+      font-family: monospace;
+      color: #f5f5f5;
+      padding: 20px;
+    }
+    pre {
+      background-color: #1e1e1e;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      overflow-x: auto;
+      color: #dcdcdc;
+    }
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      background: #007BFF;
+      color: white;
+      padding: 10px 15px;
+      text-decoration: none;
+      border-radius: 6px;
+    }
+    a:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Sujet 4 Exercice 1 - Corrigé</h1>
+  <pre><code>def ecriture_binaire_entier_positif(n):
+    if type(n) is not int:
+        print("Ceci n'est pas un entier!")
+    elif n < 0:
+        print("Il doit être positif!")
+
+    if n == 0:
+        return "0"
+
+    puissance_2 = 1
+    tab = []
+    while puissance_2 <= n:
+        tab.append(puissance_2)
+        puissance_2 *= 2
+
+    var = ""
+    for i in tab[::-1]:
+        if n >= i:
+            var += "1"
+            n -= i
+        else:
+            var += "0"
+
+    return var
+
+print(ecriture_binaire_entier_positif(0))</code></pre>
+
+  <a href="sujet 4 exercice 1 - corrigé.py" download>Télécharger le fichier corrigé</a>
+</body>
+</html>

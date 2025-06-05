@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sujet 7 Exercice 1 - Corrigé</title>
+  <style>
+    body {
+      background-color: #121212;
+      font-family: monospace;
+      color: #f5f5f5;
+      padding: 20px;
+    }
+    pre {
+      background-color: #1e1e1e;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      overflow-x: auto;
+      color: #dcdcdc;
+    }
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      background: #007BFF;
+      color: white;
+      padding: 10px 15px;
+      text-decoration: none;
+      border-radius: 6px;
+    }
+    a:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Sujet 7 Exercice 1 - Corrigé</h1>
+  <pre><code>
+def multiplication(n1, n2):
+    var = 0
+    if (n1 < 0 and n2 < 0) or (n2 < 0 < n1):
+        for _ in range(-n2):
+            var -= n1
+    else:
+        for _ in range(n2):
+            var += n1
+    return var
+
+print(multiplication(3, 5))
+print(multiplication(-4, -8))
+print(multiplication(-2, 6))
+print(multiplication(-2, 0))
+  </code></pre>
+
+  <a href="sujet 7 exercice 1 - corrigé.py" download>Télécharger le fichier corrigé</a>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sujet 3 Exercice 2 - Corrigé</title>
+  <style>
+    body {
+      background-color: #121212;
+      font-family: monospace;
+      color: #f5f5f5;
+      padding: 20px;
+    }
+    pre {
+      background-color: #1e1e1e;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      overflow-x: auto;
+      color: #dcdcdc;
+    }
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      background: #007BFF;
+      color: white;
+      padding: 10px 15px;
+      text-decoration: none;
+      border-radius: 6px;
+    }
+    a:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Sujet 3 Exercice 2 - Corrigé</h1>
+  <pre><code>def eleves_du_mois(eleves, notes):
+    note_maxi = 0
+    meilleurs_eleves = []
+    for i in range(len(notes)):
+        if notes[i] == note_maxi:
+            meilleurs_eleves.append(eleves[i])
+        elif notes[i] > note_maxi:
+            note_maxi = notes[i]
+            meilleurs_eleves = [eleves[i]]
+
+    return note_maxi, meilleurs_eleves
+
+eleves_nsi = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+notes_nsi = [30, 40, 80, 60, 58, 80, 75, 80, 60, 24]
+print(eleves_du_mois(eleves_nsi, notes_nsi))</code></pre>
+
+  <a href="sujet 3 exercice 2 - corrigé.py" download>Télécharger le fichier corrigé</a>
+</body>
+</html>

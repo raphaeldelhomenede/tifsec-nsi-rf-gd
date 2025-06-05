@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sujet 5 Exercice 2 - Corrigé</title>
+  <style>
+    body {
+      background-color: #121212;
+      font-family: monospace;
+      color: #f5f5f5;
+      padding: 20px;
+    }
+    pre {
+      background-color: #1e1e1e;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      overflow-x: auto;
+      color: #dcdcdc;
+    }
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      background: #007BFF;
+      color: white;
+      padding: 10px 15px;
+      text-decoration: none;
+      border-radius: 6px;
+    }
+    a:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Sujet 5 Exercice 2 - Corrigé</h1>
+  <pre><code>
+    """ Les consignes sont sur https://tifsec-nsi.rf.gd/TNSI/?session=Sujet5Exercice2 """
+def dichotomie(tab, x):
+    """
+    tab: tableau d'entiers trié dans l'ordre croissant
+    x : nombre entier
+    La fonction renvoie True si tab contient x et False sinon """
+    debut = 0
+    fin = len(tab) - 1
+    while debut <= fin:
+        m = (debut + fin) // 2
+        if x == tab[m]:
+            return True
+        if x > tab[m]:
+            debut = m + 1
+        else:
+            fin = m - 1
+    return False
+
+print(dichotomie([15, 16, 18, 19, 23, 24, 28, 29, 31, 33], 28))
+  </code></pre>
+
+  <a href="sujet 5 exercice 2 - corrigé.py" download>Télécharger le fichier corrigé</a>
+</body>
+</html>

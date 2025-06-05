@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sujet 6 Exercice 2 - Corrigé</title>
+  <style>
+    body {
+      background-color: #121212;
+      font-family: monospace;
+      color: #f5f5f5;
+      padding: 20px;
+    }
+    pre {
+      background-color: #1e1e1e;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      overflow-x: auto;
+      color: #dcdcdc;
+    }
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      background: #007BFF;
+      color: white;
+      padding: 10px 15px;
+      text-decoration: none;
+      border-radius: 6px;
+    }
+    a:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Sujet 6 Exercice 2 - Corrigé</h1>
+  <pre><code>
+    """ Les consignes sont sur https://tifsec-nsi.rf.gd/TNSI/?session=Sujet6Exercice2 """
+
+alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+
+def position_alphabet(lettre):
+    """Renvoie la position de la lettre dans l'alphabet"""
+    return ord(lettre) - ord("A")
+
+def cesar(message, decalage):
+    """Renvoie le message codé par la méthode de césar
+    pour le décalage donné"""
+    resultat = ""
+    for c in message:
+        if "A" <= c and c <= "Z":
+            indice = (position_alphabet(c) + decalage) % 26
+            resultat = resultat + alphabet[indice]
+        else:
+            resultat = resultat +  c
+    return resultat
+
+print(cesar("BONJOUR A TOUS. VIVE LA MATIERE NSI !", 4))
+print(cesar("GTSOTZW F YTZX. ANAJ QF RFYNJWJ SXN !", -5))
+  </code></pre>
+
+  <a href="sujet 6 exercice 2 - corrigé.py" download>Télécharger le fichier corrigé</a>
+</body>
+</html>
