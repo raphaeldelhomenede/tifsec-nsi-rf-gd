@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Sujets NSI</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      background-color: #f4f4f4;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .centered {
+      display: flex;
+      flex-direction: column;
+      /*justify-content: center;
+      align-items: center;*/
+      height: 100vh;
+      text-align: center;
+    }
+
+    .sujet {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      margin-bottom: 40px;
+      width: 80%;
+      max-width: 1000px;
+    }
+
+    h1, h2 {
+      margin-bottom: 10px;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100vh;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    .exercice {
+      margin-top: 20px;
+    }
+
+    .liens {
+      margin-top: 8px;
+    }
+
+    a {
+      color: #007BFF;
+      text-decoration: none;
+      margin-right: 15px;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    #sujetSelect {
+      font-size: 1rem;
+      padding: 8px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="contenu"></div>
+
+  <script>
+    const container = document.getElementById("contenu");
+    const params = new URLSearchParams(window.location.search);
+    const sujetParam = params.get("sujet");
+
+    if (!sujetParam) {
+      // Pas de paramètre -> afficher interface centrée pour choisir un sujet
+      const choixDiv = document.createElement("div");
+      choixDiv.className = "centered";
+      choixDiv.innerHTML = `
+        <h1>Sujets NSI</h1>
+        <p>Veuillez choisir un sujet :</p>
+        <select id="sujetSelect">
+          <option value="">-- Choisir un sujet --</option>
+        </select>
+      `;
+      container.appendChild(choixDiv);
+
+      const select = document.getElementById("sujetSelect");
+      for (let i = 1; i <= 48; i++) {
+        const num = i.toString().padStart(2, '0');
+        const option = document.createElement("option");
+        option.value = i;
+        option.textContent = `Sujet ${num}`;
+        select.appendChild(option);
+      }
+
+      select.addEventListener("change", () => {
+        const selected = select.value;
+        if (selected) {
+          window.location.href = `?sujet=${selected}`;
+        }
+      });
+
+    } else {
+      // Afficher uniquement le sujet sélectionné
+      const i = parseInt(sujetParam);
+      if (i >= 1 && i <= 48) {
+        const num = i.toString().padStart(2, '0');
+        const sujetDiv = document.createElement("div");
+        sujetDiv.className = "sujet";
+        sujetDiv.innerHTML = `
+          <h2>Sujet ${num}</h2>
+          <div class="exercice">
+            <iframe src="${num}/25-NSI-${i}.pdf"></iframe>
+            <div class="liens">
+              🔗 <a href="${num}/sujet-${i}.py" target="_blank">Télécharger le fichier Python</a>
+              🔗 <a href="${num}/exercice2.html" target="_blank">Ou le compléter en ligne (si c'est possible)</a>
+              ✅ <a href="${num}/corrige/exercice1.html">Voir le corrigé de l'exercice 1</a>
+              ✅ <a href="${num}/corrige/exercice2.html">Voir le corrigé de l'exercice 2</a>
+            </div>
+          </div>
+        `;
+        container.appendChild(sujetDiv);
+      } else {
+        container.innerHTML = `<div class="centered"><p>Sujet invalide.</p></div>`;
+      }
+    }
+  </script>
+
+</body>
+</html>
