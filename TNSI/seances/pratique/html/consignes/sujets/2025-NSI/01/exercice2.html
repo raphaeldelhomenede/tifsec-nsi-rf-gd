@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Glisser-déposer - Complète le code</title>
+  <style>
+    body {
+      font-family: monospace;
+      background-color: #f0f0f0;
+      padding: 20px;
+    }
+    .code-block {
+      background: #2d2d2d;
+      color: #f8f8f2;
+      padding: 15px;
+      border-radius: 8px;
+      white-space: pre;
+    }
+    .drop {
+      display: inline-block;
+      min-width: 80px;
+      background-color: #444;
+      border: 1px dashed #888;
+      color: #ffb86c;
+      padding: 2px 6px;
+      margin: 0 4px;
+    }
+    .draggable {
+      display: inline-block;
+      background: #61afef;
+      color: white;
+      padding: 4px 8px;
+      margin: 5px;
+      border-radius: 5px;
+      cursor: move;
+    }
+    #pieces {
+      margin-top: 20px;
+    }
+    button {
+      margin-top: 15px;
+      padding: 5px 10px;
+    }
+    .correct { color: limegreen; }
+    .incorrect { color: red; }
+  </style>
+</head>
+<body>
+
+<h2>🧩 Glisse les blocs de code aux bons endroits</h2>
+
+<div class="code-block">
+<code>
+def nombre_suivant(s):<br>
+    resultat = ''<br>
+    chiffre = s[0]<br>
+    compte = 1<br>
+    for i in range(<span class="drop" data-answer="1, len(s)" ondrop="drop(event)" ondragover="allowDrop(event)"></span>):<br>
+        if s[i] == chiffre:<br>
+            compte = <span class="drop" data-answer="compte + 1" ondrop="drop(event)" ondragover="allowDrop(event)"></span><br>
+        else:<br>
+            resultat += <span class="drop" data-answer='f"{compte}"' ondrop="drop(event)" ondragover="allowDrop(event)"></span> + <span class="drop" data-answer="chiffre" ondrop="drop(event)" ondragover="allowDrop(event)"></span><br>
+            chiffre = <span class="drop" data-answer="s[i]" ondrop="drop(event)" ondragover="allowDrop(event)"></span><br>
+            <span class="drop" data-answer="compte = 1" ondrop="drop(event)" ondragover="allowDrop(event)"></span><br>
+    lecture_<span class="drop" data-answer='chiffre' ondrop="drop(event)" ondragover="allowDrop(event)"></span> = <span class="drop" data-answer='f"{compte}"' ondrop="drop(event)" ondragover="allowDrop(event)"></span> + <span class="drop" data-answer="chiffre" ondrop="drop(event)" ondragover="allowDrop(event)"></span><br>
+    resultat += lecture_chiffre<br>
+    return resultat
+</code>
+</div>
+
+<h3>🧩 Blocs de code à glisser :</h3>
+<div id="pieces">
+  <span class="draggable" draggable="true" ondragstart="drag(event)" id="p1">chiffre</span>
+  <span class="draggable" draggable="true" ondragstart="drag(event)" id="p2">1, len(s)</span>
+  <span class="draggable" draggable="true" ondragstart="drag(event)" id="p3">compte + 1</span>
+  <span class="draggable" draggable="true" ondragstart="drag(event)" id="p4">f"{compte}"</span>
+  <span class="draggable" draggable="true" ondragstart="drag(event)" id="p5">chiffre</span>
+  <span class="draggable" draggable="true" ondragstart="drag(event)" id="p6">s[i]</span>
+  <span class="draggable" draggable="true" ondragstart="drag(event)" id="p7">f"{compte}"</span>
+  <span class="draggable" draggable="true" ondragstart="drag(event)" id="p8">chiffre</span>
+  <span class="draggable" draggable="true" ondragstart="drag(event)" id="p9">compte = 1</span>
+</div>
+
+<button onclick="verifier()">Vérifier</button>
+<p id="resultat"></p>
+
+<script>
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+  ev.preventDefault();
+  let data = ev.dataTransfer.getData("text");
+  let dropped = document.getElementById(data);
+  // Prevent multiple drops in same area
+  if (!ev.target.hasChildNodes()) {
+    ev.target.appendChild(dropped);
+  }
+}
+
+function verifier() {
+  const zones = document.querySelectorAll(".drop");
+  let correct = 0;
+
+  zones.forEach(zone => {
+    const expected = zone.dataset.answer;
+    const inserted = zone.textContent.trim();
+    if (inserted === expected) {
+      zone.style.border = "2px solid limegreen";
+      correct++;
+    } else {
+      zone.style.border = "2px solid red";
+    }
+  });
+
+  const result = document.getElementById("resultat");
+  if (correct === zones.length) {
+    result.textContent = "✅ Bien joué ! Tout est correct.";
+    result.className = "correct";
+  } else {
+    result.textContent = `❌ ${correct}/${zones.length} bons placements. Essaie encore.`;
+    result.className = "incorrect";
+  }
+}
+</script>
+
+</body>
+</html>
