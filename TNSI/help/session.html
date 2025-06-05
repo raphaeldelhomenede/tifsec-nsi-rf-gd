@@ -1,1 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Générateur d'URL TNSI</title>
+  <link rel="stylesheet" href="session.css">
+</head>
+<body>
+  <a href="https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/help/Untitled-1.html">Click on me</a>
+  <div class="container">
+    <form id="tnsiForm">
+      <label for="sessionType">Type de session :</label>
+      <select id="sessionType">
+        <option value="text">Texte personnalisé</option>
+        <option value="popular">Session populaire</option>
+        <option value="date">Date</option>
+      </select>
 
+      <div id="sessionField">
+        <!-- Champ dynamique ici -->
+        <input type="text" id="sessionInput" placeholder="Entrez la session...">
+      </div>
+
+      <label for="fontSelect">Choisir une police :</label>
+      <select id="fontSelect" name="font">
+        <option value="Default">Default</option>
+        <option value="BakaTaida">BakaTaida</option>
+        <option value="yunranofont">yunranofont</option>
+      </select>
+
+      <button type="submit">Générer le lien</button>
+    </form>
+
+    <div id="result"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById('tnsiForm');
+    const result = document.getElementById('result');
+    const sessionType = document.getElementById('sessionType');
+    const sessionField = document.getElementById('sessionField');
+
+    function updateSessionInput() {
+      const popularSessionList = [
+        "bo", "sujetA", "sujetB", "ressources", "revision", "pratique.html",
+        "Réseaux", "id:today", "today", "github", "Site_T", "Site_1", "Site_SNT",
+        "Anciennes Versions", "Nouvelles Versions",
+        "IlFautAvoirLesCouillesPourDireLaVérité",
+        "pycharm", "wampserver", "FirefoxDeveloperEdition", "vscode", "download",
+        "programme1", "programme2", "programme3", "programme4"
+      ];
+      const type = sessionType.value;
+      sessionField.innerHTML = "";
+    
+      if (type === "text") {
+        sessionField.innerHTML = `<input type="text" id="sessionInput" placeholder="Entrez la session...">`;
+      } else if (type === "date") {
+        sessionField.innerHTML = `<input type="date" id="sessionInput">`;
+      } else if (type === "popular") {
+        const select = document.createElement("select");
+        select.id = "sessionInput";
+        select.style.marginTop = "0.5rem";
+        select.style.padding = "0.5rem";
+        select.style.fontSize = "1rem";
+      
+        const defaultOption = document.createElement("option");
+        defaultOption.textContent = "Choisir une session populaire...";
+        defaultOption.disabled = true;
+        defaultOption.selected = true;
+        select.appendChild(defaultOption);
+      
+        popularSessionList.forEach(item => {
+          const opt = document.createElement("option");
+          opt.value = item;
+          opt.textContent = item;
+          select.appendChild(opt);
+        });
+      
+        sessionField.appendChild(select);
+      
+        // Génère le lien automatiquement au choix
+        select.addEventListener("change", () => {
+          const session = select.value;
+          const font = document.getElementById("fontSelect").value;
+          const baseUrl = "https://tifsec-nsi.rf.gd/TNSI/";
+      
+          const params = new URLSearchParams();
+          if (session) params.append("session", session);
+          if (font !== "Default") params.append("font", font);
+      
+          const fullUrl = params.toString() ? `${baseUrl}?${params.toString()}` : baseUrl;
+          result.innerHTML = `<a href="${fullUrl}" target="_blank">${fullUrl}</a>`;
+        });
+      }
+    }
+
+    // Mettre à jour au changement de type
+    sessionType.addEventListener('change', updateSessionInput);
+    // Initialiser
+    updateSessionInput();
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const sessionInput = document.getElementById('sessionInput');
+      let session = sessionInput.value.trim();
+      const font = document.getElementById('fontSelect').value;
+      const baseUrl = "https://tifsec-nsi.rf.gd/TNSI/";
+
+      const params = new URLSearchParams();
+
+      if (session) {
+        // Pour les dates, reformater en jj/mm/aaaa et ajouter "id:"
+        if (sessionType.value === "date") {
+          const [year, month, day] = session.split("-");
+          session = `${day}/${month}/${year}`;
+        }
+        params.append("session", session);
+      }
+
+      if (font !== "Default") {
+        params.append("font", font);
+      }
+
+      const fullUrl = params.toString() ? `${baseUrl}?${params.toString()}` : baseUrl;
+      result.innerHTML = `<a href="${fullUrl}" target="_blank">${fullUrl}</a>`;
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+body {
+    font-family: sans-serif;
+    background-color: #f9f9f9;
+    padding: 2rem;
+  }
+  .container {
+    max-width: 500px;
+    margin: auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  }
+  label, select, input, button {
+    display: block;
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0.6rem;
+    font-size: 1rem;
+  }
+  #result {
+    margin-top: 1.5rem;
+  }
+  #result a {
+    color: #0077cc;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  #result a:hover {
+    text-decoration: underline;
+  }
