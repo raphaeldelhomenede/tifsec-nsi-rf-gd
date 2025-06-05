@@ -1,0 +1,209 @@
+<script src="script.js"></script>
+<section id="session44" class="content-section">
+            <h2>Séance 44 : Pratique - Gestion d’attributs privés dans une application</h2>
+        
+            <h3>Objectif Global :</h3>
+            <p>Les élèves apprendront à gérer les attributs privés dans 
+une application en utilisant des méthodes comme les getters, setters et <code>@property</code>.
+ Cette séance se concentre sur l’application de ces concepts dans un 
+projet pratique : une application de gestion des employés d’une 
+entreprise.</p>
+        
+            <h3>Contexte du Projet :</h3>
+            <p>
+                L’objectif est de développer une application de gestion 
+des employés pour une entreprise. Chaque employé a des informations 
+sensibles (nom, salaire, rôle) qui doivent être protégées. Les élèves 
+devront :
+            </p>
+            <ul>
+                <li>Utiliser des attributs privés pour sécuriser les données.</li>
+                <li>Implémenter des getters et setters pour contrôler l’accès et la modification des données.</li>
+                <li>Appliquer <code>@property</code> pour simplifier l’accès aux attributs.</li>
+            </ul>
+        
+            <h3>Étape 1 : Création de la Classe Employé (30 min)</h3>
+        
+            <h4>Exercice :</h4>
+            <p>
+                Créez une classe <code>Employe</code> avec les attributs suivants :
+            </p>
+            <ul>
+                <li><code>nom</code> : Nom de l’employé (chaîne de caractères).</li>
+                <li><code>salaire</code> : Salaire de l’employé (nombre positif).</li>
+                <li><code>role</code> : Rôle de l’employé (par exemple, "Développeur", "Manager").</li>
+            </ul>
+            <p>Les attributs doivent être <strong>privés</strong> et accessibles uniquement via des getters et setters.</p>
+        
+            <h4>Implémentation Initiale :</h4>
+            <pre><code class="python">
+        class Employe:
+            def __init__(self, nom, salaire, role):
+                self.__nom = nom          # Attribut privé
+                self.__salaire = salaire  # Attribut privé
+                self.__role = role        # Attribut privé
+        
+            # Getter pour le nom
+            @property
+            def nom(self):
+                return self.__nom
+        
+            # Setter pour le nom
+            @nom.setter
+            def nom(self, nouveau_nom):
+                if isinstance(nouveau_nom, str):
+                    self.__nom = nouveau_nom
+                else:
+                    print("Erreur : Le nom doit être une chaîne de caractères.")
+        
+            # Getter pour le salaire
+            @property
+            def salaire(self):
+                return self.__salaire
+        
+            # Setter pour le salaire
+            @salaire.setter
+            def salaire(self, nouveau_salaire):
+                if nouveau_salaire &gt; 0:
+                    self.__salaire = nouveau_salaire
+                else:
+                    print("Erreur : Le salaire doit être positif.")
+        
+            # Getter pour le rôle
+            @property
+            def role(self):
+                return self.__role
+        
+            # Setter pour le rôle
+            @role.setter
+            def role(self, nouveau_role):
+                if isinstance(nouveau_role, str):
+                    self.__role = nouveau_role
+                else:
+                    print("Erreur : Le rôle doit être une chaîne de caractères.")
+            </code></pre>
+        
+            <h4>Test Initial :</h4>
+            <pre><code class="python">
+        # Création d'un employé
+        employe1 = Employe("Alice", 50000, "Développeur")
+        
+        # Accès et modification des attributs
+        print(employe1.nom)  # Alice
+        employe1.nom = "Alice Dupont"
+        print(employe1.nom)  # Alice Dupont
+        
+        employe1.salaire = -1000  # Erreur : Le salaire doit être positif.
+        print(employe1.salaire)   # 50000 (valeur inchangée)
+            </code></pre>
+        
+            <h3>Étape 2 : Ajout de Méthodes pour la Gestion des Employés (30 min)</h3>
+        
+            <h4>Exercice :</h4>
+            <p>Ajoutez des méthodes pour gérer les employés :</p>
+            <ul>
+                <li><code>augmentation_salaire(pourcentage)</code> : Augmente le salaire de l’employé d’un pourcentage donné.</li>
+                <li><code>afficher_informations()</code> : Affiche les informations de l’employé.</li>
+            </ul>
+        
+            <h4>Implémentation :</h4>
+            <pre><code class="python">
+        class Employe:
+            # Initialisation et getters/setters comme ci-dessus
+        
+            # Méthode pour augmenter le salaire
+            def augmentation_salaire(self, pourcentage):
+                if pourcentage &gt; 0:
+                    augmentation = self.__salaire * (pourcentage / 100)
+                    self.__salaire += augmentation
+                else:
+                    print("Erreur : Le pourcentage doit être positif.")
+        
+            # Méthode pour afficher les informations
+            def afficher_informations(self):
+                print(f"Nom : {self.nom}")
+                print(f"Salaire : {self.salaire}")
+                print(f"Rôle : {self.role}")
+            </code></pre>
+        
+            <h4>Test :</h4>
+            <pre><code class="python">
+        employe1 = Employe("Bob", 60000, "Manager")
+        employe1.afficher_informations()
+        
+        employe1.augmentation_salaire(10)
+        employe1.afficher_informations()
+            </code></pre>
+        
+            <h3>Étape 3 : Application Pratique (40 min)</h3>
+        
+            <h4>Exercice :</h4>
+            <p>
+                Créez une classe <code>GestionEmployes</code> pour gérer une liste d’employés. Cette classe doit inclure :
+            </p>
+            <ul>
+                <li><code>ajouter_employe(employe)</code> : Ajoute un employé à la liste.</li>
+                <li><code>supprimer_employe(nom)</code> : Supprime un employé par son nom.</li>
+                <li><code>afficher_tous_les_employes()</code> : Affiche les informations de tous les employés.</li>
+            </ul>
+        
+            <h4>Implémentation :</h4>
+            <pre><code class="python">
+        class GestionEmployes:
+            def __init__(self):
+                self.__employes = []  # Liste privée d'employés
+        
+            def ajouter_employe(self, employe):
+                if isinstance(employe, Employe):
+                    self.__employes.append(employe)
+                else:
+                    print("Erreur : L'objet doit être une instance de la classe Employe.")
+        
+            def supprimer_employe(self, nom):
+                for employe in self.__employes:
+                    if employe.nom == nom:
+                        self.__employes.remove(employe)
+                        print(f"L'employé {nom} a été supprimé.")
+                        return
+                print(f"Erreur : Aucun employé trouvé avec le nom {nom}.")
+        
+            def afficher_tous_les_employes(self):
+                for employe in self.__employes:
+                    employe.afficher_informations()
+                    print("-" * 20)
+            </code></pre>
+        
+            <h4>Test :</h4>
+            <pre><code class="python">
+        # Gestion des employés
+        gestion = GestionEmployes()
+        
+        # Création d'employés
+        employe1 = Employe("Alice", 50000, "Développeur")
+        employe2 = Employe("Bob", 60000, "Manager")
+        
+        # Ajout des employés
+        gestion.ajouter_employe(employe1)
+        gestion.ajouter_employe(employe2)
+        
+        # Affichage de tous les employés
+        gestion.afficher_tous_les_employes()
+        
+        # Suppression d'un employé
+        gestion.supprimer_employe("Alice")
+        gestion.afficher_tous_les_employes()
+            </code></pre>
+        
+            <h3>Conclusion :</h3>
+            <p>
+                À la fin de cette séance, les élèves auront appris à :
+            </p>
+            <ul>
+                <li>Utiliser des attributs privés pour protéger les données sensibles.</li>
+                <li>Appliquer des getters, setters et <code>@property</code> pour contrôler l’accès et la modification des attributs.</li>
+                <li>Mettre en œuvre une logique métier pour gérer des données complexes dans une application réelle.</li>
+            </ul>
+            <p>Cette séance montre comment appliquer la gestion des 
+attributs privés dans un contexte professionnel, en mettant l’accent sur
+ les bonnes pratiques de programmation.</p>
+        </section>

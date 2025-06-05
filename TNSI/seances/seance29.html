@@ -1,0 +1,159 @@
+<script src="script.js"></script>
+<section id="session29" class="content-section">
+            <h2 style="margin-top: 30px; margin-bottom: 20px;">Séance 29 : Pratique - Utilisation du Heapsort pour organiser un inventaire dans un jeu vidéo</h2>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Objectif Global :</h3>
+            <p>Les élèves apprendront à utiliser l'algorithme de tri 
+Heapsort pour organiser un inventaire dans un jeu vidéo. L'objectif est 
+de comprendre l'algorithme Heapsort et de l'appliquer à un cas pratique 
+en classant les objets d'inventaire par ordre de priorité, comme le 
+poids ou la valeur.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Introduction au Contexte du Jeu Vidéo</h3>
+        
+            <h4>Contexte de l'Inventaire dans un Jeu Vidéo :</h4>
+            <p>Dans de nombreux jeux vidéo, les joueurs possèdent un 
+inventaire contenant divers objets (armes, potions, ressources) qu’ils 
+peuvent trier par ordre de priorité pour faciliter la gestion. Par 
+exemple :</p>
+            <ul>
+                <li>Les objets peuvent être triés par <strong>poids</strong> (les objets les plus lourds en premier) pour gérer l'espace d'inventaire.</li>
+                <li>Les objets peuvent être triés par <strong>valeur</strong> (les objets les plus précieux en premier) pour optimiser les gains lorsqu'on vend des objets.</li>
+            </ul>
+            <p>Pour effectuer ce tri efficacement, nous utiliserons l'algorithme de tri Heapsort.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Explication de Heapsort (20 min)</h3>
+        
+            <h4>1. Principe de Heapsort :</h4>
+            <p>Heapsort est un algorithme de tri basé sur la structure de données appelée <strong>tas (heap)</strong>, qui est un type de <em>file de priorité</em>. L’algorithme Heapsort suit ces étapes :</p>
+            <ul>
+                <li>Créer un tas à partir de la liste d'éléments (objets d'inventaire).</li>
+                <li>Extraire les éléments du tas un par un pour obtenir une liste triée.</li>
+            </ul>
+        
+            <h4>2. Types de Tas :</h4>
+            <ul>
+                <li><strong>Max-Heap :</strong> Le plus grand élément est toujours en haut. Utilisé pour trier par ordre décroissant.</li>
+                <li><strong>Min-Heap :</strong> Le plus petit élément est toujours en haut. Utilisé pour trier par ordre croissant.</li>
+            </ul>
+        
+            <h4>3. Utilisation de Heapsort :</h4>
+            <p>En utilisant Heapsort, nous pouvons trier les objets 
+d'inventaire dans l'ordre souhaité (par exemple, du plus lourd au plus 
+léger ou du plus précieux au moins précieux).</p>
+        
+            <h4>Pseudo-code de Heapsort :</h4>
+            <pre><code>def heapsort(liste):
+            # Construire le Max-Heap
+            for i in range(len(liste) // 2 - 1, -1, -1):
+                entasser(liste, len(liste), i)
+            
+            # Extraire les éléments un par un
+            for i in range(len(liste) - 1, 0, -1):
+                liste[i], liste[0] = liste[0], liste[i]  # Échanger
+                entasser(liste, i, 0)
+            
+        def entasser(liste, taille, i):
+            plus_grand = i  # Initialiser le plus grand comme racine
+            gauche = 2 * i + 1
+            droite = 2 * i + 2
+            
+            # Vérifier si le fils gauche est plus grand que la racine
+            if gauche &lt; taille and liste[gauche] &gt; liste[plus_grand]:
+                plus_grand = gauche
+            
+            # Vérifier si le fils droit est plus grand que le plus grand actuel
+            if droite &lt; taille and liste[droite] &gt; liste[plus_grand]:
+                plus_grand = droite
+            
+            # Changer la racine si nécessaire
+            if plus_grand != i:
+                liste[i], liste[plus_grand] = liste[plus_grand], liste[i]
+                entasser(liste, taille, plus_grand)
+            </code></pre>
+        
+            <h4>Explication Étape par Étape :</h4>
+            <ul>
+                <li><strong>Construction du tas :</strong> L'algorithme commence par transformer la liste en un tas maximal (Max-Heap).</li>
+                <li><strong>Extraction des éléments :</strong> À chaque étape, l’élément le plus grand est extrait du tas et placé à la fin de la liste.</li>
+                <li><strong>Réorganisation :</strong> Le tas est réorganisé après chaque extraction pour maintenir sa structure.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Mise en Pratique : Organisation de l'Inventaire d’un Jeu (45 min)</h3>
+        
+            <h4>1. Initialiser l'Inventaire :</h4>
+            <p>Dans cet exemple, nous allons créer un inventaire de jeu contenant plusieurs objets avec des attributs tels que le <strong>nom</strong>, le <strong>poids</strong> et la <strong>valeur</strong>.</p>
+            <pre><code>inventaire = [
+            {"nom": "épée", "poids": 5, "valeur": 150},
+            {"nom": "potion", "poids": 1, "valeur": 50},
+            {"nom": "bouclier", "poids": 7, "valeur": 100},
+            {"nom": "pierre précieuse", "poids": 2, "valeur": 500},
+            {"nom": "herbes", "poids": 1, "valeur": 20}
+        ]
+            </code></pre>
+        
+            <h4>2. Fonction Heapsort pour Trier l’Inventaire :</h4>
+            <p>Nous allons maintenant adapter l'algorithme Heapsort pour
+ trier l'inventaire en fonction d'un attribut, comme le poids ou la 
+valeur.</p>
+        
+            <pre><code>def trier_inventaire_par_valeur(inventaire):
+            def entasser(liste, taille, i):
+                plus_grand = i
+                gauche = 2 * i + 1
+                droite = 2 * i + 2
+                
+                if gauche &lt; taille and liste[gauche]["valeur"] &gt; liste[plus_grand]["valeur"]:
+                    plus_grand = gauche
+                if droite &lt; taille and liste[droite]["valeur"] &gt; liste[plus_grand]["valeur"]:
+                    plus_grand = droite
+                
+                if plus_grand != i:
+                    liste[i], liste[plus_grand] = liste[plus_grand], liste[i]
+                    entasser(liste, taille, plus_grand)
+            
+            # Construire le Max-Heap
+            for i in range(len(inventaire) // 2 - 1, -1, -1):
+                entasser(inventaire, len(inventaire), i)
+            
+            # Trier
+            for i in range(len(inventaire) - 1, 0, -1):
+                inventaire[i], inventaire[0] = inventaire[0], inventaire[i]
+                entasser(inventaire, i, 0)
+        
+        # Trier l'inventaire par valeur
+        trier_inventaire_par_valeur(inventaire)
+        print("Inventaire trié par valeur décroissante :", inventaire)
+            </code></pre>
+        
+            <h4>3. Explication du Code :</h4>
+            <ul>
+                <li>La fonction <code>trier_inventaire_par_valeur()</code> crée un Max-Heap en fonction de la valeur de chaque objet.</li>
+                <li>Chaque objet est extrait et placé en fin de liste, garantissant ainsi un tri par ordre décroissant de valeur.</li>
+                <li>On peut facilement adapter le code pour trier l’inventaire en fonction d’autres attributs, comme le poids.</li>
+            </ul>
+        
+            <h4>Défi Pratique :</h4>
+            <ul>
+                <li><strong>Étape 1 :</strong> Modifiez la fonction pour trier l’inventaire en fonction du <code>poids</code> plutôt que de la <code>valeur</code>.</li>
+                <li><strong>Étape 2 :</strong> Ajoutez une option pour trier l’inventaire en ordre croissant ou décroissant, en utilisant un Min-Heap ou un Max-Heap.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Conclusion et Discussion (15 min)</h3>
+            <p>À la fin de cette séance, les élèves auront appris à 
+utiliser Heapsort pour organiser un inventaire dans un jeu vidéo. Ils 
+comprendront l'importance d'un tri efficace dans un jeu où 
+l’organisation de l’inventaire joue un rôle clé.</p>
+        
+            <h4>Comparaison avec d'autres Algorithmes de Tri :</h4>
+            <ul>
+                <li><strong>Heapsort :</strong> Complexité en temps <code>O(n log n)</code>, utile pour des tri en place et pour gérer les priorités.</li>
+                <li><strong>Quicksort :</strong> Bien que performant, il est moins adapté pour des structures de file de priorité comme celles d’un inventaire.</li>
+            </ul>
+        
+            <h4>Applications Pratiques :</h4>
+            <ul>
+                <li>Organisation de l’inventaire dans les jeux RPG pour prioriser les objets en fonction de leur importance.</li>
+                <li>Gestion des ressources dans des jeux de stratégie, en triant les ressources par quantité ou valeur.</li>
+            </ul>
+        </section>

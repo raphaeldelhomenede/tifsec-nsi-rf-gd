@@ -1,0 +1,189 @@
+<script src="script.js"></script>
+<section id="session47" class="content-section">
+            <h2>Séance 47 : Pratique - Réorganisation d’un projet pour améliorer l’efficacité et la gestion des ressources</h2>
+        
+            <h3>Objectif Global :</h3>
+            <p>Dans cette séance, les élèves apprendront à réorganiser 
+un projet Python existant pour améliorer son efficacité et sa gestion 
+des ressources. Ils utiliseront des techniques telles que la modularité,
+ le découpage en fonctions et classes, et l’optimisation de 
+l’utilisation des ressources (mémoire et CPU).</p>
+        
+            <h3>Contexte :</h3>
+            <p>
+                Vous avez développé un jeu vidéo simple lors d’une 
+séance précédente. Le projet fonctionne, mais il est difficile à lire, à
+ maintenir et manque d’efficacité. L’objectif est de :
+            </p>
+            <ul>
+                <li>Réorganiser le projet en suivant les principes de la programmation modulaire.</li>
+                <li>Optimiser les parties coûteuses du code pour réduire l’utilisation des ressources.</li>
+                <li>Améliorer la gestion des fichiers, des classes et des fonctions pour rendre le projet plus clair et évolutif.</li>
+            </ul>
+        
+            <h3>Étape 1 : Analyse du Projet Existant (30 min)</h3>
+            <p>
+                Le projet est un jeu vidéo simple où un joueur doit 
+naviguer dans un labyrinthe pour atteindre la sortie tout en évitant des
+ ennemis. Actuellement, tout le code est contenu dans un seul fichier 
+Python, avec peu de structure.
+            </p>
+            <h4>Code Existant :</h4>
+            <pre><code class="python">
+        # Jeu simple : navigation dans un labyrinthe
+        import random
+        
+        # Paramètres du jeu
+        grille = [[0, 1, 0, 0],
+                  [0, 1, 0, 1],
+                  [0, 0, 0, 1],
+                  [1, 1, 0, 0]]
+        
+        position_joueur = [0, 0]  # Départ
+        position_sortie = [3, 3]
+        
+        # Fonction pour afficher la grille
+        def afficher_grille():
+            for ligne in grille:
+                print(" ".join(str(x) for x in ligne))
+        
+        # Déplacement du joueur
+        def deplacer_joueur(direction):
+            global position_joueur
+            x, y = position_joueur
+            if direction == "haut" and x &gt; 0:
+                position_joueur[0] -= 1
+            elif direction == "bas" and x &lt; len(grille) - 1:
+                position_joueur[0] += 1
+            elif direction == "gauche" and y &gt; 0:
+                position_joueur[1] -= 1
+            elif direction == "droite" and y &lt; len(grille[0]) - 1:
+                position_joueur[1] += 1
+        
+        # Jeu principal
+        while position_joueur != position_sortie:
+            afficher_grille()
+            direction = input("Déplacez-vous (haut, bas, gauche, droite) : ")
+            deplacer_joueur(direction)
+            print(f"Votre position : {position_joueur}")
+        
+        print("Félicitations ! Vous avez trouvé la sortie.")
+            </code></pre>
+        
+            <p><strong>Problèmes identifiés :</strong></p>
+            <ul>
+                <li>Le code est peu structuré et manque de modularité.</li>
+                <li>La gestion des ressources (comme les entrées utilisateur et l’affichage) pourrait être optimisée.</li>
+                <li>Aucune séparation entre la logique métier (déplacements) et l’interface utilisateur (affichage).</li>
+            </ul>
+        
+            <h3>Étape 2 : Réorganisation Modulaire (40 min)</h3>
+        
+            <h4>Plan de Réorganisation :</h4>
+            <p>
+                Réorganisez le projet en plusieurs fichiers pour séparer les responsabilités :
+            </p>
+            <ul>
+                <li><code>labyrinthe.py</code> : Contient la logique du labyrinthe.</li>
+                <li><code>joueur.py</code> : Contient la gestion des déplacements et des positions.</li>
+                <li><code>main.py</code> : Contient la boucle principale du jeu et gère l’interaction utilisateur.</li>
+            </ul>
+        
+            <h4>Exemple de Fichier <code>labyrinthe.py</code> :</h4>
+            <pre><code class="python">
+        class Labyrinthe:
+            def __init__(self, grille, position_sortie):
+                self.grille = grille
+                self.position_sortie = position_sortie
+        
+            def afficher(self):
+                for ligne in self.grille:
+                    print(" ".join(str(x) for x in ligne))
+        
+            def est_sortie(self, position):
+                return position == self.position_sortie
+            </code></pre>
+        
+            <h4>Exemple de Fichier <code>joueur.py</code> :</h4>
+            <pre><code class="python">
+        class Joueur:
+            def __init__(self, position_initiale):
+                self.position = position_initiale
+        
+            def deplacer(self, direction, taille_grille):
+                x, y = self.position
+                if direction == "haut" and x &gt; 0:
+                    self.position[0] -= 1
+                elif direction == "bas" and x &lt; taille_grille[0] - 1:
+                    self.position[0] += 1
+                elif direction == "gauche" and y &gt; 0:
+                    self.position[1] -= 1
+                elif direction == "droite" and y &lt; taille_grille[1] - 1:
+                    self.position[1] += 1
+            </code></pre>
+        
+            <h4>Exemple de Fichier <code>main.py</code> :</h4>
+            <pre><code class="python">
+        from labyrinthe import Labyrinthe
+        from joueur import Joueur
+        
+        # Initialisation
+        grille = [[0, 1, 0, 0],
+                  [0, 1, 0, 1],
+                  [0, 0, 0, 1],
+                  [1, 1, 0, 0]]
+        labyrinthe = Labyrinthe(grille, [3, 3])
+        joueur = Joueur([0, 0])
+        
+        # Boucle principale
+        while not labyrinthe.est_sortie(joueur.position):
+            labyrinthe.afficher()
+            direction = input("Déplacez-vous (haut, bas, gauche, droite) : ")
+            joueur.deplacer(direction, (len(grille), len(grille[0])))
+            print(f"Votre position : {joueur.position}")
+        
+        print("Félicitations ! Vous avez trouvé la sortie.")
+            </code></pre>
+        
+            <h3>Étape 3 : Optimisation et Ajout de Fonctionnalités (30 min)</h3>
+        
+            <h4>Exercice :</h4>
+            <p>Ajoutez des fonctionnalités pour rendre le jeu plus interactif et performant :</p>
+            <ul>
+                <li>Ajoutez des ennemis dans le labyrinthe et une logique pour qu’ils se déplacent de manière aléatoire.</li>
+                <li>Optimisez l’affichage en ne montrant que les cases visibles autour du joueur.</li>
+                <li>Ajoutez un système de points basé sur le temps ou les déplacements pour motiver les joueurs.</li>
+            </ul>
+        
+            <h4>Exemple de Gestion d’Ennemis :</h4>
+            <pre><code class="python">
+        class Ennemi:
+            def __init__(self, position_initiale):
+                self.position = position_initiale
+        
+            def deplacer(self, taille_grille):
+                import random
+                directions = ["haut", "bas", "gauche", "droite"]
+                direction = random.choice(directions)
+                x, y = self.position
+                if direction == "haut" and x &gt; 0:
+                    self.position[0] -= 1
+                elif direction == "bas" and x &lt; taille_grille[0] - 1:
+                    self.position[0] += 1
+                elif direction == "gauche" and y &gt; 0:
+                    self.position[1] -= 1
+                elif direction == "droite" and y &lt; taille_grille[1] - 1:
+                    self.position[1] += 1
+            </code></pre>
+        
+            <h3>Conclusion :</h3>
+            <p>
+                À la fin de cette séance, les élèves auront appris à :
+            </p>
+            <ul>
+                <li>Réorganiser un projet en suivant les principes de modularité et de séparation des responsabilités.</li>
+                <li>Optimiser la gestion des ressources pour améliorer les performances du jeu.</li>
+                <li>Ajouter des fonctionnalités pour rendre une application plus évolutive et interactive.</li>
+            </ul>
+            <p>Cette pratique est essentielle pour comprendre comment structurer et optimiser un projet à grande échelle.</p>
+        </section>

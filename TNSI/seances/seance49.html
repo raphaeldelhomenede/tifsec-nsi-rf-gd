@@ -1,0 +1,198 @@
+<script src="script.js"></script>
+<section id="session49" class="content-section">
+            <h2>Séance 49 : Introduction aux Bases de Données Relationnelles et SQL</h2>
+        
+            <h3>Objectif Global :</h3>
+            <p>
+                Les élèves découvriront les concepts de base des bases 
+de données relationnelles, comprendront leur utilité et apprendront les 
+commandes SQL fondamentales pour interagir avec ces bases.
+            </p>
+        
+            <h3>1. Qu’est-ce qu’une Base de Données Relationnelle ?</h3>
+        
+            <h4>Définition :</h4>
+            <p>
+                Une base de données relationnelle est une collection organisée de données qui sont stockées dans des <strong>tables</strong>. Chaque table contient des <strong>lignes</strong> (ou enregistrements) et des <strong>colonnes</strong> (ou champs).
+            </p>
+        
+            <h4>Exemple :</h4>
+            <p>Voici une table <code>Employes</code> :</p>
+            <table border="1" cellpadding="5" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nom</th>
+                        <th>Poste</th>
+                        <th>Salaire</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Alice</td>
+                        <td>Développeur</td>
+                        <td>50000</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Bob</td>
+                        <td>Manager</td>
+                        <td>60000</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Charlie</td>
+                        <td>Designer</td>
+                        <td>45000</td>
+                    </tr>
+                </tbody>
+            </table>
+        
+            <h4>Avantages des Bases de Données Relationnelles :</h4>
+            <ul>
+                <li><strong>Organisation des données :</strong> Les données sont structurées en tables.</li>
+                <li><strong>Relation entre les tables :</strong> On peut relier des tables grâce à des clés (primaires et étrangères).</li>
+                <li><strong>Requêtes dynamiques :</strong> On peut interroger, modifier ou supprimer les données avec SQL.</li>
+            </ul>
+        
+            <h3>2. Introduction à SQL (Structured Query Language)</h3>
+        
+            <h4>Qu’est-ce que SQL ?</h4>
+            <p>
+                SQL est un langage utilisé pour interagir avec une base de données. Il permet de <strong>créer</strong>, <strong>lire</strong>, <strong>mettre à jour</strong> et <strong>supprimer</strong> des données (opérations CRUD).
+            </p>
+        
+            <h4>Principales Commandes SQL :</h4>
+            <ul>
+                <li><code>CREATE</code> : Créer des tables ou des bases de données.</li>
+                <li><code>SELECT</code> : Lire et récupérer des données.</li>
+                <li><code>INSERT</code> : Ajouter des données.</li>
+                <li><code>UPDATE</code> : Mettre à jour des données existantes.</li>
+                <li><code>DELETE</code> : Supprimer des données.</li>
+            </ul>
+        
+            <h3>3. Mise en Pratique : Créer et Manipuler une Table (40 min)</h3>
+        
+            <h4>Étape 1 : Créer une Table</h4>
+            <p>Voici un exemple pour créer une table <code>Employes</code> :</p>
+            <pre><code class="sql">
+        CREATE TABLE Employes (
+            ID INT PRIMARY KEY,
+            Nom VARCHAR(50),
+            Poste VARCHAR(50),
+            Salaire INT
+        );
+            </code></pre>
+        
+            <h4>Étape 2 : Ajouter des Données</h4>
+            <p>Pour insérer des données dans la table <code>Employes</code> :</p>
+            <pre><code class="sql">
+        INSERT INTO Employes (ID, Nom, Poste, Salaire)
+        VALUES (1, 'Alice', 'Développeur', 50000);
+        
+        INSERT INTO Employes (ID, Nom, Poste, Salaire)
+        VALUES (2, 'Bob', 'Manager', 60000);
+        
+        INSERT INTO Employes (ID, Nom, Poste, Salaire)
+        VALUES (3, 'Charlie', 'Designer', 45000);
+            </code></pre>
+        
+            <h4>Étape 3 : Lire les Données</h4>
+            <p>Utilisez la commande <code>SELECT</code> pour afficher les données :</p>
+            <pre><code class="sql">
+        SELECT * FROM Employes;
+            </code></pre>
+            <p>
+                Cette commande affichera toutes les colonnes et lignes de la table <code>Employes</code>.
+            </p>
+        
+            <h4>Étape 4 : Modifier les Données</h4>
+            <p>Pour mettre à jour le salaire d’un employé :</p>
+            <pre><code class="sql">
+        UPDATE Employes
+        SET Salaire = 55000
+        WHERE ID = 1;
+            </code></pre>
+        
+            <h4>Étape 5 : Supprimer des Données</h4>
+            <p>Pour supprimer un employé de la table :</p>
+            <pre><code class="sql">
+        DELETE FROM Employes
+        WHERE ID = 3;
+            </code></pre>
+        
+            <h3>4. Application Pratique : Créer une Base de Données pour un Jeu Vidéo (40 min)</h3>
+        
+            <h4>Exercice :</h4>
+            <p>Créez une base de données pour gérer les personnages d’un jeu vidéo avec les tables suivantes :</p>
+            <ul>
+                <li><code>Personnages</code> :
+                    <ul>
+                        <li><strong>ID :</strong> Identifiant unique.</li>
+                        <li><strong>Nom :</strong> Nom du personnage.</li>
+                        <li><strong>Classe :</strong> Guerrier, Mage, Archer, etc.</li>
+                        <li><strong>Niveau :</strong> Niveau du personnage.</li>
+                    </ul>
+                </li>
+                <li><code>Equipements</code> :
+                    <ul>
+                        <li><strong>ID :</strong> Identifiant unique.</li>
+                        <li><strong>Nom :</strong> Nom de l’équipement.</li>
+                        <li><strong>Type :</strong> Arme, Armure, Accessoire, etc.</li>
+                        <li><strong>ID_Personnage :</strong> Identifiant du personnage possédant l’équipement.</li>
+                    </ul>
+                </li>
+            </ul>
+        
+            <h4>Exemple d’Implémentation :</h4>
+            <pre><code class="sql">
+        -- Création des tables
+        CREATE TABLE Personnages (
+            ID INT PRIMARY KEY,
+            Nom VARCHAR(50),
+            Classe VARCHAR(50),
+            Niveau INT
+        );
+        
+        CREATE TABLE Equipements (
+            ID INT PRIMARY KEY,
+            Nom VARCHAR(50),
+            Type VARCHAR(50),
+            ID_Personnage INT,
+            FOREIGN KEY (ID_Personnage) REFERENCES Personnages(ID)
+        );
+        
+        -- Insertion des données
+        INSERT INTO Personnages (ID, Nom, Classe, Niveau)
+        VALUES (1, 'Arthas', 'Guerrier', 10),
+               (2, 'Jaina', 'Mage', 12);
+        
+        INSERT INTO Equipements (ID, Nom, Type, ID_Personnage)
+        VALUES (1, 'Épée Longue', 'Arme', 1),
+               (2, 'Robe Enchantée', 'Armure', 2);
+            </code></pre>
+        
+            <h4>Défi :</h4>
+            <p>
+                Rédigez des requêtes pour :
+            </p>
+            <ul>
+                <li>Afficher tous les personnages avec leurs équipements.</li>
+                <li>Ajouter un nouveau personnage et son équipement.</li>
+                <li>Mettre à jour le niveau d’un personnage.</li>
+                <li>Supprimer un personnage et ses équipements associés.</li>
+            </ul>
+        
+            <h3>5. Conclusion :</h3>
+            <ul>
+                <li>Les bases de données relationnelles permettent de structurer les données de manière efficace.</li>
+                <li>SQL est un outil puissant pour créer, lire, mettre à jour et supprimer des données.</li>
+                <li>Les relations entre les tables sont essentielles pour modéliser des systèmes complexes.</li>
+            </ul>
+            <p>
+                Cette séance offre une première introduction pratique 
+aux bases de données et au SQL, ouvrant la voie à des applications plus 
+avancées.
+            </p>
+        </section>

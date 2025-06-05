@@ -1,0 +1,183 @@
+<script src="script.js"></script>
+<section id="session6" class="content-section">
+            <h2 style="margin-top: 30px; margin-bottom: 20px;">Séance 6 : Analyse de la Complexité d’un Algorithme de Recherche Récursive</h2>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Objectif Global :</h3>
+            <p>Les élèves doivent comprendre comment analyser la 
+complexité d’un algorithme récursif en termes de temps d’exécution. Ils 
+découvriront la différence entre la complexité linéaire et la complexité
+ logarithmique, et appliqueront ces concepts à un contexte de jeu vidéo.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Contexte :</h3>
+            <p>Dans un jeu vidéo, le joueur doit rechercher des objets 
+cachés dans une carte divisée en sections. Vous avez déjà appris à 
+implémenter des algorithmes de recherche récursive comme la recherche 
+binaire. Maintenant, nous allons voir comment mesurer et analyser la 
+complexité de cet algorithme, c’est-à-dire, combien de temps il prend en
+ fonction du nombre de sections à explorer.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">1. Introduction à la Notion de Complexité d’un Algorithme</h3>
+            <p><strong>Qu’est-ce que la complexité d’un algorithme ?</strong></p>
+            <p>La complexité d’un algorithme est une manière de mesurer 
+combien de temps ou combien de ressources (comme la mémoire) un 
+algorithme va utiliser en fonction de la taille du problème à résoudre. 
+En général, la complexité est exprimée en termes de nombre d’opérations 
+que l’algorithme doit effectuer, et elle est souvent notée à l’aide de 
+la notation Big-O.</p>
+            
+            <p><strong>Big-O :</strong> Il s'agit d'une notation 
+utilisée pour décrire comment le temps d’exécution ou l’utilisation de 
+la mémoire d’un algorithme augmente lorsque la taille de l’entrée (comme
+ le nombre de sections sur la carte) augmente.</p>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Exemples de complexités communes :</h4>
+            <ul>
+                <li><strong>Complexité linéaire (O(n)) :</strong> Si 
+l’algorithme doit effectuer une opération pour chaque élément de la 
+liste, le temps d'exécution augmente en ligne droite avec la taille du 
+problème. Exemple : Recherche linéaire.</li>
+                <li><strong>Complexité logarithmique (O(log n)) :</strong>
+ Si l’algorithme divise le problème en deux à chaque étape, le temps 
+d'exécution augmente beaucoup plus lentement que la taille du problème. 
+Exemple : Recherche binaire.</li>
+            </ul>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Pourquoi c'est important ?</h4>
+            <ul>
+                <li>Dans un jeu vidéo, si un algorithme est trop lent (complexité élevée), il pourrait ralentir le jeu.</li>
+                <li>Un algorithme plus rapide permet de rechercher des 
+objets ou des ennemis sur de grandes cartes sans affecter les 
+performances du jeu.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">2. Revue des Algorithmes de Recherche</h3>
+            <p>Nous avons déjà implémenté deux algorithmes de recherche :</p>
+            <ul>
+                <li><strong>Recherche linéaire :</strong> Le joueur 
+vérifie chaque section de la carte une à une jusqu’à trouver l’objet. 
+Cet algorithme prend du temps, surtout si l’objet est dans la dernière 
+section.</li>
+                <li><strong>Recherche binaire :</strong> Le joueur 
+divise la carte en deux à chaque étape, réduisant le nombre de sections à
+ chercher. Cet algorithme est beaucoup plus rapide.</li>
+            </ul>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Exemple Visuel :</h4>
+            <p>Prenons l’exemple d’une carte divisée en 32 sections. Le joueur doit chercher un objet caché quelque part.</p>
+        
+            <h5 style="margin-top: 20px; margin-bottom: 20px;">1. Recherche linéaire :</h5>
+            <p>Si l'objet est dans la 32e section, il faudra vérifier 32 sections avant de trouver l'objet.</p>
+            <p><strong>Nombre d’opérations =</strong> 32 (pour une carte de 32 sections).</p>
+            <p><strong>Complexité :</strong> O(n) (linéaire).</p>
+        
+            <h5 style="margin-top: 20px; margin-bottom: 20px;">2. Recherche binaire :</h5>
+            <p>Avec cet algorithme, on divise par deux à chaque étape. Pour 32 sections, il ne faudra que 5 vérifications pour trouver l’objet.</p>
+            <p><strong>Nombre d’opérations ≈</strong> log2(32) = 5 (car 2^5 = 32).</p>
+            <p><strong>Complexité :</strong> O(log n) (logarithmique).</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">3. Analyse de la Recherche Linéaire</h3>
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Algorithme de recherche linéaire :</h4>
+        
+            <pre><code>
+    def recherche_lineaire(liste, cible):
+        for i in range(len(liste)):
+            print(f"Vérification de la section {liste[i]}")
+            if liste[i] == cible:
+                print(f"Objet trouvé dans la section {liste[i]}")
+                return i
+        print("Objet non trouvé")
+        return -1
+    
+    # Création d'une liste de sections
+    sections = list(range(1, 33))  # Carte avec 32 sections
+    
+    # Appel de la fonction de recherche
+    recherche_lineaire(sections, 32)
+            </code></pre>
+        
+            <p><strong>Analyse :</strong></p>
+            <p>Dans le pire des cas (l’objet est dans la dernière section), l’algorithme doit parcourir 32 sections.</p>
+            <p>Le nombre d’opérations nécessaires est donc directement proportionnel au nombre de sections : O(n).</p>
+            <p><strong>Question pour les élèves :</strong> Que se passe-t-il si on augmente le nombre de sections à 100 ? Combien d’opérations faudra-t-il faire ?</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">4. Analyse de la Recherche Binaire</h3>
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Rappel de l'algorithme de recherche binaire :</h4>
+        
+            <pre><code>
+    def recherche_binaire(liste, debut, fin, cible):
+        if debut &gt; fin:
+            print("Objet non trouvé")
+            return -1
+        
+        milieu = (debut + fin) // 2
+        print(f"Vérification de la section {liste[milieu]}...")
+        
+        if liste[milieu] == cible:
+            print(f"Objet trouvé dans la section {liste[milieu]}")
+            return milieu
+        elif liste[milieu] &lt; cible:
+            return recherche_binaire(liste, milieu + 1, fin, cible)
+        else:
+            return recherche_binaire(liste, debut, milieu - 1, cible)
+    
+    # Appel de la fonction de recherche binaire
+    sections = list(range(1, 33))  # Carte avec 32 sections
+    recherche_binaire(sections, 0, len(sections) - 1, 32)
+            </code></pre>
+        
+            <p><strong>Analyse :</strong></p>
+            <p>À chaque étape, l'algorithme divise la liste en deux. Cela signifie que le nombre d’opérations est proportionnel à log2(n).</p>
+            <p>Pour 32 sections, il faut au maximum 5 vérifications (car 2^5 = 32).</p>
+            <p><strong>Complexité :</strong> O(log n).</p>
+            <p><strong>Question pour les élèves :</strong> Que se passe-t-il si la carte contient 100 sections ?</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">5. Conclusion et Discussion</h3>
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Discussion finale :</h4>
+            <p>Les élèves doivent comprendre que la recherche binaire 
+est bien plus rapide que la recherche linéaire, surtout lorsque le 
+nombre de sections devient très grand.</p>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Résumé des points clés :</h4>
+            <ul>
+                <li><strong>Recherche linéaire :</strong> Complexité O(n), ce qui signifie que le nombre d’opérations augmente linéairement avec la taille du problème.</li>
+                <li><strong>Recherche binaire :</strong> Complexité 
+O(log n), ce qui signifie que le nombre d’opérations augmente beaucoup 
+plus lentement, même pour de grandes tailles de problèmes.</li>
+            </ul>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Exercice de réflexion :</h4>
+            <p>Demander aux élèves d’expliquer pourquoi un jeu vidéo qui
+ utilise des cartes énormes aurait intérêt à utiliser des algorithmes 
+comme la recherche binaire plutôt que la recherche linéaire.</p>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Extension : Exercice complémentaire :</h4>
+            <p><strong>Challenge :</strong> Demandez aux élèves 
+d’ajouter un chronomètre dans le programme pour mesurer le temps réel 
+que prend chaque algorithme pour trouver l’objet dans une liste de 1 000
+ sections. Ils devront comparer le temps d'exécution entre la recherche 
+linéaire et la recherche binaire en utilisant la bibliothèque Python <code>time</code>.</p>
+        
+            <pre><code>
+    import time
+
+    # Chronométrer la recherche linéaire
+    start_time = time.time()
+    recherche_lineaire(sections, 32)
+    print("Temps d'exécution de la recherche linéaire :", time.time() - start_time)
+    
+    # Chronométrer la recherche binaire
+    start_time = time.time()
+    recherche_binaire(sections, 0, len(sections) - 1, 32)
+    print("Temps d'exécution de la recherche binaire :", time.time() - start_time)
+            </code></pre>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Objectif de la Séance :</h3>
+            <p>À la fin de cette séance, les élèves auront appris à :</p>
+            <ul>
+                <li>Analyser la complexité d’un algorithme.</li>
+                <li>Comprendre pourquoi certains algorithmes (comme la 
+recherche binaire) sont beaucoup plus rapides que d'autres (recherche 
+linéaire).</li>
+                <li>Appliquer ces notions de complexité à des cas concrets, comme la recherche d’objets dans un jeu vidéo.</li>
+            </ul>
+        </section>

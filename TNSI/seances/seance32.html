@@ -1,0 +1,179 @@
+<script src="script.js"></script>
+<section id="session32" class="content-section">
+            <h2 style="margin-top: 30px; margin-bottom: 20px;">Séance 32 : Pratique - Implémentation du Tri Fusion pour Classer des Mangas par Popularité</h2>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Objectif Global :</h3>
+            <p>Les élèves apprendront et implémenteront l’algorithme de 
+tri fusion (Merge Sort) pour organiser une liste de mangas selon leur 
+popularité. Ce tri permettra de comprendre la récursivité dans les 
+algorithmes de tri et d'explorer une méthode de tri efficace pour de 
+grandes quantités de données.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Contexte du Projet : Classement des Mangas par Popularité</h3>
+        
+            <h4>Contexte :</h4>
+            <p>Imaginez que vous êtes responsable d'un site de mangas et
+ que vous devez classer ces mangas en fonction de leur popularité 
+(nombre de lecteurs ou notes moyennes). Pour cette tâche, nous allons 
+implémenter un tri fusion qui organisera les mangas du plus populaire au
+ moins populaire.</p>
+        
+            <h4>Définition de l’Algorithme de Tri Fusion :</h4>
+            <p>Le tri fusion est un algorithme de tri basé sur le 
+principe de "diviser pour régner". Cet algorithme est efficace pour 
+trier de grandes listes car il divise la liste en sous-listes, trie 
+chaque sous-liste, puis fusionne les sous-listes triées.</p>
+        
+            <h4>Concepts Clés :</h4>
+            <ul>
+                <li><strong>Diviser :</strong> Diviser la liste de mangas en deux moitiés jusqu’à obtenir des sous-listes d'un seul élément.</li>
+                <li><strong>Fusionner :</strong> Fusionner les sous-listes en une seule liste triée en comparant les éléments.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Explication de l'Algorithme de Tri Fusion (20 min)</h3>
+        
+            <h4>Étapes du Tri Fusion :</h4>
+            <p>L'algorithme de tri fusion suit trois étapes principales :</p>
+            <ol>
+                <li><strong>Diviser :</strong> La liste est divisée en 
+deux sous-listes égales (ou presque égales) jusqu’à ce qu’il ne reste 
+plus qu’un seul élément par sous-liste.</li>
+                <li><strong>Trier :</strong> Les sous-listes sont considérées comme triées si elles contiennent un seul élément.</li>
+                <li><strong>Fusionner :</strong> Fusionner les sous-listes triées pour obtenir une seule liste triée.</li>
+            </ol>
+        
+            <h4>Exemple Visuel :</h4>
+            <p>Imaginons une liste de popularité de mangas, où chaque nombre représente le nombre de lecteurs :</p>
+            <pre><code>[1200, 4500, 3000, 2500, 3900]</code></pre>
+            <p>L'algorithme divise cette liste en sous-listes, trie chaque sous-liste, puis les fusionne de manière triée :</p>
+            <pre><code>[1200, 4500, 3000, 2500, 3900]
+        =&gt; [1200, 4500, 3000]  et  [2500, 3900]
+        =&gt; [1200, 4500] et [3000] et [2500, 3900]
+        =&gt; [1200] et [4500] et [3000] et [2500] et [3900]
+        =&gt; [1200, 4500] et [3000] et [2500, 3900]
+        =&gt; [1200, 3000, 4500] et [2500, 3900]
+        =&gt; [1200, 2500, 3000, 3900, 4500]
+            </code></pre>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Implémentation de l'Algorithme de Tri Fusion (30 min)</h3>
+        
+            <h4>Code de l'Algorithme de Tri Fusion en Python :</h4>
+            <p>Nous allons maintenant implémenter le tri fusion en Python pour trier une liste de mangas en fonction de leur popularité.</p>
+        
+            <pre><code>def tri_fusion(liste):
+            # Cas de base : si la liste est vide ou ne contient qu'un seul élément
+            if len(liste) &lt;= 1:
+                return liste
+            
+            # Diviser la liste en deux moitiés
+            milieu = len(liste) // 2
+            gauche = liste[:milieu]
+            droite = liste[milieu:]
+            
+            # Appliquer le tri fusion récursivement sur chaque moitié
+            gauche = tri_fusion(gauche)
+            droite = tri_fusion(droite)
+            
+            # Fusionner les deux moitiés triées
+            return fusion(gauche, droite)
+        
+        def fusion(gauche, droite):
+            resultat = []
+            i = j = 0
+            
+            # Comparer les éléments des deux sous-listes et les fusionner dans la liste résultat
+            while i &lt; len(gauche) and j &lt; len(droite):
+                if gauche[i] &lt;= droite[j]:
+                    resultat.append(gauche[i])
+                    i += 1
+                else:
+                    resultat.append(droite[j])
+                    j += 1
+            
+            # Ajouter les éléments restants
+            resultat.extend(gauche[i:])
+            resultat.extend(droite[j:])
+            
+            return resultat
+            </code></pre>
+        
+            <h4>Étape par Étape :</h4>
+            <ul>
+                <li>La fonction <code>tri_fusion()</code> divise la liste en deux parties et appelle récursivement le tri fusion sur chacune d’elles.</li>
+                <li>La fonction <code>fusion()</code> prend deux sous-listes triées et les fusionne en une seule liste triée.</li>
+                <li>Lorsque toutes les sous-listes sont fusionnées, la liste complète est triée.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Mise en Pratique : Classement des Mangas par Popularité (30 min)</h3>
+        
+            <h4>1. Préparer la Liste des Mangas :</h4>
+            <p>Créez une liste de mangas, chacun ayant une popularité exprimée par un nombre. Voici un exemple :</p>
+            <pre><code>mangas = [
+            {"titre": "One Piece", "popularite": 4500},
+            {"titre": "Naruto", "popularite": 3900},
+            {"titre": "Bleach", "popularite": 2500},
+            {"titre": "Dragon Ball", "popularite": 3000},
+            {"titre": "Attack on Titan", "popularite": 1200}
+        ]
+            </code></pre>
+        
+            <h4>2. Adapter le Tri Fusion pour Trier les Mangas :</h4>
+            <p>Modifiez l’algorithme pour trier les mangas en fonction de la clé <code>popularite</code>.</p>
+        
+            <pre><code>def tri_fusion_mangas(liste):
+            if len(liste) &lt;= 1:
+                return liste
+            
+            milieu = len(liste) // 2
+            gauche = liste[:milieu]
+            droite = liste[milieu:]
+            
+            gauche = tri_fusion_mangas(gauche)
+            droite = tri_fusion_mangas(droite)
+            
+            return fusion_mangas(gauche, droite)
+        
+        def fusion_mangas(gauche, droite):
+            resultat = []
+            i = j = 0
+            
+            while i &lt; len(gauche) and j &lt; len(droite):
+                if gauche[i]["popularite"] &gt;= droite[j]["popularite"]:
+                    resultat.append(gauche[i])
+                    i += 1
+                else:
+                    resultat.append(droite[j])
+                    j += 1
+            
+            resultat.extend(gauche[i:])
+            resultat.extend(droite[j:])
+            
+            return resultat
+        
+        # Trier les mangas par popularité
+        mangas_tries = tri_fusion_mangas(mangas)
+        for manga in mangas_tries:
+            print(f"{manga['titre']} - Popularité : {manga['popularite']}")
+            </code></pre>
+        
+            <h4>Explication :</h4>
+            <ul>
+                <li>La fonction <code>tri_fusion_mangas()</code> applique le tri fusion sur une liste de mangas.</li>
+                <li>La fonction <code>fusion_mangas()</code> fusionne deux sous-listes de mangas en fonction de leur popularité.</li>
+            </ul>
+        
+            <h4>Défi Pratique pour les Élèves :</h4>
+            <ul>
+                <li><strong>Étape 1 :</strong> Ajoutez des mangas supplémentaires avec des valeurs de popularité aléatoires.</li>
+                <li><strong>Étape 2 :</strong> Modifiez l’algorithme pour trier les mangas en ordre croissant de popularité.</li>
+                <li><strong>Étape 3 :</strong> Testez l’efficacité du tri fusion pour des listes de 1000 mangas ou plus (générées aléatoirement).</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Conclusion et Discussion (10 min)</h3>
+            <p>À la fin de cette séance, les élèves comprendront comment
+ utiliser le tri fusion pour trier une liste complexe. Ils auront 
+également appris à adapter l’algorithme pour trier selon une clé 
+spécifique, ici la popularité des mangas. Nous terminerons par une 
+discussion sur l’efficacité du tri fusion, particulièrement utile pour 
+des listes de grandes tailles en raison de sa complexité en temps <code>O(n log n)</code>.</p>
+        </section>

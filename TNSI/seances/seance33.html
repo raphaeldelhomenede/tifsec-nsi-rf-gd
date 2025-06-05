@@ -1,0 +1,186 @@
+<script src="script.js"></script>
+<section id="session33" class="content-section">
+            <h2 style="margin-top: 30px; margin-bottom: 20px;">Séance 33 : Étude comparative des algorithmes de tri avancés (Quicksort, Heapsort, Merge Sort)</h2>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Objectif Global :</h3>
+            <p>Les élèves vont explorer et comparer trois algorithmes de
+ tri avancés : Quicksort, Heapsort et Merge Sort. L'objectif est de 
+comprendre leurs différences en termes de performances, d'implémentation
+ et de cas d'utilisation. Les élèves vont également mettre en pratique 
+ces algorithmes et observer leurs comportements sur différents jeux de 
+données.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Introduction aux Algorithmes de Tri Avancés</h3>
+        
+            <p>Dans cette séance, nous allons comparer trois algorithmes
+ de tri populaires et efficaces pour trier de grandes quantités de 
+données. Ces algorithmes sont souvent utilisés en programmation en 
+raison de leur efficacité et de leurs caractéristiques différentes :</p>
+            <ul>
+                <li><strong>Quicksort :</strong> algorithme de tri rapide basé sur un pivot et une partition des données.</li>
+                <li><strong>Heapsort :</strong> utilise une structure de tas (heap) pour organiser les éléments et trier le tableau.</li>
+                <li><strong>Merge Sort :</strong> utilise une approche de division et fusion (merge) pour trier les données.</li>
+            </ul>
+        
+            <h4>Cas d'utilisation :</h4>
+            <p>Ces algorithmes sont utilisés dans différents contextes en fonction des données et des contraintes de performance :</p>
+            <ul>
+                <li>Quicksort est souvent choisi pour sa rapidité en moyenne, mais il peut être moins performant dans le pire des cas.</li>
+                <li>Heapsort offre des performances garanties grâce à sa complexité stable.</li>
+                <li>Merge Sort est particulièrement adapté aux grandes listes et est stable dans sa performance.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Étude et Implémentation des Algorithmes (1 heure)</h3>
+        
+            <h4>1. Quicksort</h4>
+            <p>Quicksort est un algorithme de tri en place (ne 
+nécessitant pas d'espace supplémentaire) basé sur le choix d'un pivot. 
+Il partitionne les données en deux parties autour du pivot :</p>
+        
+            <p><strong>Pseudo-code de Quicksort :</strong></p>
+            <pre><code>def quicksort(tableau, debut, fin):
+            if debut &lt; fin:
+                pivot = partition(tableau, debut, fin)
+                quicksort(tableau, debut, pivot - 1)
+                quicksort(tableau, pivot + 1, fin)
+                
+        def partition(tableau, debut, fin):
+            pivot = tableau[fin]
+            i = debut - 1
+            for j in range(debut, fin):
+                if tableau[j] &lt;= pivot:
+                    i += 1
+                    tableau[i], tableau[j] = tableau[j], tableau[i]
+            tableau[i + 1], tableau[fin] = tableau[fin], tableau[i + 1]
+            return i + 1
+            </code></pre>
+        
+            <p>Quicksort fonctionne bien en moyenne, mais il peut être moins efficace si le pivot est mal choisi. Sa complexité est en moyenne <code>O(n log n)</code>, mais dans le pire des cas, elle peut atteindre <code>O(n²)</code>.</p>
+        
+            <h4>Exercice Pratique avec Quicksort :</h4>
+            <ul>
+                <li>Implémentez l’algorithme Quicksort sur une liste de nombres aléatoires.</li>
+                <li>Mesurez le temps de tri en utilisant différents choix de pivots pour observer les variations de performance.</li>
+            </ul>
+        
+            <h4>2. Heapsort</h4>
+            <p>Heapsort utilise une structure de tas binaire (heap) pour
+ trier les éléments. Le tas est une structure en forme d’arbre où chaque
+ nœud est plus grand ou plus petit que ses enfants, ce qui permet de 
+construire un tableau trié :</p>
+        
+            <p><strong>Pseudo-code de Heapsort :</strong></p>
+            <pre><code>def heapsort(tableau):
+            n = len(tableau)
+            for i in range(n // 2 - 1, -1, -1):
+                entasser(tableau, n, i)
+            
+            for i in range(n - 1, 0, -1):
+                tableau[i], tableau[0] = tableau[0], tableau[i]
+                entasser(tableau, i, 0)
+                
+        def entasser(tableau, n, i):
+            plus_grand = i
+            gauche = 2 * i + 1
+            droite = 2 * i + 2
+        
+            if gauche &lt; n and tableau[gauche] &gt; tableau[plus_grand]:
+                plus_grand = gauche
+        
+            if droite &lt; n and tableau[droite] &gt; tableau[plus_grand]:
+                plus_grand = droite
+        
+            if plus_grand != i:
+                tableau[i], tableau[plus_grand] = tableau[plus_grand], tableau[i]
+                entasser(tableau, n, plus_grand)
+            </code></pre>
+        
+            <p>Heapsort a une complexité stable de <code>O(n log n)</code>,
+ ce qui en fait un choix sûr pour des tri nécessitant une garantie de 
+performance, indépendamment de l'ordre initial des éléments.</p>
+        
+            <h4>Exercice Pratique avec Heapsort :</h4>
+            <ul>
+                <li>Implémentez Heapsort sur une liste de nombres aléatoires et mesurez le temps d'exécution.</li>
+                <li>Comparez les résultats avec ceux de Quicksort sur les mêmes données.</li>
+            </ul>
+        
+            <h4>3. Merge Sort</h4>
+            <p>Merge Sort suit une approche de division-fusion. Il 
+divise récursivement le tableau en deux moitiés, trie chaque moitié, 
+puis fusionne les moitiés triées :</p>
+        
+            <p><strong>Pseudo-code de Merge Sort :</strong></p>
+            <pre><code>def merge_sort(tableau):
+            if len(tableau) &gt; 1:
+                milieu = len(tableau) // 2
+                gauche = tableau[:milieu]
+                droite = tableau[milieu:]
+        
+                merge_sort(gauche)
+                merge_sort(droite)
+        
+                i = j = k = 0
+        
+                while i &lt; len(gauche) and j &lt; len(droite):
+                    if gauche[i] &lt; droite[j]:
+                        tableau[k] = gauche[i]
+                        i += 1
+                    else:
+                        tableau[k] = droite[j]
+                        j += 1
+                    k += 1
+        
+                while i &lt; len(gauche):
+                    tableau[k] = gauche[i]
+                    i += 1
+                    k += 1
+        
+                while j &lt; len(droite):
+                    tableau[k] = droite[j]
+                    j += 1
+                    k += 1
+            </code></pre>
+        
+            <p>Merge Sort est stable et a une complexité garantie de <code>O(n log n)</code>,
+ ce qui le rend particulièrement adapté pour trier de grands ensembles 
+de données, même si cela peut nécessiter plus de mémoire.</p>
+        
+            <h4>Exercice Pratique avec Merge Sort :</h4>
+            <ul>
+                <li>Implémentez Merge Sort sur une liste de nombres et observez les temps d'exécution pour de grandes listes.</li>
+                <li>Comparez les résultats de Merge Sort avec ceux de Quicksort et Heapsort.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Comparaison des Algorithmes (45 min)</h3>
+        
+            <h4>1. Complexité Temporelle et Efficacité</h4>
+            <p>Voici un récapitulatif des complexités des trois algorithmes étudiés :</p>
+            <ul>
+                <li><strong>Quicksort :</strong> <code>O(n log n)</code> en moyenne, mais <code>O(n²)</code> dans le pire des cas.</li>
+                <li><strong>Heapsort :</strong> <code>O(n log n)</code> dans tous les cas.</li>
+                <li><strong>Merge Sort :</strong> <code>O(n log n)</code> dans tous les cas, mais nécessite plus de mémoire.</li>
+            </ul>
+        
+            <h4>2. Observation des Performances en Pratique</h4>
+            <ul>
+                <li>Utilisez de grands ensembles de données pour observer les temps d'exécution et la consommation mémoire de chaque algorithme.</li>
+                <li>Documentez les résultats dans un tableau pour comparer l’efficacité de chaque algorithme sur différentes tailles de listes.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Conclusion et Discussion (15 min)</h3>
+            <p>À la fin de cette séance, les élèves doivent être capables de :</p>
+            <ul>
+                <li>Expliquer les principes et les différences entre Quicksort, Heapsort et Merge Sort.</li>
+                <li>Comparer ces algorithmes en fonction de leur complexité et de leurs performances en pratique.</li>
+                <li>Choisir l’algorithme le plus adapté selon les 
+caractéristiques de l’ensemble de données et les contraintes de mémoire 
+ou de temps.</li>
+            </ul>
+        
+            <h4>Discussion :</h4>
+            <ul>
+                <li>Dans quels cas choisir chaque algorithme de tri ?</li>
+                <li>Comment les optimisations de mémoire influencent-elles le choix de l'algorithme ?</li>
+            </ul>
+        </section>

@@ -1,0 +1,165 @@
+<script src="script.js"></script>
+<section id="session19" class="content-section">
+            <h2 style="margin-top: 30px; margin-bottom: 20px;">Séance 19 : Introduction aux Arbres Binaires et leurs Applications</h2>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Objectif Global :</h3>
+            <p>Les élèves découvriront les arbres binaires, leurs 
+propriétés, et leurs applications dans un contexte de jeu vidéo. Ils 
+apprendront à modéliser et à manipuler des arbres binaires, en mettant 
+l'accent sur des applications concrètes comme la gestion d'inventaires 
+dans un jeu ou la recherche rapide d'objets.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Introduction aux Arbres Binaires</h3>
+        
+            <h4>1. Qu’est-ce qu’un Arbre Binaire ?</h4>
+            <p>Un arbre binaire est une structure de données hiérarchique dans laquelle chaque nœud a au maximum deux enfants, appelés <strong>enfant gauche</strong> et <strong>enfant droit</strong>.</p>
+            
+            <h4>Exemple Visuel :</h4>
+            <pre><code>
+          8
+         / \
+        3   10
+       / \    \
+      1   6   14
+         / \   /
+        4   7 13
+            </code></pre>
+            <p>Dans cet exemple, chaque nœud contient une valeur, et 
+chaque nœud peut avoir deux enfants. Le nœud racine est 8, les enfants 
+de 8 sont 3 (à gauche) et 10 (à droite).</p>
+        
+            <h4>Propriétés des Arbres Binaires :</h4>
+            <ul>
+                <li>Chaque nœud a au plus deux enfants.</li>
+                <li>Les sous-arbres peuvent eux-mêmes être des arbres binaires.</li>
+                <li>Un arbre binaire peut être utilisé pour stocker des 
+données ordonnées de manière à permettre des recherches, des insertions 
+et des suppressions rapides.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Applications des Arbres Binaires dans un Jeu Vidéo</h3>
+        
+            <h4>Contexte du Jeu Vidéo :</h4>
+            <p>Dans un jeu vidéo de gestion d'inventaire, chaque objet 
+ramassé par le joueur peut être stocké dans un arbre binaire de 
+recherche (binary search tree, ou BST). Cet arbre permet de rechercher 
+un objet spécifique rapidement, ou de trier les objets par ordre de 
+puissance ou de rareté.</p>
+        
+            <h4>Exemple d'Application : Gestion d'Inventaire</h4>
+            <p>Dans un RPG (jeu de rôle), les objets ramassés par le 
+joueur peuvent être organisés dans un arbre binaire selon leur valeur 
+(par exemple, un objet plus puissant sera placé à droite d'un objet 
+moins puissant). Cela permet de rechercher un objet de manière efficace,
+ ou de lister tous les objets dans l'ordre de leur valeur.</p>
+        
+            <h4>Modélisation d’un Inventaire avec un Arbre Binaire :</h4>
+            <p>Chaque objet dans l’inventaire est un nœud de l’arbre, où :</p>
+            <ul>
+                <li>La racine de l'arbre est le premier objet ramassé.</li>
+                <li>Les objets plus puissants sont placés à droite de l’arbre.</li>
+                <li>Les objets moins puissants sont placés à gauche.</li>
+            </ul>
+        
+            <h4>Exemple Visuel avec des Objets :</h4>
+            <pre><code>
+        Épée de fer (puissance 8)
+         /         \
+    Bouclier (3)  Arc (10)
+                \
+             Flèche (14)
+            </code></pre>
+        
+            <p>Dans cet exemple, l'épée de fer est la racine, car elle a
+ été ramassée en premier. Le bouclier, moins puissant, est placé à 
+gauche. L’arc, plus puissant, est placé à droite.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Implémentation d’un Arbre Binaire en Python (40 min)</h3>
+        
+            <h4>1. Représentation d’un Nœud d’Arbre Binaire :</h4>
+            <p>Nous allons d’abord définir une classe <code>ArbreBinaire</code> pour représenter chaque nœud de l’arbre binaire.</p>
+        
+            <pre><code>
+    class ArbreBinaire:
+        def __init__(self, valeur):
+            self.valeur = valeur
+            self.gauche = None
+            self.droite = None
+            </code></pre>
+        
+            <p>Chaque nœud a une <code>valeur</code> et peut avoir deux enfants : <code>gauche</code> et <code>droite</code>.</p>
+        
+            <h4>2. Insertion dans un Arbre Binaire :</h4>
+            <p>Pour insérer un nouvel objet dans l’arbre binaire, nous 
+allons comparer la valeur de l’objet avec la valeur du nœud courant. Si 
+l’objet est moins puissant (ou de valeur inférieure), il sera inséré à 
+gauche. Sinon, il sera inséré à droite.</p>
+        
+            <pre><code>
+    def inserer(noeud, valeur):
+        if noeud is None:
+            return ArbreBinaire(valeur)
+        
+        if valeur &lt; noeud.valeur:
+            noeud.gauche = inserer(noeud.gauche, valeur)
+        else:
+            noeud.droite = inserer(noeud.droite, valeur)
+        
+        return noeud
+            </code></pre>
+        
+            <h4>3. Exemple d’Insertion dans l’Arbre :</h4>
+            <p>Supposons que le joueur ramasse un bouclier avec une puissance de 5 et qu’il l’insère dans l’inventaire :</p>
+        
+            <pre><code>
+    # Créer la racine de l'arbre
+    racine = ArbreBinaire(8)
+    
+    # Insérer d'autres objets dans l'inventaire
+    inserer(racine, 3)  # Bouclier
+    inserer(racine, 10) # Arc
+    inserer(racine, 1)  # Casque
+            </code></pre>
+        
+            <h4>4. Parcours Infixe (In-order Traversal) :</h4>
+            <p>Pour lister les objets dans l’ordre de leur puissance, 
+nous utilisons un parcours infixe. Ce parcours visite d’abord le 
+sous-arbre gauche, puis le nœud courant, et enfin le sous-arbre droit.</p>
+        
+            <pre><code>
+    def parcours_infixe(noeud):
+        if noeud:
+            parcours_infixe(noeud.gauche)
+            print(noeud.valeur, end=" ")
+            parcours_infixe(noeud.droite)
+    
+    # Lancer le parcours infixe
+    parcours_infixe(racine)
+            </code></pre>
+        
+            <h4>Résultat attendu :</h4>
+            <p>Si le joueur a ramassé des objets avec des puissances de 1, 3, 8, et 10, le parcours infixe affichera : <code>1 3 8 10</code>.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Défi Pratique pour les Élèves (30 min)</h3>
+        
+            <h4>Étape 1 :</h4>
+            <p>Modifiez le programme pour que chaque objet ait un nom 
+(par exemple, “Épée de fer”) en plus de sa valeur de puissance. Vous 
+pouvez créer une classe <code>Objet</code> pour représenter chaque objet, et la valeur de puissance sera utilisée pour ordonner les objets dans l’arbre binaire.</p>
+        
+            <h4>Étape 2 :</h4>
+            <p>Ajoutez une fonctionnalité permettant de chercher un 
+objet dans l’arbre par son nom ou sa puissance. Si l’objet est trouvé, 
+affichez ses caractéristiques. Si l’objet n’est pas trouvé, affichez un 
+message indiquant qu’il n’est pas dans l’inventaire.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Conclusion (10 min)</h3>
+            <p>À la fin de cette séance, les élèves auront appris les 
+concepts fondamentaux des arbres binaires et auront appliqué ces 
+connaissances à un exemple concret de gestion d’inventaire dans un jeu 
+vidéo. Ils auront également renforcé leur compréhension des parcours 
+d’arbres (parcours infixe) et de l’insertion dans un arbre binaire.</p>
+            <p>Les élèves pourront utiliser cette structure de données 
+pour d’autres applications dans leurs futurs projets, comme la gestion 
+de données hiérarchiques ou la recherche efficace d’informations.</p>
+        </section>

@@ -1,0 +1,158 @@
+<script src="script.js"></script>
+<section id="session10" class="content-section">
+            <h2 style="margin-top: 30px; margin-bottom: 20px;">Séance 10 : Introduction à la Complexité Algorithmique – Notation Big-O</h2>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Objectif Global :</h3>
+            <ul>
+                <li>Comprendre le concept de complexité algorithmique.</li>
+                <li>Apprendre à utiliser la notation Big-O.</li>
+                <li>Appliquer la notation Big-O dans des situations concrètes à travers des exemples de jeux vidéo.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">1. Contexte et Introduction</h3>
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Le Problème :</h4>
+            <p>Dans le contexte d'un jeu vidéo, imaginons que le joueur 
+doit interagir avec un certain nombre d’éléments à l’écran (monstres, 
+objets, personnages). Ces éléments sont stockés dans une liste ou un 
+tableau, et le joueur doit effectuer des actions comme :</p>
+            <ul>
+                <li>Trouver un monstre spécifique pour l’attaquer.</li>
+                <li>Ramasser un objet spécifique.</li>
+                <li>Parcourir tous les éléments pour effectuer une action (comme infliger des dégâts à tous les monstres).</li>
+            </ul>
+            <p>Pour rendre ces actions efficaces, il est crucial de 
+comprendre combien de temps ou combien d'opérations l'algorithme prend 
+pour effectuer la tâche, en fonction du nombre d’éléments. C'est là que 
+la complexité algorithmique intervient.</p>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Qu’est-ce que la Complexité Algorithmique ?</h4>
+            <p>La complexité algorithmique mesure l'efficacité d'un 
+algorithme en fonction de la taille de l'entrée (nombre d'éléments à 
+traiter).</p>
+            <p>Plutôt que de mesurer le temps en secondes, on mesure le 
+nombre d’opérations que l’algorithme doit effectuer pour résoudre le 
+problème.</p>
+            <p><strong>Exemple simple :</strong> Si vous devez chercher 
+un objet spécifique dans une liste, combien de comparaisons l'algorithme
+ devra-t-il faire en fonction de la longueur de la liste ?</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">2. Notation Big-O : Mesurer l’Efficacité des Algorithmes</h3>
+            <p>La notation Big-O permet de classer les algorithmes selon
+ le nombre d’opérations qu’ils effectuent en fonction de la taille de 
+l’entrée (souvent notée n).</p>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Définitions des Complexités :</h4>
+            <ul>
+                <li><strong>O(1) : Complexité constante</strong> - L’algorithme prend le même temps, quel que soit le nombre d’éléments.
+                    <br>Exemple : Accéder directement à un élément dans un tableau (par index), comme dans une liste de potions dans un inventaire.
+                </li>
+                <li><strong>O(n) : Complexité linéaire</strong> - Le nombre d’opérations augmente proportionnellement au nombre d’éléments.
+                    <br>Exemple : Parcourir une liste d'objets pour trouver un objet spécifique dans un inventaire (recherche linéaire).
+                </li>
+                <li><strong>O(log n) : Complexité logarithmique</strong> - Le nombre d’opérations croît logarithmiquement avec le nombre d'éléments.
+                    <br>Exemple : Recherche binaire dans une liste triée d’objets.
+                </li>
+                <li><strong>O(n²) : Complexité quadratique</strong> - Le nombre d'opérations est proportionnel au carré du nombre d'éléments.
+                    <br>Exemple : Comparer chaque monstre à chaque autre monstre dans un jeu de combat (algorithme de tri par sélection).
+                </li>
+                <li><strong>O(n log n) : Complexité linéaro-logarithmique</strong> - Utilisée pour des algorithmes de tri efficaces comme le tri rapide (Quicksort).
+                </li>
+                <li><strong>O(2ⁿ) : Complexité exponentielle</strong> - Le nombre d'opérations double à chaque ajout d'élément. Très inefficace.
+                    <br>Exemple : Problèmes avec des combinaisons ou la génération d'arbres de décisions très profonds.
+                </li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">3. Exemples Concrets avec des Jeux Vidéo</h3>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Exemple 1 : Recherche dans un Inventaire de Jeu Vidéo</h4>
+            <p>Imaginons que le joueur possède un inventaire avec n objets (potions, épées, boucliers). Il doit trouver une potion spécifique.</p>
+            <ul>
+                <li><strong>O(n)</strong> (recherche linéaire) : Le 
+joueur doit parcourir tous les objets de l’inventaire un par un, en 
+comparant chaque objet avec la potion recherchée.</li>
+                <li>Si l’inventaire contient 100 objets, il faudra au pire 100 opérations pour trouver la potion (ou ne pas la trouver).</li>
+            </ul>
+            <p><strong>Exercice pratique :</strong> Implémenter une recherche linéaire sur une liste d’objets de jeu.</p>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Exemple 2 : Attaque de Tous les Monstres</h4>
+            <p>Dans un jeu de type RPG, le joueur a la capacité 
+d'attaquer tous les monstres présents sur le terrain en une seule 
+action. Si chaque attaque prend une unité de temps, le nombre 
+d'opérations sera proportionnel au nombre de monstres.</p>
+            <ul>
+                <li><strong>O(n)</strong> : S’il y a 50 monstres sur le terrain, il faudra 50 attaques, soit 50 opérations.</li>
+            </ul>
+            <p><strong>Exercice pratique :</strong> Implémenter une boucle qui applique une attaque à chaque monstre dans une liste de 50 monstres.</p>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Exemple 3 : Recherche Binaire pour Trouver un Objet dans un Inventaire Trié</h4>
+            <p>Dans un inventaire trié d’un jeu, le joueur peut utiliser la recherche binaire pour trouver un objet plus rapidement.</p>
+            <ul>
+                <li><strong>O(log n)</strong> : Si l’inventaire contient 100 objets, la recherche binaire permet de trouver un objet en 7 étapes au lieu de 100.</li>
+                <li>Chaque étape divise la liste en deux, ce qui fait que l’algorithme est logarithmique.</li>
+            </ul>
+            <p><strong>Exercice pratique :</strong> Implémenter une recherche binaire dans une liste triée d'objets (similaire à la recherche du trésor vue en séance précédente).</p>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Exemple 4 : Comparer Chaque Monstre avec Chaque Autre Monstre (Algorithme Quadratique)</h4>
+            <p>Dans certains jeux, vous pourriez avoir un système où 
+chaque monstre doit interagir avec tous les autres (par exemple, 
+vérifier les collisions entre eux).</p>
+            <ul>
+                <li><strong>O(n²)</strong> : Si vous avez 10 monstres, vous devez comparer chaque monstre avec les 9 autres, soit 100 comparaisons.</li>
+                <li>Si vous avez 100 monstres, cela fera 10 000 comparaisons (un algorithme quadratique).</li>
+            </ul>
+            <p><strong>Exercice pratique :</strong> Implémenter un algorithme de comparaison entre chaque paire de monstres dans un jeu.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">4. Expérimentation et Simulation avec des Listes de Données</h3>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Étape 1 : Implémenter des Algorithmes Différents</h4>
+            <p>Les élèves vont créer une liste d'objets de jeu (par exemple, 100 objets avec des noms aléatoires).</p>
+            <ul>
+                <li><strong>Exercice 1 :</strong> Recherche linéaire : Implémenter une recherche d’un objet spécifique dans cette liste.</li>
+                <li><strong>Exercice 2 :</strong> Recherche binaire : Si la liste est triée, utiliser la recherche binaire pour trouver l’objet plus rapidement.</li>
+                <li><strong>Exercice 3 :</strong> Comparaison de tous les éléments : Simuler un combat où chaque monstre est comparé avec tous les autres.</li>
+            </ul>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Étape 2 : Mesurer et Comparer la Performance</h4>
+            <p>Pour chaque exercice, les élèves devront :</p>
+            <ul>
+                <li>Mesurer le nombre d’opérations nécessaires.</li>
+                <li>Comparer la performance des algorithmes en fonction 
+de la taille de la liste (par exemple, en augmentant la taille de la 
+liste de 100 à 1000).</li>
+            </ul>
+            <p><strong>Exercice pratique :</strong> Afficher le temps 
+pris par chaque algorithme pour trouver un objet dans une liste 
+d’objets. Demander aux élèves d’expliquer pourquoi certains algorithmes 
+sont plus rapides que d'autres pour de grandes listes.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">5. Discussion sur la Notion de Limite et d’Optimisation</h3>
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">La Limite des Algorithmes Inefficaces :</h4>
+            <p>Discuter avec les élèves sur le fait qu’un algorithme linéaire (<strong>O(n)</strong>) peut être acceptable pour un petit nombre d’éléments, mais qu'il devient trop lent pour un grand nombre.</p>
+            <p>Par exemple, rechercher un objet dans une liste de 100 éléments avec <strong>O(n)</strong> peut être acceptable, mais dans une liste de 1 000 000 d’éléments, il faut optimiser avec un algorithme plus rapide (comme <strong>O(log n)</strong> ou <strong>O(1)</strong>).</p>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Optimiser dans les Jeux Vidéo :</h4>
+            <p>Dans les jeux vidéo, optimiser les algorithmes est 
+crucial pour maintenir la performance, surtout si le jeu implique des 
+centaines d'ennemis, des interactions complexes, et des actions en temps
+ réel.</p>
+            <p>Par exemple, pour un jeu où des dizaines de monstres 
+doivent être gérés, il est important d’utiliser des algorithmes 
+efficaces pour éviter les ralentissements.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">6. Conclusion et Résumé</h3>
+            <p><strong>Ce que les élèves ont appris :</strong></p>
+            <ul>
+                <li><strong>Complexité algorithmique :</strong> Comprendre comment mesurer l’efficacité d’un algorithme en fonction du nombre d’opérations qu’il effectue.</li>
+                <li><strong>Notation Big-O :</strong> Apprendre à classer les algorithmes en fonction de leur performance.</li>
+                <li><strong>Exemples concrets :</strong> Les élèves ont appliqué la notion de complexité algorithmique à des cas pratiques dans des jeux vidéo.</li>
+                <li><strong>Comparaison des algorithmes :</strong> Voir comment différents algorithmes (<strong>O(n)</strong>, <strong>O(log n)</strong>, <strong>O(n²)</strong>) fonctionnent dans des situations réelles et pourquoi certains sont plus efficaces.</li>
+            </ul>
+        
+            <p><strong>Exercices Complémentaires :</strong></p>
+            <ul>
+                <li>Étendre l’exercice sur <strong>O(n log n)</strong> : Implémenter un algorithme de tri rapide (Quicksort) et comparer ses performances avec un tri basique (tri par sélection <strong>O(n²)</strong>).</li>
+                <li>Tester des algorithmes sur de très grandes listes : 
+Demander aux élèves de simuler des listes contenant des millions 
+d’éléments et de comparer la rapidité des algorithmes.</li>
+            </ul>
+        </section>

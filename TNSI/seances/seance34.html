@@ -1,0 +1,150 @@
+<script src="script.js"></script>
+<section id="session34" class="content-section">
+            <h2 style="margin-top: 30px; margin-bottom: 20px;">Séance 34 : Optimisation des Algorithmes de Tri dans des Contextes Réels</h2>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Objectif Global :</h3>
+            <p>Les élèves vont explorer et optimiser différents 
+algorithmes de tri (tri à bulles, tri par sélection, tri rapide) dans 
+des contextes réels. L'objectif est de comprendre les limites et les 
+avantages de chaque algorithme selon les données à trier. Les élèves 
+apprendront à choisir le tri le plus efficace en fonction des situations
+ et à comparer les performances de chaque algorithme.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Introduction aux Algorithmes de Tri</h3>
+            <p>Les algorithmes de tri sont essentiels en informatique, 
+car ils permettent d’organiser les données pour rendre leur traitement 
+plus efficace. Voici quelques exemples d’utilisation des algorithmes de 
+tri dans des contextes réels :</p>
+            <ul>
+                <li><strong>Jeux vidéo :</strong> tri des scores des joueurs pour afficher le classement.</li>
+                <li><strong>Sites de commerce électronique :</strong> tri des produits par prix, note ou popularité.</li>
+                <li><strong>Banques de données :</strong> tri des transactions financières par date pour faciliter la recherche.</li>
+            </ul>
+            <p>Dans cette séance, nous allons explorer différents 
+algorithmes de tri et apprendre à choisir celui qui convient le mieux 
+selon la taille et la nature des données.</p>
+        
+            <h4>Les Algorithmes de Tri Principaux :</h4>
+            <ul>
+                <li><strong>Tri à bulles (Bubble Sort) :</strong> un algorithme simple mais peu efficace sur de grands ensembles de données.</li>
+                <li><strong>Tri par sélection (Selection Sort) :</strong> un algorithme efficace sur de petits ensembles, mais moins performant sur de grands ensembles.</li>
+                <li><strong>Tri rapide (Quick Sort) :</strong> un algorithme très performant pour la plupart des tailles de données.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Étude et Implémentation des Algorithmes de Tri (40 min)</h3>
+            <h4>1. Tri à Bulles (Bubble Sort)</h4>
+            <p>Le tri à bulles consiste à comparer chaque paire 
+d’éléments adjacents dans une liste et à échanger leur position si 
+l'ordre est incorrect. Ce processus est répété jusqu'à ce que la liste 
+soit triée.</p>
+            
+            <pre><code>def tri_a_bulles(liste):
+            n = len(liste)
+            for i in range(n):
+                for j in range(0, n-i-1):
+                    if liste[j] &gt; liste[j+1]:
+                        liste[j], liste[j+1] = liste[j+1], liste[j]
+            </code></pre>
+        
+            <h4>2. Tri par Sélection (Selection Sort)</h4>
+            <p>Le tri par sélection trouve le plus petit élément de la 
+liste et l’échange avec le premier élément non trié. Ce processus est 
+répété en ignorant la partie déjà triée de la liste.</p>
+        
+            <pre><code>def tri_par_selection(liste):
+            n = len(liste)
+            for i in range(n):
+                min_index = i
+                for j in range(i+1, n):
+                    if liste[j] &lt; liste[min_index]:
+                        min_index = j
+                liste[i], liste[min_index] = liste[min_index], liste[i]
+            </code></pre>
+        
+            <h4>3. Tri Rapide (Quick Sort)</h4>
+            <p>Le tri rapide est un algorithme efficace qui utilise la 
+récursivité. Il choisit un élément "pivot" et réorganise la liste de 
+sorte que tous les éléments inférieurs au pivot soient à gauche et tous 
+les éléments supérieurs soient à droite. Ensuite, il trie récursivement 
+les sous-listes de chaque côté du pivot.</p>
+        
+            <pre><code>def tri_rapide(liste):
+            if len(liste) &lt;= 1:
+                return liste
+            pivot = liste[len(liste) // 2]
+            gauche = [x for x in liste if x &lt; pivot]
+            milieu = [x for x in liste if x == pivot]
+            droite = [x for x in liste if x &gt; pivot]
+            return tri_rapide(gauche) + milieu + tri_rapide(droite)
+            </code></pre>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Comparaison des Algorithmes dans un Contexte Réel (45 min)</h3>
+            
+            <h4>1. Contexte : Tri des Scores dans un Jeu Vidéo</h4>
+            <p>Imaginez que nous avons une liste de scores de joueurs 
+dans un jeu vidéo, et que nous devons afficher un classement du meilleur
+ au moins bon. Nous allons comparer l'efficacité des trois algorithmes 
+de tri pour ordonner cette liste.</p>
+        
+            <p>Liste des scores aléatoires :</p>
+            <pre><code>scores = [42, 17, 88, 61, 53, 92, 74, 38, 20, 5]
+            </code></pre>
+        
+            <h4>2. Expérience Pratique : Mesurer les Temps de Calcul</h4>
+            <p>Pour chaque algorithme, les élèves doivent mesurer le 
+temps de calcul nécessaire pour trier la liste de scores. Cela permettra
+ de voir l'efficacité de chaque méthode sur une liste de taille moyenne.</p>
+        
+            <pre><code>import time
+        
+        # Tri à bulles
+        debut = time.time()
+        tri_a_bulles(scores)
+        print("Temps pour le tri à bulles :", time.time() - debut)
+        
+        # Tri par sélection
+        debut = time.time()
+        tri_par_selection(scores)
+        print("Temps pour le tri par sélection :", time.time() - debut)
+        
+        # Tri rapide
+        debut = time.time()
+        tri_rapide(scores)
+        print("Temps pour le tri rapide :", time.time() - debut)
+            </code></pre>
+        
+            <p>Les élèves pourront noter les temps d'exécution et constater que le tri rapide est généralement le plus performant.</p>
+        
+            <h4>3. Choix de l’Algorithme en Fonction du Contexte</h4>
+            <p>En fonction de la taille et de la nature des données, chaque algorithme a ses avantages et inconvénients :</p>
+            <ul>
+                <li><strong>Tri à Bulles :</strong> adapté aux listes de petite taille ou partiellement triées, mais inefficace pour de grandes listes.</li>
+                <li><strong>Tri par Sélection :</strong> fonctionne bien sur des listes de petite taille, mais est lent pour les grandes listes.</li>
+                <li><strong>Tri Rapide :</strong> très efficace pour les grandes listes de données, mais peut être moins performant si les données sont déjà presque triées.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Défi Pratique (20 min)</h3>
+            <ul>
+                <li><strong>Étape 1 :</strong> Créez une liste de 1 000 
+scores aléatoires et mesurez le temps de calcul pour chaque algorithme. 
+Quelle est la méthode la plus rapide ?</li>
+                <li><strong>Étape 2 :</strong> Modifiez la liste pour qu’elle soit presque triée et comparez à nouveau les temps de calcul. Qu’observez-vous ?</li>
+                <li><strong>Étape 3 :</strong> Écrivez un programme qui 
+choisit automatiquement l’algorithme de tri optimal en fonction de la 
+taille et de l’ordre initial de la liste.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Conclusion et Réflexion (15 min)</h3>
+            <p>À la fin de cette séance, les élèves comprendront que le 
+choix de l'algorithme de tri dépend du contexte : taille de la liste, 
+ordre initial des éléments, et besoin en performance. En analysant les 
+avantages et limitations de chaque algorithme, ils sauront comment 
+adapter leur choix aux exigences réelles d'un programme.</p>
+        
+            <h4>Points de Réflexion :</h4>
+            <ul>
+                <li>Pourquoi certains algorithmes sont-ils plus efficaces sur des listes déjà triées ou presque triées ?</li>
+                <li>Quel serait le meilleur choix d'algorithme si les données sont triées dans l'ordre inverse ?</li>
+                <li>Comment pourriez-vous appliquer ces connaissances dans d'autres contextes de tri, comme la gestion de grandes bases de données ?</li>
+            </ul>
+        </section>

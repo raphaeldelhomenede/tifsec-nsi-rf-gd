@@ -1,0 +1,172 @@
+<script src="script.js"></script>
+<section id="session13" class="content-section">
+            <h2 style="margin-top: 30px; margin-bottom: 20px;">Séance 13 : Introduction aux Graphes et à leurs Applications</h2>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Objectif Global :</h3>
+            <p>Les élèves doivent comprendre la notion de graphe en 
+informatique, comment il est représenté et ses différentes applications 
+pratiques, y compris dans le domaine des jeux vidéo. Ils apprendront les
+ concepts de sommets, arêtes, parcours, et utiliseront des graphes pour 
+résoudre des problèmes concrets, comme la navigation dans un jeu vidéo.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Introduction aux Graphes</h3>
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Qu’est-ce qu’un graphe ?</h4>
+            <p>Un graphe est une structure de données composée :</p>
+            <ul>
+                <li><strong>De sommets (ou nœuds) :</strong> ce sont les points d’un graphe, souvent utilisés pour représenter des objets, des lieux, ou des états.</li>
+                <li><strong>D’arêtes (ou arcs) :</strong> ce sont les lignes qui relient les sommets entre eux, représentant des relations ou des chemins entre ces objets.</li>
+            </ul>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Applications des graphes :</h4>
+            <ul>
+                <li><strong>Jeux vidéo :</strong> Représentation de mondes ou cartes de jeu (les sommets représentent les lieux, les arêtes représentent les chemins entre eux).</li>
+                <li><strong>Réseaux sociaux :</strong> Chaque utilisateur est un sommet, et les relations entre eux (amis) sont des arêtes.</li>
+                <li><strong>Navigation GPS :</strong> Les intersections (sommets) sont reliées par des routes (arêtes) pour trouver le chemin optimal.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Représentation d’un Graphe :</h3>
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">1. Représentation par une matrice d’adjacence :</h4>
+            <p>Une matrice carrée où les lignes et colonnes représentent
+ les sommets. Si deux sommets sont connectés, la case correspondante 
+contient une valeur (1 pour les non pondérés, un poids pour les 
+pondérés).</p>
+        
+            <pre><code>
+      |  A  |  B  |  C  |
+       ------------------
+    A |  0  |  1  |  0  |
+    B |  1  |  0  |  1  |
+    C |  0  |  1  |  0  |
+            </code></pre>
+            <p>Ici, A et B sont connectés, et B et C sont connectés.</p>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">2. Représentation par liste d’adjacence :</h4>
+            <p>Chaque sommet a une liste de sommets voisins. Cette représentation est plus économe en mémoire pour les graphes peu denses.</p>
+        
+            <pre><code>
+    graphe = {
+        'A': ['B'],
+        'B': ['A', 'C'],
+        'C': ['B']
+    }
+            </code></pre>
+            <p>A est connecté à B, et B est connecté à C.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Exemple Ludique : Utilisation des Graphes dans un Jeu Vidéo</h3>
+            <p>Dans un jeu vidéo, vous êtes un personnage qui doit se 
+déplacer d'un point A à un point B à travers un réseau de chemins 
+connectant différents lieux. Le monde du jeu peut être représenté sous 
+forme de graphe où :</p>
+            <ul>
+                <li><strong>Les sommets</strong> représentent des lieux (villes, salles dans un donjon, etc.).</li>
+                <li><strong>Les arêtes</strong> représentent des chemins (routes, portes entre les salles, etc.).</li>
+            </ul>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Exemple de Graphe dans le Jeu :</h4>
+            <pre><code>
+    A ----- B ----- C
+    |       |       |
+    D ----- E ----- F
+            </code></pre>
+            <p>Chaque lettre représente une pièce (un sommet). Chaque trait représente un chemin entre deux pièces (une arête).</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Types de Graphes</h3>
+            <ul>
+                <li><strong>Graphe non orienté :</strong> Les arêtes n'ont pas de direction. On peut aller dans les deux sens entre deux sommets.</li>
+                <li><strong>Graphe orienté :</strong> Les arêtes ont une direction. On ne peut aller que dans un sens d’un sommet à un autre.</li>
+                <li><strong>Graphe pondéré :</strong> Chaque arête a un 
+poids (un coût), qui peut représenter la distance, le temps ou le coût 
+énergétique pour se déplacer d’un sommet à un autre.</li>
+                <li><strong>Graphe connexe :</strong> Il est possible d’atteindre n’importe quel sommet à partir de n’importe quel autre sommet.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Mise en Pratique : Représentation d'un Monde de Jeu Vidéo avec un Graphe</h3>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Étape 1 : Créer un Graphe Représentant un Monde de Jeu</h4>
+            <pre><code>
+    graphe_donjon = {
+        'A': ['B', 'D'],
+        'B': ['A', 'C', 'E'],
+        'C': ['B', 'F'],
+        'D': ['A', 'E'],
+        'E': ['B', 'D', 'F'],
+        'F': ['C', 'E']
+    }
+            </code></pre>
+            <p>Ici, chaque clé représente une pièce, et les valeurs sont les pièces connectées par une porte.</p>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Étape 2 : Représenter le Monde et les Connexions</h4>
+            <p>Visualisez ce graphe dans le contexte d’un jeu :</p>
+            <ul>
+                <li><strong>Les sommets :</strong> Chaque lettre (A, B, C, etc.) représente une salle du donjon.</li>
+                <li><strong>Les arêtes :</strong> Les portes qui relient les salles entre elles.</li>
+            </ul>
+            <p>Demandez aux élèves de dessiner ce graphe sur papier ou sur un tableau pour mieux le visualiser.</p>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Étape 3 : Définir des Chemins dans le Graphe</h4>
+            <p>Le joueur commence dans la salle A et veut se rendre dans
+ la salle F. L’objectif est de parcourir le graphe et de trouver un 
+chemin du point A au point F en suivant les arêtes du graphe.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Parcours de Graphe : Introduction à la Recherche de Chemin</h3>
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">1. Parcours en largeur (BFS - Breadth First Search) :</h4>
+            <p>Utilisé pour trouver le plus court chemin dans un graphe 
+non pondéré. Il explore tous les voisins d’un sommet avant de passer à 
+la couche suivante.</p>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">2. Parcours en profondeur (DFS - Depth First Search) :</h4>
+            <p>Utile pour explorer toutes les branches d’un graphe. Il 
+explore aussi loin que possible dans une branche avant de revenir en 
+arrière.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Mise en Pratique : Parcours en Largeur (BFS)</h3>
+            <pre><code>
+    from collections import deque
+        
+    def bfs(graphe, depart, objectif):
+        file_attente = deque([depart])
+        visites = set()
+        
+        while file_attente:
+            sommet = file_attente.popleft()
+            if sommet == objectif:
+                print(f"Vous avez trouvé le chemin vers {objectif} depuis {depart} !")
+                return
+            if sommet not in visites:
+                print(f"Vous explorez la pièce {sommet}")
+                visites.add(sommet)
+                file_attente.extend(graphe[sommet])
+        print(f"Pas de chemin trouvé de {depart} à {objectif}.")
+    
+    # Appel de la fonction
+    bfs(graphe_donjon, 'A', 'F')
+            </code></pre>
+            <p>Ce programme parcourt le donjon en utilisant une approche
+ BFS (parcours en largeur) pour explorer les pièces adjacentes et 
+trouver le chemin de la pièce A à la pièce F.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Application et Conclusion</h3>
+            <p>Réflexion sur les Applications des Graphes :</p>
+            <ul>
+                <li><strong>Jeux vidéo :</strong> Les graphes sont utiles pour gérer les déplacements des personnages, que ce soit pour les joueurs ou pour les ennemis.</li>
+                <li><strong>Navigation :</strong> Les GPS utilisent des graphes pondérés pour calculer les meilleurs itinéraires entre deux lieux.</li>
+                <li><strong>Réseaux sociaux :</strong> Les graphes sont utilisés pour représenter les connexions entre utilisateurs (sommets) et leurs relations (arêtes).</li>
+            </ul>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Challenge Supplémentaire (pour les élèves avancés) :</h4>
+            <p>Ajoutez des poids aux arêtes pour représenter le coût 
+(distance, énergie) du déplacement entre les salles, puis utilisez 
+l’algorithme de Dijkstra pour trouver le chemin le plus court entre deux
+ salles.</p>
+            <p>Amélioration du jeu : Implémentez une fonction qui permet
+ au joueur de trouver automatiquement le chemin le plus court pour 
+s’échapper du donjon en évitant certains pièges.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Objectifs de la Séance :</h3>
+            <ul>
+                <li>Comprendre les concepts de base des graphes (sommets, arêtes, connexions).</li>
+                <li>Savoir représenter un monde de jeu vidéo sous forme de graphe.</li>
+                <li>Utiliser un algorithme de parcours de graphe pour résoudre un problème de navigation dans un jeu.</li>
+                <li>Bonus : Introduction à l’application des graphes dans des domaines plus vastes (réseaux sociaux, GPS).</li>
+            </ul>
+        </section>

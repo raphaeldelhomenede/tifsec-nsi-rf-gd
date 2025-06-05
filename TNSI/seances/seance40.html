@@ -1,0 +1,151 @@
+<script src="script.js"></script>
+<section id="session40" class="content-section">
+            <h2 style="margin-top: 30px; margin-bottom: 20px;">Séance 40 : Pratique - Implémentation d’un Système d’Héritage dans une Application de Gestion de Personnages (Jeu Vidéo)</h2>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Objectif Global :</h3>
+            <p>Les élèves apprendront à implémenter un système 
+d’héritage en programmation orientée objet dans un contexte de jeu 
+vidéo. Ils créeront une hiérarchie de classes pour représenter 
+différents types de personnages dans un jeu (comme des joueurs, des 
+ennemis, et des PNJ) et apprendront à utiliser l'héritage pour partager 
+des caractéristiques et des comportements communs.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Introduction à l’Héritage dans le Contexte du Jeu Vidéo</h3>
+            
+            <h4>Contexte :</h4>
+            <p>Dans de nombreux jeux vidéo, il existe différents types 
+de personnages : le joueur, des ennemis, et des PNJ (personnages non 
+jouables) qui interagissent avec le joueur. Bien que chaque type de 
+personnage ait ses propres caractéristiques, ils partagent également des
+ propriétés communes comme des points de vie, une position, et des 
+méthodes pour se déplacer ou attaquer.</p>
+            
+            <p>L’héritage permet de créer une structure de classes où 
+les personnages partagent des attributs communs tout en ayant des 
+comportements spécifiques. Par exemple :</p>
+            <ul>
+                <li>Un <strong>Personnage</strong> de base peut avoir des attributs comme des <code>points_de_vie</code> et une <code>position</code>.</li>
+                <li>Un <strong>Joueur</strong> peut hériter de la classe <code>Personnage</code> et avoir des méthodes supplémentaires, comme <code>attaquer</code> ou <code>utiliser_objet</code>.</li>
+                <li>Un <strong>Ennemi</strong> peut également hériter de <code>Personnage</code> et avoir une méthode <code>poursuivre_joueur</code>.</li>
+            </ul>
+            
+            <h4>Exemple de Structure de Classe :</h4>
+            <pre><code>Personnage (classe de base)
+        ├── Joueur (hérite de Personnage)
+        └── Ennemi (hérite de Personnage)
+            </code></pre>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Définition des Classes de Base (30 min)</h3>
+        
+            <h4>1. Création de la Classe de Base : Personnage</h4>
+            <p>La classe <code>Personnage</code> représente tous les 
+personnages du jeu, qu’ils soient joueurs, ennemis ou PNJ. Elle contient
+ des attributs et méthodes de base que tous les personnages partagent.</p>
+        
+            <pre><code>class Personnage:
+            def __init__(self, nom, points_de_vie, position):
+                self.nom = nom
+                self.points_de_vie = points_de_vie
+                self.position = position
+        
+            def se_deplacer(self, x, y):
+                self.position = (x, y)
+                print(f"{self.nom} se déplace à la position {self.position}")
+        
+            def afficher_statut(self):
+                print(f"{self.nom} - PV : {self.points_de_vie}")
+            </code></pre>
+        
+            <ul>
+                <li><strong>Attributs :</strong> <code>nom</code>, <code>points_de_vie</code>, et <code>position</code>.</li>
+                <li><strong>Méthodes :</strong> <code>se_deplacer</code> pour déplacer le personnage, et <code>afficher_statut</code> pour afficher ses points de vie.</li>
+            </ul>
+        
+            <h4>2. Création de la Classe Joueur</h4>
+            <p>La classe <code>Joueur</code> hérite de <code>Personnage</code>. Elle représente le personnage contrôlé par le joueur et ajoute des méthodes spécifiques, comme l'attaque.</p>
+        
+            <pre><code>class Joueur(Personnage):
+            def __init__(self, nom, points_de_vie, position, niveau):
+                super().__init__(nom, points_de_vie, position)
+                self.niveau = niveau
+        
+            def attaquer(self, cible):
+                print(f"{self.nom} attaque {cible.nom}!")
+                cible.points_de_vie -= 10
+                if cible.points_de_vie &lt;= 0:
+                    print(f"{cible.nom} est vaincu!")
+            </code></pre>
+        
+            <ul>
+                <li><strong>Attribut spécifique :</strong> <code>niveau</code> du joueur.</li>
+                <li><strong>Méthode spécifique :</strong> <code>attaquer</code>, qui réduit les points de vie d'une cible.</li>
+            </ul>
+        
+            <h4>3. Création de la Classe Ennemi</h4>
+            <p>La classe <code>Ennemi</code> hérite également de <code>Personnage</code>. Elle représente un ennemi qui peut poursuivre le joueur.</p>
+        
+            <pre><code>class Ennemi(Personnage):
+            def __init__(self, nom, points_de_vie, position, force):
+                super().__init__(nom, points_de_vie, position)
+                self.force = force
+        
+            def poursuivre_joueur(self, joueur):
+                print(f"{self.nom} poursuit {joueur.nom}!")
+                # Logique simplifiée pour déplacer l'ennemi vers la position du joueur
+                self.position = joueur.position
+                print(f"{self.nom} se déplace vers la position {self.position}")
+            </code></pre>
+        
+            <ul>
+                <li><strong>Attribut spécifique :</strong> <code>force</code> de l’ennemi.</li>
+                <li><strong>Méthode spécifique :</strong> <code>poursuivre_joueur</code>, qui permet à l'ennemi de se déplacer vers la position du joueur.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Mise en Pratique : Interaction entre Personnages (45 min)</h3>
+            
+            <h4>1. Initialisation des Personnages</h4>
+            <p>Nous allons créer une instance de chaque classe pour tester leur interaction dans le jeu.</p>
+        
+            <pre><code># Création des personnages
+        joueur = Joueur("Héros", 100, (0, 0), niveau=5)
+        ennemi = Ennemi("Gobelin", 50, (5, 5), force=3)
+        
+        # Afficher le statut initial
+        joueur.afficher_statut()
+        ennemi.afficher_statut()
+            </code></pre>
+        
+            <h4>2. Déplacement et Interaction</h4>
+            <p>Déplaçons le joueur et l'ennemi, et faisons en sorte que le joueur attaque l'ennemi.</p>
+        
+            <pre><code># Déplacement du joueur et de l'ennemi
+        joueur.se_deplacer(2, 2)
+        ennemi.poursuivre_joueur(joueur)
+        
+        # Interaction : le joueur attaque l'ennemi
+        joueur.attaquer(ennemi)
+        
+        # Afficher le statut après l'attaque
+        ennemi.afficher_statut()
+            </code></pre>
+        
+            <h4>3. Défi Pratique pour les Élèves :</h4>
+            <ul>
+                <li><strong>Étape 1 :</strong> Ajouter une nouvelle classe <code>PNJ</code> (personnage non jouable) qui hérite de <code>Personnage</code> et qui possède une méthode <code>parler</code>.</li>
+                <li><strong>Étape 2 :</strong> Créer plusieurs instances de chaque type de personnage et tester leurs interactions.</li>
+                <li><strong>Étape 3 :</strong> Ajouter une méthode <code>soigner</code> au <code>Joueur</code> pour restaurer des points de vie.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Conclusion (5 min)</h3>
+            <p>À la fin de cette séance, les élèves auront appris à 
+implémenter un système d'héritage pour organiser différents types de 
+personnages dans un jeu vidéo. Ils auront vu comment l'héritage permet 
+de partager des attributs communs tout en ajoutant des fonctionnalités 
+spécifiques à chaque type de personnage.</p>
+        
+            <h4>Points de Discussion :</h4>
+            <ul>
+                <li>Comment l'héritage permet-il de simplifier et de structurer le code ?</li>
+                <li>Quels avantages apporte l'héritage lorsqu'on ajoute de nouveaux types de personnages ?</li>
+            </ul>
+        </section>

@@ -1,0 +1,156 @@
+<script src="script.js"></script>
+<section id="session3" class="content-section">
+            <h2 style="margin-top: 30px; margin-bottom: 20px;">Séance 3 : Applications Pratiques de la Récursivité - Problèmes Simples</h2>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Objectifs de la séance :</h3>
+            <ul>
+                <li>Comprendre la récursivité à travers des exemples simples.</li>
+                <li>Appliquer la récursivité pour résoudre des problèmes inspirés des jeux vidéo.</li>
+                <li>Créer des programmes interactifs et ludiques en utilisant la récursivité.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">1. Rappel des concepts de base de la récursivité</h3>
+            <p><strong>Cas de base :</strong> Condition qui permet d'arrêter la récursivité.</p>
+            <p><strong>Cas récursif :</strong> La fonction qui s'appelle elle-même avec une version simplifiée du problème.</p>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Exemple théorique :</h4>
+            <p>Calcul de la factorielle d’un nombre.</p>
+            <pre><code>
+    def factorielle(n):
+        if n == 0:
+            return 1  # Cas de base
+        else:
+            return n * factorielle(n - 1)  # Cas récursif
+            </code></pre>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">2. Application : Exploration d'un Donjon Récursif</h3>
+            <p>Dans ce projet, nous allons simuler un héros explorant un
+ donjon. Le donjon est représenté par un labyrinthe (sous forme de 
+matrice 2D), où le héros doit trouver la sortie. La récursivité sera 
+utilisée pour explorer toutes les directions possibles à chaque 
+intersection du labyrinthe.</p>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Étape 1 : Modélisation du donjon</h4>
+            <p>Le donjon est représenté par une matrice où :</p>
+            <ul>
+                <li>1 représente un mur,</li>
+                <li>0 représente un chemin libre,</li>
+                <li><strong>S</strong> la position de départ,</li>
+                <li><strong>E</strong> la sortie à atteindre.</li>
+            </ul>
+            <pre><code>
+    donjon = [
+        ['S', 1, 0, 0, 1],
+        [0, 1, 0, 1, 0],
+        [0, 0, 0, 1, 'E'],
+        [1, 1, 0, 0, 1],
+        [0, 0, 0, 1, 0]
+    ]
+            </code></pre>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Étape 2 : Création de la fonction récursive d’exploration</h4>
+            <p>On écrit une fonction récursive pour explorer le donjon. À
+ chaque étape, le héros explore les cases adjacentes (haut, bas, gauche,
+ droite) jusqu'à trouver la sortie.</p>
+            <pre><code>
+    def explorer_donjon(donjon, x, y, visitees):
+        # Vérifier les limites du donjon
+        if x &lt; 0 or x &gt;= len(donjon) or y &lt; 0 or y &gt;= len(donjon[0]):
+            return False
+        
+        # Vérifier si c'est un mur ou une case déjà visitée
+        if donjon[x][y] == 1 or (x, y) in visitees:
+            return False
+        
+        # Si on a trouvé la sortie
+        if donjon[x][y] == 'E':
+            print(f"Sortie trouvée à la position ({x}, {y})")
+            return True
+        
+        # Marquer la case comme visitée
+        visitees.add((x, y))
+        
+        # Exploration récursive des 4 directions
+        if (explorer_donjon(donjon, x+1, y, visitees) or  # Bas
+            explorer_donjon(donjon, x-1, y, visitees) or  # Haut
+            explorer_donjon(donjon, x, y+1, visitees) or  # Droite
+            explorer_donjon(donjon, x, y-1, visitees)):   # Gauche
+            return True
+        
+        # Si aucune direction ne permet d’avancer, retour en arrière
+        return False
+            </code></pre>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Étape 3 : Lancement de l'exploration</h4>
+            <p>L’appel de la fonction d'exploration depuis la position de départ :</p>
+            <pre><code>
+    visitees = set()
+    explorer_donjon(donjon, 0, 0, visitees)
+            </code></pre>
+            <p>Les élèves peuvent visualiser comment la récursivité 
+permet au héros de tester différentes directions jusqu'à trouver la 
+sortie du donjon.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">3. Application : Génération de Terrains Fractals avec la Récursivité</h3>
+            <p>Un autre exemple ludique pour explorer la récursivité est
+ la génération de terrains fractals. C’est un algorithme utilisé dans 
+certains jeux vidéo pour générer des paysages ou des environnements de 
+manière procédurale.</p>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Étape 1 : Introduction au concept des fractals</h4>
+            <p>Explication de la notion de fractal : une figure qui se divise en parties similaires à l'ensemble.</p>
+            <p>On montre un exemple simple, tel que le triangle de 
+Sierpinski ou un arbre fractal, qui est un arbre où chaque branche se 
+divise en deux sous-branches plus petites.</p>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Étape 2 : Génération d’un arbre fractal</h4>
+            <p>Nous allons utiliser la récursivité pour dessiner un 
+arbre où chaque branche se divise en deux sous-branches plus petites. 
+Pour simplifier, on peut utiliser la bibliothèque turtle de Python, qui 
+permet de dessiner facilement.</p>
+            <pre><code>
+    import turtle
+
+    def dessiner_arbre(longueur, angle):
+        if longueur &gt; 5:
+            turtle.forward(longueur)
+            turtle.right(angle)
+            dessiner_arbre(longueur - 15, angle)
+            turtle.left(angle * 2)
+            dessiner_arbre(longueur - 15, angle)
+            turtle.right(angle)
+            turtle.backward(longueur)
+    
+    # Initialisation de Turtle
+    turtle.speed("fastest")
+    turtle.left(90)  # Faire pointer la tortue vers le haut
+    dessiner_arbre(100, 30)  # Commence avec une longueur de 100
+    turtle.done()
+            </code></pre>
+            <p>Les élèves pourront voir comment la récursivité permet de générer une figure qui se répète de manière auto-similaire.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">4. Conclusion et Améliorations</h3>
+            <p><strong>Extension de l’exploration du donjon :</strong> 
+Les élèves peuvent être encouragés à ajouter des obstacles, des trésors 
+ou d'autres éléments interactifs dans le donjon pour rendre 
+l'exploration plus intéressante.</p>
+            <p><strong>Améliorations sur l’arbre fractal :</strong> Les 
+élèves peuvent modifier l’angle de l’arbre fractal ou ajouter des 
+couleurs pour rendre le dessin plus complexe et esthétique.</p>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Discussion :</h4>
+            <ul>
+                <li>Quand utiliser la récursivité vs les boucles ?</li>
+                <li>Les limites de la récursivité (profondeur maximale de récursion, efficacité).</li>
+            </ul>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Exercice :</h4>
+            <p>Modifier le code de l’exploration du donjon pour ajouter des monstres ou des pièges à éviter pendant l'exploration.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Conclusion de la Séance</h3>
+            <p>À la fin de cette séance, les élèves auront appris à 
+utiliser la récursivité pour résoudre des problèmes d’exploration et de 
+génération d’environnements, avec des exemples concrets tirés des jeux 
+vidéo. Cela les prépare à appliquer la récursivité dans des projets plus
+ complexes à l'avenir.</p>
+        </section>

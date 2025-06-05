@@ -1,0 +1,150 @@
+<script src="script.js"></script>
+<section id="session16" class="content-section">
+            <h2 style="margin-top: 30px; margin-bottom: 20px;">Séance 16 : Approfondissement sur l’algorithme DFS (Depth-First Search)</h2>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Objectif Global :</h3>
+            <p>Les élèves approfondiront leur compréhension de 
+l’algorithme DFS (Depth-First Search) en explorant ses différentes 
+applications, en particulier dans les graphes, dans un contexte de jeu 
+vidéo où le joueur doit explorer un réseau complexe de salles 
+interconnectées. L'objectif est de renforcer leur capacité à appliquer 
+la récursivité dans la recherche en profondeur.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Introduction à DFS dans un Contexte de Jeu Vidéo</h3>
+        
+            <h4>Contexte du Jeu Vidéo :</h4>
+            <p>Imaginons un jeu d’aventure où le joueur incarne un 
+explorateur qui doit naviguer à travers un réseau complexe de grottes 
+interconnectées. Chaque grotte est une salle, et chaque connexion entre 
+deux salles représente un chemin possible. L’objectif est de visiter 
+toutes les grottes pour trouver un artefact caché. L’algorithme DFS est 
+un moyen efficace pour parcourir toutes les salles en suivant un chemin 
+en profondeur avant de revenir en arrière.</p>
+        
+            <h4>Concept de DFS :</h4>
+            <p>DFS (Depth-First Search) est un algorithme qui explore un
+ graphe en allant aussi loin que possible dans une direction avant de 
+revenir en arrière pour explorer les autres chemins. C’est un algorithme
+ récursif qui suit une stratégie de <strong>diviser pour régner</strong>, en explorant un chemin complet jusqu’à ce qu’il ne puisse plus avancer.</p>
+        
+            <h4>Représentation en Graphe :</h4>
+            <p>Dans ce jeu vidéo, chaque salle est un nœud du graphe, et
+ chaque connexion entre deux salles est une arête. Voici un exemple de 
+graphe représentant un réseau de grottes :</p>
+        
+            <pre><code>
+    1 --- 2 --- 3
+    |     |     |
+    4 --- 5 --- 6
+            </code></pre>
+        
+            <p>Dans cet exemple, le joueur commence à la salle 1 et doit
+ visiter toutes les autres salles en utilisant l’algorithme DFS pour 
+explorer les salles dans un ordre efficace.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Explication de l’Algorithme DFS (30 min)</h3>
+            <h4>1. Fonctionnement de DFS :</h4>
+            <p>DFS utilise une approche récursive pour explorer les nœuds d’un graphe :</p>
+            <ul>
+                <li>On commence par un nœud initial (par exemple, la salle de départ).</li>
+                <li>On explore un des voisins de ce nœud.</li>
+                <li>À chaque fois qu’un nœud est visité, on le marque comme visité pour éviter de le revisiter.</li>
+                <li>Si tous les voisins d’un nœud sont visités, l’algorithme revient en arrière et explore les autres chemins restants.</li>
+            </ul>
+        
+            <h4>2. Récursivité dans DFS :</h4>
+            <p>DFS est naturellement récursif. Chaque appel de fonction 
+DFS explore un chemin jusqu’à ce qu’il n’y ait plus de voisins à 
+visiter. L'algorithme revient ensuite à la fonction appelante pour 
+explorer d’autres chemins.</p>
+        
+            <p>Le pseudo-code de DFS est le suivant :</p>
+            <pre><code>
+    def dfs(graphe, noeud, visites):
+        if noeud not in visites:
+            print(f"Visite de la salle {noeud}")
+            visites.add(noeud)  # Marquer la salle comme visitée
+            for voisin dans graphe[noeud]:  # Explorer les voisins non visités
+                dfs(graphe, voisin, visites)
+            </code></pre>
+        
+            <h4>3. Exemple Visuel :</h4>
+            <p>Partant du nœud 1, DFS visitera les salles dans l’ordre suivant (dans ce cas particulier) :</p>
+            <pre><code>
+    1 → 2 → 3 → 6 → 5 → 4
+            </code></pre>
+            <p>DFS explore en profondeur jusqu’à la salle 6 avant de revenir en arrière pour explorer les autres chemins.</p>
+        
+            <h4>4. Cas d’Utilisation :</h4>
+            <p>DFS est particulièrement utile lorsque l’on veut explorer
+ un graphe complet ou lorsqu’on veut trouver un chemin à travers un 
+labyrinthe, où les chemins peuvent être très profonds avant d’atteindre 
+une solution.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Implémentation DFS dans un Contexte de Jeu Vidéo (40 min)</h3>
+            
+            <h4>1. Représentation du Graphe en Python :</h4>
+            <p>Le graphe est représenté en Python sous la forme d’un 
+dictionnaire, où chaque clé représente une salle, et la valeur associée 
+est une liste de salles adjacentes (les voisins).</p>
+        
+            <pre><code>
+    graphe = {
+        1: [2, 4],
+        2: [1, 3, 5],
+        3: [2, 6],
+        4: [1, 5],
+        5: [2, 4, 6],
+        6: [3, 5]
+    }
+            </code></pre>
+        
+            <h4>2. Implémentation de DFS en Python :</h4>
+            <p>Voici une implémentation simple de l'algorithme DFS pour explorer les salles d’un réseau de grottes :</p>
+        
+            <pre><code>
+    def dfs(graphe, noeud, visites):
+        if noeud not in visites:
+            print(f"Visite de la salle {noeud}")
+            visites.add(noeud)  # Marquer la salle comme visitée
+            for voisin dans graphe[noeud]:  # Explorer les voisins non visités
+                dfs(graphe, voisin, visites)
+    
+    # Ensemble des nœuds visités
+    visites = set()
+    
+    # Démarrer le parcours DFS à partir de la salle 1
+    dfs(graphe, 1, visites)
+            </code></pre>
+        
+            <h4>3. Explication du Code :</h4>
+            <ul>
+                <li>La fonction <code>dfs()</code> est appelée avec 
+trois arguments : le graphe, le nœud actuel (la salle où le joueur se 
+trouve), et l’ensemble des salles déjà visitées.</li>
+                <li>Si la salle n’a pas encore été visitée, elle est 
+marquée comme visitée et l'algorithme explore tous ses voisins de 
+manière récursive.</li>
+                <li>Une fois que tous les voisins ont été explorés, l’algorithme revient en arrière et continue avec les autres chemins possibles.</li>
+            </ul>
+        
+            <h4>Défi Pratique pour les Élèves :</h4>
+            <ul>
+                <li><strong>Étape 1 :</strong> Modifiez le graphe pour ajouter des objets ou des trésors dans certaines salles.</li>
+                <li><strong>Étape 2 :</strong> Implémentez une version de DFS qui affiche un message lorsque le joueur trouve un trésor dans une salle.</li>
+                <li><strong>Étape 3 :</strong> Ajoutez une 
+fonctionnalité qui limite le nombre de visites dans une salle, comme un 
+nombre maximum de tentatives avant que le joueur échoue.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Conclusion et Comparaison (10 min)</h3>
+            <p>À la fin de cette séance, les élèves auront approfondi 
+leur compréhension de l’algorithme DFS et auront appris à l’appliquer 
+dans un contexte de jeu vidéo, en modélisant un labyrinthe ou un réseau 
+de salles. Ils auront également renforcé leurs compétences en <strong>récursivité</strong>, en suivant un chemin en profondeur et en revenant en arrière pour explorer d’autres chemins.</p>
+        
+            <p>Enfin, nous comparerons DFS avec d’autres algorithmes de 
+parcours comme BFS, en soulignant que DFS est particulièrement efficace 
+dans des contextes où les chemins sont profonds, tandis que BFS est 
+souvent préféré pour trouver les chemins les plus courts.</p>
+        </section>

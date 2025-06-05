@@ -1,0 +1,204 @@
+<script src="script.js"></script>
+<section id="session9" class="content-section">
+            <h2 style="margin-top: 30px; margin-bottom: 20px;">Séance 9 : Étude des Cas Où le Backtracking Est Utile et de Ses Limitations</h2>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Objectif Global :</h3>
+            <p>Les élèves doivent comprendre le fonctionnement de 
+l'algorithme de backtracking (retour en arrière), les cas où il est 
+utile et ses limites en termes de complexité. Ils l'implémenteront dans 
+le cadre d’un jeu vidéo où le joueur doit trouver un chemin dans un 
+labyrinthe.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Contexte :</h3>
+            <p>Dans un jeu de labyrinthe, le joueur doit trouver une 
+sortie à travers un labyrinthe complexe. L’algorithme de backtracking 
+est utilisé pour explorer tous les chemins possibles jusqu’à ce que la 
+sortie soit trouvée. Si un chemin mène à une impasse, l’algorithme 
+revient en arrière (backtrack) et essaie un autre chemin.</p>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">1. Introduction au Problème du Labyrinthe</h4>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Scénario du Jeu Vidéo :</h4>
+            <p>Le joueur se trouve à l'entrée d'un labyrinthe et doit 
+trouver la sortie. Le labyrinthe est représenté sous forme de grille, où
+ certaines cases sont des chemins possibles (0), et d'autres sont des 
+murs (1). Le joueur peut se déplacer vers le haut, le bas, la gauche, ou
+ la droite. Le but est de trouver un chemin de l'entrée à la sortie.</p>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Structure du Labyrinthe :</h4>
+            <pre><code>
+    labyrinthe = [
+        ['S', 0, 0, 1, 0],
+        [1, 1, 0, 1, 0],
+        [0, 0, 0, 1, 'E'],
+        [1, 1, 1, 1, 1],
+        [0, 0, 0, 0, 0]
+    ]
+            </code></pre>
+            <ul>
+                <li><strong>S</strong> représente le point de départ (Start).</li>
+                <li><strong>E</strong> représente la sortie (End).</li>
+                <li><strong>1</strong> représente un mur (impossible à traverser).</li>
+                <li><strong>0</strong> représente un chemin possible.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">2. Explication Théorique du Backtracking</h3>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Concept du Backtracking :</h4>
+            <p>Le backtracking est une technique algorithmique qui 
+consiste à essayer toutes les solutions possibles jusqu’à ce que la 
+bonne solution soit trouvée. Le principe est le suivant :</p>
+            <ul>
+                <li><strong>1. Choisir une option :</strong> On avance dans une direction (ou on prend une décision).</li>
+                <li><strong>2. Tester la solution :</strong> Si cette direction (ou décision) mène à une impasse, on "revient en arrière" et on essaie une autre option.</li>
+                <li><strong>3. Répéter :</strong> On continue ainsi jusqu’à ce que la solution soit trouvée ou qu'il n'y ait plus de possibilités à explorer.</li>
+            </ul>
+        
+            <p>Dans le cas du labyrinthe :</p>
+            <ul>
+                <li>On commence à l’entrée du labyrinthe (<strong>S</strong>) et on essaie de se déplacer dans une direction (haut, bas, gauche, droite).</li>
+                <li>Si le joueur rencontre un mur ou un chemin déjà exploré, il revient en arrière et essaie une autre direction.</li>
+                <li>Le processus se répète jusqu'à ce que le joueur trouve la sortie (<strong>E</strong>).</li>
+            </ul>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Pseudo-code du Backtracking :</h4>
+            <pre><code>
+    fonction résoudre_labyrinthe(labyrinthe, x, y):
+    Si (x, y) est la sortie :
+        Retourner vrai (le chemin est trouvé)
+            
+    Si (x, y) est un mur ou déjà visité :
+        Retourner faux (impasse)
+            
+    Marquer (x, y) comme visité
+            
+    Tenter de se déplacer dans les 4 directions :
+        Si résoudre_labyrinthe(labyrinthe, x + 1, y) retourne vrai :
+            Retourner vrai (la direction est correcte)
+        Si résoudre_labyrinthe(labyrinthe, x - 1, y) retourne vrai :
+            Retourner vrai
+        Si résoudre_labyrinthe(labyrinthe, x, y + 1) retourne vrai :
+            Retourner vrai
+        Si résoudre_labyrinthe(labyrinthe, x, y - 1) retourne vrai :
+            Retourner vrai
+            
+    Si aucune direction ne mène à la sortie :
+        Retourner en arrière (backtrack) et Retourner faux
+            </code></pre>
+        
+            <p><strong>Idée Clé :</strong> Le backtracking consiste à 
+tester chaque chemin possible et à revenir en arrière lorsqu'on atteint 
+une impasse. Cela permet d'explorer tous les chemins possibles.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">3. Mise en Pratique du Backtracking pour Résoudre un Labyrinthe</h3>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Étape 1 : Représenter le Labyrinthe en Python</h4>
+            <p>Nous allons d’abord représenter notre labyrinthe sous 
+forme de liste de listes (2D array), comme précédemment décrit. Chaque 
+case contient soit un chemin possible (0), soit un mur (1), soit 
+l’entrée (S) et la sortie (E).</p>
+        
+            <pre><code>
+    labyrinthe = [
+        ['S', 0, 0, 1, 0],
+        [1, 1, 0, 1, 0],
+        [0, 0, 0, 1, 'E'],
+        [1, 1, 1, 1, 1],
+        [0, 0, 0, 0, 0]
+    ]
+            </code></pre>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Étape 2 : Implémenter l'Algorithme de Backtracking</h4>
+            <p>L'algorithme va chercher le chemin à partir du point de 
+départ (x, y) et essayer toutes les directions possibles (haut, bas, 
+gauche, droite) jusqu’à ce qu’il atteigne la sortie (E).</p>
+        
+            <pre><code>
+    # Fonction pour résoudre le labyrinthe
+    def résoudre_labyrinthe(labyrinthe, x, y, visitees):
+        # Vérifier si on est à la sortie
+        if labyrinthe[x][y] == 'E':
+            print(f"Sortie trouvée à la position ({x}, {y})")
+            return True
+                    
+        # Vérifier les limites du labyrinthe
+        if x &lt; 0 or x &gt;= len(labyrinthe) or y &lt; 0 or y &gt;= len(labyrinthe[0]):
+            return False
+                
+        # Vérifier si la case est un mur ou déjà visitée
+        if labyrinthe[x][y] == 1 or (x, y) in visitees:
+            return False
+                    
+        # Marquer la case comme visitée
+        visitees.add((x, y))
+                
+        # Appeler récursivement la fonction dans les 4 directions
+        if (résoudre_labyrinthe(labyrinthe, x + 1, y, visitees) or  # Bas
+            résoudre_labyrinthe(labyrinthe, x - 1, y, visitees) or  # Haut
+            résoudre_labyrinthe(labyrinthe, x, y + 1, visitees) or  # Droite
+            résoudre_labyrinthe(labyrinthe, x, y - 1, visitees)):   # Gauche
+            return True
+                    
+        # Si aucune direction ne fonctionne, revenir en arrière
+        return False
+                
+    # Initialisation
+    visitees = set()  # Ensemble des cases déjà visitées
+    résoudre_labyrinthe(labyrinthe, 0, 0, visitees)  # Commence à (0, 0)
+            </code></pre>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">4. Cas d'Utilisation du Backtracking</h3>
+        
+            <p><strong>Quand le Backtracking est-il utile ?</strong></p>
+            <ul>
+                <li><strong>1. Résolution de labyrinthes :</strong> comme dans notre exemple de jeu vidéo, où il y a plusieurs chemins possibles à explorer.</li>
+                <li><strong>2. Jeux de puzzle :</strong> comme le Sudoku, où chaque choix possible doit être exploré avant de revenir en arrière si nécessaire.</li>
+                <li><strong>3. Problèmes de recherche de combinaisons :</strong>
+ trouver toutes les combinaisons possibles d’un ensemble (par exemple, 
+dans un problème de sac à dos où plusieurs combinaisons doivent être 
+explorées).</li>
+                <li><strong>4. Coloration de graphes :</strong> assigner des couleurs à des nœuds d’un graphe tout en respectant certaines contraintes.</li>
+            </ul>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Limites du Backtracking :</h4>
+            <ul>
+                <li><strong>1. Complexité exponentielle :</strong> Le 
+backtracking est souvent inefficace pour de très grands problèmes, car 
+il peut nécessiter d'explorer un nombre exponentiel de solutions.</li>
+                <li><strong>2. Exploration complète :</strong> Il n'y a 
+pas de raccourci pour éviter d'explorer tous les chemins possibles, sauf
+ si l’on combine le backtracking avec d'autres techniques comme la 
+programmation dynamique ou l’élagage (pruning).</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">5. Limites du Backtracking</h3>
+        
+            <p>Le backtracking peut devenir inefficace dans certaines situations, en particulier lorsque :</p>
+            <ul>
+                <li><strong>Trop de solutions possibles :</strong> Par 
+exemple, dans un labyrinthe trop complexe avec de nombreuses impasses, 
+le backtracking explorera chaque chemin, même s’il est inutile.</li>
+                <li><strong>Complexité exponentielle :</strong> La 
+recherche d'une solution peut prendre un temps très long lorsque le 
+problème devient très grand, car le nombre de combinaisons possibles à 
+tester augmente de façon exponentielle.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Conclusion et Discussion</h3>
+            <p>Les élèves auront appris :</p>
+            <ul>
+                <li>Comment utiliser le backtracking pour résoudre des problèmes tels que des labyrinthes dans des jeux vidéo.</li>
+                <li>Pourquoi le backtracking est une méthode efficace 
+pour explorer plusieurs solutions mais pourquoi il peut être limité pour
+ les problèmes de grande envergure.</li>
+                <li>Comprendre l'idée de retour en arrière : explorer, 
+tester, revenir en arrière en cas d'impasse, et continuer à chercher 
+jusqu’à la solution.</li>
+            </ul>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Exercices Complémentaires :</h4>
+            <ul>
+                <li><strong>Amélioration du labyrinthe :</strong> Ajouter plus d’éléments au labyrinthe (ennemis, objets à collecter, etc.).</li>
+                <li><strong>Élagage (pruning) :</strong> Modifier l'algorithme pour éviter certains chemins déjà identifiés comme inutiles.</li>
+            </ul>
+        </section>

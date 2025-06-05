@@ -1,0 +1,133 @@
+<script src="script.js"></script>
+<section id="session30" class="content-section">
+            <h2 style="margin-top: 30px; margin-bottom: 20px;">Séance 30 : Analyse de la Complexité du Heapsort et de ses Applications</h2>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Objectif Global :</h3>
+            <p>Les élèves vont explorer le tri par tas (Heapsort) en 
+analysant sa complexité et en comprenant son fonctionnement en pratique.
+ Ils découvriront comment cet algorithme s’applique efficacement dans 
+différents contextes, en particulier dans la gestion de files 
+prioritaires et la sélection des éléments de plus grande valeur.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Introduction au Heapsort (20 min)</h3>
+            <p>Heapsort est un algorithme de tri qui utilise une structure de données appelée <strong>tas binaire</strong>
+ (ou heap). Il fonctionne en construisant un tas, puis en retirant 
+l’élément de plus grande (ou de plus petite) valeur de ce tas pour le 
+placer en fin de liste.</p>
+        
+            <h4>1. Notions de Base sur le Tas Binaire :</h4>
+            <ul>
+                <li><strong>Tas binaire (Heap) :</strong> Une structure d'arbre binaire où chaque nœud est supérieur (max-heap) ou inférieur (min-heap) à ses enfants.</li>
+                <li><strong>Max-heap :</strong> Le plus grand élément est situé à la racine de l’arbre.</li>
+                <li><strong>Min-heap :</strong> Le plus petit élément est situé à la racine de l’arbre.</li>
+            </ul>
+            <p>Pour implémenter Heapsort, nous allons utiliser un 
+max-heap, ce qui signifie que l'élément de plus grande valeur est 
+toujours à la racine.</p>
+        
+            <h4>2. Principe de Fonctionnement du Heapsort :</h4>
+            <p>Heapsort fonctionne en deux étapes :</p>
+            <ul>
+                <li><strong>Étape 1 :</strong> Construire un max-heap à partir des éléments de la liste.</li>
+                <li><strong>Étape 2 :</strong> Extraire successivement 
+le maximum du tas, puis replacer le dernier élément à la racine et 
+ajuster la structure pour maintenir la propriété de tas.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Analyse de la Complexité de Heapsort (30 min)</h3>
+        
+            <h4>1. Complexité de la Construction du Tas :</h4>
+            <p>Pour construire un max-heap, on utilise un processus d’<strong>ajustement</strong> (appelé "heapify") qui assure que chaque sous-arbre respecte la propriété de tas. Construire un tas à partir d'une liste de <em>n</em> éléments a une complexité en <strong>O(n)</strong>.</p>
+        
+            <h4>2. Complexité de l'Extraction et du Tri :</h4>
+            <p>Après la construction du tas, chaque extraction de l’élément maximal a une complexité de <strong>O(log n)</strong>, car elle nécessite de réajuster le tas. Pour trier <em>n</em> éléments, on effectue <em>n</em> extractions, chacune prenant <em>O(log n)</em> temps.</p>
+            <p><strong>Complexité totale du tri Heapsort :</strong> <code>O(n log n)</code>.</p>
+        
+            <h4>3. Comparaison avec d’autres Algorithmes de Tri :</h4>
+            <p>Heapsort est souvent comparé avec d'autres algorithmes de tri :</p>
+            <ul>
+                <li><strong>Quicksort :</strong> Généralement plus rapide en pratique avec une complexité moyenne de <code>O(n log n)</code>, mais sa complexité dans le pire des cas est <code>O(n²)</code>.</li>
+                <li><strong>Mergesort :</strong> Stable et de complexité <code>O(n log n)</code>, mais nécessite de l'espace supplémentaire, contrairement à Heapsort.</li>
+            </ul>
+        
+            <h4>Applications Pratiques de Heapsort :</h4>
+            <ul>
+                <li><strong>Files prioritaires :</strong> Heapsort est utilisé pour organiser des files où les éléments les plus prioritaires doivent être traités en premier.</li>
+                <li><strong>Tri de grands ensembles de données :</strong> Heapsort est utile dans les systèmes embarqués, car il ne nécessite pas d’espace supplémentaire pour le tri.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Implémentation de Heapsort (30 min)</h3>
+        
+            <h4>1. Fonction de Réajustement (Heapify) :</h4>
+            <p>La fonction <code>heapify</code> assure que chaque nœud 
+d’un sous-arbre est supérieur à ses enfants. Cette fonction est 
+essentielle pour maintenir la propriété de tas après chaque extraction.</p>
+            <pre><code>def heapify(arr, n, i):
+            largest = i  # Initialise le plus grand comme racine
+            left = 2 * i + 1  # Enfant gauche
+            right = 2 * i + 2  # Enfant droit
+        
+            # Si l'enfant gauche est plus grand que la racine
+            if left &lt; n and arr[left] &gt; arr[largest]:
+                largest = left
+        
+            # Si l'enfant droit est plus grand que le plus grand actuel
+            if right &lt; n and arr[right] &gt; arr[largest]:
+                largest = right
+        
+            # Si le plus grand n'est pas la racine
+            if largest != i:
+                arr[i], arr[largest] = arr[largest], arr[i]  # Échange
+                heapify(arr, n, largest)  # Réajuster récursivement
+            </code></pre>
+        
+            <h4>2. Fonction de Tri (Heapsort) :</h4>
+            <p>La fonction <code>heapsort</code> construit d'abord un max-heap, puis extrait successivement le plus grand élément en l’ajoutant à la fin de la liste triée.</p>
+            <pre><code>def heapsort(arr):
+            n = len(arr)
+        
+            # Construire un max-heap
+            for i in range(n // 2 - 1, -1, -1):
+                heapify(arr, n, i)
+        
+            # Extraire les éléments du tas
+            for i in range(n - 1, 0, -1):
+                arr[i], arr[0] = arr[0], arr[i]  # Déplacer la racine à la fin
+                heapify(arr, i, 0)  # Réajuster le tas
+            </code></pre>
+        
+            <h4>3. Exemple d’Utilisation :</h4>
+            <p>Testons Heapsort avec une liste d’entiers :</p>
+            <pre><code># Liste à trier
+        arr = [12, 11, 13, 5, 6, 7]
+        print("Liste initiale :", arr)
+        
+        # Tri avec Heapsort
+        heapsort(arr)
+        print("Liste triée :", arr)
+            </code></pre>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Défis Pratiques pour les Élèves (30 min)</h3>
+            <ul>
+                <li><strong>Défi 1 :</strong> Modifiez la fonction <code>heapify</code> pour que le tas devienne un <strong>min-heap</strong>, où le plus petit élément est toujours à la racine.</li>
+                <li><strong>Défi 2 :</strong> Utilisez Heapsort pour 
+trier une liste de tuples, où chaque tuple représente un joueur avec son
+ score. L'objectif est de trier les joueurs par ordre décroissant de 
+score.</li>
+                <li><strong>Défi 3 :</strong> Dans une file de priorité,
+ certains éléments doivent être traités avant d’autres. Utilisez 
+Heapsort pour implémenter une file de priorité simple et trier les 
+éléments en fonction de leur importance.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Conclusion et Réflexion (10 min)</h3>
+            <p>En conclusion, Heapsort est un algorithme de tri efficace avec une complexité de <code>O(n log n)</code>,
+ similaire à d'autres algorithmes de tri comme Quicksort et Mergesort, 
+mais avec ses propres avantages. Sa structure en tas le rend 
+particulièrement adapté pour des applications comme les files 
+prioritaires, où les éléments doivent être traités par priorité.</p>
+            
+            <p>Les élèves auront appris à construire et manipuler un 
+tas, à utiliser Heapsort pour trier des listes, et à comprendre son 
+efficacité dans divers contextes.</p>
+        </section>

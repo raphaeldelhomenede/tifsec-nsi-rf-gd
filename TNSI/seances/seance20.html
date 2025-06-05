@@ -1,0 +1,179 @@
+<script src="script.js"></script>
+<section id="session20" class="content-section">
+            <h2 style="margin-top: 30px; margin-bottom: 20px;">Séance 20 : Pratique - Utilisation d’arbres pour organiser une base de données de personnages de manga</h2>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Objectif Global :</h3>
+            <p>Les élèves apprendront à utiliser une structure de données en <strong>arbre binaire de recherche (BST)</strong>
+ pour organiser une base de données de personnages de manga. Ils 
+exploreront comment stocker et rechercher efficacement des informations 
+sur les personnages en fonction de caractéristiques spécifiques (nom, 
+puissance, affiliation).</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Introduction aux Arbres Binaires et à leur Utilisation (30 min)</h3>
+        
+            <h4>Contexte de la Séance :</h4>
+            <p>Dans l’univers des mangas, chaque personnage a des 
+caractéristiques uniques (nom, puissance, affiliation, etc.). Nous 
+allons organiser une base de données de personnages en utilisant un <strong>arbre binaire de recherche</strong> pour permettre des opérations de recherche rapide, d’ajout et de suppression de personnages.</p>
+        
+            <h4>Qu'est-ce qu'un Arbre Binaire de Recherche (BST) ?</h4>
+            <p>Un <strong>arbre binaire de recherche (BST)</strong> est 
+une structure de données récursive qui permet de stocker des données de 
+manière ordonnée, facilitant ainsi les opérations de recherche, 
+d'insertion et de suppression.</p>
+            <ul>
+                <li><strong>Nœud :</strong> Chaque nœud de l'arbre contient un élément (par exemple, un personnage de manga).</li>
+                <li><strong>Clé :</strong> Chaque nœud a une clé (par exemple, le nom du personnage ou un autre attribut) qui est utilisée pour organiser l’arbre.</li>
+                <li><strong>Arbre binaire :</strong> Chaque nœud a au plus deux enfants : un enfant à gauche (plus petit) et un enfant à droite (plus grand).</li>
+            </ul>
+        
+            <h4>Principe du BST :</h4>
+            <p>Dans un BST :</p>
+            <ul>
+                <li>Pour chaque nœud, tous les éléments dans le sous-arbre gauche sont plus petits que l’élément du nœud.</li>
+                <li>Tous les éléments dans le sous-arbre droit sont plus grands que l’élément du nœud.</li>
+            </ul>
+        
+            <h4>Exemple Visuel d’un Arbre Binaire de Recherche :</h4>
+            <pre><code>
+            Luffy
+            /    \
+         Goku    Naruto
+         /  \       /   \
+    Zoro Vegeta   Sasuke  Saitama
+            </code></pre>
+            <p>Dans cet arbre :</p>
+            <ul>
+                <li>Le personnage Luffy est la racine.</li>
+                <li>Les personnages situés à gauche de Luffy (Goku, 
+Zoro) ont des noms plus petits (ordre alphabétique), tandis que ceux 
+situés à droite (Naruto, Saitama) ont des noms plus grands.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Implémentation Pratique d’un Arbre Binaire de Recherche (BST) (45 min)</h3>
+        
+            <h4>1. Créer une Classe pour Représenter un Personnage de Manga :</h4>
+            <p>Chaque personnage sera représenté par un objet contenant des informations telles que son nom, sa puissance et son affiliation.</p>
+        
+            <pre><code>
+    class PersonnageManga:
+        def __init__(self, nom, puissance, affiliation):
+            self.nom = nom
+            self.puissance = puissance
+            self.affiliation = affiliation
+            self.gauche = None  # Sous-arbre gauche
+            self.droite = None  # Sous-arbre droit
+    
+        def __str__(self):
+            return f"{self.nom} - Puissance : {self.puissance}, Affiliation : {self.affiliation}"
+            </code></pre>
+        
+            <p>Chaque instance de <code>PersonnageManga</code> représente un personnage avec un nom, une puissance et une affiliation.</p>
+        
+            <h4>2. Créer un Arbre Binaire de Recherche :</h4>
+            <p>L’arbre binaire de recherche sera utilisé pour organiser 
+les personnages en fonction de leur nom. Chaque nœud de l’arbre 
+contiendra un personnage de manga.</p>
+        
+            <pre><code>
+    class ArbreBinaireRecherche:
+        def __init__(self):
+            self.racine = None  # La racine de l'arbre est initialement vide
+    
+        # Fonction pour insérer un nouveau personnage dans l'arbre
+        def inserer(self, personnage):
+            if self.racine is None:
+                self.racine = personnage  # Si l'arbre est vide, le personnage devient la racine
+            else:
+                self._inserer_recur(self.racine, personnage)
+    
+        # Fonction récursive pour insérer dans le bon sous-arbre
+        def _inserer_recur(self, courant, personnage):
+            if personnage.nom &lt; courant.nom:
+                if courant.gauche is None:
+                    courant.gauche = personnage  # Insertion à gauche
+                else:
+                    self._inserer_recur(courant.gauche, personnage)  # Récursion vers la gauche
+            else:
+                if courant.droite is None:
+                    courant.droite = personnage  # Insertion à droite
+                else:
+                    self._inserer_recur(courant.droite, personnage)  # Récursion vers la droite
+    
+        # Fonction pour afficher l'arbre en parcours infixe (ordre alphabétique)
+        def afficher_infixe(self):
+            self._afficher_infixe_recur(self.racine)
+    
+        def _afficher_infixe_recur(self, courant):
+            if courant is not None:
+                self._afficher_infixe_recur(courant.gauche)
+                print(courant)
+                self._afficher_infixe_recur(courant.droite)
+            </code></pre>
+        
+            <p>Cette classe permet d’ajouter des personnages dans 
+l’arbre et de les afficher dans l’ordre alphabétique grâce à un parcours
+ en infixe.</p>
+        
+            <h4>3. Insérer des Personnages dans l’Arbre :</h4>
+            <p>Ajoutons des personnages célèbres de mangas dans notre arbre :</p>
+        
+            <pre><code>
+    # Création de l'arbre
+    arbre = ArbreBinaireRecherche()
+    
+    # Création des personnages
+    luffy = PersonnageManga("Luffy", 9000, "Pirate")
+    goku = PersonnageManga("Goku", 9500, "Guerrier Saiyan")
+    naruto = PersonnageManga("Naruto", 8800, "Ninja")
+    saitama = PersonnageManga("Saitama", 10000, "Héros")
+    zoro = PersonnageManga("Zoro", 8500, "Pirate")
+    vegeta = PersonnageManga("Vegeta", 9400, "Guerrier Saiyan")
+    
+    # Insertion dans l'arbre
+    arbre.inserer(luffy)
+    arbre.inserer(goku)
+    arbre.inserer(naruto)
+    arbre.inserer(saitama)
+    arbre.inserer(zoro)
+    arbre.inserer(vegeta)
+    
+    # Affichage des personnages dans l'ordre alphabétique
+    arbre.afficher_infixe()
+            </code></pre>
+        
+            <p>La sortie du programme affichera les personnages par ordre alphabétique de nom :</p>
+        
+            <pre><code>
+    Goku - Puissance : 9500, Affiliation : Guerrier Saiyan
+    Luffy - Puissance : 9000, Affiliation : Pirate
+    Naruto - Puissance : 8800, Affiliation : Ninja
+    Saitama - Puissance : 10000, Affiliation : Héros
+    Vegeta - Puissance : 9400, Affiliation : Guerrier Saiyan
+    Zoro - Puissance : 8500, Affiliation : Pirate
+            </code></pre>
+        
+            <h4>4. Défi Pratique pour les Élèves :</h4>
+            <ul>
+                <li><strong>Étape 1 :</strong> Modifiez le programme pour que l’arbre soit organisé en fonction de la puissance des personnages au lieu de leur nom.</li>
+                <li><strong>Étape 2 :</strong> Ajoutez une fonction pour rechercher un personnage par nom dans l’arbre et renvoyer ses caractéristiques.</li>
+                <li><strong>Étape 3 :</strong> Ajoutez une 
+fonctionnalité pour supprimer un personnage de l’arbre (utilisation d’un
+ algorithme de suppression dans un arbre binaire).</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Conclusion et Applications (10 min)</h3>
+        
+            <p>À la fin de cette séance, les élèves auront appris à :</p>
+            <ul>
+                <li>Utiliser un <strong>arbre binaire de recherche</strong> pour organiser et gérer des données de manière structurée et efficace.</li>
+                <li>Implémenter les opérations de base d’un arbre 
+(insertion, parcours, recherche) dans un contexte de gestion de base de 
+données de personnages de manga.</li>
+            </ul>
+        
+            <p>Cette approche leur permettra de comprendre comment les 
+structures de données avancées sont utilisées pour organiser de grandes 
+quantités de données dans des applications réelles, telles que les bases
+ de données et les systèmes de recherche d’information.</p>
+        </section>

@@ -1,0 +1,387 @@
+<script src="script.js"></script>
+<section id="session43" class="content-section">
+            <h2 style="margin-top: 30px; margin-bottom: 20px;">Séance 43 : Théorie - Encapsulation, Accès aux Attributs, Getters et Setters</h2>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Objectif Global :</h3>
+            <p>Les élèves apprendront les concepts d'encapsulation en 
+programmation orientée objet (POO). Ils comprendront pourquoi il est 
+important de contrôler l'accès aux attributs d'une classe et comment 
+utiliser des méthodes comme les <strong>getters</strong> et <strong>setters</strong> pour manipuler ces attributs de manière sécurisée.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">1. Introduction à l’Encapsulation</h3>
+            <h4>Qu’est-ce que l’encapsulation ?</h4>
+            <p>L’encapsulation est un principe fondamental de la programmation orientée objet qui consiste à <strong>restreindre l'accès aux attributs internes d'une classe</strong> et à fournir des méthodes spécifiques (getters et setters) pour interagir avec ces attributs.</p>
+            <p>Ce principe permet de :</p>
+            <ul>
+                <li><strong>Protéger les données sensibles :</strong> empêcher les modifications non contrôlées des attributs.</li>
+                <li><strong>Contrôler la logique métier :</strong> appliquer des règles lors de l'accès ou de la modification des données.</li>
+                <li><strong>Rendre le code évolutif :</strong> modifier la structure interne d'une classe sans impacter le code extérieur.</li>
+            </ul>
+        
+            <h4>Exemple sans encapsulation :</h4>
+            <p>Voici un exemple simple où les attributs d’une classe sont accessibles directement :</p>
+            <pre><code>class Personnage:
+            def __init__(self, nom, points_vie):
+                self.nom = nom
+                self.points_vie = points_vie
+        
+        # Création d'un personnage
+        perso = Personnage("Héros", 100)
+        print(perso.points_vie)  # Accès direct à l'attribut
+        perso.points_vie = 200   # Modification directe
+            </code></pre>
+        
+            <p><strong>Problème :</strong> Les attributs peuvent être modifiés directement, ce qui peut provoquer des incohérences ou des erreurs.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">2. Utilisation des Getters et Setters</h3>
+        
+            <h4>Pourquoi utiliser des getters et setters ?</h4>
+            <p>Les getters et setters permettent de :</p>
+            <ul>
+                <li>Valider les valeurs avant de les affecter à un attribut.</li>
+                <li>Protéger l'accès ou la modification des attributs sensibles.</li>
+                <li>Fournir un contrôle total sur la manière dont les attributs sont manipulés.</li>
+            </ul>
+        
+            <h4>Exemple avec getters et setters :</h4>
+            <pre><code>class Personnage:
+            def __init__(self, nom, points_vie):
+                self.__nom = nom                # Attribut privé
+                self.__points_vie = points_vie  # Attribut privé
+        
+            # Getter pour 'nom'
+            def get_nom(self):
+                return self.__nom
+        
+            # Setter pour 'nom'
+            def set_nom(self, nouveau_nom):
+                if isinstance(nouveau_nom, str):
+                    self.__nom = nouveau_nom
+                else:
+                    print("Erreur : Le nom doit être une chaîne de caractères.")
+        
+            # Getter pour 'points_vie'
+            def get_points_vie(self):
+                return self.__points_vie
+        
+            # Setter pour 'points_vie'
+            def set_points_vie(self, nouveau_points_vie):
+                if nouveau_points_vie &gt;= 0:
+                    self.__points_vie = nouveau_points_vie
+                else:
+                    print("Erreur : Les points de vie doivent être positifs.")
+        
+        # Utilisation de la classe
+        perso = Personnage("Héros", 100)
+        print(perso.get_nom())  # Accéder au nom
+        perso.set_nom("Super Héros")  # Modifier le nom
+        perso.set_points_vie(-50)     # Essayer d'affecter une valeur invalide
+            </code></pre>
+        
+            <p><strong>Note :</strong> Les attributs privés sont indiqués par un double underscore (<code>__</code>) pour signaler qu’ils ne doivent pas être accédés directement.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">3. Utilisation des @property et @setter en Python</h3>
+        
+            <h4>Simplification des getters et setters avec les décorateurs :</h4>
+            <p>Python fournit les décorateurs <code>@property</code> et <code>@nom_attribut.setter</code> pour rendre les getters et setters plus intuitifs.</p>
+        
+            <h4>Exemple avec <code>@property</code> :</h4>
+            <pre><code>class Personnage:
+            def __init__(self, nom, points_vie):
+                self.__nom = nom
+                self.__points_vie = points_vie
+        
+            # Getter pour 'nom'
+            @property
+            def nom(self):
+                return self.__nom
+        
+            # Setter pour 'nom'
+            @nom.setter
+            def nom(self, nouveau_nom):
+                if isinstance(nouveau_nom, str):
+                    self.__nom = nouveau_nom
+                else:
+                    print("Erreur : Le nom doit être une chaîne de caractères.")
+        
+            # Getter pour 'points_vie'
+            @property
+            def points_vie(self):
+                return self.__points_vie
+        
+            # Setter pour 'points_vie'
+            @points_vie.setter
+            def points_vie(self, nouveau_points_vie):
+                if nouveau_points_vie &gt;= 0:
+                    self.__points_vie = nouveau_points_vie
+                else:
+                    print("Erreur : Les points de vie doivent être positifs.")
+        
+        # Utilisation de la classe
+        perso = Personnage("Héros", 100)
+        print(perso.nom)            # Accéder au nom
+        perso.nom = "Super Héros"   # Modifier le nom
+        print(perso.points_vie)     # Accéder aux points de vie
+        perso.points_vie = -50      # Essayer d'affecter une valeur invalide
+            </code></pre>
+        
+            <p><strong>Avantages :</strong> Avec <code>@property</code>, on peut accéder aux attributs comme s'ils étaient publics, tout en gardant un contrôle strict sur leur accès et modification.</p>
+        
+            <h2>Qu’est-ce que <code>@property</code> ?</h2>
+            <p>
+                <code>@property</code> est un décorateur Python qui 
+transforme une méthode en une propriété. Cela permet d’accéder à une 
+méthode comme s’il s’agissait d’un attribut.
+            </p>
+
+            <h3>Avantages de <code>@property</code> :</h3>
+            <ul>
+                <li><strong>Encapsulation :</strong> Vous pouvez cacher la logique interne tout en permettant un accès simple.</li>
+                <li><strong>Validation :</strong> Vous pouvez contrôler la valeur retournée ou effectuer des calculs avant de renvoyer un résultat.</li>
+                <li><strong>Flexibilité :</strong> Vous pouvez modifier la logique interne sans affecter le code utilisateur.</li>
+            </ul>
+
+            <h3>Exemple simple avec <code>@property</code> :</h3>
+            <pre><code class="python">
+        class Cercle:
+            def __init__(self, rayon):
+                self.__rayon = rayon  # Attribut privé
+
+            @property
+            def rayon(self):
+                """Getter pour accéder au rayon"""
+                return self.__rayon
+
+            @property
+            def surface(self):
+                """Calculer la surface du cercle"""
+                return 3.14159 * (self.__rayon ** 2)
+
+        # Utilisation
+        c = Cercle(5)
+        print(c.rayon)    # 5 (accès comme un attribut)
+        print(c.surface)  # 78.53975 (surface calculée automatiquement)
+            </code></pre>
+
+            <p>Dans cet exemple :</p>
+            <ul>
+                <li><code>rayon</code> est un getter qui permet d’accéder à la valeur de l’attribut privé <code>__rayon</code>.</li>
+                <li><code>surface</code> est une propriété calculée dynamiquement.</li>
+            </ul>
+
+            <h2>Qu’est-ce que <code>@setter</code> ?</h2>
+            <p>
+                <code>@setter</code> est un décorateur qui permet de 
+définir une méthode pour modifier la valeur d’un attribut en ajoutant 
+une logique supplémentaire, comme une validation.
+            </p>
+
+            <h3>Avantages de <code>@setter</code> :</h3>
+            <ul>
+                <li><strong>Validation des données :</strong> Vous pouvez contrôler les valeurs avant de les affecter à l’attribut.</li>
+                <li><strong>Encapsulation :</strong> Vous pouvez restreindre l’accès direct aux attributs privés.</li>
+                <li><strong>Sécurité :</strong> Vous pouvez éviter des affectations accidentelles ou incohérentes.</li>
+            </ul>
+
+            <h3>Exemple avec <code>@setter</code> :</h3>
+            <pre><code class="python">
+        class Cercle:
+            def __init__(self, rayon):
+                self.__rayon = rayon  # Attribut privé
+
+            @property
+            def rayon(self):
+                """Getter pour accéder au rayon"""
+                return self.__rayon
+
+            @rayon.setter
+            def rayon(self, nouveau_rayon):
+                """Setter pour modifier le rayon avec validation"""
+                if nouveau_rayon &gt; 0:
+                    self.__rayon = nouveau_rayon
+                else:
+                    print("Erreur : Le rayon doit être positif.")
+
+        # Utilisation
+        c = Cercle(5)
+        print(c.rayon)    # 5 (accès au getter)
+
+        c.rayon = 10      # Setter : modifie le rayon
+        print(c.rayon)    # 10
+
+        c.rayon = -5      # Setter : valeur invalide
+        # Erreur : Le rayon doit être positif.
+            </code></pre>
+
+            <p>Dans cet exemple :</p>
+            <ul>
+                <li>Le getter <code>rayon</code> permet d’accéder à l’attribut privé <code>__rayon</code>.</li>
+                <li>Le setter <code>rayon</code> valide la nouvelle valeur avant de la modifier. Si la valeur est négative, un message d’erreur est affiché.</li>
+            </ul>
+
+            <h2>Fonctionnement Interne de <code>@property</code> et <code>@setter</code> :</h2>
+            <p>
+                Les décorateurs <code>@property</code> et <code>@setter</code> créent des propriétés Python qui encapsulent des méthodes et les associent à un attribut.
+            </p>
+
+            <h3>Approche sans décorateurs :</h3>
+            <p>Voici comment cela fonctionne en arrière-plan :</p>
+            <pre><code class="python">
+        class Cercle:
+            def __init__(self, rayon):
+                self.__rayon = rayon
+
+            def get_rayon(self):
+                return self.__rayon
+
+            def set_rayon(self, nouveau_rayon):
+                if nouveau_rayon &gt; 0:
+                    self.__rayon = nouveau_rayon
+                else:
+                    print("Erreur : Le rayon doit être positif.")
+
+            rayon = property(get_rayon, set_rayon)
+
+        # Utilisation
+        c = Cercle(5)
+        print(c.rayon)    # Utilise get_rayon()
+        c.rayon = 10      # Utilise set_rayon()
+            </code></pre>
+
+            <p>Le décorateur <code>@property</code> est simplement une syntaxe plus lisible et moderne pour la méthode <code>property</code>.</p>
+
+            <h3>Combinaison des Deux : <code>@property</code> et <code>@setter</code></h3>
+            <p>Voici un exemple complet combinant les deux décorateurs pour une gestion élégante d’un attribut privé :</p>
+            <pre><code class="python">
+        class Rectangle:
+            def __init__(self, largeur, hauteur):
+                self.__largeur = largeur
+                self.__hauteur = hauteur
+
+            @property
+            def largeur(self):
+                """Getter pour accéder à la largeur"""
+                return self.__largeur
+
+            @largeur.setter
+            def largeur(self, nouvelle_largeur):
+                """Setter pour modifier la largeur avec validation"""
+                if nouvelle_largeur &gt; 0:
+                    self.__largeur = nouvelle_largeur
+                else:
+                    print("Erreur : La largeur doit être positive.")
+
+            @property
+            def hauteur(self):
+                """Getter pour accéder à la hauteur"""
+                return self.__hauteur
+
+            @hauteur.setter
+            def hauteur(self, nouvelle_hauteur):
+                """Setter pour modifier la hauteur avec validation"""
+                if nouvelle_hauteur &gt; 0:
+                    self.__hauteur = nouvelle_hauteur
+                else:
+                    print("Erreur : La hauteur doit être positive.")
+
+            @property
+            def surface(self):
+                """Calculer la surface du rectangle"""
+                return self.__largeur * self.__hauteur
+
+        # Utilisation
+        r = Rectangle(5, 10)
+        print(r.largeur, r.hauteur)  # 5, 10
+        print(r.surface)             # 50
+
+        r.largeur = -3               # Erreur : La largeur doit être positive.
+        r.hauteur = 15
+        print(r.surface)             # 75
+            </code></pre>
+
+            <p>Dans cet exemple :</p>
+            <ul>
+                <li>Les attributs <code>largeur</code> et <code>hauteur</code> sont protégés par des getters et setters.</li>
+                <li>La propriété <code>surface</code> est calculée dynamiquement à partir des deux attributs.</li>
+            </ul>
+
+            <h2>Quand Utiliser <code>@property</code> et <code>@setter</code> ?</h2>
+            <ul>
+                <li><strong>Validation des Données :</strong> Si un attribut doit respecter certaines règles (par ex. : un rayon ne peut pas être négatif), utilisez un setter.</li>
+                <li><strong>Accès Contrôlé :</strong> Si vous voulez exposer un attribut de manière sécurisée, utilisez un getter.</li>
+                <li><strong>Calcul Dynamique :</strong> Si un attribut dépend d’autres valeurs, utilisez une propriété pour calculer sa valeur dynamiquement.</li>
+                <li><strong>Modification Facile :</strong> Vous pouvez 
+changer la logique interne sans affecter le code existant, car les 
+utilisateurs accèdent toujours à l’attribut via les getters/setters.</li>
+            </ul>
+            
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">4. Exercice Pratique (40 min)</h3>
+        
+            <p>Les élèves devront créer une classe <code>Banque</code> pour gérer des comptes bancaires avec les contraintes suivantes :</p>
+            <ul>
+                <li>Les attributs incluent : <code>titulaire</code> (nom du propriétaire), <code>solde</code> (montant sur le compte).</li>
+                <li>Le solde ne peut jamais être négatif.</li>
+                <li>Les méthodes incluent : <code>déposer</code> (ajouter de l’argent) et <code>retirer</code> (retirer de l’argent si le solde est suffisant).</li>
+                <li>Utilisez des getters et setters pour protéger les attributs.</li>
+            </ul>
+        
+            <h4>Exemple attendu :</h4>
+            <pre><code>class Banque:
+            def __init__(self, titulaire, solde):
+                self.__titulaire = titulaire
+                self.__solde = solde
+        
+            # Getter et Setter pour 'titulaire'
+            @property
+            def titulaire(self):
+                return self.__titulaire
+        
+            @titulaire.setter
+            def titulaire(self, nouveau_titulaire):
+                if isinstance(nouveau_titulaire, str):
+                    self.__titulaire = nouveau_titulaire
+                else:
+                    print("Erreur : Le titulaire doit être une chaîne de caractères.")
+        
+            # Getter et Setter pour 'solde'
+            @property
+            def solde(self):
+                return self.__solde
+        
+            @solde.setter
+            def solde(self, nouveau_solde):
+                if nouveau_solde &gt;= 0:
+                    self.__solde = nouveau_solde
+                else:
+                    print("Erreur : Le solde ne peut pas être négatif.")
+        
+            # Méthodes pour déposer et retirer de l'argent
+            def deposer(self, montant):
+                if montant &gt; 0:
+                    self.solde += montant
+                else:
+                    print("Erreur : Le montant doit être positif.")
+        
+            def retirer(self, montant):
+                if 0 &lt; montant &lt;= self.solde:
+                    self.solde -= montant
+                else:
+                    print("Erreur : Solde insuffisant ou montant invalide.")
+        
+        # Exemple d'utilisation
+        compte = Banque("Alice", 500)
+        print(compte.solde)
+        compte.deposer(200)
+        compte.retirer(800)
+        compte.retirer(100)
+            </code></pre>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">5. Conclusion et Discussion (10 min)</h3>
+            <ul>
+                <li>Les getters et setters permettent de protéger les données sensibles d'une classe.</li>
+                <li>Avec <code>@property</code>, Python offre une 
+manière élégante de contrôler l'accès aux attributs tout en gardant une 
+syntaxe simple pour les utilisateurs de la classe.</li>
+                <li>Discussion : Quels autres scénarios pourraient bénéficier de l’encapsulation ?</li>
+            </ul>
+        </section>

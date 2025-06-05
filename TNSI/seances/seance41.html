@@ -1,0 +1,253 @@
+<script src="script.js"></script>
+<section id="session41" class="content-section">
+            <h2 style="margin-top: 30px; margin-bottom: 20px;">Séance 41 : Introduction aux Design Patterns - Singleton et Factory</h2>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Objectif Global :</h3>
+            <p>Cette séance introduit deux design patterns essentiels en programmation orientée objet : le <strong>Singleton</strong> et le <strong>Factory</strong>.
+ Les élèves apprendront comment utiliser ces patterns dans le 
+développement d’un jeu vidéo pour simplifier la gestion des objets et 
+optimiser le code.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Qu'est-ce qu'un Design Pattern ?</h3>
+            <p>Un <b>design pattern</b> (ou "patron de conception") est 
+une solution réutilisable à un problème récurrent dans la programmation.
+ En programmation orientée objet (POO), ces patrons servent de "plans" 
+pour résoudre des problèmes courants, tout en respectant les bonnes 
+pratiques. Ils ne sont pas des morceaux de code spécifiques mais plutôt 
+des structures ou des idées qu'on peut adapter à son propre code.</p>
+            <p>Les deux design patterns abordés aujourd'hui sont :</p>
+            <ul>
+                <li><strong>Singleton :</strong> Le <b>Singleton</b> est
+ un design pattern qui garantit qu'une classe n'a qu'une seule instance 
+tout au long de l'exécution du programme. Cela peut être utile, par 
+exemple, pour un gestionnaire de base de données ou un logger.</li>
+                    <pre><code>
+class Singleton:
+    _instance = None
+
+    def __new__(cls, *args, **kwargs):
+        if not cls._instance:
+            cls._instance = super(Singleton, cls).__new__(cls, *args, **kwargs)
+        return cls._instance
+
+# Exemple d'utilisation
+s1 = Singleton()
+s2 = Singleton()
+print(s1 is s2)  # True, car les deux variables pointent vers la même instance
+                    </code></pre>
+                <li><strong>Factory :</strong> Le <b>Factory</b> (ou 
+"fabrique") est un design pattern qui centralise la création d'objets. 
+Il permet de déléguer la logique de construction d'objets à une méthode 
+dédiée, facilitant ainsi la maintenance et l'évolution du code.</li>
+                    <pre><code>
+class Animal:
+    def speak(self):
+        pass
+
+class Dog(Animal):
+    def speak(self):
+        return "Woof!"
+
+class Cat(Animal):
+    def speak(self):
+        return "Meow!"
+
+class AnimalFactory:
+    @staticmethod
+    def create_animal(animal_type):
+        if animal_type == "dog":
+            return Dog()
+        elif animal_type == "cat":
+            return Cat()
+        else:
+            raise ValueError("Animal type not supported")
+
+# Exemple d'utilisation
+factory = AnimalFactory()
+dog = factory.create_animal("dog")
+print(dog.speak())  # "Woof!"
+cat = factory.create_animal("cat")
+print(cat.speak())  # "Meow!"
+                    </code></pre>
+            </ul>
+
+            <h4>Résumé rapide :</h4>
+            <p>
+                </p><ul>
+                    <li>Design Pattern : Solution standardisée pour résoudre des problèmes fréquents.</li>
+                    <li>Singleton : Une seule instance d'une classe dans tout le programme.</li>
+                    <li>Factory : Crée des objets selon un type, tout en cachant les détails de l'implémentation.</li>
+                </ul>
+            <p></p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Design Pattern Singleton (40 min)</h3>
+        
+            <h4>1. Principe du Singleton :</h4>
+            <p>Le Singleton est un design pattern qui permet de 
+restreindre l'instanciation d'une classe à une seule instance. Ce 
+pattern est utile lorsque vous avez besoin d'un seul point de contrôle 
+dans votre application.</p>
+        
+            <h4>Exemple d’Utilisation en Jeu Vidéo :</h4>
+            <p>Dans un jeu vidéo, on peut utiliser le Singleton pour la <strong>gestion des paramètres de jeu</strong> ou la <strong>musique de fond</strong>.
+ Par exemple, le jeu n’a besoin que d’une seule instance de musique en 
+arrière-plan, et cette instance doit être accessible partout dans le 
+code.</p>
+        
+            <h4>Implémentation du Singleton en Python :</h4>
+            <p>Voici un exemple d’implémentation de Singleton pour la gestion de la musique de fond dans un jeu vidéo :</p>
+        
+            <pre><code>class MusiqueDeFond:
+            _instance = None  # Stocke l'unique instance de la classe
+        
+            def __new__(cls):
+                if cls._instance is None:
+                    cls._instance = super(MusiqueDeFond, cls).__new__(cls)
+                    cls._instance.volume = 50  # Par exemple, un volume par défaut
+                    print("Nouvelle instance de MusiqueDeFond créée.")
+                return cls._instance
+            
+            def jouer(self):
+                print("La musique de fond joue.")
+        
+            def regler_volume(self, niveau):
+                self.volume = niveau
+                print(f"Volume réglé à : {self.volume}")
+            </code></pre>
+        
+            <h4>Explication du Code :</h4>
+            <ul>
+                <li><strong>La méthode <code>__new__</code></strong> vérifie si une instance de <code>MusiqueDeFond</code> existe déjà. Si ce n'est pas le cas, elle en crée une. Sinon, elle retourne l'instance existante.</li>
+                <li>En instanciant la classe plusieurs fois, on s'apercevra que la même instance est utilisée à chaque appel.</li>
+            </ul>
+        
+            <h4>Exemple Pratique :</h4>
+            <p>Testons le Singleton :</p>
+        
+            <pre><code>musique1 = MusiqueDeFond()
+        musique2 = MusiqueDeFond()
+        
+        musique1.jouer()
+        musique2.regler_volume(75)
+        
+        print(musique1.volume)  # Affichera 75, car musique1 et musique2 pointent vers la même instance
+            </code></pre>
+        
+            <h4>Défi Pratique pour les Élèves :</h4>
+            <ul>
+                <li><strong>Étape 1 :</strong> Créez une classe Singleton pour la gestion des paramètres de jeu (volume global, difficulté).</li>
+                <li><strong>Étape 2 :</strong> Utilisez le Singleton pour modifier et afficher les paramètres dans différentes parties du code.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Design Pattern Factory (40 min)</h3>
+        
+            <h4>1. Principe du Factory :</h4>
+            <p>Le pattern Factory centralise la création d’objets dans 
+une méthode ou une classe dédiée, ce qui permet de créer dynamiquement 
+des instances de différents types selon les besoins. Cela rend le code 
+plus flexible et plus facilement modifiable.</p>
+        
+            <h4>Exemple d’Utilisation en Jeu Vidéo :</h4>
+            <p>Dans un jeu vidéo, le pattern Factory est utile pour 
+créer des objets dynamiquement, comme des ennemis, des objets à 
+ramasser, ou des obstacles. Par exemple, le jeu peut décider de créer 
+différents types d’ennemis en fonction du niveau.</p>
+        
+            <h4>Implémentation d’un Factory en Python :</h4>
+            <p>Imaginons une Factory qui génère différents types d’ennemis dans un jeu.</p>
+        
+            <pre><code>class Ennemi:
+            def __init__(self, type_ennemi):
+                self.type = type_ennemi
+        
+            def attaquer(self):
+                print(f"L'ennemi de type {self.type} attaque !")
+        
+        class EnnemiFactory:
+            @staticmethod
+            def creer_ennemi(type_ennemi):
+                return Ennemi(type_ennemi)
+            </code></pre>
+        
+            <h4>Explication du Code :</h4>
+            <ul>
+                <li><strong>La classe <code>Ennemi</code></strong> représente un ennemi avec un type défini lors de sa création.</li>
+                <li><strong>La classe <code>EnnemiFactory</code></strong> possède une méthode statique <code>creer_ennemi</code> qui prend le type d'ennemi en paramètre et retourne une instance d’<code>Ennemi</code>.</li>
+            </ul>
+        
+            <h4>Exemple Pratique :</h4>
+            <p>Utilisons la Factory pour créer différents types d'ennemis :</p>
+        
+            <pre><code># Utilisation de la Factory pour créer des ennemis
+        gobelin = EnnemiFactory.creer_ennemi("gobelin")
+        troll = EnnemiFactory.creer_ennemi("troll")
+        
+        gobelin.attaquer()  # Affiche : L'ennemi de type gobelin attaque !
+        troll.attaquer()    # Affiche : L'ennemi de type troll attaque !
+            </code></pre>
+        
+            <h4>Défi Pratique pour les Élèves :</h4>
+            <ul>
+                <li><strong>Étape 1 :</strong> Ajoutez d’autres types d’ennemis (ex. : dragon, sorcier) en utilisant la Factory.</li>
+                <li><strong>Étape 2 :</strong> Créez une liste d'ennemis en utilisant un tableau et utilisez la Factory pour instancier chaque ennemi de manière dynamique.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Comparaison des Patterns Singleton et Factory (20 min)</h3>
+        
+            <h4>Comparaison :</h4>
+            <p>Bien que Singleton et Factory soient tous deux des patterns de création, ils répondent à des besoins différents :</p>
+            <ul>
+                <li><strong>Singleton :</strong> Assure qu’une seule 
+instance d’une classe existe à tout moment. Cela est utile pour des 
+objets globaux qui nécessitent un contrôle centralisé (comme les 
+paramètres de jeu ou la musique).</li>
+                <li><strong>Factory :</strong> Simplifie la création 
+d'objets diversifiés en centralisant leur instanciation. Cela est 
+pratique pour créer plusieurs objets de types différents selon le 
+contexte (comme des ennemis de types différents dans un jeu).</li>
+            </ul>
+        
+            <h4>Avantages et Inconvénients :</h4>
+            <table>
+                <tbody><tr>
+                    <th>Pattern</th>
+                    <th>Avantages</th>
+                    <th>Inconvénients</th>
+                </tr>
+                <tr>
+                    <td>Singleton</td>
+                    <td>
+                        <ul>
+                            <li>Contrôle centralisé de l’accès à l’instance unique.</li>
+                            <li>Réduction de la consommation de mémoire pour les objets globaux.</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Peut entraîner une dépendance excessive au Singleton.</li>
+                            <li>Peut devenir difficile à tester si mal utilisé.</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Factory</td>
+                    <td>
+                        <ul>
+                            <li>Modularité et flexibilité dans la création d'objets.</li>
+                            <li>Facilité de modification et d'extension du code.</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Peut compliquer la structure du code si utilisé pour des objets simples.</li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody></table>
+        
+            <h4>Conclusion :</h4>
+            <p>Les design patterns Singleton et Factory sont des outils 
+puissants pour améliorer la structure et la lisibilité du code. Le 
+Singleton est idéal pour la gestion des ressources uniques, tandis que 
+le Factory permet de créer des objets variés selon le contexte.</p>
+        </section>

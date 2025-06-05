@@ -1,0 +1,126 @@
+<script src="script.js"></script>
+<section id="session23" class="content-section">
+            <h2 style="margin-top: 30px; margin-bottom: 20px;">Séance 23 : Pratique - Création d’un Arbre de Décision pour un Jeu de Rôle (Jeu Vidéo)</h2>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Objectif Global :</h3>
+            <p>Les élèves apprendront à créer et utiliser un <strong>arbre de décision</strong>
+ pour gérer les décisions d'un personnage non joueur (PNJ) dans un jeu 
+de rôle. Un arbre de décision permet de modéliser les choix que le PNJ 
+peut faire en fonction des actions du joueur et des situations 
+rencontrées dans le jeu.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Introduction aux Arbres de Décision</h3>
+        
+            <h4>Contexte du Jeu de Rôle :</h4>
+            <p>Dans un jeu de rôle, un PNJ peut être programmé pour 
+réagir de différentes manières aux actions du joueur. Par exemple, un 
+PNJ garde pourrait décider de laisser passer le joueur, de le combattre,
+ ou de lui poser une question, en fonction de certains critères (comme 
+le niveau du joueur, son arme, ou son alignement).</p>
+            <p>Pour modéliser ces comportements, nous allons utiliser un <strong>arbre de décision</strong> qui permet de structurer les choix possibles et d'orienter les décisions du PNJ en fonction de plusieurs conditions.</p>
+        
+            <h4>Qu'est-ce qu'un Arbre de Décision ?</h4>
+            <p>Un arbre de décision est une structure en forme d’arbre où :</p>
+            <ul>
+                <li>Chaque <strong>nœud</strong> représente une question ou un test conditionnel.</li>
+                <li>Chaque <strong>branche</strong> représente le résultat possible de la question (oui/non, vrai/faux, etc.).</li>
+                <li>Chaque <strong>feuille</strong> (nœud terminal) représente une action ou une décision.</li>
+            </ul>
+            <p>Les arbres de décision permettent de diviser un problème complexe en une série de choix simples.</p>
+        
+            <h4>Exemple Visuel d'un Arbre de Décision :</h4>
+            <pre><code>
+                                Est-ce que le joueur est armé ?
+                               /                       \
+                           Oui                           Non
+                          /                                \
+            Le joueur a une arme puissante ?           Saluer le joueur
+                 /              \
+               Oui               Non
+         Combattre le joueur   Poser une question
+            </code></pre>
+            <p>Dans cet exemple, le PNJ prend des décisions en fonction de l'état du joueur (armé ou non) et du type d'arme qu'il possède.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Construction d'un Arbre de Décision en Python (30 min)</h3>
+            <h4>1. Modéliser l'Arbre de Décision avec des Classes :</h4>
+            <p>Pour construire un arbre de décision, nous allons utiliser des <strong>classes</strong>
+ pour représenter les nœuds de décision et les actions. Chaque nœud 
+posera une question, et en fonction de la réponse, il pointera vers un 
+autre nœud ou une action.</p>
+        
+            <pre><code>class NoeudDecision:
+            def __init__(self, question, oui=None, non=None):
+                self.question = question  # Question posée dans ce nœud
+                self.oui = oui            # Branche oui
+                self.non = non            # Branche non
+        
+        class Action:
+            def __init__(self, description):
+                self.description = description  # Description de l'action
+        
+        def executer_arbre(noeud):
+            if isinstance(noeud, Action):
+                print(noeud.description)
+            else:
+                reponse = input(noeud.question + " (oui/non) : ")
+                if reponse == "oui":
+                    executer_arbre(noeud.oui)
+                else:
+                    executer_arbre(noeud.non)
+            </code></pre>
+        
+            <h4>2. Création de l'Arbre de Décision :</h4>
+            <p>À présent, construisons un arbre de décision simple pour 
+un PNJ gardien dans un jeu. Le gardien décidera d'agir en fonction de 
+plusieurs conditions : si le joueur est armé, et si son arme est 
+puissante ou non.</p>
+        
+            <pre><code># Feuilles de l'arbre de décision (actions)
+        saluer = Action("Le PNJ vous salue.")
+        poser_question = Action("Le PNJ vous pose une question.")
+        combattre = Action("Le PNJ engage le combat.")
+        
+        # Nœuds de décision
+        arme_puissante = NoeudDecision("Le joueur a-t-il une arme puissante ?", oui=combattre, non=poser_question)
+        joueur_arme = NoeudDecision("Le joueur est-il armé ?", oui=arme_puissante, non=saluer)
+        
+        # Exécution de l'arbre de décision
+        print("Interaction avec le PNJ :")
+        executer_arbre(joueur_arme)
+            </code></pre>
+        
+            <h4>Explication du Code :</h4>
+            <ul>
+                <li>Les classes <code>NoeudDecision</code> et <code>Action</code> permettent de construire l'arbre de décision.</li>
+                <li>Les feuilles (actions) comme <code>saluer</code>, <code>poser_question</code>, et <code>combattre</code> définissent ce que le PNJ fera en fonction de la situation.</li>
+                <li>Les nœuds de décision, comme <code>joueur_arme</code>, posent des questions pour déterminer l'action finale.</li>
+            </ul>
+        
+            <h4>Test de l’Arbre de Décision :</h4>
+            <p>Exécutez le code et répondez aux questions pour simuler 
+une interaction avec le PNJ. Selon vos réponses, le PNJ prendra une 
+décision appropriée.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Extension Pratique : Complexifier l'Arbre (20 min)</h3>
+            <ul>
+                <li><strong>Étape 1 :</strong> Ajoutez d’autres critères, par exemple, si le joueur possède un objet spécial ou s’il a une attitude pacifique.</li>
+                <li><strong>Étape 2 :</strong> Complexifiez l'arbre pour introduire plus de décisions, par exemple :
+                    <ul>
+                        <li>Si le joueur est blessé, le PNJ peut offrir de l’aide.</li>
+                        <li>Si le joueur a une réputation élevée, le PNJ le laisse passer sans poser de questions.</li>
+                    </ul>
+                </li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Conclusion et Discussion (10 min)</h3>
+            <p>À la fin de cette séance, les élèves auront appris à 
+créer et à utiliser un arbre de décision pour gérer les comportements 
+d’un PNJ dans un jeu vidéo. Ils comprendront comment utiliser des 
+conditions imbriquées pour modéliser des choix complexes et permettront 
+ainsi aux PNJ d'avoir des réactions variées selon les actions du joueur.</p>
+        
+            <p>Les arbres de décision sont un outil puissant en 
+intelligence artificielle, notamment dans le développement de jeux 
+vidéo, où les personnages doivent réagir de manière crédible à de 
+nombreux scénarios possibles.</p>
+        </section>

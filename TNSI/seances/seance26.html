@@ -1,0 +1,143 @@
+<script src="script.js"></script>
+<section id="session26" class="content-section">
+            <h2 style="margin-top: 30px; margin-bottom: 20px;">Séance 26 : Pratique - Implémentation du Quicksort pour trier des scores de jeu vidéo</h2>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Objectif Global :</h3>
+            <p>Les élèves vont apprendre à implémenter l’algorithme de 
+tri Quicksort et à l'utiliser dans un contexte de jeu vidéo pour trier 
+les scores des joueurs. Ils découvriront comment cet algorithme de tri 
+rapide fonctionne en divisant et triant des sous-parties de la liste de 
+scores, ce qui en fait une méthode efficace pour organiser des données 
+en temps réel.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Contexte de Jeu Vidéo :</h3>
+            <p>Dans un jeu vidéo, les scores des joueurs sont souvent 
+affichés sur un tableau de classement. Ce tableau doit être trié pour 
+montrer les meilleurs scores en haut de la liste. L'algorithme Quicksort
+ est un excellent choix pour organiser efficacement une liste de scores,
+ car il est rapide et divise la liste en parties plus petites pour les 
+trier indépendamment.</p>
+        
+            <h4>Scénario :</h4>
+            <p>Les scores des joueurs dans notre jeu vidéo sont stockés 
+dans une liste. Chaque fois qu'un joueur termine une partie, son score 
+est ajouté à la liste. Pour afficher le classement des meilleurs 
+joueurs, nous devons trier cette liste du score le plus élevé au plus 
+bas.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Principe de Quicksort</h3>
+            <p>Quicksort est un algorithme de tri qui utilise la méthode de "diviser pour régner" (divide and conquer) :</p>
+            <ul>
+                <li>Il sélectionne un élément appelé <strong>pivot</strong> dans la liste.</li>
+                <li>Il divise la liste en deux parties : les éléments inférieurs au pivot et ceux supérieurs au pivot.</li>
+                <li>Quicksort est ensuite appliqué récursivement aux sous-listes de chaque côté du pivot.</li>
+            </ul>
+            <p>Grâce à cette méthode, Quicksort peut trier une liste de manière très efficace, même pour de grandes quantités de données.</p>
+        
+            <h4>Exemple de Tri avec Quicksort :</h4>
+            <pre><code>Scores initiaux : [35, 50, 20, 60, 10, 90]
+        Pivot choisi : 35
+        Scores inférieurs au pivot (35) : [20, 10]
+        Scores supérieurs au pivot (35) : [50, 60, 90]
+        Liste triée : [10, 20, 35, 50, 60, 90]
+            </code></pre>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Pseudo-code de Quicksort</h3>
+            <p>Voici le pseudo-code pour une implémentation simple de Quicksort :</p>
+            <pre><code>def quicksort(liste):
+            if len(liste) &lt;= 1:
+                return liste  # Liste déjà triée ou vide
+        
+            pivot = liste[0]  # Choisir le premier élément comme pivot
+            inferieurs = [x for x in liste[1:] if x &lt;= pivot]  # Obtenir les éléments inférieurs au pivot
+            superieurs = [x for x in liste[1:] if x &gt; pivot]   # Obtenir les éléments supérieurs au pivot
+        
+            return quicksort(superieurs) + [pivot] + quicksort(inferieurs)  # Tri des parties et recombinaison
+            </code></pre>
+        
+            <p>Dans cet exemple, on choisit le premier élément de la 
+liste comme pivot et on utilise des compréhensions de liste pour diviser
+ les éléments en deux groupes : ceux inférieurs ou égaux au pivot et 
+ceux supérieurs au pivot.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Implémentation de Quicksort en Python (45 min)</h3>
+        
+            <h4>1. Initialisation de la Liste de Scores :</h4>
+            <p>Pour notre jeu vidéo, nous initialisons une liste de scores de joueurs :</p>
+            <pre><code>scores = [50, 85, 40, 95, 70, 10, 65, 100, 25, 80]
+            </code></pre>
+        
+            <h4>2. Implémentation de Quicksort :</h4>
+            <p>Nous allons maintenant implémenter Quicksort en Python pour trier cette liste de scores :</p>
+            <pre><code>def quicksort(liste):
+            # Condition d'arrêt : si la liste a un seul élément ou est vide, elle est déjà triée
+            if len(liste) &lt;= 1:
+                return liste
+        
+            # Choix du pivot (le premier élément)
+            pivot = liste[0]
+        
+            # Diviser les éléments autour du pivot
+            inferieurs = [x for x in liste[1:] if x &lt;= pivot]
+            superieurs = [x for x in liste[1:] if x &gt; pivot]
+        
+            # Récursivité : appliquer Quicksort aux sous-listes
+            return quicksort(superieurs) + [pivot] + quicksort(inferieurs)
+        
+        # Utiliser Quicksort pour trier la liste des scores
+        scores_tries = quicksort(scores)
+        print("Scores triés du plus grand au plus petit :", scores_tries)
+            </code></pre>
+        
+            <h4>3. Explication de l'implémentation :</h4>
+            <ul>
+                <li>La fonction <code>quicksort()</code> prend en paramètre une liste de scores.</li>
+                <li>Si la liste est vide ou comporte un seul élément, elle est déjà triée et la fonction la retourne telle quelle.</li>
+                <li>On choisit un pivot (ici, le premier élément de la liste) pour diviser la liste en deux groupes : <strong>inférieurs</strong> et <strong>supérieurs</strong>.</li>
+                <li>La fonction appelle ensuite <code>quicksort()</code> récursivement sur les sous-listes, puis combine les résultats pour obtenir la liste triée.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Exercice Pratique (30 min)</h3>
+            <h4>Objectif :</h4>
+            <p>Dans cet exercice pratique, les élèves devront modifier 
+le code pour trier les scores du plus bas au plus haut, ou pour ajouter 
+de nouveaux scores à la liste, simuler l'ajout de nouveaux joueurs et 
+afficher un classement mis à jour.</p>
+        
+            <h4>Étapes :</h4>
+            <ul>
+                <li><strong>Étape 1 :</strong> Implémenter la fonction de tri Quicksort de manière à afficher les scores du plus bas au plus haut.</li>
+                <li><strong>Étape 2 :</strong> Simuler l’ajout d’un score aléatoire à la liste des scores et afficher le classement mis à jour.</li>
+                <li><strong>Étape 3 :</strong> Modifier l’algorithme pour trier en ordre croissant ou décroissant en fonction d’un paramètre.</li>
+            </ul>
+        
+            <h4>Exemple d'ajout de score et affichage de classement :</h4>
+            <pre><code>import random
+        
+        # Ajouter un nouveau score et trier la liste
+        nouveau_score = random.randint(0, 100)
+        scores.append(nouveau_score)
+        print(f"Nouveau score ajouté : {nouveau_score}")
+        scores_tries = quicksort(scores)
+        print("Classement mis à jour :", scores_tries)
+            </code></pre>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Conclusion (15 min)</h3>
+            <p>À la fin de cette séance, les élèves auront appris 
+comment implémenter et utiliser l’algorithme Quicksort pour organiser 
+une liste de scores de jeu vidéo. Ils auront vu comment cet algorithme, 
+en divisant la liste en parties plus petites, permet d'obtenir une 
+solution très efficace pour trier des données dans un contexte 
+interactif.</p>
+        
+            <p><strong>Points clés :</strong></p>
+            <ul>
+                <li><strong>Récursivité :</strong> Quicksort utilise la récursivité pour traiter chaque sous-liste individuellement.</li>
+                <li><strong>Pivot :</strong> Le choix du pivot est crucial pour diviser la liste efficacement.</li>
+                <li><strong>Applications pratiques :</strong> Utiliser Quicksort dans un contexte de jeu vidéo pour organiser un classement de scores.</li>
+            </ul>
+        
+            <p>Pour la prochaine séance, les élèves appliqueront 
+Quicksort dans un contexte de tri dynamique, où de nouveaux scores 
+s’ajoutent régulièrement.</p>
+        </section>

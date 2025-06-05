@@ -1,0 +1,213 @@
+<script src="script.js"></script>
+<section id="session46" class="content-section">
+            <h2>Séance 46 : Optimisation d’une application POO (jeu vidéo)</h2>
+        
+            <h3>Objectif Global :</h3>
+            <p>
+                Les élèves apprendront à identifier et appliquer des 
+techniques d’optimisation pour une application en Programmation Orientée
+ Objet (POO), en se concentrant sur un projet de jeu vidéo. 
+                Ils analyseront le code existant pour détecter les 
+points d’amélioration, réduire la redondance, et améliorer les 
+performances tout en appliquant des concepts comme la refactorisation, 
+l’utilisation de design patterns, et la gestion efficace des objets.
+            </p>
+        
+            <h3>Contexte du Projet :</h3>
+            <p>
+                Le jeu vidéo est un projet en POO où un personnage se 
+déplace dans un monde composé de différents niveaux. Le code initial 
+comporte des fonctionnalités de base, mais il est inefficace ou 
+redondant dans certaines parties. Les élèves devront optimiser le code 
+en appliquant des bonnes pratiques et des concepts avancés.
+            </p>
+        
+            <h4>Exemple de Fonctionnalités à Optimiser :</h4>
+            <ul>
+                <li>Gestion des niveaux.</li>
+                <li>Création et destruction des objets (ennemis, objets ramassables, etc.).</li>
+                <li>Système d’événements (interaction entre le joueur et les objets).</li>
+            </ul>
+        
+            <h3>Étape 1 : Analyse du Code Existant (30 min)</h3>
+        
+            <h4>Code Initial :</h4>
+            <pre><code class="python">
+        class Niveau:
+            def __init__(self, nom):
+                self.nom = nom
+                self.ennemis = []
+                self.objets = []
+        
+            def ajouter_ennemi(self, ennemi):
+                self.ennemis.append(ennemi)
+        
+            def ajouter_objet(self, objet):
+                self.objets.append(objet)
+        
+            def afficher_contenu(self):
+                print(f"Niveau : {self.nom}")
+                print("Ennemis :")
+                for ennemi in self.ennemis:
+                    print(f" - {ennemi.nom}")
+                print("Objets :")
+                for objet in self.objets:
+                    print(f" - {objet.nom}")
+        
+        class Ennemi:
+            def __init__(self, nom, points_de_vie):
+                self.nom = nom
+                self.points_de_vie = points_de_vie
+        
+        class Objet:
+            def __init__(self, nom, effet):
+                self.nom = nom
+                self.effet = effet
+        
+        # Exemple d'utilisation
+        niveau1 = Niveau("Forêt Enchantée")
+        niveau1.ajouter_ennemi(Ennemi("Gobelin", 50))
+        niveau1.ajouter_ennemi(Ennemi("Troll", 100))
+        niveau1.ajouter_objet(Objet("Potion de Vie", "+20 PV"))
+        niveau1.afficher_contenu()
+            </code></pre>
+        
+            <h4>Problèmes Identifiés :</h4>
+            <ul>
+                <li>Le code est redondant : plusieurs méthodes (ajouter_ennemi, ajouter_objet) pourraient être généralisées.</li>
+                <li>Le système de création d’ennemis et d’objets manque de flexibilité.</li>
+                <li>Les niveaux n’utilisent pas de design patterns pour gérer leur contenu.</li>
+            </ul>
+        
+            <h3>Étape 2 : Refactorisation et Optimisation (40 min)</h3>
+        
+            <h4>1. Utilisation d’un Design Pattern (Factory) :</h4>
+            <p>
+                Implémentez une Factory pour gérer la création des 
+ennemis et des objets. Cela permet de centraliser la logique de création
+ et de rendre le code plus flexible.
+            </p>
+        
+            <pre><code class="python">
+        class Factory:
+            @staticmethod
+            def creer_ennemi(type_ennemi):
+                if type_ennemi == "Gobelin":
+                    return Ennemi("Gobelin", 50)
+                elif type_ennemi == "Troll":
+                    return Ennemi("Troll", 100)
+                else:
+                    print("Type d'ennemi inconnu.")
+        
+            @staticmethod
+            def creer_objet(type_objet):
+                if type_objet == "Potion de Vie":
+                    return Objet("Potion de Vie", "+20 PV")
+                elif type_objet == "Potion de Mana":
+                    return Objet("Potion de Mana", "+10 Mana")
+                else:
+                    print("Type d'objet inconnu.")
+            </code></pre>
+        
+            <h4>2. Généralisation de la Gestion du Contenu :</h4>
+            <p>
+                Remplacez les méthodes spécifiques (ajouter_ennemi, ajouter_objet) par une méthode unique <code>ajouter_contenu</code> qui accepte différents types d’objets.
+            </p>
+        
+            <pre><code class="python">
+        class Niveau:
+            def __init__(self, nom):
+                self.nom = nom
+                self.contenu = []
+        
+            def ajouter_contenu(self, contenu):
+                self.contenu.append(contenu)
+        
+            def afficher_contenu(self):
+                print(f"Niveau : {self.nom}")
+                for item in self.contenu:
+                    print(f" - {item.nom}")
+            </code></pre>
+        
+            <h4>3. Optimisation des Affichages :</h4>
+            <p>Utilisez la méthode <code>__str__</code> pour personnaliser l’affichage des ennemis et objets.</p>
+        
+            <pre><code class="python">
+        class Ennemi:
+            def __init__(self, nom, points_de_vie):
+                self.nom = nom
+                self.points_de_vie = points_de_vie
+        
+            def __str__(self):
+                return f"{self.nom} (PV : {self.points_de_vie})"
+        
+        class Objet:
+            def __init__(self, nom, effet):
+                self.nom = nom
+                self.effet = effet
+        
+            def __str__(self):
+                return f"{self.nom} - Effet : {self.effet}"
+            </code></pre>
+        
+            <h3>Étape 3 : Tests et Vérifications (30 min)</h3>
+        
+            <h4>Exemple de Code Optimisé :</h4>
+            <pre><code class="python">
+        # Création d'un niveau optimisé
+        niveau1 = Niveau("Forêt Enchantée")
+        
+        # Ajout de contenu via la Factory
+        niveau1.ajouter_contenu(Factory.creer_ennemi("Gobelin"))
+        niveau1.ajouter_contenu(Factory.creer_ennemi("Troll"))
+        niveau1.ajouter_contenu(Factory.creer_objet("Potion de Vie"))
+        
+        # Affichage
+        niveau1.afficher_contenu()
+            </code></pre>
+        
+            <h4>Questions à se Poser :</h4>
+            <ul>
+                <li>Le code est-il plus lisible et maintenable après refactorisation ?</li>
+                <li>Les classes sont-elles plus modulaires et réutilisables ?</li>
+                <li>Y a-t-il d’autres parties du code qui pourraient être optimisées ?</li>
+            </ul>
+        
+            <h3>Étape 4 : Extension - Gestion des Événements (20 min)</h3>
+        
+            <h4>Exercice :</h4>
+            <p>
+                Implémentez un système d’événements où les ennemis attaquent le joueur ou interagissent avec les objets.
+            </p>
+        
+            <pre><code class="python">
+        class Joueur:
+            def __init__(self, nom, points_de_vie):
+                self.nom = nom
+                self.points_de_vie = points_de_vie
+        
+            def subir_degats(self, degats):
+                self.points_de_vie -= degats
+                print(f"{self.nom} subit {degats} dégâts. PV restants : {self.points_de_vie}")
+        
+        class Ennemi:
+            # Ajout d'une méthode d'attaque
+            def attaquer(self, joueur):
+                degats = 10  # Exemple simple
+                joueur.subir_degats(degats)
+        
+        # Exemple d'utilisation
+        joueur = Joueur("Héros", 100)
+        gobelin = Factory.creer_ennemi("Gobelin")
+        gobelin.attaquer(joueur)
+            </code></pre>
+        
+            <h3>Conclusion :</h3>
+            <ul>
+                <li>Les élèves auront appris à optimiser une application
+ POO en utilisant des concepts comme les design patterns et la 
+refactorisation.</li>
+                <li>Ils auront appliqué des bonnes pratiques pour rendre le code plus maintenable et modulaire.</li>
+                <li>Ils auront exploré des améliorations fonctionnelles comme la gestion des événements dans un jeu vidéo.</li>
+            </ul>
+        </section>

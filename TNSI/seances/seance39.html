@@ -1,0 +1,153 @@
+<script src="script.js"></script>
+<section id="session39" class="content-section">
+            <h2 style="margin-top: 30px; margin-bottom: 20px;">Séance 39 : Héritage et Polymorphisme (Théorie)</h2>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Objectif Global :</h3>
+            <p>Cette séance a pour but de permettre aux élèves de 
+comprendre les concepts d'héritage et de polymorphisme en programmation 
+orientée objet (POO). Ils apprendront comment utiliser l'héritage pour 
+structurer le code et comment le polymorphisme permet de gérer 
+différentes méthodes de manière flexible et uniforme.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Introduction à l'Héritage et au Polymorphisme</h3>
+            
+            <h4>Qu'est-ce que la Programmation Orientée Objet (POO) ?</h4>
+            <p>La programmation orientée objet est un paradigme de 
+programmation qui permet de structurer les programmes en utilisant des 
+objets. Chaque objet est une instance d'une <strong>classe</strong>, et les classes permettent de regrouper des <strong>attributs</strong> (données) et des <strong>méthodes</strong> (fonctions) qui définissent le comportement des objets.</p>
+            <p>Deux concepts clés en POO sont l'<strong>héritage</strong> et le <strong>polymorphisme</strong>, qui permettent de créer des structures de code réutilisables et flexibles.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Partie 1 : L'Héritage (50 min)</h3>
+            
+            <h4>1. Définition de l'Héritage</h4>
+            <p>L'héritage permet de créer une nouvelle classe qui <strong>hérite</strong> des attributs et méthodes d'une classe existante. La classe existante est appelée <strong>classe parente</strong> (ou super-classe), et la nouvelle classe est appelée <strong>classe enfant</strong> (ou sous-classe).</p>
+            <p>En utilisant l'héritage, la classe enfant peut :</p>
+            <ul>
+                <li>Accéder aux attributs et méthodes de la classe parente.</li>
+                <li>Ajouter ses propres attributs et méthodes.</li>
+                <li>Redéfinir (ou <em>surcharger</em>) certaines méthodes de la classe parente.</li>
+            </ul>
+        
+            <h4>2. Avantages de l'Héritage</h4>
+            <p>L'héritage permet de :</p>
+            <ul>
+                <li>Réutiliser le code existant, ce qui rend le programme plus efficace et facile à maintenir.</li>
+                <li>Organiser les classes en hiérarchies, ce qui facilite la compréhension de la structure du programme.</li>
+                <li>Éviter la duplication du code en centralisant les méthodes et attributs communs dans la classe parente.</li>
+            </ul>
+        
+            <h4>3. Exemple d'Héritage dans un Jeu Vidéo</h4>
+            <p>Imaginons un jeu où il y a plusieurs types de personnages
+ : des guerriers, des mages et des archers. Tous les personnages 
+partagent des caractéristiques communes, comme un nom et des points de 
+vie, mais chaque type de personnage a des capacités spécifiques.</p>
+            <p>Nous pouvons définir une <strong>classe parente</strong> appelée <code>Personnage</code>, et des <strong>classes enfants</strong> pour chaque type de personnage :</p>
+            
+            <pre><code>class Personnage:
+            def __init__(self, nom, points_vie):
+                self.nom = nom
+                self.points_vie = points_vie
+        
+            def se_presenter(self):
+                print(f"Je suis {self.nom} avec {self.points_vie} points de vie.")
+        
+        class Guerrier(Personnage):
+            def __init__(self, nom, points_vie, force):
+                super().__init__(nom, points_vie)  # Appel du constructeur de la classe parente
+                self.force = force
+        
+            def attaquer(self):
+                print(f"{self.nom} attaque avec une force de {self.force}!")
+        
+        class Mage(Personnage):
+            def __init__(self, nom, points_vie, mana):
+                super().__init__(nom, points_vie)
+                self.mana = mana
+        
+            def lancer_sort(self):
+                print(f"{self.nom} lance un sort avec {self.mana} points de mana!")
+            </code></pre>
+        
+            <p>Dans cet exemple :</p>
+            <ul>
+                <li>La classe <code>Personnage</code> est la <strong>classe parente</strong>, contenant des attributs communs (<code>nom</code> et <code>points_vie</code>).</li>
+                <li>Les classes <code>Guerrier</code> et <code>Mage</code> sont des <strong>classes enfants</strong> qui héritent de <code>Personnage</code>.</li>
+                <li>Chaque classe enfant ajoute ses propres attributs (<code>force</code> pour <code>Guerrier</code> et <code>mana</code> pour <code>Mage</code>), et peut aussi définir des méthodes spécifiques comme <code>attaquer()</code> et <code>lancer_sort()</code>.</li>
+            </ul>
+        
+            <h4>4. Exercices Pratiques</h4>
+            <ul>
+                <li>Créer une classe enfant <code>Archer</code> qui hérite de <code>Personnage</code> et ajoute un attribut spécifique comme <code>precison</code>.</li>
+                <li>Implémenter une méthode pour chaque classe enfant qui utilise les attributs spécifiques de chaque personnage.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Partie 2 : Le Polymorphisme (50 min)</h3>
+        
+            <h4>1. Définition du Polymorphisme</h4>
+            <p>Le polymorphisme est la capacité d'utiliser une même 
+méthode sur des objets de classes différentes. Avec le polymorphisme, 
+des objets de différentes classes peuvent être manipulés de manière 
+uniforme en utilisant une interface commune.</p>
+            <p>Dans l'exemple précédent, tous les personnages peuvent 
+être appelés pour se présenter ou exécuter une action, quelle que soit 
+leur classe. Cela permet de traiter différents objets de manière 
+homogène.</p>
+        
+            <h4>2. Exemple de Polymorphisme</h4>
+            <p>Nous allons utiliser le polymorphisme pour faire en sorte
+ que chaque personnage (qu’il soit guerrier, mage ou archer) puisse 
+exécuter une méthode commune <code>agir()</code> mais avec un comportement propre à chaque type de personnage.</p>
+        
+            <pre><code>class Personnage:
+            def agir(self):
+                print("Le personnage effectue une action.")
+        
+        class Guerrier(Personnage):
+            def agir(self):
+                print("Le guerrier attaque avec une épée!")
+        
+        class Mage(Personnage):
+            def agir(self):
+                print("Le mage lance un sort!")
+        
+        class Archer(Personnage):
+            def agir(self):
+                print("L'archer tire une flèche!")
+            </code></pre>
+        
+            <h4>3. Utilisation Pratique du Polymorphisme</h4>
+            <p>En utilisant le polymorphisme, nous pouvons créer une liste de personnages et les faire agir de manière uniforme :</p>
+            
+            <pre><code>personnages = [Guerrier(), Mage(), Archer()]
+        
+        for personnage in personnages:
+            personnage.agir()  # Chaque personnage agit de manière spécifique
+            </code></pre>
+        
+            <p>Dans cet exemple, chaque personnage exécute la méthode <code>agir()</code>,
+ mais le comportement de cette méthode est propre à chaque classe. C’est
+ là que réside la puissance du polymorphisme, car il permet d’utiliser 
+une interface commune pour des comportements différents.</p>
+        
+            <h4>4. Exercices Pratiques</h4>
+            <ul>
+                <li>Ajouter d'autres types de personnages avec des comportements spécifiques dans la méthode <code>agir()</code>.</li>
+                <li>Créer une fonction qui prend une liste de personnages et fait agir chaque personnage, démontrant ainsi le polymorphisme.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Conclusion et Discussion (20 min)</h3>
+            <h4>Résumé des Concepts :</h4>
+            <ul>
+                <li><strong>Héritage :</strong> Permet à une classe enfant d'hériter des attributs et méthodes d'une classe parente, réduisant la duplication de code.</li>
+                <li><strong>Polymorphisme :</strong> Permet à des objets
+ de classes différentes de répondre à une méthode commune de manière 
+spécifique, offrant une grande flexibilité dans le code.</li>
+            </ul>
+        
+            <h4>Discussion :</h4>
+            <p>Discutez avec les élèves des avantages de l’héritage et 
+du polymorphisme dans les projets de programmation. En particulier, 
+abordez comment ces concepts permettent de structurer le code de manière
+ claire et réutilisable dans des projets complexes, comme des jeux vidéo
+ ou des applications de gestion.</p>
+        </section>

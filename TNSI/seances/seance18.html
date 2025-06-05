@@ -1,0 +1,187 @@
+<script src="script.js"></script>
+<section id="session18" class="content-section">
+            <h2 style="margin-top: 30px; margin-bottom: 20px;">Séance 18 : Applications Réelles des Graphes (Réseaux Sociaux, Chemins dans les Transports)</h2>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Objectif Global :</h3>
+            <p>Dans cette séance, les élèves vont découvrir des 
+applications concrètes de l’utilisation des graphes dans des domaines 
+comme les réseaux sociaux et les systèmes de transport. Ils apprendront à
+ modéliser des situations réelles sous forme de graphes, puis à 
+appliquer des algorithmes de parcours pour résoudre des problèmes 
+spécifiques. Le but est de renforcer la compréhension des graphes à 
+travers des cas pratiques.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Introduction aux Graphes dans le Monde Réel</h3>
+            <h4>1. Qu’est-ce qu’un Graphe ?</h4>
+            <p>Un graphe est une structure composée de :</p>
+            <ul>
+                <li><strong>Nœuds (ou sommets) :</strong> représentant des entités (personnes, lieux, stations de transport).</li>
+                <li><strong>Arêtes :</strong> les connexions entre les 
+nœuds, représentant des relations (amitié dans les réseaux sociaux, 
+lignes de métro dans un réseau de transport).</li>
+            </ul>
+            <p>Dans les applications réelles, les graphes peuvent modéliser une grande variété de systèmes complexes.</p>
+        
+            <h4>2. Applications Réelles des Graphes :</h4>
+            <ul>
+                <li><strong>Réseaux sociaux :</strong> Les utilisateurs 
+sont les nœuds, et les connexions (amitié, abonnements) sont les arêtes.
+ DFS et BFS peuvent être utilisés pour explorer des groupes d’amis ou 
+des recommandations.</li>
+                <li><strong>Réseaux de transport :</strong> Les stations
+ ou arrêts sont des nœuds, et les lignes de transport (bus, métro) sont 
+des arêtes. Les algorithmes de recherche permettent de trouver le chemin
+ le plus court entre deux stations.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Étude de Cas 1 : Réseaux Sociaux (40 min)</h3>
+            
+            <h4>1. Modélisation des Réseaux Sociaux :</h4>
+            <p>Dans un réseau social, chaque utilisateur est un **nœud**
+ et chaque relation (amitié, abonnement) est une **arête**. Les graphes 
+permettent de modéliser ces connexions pour résoudre des problèmes comme
+ :</p>
+            <ul>
+                <li><strong>Explorer des groupes d’amis :</strong> Utilisation de DFS ou BFS pour parcourir un réseau d'amis et suggérer de nouvelles connexions.</li>
+                <li><strong>Recommandations :</strong> Utilisation d'algorithmes pour trouver les amis d'amis et recommander de nouveaux contacts.</li>
+            </ul>
+        
+            <h4>2. Exemple Visuel d'un Réseau Social :</h4>
+            <pre><code>
+    Personne 1 --- Personne 2 --- Personne 3
+       |               |               |
+    Personne 4 --- Personne 5 --- Personne 6
+            </code></pre>
+            <p>Chaque personne est représentée comme un nœud, et les 
+liens d’amitié comme des arêtes. L’algorithme peut explorer les 
+connexions d’une personne pour proposer des recommandations.</p>
+        
+            <h4>3. Algorithme DFS pour Explorer les Amis :</h4>
+            <p>On peut utiliser l’algorithme DFS pour explorer les groupes d’amis de manière récursive, à partir d’une personne donnée :</p>
+        
+            <pre><code>
+    def explorer_reseau(graphe, personne, visites):
+        if personne not in visites:
+            print(f"Exploration de l’ami {personne}")
+            visites.add(personne)
+            for ami dans graphe[personne]:
+                explorer_reseau(graphe, ami, visites)
+            </code></pre>
+        
+            <p>Ce code permet d'explorer tous les amis directs et indirects d'une personne dans le réseau social.</p>
+        
+            <h4>4. Exemple d'Implémentation en Python :</h4>
+            <pre><code>
+    reseau_social = {
+        "Personne 1": ["Personne 2", "Personne 4"],
+        "Personne 2": ["Personne 1", "Personne 3", "Personne 5"],
+        "Personne 3": ["Personne 2", "Personne 6"],
+        "Personne 4": ["Personne 1", "Personne 5"],
+        "Personne 5": ["Personne 2", "Personne 4", "Personne 6"],
+        "Personne 6": ["Personne 3", "Personne 5"]
+    }
+    
+    # Ensemble des personnes déjà visitées
+    visites = set()
+    
+    # Lancer l'exploration à partir de "Personne 1"
+    explorer_reseau(reseau_social, "Personne 1", visites)
+            </code></pre>
+        
+            <h4>Défi Pratique :</h4>
+            <ul>
+                <li><strong>Étape 1 :</strong> Modifiez le réseau social pour ajouter des liens d’amitié supplémentaires.</li>
+                <li><strong>Étape 2 :</strong> Utilisez DFS pour explorer les amis de "Personne 3" et proposer des amis potentiels (amis d’amis).</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Étude de Cas 2 : Réseau de Transport (40 min)</h3>
+        
+            <h4>1. Modélisation d’un Réseau de Transport :</h4>
+            <p>Un réseau de transport, comme un réseau de métro ou de bus, peut être modélisé sous forme de graphe :</p>
+            <ul>
+                <li><strong>Nœuds :</strong> Les stations ou arrêts de bus.</li>
+                <li><strong>Arêtes :</strong> Les lignes de transport entre les stations.</li>
+            </ul>
+        
+            <h4>2. Rechercher le Chemin le Plus Court :</h4>
+            <p>Dans un réseau de transport, un problème fréquent est de 
+trouver le chemin le plus court entre deux stations. Pour cela, nous 
+utilisons l’algorithme **BFS (Breadth-First Search)**, qui explore tous 
+les voisins d'une station avant de passer aux voisins de niveau 
+supérieur.</p>
+        
+            <h4>3. Exemple Visuel d’un Réseau de Transport :</h4>
+            <pre><code>
+    Station A --- Station B --- Station C
+        |           |               |
+    Station D --- Station E --- Station F
+            </code></pre>
+            <p>Chaque station est représentée par un nœud, et chaque ligne de transport entre deux stations est une arête.</p>
+        
+            <h4>Algorithme BFS pour Trouver le Chemin le Plus Court :</h4>
+            <p>Nous allons utiliser l’algorithme BFS pour trouver le chemin le plus court entre deux stations :</p>
+        
+            <pre><code>
+    from collections import deque
+        
+    def bfs_chemin_court(graphe, debut, fin):
+        visites = set()  # Ensemble des stations visitées
+        queue = deque([(debut, [debut])])  # File d'attente avec le chemin actuel
+        
+        while queue:
+            (station, chemin) = queue.popleft()
+            if station == fin:
+                return chemin  # Retourner le chemin trouvé
+            
+            for voisin dans graphe[station]:
+                if voisin not in visites:
+                    visites.add(voisin)
+                    queue.append((voisin, chemin + [voisin]))  # Ajouter le voisin et le chemin parcouru
+        return None  # Aucun chemin trouvé
+            </code></pre>
+        
+            <h4>4. Implémentation en Python :</h4>
+            <pre><code>
+    reseau_transport = {
+        "Station A": ["Station B", "Station D"],
+        "Station B": ["Station A", "Station C", "Station E"],
+        "Station C": ["Station B", "Station F"],
+        "Station D": ["Station A", "Station E"],
+        "Station E": ["Station B", "Station D", "Station F"],
+        "Station F": ["Station C", "Station E"]
+    }
+    
+    chemin = bfs_chemin_court(reseau_transport, "Station A", "Station F")
+    print(f"Le chemin le plus court est : {chemin}")
+            </code></pre>
+        
+            <h4>Défi Pratique :</h4>
+            <ul>
+                <li><strong>Étape 1 :</strong> Ajoutez de nouvelles lignes de transport dans le réseau.</li>
+                <li><strong>Étape 2 :</strong> Utilisez BFS pour trouver le chemin le plus court entre deux stations définies par l’utilisateur.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Conclusion et Comparaison des Applications (10 min)</h3>
+            
+            <h4>Discussion :</h4>
+            <ul>
+                <li>Les graphes sont une structure extrêmement 
+polyvalente utilisée dans des domaines très variés, des réseaux sociaux 
+aux transports en passant par la biologie.</li>
+                <li>Les algorithmes de parcours comme DFS et BFS 
+permettent de résoudre efficacement des problèmes complexes tels que 
+l’exploration de réseaux ou la recherche de chemins.</li>
+                <li>Dans les réseaux sociaux, DFS peut être utilisé pour
+ explorer des relations profondes, tandis que BFS est souvent utilisé 
+pour explorer des connexions plus directes, comme dans les réseaux de 
+transport.</li>
+            </ul>
+        
+            <h4>Problèmes Avancés :</h4>
+            <ul>
+                <li>Comment optimiser le parcours dans un graphe de grande taille, où chaque nœud peut avoir de nombreux voisins ?</li>
+                <li>Comment adapter ces algorithmes pour des 
+applications plus spécifiques, comme la recommandation de contenu ou la 
+gestion du trafic dans un réseau urbain ?</li>
+            </ul>
+        </section>

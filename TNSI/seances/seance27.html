@@ -1,0 +1,156 @@
+<script src="script.js"></script>
+<section id="session27" class="content-section">
+            <h2 style="margin-top: 30px; margin-bottom: 20px;">Séance 27 : Comparaison de la complexité des différents algorithmes de tri</h2>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Objectif Global :</h3>
+            <p>Les élèves vont étudier et comparer différents 
+algorithmes de tri en Python en analysant leurs performances (complexité
+ temporelle) dans des scénarios variés. Ils comprendront comment choisir
+ l'algorithme de tri le plus adapté en fonction du contexte.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Introduction aux Algorithmes de Tri</h3>
+            <p>Les algorithmes de tri permettent d’organiser les données
+ dans un certain ordre (par exemple, croissant ou décroissant). Certains
+ sont efficaces pour des petits ensembles de données, tandis que 
+d'autres sont optimisés pour de grands ensembles. Les trois algorithmes 
+de tri les plus courants que nous allons étudier sont :</p>
+        
+            <ul>
+                <li><strong>Tri par sélection</strong> – Simple, mais peu efficace pour de grands ensembles de données.</li>
+                <li><strong>Tri par insertion</strong> – Adapté aux petits ensembles ou aux listes presque triées.</li>
+                <li><strong>Tri rapide (QuickSort)</strong> – Très performant pour de grands ensembles, mais peut être inefficace dans certains cas.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Étude et Implémentation des Algorithmes de Tri</h3>
+        
+            <h4>1. Tri par Sélection</h4>
+            <p>Le tri par sélection trouve l’élément le plus petit dans 
+la liste et le place au début. Il répète ce processus pour chaque 
+position dans la liste jusqu'à ce que tous les éléments soient triés.</p>
+        
+            <h4>Pseudo-code du Tri par Sélection :</h4>
+            <pre><code>def tri_selection(liste):
+            for i in range(len(liste)):
+                min_index = i
+                for j in range(i + 1, len(liste)):
+                    if liste[j] &lt; liste[min_index]:
+                        min_index = j
+                liste[i], liste[min_index] = liste[min_index], liste[i]
+            </code></pre>
+        
+            <p>**Complexité temporelle** : O(n²) (peu efficace pour les grands ensembles)</p>
+        
+            <h4>Exercice pratique :</h4>
+            <p>Implémentez le tri par sélection et testez-le sur une 
+liste de nombres aléatoires. Notez le temps d’exécution pour des listes 
+de 10, 100 et 1000 éléments.</p>
+        
+            <h4>2. Tri par Insertion</h4>
+            <p>Le tri par insertion fonctionne en prenant chaque élément
+ et en l'insérant à la bonne place dans une sous-liste triée. Ce tri est
+ efficace pour les petites listes ou les listes presque triées.</p>
+        
+            <h4>Pseudo-code du Tri par Insertion :</h4>
+            <pre><code>def tri_insertion(liste):
+            for i in range(1, len(liste)):
+                current = liste[i]
+                j = i - 1
+                while j &gt;= 0 and liste[j] &gt; current:
+                    liste[j + 1] = liste[j]
+                    j -= 1
+                liste[j + 1] = current
+            </code></pre>
+        
+            <p>**Complexité temporelle** : O(n²) (efficace pour les petites listes ou les listes presque triées)</p>
+        
+            <h4>Exercice pratique :</h4>
+            <p>Implémentez le tri par insertion et mesurez son temps d’exécution pour des listes de tailles variées.</p>
+        
+            <h4>3. Tri Rapide (QuickSort)</h4>
+            <p>Le tri rapide (QuickSort) est un algorithme de tri très rapide qui utilise le principe de <strong>diviser pour régner</strong>.
+ Il choisit un élément pivot et partitionne la liste autour de ce pivot,
+ de sorte que les éléments plus petits que le pivot se trouvent d'un 
+côté et les éléments plus grands de l'autre. L'algorithme est ensuite 
+appliqué récursivement sur chaque sous-liste.</p>
+        
+            <h4>Pseudo-code du Tri Rapide :</h4>
+            <pre><code>def quicksort(liste):
+            if len(liste) &lt;= 1:
+                return liste
+            pivot = liste[len(liste) // 2]
+            gauche = [x for x in liste if x &lt; pivot]
+            milieu = [x for x in liste if x == pivot]
+            droite = [x for x in liste if x &gt; pivot]
+            return quicksort(gauche) + milieu + quicksort(droite)
+            </code></pre>
+        
+            <p>**Complexité temporelle** : O(n log n) en moyenne (très efficace pour les grands ensembles de données)</p>
+        
+            <h4>Exercice pratique :</h4>
+            <p>Implémentez QuickSort et comparez son temps d’exécution 
+avec les autres algorithmes de tri pour des listes de 10, 100 et 1000 
+éléments.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Comparaison de la Complexité Temporelle des Algorithmes (45 min)</h3>
+        
+            <h4>1. Explication de la Complexité Temporelle</h4>
+            <p>La complexité temporelle mesure le temps d'exécution d'un algorithme en fonction de la taille de la liste :</p>
+            <ul>
+                <li><strong>O(n²)</strong> : La complexité des 
+algorithmes de tri par sélection et par insertion. Ils ne sont pas 
+performants pour les grandes listes car le temps d'exécution augmente 
+rapidement.</li>
+                <li><strong>O(n log n)</strong> : La complexité moyenne du tri rapide. C'est le meilleur choix pour trier de grandes listes.</li>
+            </ul>
+        
+            <h4>2. Comparaison en Situation Réelle</h4>
+            <p>Demandez aux élèves d’écrire un programme pour mesurer le
+ temps d'exécution des trois algorithmes sur des listes de différentes 
+tailles (10, 100, 1000, et 10 000 éléments).</p>
+        
+            <pre><code>import random
+        import time
+        
+        def mesurer_temps(algorithme, liste):
+            debut = time.time()
+            algorithme(liste)
+            fin = time.time()
+            return fin - debut
+        
+        # Créer des listes de différentes tailles
+        tailles = [10, 100, 1000, 10000]
+        algorithmes = [tri_selection, tri_insertion, quicksort]
+        
+        # Tester chaque algorithme pour chaque taille
+        for taille in tailles:
+            print(f"Taille de la liste : {taille}")
+            liste = [random.randint(0, 100) for _ in range(taille)]
+            for algorithme in algorithmes:
+                liste_copie = liste[:]
+                temps = mesurer_temps(algorithme, liste_copie)
+                print(f"{algorithme.__name__} - Temps d'exécution : {temps:.5f} secondes")
+            print("-" * 40)
+            </code></pre>
+        
+            <h4>3. Analyse des Résultats :</h4>
+            <p>Les élèves doivent observer et analyser les résultats 
+obtenus. Le tri rapide devrait être le plus performant pour les grandes 
+listes, tandis que les tris par sélection et par insertion deviendront 
+rapidement très lents.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Conclusion et Discussion (15 min)</h3>
+        
+            <h4>Comparaison des Algorithmes de Tri :</h4>
+            <ul>
+                <li><strong>Tri par sélection :</strong> Simple mais inefficace pour les grandes listes. Complexité : O(n²).</li>
+                <li><strong>Tri par insertion :</strong> Utile pour les petites listes ou les listes presque triées. Complexité : O(n²).</li>
+                <li><strong>QuickSort :</strong> Très performant pour les grandes listes grâce à sa complexité moyenne de O(n log n).</li>
+            </ul>
+        
+            <h4>Discussion Finale :</h4>
+            <p>En fonction des résultats, discutez avec les élèves de la
+ meilleure approche à adopter pour trier des listes de différentes 
+tailles. Soulignez que certains algorithmes conviennent mieux aux petits
+ ensembles de données, tandis que d'autres sont plus adaptés aux grands 
+ensembles.</p>
+        </section>

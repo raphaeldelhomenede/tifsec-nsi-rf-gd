@@ -1,0 +1,135 @@
+<script src="script.js"></script>
+<section id="session35" class="content-section">
+            <h2 style="margin-top: 30px; margin-bottom: 20px;">Séance 35 : Pratique - Choisir et implémenter l’algorithme de tri le plus efficace pour différentes situations</h2>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Objectif Global :</h3>
+            <p>Les élèves doivent comprendre comment sélectionner et 
+implémenter l’algorithme de tri le plus adapté en fonction de différents
+ contextes, en utilisant des exemples pratiques issus des jeux vidéo et 
+de l’actualité. Ils analyseront la complexité de différents algorithmes 
+de tri (comme le tri rapide, le tri par insertion et le tri fusion) et 
+choisiront celui qui convient le mieux selon la taille et les 
+spécificités des données à trier.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Introduction aux Algorithmes de Tri (15 min)</h3>
+            
+            <h4>Pourquoi Utiliser des Algorithmes de Tri dans des Contextes Concrets ?</h4>
+            <p>Le tri est une opération fondamentale dans de nombreuses 
+applications. Dans un jeu vidéo, par exemple, il est souvent nécessaire 
+de trier les scores des joueurs pour afficher un classement, ou de trier
+ les objets dans l’inventaire d’un personnage. Dans le contexte de 
+l’actualité, il peut être important de trier les nouvelles en fonction 
+de leur popularité ou de leur date de publication.</p>
+            
+            <h4>Présentation des Algorithmes de Tri à Connaître :</h4>
+            <ul>
+                <li><strong>Tri par Insertion</strong> : efficace pour les petites listes ou les listes presque triées.</li>
+                <li><strong>Tri Fusion</strong> : performant pour de grands ensembles de données grâce à sa complexité en <code>O(n log n)</code>.</li>
+                <li><strong>Tri Rapide (Quicksort)</strong> : souvent rapide dans la pratique, mais peut être inefficace dans certains cas particuliers.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Études de Cas - Choix des Algorithmes de Tri (25 min)</h3>
+            
+            <h4>1. Exemple de Jeu Vidéo - Classement des Joueurs</h4>
+            <p>Dans un jeu vidéo de course, chaque joueur obtient un 
+score. Pour afficher le classement des joueurs à la fin de chaque 
+partie, il est nécessaire de trier les scores du plus élevé au plus bas.</p>
+            
+            <h5>Choix de l’algorithme :</h5>
+            <ul>
+                <li>Le nombre de scores à trier est souvent limité, car il n’y a généralement pas des milliers de joueurs par partie.</li>
+                <li>Un <strong>tri rapide</strong> ou un <strong>tri par insertion</strong> pourrait être un bon choix pour une liste de scores limitée.</li>
+            </ul>
+        
+            <h4>2. Exemple d’Actualité - Trier les Articles par Popularité</h4>
+            <p>Dans une application de nouvelles, les articles doivent 
+être affichés par ordre de popularité (nombre de vues). Cette liste est 
+mise à jour en temps réel.</p>
+            
+            <h5>Choix de l’algorithme :</h5>
+            <ul>
+                <li>Le nombre d’articles peut être important, mais comme
+ les nouvelles populaires sont mises en avant, la liste pourrait être 
+partiellement triée.</li>
+                <li>Le <strong>tri fusion</strong> est souvent préféré pour sa stabilité et son efficacité sur de grands ensembles de données.</li>
+            </ul>
+        
+            <h4>3. Autres Situations - Tri de l'Inventaire dans un Jeu Vidéo</h4>
+            <p>Un personnage de jeu peut avoir de nombreux objets dans 
+son inventaire. Ces objets peuvent être triés par type (armes, potions) 
+ou par valeur.</p>
+            
+            <h5>Choix de l’algorithme :</h5>
+            <ul>
+                <li>Pour un inventaire de taille moyenne, le <strong>tri par insertion</strong> est efficace, car il est simple et rapide pour des listes petites à moyennes.</li>
+                <li>Si l’inventaire est volumineux, un <strong>tri rapide</strong> pourrait être plus adapté.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Implémentation des Algorithmes de Tri (50 min)</h3>
+        
+            <h4>1. Implémentation du Tri par Insertion :</h4>
+            <pre><code>def tri_insertion(liste):
+            for i in range(1, len(liste)):
+                cle = liste[i]
+                j = i - 1
+                while j &gt;= 0 and liste[j] &gt; cle:
+                    liste[j + 1] = liste[j]
+                    j -= 1
+                liste[j + 1] = cle
+            return liste
+            </code></pre>
+            <p><strong>Exercice :</strong> Utilisez cet algorithme pour trier une liste de scores de joueurs dans un jeu vidéo.</p>
+        
+            <h4>2. Implémentation du Tri Fusion :</h4>
+            <pre><code>def tri_fusion(liste):
+            if len(liste) &lt;= 1:
+                return liste
+            milieu = len(liste) // 2
+            gauche = tri_fusion(liste[:milieu])
+            droite = tri_fusion(liste[milieu:])
+            return fusion(gauche, droite)
+        
+        def fusion(gauche, droite):
+            resultat = []
+            i = j = 0
+            while i &lt; len(gauche) and j &lt; len(droite):
+                if gauche[i] &lt; droite[j]:
+                    resultat.append(gauche[i])
+                    i += 1
+                else:
+                    resultat.append(droite[j])
+                    j += 1
+            resultat.extend(gauche[i:])
+            resultat.extend(droite[j:])
+            return resultat
+            </code></pre>
+            <p><strong>Exercice :</strong> Utilisez cet algorithme pour trier une liste d'articles de presse en fonction de leur popularité.</p>
+        
+            <h4>3. Implémentation du Tri Rapide (Quicksort) :</h4>
+            <pre><code>def tri_rapide(liste):
+            if len(liste) &lt;= 1:
+                return liste
+            pivot = liste[len(liste) // 2]
+            gauche = [x for x in liste if x &lt; pivot]
+            milieu = [x for x in liste if x == pivot]
+            droite = [x for x in liste if x &gt; pivot]
+            return tri_rapide(gauche) + milieu + tri_rapide(droite)
+            </code></pre>
+            <p><strong>Exercice :</strong> Utilisez cet algorithme pour trier une liste de noms d’objets dans un inventaire de jeu vidéo.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Conclusion et Comparaison des Algorithmes (10 min)</h3>
+            
+            <h4>Comparaison des Algorithmes de Tri :</h4>
+            <ul>
+                <li><strong>Tri par Insertion :</strong> efficace pour des petites listes ou des listes presque triées. Complexité moyenne : <code>O(n^2)</code>.</li>
+                <li><strong>Tri Fusion :</strong> stable et performant pour des grandes listes, mais utilise de la mémoire supplémentaire. Complexité : <code>O(n log n)</code>.</li>
+                <li><strong>Tri Rapide :</strong> très rapide dans la pratique, mais instable dans le pire des cas. Complexité moyenne : <code>O(n log n)</code>, pire des cas : <code>O(n^2)</code>.</li>
+            </ul>
+        
+            <h4>Résumé :</h4>
+            <p>Les élèves ont appris à identifier l’algorithme de tri le
+ plus adapté selon la taille et l’état initial des données. En 
+choisissant un algorithme en fonction du contexte (comme un jeu vidéo ou
+ une application d'actualités), ils comprennent mieux l'importance de 
+l’efficacité dans le développement d'applications.</p>
+        </section>

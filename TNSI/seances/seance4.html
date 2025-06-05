@@ -1,0 +1,170 @@
+<script src="script.js"></script>
+<section id="session4" class="content-section">
+            <h2 style="margin-top: 30px; margin-bottom: 20px;">Séance 4 : Introduction aux Algorithmes de Recherche Récursive – Recherche Binaire</h2>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Objectif Global :</h3>
+            <p>Les élèves doivent comprendre et implémenter un 
+algorithme de recherche binaire en utilisant une approche récursive. Ils
+ doivent également l'appliquer à un contexte ludique (jeu vidéo) pour 
+renforcer la compréhension par la pratique.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Introduction à la Recherche Binaire</h3>
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Le Contexte :</h4>
+            <p>Dans un jeu vidéo de chasse au trésor, le joueur doit 
+trouver un trésor caché sur une île divisée en 100 sections numérotées 
+de 1 à 100. Le joueur ne sait pas où le trésor est caché et doit le 
+retrouver en posant des questions.</p>
+            <p><strong>Problème initial :</strong> Si le joueur cherche 
+le trésor en vérifiant chaque section, cela peut prendre beaucoup de 
+temps. On appelle cela une recherche linéaire. Si le trésor est dans la 
+dernière section, il devra vérifier toutes les sections avant d'arriver à
+ la bonne, ce qui est peu efficace.</p>
+            <p><strong>Solution optimisée :</strong> Utiliser la 
+recherche binaire pour diviser l’espace de recherche en deux à chaque 
+étape. Cela permet de réduire le nombre de vérifications nécessaires.</p>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">L'idée de la Recherche Binaire :</h4>
+            <p>La recherche binaire est un algorithme qui repose sur le 
+principe de diviser pour régner (divide and conquer). Voici les étapes :</p>
+            <ul>
+                <li>Le joueur divise la zone de recherche en deux parties égales.</li>
+                <li>Le joueur demande si le trésor se trouve dans la partie supérieure ou inférieure.</li>
+                <li>À chaque étape, l’algorithme divise à nouveau la 
+zone en deux et répète le processus jusqu’à ce que la section contenant 
+le trésor soit trouvée.</li>
+            </ul>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Exemple Concret :</h4>
+            <p>Imaginons que le trésor soit dans la section 75.</p>
+            <ol>
+                <li>Étape 1 : Le joueur commence par diviser la zone en deux et vérifie la section du milieu (50).</li>
+                <li>Est-ce que le trésor est dans la section 50 ? Non.</li>
+                <li>Le trésor est-il dans une section plus haute ou plus basse que 50 ? Le trésor est dans une section plus haute.</li>
+                <li>Étape 2 : Le joueur cherche donc dans les sections 51 à 100. La nouvelle section du milieu est 75.</li>
+                <li>Est-ce que le trésor est dans la section 75 ? Oui !</li>
+                <li>Le trésor est trouvé.</li>
+            </ol>
+            <p><strong>Avantage :</strong> En seulement 2 étapes, le joueur a trouvé le trésor, alors qu'une recherche linéaire aurait pris 75 étapes.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Explication Théorique de la Recherche Binaire</h3>
+            <p>Comment ça fonctionne en termes d’algorithme :</p>
+            <ol>
+                <li><strong>Début :</strong> L’algorithme commence avec une liste triée de sections (de 1 à 100).</li>
+                <li><strong>Milieu :</strong> Il trouve la section au milieu de la liste.</li>
+                <li><strong>Comparaison :</strong> Il compare la section du milieu avec la section où le trésor est caché :
+                    <ul>
+                        <li>Si le trésor est dans la section du milieu, il s’arrête là.</li>
+                        <li>Si le trésor est dans une section plus petite, il continue à chercher dans la moitié inférieure.</li>
+                        <li>Si le trésor est dans une section plus grande, il continue à chercher dans la moitié supérieure.</li>
+                    </ul>
+                </li>
+                <li><strong>Récursion :</strong> L’algorithme répète ce processus jusqu’à ce qu’il trouve le trésor.</li>
+            </ol>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Exemple de Pseudo-code :</h4>
+            <pre><code>
+    recherche_binaire(liste, debut, fin, cible):
+    Si debut &gt; fin, retourner -1 (le trésor n'est pas dans la liste)
+    
+    milieu = (debut + fin) // 2
+    
+    Si liste[milieu] == cible, retourner milieu (le trésor est trouvé)
+    
+    Si liste[milieu] &lt; cible:
+        Rechercher dans la moitié supérieure (milieu + 1 à fin)
+    Sinon:
+        Rechercher dans la moitié inférieure (debut à milieu - 1)
+            </code></pre>
+        
+            <p><strong>Cas de base :</strong> Si la liste est vide (début &gt; fin), le trésor n’est pas dans la liste.</p>
+            <p><strong>Cas récursif :</strong> À chaque étape, la liste est divisée en deux, et l’algorithme est rappelé sur la moitié pertinente (supérieure ou inférieure).</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Mise en Pratique dans le Contexte du Jeu Vidéo</h3>
+            
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Étape 1 : Créer la Liste des Sections</h4>
+            <p>Tout d’abord, nous allons représenter l’île avec une liste de sections numérotées de 1 à 100 :</p>
+            <pre><code>
+    sections = list(range(1, 101))
+            </code></pre>
+            <p>Ensuite, nous allons choisir une section aléatoire pour cacher le trésor :</p>
+            <pre><code>
+    import random
+    section_tresor = random.choice(sections)
+            </code></pre>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Étape 2 : Implémenter la Recherche Binaire</h4>
+            <p>Nous allons maintenant implémenter l'algorithme de 
+recherche binaire récursive pour chercher le trésor. À chaque étape, le 
+programme indiquera si le trésor est dans la moitié supérieure ou 
+inférieure :</p>
+            <pre><code>
+    def recherche_binaire(liste, debut, fin, cible):
+        if debut &gt; fin:
+            print("Le trésor n'est pas sur cette île !")
+            return -1
+        
+        milieu = (debut + fin) // 2
+        print(f"Vous cherchez dans la section {milieu}...")
+        
+        if liste[milieu] == cible:
+            print(f"Félicitations ! Vous avez trouvé le trésor dans la section {milieu} !")
+            return milieu
+        elif liste[milieu] &lt; cible:
+            print("Le trésor est dans une section plus haute.")
+            return recherche_binaire(liste, milieu + 1, fin, cible)
+        else:
+            print("Le trésor est dans une section plus basse.")
+            return recherche_binaire(liste, debut, milieu - 1, cible)
+    
+    # Appel de la fonction
+    recherche_binaire(sections, 0, len(sections) - 1, section_tresor)
+            </code></pre>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Extension et Challenge : Limite de Tentatives</h4>
+            <p>Pour ajouter un défi supplémentaire, introduisez une 
+limite de tentatives. Comme la recherche binaire divise la zone par deux
+ à chaque étape, le nombre maximum de tentatives pour trouver le trésor 
+dans une liste de 100 éléments est de 7 (car log2(100) ≈ 7).</p>
+            <p>Modifiez l'algorithme pour limiter le nombre de tentatives à 7. Si le joueur dépasse ce nombre, il échoue à trouver le trésor.</p>
+        
+            <pre><code>
+    def recherche_binaire(liste, debut, fin, cible, tentatives=7):
+        if debut &gt; fin or tentatives == 0:
+            print("Le trésor n'a pas été trouvé, vous avez épuisé vos tentatives.")
+            return -1
+        
+        milieu = (debut + fin) // 2
+        print(f"Vous cherchez dans la section {milieu}... Tentatives restantes : {tentatives}")
+        
+        if liste[milieu] == cible:
+            print(f"Félicitations ! Vous avez trouvé le trésor dans la section {milieu} !")
+            return milieu
+        elif liste[milieu] &lt; cible:
+            print("Le trésor est dans une section plus haute.")
+            return recherche_binaire(liste, milieu + 1, fin, cible, tentatives - 1)
+        else:
+            print("Le trésor est dans une section plus basse.")
+            return recherche_binaire(liste, debut, milieu - 1, cible, tentatives - 1)
+            </code></pre>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Conclusion et Réflexion</h3>
+            <p>À la fin de cette séance :</p>
+            <ul>
+                <li>Les élèves auront compris le concept de récursivité 
+et comment elle peut être utilisée pour diviser un problème en 
+sous-problèmes plus petits.</li>
+                <li>Ils auront appris à implémenter un algorithme de 
+recherche binaire pour améliorer l’efficacité de la recherche par 
+rapport à une recherche linéaire.</li>
+            </ul>
+        
+            <p><strong>Discussion sur la complexité temporelle :</strong>
+ La recherche linéaire prend O(n) opérations, tandis que la recherche 
+binaire prend O(log n) opérations, ce qui est bien plus rapide pour de 
+grandes listes.</p>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Exercice complémentaire :</h4>
+            <p>Comparer la recherche linéaire et la recherche binaire : 
+Demander aux élèves d’implémenter une recherche linéaire et de compter 
+combien de tentatives elle nécessite en moyenne pour trouver le trésor.</p>
+        </section>

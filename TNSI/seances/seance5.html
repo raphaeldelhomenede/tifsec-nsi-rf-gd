@@ -1,0 +1,201 @@
+<script src="script.js"></script>
+<section id="session5" class="content-section">
+            <h2 style="margin-top: 30px; margin-bottom: 20px;">Séance 5 : Pratique – Recherche d’un Personnage de Manga avec un Algorithme de Recherche Binaire</h2>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Objectif Global :</h3>
+            <p>Les élèves doivent utiliser l’algorithme de recherche 
+binaire pour retrouver un personnage de manga dans une liste triée. Cela
+ permettra de consolider les notions de recherche efficace et 
+d’appliquer la récursivité dans un contexte concret.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Contexte Manga :</h3>
+            <p>Dans cette séance, vous allez simuler une recherche dans 
+une base de données de personnages de manga. Imaginez une application où
+ les utilisateurs peuvent rechercher un personnage de manga par son nom.
+ Comme la base de données contient de nombreux personnages, une 
+recherche linéaire serait inefficace. La solution ? Utiliser un 
+algorithme de recherche binaire pour accélérer la recherche.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">1. Introduction au Problème</h3>
+            <p><strong>Problème :</strong> Vous avez une liste triée de 
+personnages de manga et vous devez trouver un personnage spécifique 
+rapidement. Plutôt que de chercher chaque nom un par un (recherche 
+linéaire), vous allez utiliser un algorithme de recherche binaire pour 
+optimiser le processus.</p>
+            <ul>
+                <li><strong>Recherche linéaire :</strong> Il faut 
+potentiellement parcourir tous les éléments de la liste pour trouver le 
+bon personnage. Si la liste contient 100 personnages, il pourrait 
+falloir jusqu'à 100 comparaisons dans le pire des cas.</li>
+                <li><strong>Recherche binaire :</strong> La liste est 
+triée, donc à chaque étape, vous pouvez diviser la liste en deux, ce qui
+ accélère la recherche de manière exponentielle.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">2. Explication du Contexte et de la Recherche Binaire</h3>
+            <p><strong>Contexte Manga :</strong> Imaginez une 
+application de fans de manga où les utilisateurs peuvent rechercher des 
+personnages. Chaque personnage a un nom, et la liste de personnages est 
+déjà triée alphabétiquement.</p>
+            <p><strong>Exemple :</strong> Voici une liste simplifiée de personnages de mangas (cette liste est triée) :</p>
+        
+            <pre><code>["Asta", "Edward", "Goku", "Luffy", "Naruto", "Sasuke", "Tanjiro", "Vegeta", "Zoro"]</code></pre>
+        
+            <p>Si vous cherchez "Luffy", au lieu de commencer à chercher
+ depuis le début de la liste et d’aller un par un (recherche linéaire), 
+vous pouvez commencer au milieu et diviser la recherche en deux.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">3. Recherche Binaire : Principe et Explication</h3>
+            <p>La recherche binaire consiste à diviser la liste en deux 
+parties égales, à comparer l’élément du milieu avec le nom que vous 
+cherchez, puis à continuer à diviser la moitié pertinente jusqu'à ce que
+ vous trouviez l'élément, ou que vous déterminiez qu'il n'est pas dans 
+la liste.</p>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Exemple Concret :</h4>
+            <p>Si vous cherchez "Luffy", voici les étapes :</p>
+            <ol>
+                <li>La liste contient 9 personnages, l’élément du milieu est à la position 4 (index 4, c’est "Naruto").</li>
+                <li>"Luffy" est plus petit que "Naruto" dans l’ordre 
+alphabétique, donc on cherche dans la première moitié de la liste 
+(éléments [0, 3]).</li>
+                <li>Dans cette nouvelle sous-liste, l’élément du milieu est à la position 1 (index 1, c’est "Edward").</li>
+                <li>"Luffy" est plus grand que "Edward", donc on cherche dans la moitié supérieure de cette sous-liste.</li>
+                <li>On trouve "Luffy" à l’index 3.</li>
+            </ol>
+        
+            <p>Conclusion : La recherche binaire a permis de trouver 
+"Luffy" en seulement 3 comparaisons, au lieu de 5 comparaisons en 
+recherche linéaire.</p>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Explication Théorique de l'Algorithme</h4>
+            <pre><code>
+    recherche_binaire(liste, debut, fin, cible):
+    Si debut &gt; fin, retourner -1 (le personnage n'est pas dans la liste)
+    
+    milieu = (debut + fin) // 2
+    
+    Si liste[milieu] == cible, retourner milieu (personnage trouvé)
+    
+    Si liste[milieu] &lt; cible:
+        Rechercher dans la moitié supérieure (milieu + 1 à fin)
+    Sinon:
+        Rechercher dans la moitié inférieure (debut à milieu - 1)
+            </code></pre>
+        
+            <p><strong>Cas de base :</strong> Si la sous-liste est vide (debut &gt; fin), le personnage n'est pas dans la liste.</p>
+            <p><strong>Cas récursif :</strong> La fonction appelle 
+récursivement la recherche binaire sur la moitié supérieure ou 
+inférieure selon la comparaison du personnage du milieu avec celui 
+recherché.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Mise en Pratique : Recherche Binaire sur une Liste de Personnages de Manga</h3>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Étape 1 : Créer la Liste des Personnages de Manga</h4>
+            <p>On va d’abord créer une liste de personnages triée alphabétiquement.</p>
+        
+            <pre><code>
+    personnages_manga = ["Asta", "Edward", "Goku", "Luffy", "Naruto", "Sasuke", "Tanjiro", "Vegeta", "Zoro"]
+            </code></pre>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Étape 2 : Implémenter la Recherche Binaire</h4>
+            <p>On implémente l’algorithme de recherche binaire pour 
+chercher un personnage dans cette liste. L’algorithme prend la liste de 
+personnages, les indices de début et de fin, et le nom du personnage à 
+chercher.</p>
+        
+            <pre><code>
+    def recherche_binaire(liste, debut, fin, cible):
+        if debut &gt; fin:
+            print(f"{cible} n'est pas dans la liste.")
+            return -1
+        
+        milieu = (debut + fin) // 2
+        print(f"Vérification du personnage au milieu : {liste[milieu]}")
+    
+        if liste[milieu] == cible:
+            print(f"Félicitations ! {cible} a été trouvé à la position {milieu}.")
+            return milieu
+        elif liste[milieu] &lt; cible:
+            print(f"{cible} est après {liste[milieu]}. Recherche dans la moitié supérieure.")
+            return recherche_binaire(liste, milieu + 1, fin, cible)
+        else:
+            print(f"{cible} est avant {liste[milieu]}. Recherche dans la moitié inférieure.")
+            return recherche_binaire(liste, debut, milieu - 1, cible)
+            </code></pre>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Étape 3 : Recherche d’un Personnage</h4>
+            <p>Invitez les élèves à tester cette fonction en recherchant des personnages comme Luffy, Naruto, ou d'autres dans la liste.</p>
+        
+            <pre><code>
+    # Appel de la fonction de recherche
+    recherche_binaire(personnages_manga, 0, len(personnages_manga) - 1, "Luffy")
+            </code></pre>
+        
+            <p><strong>Exemple de sortie :</strong></p>
+            <pre><code>
+    Vérification du personnage au milieu : Naruto
+    Luffy est avant Naruto. Recherche dans la moitié inférieure.
+    Vérification du personnage au milieu : Edward
+    Luffy est après Edward. Recherche dans la moitié supérieure.
+    Vérification du personnage au milieu : Luffy
+    Félicitations ! Luffy a été trouvé à la position 3.
+            </code></pre>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Extension : Limite de Tentatives</h3>
+            <p>Ajoutez une fonctionnalité pour limiter le nombre de 
+tentatives à un certain nombre, comme 4 tentatives, pour rendre 
+l'exercice plus difficile et montrer comment l’algorithme optimise les 
+recherches.</p>
+        
+            <pre><code>
+    def recherche_binaire(liste, debut, fin, cible, tentatives):
+        if debut &gt; fin or tentatives == 0:
+            print(f"{cible} n'a pas été trouvé ou les tentatives sont épuisées.")
+            return -1
+        
+        milieu = (debut + fin) // 2
+        print(f"Vérification du personnage au milieu : {liste[milieu]} - Tentatives restantes : {tentatives}")
+    
+        if liste[milieu] == cible:
+            print(f"Félicitations ! {cible} a été trouvé à la position {milieu}.")
+            return milieu
+        elif liste[milieu] &lt; cible:
+            print(f"{cible} est après {liste[milieu]}. Recherche dans la moitié supérieure.")
+            return recherche_binaire(liste, milieu + 1, fin, cible, tentatives - 1)
+        else:
+            print(f"{cible} est avant {liste[milieu]}. Recherche dans la moitié inférieure.")
+            return recherche_binaire(liste, debut, milieu - 1, cible, tentatives - 1)
+    
+    # Lancer la recherche avec une limite de tentatives
+    recherche_binaire(personnages_manga, 0, len(personnages_manga) - 1, "Luffy", tentatives=4)
+            </code></pre>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Conclusion et Réflexion</h3>
+            <ul>
+                <li><strong>Discussion sur l’efficacité :</strong> 
+Demandez aux élèves de comparer le nombre de tentatives nécessaires pour
+ une recherche binaire par rapport à une recherche linéaire. Pour une 
+liste de 9 éléments, la recherche binaire prend généralement 3 
+comparaisons, contre 9 dans le pire des cas pour une recherche linéaire.</li>
+                <li><strong>Introduction à la complexité algorithmique :</strong>
+ La recherche binaire a une complexité de O(log n), ce qui la rend 
+beaucoup plus rapide que la recherche linéaire O(n) pour de grandes 
+listes.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Objectif de la Séance :</h3>
+            <ul>
+                <li>Utiliser l'algorithme de recherche binaire dans un contexte de liste de personnages de manga.</li>
+                <li>Appliquer des concepts de récursivité pour diviser un problème complexe en sous-problèmes plus simples.</li>
+                <li>Comparer les performances entre une recherche linéaire et une recherche binaire, notamment en termes de nombre de comparaisons.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Exercice Complémentaire :</h3>
+            <ul>
+                <li>Implémenter une recherche linéaire et la comparer à la recherche binaire.</li>
+                <li>Ajouter d’autres fonctionnalités à l’application, 
+comme la possibilité de rechercher par d'autres attributs (ex : force, 
+univers d’origine des personnages).</li>
+            </ul>
+        </section>

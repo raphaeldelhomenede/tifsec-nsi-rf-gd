@@ -1,0 +1,183 @@
+<script src="script.js"></script>
+<section id="session17" class="content-section">
+            <h2 style="margin-top: 30px; margin-bottom: 20px;">Séance 17 : Pratique - Exploration d’un Monde Ouvert (Jeu Vidéo) avec DFS</h2>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Objectif Global :</h3>
+            <p>Dans cette séance pratique, les élèves appliqueront 
+l’algorithme DFS (Depth-First Search) pour permettre à un personnage 
+d’explorer un monde ouvert dans un jeu vidéo. L’objectif est de simuler 
+une exploration où le personnage doit visiter différents lieux en 
+profondeur, en suivant des chemins prédéfinis avant de revenir en 
+arrière et explorer d’autres zones.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Contexte de l'Exploration d’un Monde Ouvert dans un Jeu Vidéo</h3>
+            
+            <h4>1. Le Monde Ouvert :</h4>
+            <p>Un <strong>monde ouvert</strong> dans un jeu vidéo est un
+ environnement vaste et interconnecté où le joueur peut se déplacer 
+librement entre différentes zones (comme des villes, des forêts, des 
+montagnes, etc.). Chaque zone est modélisée comme un nœud d’un graphe, 
+et les connexions entre ces zones sont représentées par des chemins.</p>
+        
+            <p>Dans cette simulation, nous allons modéliser le monde 
+ouvert comme un graphe et utiliser DFS pour simuler l’exploration de ce 
+monde.</p>
+        
+            <h4>2. Objectif de l’Exploration :</h4>
+            <p>Le joueur contrôle un personnage qui doit explorer toutes
+ les zones du monde ouvert. L’objectif est de visiter chaque zone au 
+moins une fois, tout en cherchant des trésors cachés ou des objets dans 
+certaines zones.</p>
+        
+            <p>Par exemple :</p>
+            <ul>
+                <li>Le joueur peut commencer dans la <strong>ville principale</strong> (nœud 1).</li>
+                <li>Le joueur doit explorer des lieux comme des <strong>forêts</strong>, des <strong>cavernes</strong> ou des <strong>montagnes</strong> interconnectées.</li>
+            </ul>
+        
+            <p>DFS est idéal dans ce contexte, car il explore profondément dans une direction avant de revenir pour visiter d’autres zones.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Étape 1 : Représentation du Monde Ouvert avec un Graphe (30 min)</h3>
+            
+            <h4>1. Définition du Monde Ouvert sous forme de Graphe :</h4>
+            <p>Chaque zone du jeu est représentée comme un nœud du 
+graphe, et les chemins entre les zones sont les arêtes du graphe. Voici 
+un exemple de structure de graphe pour un monde ouvert :</p>
+        
+            <pre><code>
+    Ville Principale --- Forêt --- Caverne
+    |                    |        |
+    Montagne --- Plage    Lac     Temple
+            </code></pre>
+        
+            <p>Dans ce graphe, le joueur peut explorer des lieux 
+différents en passant par des chemins qui relient les zones. 
+L’algorithme DFS permet de déterminer l’ordre dans lequel ces zones 
+seront explorées.</p>
+        
+            <h4>2. Représentation en Python :</h4>
+            <p>Nous pouvons modéliser ce monde ouvert comme un 
+dictionnaire en Python, où chaque zone est un nœud, et la liste de ses 
+voisins contient les zones adjacentes :</p>
+        
+            <pre><code>
+    monde_ouvert = {
+        'Ville Principale': ['Forêt', 'Montagne'],
+        'Forêt': ['Ville Principale', 'Caverne', 'Lac'],
+        'Caverne': ['Forêt', 'Temple'],
+        'Montagne': ['Ville Principale', 'Plage'],
+        'Plage': ['Montagne'],
+        'Lac': ['Forêt'],
+        'Temple': ['Caverne']
+    }
+            </code></pre>
+        
+            <h4>3. Objectifs du joueur :</h4>
+            <ul>
+                <li>Explorer toutes les zones du monde ouvert.</li>
+                <li>Trouver des objets ou trésors cachés dans certaines zones.</li>
+                <li>Explorer le monde de manière exhaustive en suivant un parcours en profondeur (DFS).</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Étape 2 : Implémentation de DFS pour l’Exploration (40 min)</h3>
+        
+            <h4>1. Implémentation de DFS en Python pour Explorer le Monde Ouvert :</h4>
+            <p>Nous allons implémenter DFS pour que le personnage 
+explore chaque zone une par une, en suivant un parcours en profondeur. 
+Voici comment cela peut être fait en Python :</p>
+        
+            <pre><code>
+    def explorer_monde(monde, zone, visites):
+        if zone not in visites:
+            print(f"Vous explorez {zone}")
+            visites.add(zone)  # Marquer la zone comme visitée
+            for voisin in monde[zone]:  # Explorer les zones voisines non visitées
+                explorer_monde(monde, voisin, visites)
+        
+    # Ensemble des zones visitées
+    zones_visitees = set()
+    
+    # Lancer l'exploration à partir de la Ville Principale
+    explorer_monde(monde_ouvert, 'Ville Principale', zones_visitees)
+            </code></pre>
+        
+            <h4>2. Explication du Code :</h4>
+            <ul>
+                <li>La fonction <code>explorer_monde()</code> est appelée avec trois arguments : le monde ouvert (le graphe), la zone actuelle, et l’ensemble des zones déjà visitées.</li>
+                <li>Si la zone n’a pas encore été visitée, elle est 
+marquée comme visitée, et l’algorithme explore récursivement tous ses 
+voisins (autres zones connectées).</li>
+                <li>DFS explore d’abord les zones en profondeur avant de revenir en arrière pour explorer d’autres chemins.</li>
+            </ul>
+        
+            <h4>3. Simulation de l’Exploration :</h4>
+            <p>Lorsque vous exécutez le code ci-dessus, le personnage 
+explorera toutes les zones du monde ouvert dans un ordre déterminé par 
+DFS. Par exemple :</p>
+            <pre><code>
+    Vous explorez Ville Principale
+    Vous explorez Forêt
+    Vous explorez Caverne
+    Vous explorez Temple
+    Vous explorez Lac
+    Vous explorez Montagne
+    Vous explorez Plage
+            </code></pre>
+            <p>DFS commence à la "Ville Principale", puis explore en 
+profondeur la "Forêt", la "Caverne", et le "Temple" avant de revenir 
+pour explorer d’autres zones.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Étape 3 : Défis Pratiques pour les Élèves (30 min)</h3>
+            
+            <h4>1. Ajout d’Objets Cachés :</h4>
+            <ul>
+                <li><strong>Étape 1 :</strong> Modifiez le monde ouvert pour que certaines zones contiennent des objets ou des trésors cachés.</li>
+                <li><strong>Étape 2 :</strong> Modifiez le code pour que l'algorithme affiche un message lorsqu'un objet ou trésor est trouvé dans une zone spécifique.</li>
+            </ul>
+        
+            <h4>2. Limitation du Temps d’Exploration :</h4>
+            <ul>
+                <li><strong>Étape 1 :</strong> Ajoutez une contrainte de
+ temps ou un nombre maximum d'explorations que le joueur peut effectuer 
+avant que le temps ne s’écoule.</li>
+                <li><strong>Étape 2 :</strong> Implémentez cette limite 
+dans le code. Si le joueur dépasse la limite, un message s’affiche pour 
+indiquer que l’exploration est terminée.</li>
+            </ul>
+        
+            <h4>3. Exploration Sélective :</h4>
+            <ul>
+                <li><strong>Étape 1 :</strong> Créez un système où 
+certaines zones du monde ouvert sont bloquées jusqu'à ce que le joueur 
+trouve une clé ou un objet spécial dans une autre zone.</li>
+                <li><strong>Étape 2 :</strong> Modifiez l'algorithme pour permettre au joueur d'explorer uniquement après avoir trouvé cet objet.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Conclusion et Réflexion sur DFS dans les Jeux Vidéo (10 min)</h3>
+        
+            <h4>Analyse de DFS dans un Monde Ouvert :</h4>
+            <p>DFS est une méthode efficace pour explorer des mondes 
+ouverts en profondeur, permettant au joueur de suivre des chemins 
+jusqu’à ce qu’il atteigne une impasse ou un objectif. Une fois qu’un 
+chemin est épuisé, l’algorithme revient en arrière pour explorer 
+d’autres options.</p>
+        
+            <h4>Avantages et Inconvénients :</h4>
+            <ul>
+                <li><strong>Avantage :</strong> DFS est excellent pour 
+explorer les mondes où l’objectif est situé à une grande profondeur (par
+ exemple, dans une grotte éloignée ou dans un temple caché).</li>
+                <li><strong>Inconvénient :</strong> DFS peut parfois suivre un chemin non optimal avant de revenir en arrière pour explorer d’autres options.</li>
+            </ul>
+        
+            <h4>Discussion :</h4>
+            <ul>
+                <li>Comparez DFS avec d’autres algorithmes 
+d’exploration, comme BFS (Breadth-First Search), pour discuter des 
+avantages et inconvénients dans des mondes ouverts.</li>
+                <li>Comment pourriez-vous modifier cet algorithme pour 
+permettre une exploration plus "intelligente" dans un monde ouvert ? Par
+ exemple, ajouter une stratégie d’évitement des zones dangereuses ou 
+moins intéressantes.</li>
+            </ul>
+        </section>

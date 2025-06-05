@@ -1,0 +1,145 @@
+<script src="script.js"></script>
+<section id="session37" class="content-section">
+            <h2 style="margin-top: 30px; margin-bottom: 20px;">Séance 37 : Introduction à la Programmation Orientée Objet (POO) – Classes, Objets, Méthodes</h2>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Objectif Global :</h3>
+            <p>Dans cette séance, les élèves découvriront les concepts 
+fondamentaux de la programmation orientée objet (POO) en Python. Ils 
+apprendront à définir des classes, à créer des objets et à utiliser des 
+méthodes pour manipuler les attributs des objets. Cette séance comporte 
+des exercices pratiques pour illustrer chaque concept, en utilisant des 
+exemples simples et concrets.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Introduction à la Programmation Orientée Objet (15 min)</h3>
+            
+            <h4>Contexte :</h4>
+            <p>La Programmation Orientée Objet (POO) est un paradigme de
+ programmation qui permet de structurer le code en regroupant des 
+données et des comportements dans des <strong>objets</strong>. Un objet est une instance d'une <strong>classe</strong>, qui est un modèle ou une "usine" pour créer des objets similaires.</p>
+        
+            <h4>Concepts Clés :</h4>
+            <ul>
+                <li><strong>Classe :</strong> Une classe est un modèle 
+pour créer des objets. Elle définit les attributs (données) et les 
+méthodes (fonctions) que chaque objet de cette classe possédera.</li>
+                <li><strong>Objet :</strong> Un objet est une instance 
+de classe. C’est une entité spécifique créée à partir d’une classe, avec
+ ses propres valeurs d'attributs.</li>
+                <li><strong>Méthode :</strong> Une méthode est une fonction définie dans une classe. Elle décrit les actions qu'un objet de cette classe peut effectuer.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Définition d’une Classe en Python (20 min)</h3>
+            
+            <h4>Exemple : Classe Personnage dans un Jeu Vidéo</h4>
+            <p>Imaginons que nous créons un jeu vidéo. Nous avons besoin
+ de définir un modèle pour les personnages du jeu, avec des attributs 
+comme le <strong>nom</strong> du personnage et ses <strong>points de vie</strong>, et des méthodes pour qu'il puisse <strong>se déplacer</strong> ou <strong>attaquer</strong>.</p>
+        
+            <h4>Code Exemple :</h4>
+            <p>Voici comment définir une classe <code>Personnage</code> avec deux attributs et une méthode :</p>
+            <pre><code>class Personnage:
+            def __init__(self, nom, points_de_vie):
+                self.nom = nom                # Attribut 'nom'
+                self.points_de_vie = points_de_vie  # Attribut 'points de vie'
+            
+            def se_presenter(self):
+                print(f"Je suis {self.nom} et j'ai {self.points_de_vie} points de vie.")
+            </code></pre>
+        
+            <p><strong>Explication :</strong></p>
+            <ul>
+                <li><code>__init__</code> : Cette méthode spéciale s’appelle le <strong>constructeur</strong>. Elle est appelée automatiquement quand un nouvel objet est créé. Elle initialise les attributs de l'objet.</li>
+                <li><code>self</code> : Représente l'instance de l'objet actuel. Il est utilisé pour accéder aux attributs et méthodes de l'objet dans la classe.</li>
+                <li><code>nom</code> et <code>points_de_vie</code> : Attributs de la classe <code>Personnage</code>, qui stockent le nom et les points de vie du personnage.</li>
+                <li><code>se_presenter</code> : Méthode qui affiche une présentation du personnage.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Création et Utilisation d’Objets (25 min)</h3>
+            
+            <h4>1. Créer un Objet</h4>
+            <p>Pour créer un objet de la classe <code>Personnage</code>, on utilise la syntaxe suivante :</p>
+            <pre><code># Création d'un objet de la classe Personnage
+        heros = Personnage("Arthur", 100)
+            </code></pre>
+        
+            <h4>2. Utiliser les Attributs et Méthodes de l'Objet</h4>
+            <p>Une fois l'objet <code>heros</code> créé, nous pouvons accéder à ses attributs et méthodes :</p>
+            <pre><code># Accéder aux attributs
+        print(heros.nom)           # Affiche "Arthur"
+        print(heros.points_de_vie) # Affiche 100
+        
+        # Appeler une méthode
+        heros.se_presenter()        # Affiche "Je suis Arthur et j'ai 100 points de vie."
+            </code></pre>
+        
+            <p><strong>Explication :</strong> Ici, nous avons créé un personnage appelé "Arthur" avec 100 points de vie. En appelant <code>heros.se_presenter()</code>, nous demandons à l'objet de se présenter.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Exercice Pratique (40 min)</h3>
+            <h4>Contexte du Jeu :</h4>
+            <p>Dans un jeu de rôle, chaque personnage peut avoir un nom,
+ des points de vie et une action de présentation. Nous allons étendre 
+cet exemple en ajoutant une méthode pour que le personnage puisse <strong>perdre des points de vie</strong> lorsqu'il prend des dégâts.</p>
+        
+            <h4>Étapes de l'Exercice :</h4>
+            <ol>
+                <li><strong>Étape 1 :</strong> Ajoutez une méthode <code>subir_degats</code> dans la classe <code>Personnage</code> qui réduit les points de vie du personnage.</li>
+                <li><strong>Étape 2 :</strong> Utilisez cette méthode pour simuler un combat où le personnage prend des dégâts et affiche ses points de vie restants.</li>
+            </ol>
+        
+            <h4>Code de Base :</h4>
+            <pre><code>class Personnage:
+            def __init__(self, nom, points_de_vie):
+                self.nom = nom
+                self.points_de_vie = points_de_vie
+            
+            def se_presenter(self):
+                print(f"Je suis {self.nom} et j'ai {self.points_de_vie} points de vie.")
+            
+            def subir_degats(self, degats):
+                self.points_de_vie -= degats
+                print(f"{self.nom} subit {degats} points de dégâts. Points de vie restants : {self.points_de_vie}")
+            </code></pre>
+        
+            <h4>Exemple d'Utilisation :</h4>
+            <pre><code># Créer un personnage
+        heros = Personnage("Arthur", 100)
+        
+        # Le personnage se présente
+        heros.se_presenter()
+        
+        # Le personnage subit des dégâts
+        heros.subir_degats(20)   # Réduit les points de vie de 20
+        heros.subir_degats(10)   # Réduit les points de vie de 10
+            </code></pre>
+        
+            <h4>Résultat Attendu :</h4>
+            <p>Le programme doit afficher :</p>
+            <pre><code>Je suis Arthur et j'ai 100 points de vie.
+        Arthur subit 20 points de dégâts. Points de vie restants : 80
+        Arthur subit 10 points de dégâts. Points de vie restants : 70
+            </code></pre>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Conclusion et Questions de Réflexion (20 min)</h3>
+        
+            <h4>Récapitulatif :</h4>
+            <p>Dans cette séance, les élèves ont appris :</p>
+            <ul>
+                <li>À définir une <strong>classe</strong> avec des attributs et des méthodes.</li>
+                <li>À créer des <strong>objets</strong> de cette classe et à manipuler leurs attributs et méthodes.</li>
+                <li>À comprendre l'importance de la <strong>POO</strong> pour structurer le code de manière modulaire et réutilisable.</li>
+            </ul>
+        
+            <h4>Questions pour Approfondir :</h4>
+            <ul>
+                <li>Comment pouvez-vous ajouter des <strong>types de personnages</strong> différents (par exemple, Guerrier, Mage) qui ont chacun des actions spécifiques ?</li>
+                <li>Comment pourrait-on améliorer la méthode <code>subir_degats</code> pour éviter que les points de vie ne deviennent négatifs ?</li>
+                <li>Que se passe-t-il si on ajoute de nouveaux attributs à la classe ? Comment cela affecte-t-il les objets existants ?</li>
+            </ul>
+        
+            <h4>Défi supplémentaire :</h4>
+            <p>Demandez aux élèves de créer une nouvelle méthode appelée <code>soigner</code>
+ qui permet au personnage de regagner des points de vie lorsqu’il reçoit
+ des soins. Cette méthode doit vérifier que les points de vie ne 
+dépassent pas un maximum (par exemple, 100).</p>
+        
+        </section>

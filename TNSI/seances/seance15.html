@@ -1,0 +1,214 @@
+<script src="script.js"></script>
+<section id="session15" class="content-section">
+            <h2 style="margin-top: 30px; margin-bottom: 20px;">Séance 15 : Algorithmes de Parcours de Graphes – DFS et BFS</h2>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Objectif Global :</h3>
+            <p>Les élèves doivent comprendre et implémenter deux 
+algorithmes fondamentaux de parcours de graphes : DFS (Depth-First 
+Search) et BFS (Breadth-First Search). Ils apprendront à les utiliser 
+dans le cadre d’un jeu vidéo où un personnage doit explorer un réseau de
+ niveaux ou un labyrinthe.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Introduction aux Graphes et Parcours</h3>
+            <h4>Le Contexte du Jeu Vidéo :</h4>
+            <p>Dans un jeu vidéo d’aventure, un personnage doit naviguer
+ à travers un labyrinthe ou un réseau de niveaux pour atteindre la 
+sortie ou accomplir une mission. Chaque niveau est représenté comme un 
+graphe, où :</p>
+            <ul>
+                <li>Chaque nœud du graphe représente une salle ou un point d’intérêt dans le labyrinthe.</li>
+                <li>Chaque arête entre deux nœuds représente un chemin que le personnage peut emprunter.</li>
+            </ul>
+            <p>Le joueur doit explorer le labyrinthe pour trouver la 
+sortie ou un trésor. Pour rendre cette exploration efficace, nous allons
+ utiliser deux algorithmes de parcours de graphes : DFS (parcours en 
+profondeur) et BFS (parcours en largeur).</p>
+        
+            <h4>Définition de Base d’un Graphe :</h4>
+            <ul>
+                <li><strong>Nœuds (ou sommets) :</strong> chaque nœud représente un point, comme une salle dans un labyrinthe ou un niveau dans un jeu.</li>
+                <li><strong>Arêtes :</strong> les connexions entre les nœuds, qui représentent des chemins.</li>
+            </ul>
+            <p>Dans notre jeu, nous pouvons modéliser un labyrinthe ou un réseau de niveaux sous forme de graphe.</p>
+        
+            <h4>Exemple Visuel :</h4>
+            <pre><code>
+    1 --- 2 --- 3
+    |     |     |
+    4 --- 5 --- 6
+            </code></pre>
+            <p>Chaque numéro (1, 2, 3, etc.) représente une salle du labyrinthe.</p>
+            <p>Chaque trait (--- ou |) représente un chemin que le personnage peut emprunter pour aller d'une salle à l'autre.</p>
+            <p>Nous allons voir comment le personnage peut explorer ce 
+labyrinthe en utilisant les algorithmes DFS et BFS pour parcourir le 
+graphe.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Algorithme DFS (Depth-First Search) – Parcours en Profondeur</h3>
+            <h4>1. Principe de DFS :</h4>
+            <p>Le parcours en profondeur consiste à explorer le plus 
+loin possible dans une direction avant de revenir en arrière. Cela 
+signifie que l’algorithme suit un chemin jusqu’à ce qu’il n’y ait plus 
+d’arêtes à suivre, puis il revient en arrière pour explorer d’autres 
+chemins.</p>
+        
+            <p>DFS fonctionne de manière récursive, en suivant un chemin
+ jusqu’à atteindre un nœud sans issue (feuille), puis en revenant pour 
+explorer les autres chemins.</p>
+        
+            <h4>Exemple Visuel avec DFS :</h4>
+            <p>Dans notre labyrinthe ci-dessus, un parcours DFS à partir
+ du nœud 1 pourrait suivre cette séquence : 1 → 2 → 3 → 6 → 5 → 4 
+(exploration la plus profonde possible avant de revenir).</p>
+        
+            <h4>Pseudo-code de DFS :</h4>
+            <pre><code>
+    def dfs(graphe, noeud, visites):
+        if noeud not in visites:
+            print(f"Visite du nœud {noeud}")
+            visites.add(noeud)  # Marquer le nœud comme visité
+            for voisin dans graphe[noeud]:  # Explorer tous les voisins non visités
+                dfs(graphe, voisin, visites)
+            </code></pre>
+        
+            <h4>Explication Étape par Étape :</h4>
+            <ul>
+                <li><strong>Initialisation :</strong> On commence au premier nœud (par exemple, la salle de départ).</li>
+                <li><strong>Exploration :</strong> On explore un des voisins non visités, puis on continue à explorer les voisins des voisins.</li>
+                <li><strong>Retour en arrière :</strong> Si un nœud n’a plus de voisins non visités, on revient en arrière pour explorer les autres chemins.</li>
+            </ul>
+        
+            <h4>Implémentation DFS dans le Contexte du Jeu (Exemple en Python) :</h4>
+            <pre><code>
+    graphe = {
+        1: [2, 4],
+        2: [1, 3, 5],
+        3: [2, 6],
+        4: [1, 5],
+        5: [2, 4, 6],
+        6: [3, 5]
+    }
+    
+    def dfs(graphe, noeud, visites):
+        if noeud not in visites:
+            print(f"Visite de la salle {noeud}")
+            visites.add(noeud)
+            for voisin dans graphe[noeud]:
+                dfs(graphe, voisin, visites)
+    
+    # Initialiser un ensemble de nœuds visités
+    visites = set()
+    
+    # Lancer le parcours DFS à partir de la salle 1
+    dfs(graphe, 1, visites)
+            </code></pre>
+        
+            <h4>Défi Pratique :</h4>
+            <ul>
+                <li><strong>Étape 1 :</strong> Modifiez le graphe pour que certaines salles contiennent des trésors.</li>
+                <li><strong>Étape 2 :</strong> Implémentez un DFS pour que le joueur explore toutes les salles et affiche si un trésor est trouvé dans une salle.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Algorithme BFS (Breadth-First Search) – Parcours en Largeur</h3>
+            <h4>1. Principe de BFS :</h4>
+            <p>Le parcours en largeur consiste à explorer tous les voisins d’un nœud avant de passer aux voisins des voisins.</p>
+            <p>BFS fonctionne en utilisant une file d’attente (queue) 
+pour gérer les nœuds à explorer. À chaque étape, on explore tous les 
+nœuds voisins du nœud actuel avant de passer aux nœuds de niveau 
+supérieur.</p>
+        
+            <h4>Exemple Visuel avec BFS :</h4>
+            <p>Dans le labyrinthe, un parcours BFS à partir du nœud 1 
+pourrait suivre cette séquence : 1 → 2 → 4 → 3 → 5 → 6 (exploration 
+niveau par niveau).</p>
+        
+            <h4>Pseudo-code de BFS :</h4>
+            <pre><code>
+    from collections import deque
+
+    def bfs(graphe, noeud):
+        visites = set()  # Ensemble des nœuds visités
+        queue = deque([noeud])  # File d'attente pour gérer les nœuds à explorer
+        
+        while queue:
+            courant = queue.popleft()  # Récupérer le nœud à explorer
+            if courant not in visites:
+                print(f"Visite du nœud {courant}")
+                visites.add(courant)  # Marquer comme visité
+                for voisin dans graphe[courant]:
+                    if voisin not in visites:
+                        queue.append(voisin)  # Ajouter les voisins à la file d'attente
+            </code></pre>
+        
+            <h4>Explication Étape par Étape :</h4>
+            <ul>
+                <li><strong>Initialisation :</strong> On commence au premier nœud (la salle de départ).</li>
+                <li><strong>Exploration des voisins :</strong> On explore tous les voisins directs du nœud actuel.</li>
+                <li><strong>Nœuds de niveau supérieur :</strong> Une 
+fois les voisins directs explorés, on passe aux voisins des voisins, et 
+ainsi de suite, jusqu’à ce que tous les nœuds soient visités.</li>
+            </ul>
+        
+            <h4>Implémentation BFS dans le Contexte du Jeu (Exemple en Python) :</h4>
+            <pre><code>
+    from collections import deque
+        
+    graphe = {
+        1: [2, 4],
+        2: [1, 3, 5],
+        3: [2, 6],
+        4: [1, 5],
+        5: [2, 4, 6],
+        6: [3, 5]
+    }
+                
+    def bfs(graphe, noeud):
+        visites = set()  # Ensemble des nœuds visités
+        queue = deque([noeud])  # File d'attente
+        
+        while queue:
+            courant = queue.popleft()
+            if courant not in visites:
+                print(f"Visite de la salle {courant}")
+                visites.add(courant)
+                for voisin dans graphe[courant]:
+                    if voisin not in visites:
+                        queue.append(voisin)
+    
+    # Lancer le parcours BFS à partir de la salle 1
+    bfs(graphe, 1)
+            </code></pre>
+        
+            <h4>Défi Pratique :</h4>
+            <ul>
+                <li><strong>Étape 1 :</strong> Implémentez un système où le personnage doit explorer toutes les salles du labyrinthe à l'aide du parcours en largeur.</li>
+                <li><strong>Étape 2 :</strong> Ajoutez un obstacle dans certaines salles et modifiez le BFS pour que le personnage ignore les salles avec des obstacles.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Conclusion et Comparaison des Algorithmes</h3>
+        
+            <h4>Comparaison DFS vs BFS :</h4>
+            <ul>
+                <li><strong>DFS (Depth-First Search) :</strong> 
+L'algorithme explore profondément dans un chemin avant de revenir en 
+arrière. Il est utile pour explorer des labyrinthes où l’on veut 
+atteindre des chemins très éloignés. DFS utilise souvent la récursivité.</li>
+                <li><strong>BFS (Breadth-First Search) :</strong> 
+L'algorithme explore tous les voisins directs avant de passer aux nœuds 
+suivants. Il est très efficace pour trouver le chemin le plus court dans
+ un graphe. BFS utilise une file d’attente.</li>
+            </ul>
+        
+            <h4>Complexité Temporelle :</h4>
+            <p>Les deux algorithmes ont une complexité en temps de <code>O(V + E)</code>, où <code>V</code> est le nombre de nœuds (salles) et <code>E</code> est le nombre d’arêtes (chemins).</p>
+        
+            <h4>Discussion :</h4>
+            <ul>
+                <li>DFS est particulièrement utile pour les problèmes de
+ parcours de labyrinthe où il est important d’explorer un chemin complet
+ avant de revenir en arrière.</li>
+                <li>BFS est idéal pour trouver des chemins plus courts 
+ou explorer des environnements "niveau par niveau", comme dans un jeu où
+ l’on veut explorer toutes les salles d'un étage avant de monter à 
+l'étage supérieur.</li>
+            </ul>
+        </section>

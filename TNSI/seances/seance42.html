@@ -1,0 +1,198 @@
+<script src="script.js"></script>
+<section id="session42" class="content-section">
+            <h2 style="margin-top: 30px; margin-bottom: 20px;">Séance 42 : Pratique - Utilisation de Design Patterns pour Optimiser la Gestion des Niveaux d’un Jeu Vidéo</h2>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Objectif Global :</h3>
+            <p>Cette séance vise à introduire certains <strong>design patterns</strong>
+ courants en programmation orientée objet et à les appliquer pour 
+optimiser la gestion des niveaux dans un jeu vidéo. Les élèves 
+apprendront à structurer leur code en utilisant des patterns comme le <strong>Singleton</strong> et le <strong>Factory</strong> pour améliorer l'organisation, la réutilisabilité et l'évolutivité de leur code.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Introduction aux Design Patterns</h3>
+            <h4>Qu’est-ce qu’un Design Pattern ?</h4>
+            <p>Un design pattern est une solution générale et 
+réutilisable à un problème récurrent dans un contexte spécifique. En 
+programmation orientée objet, les design patterns permettent de 
+structurer le code pour qu'il soit plus facile à comprendre, à maintenir
+ et à faire évoluer.</p>
+        
+            <h4>Design Patterns Utiles pour la Gestion des Niveaux :</h4>
+            <ul>
+                <li><strong>Singleton :</strong> Utilisé pour s'assurer 
+qu'une classe n'a qu'une seule instance à tout moment, ce qui est utile 
+pour la gestion des niveaux du jeu.</li>
+                <li><strong>Factory :</strong> Utilisé pour créer des 
+objets sans exposer la logique de création. Il est idéal pour créer 
+différents types de niveaux (ex. : niveau facile, moyen, difficile) sans
+ modifier le code existant.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">1. Pattern Singleton pour la Gestion du Niveau Actuel (30 min)</h3>
+        
+            <h4>Principe du Singleton :</h4>
+            <p>Le Singleton est un design pattern qui garantit qu’une 
+classe n’a qu’une seule instance dans l’application. Pour un jeu vidéo, 
+cela permet de s’assurer qu’il n’y a qu’un seul niveau actif à un moment
+ donné.</p>
+        
+            <h4>Application dans le Jeu Vidéo :</h4>
+            <p>Nous allons utiliser le Singleton pour gérer le niveau 
+actuel du jeu. En utilisant ce pattern, nous pouvons facilement accéder 
+au niveau en cours sans créer d’instances supplémentaires par erreur.</p>
+        
+            <h4>Implémentation du Singleton en Python :</h4>
+            <p>Voici un exemple d'implémentation du pattern Singleton pour un objet <code>Niveau</code> :</p>
+        
+            <pre><code>class Niveau:
+            _instance = None  # Variable de classe pour stocker l'unique instance
+        
+            def __new__(cls):
+                if cls._instance is None:
+                    cls._instance = super(Niveau, cls).__new__(cls)
+                    cls._instance.nom = None
+                    cls._instance.difficulte = None
+                return cls._instance
+        
+            def configurer_niveau(self, nom, difficulte):
+                self.nom = nom
+                self.difficulte = difficulte
+        
+            def afficher_details(self):
+                print(f"Niveau: {self.nom}, Difficulté: {self.difficulte}")
+            
+        # Utilisation du Singleton
+        niveau_actuel = Niveau()
+        niveau_actuel.configurer_niveau("Forêt Mystique", "Facile")
+        niveau_actuel.afficher_details()
+        
+        # Tentative de création d'un autre niveau
+        autre_niveau = Niveau()
+        autre_niveau.afficher_details()
+            </code></pre>
+        
+            <h4>Explication du Code :</h4>
+            <ul>
+                <li><code>_instance</code> est une variable de classe utilisée pour stocker l’unique instance de la classe.</li>
+                <li>La méthode <code>__new__</code> vérifie si une instance existe déjà ; si ce n’est pas le cas, elle en crée une, sinon elle retourne l'instance existante.</li>
+                <li><code>configurer_niveau</code> permet de définir le nom et la difficulté du niveau actuel.</li>
+            </ul>
+        
+            <h4>Défi Pratique :</h4>
+            <ul>
+                <li><strong>Étape 1 :</strong> Ajoutez une méthode pour changer la difficulté du niveau sans créer de nouvelle instance.</li>
+                <li><strong>Étape 2 :</strong> Utilisez le Singleton pour garantir qu'un seul niveau est actif à la fois dans votre jeu.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">2. Pattern Factory pour la Création Dynamique de Niveaux (30 min)</h3>
+        
+            <h4>Principe du Factory :</h4>
+            <p>Le pattern Factory fournit une méthode pour créer des 
+objets de manière dynamique, sans exposer la logique de création. Ce 
+pattern est utile lorsque le jeu doit créer des niveaux de difficulté 
+variable (par exemple, facile, moyen, difficile) en fonction des choix 
+du joueur.</p>
+        
+            <h4>Application dans le Jeu Vidéo :</h4>
+            <p>Nous allons implémenter une <strong>classe Factory</strong>
+ qui génère des niveaux en fonction de leur difficulté. Cela permettra 
+de créer de nouveaux types de niveaux sans modifier le code existant, ce
+ qui rend le jeu plus flexible.</p>
+        
+            <h4>Implémentation du Pattern Factory en Python :</h4>
+            <p>Voici un exemple d'implémentation du pattern Factory pour créer des niveaux de difficulté différente :</p>
+        
+            <pre><code>class Niveau:
+            def __init__(self, nom, difficulte):
+                self.nom = nom
+                self.difficulte = difficulte
+        
+            def afficher_details(self):
+                print(f"Niveau: {self.nom}, Difficulté: {self.difficulte}")
+        
+        class NiveauFactory:
+            @staticmethod
+            def creer_niveau(difficulte):
+                if difficulte == "facile":
+                    return Niveau("Plaine Verte", "Facile")
+                elif difficulte == "moyen":
+                    return Niveau("Désert Brûlant", "Moyen")
+                elif difficulte == "difficile":
+                    return Niveau("Montagne des Ombres", "Difficile")
+                else:
+                    print("Difficulté inconnue. Création d'un niveau par défaut.")
+                    return Niveau("Plaine Inconnue", "Facile")
+        
+        # Utilisation de la Factory
+        niveau_facile = NiveauFactory.creer_niveau("facile")
+        niveau_facile.afficher_details()
+        
+        niveau_difficile = NiveauFactory.creer_niveau("difficile")
+        niveau_difficile.afficher_details()
+            </code></pre>
+        
+            <h4>Explication du Code :</h4>
+            <ul>
+                <li>La classe <code>Niveau</code> représente un niveau du jeu avec un nom et une difficulté.</li>
+                <li>La <code>NiveauFactory</code> est une classe Factory qui crée des objets <code>Niveau</code> en fonction de la difficulté demandée.</li>
+                <li>La méthode <code>creer_niveau</code> génère un niveau spécifique pour chaque difficulté, rendant la création d'objets flexible et modulaire.</li>
+            </ul>
+        
+            <h4>Défi Pratique :</h4>
+            <ul>
+                <li><strong>Étape 1 :</strong> Ajoutez un niveau de difficulté supplémentaire (par exemple, "expert") dans la Factory.</li>
+                <li><strong>Étape 2 :</strong> Intégrez la Factory dans le jeu pour permettre au joueur de choisir la difficulté de chaque niveau.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">3. Application Pratique : Gestion Optimisée des Niveaux dans un Jeu (30 min)</h3>
+        
+            <h4>Conception du Projet :</h4>
+            <p>Combinez le Singleton et le Factory pour gérer les 
+niveaux dans un jeu vidéo. Utilisez le Singleton pour contrôler le 
+niveau actif et le Factory pour créer des niveaux en fonction de la 
+difficulté choisie par le joueur.</p>
+        
+            <h4>Exercice Pratique :</h4>
+            <ul>
+                <li><strong>Étape 1 :</strong> Créez une classe <code>GestionNiveaux</code> qui utilise le Singleton pour garder le niveau actif.</li>
+                <li><strong>Étape 2 :</strong> Utilisez la Factory pour créer de nouveaux niveaux et les assigner au niveau actif à chaque nouvelle étape.</li>
+                <li><strong>Étape 3 :</strong> Testez le système en créant plusieurs niveaux et en changeant dynamiquement la difficulté.</li>
+            </ul>
+        
+            <h4>Code Exemple pour la Gestion des Niveaux :</h4>
+            <pre><code>class GestionNiveaux:
+            _instance = None
+        
+            def __new__(cls):
+                if cls._instance is None:
+                    cls._instance = super(GestionNiveaux, cls).__new__(cls)
+                    cls._instance.niveau_actuel = None
+                return cls._instance
+        
+            def definir_niveau(self, niveau):
+                self.niveau_actuel = niveau
+                print("Niveau défini :")
+                self.niveau_actuel.afficher_details()
+        
+        # Création de niveaux via la Factory et gestion par Singleton
+        gestionnaire = GestionNiveaux()
+        niveau_facile = NiveauFactory.creer_niveau("facile")
+        gestionnaire.definir_niveau(niveau_facile)
+        
+        niveau_difficile = NiveauFactory.creer_niveau("difficile")
+        gestionnaire.definir_niveau(niveau_difficile)
+            </code></pre>
+        
+            <h4>Conclusion :</h4>
+            <p>À la fin de cette séance, les élèves auront appris à 
+utiliser les patterns Singleton et Factory pour gérer la création et la 
+gestion des niveaux dans un jeu vidéo. Ils auront appliqué ces design 
+patterns pour structurer et optimiser le code, le rendant plus facile à 
+maintenir et à faire évoluer.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Conclusion et Discussion (10 min)</h3>
+            <p>Les élèves sont encouragés à discuter de la manière dont 
+les design patterns peuvent améliorer la qualité du code dans des 
+projets de grande envergure, comme les jeux vidéo. Nous discuterons 
+également de l'intérêt d'utiliser ces patterns dans d'autres contextes, 
+tels que la gestion des personnages ou des objets dans un jeu.</p>
+        </section>

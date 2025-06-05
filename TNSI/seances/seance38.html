@@ -1,0 +1,149 @@
+<script src="script.js"></script>
+<section id="session38" class="content-section">
+            <h2 style="margin-top: 30px; margin-bottom: 20px;">Séance 38 : Pratique - Modélisation d’un personnage de jeu vidéo en POO</h2>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Objectif Global :</h3>
+            <p>Les élèves apprendront à utiliser les concepts de 
+Programmation Orientée Objet (POO) pour modéliser un personnage de jeu 
+vidéo. Ils vont créer une classe <code>Personnage</code> avec différents attributs et méthodes pour simuler les actions et l’évolution du personnage dans le jeu.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Introduction à la Modélisation d'un Personnage (15 min)</h3>
+        
+            <h4>Concept de Modélisation en POO :</h4>
+            <p>Dans les jeux vidéo, chaque personnage possède des 
+caractéristiques (comme la santé, la force, la vitesse) et peut 
+accomplir des actions (comme se déplacer, attaquer, utiliser des 
+objets). Nous allons utiliser la POO pour représenter ces 
+caractéristiques et actions sous forme de <strong>classes</strong> et de <strong>méthodes</strong>.</p>
+        
+            <h4>Définition de la Classe <code>Personnage</code> :</h4>
+            <p>La classe <code>Personnage</code> représentera un personnage de jeu vidéo. Cette classe inclura :</p>
+            <ul>
+                <li>Des <strong>attributs</strong> pour stocker les caractéristiques du personnage, comme son nom, ses points de vie, sa force, et sa position.</li>
+                <li>Des <strong>méthodes</strong> pour effectuer des actions, comme se déplacer, attaquer, et récupérer des points de vie.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Étape 1 : Création de la Classe Personnage et des Attributs (30 min)</h3>
+        
+            <h4>1. Définition des Attributs :</h4>
+            <p>Chaque personnage aura les attributs suivants :</p>
+            <ul>
+                <li><strong>nom</strong> : le nom du personnage.</li>
+                <li><strong>points_vie</strong> : le nombre de points de vie restants.</li>
+                <li><strong>force</strong> : la force d’attaque du personnage.</li>
+                <li><strong>position</strong> : la position du personnage dans le jeu (par exemple, représentée par des coordonnées x et y).</li>
+            </ul>
+        
+            <h4>2. Implémentation de la Classe Personnage :</h4>
+            <p>Voici le code de base pour la classe <code>Personnage</code> avec les attributs définis :</p>
+        
+            <pre><code>class Personnage:
+            def __init__(self, nom, points_vie, force, position=(0, 0)):
+                self.nom = nom  # Nom du personnage
+                self.points_vie = points_vie  # Points de vie
+                self.force = force  # Force d'attaque
+                self.position = position  # Position (x, y)
+        
+            def afficher_informations(self):
+                print(f"Nom : {self.nom}")
+                print(f"Points de vie : {self.points_vie}")
+                print(f"Force : {self.force}")
+                print(f"Position : {self.position}")
+            </code></pre>
+        
+            <h4>3. Explication du Code :</h4>
+            <ul>
+                <li>Le constructeur <code>__init__()</code> initialise les attributs du personnage.</li>
+                <li>La méthode <code>afficher_informations()</code> permet d’afficher les informations du personnage, ce qui sera utile pour vérifier les attributs de chaque instance.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Étape 2 : Ajouter des Méthodes d'Action (45 min)</h3>
+        
+            <h4>1. Méthode <code>se_deplacer()</code> :</h4>
+            <p>Cette méthode permettra au personnage de se déplacer dans le jeu. Elle acceptera une direction (<code>haut</code>, <code>bas</code>, <code>gauche</code>, <code>droite</code>) et mettra à jour les coordonnées du personnage en conséquence.</p>
+        
+            <pre><code>def se_deplacer(self, direction):
+            x, y = self.position
+            if direction == "haut":
+                self.position = (x, y + 1)
+            elif direction == "bas":
+                self.position = (x, y - 1)
+            elif direction == "gauche":
+                self.position = (x - 1, y)
+            elif direction == "droite":
+                self.position = (x + 1, y)
+            print(f"{self.nom} s'est déplacé vers {direction}. Nouvelle position : {self.position}")
+            </code></pre>
+        
+            <h4>2. Méthode <code>attaquer()</code> :</h4>
+            <p>Cette méthode permet au personnage d’attaquer un autre personnage. Elle prend un objet <code>cible</code> comme paramètre et réduit les points de vie de la cible en fonction de la force du personnage attaquant.</p>
+        
+            <pre><code>def attaquer(self, cible):
+            print(f"{self.nom} attaque {cible.nom} avec une force de {self.force}")
+            cible.points_vie -= self.force
+            print(f"{cible.nom} a maintenant {cible.points_vie} points de vie restants.")
+            if cible.points_vie &lt;= 0:
+                print(f"{cible.nom} a été vaincu !")
+            </code></pre>
+        
+            <h4>3. Méthode <code>soigner()</code> :</h4>
+            <p>La méthode <code>soigner()</code> permet au personnage de regagner des points de vie.</p>
+        
+            <pre><code>def soigner(self, points):
+            self.points_vie += points
+            print(f"{self.nom} a récupéré {points} points de vie. Points de vie actuels : {self.points_vie}")
+            </code></pre>
+        
+            <h4>4. Code Complet de la Classe <code>Personnage</code> :</h4>
+            <pre><code>class Personnage:
+            def __init__(self, nom, points_vie, force, position=(0, 0)):
+                self.nom = nom
+                self.points_vie = points_vie
+                self.force = force
+                self.position = position
+        
+            def afficher_informations(self):
+                print(f"Nom : {self.nom}")
+                print(f"Points de vie : {self.points_vie}")
+                print(f"Force : {self.force}")
+                print(f"Position : {self.position}")
+        
+            def se_deplacer(self, direction):
+                x, y = self.position
+                if direction == "haut":
+                    self.position = (x, y + 1)
+                elif direction == "bas":
+                    self.position = (x, y - 1)
+                elif direction == "gauche":
+                    self.position = (x - 1, y)
+                elif direction == "droite":
+                    self.position = (x + 1, y)
+                print(f"{self.nom} s'est déplacé vers {direction}. Nouvelle position : {self.position}")
+        
+            def attaquer(self, cible):
+                print(f"{self.nom} attaque {cible.nom} avec une force de {self.force}")
+                cible.points_vie -= self.force
+                print(f"{cible.nom} a maintenant {cible.points_vie} points de vie restants.")
+                if cible.points_vie &lt;= 0:
+                    print(f"{cible.nom} a été vaincu !")
+        
+            def soigner(self, points):
+                self.points_vie += points
+                print(f"{self.nom} a récupéré {points} points de vie. Points de vie actuels : {self.points_vie}")
+            </code></pre>
+        
+            <h4>Défi Pratique :</h4>
+            <ul>
+                <li><strong>Étape 1 :</strong> Créez deux personnages avec des noms, des points de vie, et des forces différentes.</li>
+                <li><strong>Étape 2 :</strong> Faites-les se déplacer sur une grille et simulez un combat où chaque personnage attaque l'autre.</li>
+                <li><strong>Étape 3 :</strong> Utilisez la méthode <code>soigner()</code> pour régénérer les points de vie d’un personnage après une attaque.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Conclusion et Analyse (15 min)</h3>
+            <p>Les élèves auront appris à modéliser un personnage de jeu
+ vidéo en utilisant la POO. Ils auront mis en pratique les concepts de 
+classe, d'attributs et de méthodes pour créer un modèle de personnage 
+complet capable de se déplacer, d’attaquer et de se soigner. Cette 
+structure de code pourra être réutilisée et étendue dans des projets 
+futurs pour simuler des comportements plus complexes dans un jeu vidéo.</p>
+        </section>

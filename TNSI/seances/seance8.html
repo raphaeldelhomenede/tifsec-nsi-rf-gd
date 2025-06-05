@@ -1,0 +1,223 @@
+<script src="script.js"></script>
+<section id="session8" class="content-section">
+            <h2 style="margin-top: 30px; margin-bottom: 20px;">Séance 8 : Pratique - Résolution d'un Labyrinthe avec Backtracking (Jeu Vidéo)</h2>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Objectif Global :</h3>
+            <p>Les élèves vont apprendre à utiliser l’algorithme de 
+backtracking pour résoudre un labyrinthe. Cet algorithme permet de 
+trouver une sortie dans un environnement en revenant en arrière lorsque 
+le chemin pris est bloqué.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Contexte du Jeu Vidéo :</h3>
+            <p>Dans ce jeu, un personnage est perdu dans un labyrinthe 
+représenté sous la forme d'une grille. Le joueur doit trouver un chemin 
+entre le point de départ S (Start) et le point d’arrivée E (End). 
+Certains chemins sont bloqués par des murs, représentés par des 1, et 
+seuls les chemins libres (0) peuvent être empruntés.</p>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">1. Introduction au Problème</h4>
+            <p><strong>Expliquer le problème du labyrinthe :</strong></p>
+            <p>Le personnage doit trouver la sortie d’un labyrinthe représenté par une grille où certains chemins sont bloqués par des murs.</p>
+        
+            <p><strong>Représentation du labyrinthe :</strong></p>
+            <ul>
+                <li>S représente le point de départ.</li>
+                <li>E représente le point de sortie.</li>
+                <li>1 représente un mur (infranchissable).</li>
+                <li>0 représente un chemin libre.</li>
+            </ul>
+        
+            <p><strong>Exemple de labyrinthe simple :</strong></p>
+            <pre><code>
+    labyrinthe = [    
+        ['S', 1, 0, 0, 1],
+        [0, 1, 0, 1, 0],
+        [0, 0, 0, 1, 'E'],
+        [1, 1, 0, 0, 1],
+        [0, 0, 0, 1, 0]
+    ]
+            </code></pre>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">2. Qu'est-ce que le Backtracking ?</h4>
+            <p>L’algorithme de backtracking est une méthode récursive 
+qui essaie de trouver une solution à un problème en avançant étape par 
+étape. Si un chemin s’avère incorrect, l’algorithme revient en arrière 
+(backtrack) et essaie un autre chemin.</p>
+        
+            <p><strong>Explication du principe :</strong></p>
+            <ul>
+                <li>Le personnage commence au point de départ.</li>
+                <li>Il explore les chemins dans toutes les directions (haut, bas, gauche, droite).</li>
+                <li>Si le chemin mène à un mur ou à une impasse, il revient à la position précédente et essaie une autre direction.</li>
+                <li>Ce processus continue jusqu’à ce qu’il trouve la sortie ou qu’il n’y ait plus de chemin possible.</li>
+            </ul>
+        
+            <p><strong>Application au labyrinthe :</strong></p>
+            <p>L'algorithme va explorer tous les chemins possibles et 
+revenir en arrière si un chemin ne mène pas à la sortie. Cela permet de 
+tester toutes les solutions possibles pour trouver celle qui fonctionne.</p>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">3. Algorithme de Backtracking pour Résoudre le Labyrinthe</h4>
+            <p>L'algorithme de backtracking est généralement implémenté de manière récursive. Voici un exemple d'algorithme en pseudo-code :</p>
+        
+            <pre><code>
+    explorer_labyrinthe(labyrinthe, x, y, visitees):
+    Si (x, y) est hors du labyrinthe ou un mur ou déjà visité :
+        Retourner False
+                
+    Si (x, y) est la sortie :
+        Retourner True (la sortie est trouvée)
+    
+    Marquer (x, y) comme visité
+                
+    Explorer les 4 directions (haut, bas, gauche, droite) :
+        Si l’une des directions mène à la sortie :
+            Retourner True
+    
+    Si aucune direction ne fonctionne :
+        Retourner False (chemin bloqué)
+            </code></pre>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">4. Implémentation en Python</h4>
+        
+            <h5 style="margin-top: 20px; margin-bottom: 20px;">Étape 1 : Représenter le Labyrinthe</h5>
+            <p>Le labyrinthe sera représenté par une matrice (liste de 
+listes en Python). 0 représente un chemin ouvert, 1 représente un mur, S
+ représente la position de départ, et E la sortie.</p>
+        
+            <pre><code>
+    labyrinthe = [
+        ['S', 1, 0, 0, 1],
+        [0, 1, 0, 1, 0],
+        [0, 0, 0, 1, 'E'],
+        [1, 1, 0, 0, 1],
+        [0, 0, 0, 1, 0]
+    ]
+            </code></pre>
+        
+            <h5 style="margin-top: 20px; margin-bottom: 20px;">Étape 2 : Fonction de Backtracking</h5>
+            <pre><code>
+    def explorer_labyrinthe(labyrinthe, x, y, visitees):
+        # Vérifier les limites du labyrinthe
+        if x &lt; 0 or x &gt;= len(labyrinthe) or y &lt; 0 or y &gt;= len(labyrinthe[0]):
+            return False
+    
+        # Vérifier si la case est un mur ou déjà visitée
+        if labyrinthe[x][y] == 1 or (x, y) in visitees:
+            return False
+    
+        # Si on a trouvé la sortie
+        if labyrinthe[x][y] == 'E':
+            print(f"Sortie trouvée à la position ({x}, {y})")
+            return True
+    
+        # Marquer la case comme visitée
+        visitees.add((x, y))
+    
+        # Appeler la fonction récursive dans les 4 directions
+        if (explorer_labyrinthe(labyrinthe, x + 1, y, visitees) or  # Bas
+            explorer_labyrinthe(labyrinthe, x - 1, y, visitees) or  # Haut
+            explorer_labyrinthe(labyrinthe, x, y + 1, visitees) or  # Droite
+            explorer_labyrinthe(labyrinthe, x, y - 1, visitees)):   # Gauche
+            return True
+    
+        # Si aucune direction ne fonctionne, on retourne False (backtrack)
+        return False
+            </code></pre>
+        
+            <h5 style="margin-top: 20px; margin-bottom: 20px;">Étape 3 : Tester l'Algorithme avec un Labyrinthe</h5>
+            <pre><code>
+    # Position de départ
+    position_depart = (0, 0)
+    
+    # Ensemble des cases visitées
+    cases_visitees = set()
+    
+    # Lancer la recherche de la sortie
+    if not explorer_labyrinthe(labyrinthe, position_depart[0], position_depart[1], cases_visitees):
+        print("Aucun chemin trouvé pour sortir du labyrinthe.")
+            </code></pre>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">5. Ajout d'une Interface Graphique Simple</h4>
+            <p>Pour rendre l'algorithme plus interactif, nous allons 
+ajouter une interface graphique simple avec Pygame pour visualiser le 
+personnage se déplaçant dans le labyrinthe.</p>
+        
+            <h5 style="margin-top: 20px; margin-bottom: 20px;">Étape 1 : Installer Pygame</h5>
+            <p>Installer Pygame avec la commande :</p>
+            <pre><code>
+    pip install pygame
+            </code></pre>
+        
+            <h5 style="margin-top: 20px; margin-bottom: 20px;">Étape 2 : Visualisation du Labyrinthe</h5>
+            <pre><code>
+    import pygame
+
+    # Dimensions de la fenêtre
+    TAILLE_BLOC = 40
+    LARGEUR = len(labyrinthe[0]) * TAILLE_BLOC
+    HAUTEUR = len(labyrinthe) * TAILLE_BLOC
+    
+    # Couleurs
+    COULEUR_MUR = (0, 0, 0)
+    COULEUR_CHEMIN = (255, 255, 255)
+    COULEUR_JOUEUR = (0, 255, 0)
+    COULEUR_SORTIE = (255, 0, 0)
+    
+    # Initialiser Pygame
+    pygame.init()
+    fenetre = pygame.display.set_mode((LARGEUR, HAUTEUR))
+    pygame.display.set_caption("Labyrinthe")
+    
+    def dessiner_labyrinthe(labyrinthe, position_joueur):
+        fenetre.fill(COULEUR_CHEMIN)
+        for i in range(len(labyrinthe)):
+            for j in range(len(labyrinthe[0])):
+                x = j * TAILLE_BLOC
+                y = i * TAILLE_BLOC
+                if labyrinthe[i][j] == 1:
+                    pygame.draw.rect(fenetre, COULEUR_MUR, (x, y, TAILLE_BLOC, TAILLE_BLOC))
+                elif labyrinthe[i][j] == 'E':
+                    pygame.draw.rect(fenetre, COULEUR_SORTIE, (x, y, TAILLE_BLOC, TAILLE_BLOC))
+        # Dessiner le joueur
+        joueur_x, joueur_y = position_joueur
+        pygame.draw.rect(fenetre, COULEUR_JOUEUR, (joueur_y * TAILLE_BLOC, joueur_x * TAILLE_BLOC, TAILLE_BLOC, TAILLE_BLOC))
+    
+    # Position initiale du joueur
+    position_joueur = (0, 0)
+    
+    # Boucle du jeu
+    continuer = True
+    while continuer:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                continuer = False
+    
+        dessiner_labyrinthe(labyrinthe, position_joueur)
+        pygame.display.flip()
+    
+    pygame.quit()
+            </code></pre>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">6. Challenge et Extension</h4>
+            <ul>
+                <li><strong>Challenge 1 :</strong> Limiter le nombre de déplacements - Limiter le nombre de mouvements que le joueur peut faire avant de trouver la sortie.</li>
+                <li><strong>Challenge 2 :</strong> Génération aléatoire 
+de labyrinthes - Modifier l’algorithme pour générer des labyrinthes 
+aléatoires et les résoudre en utilisant le backtracking.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Conclusion et Réflexion</h3>
+            <ul>
+                <li>Les élèves auront appris à implémenter un algorithme de backtracking pour résoudre un labyrinthe de manière efficace.</li>
+                <li>Ils auront vu comment appliquer cet algorithme à un jeu vidéo pour rendre la solution plus interactive.</li>
+                <li>Discussion sur la récursivité et le backtracking : 
+revenir en arrière dans l'exploration d'un problème permet de résoudre 
+des situations complexes où plusieurs chemins sont possibles.</li>
+            </ul>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Exercice Complémentaire :</h4>
+            <p>Créer une intelligence artificielle pour explorer le 
+labyrinthe automatiquement, ou modifier l’algorithme pour trouver tous 
+les chemins possibles vers la sortie.</p>
+        </section>

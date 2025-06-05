@@ -1,0 +1,197 @@
+<script src="script.js"></script>
+<section id="session12" class="content-section">
+            <h2 style="margin-top: 30px; margin-bottom: 20px;">Séance 12 : Exercices d’Analyse de la Complexité des Algorithmes dans des Jeux Vidéo et la Vie Réelle</h2>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Objectif Global :</h3>
+            <p>Les élèves doivent comprendre et analyser la complexité 
+temporelle des algorithmes à travers des exemples concrets tirés de jeux
+ vidéo et de la vie réelle. Ils apprendront à évaluer l’efficacité d’un 
+algorithme en fonction de la taille des données sur lesquelles il opère 
+et à utiliser la notation Big-O.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Introduction à la Complexité Algorithmique</h3>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">1. Qu’est-ce que la Complexité Algorithmique ?</h4>
+            <p>Lorsqu’on écrit un programme ou un algorithme, il est 
+important de se demander "combien de temps prend l’algorithme pour 
+s'exécuter" en fonction de la taille des données à traiter.</p>
+            <p>La complexité algorithmique est une manière de mesurer et
+ comparer l’efficacité de différents algorithmes en fonction du nombre 
+d’opérations qu’ils effectuent.</p>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">2. La Notation Big-O</h4>
+            <p>La notation Big-O est une manière de représenter la 
+croissance du temps d’exécution d’un algorithme en fonction de la taille
+ des données (n).</p>
+            <p><strong>Quelques exemples courants :</strong></p>
+            <ul>
+                <li><strong>O(1)</strong> : Temps constant. L'algorithme prend toujours le même temps, quelle que soit la taille des données.</li>
+                <li><strong>O(n)</strong> : Temps linéaire. Le temps de l'algorithme augmente proportionnellement à la taille des données.</li>
+                <li><strong>O(log n)</strong> : Temps logarithmique. Le temps de l'algorithme augmente lentement à mesure que les données augmentent.</li>
+                <li><strong>O(n²)</strong> : Temps quadratique. Le temps augmente rapidement à mesure que la taille des données augmente (ex. : tri par sélection).</li>
+                <li><strong>O(2ⁿ)</strong> : Temps exponentiel. Très inefficace pour de grandes quantités de données.</li>
+            </ul>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">3. Exemple de la Recherche dans un Jeu Vidéo</h4>
+            <p>Dans un jeu vidéo de type open-world (monde ouvert), 
+imaginons que le joueur cherche un objet caché. L’algorithme peut 
+utiliser différents types de recherche pour aider le joueur à trouver 
+cet objet.</p>
+            <ul>
+                <li><strong>Recherche linéaire (O(n)) :</strong> Si le 
+joueur explore toutes les sections de la carte une par une, cela prendra
+ du temps proportionnel à la taille de la carte. Si la carte contient 
+100 sections, il devra en moyenne en parcourir 50 avant de trouver 
+l'objet.</li>
+                <li><strong>Recherche binaire (O(log n)) :</strong> Si 
+l'algorithme divise la carte en deux parties à chaque étape (comme vu 
+lors de la recherche binaire), la recherche sera bien plus rapide. Pour 
+100 sections, il suffit de 7 étapes pour trouver l’objet.</li>
+                <li><strong>Recherche dans un graphe (DFS/BFS) (O(n)) :</strong>
+ Si le jeu est un labyrinthe ou un réseau complexe de chemins, les 
+algorithmes de parcours de graphes peuvent être utilisés pour trouver 
+l'objet.</li>
+            </ul>
+        
+            <pre><code>
+    # Pseudo-code pour la recherche linéaire :
+    def recherche_lineaire(liste, cible):
+        for i in range(len(liste)):
+            if liste[i] == cible:
+                return i
+        return -1
+                
+    # Recherche binaire (comme vu dans une séance précédente) :
+    def recherche_binaire(liste, debut, fin, cible):
+        if debut &gt; fin:
+            return -1
+        milieu = (debut + fin) // 2
+        if liste[milieu] == cible:
+            return milieu
+        elif liste[milieu] &lt; cible:
+            return recherche_binaire(liste, milieu + 1, fin, cible)
+        else:
+            return recherche_binaire(liste, debut, milieu - 1, cible)
+            </code></pre>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Exercice Pratique 1 : Comparaison des Algorithmes de Recherche</h3>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Scénario dans le Jeu Vidéo :</h4>
+            <p>Dans un monde ouvert, un monstre doit suivre le joueur. 
+Le monstre doit déterminer où se trouve le joueur sur une carte divisée 
+en sections numérotées de 1 à 1000.</p>
+            <ul>
+                <li>Recherche linéaire : Le monstre vérifie chaque section une par une.</li>
+                <li>Recherche binaire : Le monstre divise la carte en deux à chaque étape.</li>
+            </ul>
+            <p><strong>Objectif :</strong> Implémenter les deux algorithmes et comparer le nombre d’étapes nécessaires pour que le monstre trouve le joueur.</p>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Étapes :</h4>
+            <ol>
+                <li>Implémenter la recherche linéaire et la recherche binaire.</li>
+                <li>Effectuer des tests avec différentes tailles de carte (ex. : 100, 500, 1000 sections).</li>
+                <li>Comparer le nombre d'étapes nécessaires pour trouver le joueur à chaque fois.</li>
+            </ol>
+        
+            <pre><code>
+    # Code pour la Recherche Linéaire et Binaire :
+    import random
+                
+    # Simulation d'une carte avec 1000 sections
+    sections = list(range(1, 1001))
+    # Le joueur se trouve dans une section aléatoire
+    joueur = random.choice(sections)
+                
+    # Recherche linéaire
+    def recherche_lineaire(liste, cible):
+        etapes = 0
+        for i in range(len(liste)):
+            etapes += 1
+            if liste[i] == cible:
+                return i, etapes
+        return -1, etapes
+                
+    # Recherche binaire
+    def recherche_binaire(liste, debut, fin, cible, etapes=0):
+        if debut &gt; fin:
+            return -1, etapes
+        milieu = (debut + fin) // 2
+        etapes += 1
+        if liste[milieu] == cible:
+            return milieu, etapes
+        elif liste[milieu] &lt; cible:
+            return recherche_binaire(liste, milieu + 1, fin, cible, etapes)
+        else:
+            return recherche_binaire(liste, debut, milieu - 1, cible, etapes)
+                
+    # Comparaison des algorithmes
+    lin_result, lin_etapes = recherche_lineaire(sections, joueur)
+    bin_result, bin_etapes = recherche_binaire(sections, 0, len(sections) - 1, joueur)
+                
+    print(f"Recherche linéaire : trouvé en {lin_etapes} étapes")
+    print(f"Recherche binaire : trouvé en {bin_etapes} étapes")
+            </code></pre>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Analyse des Résultats :</h3>
+            <ul>
+                <li><strong>Recherche linéaire :</strong> Plus la carte 
+est grande, plus le monstre doit effectuer d'étapes pour trouver le 
+joueur. La recherche linéaire est donc proportionnelle à la taille de la
+ carte.</li>
+                <li><strong>Recherche binaire :</strong> Le nombre d'étapes est beaucoup plus faible, car l'algorithme divise la carte en deux à chaque étape.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Exercice Pratique 2 : Algorithmes de Tri dans les Jeux Vidéo</h3>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Scénario dans le Jeu Vidéo :</h4>
+            <p>Dans un inventaire de jeu vidéo, les objets doivent être 
+triés par valeur ou par poids. L'algorithme de tri utilisé impacte la 
+vitesse avec laquelle le joueur peut afficher son inventaire trié.</p>
+            <ul>
+                <li><strong>Tri par sélection (O(n²)) :</strong> Un tri basique mais lent.</li>
+                <li><strong>Tri rapide (Quicksort, O(n log n)) :</strong> Un tri plus rapide utilisé dans les systèmes de gestion d'inventaire modernes.</li>
+            </ul>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Étape 1 : Implémenter le Tri par Sélection</h4>
+            <pre><code>
+    def tri_selection(liste):
+        n = len(liste)
+        for i in range(n):
+            min_idx = i
+            for j in range(i+1, n):
+                if liste[j] &lt; liste[min_idx]:
+                    min_idx = j
+            liste[i], liste[min_idx] = liste[min_idx], liste[i]
+        return liste
+            </code></pre>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Étape 2 : Implémenter le Tri Rapide (Quicksort)</h4>
+            <pre><code>
+    def tri_rapide(liste):
+        if len(liste) &lt;= 1:
+            return liste
+        pivot = liste[0]
+        inferieur = [x for x in liste[1:] if x &lt;= pivot]
+        superieur = [x for x in liste[1:] if x &gt; pivot]
+        return tri_rapide(inferieur) + [pivot] + tri_rapide(superieur)
+            </code></pre>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Étape 3 : Comparer les Deux Algorithmes de Tri</h4>
+            <p>Les élèves doivent comparer les performances des deux 
+algorithmes sur des listes d’inventaires de tailles différentes (10, 
+100, 1000 objets). Ils analyseront combien de temps chaque tri prend 
+pour s'exécuter.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Discussion et Conclusion</h3>
+            <p><strong>Complexité des Algorithmes :</strong> Pourquoi certains algorithmes sont-ils plus lents que d'autres ?</p>
+            <p><strong>Big-O et l’importance de la taille des données :</strong> Discuter de la manière dont la taille des données influe sur les performances d'un algorithme.</p>
+            <p><strong>Jeux Vidéo et Algorithmes :</strong> Comment des concepts théoriques comme la complexité algorithmique impactent directement des expériences de jeu.</p>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Extensions possibles :</h4>
+            <ul>
+                <li>Analyser la complexité spatiale (mémoire utilisée) en plus de la complexité temporelle.</li>
+                <li>Étudier d'autres algorithmes utilisés dans les jeux 
+vidéo, comme les algorithmes d'IA pour le comportement des ennemis ou la
+ génération procédurale de niveaux.</li>
+            </ul>
+        </section>

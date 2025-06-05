@@ -1,0 +1,135 @@
+<script src="script.js"></script>
+<section id="session24" class="content-section">
+            <h2 style="margin-top: 30px; margin-bottom: 20px;">Séance 24 : Analyse des performances et avantages des arbres dans la recherche et le tri</h2>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Objectif Global :</h3>
+            <p>Les élèves vont explorer les avantages des arbres binaires, en particulier des <strong>arbres binaires de recherche</strong> (BST -&gt; Binary Search Tree) et des <strong>arbres équilibrés</strong>,
+ pour les opérations de recherche et de tri. Ils apprendront pourquoi et
+ comment les arbres optimisent ces opérations en termes de complexité, 
+et compareront les performances de l'arbre binaire avec d’autres 
+structures de données comme les listes.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Introduction aux Arbres Binaires</h3>
+        
+            <h4>Définition d'un Arbre Binaire :</h4>
+            <p>Un arbre binaire est une structure de données hiérarchique composée de <strong>nœuds</strong>. Chaque nœud possède au maximum deux <strong>enfants</strong>, généralement appelés enfant gauche et enfant droit.</p>
+            
+            <p>Les arbres binaires sont utilisés dans de nombreux 
+algorithmes de recherche et de tri, car ils permettent de stocker les 
+données de manière structurée et de faciliter la recherche.</p>
+        
+            <h4>Arbre Binaire de Recherche (BST) :</h4>
+            <p>Un arbre binaire de recherche (BST) est un type spécifique d’arbre binaire où chaque nœud suit une règle importante :</p>
+            <ul>
+                <li>Les nœuds de l’arbre à gauche d’un nœud contiennent des valeurs plus petites.</li>
+                <li>Les nœuds de l’arbre à droite d’un nœud contiennent des valeurs plus grandes.</li>
+            </ul>
+        
+            <p>Cette structure permet d’accélérer les opérations de recherche en réduisant l’espace de recherche de moitié à chaque étape.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Avantages des Arbres Binaires dans la Recherche et le Tri (20 min)</h3>
+            
+            <h4>1. Recherche dans un BST :</h4>
+            <p>Dans un arbre binaire de recherche, les opérations de 
+recherche sont efficaces grâce à la structure organisée des nœuds. Pour 
+rechercher un élément, on commence à la racine et on compare :</p>
+            <ul>
+                <li>Si la valeur recherchée est plus petite que le nœud courant, on se dirige vers le sous-arbre gauche.</li>
+                <li>Si la valeur recherchée est plus grande, on se dirige vers le sous-arbre droit.</li>
+            </ul>
+        
+            <p>Cette approche permet de réduire le nombre de comparaisons et rend la recherche rapide.</p>
+        
+            <h4>2. Complexité de la Recherche dans un BST :</h4>
+            <p>Pour un arbre équilibré, la recherche dans un BST a une complexité moyenne de <code>O(log n)</code>.
+ Cependant, dans le pire des cas (un arbre non équilibré où tous les 
+nœuds sont dans une seule direction), la complexité peut atteindre <code>O(n)</code>.</p>
+        
+            <h4>3. Tri à l’aide d’un BST :</h4>
+            <p>Les arbres binaires de recherche peuvent également être utilisés pour trier des données :</p>
+            <ul>
+                <li>On insère chaque élément dans le BST.</li>
+                <li>En effectuant un parcours en ordre (in-order traversal), on obtient les éléments triés dans l'ordre croissant.</li>
+            </ul>
+            
+            <p>Ce tri est efficace pour les petites structures ou lorsque les données sont progressivement ajoutées.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Implémentation d’un Arbre Binaire de Recherche (30 min)</h3>
+        
+            <h4>1. Structure de l’Arbre Binaire de Recherche :</h4>
+            <p>Voici une représentation simple d'un nœud dans un arbre binaire de recherche :</p>
+            
+            <pre><code>class Noeud:
+            def __init__(self, valeur):
+                self.valeur = valeur
+                self.gauche = None
+                self.droite = None
+        </code></pre>
+        
+            <h4>2. Insertion dans un BST :</h4>
+            <p>L'insertion d'une valeur dans un arbre binaire de recherche suit la règle du BST :</p>
+            <ul>
+                <li>Si la valeur est inférieure au nœud courant, on l'insère dans le sous-arbre gauche.</li>
+                <li>Si la valeur est supérieure, on l'insère dans le sous-arbre droit.</li>
+            </ul>
+            
+            <pre><code>def inserer(noeud, valeur):
+            if noeud is None:
+                return Noeud(valeur)
+            if valeur &lt; noeud.valeur:
+                noeud.gauche = inserer(noeud.gauche, valeur)
+            else:
+                noeud.droite = inserer(noeud.droite, valeur)
+            return noeud
+        </code></pre>
+        
+            <h4>3. Recherche dans un BST :</h4>
+            <p>La fonction de recherche parcourt l’arbre de manière récursive pour trouver la valeur cible :</p>
+        
+            <pre><code>def rechercher(noeud, valeur):
+            if noeud is None or noeud.valeur == valeur:
+                return noeud
+            if valeur &lt; noeud.valeur:
+                return rechercher(noeud.gauche, valeur)
+            return rechercher(noeud.droite, valeur)
+        </code></pre>
+        
+            <h4>4. Parcours en Ordre (In-order Traversal) :</h4>
+            <p>Un parcours en ordre permet de récupérer les éléments dans l'ordre croissant :</p>
+        
+            <pre><code>def parcours_en_ordre(noeud):
+            if noeud is not None:
+                parcours_en_ordre(noeud.gauche)
+                print(noeud.valeur, end=" ")
+                parcours_en_ordre(noeud.droite)
+        </code></pre>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Applications Pratiques et Comparaisons (30 min)</h3>
+        
+            <h4>Exercice Pratique :</h4>
+            <ul>
+                <li><strong>Étape 1 :</strong> Créer un arbre binaire de recherche en insérant une liste de valeurs.</li>
+                <li><strong>Étape 2 :</strong> Effectuer une recherche pour vérifier si des valeurs spécifiques sont présentes.</li>
+                <li><strong>Étape 3 :</strong> Effectuer un parcours en ordre pour afficher les valeurs triées.</li>
+            </ul>
+        
+            <h4>Comparaison avec d'autres Structures :</h4>
+            <p>Les arbres binaires de recherche (BST) sont souvent plus 
+efficaces que les listes pour les opérations de recherche et de tri, car
+ :</p>
+            <ul>
+                <li><strong>Recherche :</strong> Une recherche dans une liste non triée a une complexité de <code>O(n)</code>, tandis que la recherche dans un BST équilibré est en <code>O(log n)</code>.</li>
+                <li><strong>Tri :</strong> Les BST permettent de trier des données dynamiquement lors de leur insertion, sans avoir besoin d’un tri supplémentaire.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Conclusion et Points Clés</h3>
+            <ul>
+                <li>Les arbres binaires de recherche sont des structures efficaces pour la recherche et le tri.</li>
+                <li>Pour maintenir les performances en <code>O(log n)</code>,
+ un arbre binaire doit rester équilibré. Dans le cas contraire, l’arbre 
+peut se transformer en une liste chaînée et perdre son efficacité.</li>
+                <li>Les arbres équilibrés (comme les arbres AVL ou 
+Red-Black) sont souvent utilisés en pratique pour garantir des 
+performances optimales.</li>
+            </ul>
+        </section>

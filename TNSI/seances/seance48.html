@@ -1,0 +1,179 @@
+<script src="script.js"></script>
+<section id="session48" class="content-section">
+            <h2>Séance 48 : Analyse des Performances dans des Projets Orientés Objet</h2>
+        
+            <h3>Objectif Global :</h3>
+            <p>
+                Les élèves apprendront à analyser les performances des 
+projets orientés objet en Python. Ils comprendront comment identifier 
+les goulets d’étranglement, mesurer le temps d’exécution et optimiser 
+les classes et méthodes d’un programme.
+            </p>
+        
+            <h3>Introduction : Pourquoi Analyser les Performances ? (15 min)</h3>
+            <ul>
+                <li>Les performances sont essentielles pour garantir 
+qu’une application reste rapide et réactive, même avec des données 
+volumineuses.</li>
+                <li>Dans des projets orientés objet, les classes, objets
+ et méthodes peuvent introduire des coûts de calcul supplémentaires si 
+elles ne sont pas bien conçues.</li>
+            </ul>
+        
+            <h4>Objectifs de l’analyse :</h4>
+            <ul>
+                <li>Identifier les parties lentes d’un programme.</li>
+                <li>Évaluer les ressources utilisées (temps et mémoire).</li>
+                <li>Optimiser les performances en utilisant des techniques adaptées.</li>
+            </ul>
+        
+            <h3>Étape 1 : Mesurer le Temps d’Exécution (30 min)</h3>
+        
+            <h4>1. Utilisation du module <code>time</code> :</h4>
+            <p>
+                Le module <code>time</code> permet de mesurer le temps 
+écoulé entre deux points dans un programme. Cela peut être utilisé pour 
+identifier les méthodes ou sections de code lentes.
+            </p>
+        
+            <pre><code class="python">
+        import time
+        
+        class Calcul:
+            def somme_lente(self, n):
+                """Méthode lente qui utilise une boucle pour calculer la somme"""
+                total = 0
+                for i in range(1, n + 1):
+                    total += i
+                return total
+        
+        # Mesurer le temps d'exécution
+        calcul = Calcul()
+        debut = time.time()
+        resultat = calcul.somme_lente(10_000_000)
+        fin = time.time()
+        
+        print(f"Résultat : {resultat}")
+        print(f"Temps d'exécution : {fin - debut} secondes")
+            </code></pre>
+        
+            <h4>Exercice :</h4>
+            <ul>
+                <li>Implémentez une méthode pour calculer le produit d’une liste de nombres et mesurez son temps d’exécution avec <code>time</code>.</li>
+                <li>Comparez la méthode avec une version utilisant la fonction <code>sum()</code> de Python pour observer la différence de performances.</li>
+            </ul>
+        
+            <h4>2. Optimisation de la Méthode :</h4>
+            <p>Remplacez la méthode lente par une approche optimisée (par exemple, utiliser la formule de la somme des entiers).</p>
+        
+            <pre><code class="python">
+        class Calcul:
+            def somme_optimisee(self, n):
+                """Méthode optimisée pour calculer la somme"""
+                return n * (n + 1) // 2
+        
+        debut = time.time()
+        resultat = calcul.somme_optimisee(10_000_000)
+        fin = time.time()
+        
+        print(f"Résultat : {resultat}")
+        print(f"Temps d'exécution (optimisé) : {fin - debut} secondes")
+            </code></pre>
+        
+            <h3>Étape 2 : Analyse des Méthodes avec <code>cProfile</code> (30 min)</h3>
+        
+            <h4>1. Présentation de <code>cProfile</code> :</h4>
+            <p>
+                Le module <code>cProfile</code> permet de profiler un 
+programme Python en fournissant des statistiques détaillées sur le temps
+ passé dans chaque fonction ou méthode.
+            </p>
+        
+            <h4>Exemple :</h4>
+            <pre><code class="python">
+        import cProfile
+        
+        class Calcul:
+            def somme_lente(self, n):
+                total = 0
+                for i in range(1, n + 1):
+                    total += i
+                return total
+        
+            def somme_optimisee(self, n):
+                return n * (n + 1) // 2
+        
+        calcul = Calcul()
+        
+        # Profiling de la méthode lente
+        cProfile.run("calcul.somme_lente(10_000_000)")
+        
+        # Profiling de la méthode optimisée
+        cProfile.run("calcul.somme_optimisee(10_000_000)")
+            </code></pre>
+        
+            <h4>Exercice :</h4>
+            <ul>
+                <li>Ajoutez une méthode supplémentaire dans la classe (par exemple, pour calculer la moyenne) et profilez-la avec <code>cProfile</code>.</li>
+                <li>Comparez les performances des différentes méthodes.</li>
+            </ul>
+        
+            <h3>Étape 3 : Analyse de l’Utilisation de la Mémoire (30 min)</h3>
+        
+            <h4>1. Présentation de <code>sys.getsizeof()</code> :</h4>
+            <p>
+                Le module <code>sys</code> fournit une méthode <code>getsizeof()</code> qui permet de mesurer la mémoire utilisée par un objet.
+            </p>
+        
+            <h4>Exemple :</h4>
+            <pre><code class="python">
+        import sys
+        
+        class Donnees:
+            def __init__(self, n):
+                self.liste = [i for i in range(n)]
+        
+        donnees = Donnees(1_000_000)
+        print(f"Utilisation mémoire de la liste : {sys.getsizeof(donnees.liste)} octets")
+            </code></pre>
+        
+            <h4>Exercice :</h4>
+            <ul>
+                <li>Créez un dictionnaire de 1 million d’éléments et comparez son utilisation mémoire avec une liste de même taille.</li>
+                <li>Identifiez les structures de données les plus économes en mémoire.</li>
+            </ul>
+        
+            <h4>2. Optimisation de l’Utilisation de la Mémoire :</h4>
+            <p>
+                Utilisez des générateurs ou des structures de données comme <code>array</code> pour réduire l’utilisation de la mémoire.
+            </p>
+        
+            <pre><code class="python">
+        import array
+        
+        # Utilisation d'un tableau pour réduire la mémoire
+        tableau = array.array("i", (i for i in range(1_000_000)))
+        print(f"Utilisation mémoire du tableau : {sys.getsizeof(tableau)} octets")
+            </code></pre>
+        
+            <h3>Étape 4 : Synthèse et Application Pratique (15 min)</h3>
+        
+            <h4>Projet Pratique :</h4>
+            <p>Implémentez une application de gestion d’un système scolaire avec les fonctionnalités suivantes :</p>
+            <ul>
+                <li>Une classe <code>Etudiant</code> avec des attributs comme le nom, la moyenne, et la liste des matières.</li>
+                <li>Une méthode pour calculer la moyenne générale d’un étudiant.</li>
+                <li>Une méthode pour afficher les statistiques des étudiants d’une classe.</li>
+                <li>Analysez et optimisez les performances de votre application avec <code>time</code>, <code>cProfile</code>, et <code>sys</code>.</li>
+            </ul>
+        
+            <h4>Conclusion :</h4>
+            <p>
+                À la fin de cette séance, les élèves sauront :
+            </p>
+            <ul>
+                <li>Mesurer les performances en termes de temps et de mémoire.</li>
+                <li>Identifier les goulets d’étranglement dans leurs projets orientés objet.</li>
+                <li>Optimiser les méthodes et les structures de données pour améliorer les performances.</li>
+            </ul>
+        </section>

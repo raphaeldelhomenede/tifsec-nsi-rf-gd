@@ -1,0 +1,204 @@
+<script src="script.js"></script>
+<section id="session11" class="content-section">
+            <h2 style="margin-top: 30px; margin-bottom: 20px;">Séance 11 : Pratique - Comparaison des Algorithmes de Tri Simples (Insertion, Sélection)</h2>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Objectif Global :</h3>
+            <p>Les élèves apprendront à implémenter et comparer les 
+algorithmes de tri par insertion et par sélection, en utilisant une 
+approche pratique. Ces concepts seront appliqués dans le contexte d'un 
+jeu vidéo où il faut organiser les objets de l'inventaire d'un 
+personnage pour optimiser le gameplay.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Contexte du Jeu Vidéo :</h3>
+            <p>Dans un jeu d’aventure, le joueur collecte de nombreux 
+objets (armes, potions, armures) pendant son exploration. Ces objets 
+sont initialement mélangés dans son inventaire. Le joueur doit organiser
+ son inventaire, par exemple en triant les objets selon leur valeur ou 
+leur poids.</p>
+            <p>Problème initial : Le joueur a besoin d’un inventaire 
+trié pour accéder rapidement à ses objets les plus précieux ou les plus 
+utiles. Si l’inventaire est désorganisé, cela peut nuire à l’efficacité 
+du jeu.</p>
+            <p>Solution : Utiliser des algorithmes de tri pour organiser l'inventaire.</p>
+            <p>Les élèves vont comparer deux algorithmes de tri simples :</p>
+            <ol>
+                <li>Tri par insertion (Insertion Sort).</li>
+                <li>Tri par sélection (Selection Sort).</li>
+            </ol>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">1. Introduction aux Algorithmes de Tri</h3>
+            <p>Avant de plonger dans la pratique, il est important de comprendre les deux algorithmes de tri et leurs mécanismes.</p>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Tri par Insertion :</h4>
+            <p>Le tri par insertion fonctionne comme si vous triiez une main de cartes :</p>
+            <ul>
+                <li>Vous prenez les cartes (ici des objets de l’inventaire) une par une et les insérez au bon endroit dans une liste déjà triée.</li>
+                <li>À chaque itération, la portion triée de la liste s’agrandit.</li>
+            </ul>
+            <p><strong>Principe :</strong> On compare l’élément actuel 
+avec les éléments précédents et on l’insère à la bonne position pour que
+ la partie gauche de la liste soit triée.</p>
+        
+            <pre><code>
+    def tri_insertion(liste):
+        for i in range(1, len(liste)):
+            element = liste[i]
+            j = i - 1
+            while j &gt;= 0 and liste[j] &gt; element:
+                liste[j + 1] = liste[j]
+                j -= 1
+            liste[j + 1] = element
+            </code></pre>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Tri par Sélection :</h4>
+            <p>Le tri par sélection fonctionne en trouvant l'élément le 
+plus petit et en le plaçant au début de la liste. Ensuite, on cherche le
+ deuxième plus petit, et ainsi de suite.</p>
+            <p><strong>Principe :</strong> On sélectionne l'élément le 
+plus petit dans la partie non triée de la liste, puis on le place au 
+début. On répète le processus jusqu'à ce que la liste soit entièrement 
+triée.</p>
+        
+            <pre><code>
+    def tri_selection(liste):
+        for i in range(len(liste)):
+            min_index = i
+            for j in range(i + 1, len(liste)):
+                if liste[j] &lt; liste[min_index]:
+                    min_index = j
+            liste[i], liste[min_index] = liste[min_index], liste[i]
+            </code></pre>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">2. Application dans le Contexte du Jeu Vidéo</h3>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Étape 1 : Préparation de l’Inventaire</h4>
+            <p>L’inventaire du personnage est représenté par une liste 
+d’objets, chaque objet ayant une valeur et un poids. Pour simplifier, 
+les élèves peuvent utiliser une liste de nombres représentant les 
+valeurs des objets.</p>
+            <pre><code>
+    inventaire = [50, 10, 40, 30, 20, 60]
+            </code></pre>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Étape 2 : Implémentation du Tri par Insertion</h4>
+            <p>Les élèves commenceront par implémenter le tri par 
+insertion pour organiser les objets de l’inventaire en fonction de leur 
+valeur.</p>
+            <ul>
+                <li>Rappeler le principe : Le joueur veut trier ses objets du moins précieux au plus précieux pour les retrouver facilement.</li>
+                <li>Exercice pratique : Écrire la fonction <code>tri_insertion</code> pour trier l’inventaire.</li>
+            </ul>
+        
+            <pre><code>
+    def tri_insertion(liste):
+        for i in range(1, len(liste)):
+            element = liste[i]
+            j = i - 1
+            while j &gt;= 0 and liste[j] &gt; element:
+                liste[j + 1] = liste[j]
+                j -= 1
+            liste[j + 1] = element
+                
+    # Exemple d'utilisation
+    inventaire = [50, 10, 40, 30, 20, 60]
+    print("Inventaire avant tri :", inventaire)
+    tri_insertion(inventaire)
+    print("Inventaire après tri par insertion :", inventaire)
+            </code></pre>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Étape 3 : Implémentation du Tri par Sélection</h4>
+            <p>Les élèves passent ensuite à l'implémentation du tri par sélection pour organiser l’inventaire de manière alternative.</p>
+            <ul>
+                <li>Rappeler le principe : On cherche l'objet le moins 
+précieux et on le place au début de l’inventaire, puis on répète le 
+processus.</li>
+                <li>Exercice pratique : Écrire la fonction <code>tri_selection</code>.</li>
+            </ul>
+        
+            <pre><code>
+    def tri_selection(liste):
+        for i in range(len(liste)):
+            min_index = i
+            for j in range(i + 1, len(liste)):
+                if liste[j] &lt; liste[min_index]:
+                    min_index = j
+            liste[i], liste[min_index] = liste[min_index], liste[i]
+                
+    # Exemple d'utilisation
+    inventaire = [50, 10, 40, 30, 20, 60]
+    print("Inventaire avant tri :", inventaire)
+    tri_selection(inventaire)
+    print("Inventaire après tri par sélection :", inventaire)
+            </code></pre>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">3. Comparaison des Algorithmes</h3>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Étape 4 : Comparaison sur la Base des Performances</h4>
+            <p>Demander aux élèves de comparer les deux algorithmes de tri en termes de :</p>
+            <ul>
+                <li>Vitesse (nombre de comparaisons) : Combien de comparaisons sont faites dans chaque algorithme ?</li>
+                <li>Tri par insertion : Bon pour des listes presque triées.</li>
+                <li>Tri par sélection : Meilleur pour des listes complètement désordonnées.</li>
+                <li>Simplicité d’implémentation : Lequel est plus simple à comprendre et à écrire ?</li>
+                <li>Complexité temporelle :
+                    <ul>
+                        <li><strong>Insertion sort :</strong> O(n^2) dans le pire des cas.</li>
+                        <li><strong>Selection sort :</strong> O(n^2) dans tous les cas.</li>
+                    </ul>
+                </li>
+            </ul>
+            <p>Demander aux élèves d’essayer ces algorithmes sur 
+différentes tailles de listes (par exemple, 10, 100, 1000 éléments) et 
+de mesurer le temps que chaque algorithme prend pour terminer le tri. 
+Voici un code simple pour chronométrer :</p>
+        
+            <pre><code>
+    import time
+        
+    # Exemple pour le tri par insertion
+    start_time = time.time()
+    tri_insertion(inventaire)
+    end_time = time.time()
+    print("Temps pris par le tri par insertion :", end_time - start_time)
+                
+    # Faire de même pour le tri par sélection
+            </code></pre>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">4. Extension et Discussion</h3>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Étape 5 : Extension - Trier par Poids</h4>
+            <p>Ajouter une nouvelle caractéristique aux objets de 
+l’inventaire : le poids. Demander aux élèves de modifier leur code pour 
+trier les objets non plus par valeur, mais par poids.</p>
+        
+            <pre><code>
+    inventaire_avec_poids = [
+        {"nom": "épée", "valeur": 50, "poids": 5},
+        {"nom": "potion", "valeur": 10, "poids": 1},
+        {"nom": "armure", "valeur": 40, "poids": 15},
+        {"nom": "bouclier", "valeur": 30, "poids": 8},
+        {"nom": "arc", "valeur": 20, "poids": 3},
+        {"nom": "flèches", "valeur": 60, "poids": 0.5}
+    ]
+            </code></pre>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Étape 6 : Discussion Finale</h4>
+            <ul>
+                <li><strong>Avantages et inconvénients de chaque algorithme :</strong></li>
+                <li>Le tri par insertion est plus rapide pour les petites listes ou les listes presque triées.</li>
+                <li>Le tri par sélection est simple à comprendre, mais peu efficace pour les grandes listes.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Conclusion et Objectif Atteint</h3>
+            <ul>
+                <li>Implémenter les algorithmes de tri par insertion et tri par sélection.</li>
+                <li>Comparer leurs performances sur des listes de différentes tailles.</li>
+                <li>Appliquer ces concepts à un contexte ludique avec l’organisation d’un inventaire dans un jeu vidéo.</li>
+                <li>Comprendre les forces et faiblesses de chaque méthode de tri.</li>
+            </ul>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Exercice Complémentaire :</h4>
+            <p>Tri d'une liste de dictionnaires : Demander aux élèves de
+ trier une liste de dictionnaires (objets du jeu) non seulement par 
+valeur ou poids, mais aussi par d’autres critères comme la rareté.</p>
+        </section>

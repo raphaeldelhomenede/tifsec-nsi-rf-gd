@@ -1,0 +1,211 @@
+<script src="script.js"></script>
+<section id="session45" class="content-section">
+            <h2>Séance 45 : Gestion de la mémoire en POO</h2>
+        
+            <h3>Objectif Global :</h3>
+            <p>
+                Comprendre comment Python gère la mémoire pour les 
+objets en Programmation Orientée Objet (POO). Les élèves apprendront les
+ concepts de base liés à la gestion de la mémoire (création et 
+destruction d’objets, référence, collecte des objets non utilisés), et 
+comment ces mécanismes influencent leurs programmes.
+            </p>
+        
+            <h3>1. Concepts Clés de la Gestion de la Mémoire en Python</h3>
+        
+            <h4>1.1. Allocation de la Mémoire</h4>
+            <p>
+                Lorsqu’un objet est créé dans Python, de la mémoire est 
+allouée dynamiquement. Les objets (par exemple, des instances de classe)
+ sont stockés dans le <strong>tas mémoire</strong> (heap).
+            </p>
+            <ul>
+                <li><strong>Variables :</strong> Elles agissent comme des références à ces objets.</li>
+                <li><strong>Références multiples :</strong> Plusieurs variables peuvent référencer le même objet.</li>
+            </ul>
+        
+            <h4>1.2. Collecte des Objets Non Utilisés</h4>
+            <p>
+                Python utilise un <strong>ramasse-miettes (garbage collector)</strong> pour libérer automatiquement la mémoire occupée par les objets non utilisés. Un objet est détruit lorsque :
+            </p>
+            <ul>
+                <li>Il n’est plus référencé par aucune variable.</li>
+                <li>Le compteur de références de l’objet tombe à 0.</li>
+            </ul>
+            <p>Le module intégré <code>gc</code> contrôle le comportement du garbage collector.</p>
+        
+            <h3>2. Les Compteurs de Références</h3>
+        
+            <h4>2.1. Comprendre le Compteur de Références</h4>
+            <p>
+                Chaque objet en Python possède un compteur de 
+références, qui indique combien de variables ou d’autres objets 
+référencent cet objet. Lorsque le compteur de références tombe à 0, 
+l’objet est détruit.
+            </p>
+        
+            <h4>2.2. Exemple :</h4>
+            <pre><code class="python">
+        import sys
+        
+        class Exemple:
+            pass
+        
+        # Création d'un objet
+        obj = Exemple()
+        print(sys.getrefcount(obj))  # 2 : 'obj' + l'argument de la fonction
+        
+        # Ajout d'une référence
+        obj2 = obj
+        print(sys.getrefcount(obj))  # 3 : 'obj', 'obj2', et l'argument de la fonction
+        
+        # Suppression d'une référence
+        del obj2
+        print(sys.getrefcount(obj))  # 2 : 'obj' et l'argument de la fonction
+            </code></pre>
+        
+            <p>
+                Utilisez <code>sys.getrefcount()</code> pour afficher le
+ nombre de références d’un objet. Cela peut aider à comprendre pourquoi 
+un objet n'est pas détruit immédiatement.
+            </p>
+        
+            <h3>3. Cycle de Vie d’un Objet</h3>
+        
+            <h4>3.1. Création et Initialisation</h4>
+            <p>
+                La méthode <code>__init__()</code> est appelée après la création d’un objet pour l’initialiser.
+            </p>
+        
+            <h4>3.2. Destruction</h4>
+            <p>
+                La méthode <code>__del__()</code> est appelée avant que 
+l’objet soit détruit par le garbage collector. Elle est utilisée pour 
+libérer des ressources spécifiques (par exemple, des fichiers ouverts).
+            </p>
+        
+            <h4>Exemple :</h4>
+            <pre><code class="python">
+        class Exemple:
+            def __init__(self, nom):
+                self.nom = nom
+                print(f"Objet {self.nom} créé.")
+        
+            def __del__(self):
+                print(f"Objet {self.nom} détruit.")
+        
+        # Création et suppression d'un objet
+        obj = Exemple("A")
+        del obj  # Détruit explicitement l'objet
+            </code></pre>
+        
+            <h3>4. Gestion Avancée avec le Module <code>gc</code></h3>
+        
+            <h4>4.1. Forcer la Collecte des Objets Non Utilisés</h4>
+            <p>
+                Le module <code>gc</code> permet de forcer le garbage collector à exécuter un nettoyage manuel.
+            </p>
+        
+            <h4>Exemple :</h4>
+            <pre><code class="python">
+        import gc
+        
+        class Exemple:
+            def __del__(self):
+                print("Objet détruit.")
+        
+        # Création d'objets
+        obj1 = Exemple()
+        obj2 = Exemple()
+        
+        # Supprimer les références
+        del obj1
+        del obj2
+        
+        # Forcer le ramasse-miettes
+        gc.collect()
+            </code></pre>
+        
+            <h4>4.2. Contrôle des Objets Collectés</h4>
+            <p>
+                Vous pouvez afficher les objets qui sont collectés par le garbage collector.
+            </p>
+            <pre><code class="python">
+        gc.set_debug(gc.DEBUG_LEAK)
+        gc.collect()
+            </code></pre>
+        
+            <h3>5. Bonne Gestion de la Mémoire en POO</h3>
+        
+            <h4>5.1. Conseils Pratiques :</h4>
+            <ul>
+                <li>Évitez de créer des références circulaires (elles peuvent empêcher le garbage collector de libérer la mémoire).</li>
+                <li>Libérez explicitement les ressources (comme les fichiers ou connexions réseau) dans <code>__del__()</code>.</li>
+                <li>Utilisez des context managers (<code>with</code>) pour gérer les ressources de manière sûre.</li>
+            </ul>
+        
+            <h4>5.2. Exemple avec un Context Manager :</h4>
+            <pre><code class="python">
+        class Fichier:
+            def __init__(self, chemin):
+                self.fichier = open(chemin, "w")
+        
+            def __enter__(self):
+                return self.fichier
+        
+            def __exit__(self, exc_type, exc_value, traceback):
+                self.fichier.close()
+        
+        # Utilisation du Context Manager
+        with Fichier("exemple.txt") as fichier:
+            fichier.write("Gestion de la mémoire avec POO")
+            </code></pre>
+        
+            <h3>6. Application Pratique : Gestion de Ressources dans un Projet (40 min)</h3>
+        
+            <h4>Projet :</h4>
+            <p>
+                Implémentez une classe <code>SessionUtilisateur</code> qui gère des connexions utilisateurs. La classe doit inclure :
+            </p>
+            <ul>
+                <li>Une méthode <code>connecter()</code> pour simuler une connexion utilisateur.</li>
+                <li>Une méthode <code>deconnecter()</code> pour libérer la connexion.</li>
+                <li>Un destructeur <code>__del__()</code> pour s’assurer que les connexions sont fermées automatiquement.</li>
+            </ul>
+        
+            <h4>Exemple :</h4>
+            <pre><code class="python">
+        class SessionUtilisateur:
+            def __init__(self, utilisateur):
+                self.utilisateur = utilisateur
+                self.connecter()
+        
+            def connecter(self):
+                print(f"{self.utilisateur} connecté.")
+        
+            def deconnecter(self):
+                print(f"{self.utilisateur} déconnecté.")
+        
+            def __del__(self):
+                self.deconnecter()
+        
+        # Utilisation
+        session = SessionUtilisateur("Alice")
+        del session  # Libère la connexion automatiquement
+            </code></pre>
+        
+            <h3>7. Conclusion :</h3>
+            <p>
+                À la fin de cette séance, les élèves comprendront :
+            </p>
+            <ul>
+                <li>Comment Python gère la mémoire et les objets en POO.</li>
+                <li>Comment utiliser efficacement les destructeurs pour libérer les ressources.</li>
+                <li>Comment le garbage collector fonctionne et quand intervenir.</li>
+            </ul>
+            <p>
+                La gestion de la mémoire est essentielle pour écrire des
+ programmes performants et stables, en particulier dans des projets 
+complexes ou avec des ressources limitées.
+            </p>
+        </section>

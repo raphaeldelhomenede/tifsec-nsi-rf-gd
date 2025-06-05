@@ -1,0 +1,168 @@
+<script src="script.js"></script>
+<section id="session36" class="content-section">
+            <h2 style="margin-top: 30px; margin-bottom: 20px;">Séance 36 : Révision et consolidation des concepts d'algorithmes de tri</h2>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Objectif Global :</h3>
+            <p>Les élèves réviseront les principaux algorithmes de tri, 
+comprendront leur fonctionnement, et analyseront leurs différences en 
+termes de complexité. L’objectif est de renforcer leur maîtrise des 
+algorithmes de tri et de les rendre capables de choisir l'algorithme le 
+plus adapté selon le contexte.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Introduction aux Algorithmes de Tri (15 min)</h3>
+            <p>Les algorithmes de tri sont des méthodes pour organiser 
+les données dans un ordre particulier, comme l’ordre croissant ou 
+décroissant. Ils sont essentiels en informatique, car de nombreux autres
+ algorithmes s'appuient sur des données triées pour améliorer leurs 
+performances.</p>
+        
+            <h4>Algorithmes de Tri à Étudier :</h4>
+            <ul>
+                <li><strong>Tri par Insertion :</strong> méthode simple et intuitive, efficace pour des listes presque triées.</li>
+                <li><strong>Tri par Sélection :</strong> recherche de l'élément le plus petit à chaque itération pour le placer dans l'ordre.</li>
+                <li><strong>Tri à Bulles (Bubble Sort) :</strong> échange les éléments adjacents pour faire « remonter » les plus grands éléments.</li>
+                <li><strong>Tri Rapide (Quick Sort) :</strong> méthode de tri par division et conquête, efficace pour les grandes listes.</li>
+                <li><strong>Tri Fusion (Merge Sort) :</strong> méthode basée sur la fusion de listes triées, adaptée aux grandes listes.</li>
+            </ul>
+        
+            <h4>Complexité des Algorithmes :</h4>
+            <p>Nous allons examiner la <strong>complexité en temps</strong> de chaque algorithme pour comparer leur efficacité :</p>
+            <ul>
+                <li>Tri par Insertion, Sélection, et Bulles : <code>O(n²)</code> dans le pire des cas.</li>
+                <li>Tri Rapide : <code>O(n log n)</code> en moyenne, mais peut aller jusqu’à <code>O(n²)</code> dans le pire des cas.</li>
+                <li>Tri Fusion : <code>O(n log n)</code> dans le pire des cas.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Révision et Implémentation des Algorithmes (50 min)</h3>
+            
+            <h4>1. Tri par Insertion :</h4>
+            <p>Le tri par insertion parcourt la liste et insère chaque élément à sa place dans la partie déjà triée de la liste.</p>
+            <pre><code>def tri_insertion(liste):
+            for i in range(1, len(liste)):
+                valeur = liste[i]
+                j = i - 1
+                while j &gt;= 0 and liste[j] &gt; valeur:
+                    liste[j + 1] = liste[j]
+                    j -= 1
+                liste[j + 1] = valeur
+            </code></pre>
+        
+            <h4>Exercice pratique :</h4>
+            <ul>
+                <li>Écrire une liste de nombres aléatoires.</li>
+                <li>Utiliser le tri par insertion pour les trier.</li>
+                <li>Observer la complexité du tri en comptant les comparaisons.</li>
+            </ul>
+        
+            <h4>2. Tri par Sélection :</h4>
+            <p>Le tri par sélection parcourt la liste pour trouver l’élément le plus petit et le place au début.</p>
+            <pre><code>def tri_selection(liste):
+            for i in range(len(liste)):
+                min_index = i
+                for j in range(i + 1, len(liste)):
+                    if liste[j] &lt; liste[min_index]:
+                        min_index = j
+                liste[i], liste[min_index] = liste[min_index], liste[i]
+            </code></pre>
+        
+            <h4>Exercice pratique :</h4>
+            <ul>
+                <li>Utiliser le tri par sélection sur une liste aléatoire et observer la façon dont chaque élément est placé dans l’ordre.</li>
+                <li>Noter la complexité pour des listes de différentes tailles.</li>
+            </ul>
+        
+            <h4>3. Tri à Bulles (Bubble Sort) :</h4>
+            <p>Le tri à bulles fait passer les éléments les plus grands 
+vers la fin de la liste en effectuant des échanges successifs entre 
+éléments adjacents.</p>
+            <pre><code>def tri_bulles(liste):
+            n = len(liste)
+            for i in range(n):
+                for j in range(0, n-i-1):
+                    if liste[j] &gt; liste[j+1]:
+                        liste[j], liste[j+1] = liste[j+1], liste[j]
+            </code></pre>
+        
+            <h4>Exercice pratique :</h4>
+            <ul>
+                <li>Utiliser le tri à bulles pour trier une liste et observer les changements à chaque passage.</li>
+                <li>Comparer le nombre de comparaisons avec les autres méthodes.</li>
+            </ul>
+        
+            <h4>4. Tri Rapide (Quick Sort) :</h4>
+            <p>Le tri rapide choisit un élément pivot et divise la liste en deux parties pour les trier récursivement.</p>
+            <pre><code>def tri_rapide(liste):
+            if len(liste) &lt;= 1:
+                return liste
+            else:
+                pivot = liste[0]
+                gauche = [x for x in liste[1:] if x &lt;= pivot]
+                droite = [x for x in liste[1:] if x &gt; pivot]
+                return tri_rapide(gauche) + [pivot] + tri_rapide(droite)
+            </code></pre>
+        
+            <h4>Exercice pratique :</h4>
+            <ul>
+                <li>Choisir une liste d’éléments aléatoires et utiliser le tri rapide pour la trier.</li>
+                <li>Observer le nombre de comparaisons et d’échanges, et comparer la vitesse avec les méthodes <code>O(n²)</code>.</li>
+            </ul>
+        
+            <h4>5. Tri Fusion (Merge Sort) :</h4>
+            <p>Le tri fusion divise la liste en sous-listes jusqu'à ce 
+qu'elles ne contiennent qu'un élément, puis fusionne les sous-listes en 
+ordre croissant.</p>
+            <pre><code>def tri_fusion(liste):
+            if len(liste) &lt;= 1:
+                return liste
+            milieu = len(liste) // 2
+            gauche = tri_fusion(liste[:milieu])
+            droite = tri_fusion(liste[milieu:])
+            return fusion(gauche, droite)
+        
+        def fusion(gauche, droite):
+            resultat = []
+            i = j = 0
+            while i &lt; len(gauche) and j &lt; len(droite):
+                if gauche[i] &lt; droite[j]:
+                    resultat.append(gauche[i])
+                    i += 1
+                else:
+                    resultat.append(droite[j])
+                    j += 1
+            resultat.extend(gauche[i:])
+            resultat.extend(droite[j:])
+            return resultat
+            </code></pre>
+        
+            <h4>Exercice pratique :</h4>
+            <ul>
+                <li>Utiliser le tri fusion pour trier une liste et observer les étapes de fusion des sous-listes.</li>
+                <li>Comparer la complexité temporelle avec le tri rapide.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Comparaison des Algorithmes (15 min)</h3>
+            <h4>Comparaison des Complexités :</h4>
+            <p>Les élèves comparent chaque algorithme en termes de 
+complexité, vitesse et nombre d’opérations, en utilisant des listes de 
+différentes tailles.</p>
+            <ul>
+                <li>Tri Insertion, Sélection, Bulles : <code>O(n²)</code> – moins efficace pour les grandes listes.</li>
+                <li>Tri Rapide : <code>O(n log n)</code> en moyenne – efficace pour les grandes listes.</li>
+                <li>Tri Fusion : <code>O(n log n)</code> – stable et efficace.</li>
+            </ul>
+        
+            <h4>Analyse Pratique :</h4>
+            <ul>
+                <li><strong>Stabilité :</strong> les tris fusion et insertion sont stables, ce qui est important dans certains contextes.</li>
+                <li><strong>Cas d’utilisation :</strong> le tri rapide 
+est souvent privilégié pour les grandes listes, alors que le tri 
+insertion est adapté pour les petites listes déjà partiellement triées.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Conclusion et Discussion (10 min)</h3>
+            <p>À la fin de cette séance, les élèves devraient être 
+capables de choisir le bon algorithme de tri en fonction du contexte et 
+de la taille des données. Ils auront également acquis une bonne 
+compréhension des différences de complexité entre chaque algorithme, 
+ainsi que leurs avantages et inconvénients.</p>
+        </section>

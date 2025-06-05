@@ -1,0 +1,172 @@
+<script src="script.js"></script>
+<section id="session28" class="content-section">
+            <h2 style="margin-top: 30px; margin-bottom: 20px;">Séance 28 : Introduction au tri par tas (Heapsort)</h2>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Objectif Global :</h3>
+            <p>Les élèves vont découvrir l’algorithme de tri par tas 
+(Heapsort), un algorithme de tri efficace utilisant une structure de 
+données appelée tas (heap). Ils apprendront à construire un tas, à 
+extraire les éléments dans un ordre trié, et à utiliser cette approche 
+pour trier une liste de nombres.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Introduction au Tri par Tas</h3>
+            
+            <h4>1. Qu'est-ce qu'un Tas (Heap) ?</h4>
+            <p>Un <strong>tas</strong> (heap) est une structure de données basée sur un arbre binaire. Dans un tas binaire :</p>
+            <ul>
+                <li>Chaque nœud parent a une valeur supérieure ou égale à celle de ses enfants dans un <strong>max-heap</strong>.</li>
+                <li>Chaque nœud parent a une valeur inférieure ou égale à celle de ses enfants dans un <strong>min-heap</strong>.</li>
+            </ul>
+            <p>Le tri par tas utilise un max-heap (ou min-heap) pour 
+organiser les éléments de manière à pouvoir les extraire dans un ordre 
+trié.</p>
+        
+            <h4>2. Principe de Fonctionnement du Heapsort</h4>
+            <p>L’algorithme Heapsort fonctionne en deux étapes principales :</p>
+            <ul>
+                <li><strong>Étape 1 :</strong> Construire un tas (max-heap) à partir de la liste de nombres.</li>
+                <li><strong>Étape 2 :</strong> Extraire le maximum du 
+tas et le placer à la fin de la liste, puis ajuster le tas pour 
+maintenir sa structure. Cette opération est répétée jusqu’à ce que tous 
+les éléments soient extraits.</li>
+            </ul>
+        
+            <p>En fin de compte, la liste est triée en ordre croissant (ou décroissant) en fonction de la structure de tas utilisée.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Étapes de Construction du Tas (30 min)</h3>
+        
+            <h4>1. Transformation d'une Liste en Max-Heap</h4>
+            <p>Pour convertir une liste de nombres en max-heap, on applique une opération appelée <strong>heapification</strong> :</p>
+            <ul>
+                <li>On commence par le dernier nœud non-feuille de l'arbre et on vérifie si sa valeur est supérieure à celle de ses enfants.</li>
+                <li>Si ce nœud est plus petit que l'un de ses enfants, 
+on échange leurs valeurs et on continue l'opération de heapification sur
+ le sous-arbre affecté.</li>
+            </ul>
+        
+            <p>Voici un exemple de liste que nous allons transformer en max-heap : [4, 10, 3, 5, 1]</p>
+        
+            <pre><code>Avant heapification :  4, 10, 3, 5, 1
+        Après heapification : 10, 5, 3, 4, 1
+            </code></pre>
+        
+            <h4>2. Implémentation de la Fonction de Heapification en Python</h4>
+            <p>Voici un exemple de code Python pour appliquer la fonction de heapification sur un tableau :</p>
+        
+            <pre><code>def heapify(liste, n, i):
+            plus_grand = i  # initialiser le plus grand élément comme racine
+            gauche = 2 * i + 1  # fils gauche
+            droite = 2 * i + 2  # fils droit
+        
+            # Vérifier si le fils gauche est plus grand que la racine
+            if gauche &lt; n and liste[gauche] &gt; liste[plus_grand]:
+                plus_grand = gauche
+        
+            # Vérifier si le fils droit est plus grand que le plus grand actuel
+            if droite &lt; n and liste[droite] &gt; liste[plus_grand]:
+                plus_grand = droite
+        
+            # Si le plus grand n'est pas la racine
+            if plus_grand != i:
+                liste[i], liste[plus_grand] = liste[plus_grand], liste[i]  # échanger
+                heapify(liste, n, plus_grand)  # continuer la heapification
+            </code></pre>
+        
+            <p>La fonction <code>heapify</code> prend en paramètres la liste, sa taille <code>n</code>, et l’indice <code>i</code>
+ du nœud à heapifier. Elle vérifie si le nœud actuel est le plus grand, 
+et si ce n’est pas le cas, elle échange les valeurs et appelle 
+récursivement la fonction.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Algorithme Complet du Heapsort (45 min)</h3>
+        
+            <h4>1. Étape 1 : Construire le Max-Heap</h4>
+            <p>Nous allons construire un max-heap à partir de la liste en appliquant la fonction <code>heapify</code> sur chaque nœud, en commençant par le dernier nœud non-feuille jusqu'à la racine.</p>
+        
+            <pre><code>def construire_tas(liste):
+            n = len(liste)
+            for i in range(n // 2 - 1, -1, -1):
+                heapify(liste, n, i)
+            </code></pre>
+        
+            <h4>2. Étape 2 : Tri par Extraction</h4>
+            <p>Une fois le tas construit, nous procédons au tri. Nous 
+échangeons la racine (plus grand élément) avec le dernier élément de la 
+liste, puis réduisons la taille du tas et réappliquons <code>heapify</code> pour maintenir la structure du tas.</p>
+        
+            <pre><code>def heapsort(liste):
+            n = len(liste)
+            construire_tas(liste)
+            
+            # Extraire un à un les éléments du tas
+            for i in range(n - 1, 0, -1):
+                liste[i], liste[0] = liste[0], liste[i]  # échanger
+                heapify(liste, i, 0)  # réappliquer heapify pour maintenir le tas
+            </code></pre>
+        
+            <h4>3. Code Complet de l’Algorithme Heapsort</h4>
+            <p>Voici le code complet pour trier une liste de nombres en utilisant Heapsort :</p>
+        
+            <pre><code>def heapify(liste, n, i):
+            plus_grand = i
+            gauche = 2 * i + 1
+            droite = 2 * i + 2
+        
+            if gauche &lt; n and liste[gauche] &gt; liste[plus_grand]:
+                plus_grand = gauche
+            if droite &lt; n and liste[droite] &gt; liste[plus_grand]:
+                plus_grand = droite
+        
+            if plus_grand != i:
+                liste[i], liste[plus_grand] = liste[plus_grand], liste[i]
+                heapify(liste, n, plus_grand)
+        
+        def construire_tas(liste):
+            n = len(liste)
+            for i in range(n // 2 - 1, -1, -1):
+                heapify(liste, n, i)
+        
+        def heapsort(liste):
+            n = len(liste)
+            construire_tas(liste)
+            for i in range(n - 1, 0, -1):
+                liste[i], liste[0] = liste[0], liste[i]
+                heapify(liste, i, 0)
+        
+        # Exemple d'utilisation
+        liste = [4, 10, 3, 5, 1]
+        heapsort(liste)
+        print("Liste triée :", liste)
+            </code></pre>
+        
+            <h4>Explication Étape par Étape du Code :</h4>
+            <ul>
+                <li><code>heapify</code> organise une partie du tableau pour en faire un tas valide.</li>
+                <li><code>construire_tas</code> crée un max-heap sur l’ensemble de la liste.</li>
+                <li><code>heapsort</code> utilise le max-heap pour extraire les éléments dans un ordre décroissant et les organiser de manière triée.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Défi Pratique pour les Élèves (20 min)</h3>
+            <ul>
+                <li><strong>Étape 1 :</strong> Utiliser Heapsort pour trier une liste de scores de joueurs dans un jeu, du plus haut au plus bas.</li>
+                <li><strong>Étape 2 :</strong> Modifier l'algorithme pour qu'il trie les scores du plus bas au plus haut (utiliser un min-heap).</li>
+                <li><strong>Étape 3 :</strong> Mesurer le temps 
+d'exécution de Heapsort par rapport à d'autres algorithmes de tri comme 
+le tri par sélection ou le tri par insertion.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Conclusion et Analyse de la Complexité (10 min)</h3>
+        
+            <h4>Complexité de Heapsort :</h4>
+            <ul>
+                <li><strong>Complexité en temps :</strong> Heapsort a une complexité temporelle de <code>O(n log n)</code> dans tous les cas, car la construction du tas prend <code>O(n)</code> et chaque extraction prend <code>O(log n)</code>.</li>
+                <li><strong>Complexité en espace :</strong> Heapsort est un tri <strong>en place</strong>, ce qui signifie qu’il ne nécessite pas de mémoire supplémentaire.</li>
+            </ul>
+        
+            <h4>Discussion Finale :</h4>
+            <p>Heapsort est un algorithme de tri efficace et stable qui 
+utilise un tas pour organiser les éléments de manière ordonnée. 
+Contrairement au tri rapide (Quicksort), Heapsort a une complexité 
+temporelle garantie de <code>O(n log n)</code> dans le pire des cas, ce 
+qui le rend particulièrement adapté pour des jeux ou des applications où
+ le tri des scores ou des objets est requis de manière fiable.</p>
+        </section>

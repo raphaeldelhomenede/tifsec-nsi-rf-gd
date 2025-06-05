@@ -1,0 +1,161 @@
+<script src="script.js"></script>
+<section id="session31" class="content-section">
+            <h2 style="margin-top: 30px; margin-bottom: 20px;">Séance 31 : Introduction au Tri Fusion (Merge Sort)</h2>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Objectif Global :</h3>
+            <p>Les élèves découvriront le fonctionnement de l'algorithme
+ de tri fusion, un algorithme de tri efficace basé sur le principe de 
+"diviser pour régner". Cette séance leur permettra d'implémenter 
+l'algorithme en utilisant la récursivité et de comprendre pourquoi il 
+est plus performant que des méthodes de tri plus simples, comme le tri 
+par sélection ou par insertion.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Introduction au Tri Fusion (20 min)</h3>
+        
+            <h4>Principe du Tri Fusion :</h4>
+            <p>Le tri fusion (ou Merge Sort) est un algorithme de tri basé sur une stratégie de <strong>diviser pour régner</strong>.
+ L'idée est de diviser le tableau en deux sous-tableaux, de trier chaque
+ sous-tableau de manière récursive, puis de fusionner les deux 
+sous-tableaux triés pour obtenir un tableau final trié.</p>
+        
+            <h4>Étapes de l'algorithme :</h4>
+            <ol>
+                <li><strong>Diviser :</strong> Si le tableau a plus d'un élément, le diviser en deux sous-tableaux de tailles à peu près égales.</li>
+                <li><strong>Trier :</strong> Appliquer récursivement le tri fusion sur chaque sous-tableau.</li>
+                <li><strong>Fusionner :</strong> Fusionner les deux sous-tableaux triés pour obtenir un tableau trié.</li>
+            </ol>
+        
+            <h4>Illustration Visuelle :</h4>
+            <p>Pour illustrer, imaginons un tableau initial : <code>[38, 27, 43, 3, 9, 82, 10]</code>. Le tri fusion fonctionnerait de la manière suivante :</p>
+            <pre><code>
+        [38, 27, 43, 3, 9, 82, 10]
+                  |
+            -----------------
+            |               |
+        [38, 27, 43]     [3, 9, 82, 10]
+               |              |
+            ------         ------
+            |    |         |    |
+        [38] [27, 43] [3, 9] [82, 10]
+        ...
+            </code></pre>
+        
+            <p>Chaque sous-tableau est divisé jusqu’à obtenir des 
+éléments individuels, puis ils sont fusionnés pour reconstituer le 
+tableau trié.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Décomposition de l'Algorithme (30 min)</h3>
+        
+            <h4>1. Cas de Base et Cas Récursif :</h4>
+            <p>L'algorithme utilise la récursivité pour diviser le tableau :</p>
+            <ul>
+                <li><strong>Cas de base :</strong> Si le tableau contient 1 ou 0 élément, il est déjà trié.</li>
+                <li><strong>Cas récursif :</strong> Diviser le tableau en deux, appliquer le tri fusion sur chaque sous-tableau, puis fusionner.</li>
+            </ul>
+        
+            <h4>Fonction de Fusion :</h4>
+            <p>La fonction de fusion combine deux sous-tableaux triés en un seul tableau trié :</p>
+            <ul>
+                <li>On compare les premiers éléments des deux sous-tableaux.</li>
+                <li>L'élément le plus petit est ajouté au tableau de fusion.</li>
+                <li>On répète jusqu'à ce que tous les éléments soient fusionnés.</li>
+            </ul>
+        
+            <h4>Pseudo-code du Tri Fusion :</h4>
+            <pre><code>def tri_fusion(tableau):
+            if len(tableau) &lt;= 1:  # Cas de base
+                return tableau
+            
+            milieu = len(tableau) // 2  # Trouver le milieu
+            gauche = tri_fusion(tableau[:milieu])  # Trier le sous-tableau gauche
+            droite = tri_fusion(tableau[milieu:])  # Trier le sous-tableau droit
+            
+            return fusion(gauche, droite)
+        
+        def fusion(gauche, droite):
+            resultat = []
+            while gauche and droite:
+                if gauche[0] &lt; droite[0]:
+                    resultat.append(gauche.pop(0))
+                else:
+                    resultat.append(droite.pop(0))
+            resultat.extend(gauche or droite)  # Ajouter les éléments restants
+            return resultat
+            </code></pre>
+        
+            <h4>Explication du Pseudo-code :</h4>
+            <ul>
+                <li><code>tri_fusion</code> est une fonction récursive qui divise le tableau en deux parties égales.</li>
+                <li>La fonction <code>fusion</code> fusionne les deux sous-tableaux triés en comparant les éléments un par un.</li>
+                <li>Si le tableau ne contient qu'un seul élément ou est vide, il est retourné tel quel (cas de base).</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Implémentation du Tri Fusion (40 min)</h3>
+        
+            <h4>Étape 1 : Diviser et Fusionner le Tableau</h4>
+            <p>Voici une implémentation complète de l'algorithme de tri fusion en Python :</p>
+            <pre><code>def tri_fusion(tableau):
+            if len(tableau) &lt;= 1:
+                return tableau
+            
+            milieu = len(tableau) // 2
+            gauche = tri_fusion(tableau[:milieu])
+            droite = tri_fusion(tableau[milieu:])
+            
+            return fusion(gauche, droite)
+        
+        def fusion(gauche, droite):
+            resultat = []
+            while gauche and droite:
+                if gauche[0] &lt; droite[0]:
+                    resultat.append(gauche.pop(0))
+                else:
+                    resultat.append(droite.pop(0))
+            resultat.extend(gauche or droite)
+            return resultat
+        
+        # Exemple d'utilisation
+        tableau = [38, 27, 43, 3, 9, 82, 10]
+        print("Tableau trié :", tri_fusion(tableau))
+            </code></pre>
+        
+            <h4>Étape 2 : Tester le Tri Fusion avec des Exemples</h4>
+            <p>Encouragez les élèves à tester la fonction <code>tri_fusion</code> avec plusieurs exemples pour vérifier qu'elle fonctionne correctement et comprendre le processus de fusion en pratique.</p>
+        
+            <h4>Défi Pratique pour les Élèves :</h4>
+            <ul>
+                <li><strong>Étape 1 :</strong> Modifiez la fonction <code>fusion</code> pour afficher chaque étape de fusion.</li>
+                <li><strong>Étape 2 :</strong> Testez l'algorithme avec des tableaux plus grands et analysez le temps de traitement.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Complexité et Avantages du Tri Fusion (20 min)</h3>
+        
+            <h4>Complexité Temporelle :</h4>
+            <p>Le tri fusion a une complexité en temps de <code>O(n log n)</code>,
+ ce qui en fait un algorithme de tri plus efficace que les méthodes de 
+tri simples (comme le tri par sélection) dans la plupart des cas.</p>
+        
+            <h4>Avantages du Tri Fusion :</h4>
+            <ul>
+                <li><strong>Efficace :</strong> La complexité de <code>O(n log n)</code> rend le tri fusion rapide même pour des tableaux relativement grands.</li>
+                <li><strong>Stable :</strong> Il conserve l’ordre relatif des éléments égaux, ce qui est important dans certaines applications.</li>
+            </ul>
+        
+            <h4>Inconvénients du Tri Fusion :</h4>
+            <ul>
+                <li><strong>Utilisation de mémoire :</strong> Le tri 
+fusion nécessite de la mémoire supplémentaire pour stocker les 
+sous-tableaux temporaires, ce qui peut être un inconvénient dans des 
+environnements à mémoire limitée.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Conclusion et Réflexion</h3>
+            <p>À la fin de cette séance, les élèves devraient comprendre
+ le fonctionnement de l’algorithme de tri fusion, ses avantages en 
+termes d’efficacité et sa complexité temporelle. Ils auront appris à 
+utiliser la récursivité pour diviser un problème en sous-problèmes et à 
+les fusionner pour obtenir une solution complète.</p>
+            <p>Le tri fusion est un exemple parfait d’algorithme 
+diviseur qui montre comment la récursivité peut simplifier la résolution
+ de problèmes complexes.</p>
+        </section>

@@ -1,0 +1,195 @@
+<script src="script.js"></script>
+<section id="session14" class="content-section">
+            <h2 style="margin-top: 30px; margin-bottom: 20px;">Séance 14 : Pratique - Représentation d'un Réseau de Routes dans un Jeu Vidéo avec des Graphes</h2>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Objectif de la Séance :</h3>
+            <p>Les élèves vont apprendre à modéliser un réseau de routes
+ dans un jeu vidéo en utilisant des graphes. Ils vont comprendre comment
+ utiliser un graphe pour représenter des routes entre différentes villes
+ et comment ces structures peuvent être utilisées pour trouver les 
+chemins les plus courts dans un jeu vidéo de type simulation de 
+transport.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Contexte du Jeu Vidéo</h3>
+            <p>Imaginez un jeu de simulation où le joueur doit gérer le 
+réseau de transport d’un royaume. Le royaume est constitué de plusieurs 
+villes reliées entre elles par des routes. Chaque ville est un nœud (ou 
+sommet) du réseau, et chaque route entre deux villes est une arête (ou 
+arc) dans le graphe.</p>
+            <p><strong>Objectif du joueur :</strong> Le joueur doit 
+transporter des marchandises d'une ville à l'autre en optimisant le 
+trajet pour gagner du temps et des ressources. Il devra donc utiliser un
+ algorithme de parcours de graphe pour trouver le chemin le plus court 
+entre deux villes.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Introduction aux Graphes</h3>
+            <p><strong>Qu’est-ce qu’un Graphe ?</strong></p>
+            <p>Un graphe est une structure mathématique utilisée pour modéliser des relations entre des objets. Il est composé de :</p>
+            <ul>
+                <li><strong>Nœuds (ou sommets)</strong> : Ici, chaque nœud représente une ville.</li>
+                <li><strong>Arêtes (ou arcs)</strong> : Ce sont les routes qui relient les villes entre elles.</li>
+            </ul>
+            <p><strong>Types de graphes :</strong></p>
+            <ul>
+                <li><strong>Graphes non orientés :</strong> Les arêtes n'ont pas de direction, comme une route bidirectionnelle entre deux villes.</li>
+                <li><strong>Graphes orientés :</strong> Les arêtes ont une direction, comme une autoroute à sens unique entre deux villes.</li>
+            </ul>
+            <p>Dans notre exemple de jeu vidéo, nous utiliserons un 
+graphe non orienté pour modéliser les routes, où chaque route est 
+bidirectionnelle.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Représentation d’un Graphe en Python</h3>
+            <p>Il existe plusieurs manières de représenter un graphe dans un programme :</p>
+            <ul>
+                <li><strong>Matrice d’adjacence :</strong> Une matrice où chaque élément (i, j) est 1 si une route existe entre les villes i et j, sinon 0.</li>
+                <li><strong>Liste d’adjacence :</strong> Un dictionnaire où chaque ville est associée à une liste de villes adjacentes reliées par une route.</li>
+            </ul>
+            <p>Pour cette séance, nous allons utiliser une liste 
+d’adjacence car elle est plus intuitive et plus efficace pour 
+représenter des graphes avec peu de connexions.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Étape 1 : Créer le Réseau de Routes avec une Liste d’Adjacence</h3>
+            <p><strong>Exemple :</strong></p>
+            <p>Supposons que nous avons cinq villes dans le royaume : A, B, C, D, et E. Les routes sont les suivantes :</p>
+            <ul>
+                <li>Route entre A et B.</li>
+                <li>Route entre A et C.</li>
+                <li>Route entre B et D.</li>
+                <li>Route entre C et D.</li>
+                <li>Route entre D et E.</li>
+            </ul>
+            <pre><code>
+    # Représentation du réseau de routes avec une liste d'adjacence
+    routes = {
+        'A': ['B', 'C'],
+        'B': ['A', 'D'],
+        'C': ['A', 'D'],
+        'D': ['B', 'C', 'E'],
+        'E': ['D']
+    }
+            </code></pre>
+            <p><strong>Explication :</strong></p>
+            <ul>
+                <li>La ville A est reliée aux villes B et C.</li>
+                <li>La ville B est reliée aux villes A et D, etc.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Étape 2 : Parcourir le Graphe – Algorithme DFS et BFS</h3>
+            <p><strong>Pourquoi parcourir un graphe ?</strong></p>
+            <p>Dans un jeu vidéo, le joueur peut vouloir savoir le 
+chemin le plus court entre deux villes ou simplement vérifier si une 
+ville est atteignable depuis une autre. Pour cela, on utilise des 
+algorithmes de parcours de graphe, comme DFS (Depth First Search) ou BFS
+ (Breadth First Search).</p>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Implémentation de DFS :</h4>
+            <pre><code>
+    # Fonction DFS pour parcourir le graphe
+    def dfs(graphe, ville, visitees):
+        print(f"Visite de {ville}")
+        visitees.add(ville)  # Marquer la ville comme visitée
+        
+        # Explorer les voisins
+        for voisin in graphe[ville]:
+            if voisin not in visitees:
+                dfs(graphe, voisin, visitees)
+    
+    # Appel de DFS à partir de la ville A
+    visitees = set()
+    dfs(routes, 'A', visitees)
+            </code></pre>
+            <p><strong>Explication de DFS :</strong></p>
+            <ul>
+                <li><strong>Départ :</strong> On commence par la ville A, puis on visite tous les voisins de A qui n’ont pas encore été visités (ici B et C).</li>
+                <li><strong>Récursivité :</strong> L’algorithme appelle récursivement DFS sur chaque voisin jusqu’à ce que toutes les villes connectées soient visitées.</li>
+            </ul>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Implémentation de BFS :</h4>
+            <pre><code>
+    from collections import deque
+
+    # Fonction BFS pour parcourir le graphe
+    def bfs(graphe, ville_depart):
+        file = deque([ville_depart])
+        visitees = set([ville_depart])
+        
+        while file:
+            ville = file.popleft()
+            print(f"Visite de {ville}")
+            
+            # Parcourir les voisins
+            for voisin in graphe[ville]:
+                if voisin not in visitees:
+                    file.append(voisin)
+                    visitees.add(voisin)
+    
+    # Appel de BFS à partir de la ville A
+    bfs(routes, 'A')
+            </code></pre>
+            <p><strong>Explication de BFS :</strong></p>
+            <ul>
+                <li>On commence par visiter la ville A, puis on ajoute ses voisins dans une file (ou file d’attente) pour les visiter à leur tour.</li>
+                <li>Le parcours se fait par niveaux : on visite d’abord les voisins immédiats (ici B et C), puis les voisins des voisins.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Étape 3 : Application au Jeu Vidéo – Trouver le Chemin le Plus Court</h3>
+            <p><strong>Objectif :</strong></p>
+            <p>Dans le jeu, le joueur doit transporter des marchandises 
+entre deux villes et doit trouver le chemin le plus court. Pour cela, 
+nous allons utiliser BFS car il est bien adapté pour trouver les chemins
+ les plus courts dans les graphes non pondérés.</p>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Ajout de la Fonction de Recherche du Chemin le Plus Court :</h4>
+            <pre><code>
+    def bfs_chemin_court(graphe, ville_depart, ville_arrivee):
+        file = deque([[ville_depart]])  # File qui contient les chemins explorés
+        visitees = set([ville_depart])
+                    
+        while file:
+            chemin = file.popleft()
+            ville = chemin[-1]
+            
+            # Si on arrive à la ville cible, on renvoie le chemin emprunté
+            if ville == ville_arrivee:
+                return chemin
+            
+            # Parcourir les voisins
+            for voisin in graphe[ville]:
+                if voisin not in visitees:
+                    nouveau_chemin = list(chemin)  # Copier le chemin actuel
+                    nouveau_chemin.append(voisin)  # Ajouter le voisin au chemin
+                    file.append(nouveau_chemin)
+                    visitees.add(voisin)
+        
+        return None  # Retourner None si aucun chemin n'est trouvé
+    
+    # Trouver le chemin le plus court entre A et E
+    chemin = bfs_chemin_court(routes, 'A', 'E')
+    print(f"Le chemin le plus court est : {chemin}")
+            </code></pre>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Étape 4 : Extensions et Améliorations</h3>
+            <ul>
+                <li><strong>Pondération des routes :</strong> Ajouter 
+des poids aux routes (distance ou temps de trajet) pour utiliser des 
+algorithmes plus avancés comme Dijkstra pour trouver le chemin le plus 
+court dans un graphe pondéré.</li>
+                <li><strong>Modéliser plus de villes :</strong> Ajouter davantage de villes et routes dans le réseau de transport.</li>
+                <li><strong>Gestion des trajets multiples :</strong> Permettre au joueur de planifier plusieurs trajets entre différentes villes.</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Conclusion</h3>
+            <ul>
+                <li>Modéliser un réseau de routes avec un graphe en utilisant une liste d’adjacence.</li>
+                <li>Implémenter des algorithmes de parcours (DFS et BFS) pour explorer un réseau de villes.</li>
+                <li>Utiliser BFS pour trouver le chemin le plus court 
+dans un graphe non pondéré, et comprendre comment cela s'applique aux 
+jeux vidéo.</li>
+            </ul>
+        
+            <h4 style="margin-top: 20px; margin-bottom: 20px;">Exercice Complémentaire :</h4>
+            <p>Si certains élèves avancent plus rapidement, ils peuvent 
+travailler sur un réseau de routes plus complexe et implémenter un 
+algorithme plus avancé comme Dijkstra pour trouver le chemin le plus 
+rapide en fonction du temps de trajet sur chaque route.</p>
+        </section>

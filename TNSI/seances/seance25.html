@@ -1,0 +1,139 @@
+<script src="script.js"></script>
+<section id="session25" class="content-section">
+            <h2 style="margin-top: 30px; margin-bottom: 20px;">Séance 25 : Introduction au Tri Rapide (Quicksort)</h2>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Objectif Global :</h3>
+            <p>Dans cette séance, les élèves vont découvrir et 
+implémenter l'algorithme de tri rapide, ou Quicksort, un des algorithmes
+ de tri les plus rapides et efficaces. L’objectif est de comprendre 
+comment Quicksort divise une liste de nombres en sous-parties pour 
+organiser ces éléments de manière ordonnée.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Introduction au Tri Rapide (Quicksort)</h3>
+            <h4>Le Contexte du Tri :</h4>
+            <p>Imaginez un jeu vidéo dans lequel le joueur doit 
+organiser rapidement un inventaire d’objets selon leur valeur ou leur 
+poids pour accéder plus facilement aux objets les plus précieux. Un 
+algorithme de tri comme Quicksort permet d’organiser cet inventaire de 
+manière très efficace, même si le nombre d’objets est élevé.</p>
+        
+            <h4>Concept du Tri Rapide :</h4>
+            <p>Quicksort est un algorithme de tri basé sur le principe de <strong>diviser pour régner</strong> :</p>
+            <ul>
+                <li>Il sélectionne un élément de la liste appelé <strong>pivot</strong>.</li>
+                <li>Ensuite, il réorganise la liste de manière à ce que 
+tous les éléments plus petits que le pivot se trouvent à gauche et tous 
+les éléments plus grands se trouvent à droite.</li>
+                <li>Le processus est ensuite appliqué récursivement aux sous-listes de gauche et de droite.</li>
+            </ul>
+        
+            <p>Ce procédé divise la liste en sous-parties jusqu'à ce que
+ chaque sous-liste contienne un seul élément, moment où tous les 
+éléments sont triés.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Étapes de Quicksort (20 min)</h3>
+            <h4>1. Choix du Pivot :</h4>
+            <p>Un pivot est un élément de la liste choisi pour diviser 
+la liste en deux sous-listes. Le choix du pivot peut être fait de 
+différentes manières :</p>
+            <ul>
+                <li>Le premier élément.</li>
+                <li>Le dernier élément.</li>
+                <li>Un élément aléatoire.</li>
+                <li>Le milieu de la liste (option courante pour éviter les déséquilibres).</li>
+            </ul>
+            
+            <h4>2. Réarrangement des Éléments autour du Pivot :</h4>
+            <p>Après avoir choisi le pivot, Quicksort place tous les 
+éléments inférieurs au pivot à gauche et tous les éléments supérieurs à 
+droite. Cela divise la liste en deux parties indépendantes.</p>
+        
+            <h4>3. Récursivité dans Quicksort :</h4>
+            <p>Le tri rapide utilise la récursivité pour trier les 
+sous-listes de gauche et de droite autour du pivot, jusqu'à ce que 
+toutes les sous-listes soient triées.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Pseudo-code de Quicksort</h3>
+            <pre><code>def quicksort(liste):
+            if len(liste) &lt;= 1:  # Cas de base : si la liste contient 1 ou 0 élément
+                return liste
+            pivot = liste[len(liste) // 2]  # Choisir le pivot
+            gauche = [x for x in liste if x &lt; pivot]  # Éléments plus petits que le pivot
+            milieu = [x for x in liste if x == pivot]  # Éléments égaux au pivot
+            droite = [x for x in liste if x &gt; pivot]  # Éléments plus grands que le pivot
+            return quicksort(gauche) + milieu + quicksort(droite)  # Appels récursifs
+            </code></pre>
+        
+            <p>Ce pseudo-code utilise la récursivité pour trier les 
+sous-listes gauche et droite jusqu'à ce que toutes les sous-listes 
+soient réduites à un ou zéro élément.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Implémentation de Quicksort en Python (30 min)</h3>
+            <p>Nous allons maintenant implémenter l’algorithme de tri 
+rapide en Python et l'appliquer à une liste de valeurs pour trier les 
+objets d'un inventaire de jeu en fonction de leur poids.</p>
+        
+            <pre><code>def quicksort(liste):
+            # Cas de base : si la liste est vide ou contient un seul élément, elle est déjà triée
+            if len(liste) &lt;= 1:
+                return liste
+        
+            # Choix du pivot (élément central pour éviter le déséquilibre)
+            pivot = liste[len(liste) // 2]
+        
+            # Créer des sous-listes pour les éléments inférieurs, égaux et supérieurs au pivot
+            gauche = [x for x in liste if x &lt; pivot]
+            milieu = [x for x in liste if x == pivot]
+            droite = [x for x in liste if x &gt; pivot]
+        
+            # Appels récursifs sur les sous-listes
+            return quicksort(gauche) + milieu + quicksort(droite)
+        
+        # Liste d'exemple pour tester le tri rapide
+        inventaire = [5, 3, 8, 6, 2, 7, 4, 1]
+        print("Inventaire trié :", quicksort(inventaire))
+            </code></pre>
+        
+            <h4>Explication de l’Implémentation :</h4>
+            <ul>
+                <li><strong>Cas de base :</strong> Si la liste est vide ou contient un seul élément, elle est déjà triée.</li>
+                <li><strong>Choix du pivot :</strong> L'élément central de la liste est choisi comme pivot.</li>
+                <li><strong>Création de sous-listes :</strong> La liste est divisée en trois parties : éléments plus petits que le pivot, éléments égaux au pivot et éléments plus grands.</li>
+                <li><strong>Appels récursifs :</strong> Les sous-listes gauche et droite sont triées de manière récursive, puis combinées pour obtenir la liste triée.</li>
+            </ul>
+        
+            <h4>Défi Pratique :</h4>
+            <ul>
+                <li><strong>Étape 1 :</strong> Modifiez la liste pour qu'elle représente un inventaire avec des poids de différents objets.</li>
+                <li><strong>Étape 2 :</strong> Utilisez Quicksort pour organiser les objets de l'inventaire par ordre de poids croissant.</li>
+                <li><strong>Étape 3 :</strong> Ajoutez une fonctionnalité pour trier par ordre décroissant (en inversant la logique de comparaison).</li>
+            </ul>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Analyse de la Complexité de Quicksort (10 min)</h3>
+            <p>Quicksort est un algorithme très efficace pour trier de 
+grandes listes. Cependant, son efficacité dépend de la manière dont les 
+pivots sont choisis.</p>
+        
+            <h4>1. Complexité Temporelle :</h4>
+            <ul>
+                <li><strong>Meilleur et cas moyen :</strong> <code>O(n log n)</code> lorsque les pivots divisent la liste de manière équilibrée.</li>
+                <li><strong>Pire cas :</strong> <code>O(n^2)</code> si 
+les pivots choisis divisent la liste de manière très déséquilibrée (par 
+exemple, si le pivot est toujours le plus grand ou le plus petit 
+élément).</li>
+            </ul>
+        
+            <h4>2. Efficacité Pratique :</h4>
+            <p>En moyenne, Quicksort est très rapide et est préféré pour
+ de nombreux problèmes de tri, car il utilise peu de mémoire 
+supplémentaire et est souvent plus rapide que d’autres algorithmes de 
+tri comme le tri par fusion dans les applications pratiques.</p>
+        
+            <h3 style="margin-top: 30px; margin-bottom: 20px;">Conclusion</h3>
+            <p>À la fin de cette séance, les élèves comprendront comment
+ Quicksort utilise la division pour organiser efficacement une liste 
+d'éléments. Ils auront appris à choisir un pivot, diviser une liste 
+autour de ce pivot, et appliquer la récursivité pour trier les 
+sous-listes. Ce tri est particulièrement utile dans les jeux vidéo pour 
+organiser des inventaires, classer des scores, et bien plus encore.</p>
+        </section>
