@@ -2,7 +2,7 @@ from random import randint
 
 def nombre_coups():
     '''Simule un jeu de plateau avec 12 cases et renvoie le nombre
-    minimal de coups pour visiter toutes les cases.'''
+    nécessaire de coups pour visiter toutes les cases.'''
     nombre_cases = 12
     # indique si une case a été vue
     cases_vues = [ False ] * nombre_cases
@@ -13,8 +13,10 @@ def nombre_coups():
     while nombre_cases_vues < nombre_cases:
         x = randint(1, 6)
         case_en_cours = (case_en_cours + x) % nombre_cases
-        if not cases_vues[case_en_cours]:
+        if x:
             cases_vues[case_en_cours] = True
             nombre_cases_vues = nombre_cases_vues + 1
         n = n + 1
     return n
+
+print(nombre_coups())
