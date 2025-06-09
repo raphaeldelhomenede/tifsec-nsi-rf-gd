@@ -4,7 +4,7 @@ def moyenne(tab):
     for i in tab:
         somme += i
         nb_de_nb += 1
-    if nb_de_nb == 0:
+    if not tab:
         return None
     return somme / nb_de_nb
 
