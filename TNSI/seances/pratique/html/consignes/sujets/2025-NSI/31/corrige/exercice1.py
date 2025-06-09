@@ -1,8 +1,8 @@
 def recherche_motif(motif, texte):
     indices = 0
     tab = []
-    for i in range(len(texte)-1):
-        if motif in texte[i:i+2]:
+    for i in range(len(texte)-(len(motif)-1)):
+        if motif in texte[i:i+len(motif)]:
             tab.append(indices)
         indices += 1
     return tab
