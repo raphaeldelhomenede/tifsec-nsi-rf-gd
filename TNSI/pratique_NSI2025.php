@@ -1,6 +1,4 @@
-eval("?>".$seances_data3[6][3][0][0][5][5]["pratique_sujet_table"]);
-                elseif (preg_match('/^pratique\/sujet(\d+)$/', $session_actuelle, $matches)) : ?>
-                    <?php
+<?php
                     $num = (int)$matches[1];
                     if ($num >= 1 && $num <= 48) :
                         $sujet = str_pad($num, 2, "0", STR_PAD_LEFT); 
