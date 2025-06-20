@@ -24,35 +24,19 @@
               <a id="lien-py" href="">
                   <span id="numberDuTruc"><?= htmlspecialchars($_GET['correction']) ?></span>.py
               </a>
-              <script>
-                  window.addEventListener('DOMContentLoaded', () => {
-                      const lienPy = document.getElementById('lien-py');
-                      const codePython = document.getElementById('code-python');
-                      const sujetPhp = "<?= addslashes(htmlspecialchars($sujet)) ?>";
-                      const correctionPhp = "<?= addslashes($correctionNum) ?>";
-                      const baseUrl = `https://tifsec-nsi.rf.gd/TNSI/watch/f.php?fichier=${sujetPhp}/corrige/`;
-      
-                      if (lienPy) {
-                          lienPy.href = `${baseUrl}exercice${correctionPhp}.py`;
-                      }
-      
-                      const realPyUrl = `${baseUrl}exercice${correctionPhp}.py`;
-                      document.title = `Correction Sujet ${sujetPhp} - Exercice ${correctionPhp}`;
-      
-                      fetch(realPyUrl)
-                          .then(response => {
-                              if (!response.ok) throw new Error('Fichier non trouvé');
-                              return response.text();
-                          })
-                          .then(code => {
-                              codePython.innerText = code;
-                          })
-                          .catch(error => {
-                              codePython.innerText = "Erreur de chargement du code.";
-                              console.error("Erreur lors du chargement du fichier Python :", error);
-                          });
-                  });
-              </script>
+              <?php
+              $sujetPhp = htmlspecialchars($sujet);
+              $correctionPhp = htmlspecialchars($_GET['correction'][8] ?? '?');
+              $pyUrl = "https://tifsec-nsi.rf.gd/TNSI/watch/f.php?fichier={$sujetPhp}/corrige/exercice{$correctionPhp}.py";
+              
+              $code = @file_get_contents($pyUrl);
+              
+              if ($code === false) {
+                  $code = "Erreur de chargement du fichier Python.";
+              }
+              ?>
+              
+              <pre><code><?= htmlspecialchars($code) ?></code></pre>
           </div>
       <?php else: ?>
           <div>
