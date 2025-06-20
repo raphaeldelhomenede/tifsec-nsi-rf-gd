@@ -4,39 +4,42 @@
       $sujet = str_pad($num, 2, "0", STR_PAD_LEFT); 
       if (isset($_GET['correction']) && in_array($_GET['correction'], ['exercice1', 'exercice2'])):
           $correctionNum = htmlspecialchars($_GET['correction'][8] ?? '?');
-          $sujetPhp = htmlspecialchars($sujet);
-          $pyUrl = "https://tifsec-nsi.rf.gd/TNSI/watch/f.php?fichier={$sujetPhp}/corrige/exercice{$correctionNum}.py";
-      
-          $code = @file_get_contents($pyUrl);
-          if ($code === false) {
-              $code = "Erreur de chargement du fichier Python.";
-          }
-      ?>
-      
-      <div style="margin: 0; padding: 0; height: 100vh;">
-          <style>
-              pre {
-                  background-color: #eee;
-                  color: black;
-                  padding: 15px;
-                  border-radius: 8px;
-                  border: 1px solid #ccc;
-                  overflow-x: auto;
+          ?>
+          <div style="margin: 0; padding: 0; height: 100vh;">
+              <style>
+                  pre {
+                      background-color: #eee;
+                      color: black;
+                      padding: 15px;
+                      border-radius: 8px;
+                      border: 1px solid #ccc;
+                      overflow-x: auto;
+                  }
+                  .qJM_S3P-7Rs {
+                      color: #333;
+                  }
+              </style>
+              <h1 class="qJM_S3P-7Rs">Correction Sujet <?= htmlspecialchars($sujet) ?> - Exercice <?= $correctionNum ?></h1>
+              <pre><code id="code-python"></code></pre>
+              <a id="lien-py" href="">
+                  <span id="numberDuTruc"><?= htmlspecialchars($_GET['correction']) ?></span>.py
+              </a>
+              <?php
+              $sujetPhp = htmlspecialchars($sujet);
+              $correctionPhp = htmlspecialchars($_GET['correction'][8] ?? '?');
+              $pyUrl = "https://tifsec-nsi.rf.gd/TNSI/watch/f.php?fichier={$sujetPhp}/corrige/exercice{$correctionPhp}.py";
+              
+              $code = @file_get_contents($pyUrl);
+              
+              if ($code === false) {
+                  $code = "Erreur de chargement du fichier Python.";
               }
-              .qJM_S3P-7Rs {
-                  color: #333;
-              }
-          </style>
-      
-          <h1 class="qJM_S3P-7Rs">
-              Correction Sujet <?= $sujetPhp ?> - Exercice <?= $correctionNum ?>
-          </h1>
-      
-          <pre><code><?= htmlspecialchars($code) ?></code></pre>
-      </div>
-      
+              ?>
+              
+              <pre><code><?= htmlspecialchars($code) ?></code></pre>
+          </div>
       <?php else: ?>
-          <div>
+        <div>
           <h3>🔍 Consignes & Exercices</h3>
           🔗 <a href="https://tifsec-nsi.rf.gd/TNSI/watch/f.php?fichier=<?php echo $sujet; ?>/sujet-<?php echo $num; ?>.py">Télécharger le fichier Python</a><br>
           </div>
