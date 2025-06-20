@@ -60,8 +60,5 @@
           🔗 <a href="?session=<?php echo htmlspecialchars($_GET['session']); ?>&correction=exercice2">Voir le corrigé de l'exercice 2</a>
           </div>
       <?php endif;
-  else:
-    header("Location: https://tifsec.github.io/TNSI/?session=pratique/sujet" . $num);
-    exit;
   endif;
   ?>
