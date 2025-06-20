@@ -1,4 +1,4 @@
-$variable242 = $seances_data3[6][2][$session_actuelle][$font1]; ?>
+<?php $variable242 = $seances_data3[6][2][$session_actuelle][$font1]; ?>
 <iframe
     src="<?= htmlspecialchars($variable242); ?>"
     class="tifsec1"
