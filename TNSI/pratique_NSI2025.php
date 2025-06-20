@@ -39,7 +39,7 @@
       <?php else: ?>
         <div>
           <h3>🔍 Consignes & Exercices</h3>
-          🔗 <a href="https://tifsec-nsi.rf.gd/TNSI/watch/f.php?fichier=<?php echo $sujet; ?>/sujet-<?php echo $num; ?>.py">Télécharger le fichier Python</a><br>
+          🔗 <a href="?session=f.php&fichier=<?php echo $sujet; ?>/sujet-<?php echo $num; ?>.py">Télécharger le fichier Python</a><br>
           </div>
   
           <div style="margin: 1em 0; height: 100vh;">
