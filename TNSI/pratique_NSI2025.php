@@ -20,14 +20,10 @@
                   }
               </style>
               <h1 class="qJM_S3P-7Rs">Correction Sujet <?= htmlspecialchars($sujet) ?> - Exercice <?= $correctionNum ?></h1>
-              <pre><code id="code-python"></code></pre>
-              <a id="lien-py" href="">
-                  <span id="numberDuTruc"><?= htmlspecialchars($_GET['correction']) ?></span>.py
-              </a>
               <?php
               $sujetPhp = htmlspecialchars($sujet);
               $correctionPhp = htmlspecialchars($_GET['correction'][8] ?? '?');
-              $pyUrl = "https://tifsec-nsi.rf.gd/TNSI/watch/f.php?fichier={$sujetPhp}/corrige/exercice{$correctionPhp}.py";
+              $pyUrl = "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/2025-NSI/{$sujetPhp}/corrige/exercice{$correctionPhp}.py";
               
               $code = @file_get_contents($pyUrl);
               
@@ -35,8 +31,10 @@
                   $code = "Erreur de chargement du fichier Python.";
               }
               ?>
-              
-              <pre><code><?= htmlspecialchars($code) ?></code></pre>
+              <pre><code id="code-python"><?= htmlspecialchars($code) ?></code></pre>
+              <a id="lien-py" href="<?= "https://tifsec-nsi.rf.gd/TNSI/watch/f.php?fichier={$sujetPhp}/corrige/exercice{$correctionPhp}.py" ?>">
+                  <span id="numberDuTruc"><?= htmlspecialchars($_GET['correction']) ?></span>.py
+              </a>
           </div>
       <?php else: ?>
         <div>
