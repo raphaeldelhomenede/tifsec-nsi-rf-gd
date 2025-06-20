@@ -32,7 +32,7 @@
               }
               ?>
               <pre><code id="code-python"><?= htmlspecialchars($code) ?></code></pre>
-              <a id="lien-py" href="<?= "https://tifsec-nsi.rf.gd/TNSI/watch/f.php?fichier={$sujetPhp}/corrige/exercice{$correctionPhp}.py" ?>">
+              <a id="lien-py" href="<?= "?session=f.php&fichier={$sujetPhp}/corrige/exercice{$correctionPhp}.py" ?>">
                   <span id="numberDuTruc"><?= htmlspecialchars($_GET['correction']) ?></span>.py
               </a>
           </div>
