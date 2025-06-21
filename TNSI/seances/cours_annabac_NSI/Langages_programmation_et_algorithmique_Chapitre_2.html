@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>NSI - Récursivité (Python)</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #fefefe; padding: 30px; line-height: 1.7; color: #333; }
+        h1, h2, h3 { color: #2c3e50; }
+        code, pre { background: #eef; padding: 10px; border-radius: 6px; display: block; margin: 10px 0; white-space: pre-wrap; }
+        ul { margin-left: 20px; }
+        .section { margin-bottom: 40px; }
+        footer { margin-top: 50px; font-size: 0.9em; color: #777; }
+    </style>
+</head>
+<body>
+
+    <h1>🧠 NSI - Langages, programmation et algorithmique</h1>
+    <h2>📘 Chapitre 2 : Récursivité (Python)</h2>
+
+    <div class="section">
+        <h3>🎯 Objectifs pédagogiques</h3>
+        <ul>
+            <li>Comprendre la définition d’une fonction récursive</li>
+            <li>Savoir écrire une fonction récursive simple</li>
+            <li>Connaître la différence entre récursivité et itération</li>
+            <li>Savoir identifier les cas d’arrêt d’une fonction récursive</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h3>🔹 Qu’est-ce que la récursivité ?</h3>
+        <p>Une fonction est récursive lorsqu’elle s’appelle elle-même. C’est une technique puissante pour résoudre des problèmes définis de manière récursive.</p>
+        <p>Une fonction récursive possède deux parties :</p>
+        <ul>
+            <li><strong>Cas de base (ou cas d'arrêt)</strong> : condition pour arrêter l'appel récursif.</li>
+            <li><strong>Appel récursif</strong> : la fonction s'appelle avec un cas plus simple.</li>
+        </ul>
+
+        <h4>📌 Exemple 1 : Factorielle</h4>
+        <pre><code>def factorielle(n):
+    if n == 0:
+        return 1  # Cas de base
+    else:
+        return n * factorielle(n - 1)  # Appel récursif
+
+print(factorielle(5))  # Affiche 120</code></pre>
+
+        <p>Ici, <code>factorielle(5)</code> appelle <code>factorielle(4)</code>, qui appelle <code>factorielle(3)</code>, etc., jusqu'à <code>factorielle(0)</code>.</p>
+    </div>
+
+    <div class="section">
+        <h3>🔄 Comparaison récursivité / itération</h3>
+        <p>La récursivité peut souvent être remplacée par une boucle.</p>
+
+        <h4>Itératif :</h4>
+        <pre><code>def factorielle_iter(n):
+    resultat = 1
+    for i in range(1, n + 1):
+        resultat *= i
+    return resultat</code></pre>
+
+        <h4>Récursif :</h4>
+        <pre><code>def factorielle_rec(n):
+    if n == 0:
+        return 1
+    return n * factorielle_rec(n - 1)</code></pre>
+
+        <p>Les deux donnent le même résultat, mais l’itératif est généralement plus rapide et évite les erreurs de dépassement de pile (stack overflow).</p>
+    </div>
+
+    <div class="section">
+        <h3>🧪 Autres exemples</h3>
+
+        <h4>Exemple 2 : Somme des entiers</h4>
+        <pre><code>def somme(n):
+    if n == 0:
+        return 0
+    return n + somme(n - 1)
+
+print(somme(4))  # Affiche 10</code></pre>
+
+        <h4>Exemple 3 : Suite de Fibonacci</h4>
+        <pre><code>def fibonacci(n):
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    return fibonacci(n - 1) + fibonacci(n - 2)
+
+print(fibonacci(6))  # Affiche 8</code></pre>
+
+        <p>⚠️ Cette version est lente pour de grandes valeurs de <code>n</code> car elle répète beaucoup de calculs.</p>
+    </div>
+
+    <div class="section">
+        <h3>📉 Complexité et récursivité</h3>
+        <ul>
+            <li>La récursivité peut simplifier le code</li>
+            <li>Mais elle peut être inefficace si mal utilisée</li>
+            <li>Utiliser des techniques comme la <strong>mémoïsation</strong> ou passer à une version itérative</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h3>🧪 Tests et vérifications</h3>
+        <pre><code>def carre(x):
+    return x * x
+
+def test_carre():
+    assert carre(2) == 4
+    assert carre(-3) == 9
+
+print("Tests passés !")
+test_carre()</code></pre>
+
+        <p>Il est aussi possible d’écrire des tests pour les fonctions récursives comme pour les autres.</p>
+    </div>
+
+    <footer>
+        <p>📚 Cours NSI - Terminale | Chapitre 2 : Récursivité (Python)</p>
+    </footer>
+
+</body>
+</html>

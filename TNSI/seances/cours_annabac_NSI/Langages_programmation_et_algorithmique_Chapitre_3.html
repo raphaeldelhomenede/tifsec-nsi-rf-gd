@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>NSI - Paradigmes de Programmation</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #fefefe; padding: 30px; line-height: 1.7; color: #333; }
+        h1, h2, h3 { color: #2c3e50; }
+        code, pre { background: #eef; padding: 10px; border-radius: 6px; display: block; margin: 10px 0; white-space: pre-wrap; }
+        ul { margin-left: 20px; }
+        .section { margin-bottom: 40px; }
+        footer { margin-top: 50px; font-size: 0.9em; color: #777; }
+    </style>
+</head>
+<body>
+
+    <h1>🧠 NSI - Langages, programmation et algorithmique</h1>
+    <h2>📘 Chapitre 3 : Paradigmes de programmation</h2>
+
+    <div class="section">
+        <h3>🎯 Objectifs pédagogiques</h3>
+        <ul>
+            <li>Comprendre ce qu’est un paradigme de programmation</li>
+            <li>Connaître les principaux paradigmes : impératif, fonctionnel, objet</li>
+            <li>Apprendre à identifier le paradigme utilisé dans un code Python</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h3>🔹 Définition</h3>
+        <p>Un paradigme de programmation est une manière d’organiser et de structurer un programme. Chaque paradigme propose un style de résolution de problèmes et une philosophie de construction de code.</p>
+    </div>
+
+    <div class="section">
+        <h3>🧱 Paradigme impératif</h3>
+        <p>Le paradigme impératif décrit une séquence d’instructions à exécuter dans un ordre donné. C’est le style le plus proche du langage machine.</p>
+
+        <h4>🔧 Exemple :</h4>
+        <pre><code>def somme_liste(liste):
+    total = 0
+    for x in liste:
+        total += x
+    return total
+
+print(somme_liste([1, 2, 3]))</code></pre>
+
+        <p>Les instructions modifient directement l’état du programme (variables, boucles, etc.).</p>
+    </div>
+
+    <div class="section">
+        <h3>🔗 Paradigme fonctionnel</h3>
+        <p>Ce paradigme repose sur l’utilisation de fonctions pures, sans effets de bord, et la récursivité.</p>
+
+        <h4>🔧 Exemple :</h4>
+        <pre><code>def somme_recursive(liste):
+    if not liste:
+        return 0
+    return liste[0] + somme_recursive(liste[1:])
+
+print(somme_recursive([1, 2, 3]))</code></pre>
+
+        <p>On évite les boucles et on privilégie les fonctions sans état global.</p>
+    </div>
+
+    <div class="section">
+        <h3>🧩 Paradigme orienté objet</h3>
+        <p>Ici, on structure le code autour d’objets (instances de classes) qui combinent données (attributs) et comportements (méthodes).</p>
+
+        <h4>🔧 Exemple :</h4>
+        <pre><code>class Compte:
+    def __init__(self, solde):
+        self.solde = solde
+
+    def deposer(self, montant):
+        self.solde += montant
+
+    def afficher(self):
+        print(f"Solde : {self.solde}€")
+
+c = Compte(100)
+c.deposer(50)
+c.afficher()</code></pre>
+
+        <p>Chaque objet possède un état propre et peut interagir avec d’autres objets.</p>
+    </div>
+
+    <div class="section">
+        <h3>🧠 Quel paradigme choisir ?</h3>
+        <ul>
+            <li>Le paradigme impératif est simple à comprendre, mais peut devenir confus dans les grands projets.</li>
+            <li>Le fonctionnel est très utilisé dans les algorithmes mathématiques et les fonctions récursives.</li>
+            <li>L’orienté objet est le plus courant dans les grandes applications (applications web, jeux, etc.).</li>
+        </ul>
+    </div>
+
+    <footer>
+        <p>📚 Cours NSI - Terminale | Chapitre 3 : Paradigmes de programmation</p>
+    </footer>
+
+</body>
+</html>
