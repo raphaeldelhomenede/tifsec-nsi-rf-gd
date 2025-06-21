@@ -6,7 +6,7 @@ $chapitre = $_GET['chapitre'] ?? null;
 <style>
     ul { line-height: 1.6; }
     a { text-decoration: none; color: #2980b9; }
-    header {margin-top: -20px;}
+    header {margin-top: -10px;}
 </style>
 
 <?php
