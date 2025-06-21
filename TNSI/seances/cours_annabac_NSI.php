@@ -4,7 +4,6 @@ $theme = $_GET['theme'] ?? null;
 $chapitre = $_GET['chapitre'] ?? null;
 ?>
 <style>
-    body { font-family: Arial, sans-serif; background: #f8f8f8; padding: 20px; }
     ul { line-height: 1.6; }
     a { text-decoration: none; color: #2980b9; }
 </style>
