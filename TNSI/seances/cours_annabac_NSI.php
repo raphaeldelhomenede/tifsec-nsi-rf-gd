@@ -10,7 +10,6 @@ $chapitre = $_GET['chapitre'] ?? null;
     <title>Présentation du cours NSI</title>
     <style>
         body { font-family: Arial, sans-serif; background: #f8f8f8; }
-        h1, h2 { color: #2c3e50; }
         ul { line-height: 1.6; }
         a { text-decoration: none; color: #2980b9; }
     </style>
