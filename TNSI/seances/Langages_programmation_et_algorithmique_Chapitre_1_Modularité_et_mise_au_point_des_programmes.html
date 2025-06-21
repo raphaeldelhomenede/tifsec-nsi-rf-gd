@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>NSI - Modularité et mise au point des programmes (Python)</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f9f9f9; padding: 30px; line-height: 1.6; }
+        h1, h2, h3 { color: #2c3e50; }
+        code, pre { background: #eef; padding: 10px; border-radius: 6px; display: block; margin: 10px 0; white-space: pre-wrap; }
+        ul { margin-left: 20px; }
+        .section { margin-bottom: 40px; }
+    </style>
+</head>
+<body>
+
+    <h1>🧠 NSI - Langages, programmation et algorithmique</h1>
+    <h2>📘 Chapitre 1 : Modularité et mise au point des programmes (Python)</h2>
+
+    <div class="section">
+        <h3>🎯 Objectifs du chapitre</h3>
+        <ul>
+            <li>Comprendre la notion de modularité d’un programme</li>
+            <li>Structurer son code avec des fonctions ou fichiers</li>
+            <li>Déboguer un programme Python</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h3>🔹 Qu'est-ce que la modularité ?</h3>
+        <p>La modularité permet de diviser un programme en plusieurs fonctions ou modules. Cela facilite :</p>
+        <ul>
+            <li>la lecture du code</li>
+            <li>la maintenance</li>
+            <li>la réutilisation</li>
+        </ul>
+
+        <h4>📌 Exemple en Python :</h4>
+        <pre><code>def calcul_moyenne(notes):
+    return sum(notes) / len(notes)
+
+mes_notes = [14, 16, 13]
+print("Moyenne :", calcul_moyenne(mes_notes))</code></pre>
+    </div>
+
+    <div class="section">
+        <h3>🔎 Mise au point (debug)</h3>
+        <p>Pour corriger ou analyser le comportement d'un programme :</p>
+        <ul>
+            <li><code>print()</code> : pour afficher une variable</li>
+            <li><code>type()</code> : pour connaître le type d'une variable</li>
+        </ul>
+
+        <h4>📌 Exemple :</h4>
+        <pre><code>eleve = {"nom": "Lina", "age": 17}
+print(eleve)
+print("Nom :", eleve["nom"])
+print("Type :", type(eleve))</code></pre>
+    </div>
+
+    <div class="section">
+        <h3>📁 Organisation du code en modules</h3>
+        <p>On peut séparer le code dans plusieurs fichiers Python et les importer :</p>
+
+        <h4>📂 Exemple :</h4>
+        <p><strong>fichier : outils.py</strong></p>
+        <pre><code>def bonjour(prenom):
+    return f"Bonjour {prenom} !"</code></pre>
+
+        <p><strong>fichier : main.py</strong></p>
+        <pre><code>from outils import bonjour
+
+print(bonjour("Thomas"))</code></pre>
+    </div>
+
+    <div class="section">
+        <h3>✅ Bonnes pratiques</h3>
+        <ul>
+            <li>Donner des noms explicites aux fonctions et variables</li>
+            <li>Tester les fonctions séparément</li>
+            <li>Ajouter des commentaires si nécessaire</li>
+        </ul>
+    </div>
+
+    <footer>
+        <p>📚 Cours NSI - Terminale | Chapitre : Modularité et mise au point des programmes (Python)</p>
+    </footer>
+
+</body>
+</html>
