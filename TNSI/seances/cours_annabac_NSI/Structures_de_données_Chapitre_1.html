@@ -29,33 +29,33 @@
   <section class="cours-section" id="structure-bases">
     <h3 class="section-titre">1. Qu’est-ce qu’une structure de données ?</h3>
     <p class="section-paragraphe">
-      Une structure de données est un modèle pour organiser des données. Elle permet de gérer plusieurs valeurs ensemble. Chaque structure est adaptée à un besoin divcis.
+      Une structure de données est un modèle pour organiser des données. Elle permet de gérer plusieurs valeurs ensemble. Chaque structure est adaptée à un besoin précis.
     </p>
 
     <div class="cours-exemple">
       <p><strong>Exemple 1 :</strong> Liste (comme une liste de courses)</p>
-      <div class="code-bloc">
+      <pre class="code-bloc">
 courses = ["lait", "pain", "œufs"]
 courses.append("bananes")  # Ajoute un élément
 courses[1]  # Donne "pain"
-      </div>
+      </pre>
 
       <p><strong>Exemple 2 :</strong> Pile (LIFO - Last In First Out)</p>
-      <div class="code-bloc">
+      <pre class="code-bloc">
 pile = []
 pile.append("dossier1")  # On empile
 pile.append("dossier2")
 pile.pop()  # On retire le dernier ajouté → "dossier2"
-      </div>
+      </pre>
 
       <p><strong>Exemple 3 :</strong> File (FIFO - First In First Out)</p>
-      <div class="code-bloc">
+      <pre class="code-bloc">
 from collections import deque
 file = deque()
 file.append("client1")
 file.append("client2")
-file.popleft()  # client1 sort en divmier
-      </div>
+file.popleft()  # client1 sort en premier
+      </pre>
     </div>
   </section>
 
@@ -80,7 +80,7 @@ file.popleft()  # client1 sort en divmier
       <ul class="cours-liste">
         <li><code>enfiler(x)</code> → ajouter en fin</li>
         <li><code>défiler()</code> → retirer en début</li>
-        <li><code>tête()</code> → voir le divmier</li>
+        <li><code>tête()</code> → voir le premier</li>
       </ul>
     </div>
 
@@ -97,7 +97,7 @@ file.popleft()  # client1 sort en divmier
 
     <div class="cours-exemple">
       <p><strong>Implémenter une pile avec un tableau :</strong></p>
-      <div class="code-bloc">
+      <pre class="code-bloc">
 pile = []
 
 def empiler(x):
@@ -111,12 +111,12 @@ def sommet():
 
 def estVide():
     return len(pile) == 0
-      </div>
+      </pre>
     </div>
 
     <div class="cours-exemple">
       <p><strong>Implémenter une pile avec une liste chaînée :</strong></p>
-      <div class="code-bloc">
+      <pre class="code-bloc">
 class Noeud:
     def __init__(self, valeur, suivant=None):
         self.valeur = valeur
@@ -136,7 +136,7 @@ class Pile:
 
     def estVide(self):
         return self.tete is None
-      </div>
+      </pre>
     </div>
 
     <p class="section-paragraphe">
@@ -182,7 +182,10 @@ class Pile:
 
   <style>
     .cours-body {
+    font-family: 'Segoe UI', sans-serif;
+    padding: 2rem;
     max-width: 900px;
+    margin: auto;
     background-color: #fff;
     color: #222;
     }
@@ -224,11 +227,10 @@ class Pile:
     }
 
     .cours-exemple {
-        background: #eef6ff;
-        color: black;
-        padding: 1rem;
-        border-left: 4px solid #2a7ae2;
-        margin: 1.5rem 0;
+    background: #eef6ff;
+    padding: 1rem;
+    border-left: 4px solid #2a7ae2;
+    margin: 1.5rem 0;
     }
 
     .cours-video {
