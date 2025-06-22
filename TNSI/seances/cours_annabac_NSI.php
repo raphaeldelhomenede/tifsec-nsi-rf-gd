@@ -38,12 +38,14 @@ $urls = [
     ]
 ];
 
+// Si un chapitre est demandé → on affiche **uniquement** le cours
 if ($theme && $chapitre && isset($urls[$theme][(int)$chapitre])) {
     echo get_url_content($urls[$theme][(int)$chapitre]);
+    exit; // empêche l'affichage du menu après
 }
 ?>
 
-<!-- Affichage des liens -->
+<!-- Menu visible SEULEMENT si aucun chapitre n'est sélectionné -->
 <style>
     ul { line-height: 1.6; }
     a { text-decoration: none; color: #0074d9; }
@@ -53,14 +55,14 @@ if ($theme && $chapitre && isset($urls[$theme][(int)$chapitre])) {
 
 <h2>Langages, programmation et algorithmique</h2>
 <ul>
-    <li><a href="?theme=langages&chapitre=1">Chapitre 1 : Modularité et mise au point</a></li>
+    <li><a href="?theme=langages&chapitre=1">Chapitre 1 : Modularité</a></li>
     <li><a href="?theme=langages&chapitre=2">Chapitre 2 : Récursivité</a></li>
-    <li><a href="?theme=langages&chapitre=3">Chapitre 3 : Paradigmes de programmation</a></li>
+    <li><a href="?theme=langages&chapitre=3">Chapitre 3 : Paradigmes</a></li>
 </ul>
 
 <h2>Structures de données</h2>
 <ul>
-    <li><a href="?theme=structures&chapitre=1">Chapitre 1 : Interface des structures</a></li>
+    <li><a href="?theme=structures&chapitre=1">Chapitre 1 : Structures simples</a></li>
     <li><a href="?theme=structures&chapitre=2">Chapitre 2 : Arbres</a></li>
     <li><a href="?theme=structures&chapitre=3">Chapitre 3 : Graphes</a></li>
 </ul>
@@ -71,10 +73,10 @@ if ($theme && $chapitre && isset($urls[$theme][(int)$chapitre])) {
     <li><a href="?theme=bases&chapitre=2">Chapitre 2 : SQL</a></li>
 </ul>
 
-<h2>Architectures et réseaux</h2>
+<h2>Architectures matérielles</h2>
 <ul>
-    <li><a href="?theme=architectures&chapitre=1">Chapitre 1 : Composants et processus</a></li>
-    <li><a href="?theme=architectures&chapitre=2">Chapitre 2 : Réseaux et sécurité</a></li>
+    <li><a href="?theme=architectures&chapitre=1">Chapitre 1 : Composants</a></li>
+    <li><a href="?theme=architectures&chapitre=2">Chapitre 2 : Réseaux</a></li>
 </ul>
 
 <h2>Programmation avancée</h2>
