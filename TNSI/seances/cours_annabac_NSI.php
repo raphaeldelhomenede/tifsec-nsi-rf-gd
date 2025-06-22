@@ -2,6 +2,35 @@
 $session = $_GET['session'] ?? null;
 $theme = $_GET['theme'] ?? null;
 $chapitre = $_GET['chapitre'] ?? null;
+
+$urls = [
+    "Langages, programmation et algorithmique" => [
+        1 => "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/cours_annabac_NSI/Langages_programmation_et_algorithmique_Chapitre_1.html",
+        2 => "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/cours_annabac_NSI/Langages_programmation_et_algorithmique_Chapitre_2.html",
+        3 => "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/cours_annabac_NSI/Langages_programmation_et_algorithmique_Chapitre_3.html"
+    ],
+    "Structures de données" => [
+        1 => "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/Structures_de_données/Structures_de_données_Chapitre_1.html",
+        2 => "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/Structures_de_données/Structures_de_données_Chapitre_2.html",
+        3 => "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/Structures_de_données/Structures_de_données_Chapitre_3.html"
+    ],
+    "Bases de données" => [
+        1 => "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/Structures_de_données/Conception_de_bases_de_données_Chapitre_1.html",
+        2 => "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/Structures_de_données/Conception_de_bases_de_données_Chapitre_2.html"
+    ],
+    "Architectures" => [
+        1 => "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/Structures_de_données/Composants_et_processus_Chapitre1.html",
+        2 => "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/Structures_de_données/Composants_et_processus_Chapitre2.html"
+    ],
+    "Programmation avancée" => [
+        1 => "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/Structures_de_données/Programmation_avancée_et_algorithmique_Chapitre_1.html",
+        2 => "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/Structures_de_données/Programmation_avancée_et_algorithmique_Chapitre_2.html"
+    ]
+];
+
+if ($theme && $chapitre && isset($urls[$theme][(int)$chapitre])) {
+    echo @file_get_contents($urls[$theme][(int)$chapitre]);
+}
 ?>
 <style>
     ul { line-height: 1.6; }
@@ -41,40 +70,3 @@ $chapitre = $_GET['chapitre'] ?? null;
     <li><a href="?session=cours_annabac_NSI&theme=Programmation avancée&chapitre=1">Chapitre 1 : Programmes et données – Calculabilité</a></li>
     <li><a href="?session=cours_annabac_NSI&theme=Programmation avancée&chapitre=2">Chapitre 2 : Programmation avancée</a></li>
 </ul>
-<?php
-if $_GET["theme"] == "Langages, programmation et algorithmique" and $_GET["chapitre"] == 1 {
-    @file_get_contents("https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/cours_annabac_NSI/Langages_programmation_et_algorithmique_Chapitre_1.html")
-}
-if $_GET["theme"] == "Langages, programmation et algorithmique" and $_GET["chapitre"] == 2 {
-    @file_get_contents("https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/cours_annabac_NSI/Langages_programmation_et_algorithmique_Chapitre_2.html")
-}
-if $_GET["theme"] == "Langages, programmation et algorithmique" and $_GET["chapitre"] == 3 {
-    @file_get_contents("https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/cours_annabac_NSI/Langages_programmation_et_algorithmique_Chapitre_3.html")
-}
-if $_GET["theme"] == "Structures de données" and $_GET["chapitre"] == 1 {
-    @file_get_contents("https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/Structures_de_données/Langages_programmation_et_algorithmique_Chapitre_1.html")
-}
-if $_GET["theme"] == "Structures de données" and $_GET["chapitre"] == 2 {
-    @file_get_contents("https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/Structures_de_données/Langages_programmation_et_algorithmique_Chapitre_2.html")
-}
-if $_GET["theme"] == "Structures de données" and $_GET["chapitre"] == 3 {
-    @file_get_contents("https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/Structures_de_données/Langages_programmation_et_algorithmique_Chapitre_3.html")
-}
-if $_GET["theme"] == "Bases de données" and $_GET["chapitre"] == 1 {
-    @file_get_contents("https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/Structures_de_données/Conception_de_bases_de_données_Chapitre_1.html")
-}
-if $_GET["theme"] == "Bases de données" and $_GET["chapitre"] == 2 {
-    @file_get_contents("https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/Structures_de_données/Conception_de_bases_de_données_Chapitre_2.html")
-}
-if $_GET["theme"] == "Architectures" and $_GET["chapitre"] == 1 {
-    @file_get_contents("https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/Structures_de_données/Composants_et_processus_Chapitre1.html")
-}
-if $_GET["theme"] == "Architectures" and $_GET["chapitre"] == 2 {
-    @file_get_contents("https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/Structures_de_données/Composants_et_processus_Chapitre2.html")
-}
-if $_GET["theme"] == "Programmation avancée" and $_GET["chapitre"] == 1 {
-    @file_get_contents("https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/Structures_de_données/Programmation_avancée_et_algorithmique_Chapitre_1.html")
-}
-if $_GET["theme"] == "Programmation avancée" and $_GET["chapitre"] == 2 {
-    @file_get_contents("https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/Structures_de_données/Programmation_avancée_et_algorithmique_Chapitre_2.html")
-}
