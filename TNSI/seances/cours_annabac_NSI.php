@@ -2,8 +2,8 @@
 function get_url_content($url) {
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true); // suivre les redirections
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // option pour GitHub Pages si certif
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
     $data = curl_exec($ch);
     curl_close($ch);
     return $data;
@@ -42,3 +42,43 @@ if ($theme && $chapitre && isset($urls[$theme][(int)$chapitre])) {
     echo get_url_content($urls[$theme][(int)$chapitre]);
 }
 ?>
+
+<!-- Affichage des liens -->
+<style>
+    ul { line-height: 1.6; }
+    a { text-decoration: none; color: #0074d9; }
+</style>
+
+<h1>📘 Cours NSI - Accès rapide aux chapitres</h1>
+
+<h2>Langages, programmation et algorithmique</h2>
+<ul>
+    <li><a href="?theme=langages&chapitre=1">Chapitre 1 : Modularité et mise au point</a></li>
+    <li><a href="?theme=langages&chapitre=2">Chapitre 2 : Récursivité</a></li>
+    <li><a href="?theme=langages&chapitre=3">Chapitre 3 : Paradigmes de programmation</a></li>
+</ul>
+
+<h2>Structures de données</h2>
+<ul>
+    <li><a href="?theme=structures&chapitre=1">Chapitre 1 : Interface des structures</a></li>
+    <li><a href="?theme=structures&chapitre=2">Chapitre 2 : Arbres</a></li>
+    <li><a href="?theme=structures&chapitre=3">Chapitre 3 : Graphes</a></li>
+</ul>
+
+<h2>Bases de données</h2>
+<ul>
+    <li><a href="?theme=bases&chapitre=1">Chapitre 1 : Modélisation</a></li>
+    <li><a href="?theme=bases&chapitre=2">Chapitre 2 : SQL</a></li>
+</ul>
+
+<h2>Architectures et réseaux</h2>
+<ul>
+    <li><a href="?theme=architectures&chapitre=1">Chapitre 1 : Composants et processus</a></li>
+    <li><a href="?theme=architectures&chapitre=2">Chapitre 2 : Réseaux et sécurité</a></li>
+</ul>
+
+<h2>Programmation avancée</h2>
+<ul>
+    <li><a href="?theme=avancee&chapitre=1">Chapitre 1 : Calculabilité</a></li>
+    <li><a href="?theme=avancee&chapitre=2">Chapitre 2 : Programmation avancée</a></li>
+</ul>
