@@ -55,32 +55,32 @@ if ($theme && $chapitre && isset($urls[$theme][(int)$chapitre])) {
 
 <h2>Langages, programmation et algorithmique</h2>
 <ul>
-    <li><a href="?session=cours_annabac_NSI&theme=langages&chapitre=1">Chapitre 1 : Modularité</a></li>
+    <li><a href="?session=cours_annabac_NSI&theme=langages&chapitre=1">Chapitre 1 : Modularité et mise au point des programmes</a></li>
     <li><a href="?session=cours_annabac_NSI&theme=langages&chapitre=2">Chapitre 2 : Récursivité</a></li>
-    <li><a href="?session=cours_annabac_NSI&theme=langages&chapitre=3">Chapitre 3 : Paradigmes</a></li>
+    <li><a href="?session=cours_annabac_NSI&theme=langages&chapitre=3">Chapitre 3 : Paradigmes de programmation</a></li>
 </ul>
 
 <h2>Structures de données</h2>
 <ul>
-    <li><a href="?session=cours_annabac_NSI&theme=structures&chapitre=1">Chapitre 1 : Structures simples</a></li>
-    <li><a href="?session=cours_annabac_NSI&theme=structures&chapitre=2">Chapitre 2 : Arbres</a></li>
+    <li><a href="?session=cours_annabac_NSI&theme=structures&chapitre=1">Chapitre 1 : Interface et implémentation des structures de données</a></li>
+    <li><a href="?session=cours_annabac_NSI&theme=structures&chapitre=2">Chapitre 2 : Structures arborescentes</a></li>
     <li><a href="?session=cours_annabac_NSI&theme=structures&chapitre=3">Chapitre 3 : Graphes</a></li>
 </ul>
 
 <h2>Bases de données</h2>
 <ul>
-    <li><a href="?session=cours_annabac_NSI&theme=bases&chapitre=1">Chapitre 1 : Modélisation</a></li>
-    <li><a href="?session=cours_annabac_NSI&theme=bases&chapitre=2">Chapitre 2 : SQL</a></li>
+    <li><a href="?session=cours_annabac_NSI&theme=bases&chapitre=1">Chapitre 1 : Conception de bases de données</a></li>
+    <li><a href="?session=cours_annabac_NSI&theme=bases&chapitre=2">Chapitre 2 : Systèmes de gestion de bases de données – SQL</a></li>
 </ul>
 
-<h2>Architectures matérielles</h2>
+<h2>Architectures matérielles, systèmes d'exploitation et réseaux</h2>
 <ul>
-    <li><a href="?session=cours_annabac_NSI&theme=architectures&chapitre=1">Chapitre 1 : Composants</a></li>
-    <li><a href="?session=cours_annabac_NSI&theme=architectures&chapitre=2">Chapitre 2 : Réseaux</a></li>
+    <li><a href="?session=cours_annabac_NSI&theme=architectures&chapitre=1">Chapitre 1 : Composants et processus</a></li>
+    <li><a href="?session=cours_annabac_NSI&theme=architectures&chapitre=2">Chapitre 2 : Protocoles de routage et sécurisation des communications</a></li>
 </ul>
 
-<h2>Programmation avancée</h2>
+<h2>Programmation avancée et algorithmique</h2>
 <ul>
-    <li><a href="?session=cours_annabac_NSI&theme=avancee&chapitre=1">Chapitre 1 : Calculabilité</a></li>
+    <li><a href="?session=cours_annabac_NSI&theme=avancee&chapitre=1">Chapitre 1 : Programmes et données – Calculabilité</a></li>
     <li><a href="?session=cours_annabac_NSI&theme=avancee&chapitre=2">Chapitre 2 : Programmation avancée</a></li>
 </ul>
