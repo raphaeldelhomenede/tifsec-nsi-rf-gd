@@ -10,21 +10,21 @@ $urls = [
         3 => "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/cours_annabac_NSI/Langages_programmation_et_algorithmique_Chapitre_3.html"
     ],
     "Structures de données" => [
-        1 => "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/Structures_de_données/Structures_de_données_Chapitre_1.html",
-        2 => "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/Structures_de_données/Structures_de_données_Chapitre_2.html",
-        3 => "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/Structures_de_données/Structures_de_données_Chapitre_3.html"
+        1 => "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/cours_annabac_NSI/Structures_de_données_Chapitre_1.html",
+        2 => "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/cours_annabac_NSI/Structures_de_données_Chapitre_2.html",
+        3 => "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/cours_annabac_NSI/Structures_de_données_Chapitre_3.html"
     ],
     "Bases de données" => [
-        1 => "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/Structures_de_données/Conception_de_bases_de_données_Chapitre_1.html",
-        2 => "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/Structures_de_données/Conception_de_bases_de_données_Chapitre_2.html"
+        1 => "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/cours_annabac_NSI/Conception_de_bases_de_données_Chapitre_1.html",
+        2 => "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/cours_annabac_NSI/Conception_de_bases_de_données_Chapitre_2.html"
     ],
     "Architectures" => [
-        1 => "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/Structures_de_données/Composants_et_processus_Chapitre1.html",
-        2 => "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/Structures_de_données/Composants_et_processus_Chapitre2.html"
+        1 => "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/cours_annabac_NSI/Composants_et_processus_Chapitre1.html",
+        2 => "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/cours_annabac_NSI/Composants_et_processus_Chapitre2.html"
     ],
     "Programmation avancée" => [
-        1 => "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/Structures_de_données/Programmation_avancée_et_algorithmique_Chapitre_1.html",
-        2 => "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/Structures_de_données/Programmation_avancée_et_algorithmique_Chapitre_2.html"
+        1 => "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/cours_annabac_NSI/Programmation_avancée_et_algorithmique_Chapitre_1.html",
+        2 => "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/cours_annabac_NSI/Programmation_avancée_et_algorithmique_Chapitre_2.html"
     ]
 ];
 
