@@ -1,0 +1,206 @@
+<body class="cours-body">
+
+  <header class="cours-header">
+    <h1 class="cours-titre">Structures de Données</h1>
+    <h2 class="cours-soustitre">Chapitre 2 : Structures Arborescentes</h2>
+  </header>
+
+  <section class="cours-section" id="intro">
+    <h3 class="section-titre">1. Introduction aux arbres</h3>
+    <p class="section-paragraphe">
+      Une structure arborescente est une manière d'organiser les données en forme d'arbre. C'est une structure hiérarchique composée de nœuds.
+    </p>
+    <ul class="cours-liste">
+      <li>Un nœud racine (le sommet de l'arbre)</li>
+      <li>Des nœuds enfants</li>
+      <li>Des nœuds feuilles (sans enfants)</li>
+    </ul>
+  </section>
+
+  <section class="cours-section" id="vocabulaire">
+    <h3 class="section-titre">2. Vocabulaire de base</h3>
+    <ul class="cours-liste">
+      <li><strong>Racine :</strong> le premier nœud de l'arbre</li>
+      <li><strong>Parent / Enfant :</strong> relation entre deux nœuds connectés</li>
+      <li><strong>Feuille :</strong> un nœud sans enfants</li>
+      <li><strong>Hauteur :</strong> nombre de niveaux de l'arbre</li>
+    </ul>
+  </section>
+
+  <section class="cours-section" id="exemple-simple">
+    <h3 class="section-titre">3. Exemple simple d'un arbre</h3>
+    <pre class="code-bloc">
+        A  ← racine
+       / \
+      B   C ← enfants de A
+     / \
+    D   E ← enfants de B
+    </pre>
+    <p class="section-paragraphe">
+      Dans cet exemple, A est la racine, B et C sont les enfants de A, et D, E sont les feuilles.
+    </p>
+  </section>
+
+  <section class="cours-section" id="parcours">
+    <h3 class="section-titre">4. Parcours d'un arbre</h3>
+    <ul class="cours-liste">
+      <li><strong>Préfixe (pré-ordre)</strong> : on visite le nœud, puis les enfants</li>
+      <li><strong>Infixe (in-ordre)</strong> : on visite l'enfant gauche, le nœud, puis l'enfant droit</li>
+      <li><strong>Postfixe (post-ordre)</strong> : on visite les enfants, puis le nœud</li>
+    </ul>
+    <div class="cours-exemple">
+      <p><strong>Exemple : Parcours préfixe</strong></p>
+      <pre class="code-bloc">
+        A
+       / \
+      B   C
+     / \
+    D   E
+
+      → Préfixe : A, B, D, E, C
+      </pre>
+    </div>
+  </section>
+
+  <section class="cours-section" id="implementation">
+    <h3 class="section-titre">5. Implémentation simple en Python</h3>
+    <pre class="code-bloc">
+class Noeud:
+    def __init__(self, valeur):
+        self.valeur = valeur
+        self.enfants = []
+
+    def ajouter_enfant(self, enfant):
+        self.enfants.append(enfant)
+
+racine = Noeud("A")
+b = Noeud("B")
+c = Noeud("C")
+d = Noeud("D")
+e = Noeud("E")
+
+racine.ajouter_enfant(b)
+racine.ajouter_enfant(c)
+b.ajouter_enfant(d)
+b.ajouter_enfant(e)
+    </pre>
+  </section>
+
+  <section class="cours-section" id="utilisation">
+    <h3 class="section-titre">6. Utilisations des arbres</h3>
+    <ul class="cours-liste">
+      <li>Organiser des fichiers (explorateur de fichiers)</li>
+      <li>Créer des expressions mathématiques</li>
+      <li>Représenter des hiérarchies (entreprise, taxonomie)</li>
+      <li>Moteurs de recherche (arbre de décision, IA)</li>
+    </ul>
+  </section>
+
+  <section class="cours-section" id="types">
+    <h3 class="section-titre">7. Types d'arbres</h3>
+    <ul class="cours-liste">
+      <li><strong>Arbre binaire</strong> : chaque nœud a au plus 2 enfants</li>
+      <li><strong>Arbre binaire de recherche (BST)</strong> : pour trier les données</li>
+      <li><strong>Arbre N-aire</strong> : chaque nœud peut avoir N enfants</li>
+      <li><strong>Trie</strong> : pour les dictionnaires et l'autocomplétion</li>
+    </ul>
+  </section>
+
+  <section class="cours-section" id="resume">
+    <h3 class="section-titre">8. Résumé du chapitre</h3>
+    <ul class="cours-liste">
+      <li>Les arbres modélisent des structures hiérarchiques</li>
+      <li>Un arbre est composé de nœuds liés entre eux</li>
+      <li>Il existe plusieurs parcours possibles : préfixe, infixe, postfixe</li>
+      <li>De nombreuses applications concrètes : fichiers, IA, etc.</li>
+    </ul>
+  </section>
+
+  <section class="cours-section" id="video">
+    <h3 class="section-titre">Cours vidéo sur les Structures Arborescentes</h3>
+    <div class="cours-video">
+      <iframe width="100%" height="auto" src="https://www.youtube.com/embed/TuqU2xbTlXg" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
+</body>
+</html>
+<style>
+    .cours-body {
+    font-family: 'Segoe UI', sans-serif;
+    padding: 2rem;
+    max-width: 900px;
+    margin: auto;
+    background-color: #fff;
+    color: #222;
+    }
+
+    .cours-titre {
+    font-size: 2.8rem;
+    text-align: center;
+    }
+
+    .cours-soustitre {
+    font-size: 1.5rem;
+    text-align: center;
+    color: #444;
+    margin-bottom: 2rem;
+    }
+
+    .section-titre {
+    font-size: 1.8rem;
+    color: #003366;
+    margin-top: 2rem;
+    }
+
+    .section-paragraphe {
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    }
+
+    .cours-liste {
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+    }
+
+    .code-bloc {
+    background: #f4f4f4;
+    border-left: 3px solid #003366;
+    padding: 1rem;
+    margin: 1rem 0;
+    font-family: monospace;
+    }
+
+    .cours-exemple {
+    background: #eef6ff;
+    padding: 1rem;
+    border-left: 4px solid #2a7ae2;
+    margin: 1.5rem 0;
+    }
+
+    .cours-video {
+    text-align: center;
+    margin-top: 1rem;
+    }
+
+    .footer-texte {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 2rem;
+    }
+
+    .cours-video {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    }
+
+    .cours-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 90%;
+    height: 90%;
+    }
+  </style>

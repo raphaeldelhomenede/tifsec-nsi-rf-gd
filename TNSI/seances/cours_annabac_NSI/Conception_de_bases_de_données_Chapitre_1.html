@@ -1,0 +1,229 @@
+<body class="cours-body">
+
+  <div class="cours-header">
+    <div class="cours-titre">Bases de Données</div>
+    <div class="cours-soustitre">Chapitre 1 : Conception de Bases de Données</div>
+  </div>
+
+  <div class="cours-section" id="introduction">
+    <div class="section-titre">1. Introduction</div>
+    <div class="section-paragraphe">
+      Une base de données est un ensemble organisé de données stockées de manière structurée pour permettre un accès, une gestion et une mise à jour efficaces. Avant de créer une base, il est crucial de bien la concevoir pour assurer la cohérence, l'efficacité et la fiabilité des données.
+    </div>
+  </div>
+
+  <div class="cours-section" id="etapes-conception">
+    <div class="section-titre">2. Étapes de conception d'une base de données</div>
+    <ul class="cours-liste">
+      <li><strong>Analyse des besoins :</strong> Identifier les informations à stocker et les utilisateurs.</li>
+      <li><strong>Modélisation conceptuelle :</strong> Modèle Entité-Association (E/A).</li>
+      <li><strong>Modélisation logique :</strong> Traduire en modèle relationnel.</li>
+      <li><strong>Modélisation physique :</strong> Définir les tables, types de données, index.</li>
+    </ul>
+  </div>
+
+  <div class="cours-section" id="modele-ea">
+    <div class="section-titre">3. Modèle Entité-Association (E/A)</div>
+    <div class="section-paragraphe">
+      Le modèle E/A permet de décrire les entités, les attributs et les relations entre elles.
+    </div>
+    <ul class="cours-liste">
+      <li><strong>Entité :</strong> Objet identifiable (ex : Client, Produit).</li>
+      <li><strong>Attribut :</strong> Propriété d'une entité (ex : nom, adresse).</li>
+      <li><strong>Relation :</strong> Lien entre entités (ex : ACHETER entre Client et Produit).</li>
+    </ul>
+    <div class="cours-exemple">
+      <div class="section-paragraphe"><strong>Exemple :</strong> Un client passe une commande</div>
+      <div class="code-bloc">
+        Entités : CLIENT(id, nom, email)<br>
+        COMMANDE(id, date)<br>
+        Relation : PASSE(id_client, id_commande)
+      </div>
+    </div>
+  </div>
+
+  <div class="cours-section" id="modele-relationnel">
+    <div class="section-titre">4. Modèle relationnel</div>
+    <div class="section-paragraphe">
+      Le modèle relationnel utilise des tables (relations) composées de lignes (tuples) et de colonnes (attributs).
+    </div>
+    <ul class="cours-liste">
+      <li><strong>Table :</strong> Représentation d'une entité ou d'une relation.</li>
+      <li><strong>Clé primaire :</strong> Identifiant unique d'une ligne.</li>
+      <li><strong>Clé étrangère :</strong> Référence à une clé primaire d'une autre table.</li>
+    </ul>
+    <div class="cours-exemple">
+      <div class="section-paragraphe"><strong>Exemple :</strong></div>
+      <div class="code-bloc">
+        CLIENT(id PRIMARY KEY, nom, email)<br>
+        COMMANDE(id PRIMARY KEY, date, id_client FOREIGN KEY REFERENCES CLIENT(id))
+      </div>
+    </div>
+  </div>
+
+  <section class="cours-section" id="video">
+    <h3 class="section-titre">Cours vidéo sur le modèle relationnel</h3>
+    <div class="cours-video">
+      <iframe width="100%" height="auto" src="https://www.youtube.com/embed/VbWZwC2eRGg" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <section class="cours-section" id="video">
+    <h3 class="section-titre">Cours vidéo sur la clé primaire</h3>
+    <div class="cours-video">
+      <iframe width="100%" height="auto" src="https://www.youtube.com/embed/ws7ihSHJDsg" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <section class="cours-section" id="video">
+    <h3 class="section-titre">Cours vidéo sur la clé étrangère</h3>
+    <div class="cours-video">
+      <iframe width="100%" height="auto" src="https://www.youtube.com/embed/5X_g8MAESjg" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <div class="cours-section" id="normalisation">
+    <div class="section-titre">5. Normalisation</div>
+    <div class="section-paragraphe">
+      La normalisation vise à organiser les données pour réduire la redondance et éviter les anomalies. Elle se fait par niveaux appelés formes normales.
+    </div>
+    <ul class="cours-liste">
+      <li><strong>1NF :</strong> Valeurs atomiques, pas de colonnes multiples.</li>
+      <li><strong>2NF :</strong> Dépendances fonctionnelles partielles éliminées.</li>
+      <li><strong>3NF :</strong> Pas de dépendances transitives.</li>
+    </ul>
+    <div class="cours-exemple">
+      <div class="section-paragraphe"><strong>Exemple :</strong> Client(id, nom, ville, code_postal)</div>
+      <div class="section-paragraphe">-> ville et code_postal sont mieux dans une table VILLE(id, nom, code_postal)</div>
+    </div>
+  </div>
+
+  <section class="cours-section" id="video">
+    <h3 class="section-titre">Cours vidéo sur la récursivité</h3>
+    <div class="cours-video">
+      <iframe width="100%" height="auto" src="https://www.youtube.com/embed/rRF_28IOqOA" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <div class="cours-section" id="derniers-conseils">
+    <div class="section-titre">6. Bonnes pratiques</div>
+    <ul class="cours-liste">
+      <li>Bien comprendre les besoins avant de modéliser</li>
+      <li>Utiliser des clés primaires claires et stables</li>
+      <li>Séparer les données répétitives dans des tables distinctes</li>
+      <li>Documenter le schéma conceptuel et logique</li>
+    </ul>
+  </div>
+
+  <div class="cours-section" id="resume">
+    <div class="section-titre">7. Résumé du chapitre</div>
+    <ul class="cours-liste">
+      <li>Concevoir une base commence par l'analyse des besoins</li>
+      <li>Le modèle E/A permet de structurer les entités et leurs relations</li>
+      <li>Le modèle relationnel permet de les transformer en tables</li>
+      <li>La normalisation évite la redondance et améliore la cohérence</li>
+    </ul>
+  </div>
+
+  <section class="cours-section" id="video">
+    <h3 class="section-titre">Cours vidéo sur les bases de données</h3>
+    <div class="cours-video">
+      <iframe width="100%" height="auto" src="https://www.youtube.com/embed/jDXU8PvsG3U" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <section class="cours-section" id="video">
+    <h3 class="section-titre">Cours vidéo sur les Base de données - NSI - Terminale - Les Bons Profs</h3>
+    <div class="cours-video">
+      <iframe width="100%" height="auto" src="https://www.youtube.com/embed/jfN68J1xj4w" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <section class="cours-section" id="video">
+    <h3 class="section-titre">Cours vidéo sur les Base de données 2 - NSI - Terminale - Les Bons Profs</h3>
+    <div class="cours-video">
+      <iframe width="100%" height="auto" src="https://www.youtube.com/embed/8ayts4sNc4c" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
+</body>
+</html>
+<style>
+    .cours-body {
+    font-family: 'Segoe UI', sans-serif;
+    padding: 2rem;
+    max-width: 900px;
+    margin: auto;
+    background-color: #fff;
+    color: #222;
+    }
+
+    .cours-titre {
+    font-size: 2.8rem;
+    text-align: center;
+    }
+
+    .cours-soustitre {
+    font-size: 1.5rem;
+    text-align: center;
+    color: #444;
+    margin-bottom: 2rem;
+    }
+
+    .section-titre {
+    font-size: 1.8rem;
+    color: #003366;
+    margin-top: 2rem;
+    }
+
+    .section-paragraphe {
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    }
+
+    .cours-liste {
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+    }
+
+    .code-bloc {
+    background: #f4f4f4;
+    border-left: 3px solid #003366;
+    padding: 1rem;
+    margin: 1rem 0;
+    font-family: monospace;
+    }
+
+    .cours-exemple {
+    background: #eef6ff;
+    padding: 1rem;
+    border-left: 4px solid #2a7ae2;
+    margin: 1.5rem 0;
+    }
+
+    .cours-video {
+    text-align: center;
+    margin-top: 1rem;
+    }
+
+    .footer-texte {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 2rem;
+    }
+
+    .cours-video {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    }
+
+    .cours-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 90%;
+    height: 90%;
+    }
+  </style>

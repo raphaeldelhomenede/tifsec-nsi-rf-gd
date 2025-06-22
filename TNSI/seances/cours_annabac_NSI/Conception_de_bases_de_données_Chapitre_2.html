@@ -1,0 +1,236 @@
+<body class="cours-body">
+
+  <div class="cours-header">
+    <div class="cours-titre">Bases de Données</div>
+    <div class="cours-soustitre">Chapitre 2 : Systèmes de Gestion de Bases de Données - SQL</div>
+  </div>
+
+  <div class="cours-section" id="definition-sgbd">
+    <div class="section-titre">1. Qu'est-ce qu'un SGBD ?</div>
+    <div class="section-paragraphe">
+      Un Système de Gestion de Base de Données (SGBD) est un logiciel qui permet de créer, manipuler, administrer et interroger une base de données. Il assure la cohérence, la sécurité et l'efficacité de l'accès aux données.
+    </div>
+    <ul class="cours-liste">
+      <li>Exemples : MySQL, PostgreSQL, Oracle, SQL Server, SQLite</li>
+      <li>Langage standard utilisé : SQL (Structured Query Language)</li>
+    </ul>
+  </div>
+
+  <section class="cours-section" id="video">
+    <h3 class="section-titre">Cours vidéo sur le SGBD</h3>
+    <div class="cours-video">
+      <iframe width="100%" height="auto" src="https://www.youtube.com/embed/bDnZ4RhdtxQ" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <div class="cours-section" id="architecture-sgbd">
+    <div class="section-titre">2. Architecture d'un SGBD</div>
+    <ul class="cours-liste">
+      <li><strong>Niveau logique :</strong> tables, vues, contraintes</li>
+      <li><strong>Niveau physique :</strong> fichiers sur disque, index</li>
+      <li><strong>Moteur SQL :</strong> analyse et exécution des requêtes</li>
+    </ul>
+    <div class="section-paragraphe">
+      Le SGBD masque les détails physiques aux utilisateurs pour leur fournir une vue logique cohérente et simplifiée.
+    </div>
+  </div>
+
+  <div class="cours-section" id="sql-definition">
+    <div class="section-titre">3. SQL : Définition et catégories</div>
+    <ul class="cours-liste">
+      <li><strong>DDL (Data Definition Language) :</strong> création et modification de structures (CREATE, ALTER, DROP)</li>
+      <li><strong>DML (Data Manipulation Language) :</strong> manipulation des données (SELECT, INSERT, UPDATE, DELETE)</li>
+      <li><strong>DCL (Data Control Language) :</strong> contrôle d'accès (GRANT, REVOKE)</li>
+    </ul>
+  </div>
+
+  <div class="cours-section" id="sql-creation">
+    <div class="section-titre">4. DDL - Création de tables</div>
+    <div class="code-bloc">
+CREATE TABLE Client (
+  id INT PRIMARY KEY,
+  nom VARCHAR(100),
+  email VARCHAR(100)
+);
+    </div>
+    <div class="code-bloc">
+CREATE TABLE Commande (
+  id INT PRIMARY KEY,
+  date_commande DATE,
+  id_client INT,
+  FOREIGN KEY (id_client) REFERENCES Client(id)
+);
+    </div>
+  </div>
+
+  <div class="cours-section" id="sql-manipulation">
+    <div class="section-titre">5. DML - Manipulation des données</div>
+    <div class="code-bloc">
+-- Insertion de données
+INSERT INTO Client VALUES (1, 'Alice', 'alice@mail.com');
+
+-- Mise à jour
+UPDATE Client SET email = 'alice2024@mail.com' WHERE id = 1;
+
+-- Suppression
+DELETE FROM Client WHERE id = 1;
+
+-- Requête de sélection
+SELECT * FROM Client;
+SELECT nom FROM Client WHERE email LIKE '%@mail.com';
+    </div>
+  </div>
+
+  <div class="cours-section" id="sql-jointures">
+    <div class="section-titre">6. Jointures</div>
+    <div class="section-paragraphe">
+      Les jointures permettent de combiner des données issues de plusieurs tables.
+    </div>
+    <ul class="cours-liste">
+      <li><strong>INNER JOIN :</strong> correspondance entre deux tables</li>
+      <li><strong>LEFT JOIN :</strong> toutes les lignes de gauche, même sans correspondance</li>
+    </ul>
+    <div class="code-bloc">
+SELECT Client.nom, Commande.date_commande
+FROM Client
+INNER JOIN Commande ON Client.id = Commande.id_client;
+    </div>
+  </div>
+
+  <div class="cours-section" id="sql-vues">
+    <div class="section-titre">7. Vues (VIEW)</div>
+    <div class="section-paragraphe">
+      Une vue est une table virtuelle basée sur une requête SQL. Elle permet de simplifier les accès ou de restreindre les données visibles.
+    </div>
+    <div class="code-bloc">
+CREATE VIEW ClientsCommandes AS
+SELECT Client.nom, Commande.date_commande
+FROM Client
+INNER JOIN Commande ON Client.id = Commande.id_client;
+    </div>
+  </div>
+
+  <div class="cours-section" id="transactions">
+    <div class="section-titre">8. Transactions</div>
+    <div class="section-paragraphe">
+      Une transaction est une série d'opérations SQL exécutées comme une unité indivisible. Elle respecte les propriétés ACID :
+    </div>
+    <ul class="cours-liste">
+      <li><strong>Atomicité :</strong> tout ou rien</li>
+      <li><strong>Constance :</strong> respecte les règles d'intégrité</li>
+      <li><strong>Isolation :</strong> pas d'interférence entre transactions</li>
+      <li><strong>Durabilité :</strong> les données sont persistées</li>
+    </ul>
+    <div class="code-bloc">
+BEGIN TRANSACTION;
+UPDATE Compte SET solde = solde - 100 WHERE id = 1;
+UPDATE Compte SET solde = solde + 100 WHERE id = 2;
+COMMIT;
+    </div>
+  </div>
+
+  <div class="cours-section" id="resume">
+    <div class="section-titre">9. Résumé</div>
+    <ul class="cours-liste">
+      <li>Un SGBD permet de gérer efficacement une base de données</li>
+      <li>Le langage SQL permet de définir, manipuler et contrôler les données</li>
+      <li>Les transactions assurent l'intégrité des données</li>
+      <li>Les vues et jointures permettent des accès personnalisés et performants</li>
+    </ul>
+  </div>
+
+  <section class="cours-section" id="video">
+    <h3 class="section-titre">Cours vidéo sur le langage SQL create insert</h3>
+    <div class="cours-video">
+      <iframe width="100%" height="auto" src="https://www.youtube.com/embed/t6kqwTqtnBI" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <section class="cours-section" id="video">
+    <h3 class="section-titre">Cours vidéo sur le SQL en JUSTE 5 minutes (important)</h3>
+    <div class="cours-video">
+      <iframe width="100%" height="auto" src="https://www.youtube.com/embed/FeBzyiOPF0Y" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
+</body>
+</html>
+<style>
+    .cours-body {
+    font-family: 'Segoe UI', sans-serif;
+    padding: 2rem;
+    max-width: 900px;
+    margin: auto;
+    background-color: #fff;
+    color: #222;
+    }
+
+    .cours-titre {
+    font-size: 2.8rem;
+    text-align: center;
+    }
+
+    .cours-soustitre {
+    font-size: 1.5rem;
+    text-align: center;
+    color: #444;
+    margin-bottom: 2rem;
+    }
+
+    .section-titre {
+    font-size: 1.8rem;
+    color: #003366;
+    margin-top: 2rem;
+    }
+
+    .section-paragraphe {
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    }
+
+    .cours-liste {
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+    }
+
+    .code-bloc {
+    background: #f4f4f4;
+    border-left: 3px solid #003366;
+    padding: 1rem;
+    margin: 1rem 0;
+    font-family: monospace;
+    }
+
+    .cours-exemple {
+    background: #eef6ff;
+    padding: 1rem;
+    border-left: 4px solid #2a7ae2;
+    margin: 1.5rem 0;
+    }
+
+    .cours-video {
+    text-align: center;
+    margin-top: 1rem;
+    }
+
+    .footer-texte {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 2rem;
+    }
+
+    .cours-video {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    }
+
+    .cours-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 90%;
+    height: 90%;
+    }
+  </style>

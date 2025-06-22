@@ -1,0 +1,179 @@
+<body class="cours-body">
+
+  <div class="cours-header">
+    <div class="cours-titre">Programmation avancée et algorithmique</div>
+    <div class="cours-soustitre">Chapitre 2 : Programmation avancée</div>
+  </div>
+
+  <div class="cours-section" id="introduction">
+    <div class="section-titre">1. Introduction</div>
+    <div class="section-paragraphe">
+      Ce chapitre introduit des concepts clés de la programmation avancée : programmation orientée objet, fonctions anonymes, récursivité avancée, gestion de la mémoire, et programmation fonctionnelle. Ces techniques permettent d'écrire du code plus modulaire, réutilisable et efficace.
+    </div>
+  </div>
+
+  <div class="cours-section" id="poo">
+    <div class="section-titre">2. Programmation orientée objet (POO)</div>
+    <div class="section-paragraphe">
+      La POO est un paradigme qui repose sur la notion d'objet. Un objet est une instance d'une classe, contenant des attributs (données) et des méthodes (fonctions).
+    </div>
+    <ul class="cours-liste">
+      <li><strong>Encapsulation :</strong> masquage de l'implémentation interne.</li>
+      <li><strong>Héritage :</strong> réutilisation de code d'une classe mère.</li>
+      <li><strong>Polymorphisme :</strong> plusieurs objets peuvent réagir différemment à un même message.</li>
+    </ul>
+    <div class="section-paragraphe">
+      <strong>Exemple :</strong> Une classe <code>Animal</code> avec une méthode <code>parler()</code> redéfinie dans des classes <code>Chien</code> et <code>Chat</code>.
+    </div>
+  </div>
+
+  <div class="cours-section" id="fonctions-avancees">
+    <div class="section-titre">3. Fonctions avancées</div>
+    <div class="section-paragraphe">
+      La programmation avancée fait usage de :
+    </div>
+    <ul class="cours-liste">
+      <li><strong>Fonctions anonymes (lambda) :</strong> utiles pour des fonctions courtes, passées en argument.</li>
+      <li><strong>Fonctions comme objets de première classe :</strong> elles peuvent être assignées à des variables, passées ou retournées.</li>
+      <li><strong>Fonctions récursives :</strong> appel d'une fonction par elle-même. Ex : factorielle, Fibonacci.</li>
+    </ul>
+  </div>
+
+  <div class="cours-section" id="gestion-memoire">
+    <div class="section-titre">4. Gestion de la mémoire</div>
+    <div class="section-paragraphe">
+      Comprendre la gestion de la mémoire est crucial. Selon le langage, elle peut être :
+    </div>
+    <ul class="cours-liste">
+      <li><strong>Statique :</strong> mémoire allouée à la compilation (variables globales).</li>
+      <li><strong>Automatique (pile) :</strong> pour les variables locales.</li>
+      <li><strong>Dynamique (tas) :</strong> mémoire allouée à l'exécution (new, malloc...).</li>
+    </ul>
+    <div class="section-paragraphe">
+      <strong>Garbage collection :</strong> processus automatique de libération de la mémoire inutilisée.
+    </div>
+  </div>
+
+  <div class="cours-section" id="programmation-fonctionnelle">
+    <div class="section-titre">5. Programmation fonctionnelle</div>
+    <div class="section-paragraphe">
+      Paradigme centré sur les fonctions pures (pas d'effets de bord). Elle s'appuie sur :
+    </div>
+    <ul class="cours-liste">
+      <li>Immutabilité des données</li>
+      <li>Composition de fonctions</li>
+      <li>Expressions plutôt qu'instructions</li>
+    </ul>
+    <div class="section-paragraphe">
+      <strong>Exemple :</strong> Enchaîner des filtres, mappages et réductions sur des listes.
+    </div>
+  </div>
+
+  <div class="cours-section" id="paradigmes-mixtes">
+    <div class="section-titre">6. Paradigmes mixtes</div>
+    <div class="section-paragraphe">
+      De nombreux langages modernes (Python, Scala, JavaScript) permettent de mêler différents paradigmes : fonctionnel, objet, impératif, etc.
+    </div>
+    <div class="section-paragraphe">
+      Cette flexibilité permet de s'adapter aux besoins du projet, tout en profitant des avantages de chaque approche.
+    </div>
+  </div>
+
+  <div class="cours-section" id="resume">
+    <div class="section-titre">7. Récapitulatif</div>
+    <ul class="cours-liste">
+      <li>POO pour modularité et réutilisation</li>
+      <li>Fonctions avancées pour un code plus expressif</li>
+      <li>Maîtrise de la mémoire pour de meilleures performances</li>
+      <li>Programmation fonctionnelle pour la pureté et la parallélisation</li>
+    </ul>
+  </div>
+
+  <section class="cours-section" id="video">
+    <h3 class="section-titre">Cours vidéos sur la POO</h3>
+    <div class="cours-video">
+      <iframe width="100%" height="auto" src="https://www.youtube.com/embed/e6HTG-mXFg8" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
+
+</body>
+<style>
+    .cours-body {
+    font-family: 'Segoe UI', sans-serif;
+    padding: 2rem;
+    max-width: 900px;
+    margin: auto;
+    background-color: #fff;
+    color: #222;
+    }
+
+    .cours-titre {
+    font-size: 2.8rem;
+    text-align: center;
+    }
+
+    .cours-soustitre {
+    font-size: 1.5rem;
+    text-align: center;
+    color: #444;
+    margin-bottom: 2rem;
+    }
+
+    .section-titre {
+    font-size: 1.8rem;
+    color: #003366;
+    margin-top: 2rem;
+    }
+
+    .section-paragraphe {
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    }
+
+    .cours-liste {
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+    }
+
+    .code-bloc {
+    background: #f4f4f4;
+    border-left: 3px solid #003366;
+    padding: 1rem;
+    margin: 1rem 0;
+    font-family: monospace;
+    }
+
+    .cours-exemple {
+    background: #eef6ff;
+    padding: 1rem;
+    border-left: 4px solid #2a7ae2;
+    margin: 1.5rem 0;
+    }
+
+    .cours-video {
+    text-align: center;
+    margin-top: 1rem;
+    }
+
+    .footer-texte {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 2rem;
+    }
+
+    .cours-video {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    }
+
+    .cours-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 90%;
+    height: 90%;
+    }
+  </style>

@@ -1,0 +1,210 @@
+<body class="cours-body">
+
+  <div class="cours-header">
+    <div class="cours-titre">Architectures Matérielles, Systèmes d'Exploitation et Réseaux</div>
+    <div class="cours-soustitre">Chapitre 1 : Composants et Processus</div>
+  </div>
+
+  <div class="cours-section" id="introduction">
+    <div class="section-titre">1. Introduction</div>
+    <div class="section-paragraphe">
+      Ce chapitre présente les composants fondamentaux d'un ordinateur, le rôle du système d'exploitation et la notion de processus.
+    </div>
+  </div>
+
+  <div class="cours-section" id="composants-hardware">
+    <div class="section-titre">2. Composants matériels d'un ordinateur</div>
+    <ul class="cours-liste">
+      <li><strong>Processeur (CPU) :</strong> unité centrale de traitement des instructions.</li>
+      <li><strong>Mémoire vive (RAM) :</strong> stocke les données temporairement pendant l'exécution des programmes.</li>
+      <li><strong>Mémoire de stockage :</strong> disque dur (HDD), SSD, pour le stockage permanent.</li>
+      <li><strong>Périphériques :</strong> clavier, souris, écran, imprimante, etc.</li>
+      <li><strong>Bus :</strong> canaux de communication entre les composants.</li>
+    </ul>
+    <div class="section-paragraphe">
+      Le CPU communique avec les autres composants via des bus (données, adresses, contrôle).
+    </div>
+  </div>
+
+  <section class="cours-section" id="video">
+    <h3 class="section-titre">Cours vidéos sur les Composants matériels d'un ordinateur</h3>
+    <div class="cours-video">
+      <iframe width="100%" height="auto" src="https://www.youtube.com/embed/YpM6KxsLw_k" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <div class="cours-section" id="role-se">
+    <div class="section-titre">3. Rôle du Système d'Exploitation</div>
+    <div class="section-paragraphe">
+      Le Système d'Exploitation (OS) est un logiciel intermédiaire entre le matériel et les applications. Il assure :
+    </div>
+    <ul class="cours-liste">
+      <li>La gestion des processus</li>
+      <li>La gestion de la mémoire</li>
+      <li>La gestion des fichiers</li>
+      <li>La gestion des entrées/sorties</li>
+      <li>La sécurité et la communication entre processus</li>
+    </ul>
+  </div>
+
+  <section class="cours-section" id="video">
+    <h3 class="section-titre">Cours vidéos sur le rôle du Système d'Exploitation</h3>
+    <div class="cours-video">
+      <iframe width="100%" height="auto" src="https://www.youtube.com/embed/3e7VW4kBQ9I" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="cours-video">
+      <iframe width="100%" height="auto" src="https://www.youtube.com/embed/ippLhLdT4tE" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <div class="cours-section" id="notion-processus">
+    <div class="section-titre">4. Notion de processus</div>
+    <div class="section-paragraphe">
+      Un processus est une instance d'un programme en cours d'exécution. Il contient :
+    </div>
+    <ul class="cours-liste">
+      <li>Le code exécutable</li>
+      <li>Les données et variables</li>
+      <li>La pile (stack)</li>
+      <li>Le compteur ordinal (registre indiquant l'instruction en cours)</li>
+    </ul>
+    <div class="section-paragraphe">
+      Plusieurs processus peuvent être exécutés en parallèle sur des processeurs multi-cœurs.
+    </div>
+  </div>
+
+  <div class="cours-section" id="etat-processus">
+    <div class="section-titre">5. États d'un processus</div>
+    <ul class="cours-liste">
+      <li><strong>Nouveau :</strong> création du processus</li>
+      <li><strong>Prêt :</strong> en attente de la CPU</li>
+      <li><strong>En exécution :</strong> actuellement exécuté</li>
+      <li><strong>En attente :</strong> attend un événement (I/O)</li>
+      <li><strong>Terminé :</strong> a terminé son exécution</li>
+    </ul>
+  </div>
+
+  <div class="cours-section" id="ordonnancement">
+    <div class="section-titre">6. Ordonnancement des processus</div>
+    <div class="section-paragraphe">
+      L'ordonnanceur décide quel processus sera exécuté et pendant combien de temps.
+    </div>
+    <ul class="cours-liste">
+      <li><strong>Round-Robin :</strong> partage équitable du temps CPU</li>
+      <li><strong>First Come First Served (FCFS) :</strong> ordre d'arrivée</li>
+      <li><strong>Priorité :</strong> exécution selon la priorité attribuée</li>
+    </ul>
+  </div>
+
+  <section class="cours-section" id="video">
+    <h3 class="section-titre">Cours vidéos sur les états d'un processus</h3>
+    <div class="cours-video">
+      <iframe width="100%" height="auto" src="https://www.youtube.com/embed/IJx86Qmex1w" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <div class="cours-section" id="multitache">
+    <div class="section-titre">7. Multitâche et parallélisme</div>
+    <div class="section-paragraphe">
+      Le multitâche permet d'exécuter plusieurs processus sur un seul processeur par commutation rapide. Le parallélisme utilise plusieurs processeurs pour exécuter plusieurs processus simultanément.
+    </div>
+  </div>
+
+  <div class="cours-section" id="resume">
+    <div class="section-titre">8. Récapitulatif</div>
+    <ul class="cours-liste">
+      <li>Les composants matériels interagissent via le bus et sont gérés par le SE</li>
+      <li>Le SE joue un rôle central dans la gestion des processus et des ressources</li>
+      <li>Un processus est une unité d'exécution avec son propre contexte</li>
+      <li>L'ordonnancement optimise l'utilisation de la CPU</li>
+    </ul>
+  </div>
+
+  <section class="cours-section" id="video">
+    <h3 class="section-titre">Cours vidéos sur PROCESSUS ET INTERBLOCAGE </h3>
+    <div class="cours-video">
+      <iframe width="100%" height="auto" src="https://www.youtube.com/embed/vKxpBDsKWO4" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
+</body>
+</html>
+<style>
+    .cours-body {
+    font-family: 'Segoe UI', sans-serif;
+    padding: 2rem;
+    max-width: 900px;
+    margin: auto;
+    background-color: #fff;
+    color: #222;
+    }
+
+    .cours-titre {
+    font-size: 2.8rem;
+    text-align: center;
+    }
+
+    .cours-soustitre {
+    font-size: 1.5rem;
+    text-align: center;
+    color: #444;
+    margin-bottom: 2rem;
+    }
+
+    .section-titre {
+    font-size: 1.8rem;
+    color: #003366;
+    margin-top: 2rem;
+    }
+
+    .section-paragraphe {
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    }
+
+    .cours-liste {
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+    }
+
+    .code-bloc {
+    background: #f4f4f4;
+    border-left: 3px solid #003366;
+    padding: 1rem;
+    margin: 1rem 0;
+    font-family: monospace;
+    }
+
+    .cours-exemple {
+    background: #eef6ff;
+    padding: 1rem;
+    border-left: 4px solid #2a7ae2;
+    margin: 1.5rem 0;
+    }
+
+    .cours-video {
+    text-align: center;
+    margin-top: 1rem;
+    }
+
+    .footer-texte {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 2rem;
+    }
+
+    .cours-video {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    }
+
+    .cours-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 90%;
+    height: 90%;
+    }
+  </style>

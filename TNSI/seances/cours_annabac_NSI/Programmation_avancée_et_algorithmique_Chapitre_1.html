@@ -1,0 +1,187 @@
+<body class="cours-body">
+
+  <div class="cours-header">
+    <div class="cours-titre">Programmation avancée et algorithmique</div>
+    <div class="cours-soustitre">Chapitre 1 : Programmes et données – Calculabilité</div>
+  </div>
+
+  <div class="cours-section" id="introduction">
+    <div class="section-titre">1. Introduction</div>
+    <div class="section-paragraphe">
+      La calculabilité est un domaine fondamental de l'informatique théorique. Elle détermine ce qu'il est possible de calculer à l'aide d'un algorithme. Ce chapitre introduit les bases de la théorie de la calculabilité, en lien avec les programmes et les données.
+    </div>
+  </div>
+
+  <div class="cours-section" id="programme-donnees">
+    <div class="section-titre">2. Programmes et données</div>
+    <div class="section-paragraphe">
+      Un programme est une séquence d'instructions permettant de transformer des données en résultat. Les données peuvent être des nombres, des chaînes de caractères, des structures complexes.
+    </div>
+    <div class="section-paragraphe">
+      Les langages de programmation permettent de décrire ces programmes, mais la notion fondamentale est celle d'algorithme : une suite finie d'opérations appliquées aux données.
+    </div>
+  </div>
+
+  <div class="cours-section" id="notion-calculabilite">
+    <div class="section-titre">3. Qu'est-ce que la calculabilité ?</div>
+    <div class="section-paragraphe">
+      Une fonction est dite calculable s'il existe un algorithme qui, pour toute entrée valide, fournit une sortie en un temps fini. La calculabilité s'intéresse donc à la distinction entre les problèmes solvables (calculables) et les problèmes non-solvables.
+    </div>
+    <ul class="cours-liste">
+      <li><strong>Fonctions totales :</strong> définies pour toutes les entrées possibles</li>
+      <li><strong>Fonctions partielles :</strong> peuvent ne pas terminer pour certaines entrées</li>
+    </ul>
+  </div>
+
+  <div class="cours-section" id="machine-turing">
+    <div class="section-titre">4. La machine de Turing</div>
+    <div class="section-paragraphe">
+      Alan Turing a proposé un modèle théorique de calcul : la machine de Turing. Elle est constituée d'une bande infinie, d'une tête de lecture/écriture et d'un ensemble fini d'états. C'est un outil central pour définir la calculabilité.
+    </div>
+    <div class="section-paragraphe">
+      <strong>Exemple :</strong> Une machine de Turing qui additionne deux nombres binaires placés sur la bande.
+    </div>
+  </div>
+
+  <div class="cours-section" id="fonctions-calculables">
+    <div class="section-titre">5. Fonctions calculables</div>
+    <div class="section-paragraphe">
+      Les fonctions élémentaires (addition, multiplication, etc.) sont calculables. Il existe des classes plus complexes comme :
+    </div>
+    <ul class="cours-liste">
+      <li>Les fonctions primitives récursives</li>
+      <li>Les fonctions récursives totales</li>
+      <li>Les fonctions μ-récursives</li>
+    </ul>
+  </div>
+
+  <div class="cours-section" id="problems-insolubles">
+    <div class="section-titre">6. Problèmes non calculables</div>
+    <div class="section-paragraphe">
+      Il existe des problèmes pour lesquels aucun algorithme ne peut fournir de réponse pour toutes les entrées. Exemple classique :
+    </div>
+    <ul class="cours-liste">
+      <li><strong>Le problème de l'arrêt :</strong> déterminer si un programme termine ou boucle indéfiniment.</li>
+      <li><strong>La correspondance de Post</strong> – un problème décidable qui illustre les limites de l'automatisation.</li>
+    </ul>
+  </div>
+
+  <div class="cours-section" id="modeles-equivalents">
+    <div class="section-titre">7. Autres modèles de calcul</div>
+    <div class="section-paragraphe">
+      La machine de Turing n'est pas le seul modèle. D'autres modèles sont équivalents en puissance de calcul :
+    </div>
+    <ul class="cours-liste">
+      <li>λ-calcul (lambda calcul)</li>
+      <li>Machines à registres</li>
+      <li>Langages de programmation universels (comme C, Python, etc.)</li>
+    </ul>
+    <div class="section-paragraphe">
+      Tous ces modèles permettent de décrire les mêmes fonctions calculables.
+    </div>
+  </div>
+
+  <div class="cours-section" id="resume">
+    <div class="section-titre">8. Récapitulatif</div>
+    <ul class="cours-liste">
+      <li>La calculabilité définit les limites de ce qu'on peut programmer.</li>
+      <li>La machine de Turing est un modèle fondamental.</li>
+      <li>Il existe des problèmes insolubles, même avec des ordinateurs puissants.</li>
+      <li>Plusieurs modèles de calcul mènent à la même notion de fonction calculable.</li>
+    </ul>
+  </div>
+
+  <section class="cours-section" id="video">
+    <h3 class="section-titre">Cours vidéos sur CALCULABILITÉ ET DÉCIDABILITÉ - NSI Terminale</h3>
+    <div class="cours-video">
+      <iframe width="100%" height="auto" src="https://www.youtube.com/embed/yRal0zm_qt0" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <section class="cours-section" id="video">
+    <h3 class="section-titre">Cours vidéos sur Programmer une machine de Turing, calculabilité et décidabilité</h3>
+    <div class="cours-video">
+      <iframe width="100%" height="auto" src="https://www.youtube.com/embed/zCHyPzNuKYw" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
+</body>
+<style>
+    .cours-body {
+    font-family: 'Segoe UI', sans-serif;
+    padding: 2rem;
+    max-width: 900px;
+    margin: auto;
+    background-color: #fff;
+    color: #222;
+    }
+
+    .cours-titre {
+    font-size: 2.8rem;
+    text-align: center;
+    }
+
+    .cours-soustitre {
+    font-size: 1.5rem;
+    text-align: center;
+    color: #444;
+    margin-bottom: 2rem;
+    }
+
+    .section-titre {
+    font-size: 1.8rem;
+    color: #003366;
+    margin-top: 2rem;
+    }
+
+    .section-paragraphe {
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    }
+
+    .cours-liste {
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+    }
+
+    .code-bloc {
+    background: #f4f4f4;
+    border-left: 3px solid #003366;
+    padding: 1rem;
+    margin: 1rem 0;
+    font-family: monospace;
+    }
+
+    .cours-exemple {
+    background: #eef6ff;
+    padding: 1rem;
+    border-left: 4px solid #2a7ae2;
+    margin: 1.5rem 0;
+    }
+
+    .cours-video {
+    text-align: center;
+    margin-top: 1rem;
+    }
+
+    .footer-texte {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 2rem;
+    }
+
+    .cours-video {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    }
+
+    .cours-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 90%;
+    height: 90%;
+    }
+  </style>

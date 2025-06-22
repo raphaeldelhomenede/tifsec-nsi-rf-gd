@@ -1,0 +1,206 @@
+<body class="cours-body">
+
+  <div class="cours-header">
+    <div class="cours-titre">Structures de Données</div>
+    <div class="cours-soustitre">Chapitre 3 : Graphes</div>
+  </div>
+
+  <div class="cours-section" id="introduction">
+    <div class="section-titre">1. Introduction aux graphes</div>
+    <div class="section-paragraphe">
+      Un graphe est une structure de données permettant de modéliser des relations entre des objets. Il est constitué de sommets (ou nœuds) et d'arêtes (ou arcs).
+    </div>
+    <ul class="cours-liste">
+      <li><strong>Sommets :</strong> représentent les objets</li>
+      <li><strong>Arêtes :</strong> représentent les connexions entre les objets</li>
+    </ul>
+  </div>
+
+  <div class="cours-section" id="types">
+    <div class="section-titre">2. Types de graphes</div>
+    <ul class="cours-liste">
+      <li><strong>Graphe orienté :</strong> les arêtes ont une direction (ex : A → B)</li>
+      <li><strong>Graphe non orienté :</strong> les arêtes n'ont pas de direction (A ↔ B)</li>
+      <li><strong>Graphe pondéré :</strong> les arêtes ont un poids (ex : coût, distance)</li>
+      <li><strong>Graphe non pondéré :</strong> les arêtes sont toutes égales</li>
+    </ul>
+  </div>
+
+  <div class="cours-section" id="representation">
+    <div class="section-titre">3. Représentation des graphes</div>
+    <ul class="cours-liste">
+      <li><strong>Liste d'adjacence :</strong> chaque sommet a une liste de ses voisins</li>
+      <li><strong>Matrice d'adjacence :</strong> tableau 2D indiquant la présence ou le poids d'une arête</li>
+    </ul>
+    <div class="cours-exemple">
+      <div class="section-paragraphe">Exemple : Liste d'adjacence</div>
+      <div class="code-bloc">
+        A : B, C<br>
+        B : A, D<br>
+        C : A<br>
+        D : B
+      </div>
+      <div class="section-paragraphe">Exemple : Matrice d'adjacence (non orienté)</div>
+      <div class="code-bloc">
+        &nbsp; &nbsp; A B C D<br>
+        A [ 0 1 1 0 ]<br>
+        B [ 1 0 0 1 ]<br>
+        C [ 1 0 0 0 ]<br>
+        D [ 0 1 0 0 ]
+      </div>
+    </div>
+  </div>
+
+  <div class="cours-section" id="parcours">
+    <div class="section-titre">4. Parcours de graphe</div>
+    <ul class="cours-liste">
+      <li><strong>Parcours en largeur (BFS) :</strong> explore les voisins d'abord</li>
+      <li><strong>Parcours en profondeur (DFS) :</strong> explore un chemin jusqu'au bout avant de revenir</li>
+    </ul>
+    <div class="cours-exemple">
+      <div class="section-paragraphe">Exemple de BFS (A, B, C, D)</div>
+      <div class="section-paragraphe">Exemple de DFS (A, B, D, C)</div>
+    </div>
+  </div>
+
+  <div class="cours-section" id="implémentation">
+    <div class="section-titre">5. Implémentation d'un graphe non orienté en Python</div>
+    <div class="code-bloc">
+class Graphe:
+    def __init__(self):
+        self.adjacence = {}
+
+    def ajouter_sommet(self, sommet):
+        if sommet not in self.adjacence:
+            self.adjacence[sommet] = []
+
+    def ajouter_arete(self, sommet1, sommet2):
+        self.adjacence[sommet1].append(sommet2)
+        self.adjacence[sommet2].append(sommet1)
+
+# Exemple
+mon_graphe = Graphe()
+mon_graphe.ajouter_sommet("A")
+mon_graphe.ajouter_sommet("B")
+mon_graphe.ajouter_sommet("C")
+mon_graphe.ajouter_arete("A", "B")
+mon_graphe.ajouter_arete("A", "C")
+    </div>
+  </div>
+
+  <div class="cours-section" id="applications">
+    <div class="section-titre">6. Applications des graphes</div>
+    <ul class="cours-liste">
+      <li>Réseaux sociaux (utilisateurs connectés)</li>
+      <li>Plans de villes et GPS</li>
+      <li>Réseaux informatiques</li>
+      <li>Organisation de dépendances (tâches, compilateurs)</li>
+      <li>Web : structure des liens entre pages</li>
+    </ul>
+  </div>
+
+  <div class="cours-section" id="resume">
+    <div class="section-titre">7. Résumé du chapitre</div>
+    <ul class="cours-liste">
+      <li>Un graphe est formé de sommets et d'arêtes</li>
+      <li>On peut le représenter avec une liste ou une matrice d'adjacence</li>
+      <li>Deux grands types de parcours : BFS et DFS</li>
+      <li>Utilisé dans de nombreux domaines pratiques</li>
+    </ul>
+  </div>
+
+  <section class="cours-section" id="video">
+    <h3 class="section-titre">Cours vidéo sur les graphes</h3>
+    <div class="cours-video">
+      <iframe width="100%" height="auto" src="https://www.youtube.com/embed/apwUCIOJ25U" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <section class="cours-section" id="video">
+    <h3 class="section-titre">Cours vidéo sur les graphes</h3>
+    <div class="cours-video">
+      <iframe width="100%" height="auto" src="https://www.youtube.com/embed/n9bTyNapnOs" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
+</body>
+</html>
+<style>
+    .cours-body {
+    font-family: 'Segoe UI', sans-serif;
+    padding: 2rem;
+    max-width: 900px;
+    margin: auto;
+    background-color: #fff;
+    color: #222;
+    }
+
+    .cours-titre {
+    font-size: 2.8rem;
+    text-align: center;
+    }
+
+    .cours-soustitre {
+    font-size: 1.5rem;
+    text-align: center;
+    color: #444;
+    margin-bottom: 2rem;
+    }
+
+    .section-titre {
+    font-size: 1.8rem;
+    color: #003366;
+    margin-top: 2rem;
+    }
+
+    .section-paragraphe {
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    }
+
+    .cours-liste {
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+    }
+
+    .code-bloc {
+    background: #f4f4f4;
+    border-left: 3px solid #003366;
+    padding: 1rem;
+    margin: 1rem 0;
+    font-family: monospace;
+    }
+
+    .cours-exemple {
+    background: #eef6ff;
+    padding: 1rem;
+    border-left: 4px solid #2a7ae2;
+    margin: 1.5rem 0;
+    }
+
+    .cours-video {
+    text-align: center;
+    margin-top: 1rem;
+    }
+
+    .footer-texte {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 2rem;
+    }
+
+    .cours-video {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    }
+
+    .cours-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 90%;
+    height: 90%;
+    }
+  </style>

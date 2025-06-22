@@ -1,0 +1,180 @@
+<body class="cours-body">
+
+  <div class="cours-header">
+    <div class="cours-titre">Architectures Matérielles, Systèmes d'Exploitation et Réseaux</div>
+    <div class="cours-soustitre">Chapitre 2 : Protocoles de Routage et Sécurisation des Communications</div>
+  </div>
+
+  <div class="cours-section" id="introduction">
+    <div class="section-titre">1. Introduction</div>
+    <div class="section-paragraphe">
+      Dans ce chapitre, nous explorons les protocoles de routage utilisés pour acheminer les données dans un réseau ainsi que les mécanismes de sécurisation des communications.
+    </div>
+  </div>
+
+  <div class="cours-section" id="protocoles-routage">
+    <div class="section-titre">2. Protocoles de routage</div>
+    <div class="section-paragraphe">
+      Le routage consiste à choisir le meilleur chemin pour envoyer les données d'une source à une destination sur un réseau.
+    </div>
+    <ul class="cours-liste">
+      <li><strong>Routage statique :</strong> chemins configurés manuellement, utilisé dans les petits réseaux.</li>
+      <li><strong>Routage dynamique :</strong> les routeurs ajustent automatiquement leurs routes avec des protocoles comme :
+        <ul>
+          <li><strong>RIP (Routing Information Protocol)</strong> – protocole à vecteur de distance.</li>
+          <li><strong>OSPF (Open Shortest Path First)</strong> – protocole à état de lien, plus rapide et adaptatif.</li>
+          <li><strong>BGP (Border Gateway Protocol)</strong> – utilisé sur Internet pour le routage entre organisations.</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <section class="cours-section" id="video">
+    <h3 class="section-titre">Cours vidéos sur les Protocoles de routage </h3>
+    <div class="cours-video">
+      <iframe width="100%" height="auto" src="https://www.youtube.com/embed/bslQLLzzxcg" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <div class="cours-section" id="comparaison-protocoles">
+    <div class="section-titre">3. Comparaison des protocoles de routage</div>
+    <table class="cours-table">
+      <thead>
+        <tr><th>Protocole</th><th>Type</th><th>Utilisation</th><th>Complexité</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>RIP</td><td>Vecteur de distance</td><td>Petits réseaux</td><td>Faible</td></tr>
+        <tr><td>OSPF</td><td>État de lien</td><td>Réseaux moyens/grands</td><td>Moyenne</td></tr>
+        <tr><td>BGP</td><td>Path Vector</td><td>Internet</td><td>Élevée</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="cours-section" id="securite-communications">
+    <div class="section-titre">4. Sécurisation des communications</div>
+    <div class="section-paragraphe">
+      Il est essentiel de protéger les données pendant leur transfert. Pour cela, on utilise :
+    </div>
+    <ul class="cours-liste">
+      <li><strong>Chiffrement :</strong> transforme les données pour qu'elles soient inaccessibles sans clé.</li>
+      <li><strong>Protocoles de sécurité :</strong>
+        <ul>
+          <li><strong>HTTPS :</strong> HTTP + TLS pour des connexions web sécurisées.</li>
+          <li><strong>SSL/TLS :</strong> protège les communications sur Internet.</li>
+          <li><strong>VPN :</strong> crée un tunnel chiffré entre l'utilisateur et le réseau distant.</li>
+          <li><strong>IPSec :</strong> sécurise les communications à l’aide de l’IP.</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="cours-section" id="attaques-courantes">
+    <div class="section-titre">5. Menaces et attaques courantes</div>
+    <ul class="cours-liste">
+      <li><strong>Interception (sniffing) :</strong> capture des paquets non chiffrés.</li>
+      <li><strong>Attaque Man-in-the-Middle :</strong> interception et modification des messages entre deux parties.</li>
+      <li><strong>Usurpation d'identité (spoofing) :</strong> se faire passer pour un autre appareil.</li>
+    </ul>
+    <div class="section-paragraphe">
+      La mise en place de pare-feux, IDS/IPS et de politiques de sécurité strictes permet de limiter ces risques.
+    </div>
+  </div>
+
+  <div class="cours-section" id="resume">
+    <div class="section-titre">6. Récapitulatif</div>
+    <ul class="cours-liste">
+      <li>Le routage permet d'acheminer les paquets sur un réseau.</li>
+      <li>Les protocoles comme RIP, OSPF, BGP ont des usages différents.</li>
+      <li>La sécurisation des communications repose sur le chiffrement et des protocoles spécifiques.</li>
+      <li>Des mesures de prévention sont indispensables pour contrer les attaques réseau.</li>
+    </ul>
+  </div>
+
+  <section class="cours-section" id="video">
+    <h3 class="section-titre">Cours vidéos sur Protocoles de routage et sécurisation des communications (HTTPS)</h3>
+    <div class="cours-video">
+      <iframe width="100%" height="auto" src="https://www.youtube.com/embed/CNeEEhc6bKg" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
+
+</body>
+<style>
+    .cours-body {
+    font-family: 'Segoe UI', sans-serif;
+    padding: 2rem;
+    max-width: 900px;
+    margin: auto;
+    background-color: #fff;
+    color: #222;
+    }
+
+    .cours-titre {
+    font-size: 2.8rem;
+    text-align: center;
+    }
+
+    .cours-soustitre {
+    font-size: 1.5rem;
+    text-align: center;
+    color: #444;
+    margin-bottom: 2rem;
+    }
+
+    .section-titre {
+    font-size: 1.8rem;
+    color: #003366;
+    margin-top: 2rem;
+    }
+
+    .section-paragraphe {
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    }
+
+    .cours-liste {
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+    }
+
+    .code-bloc {
+    background: #f4f4f4;
+    border-left: 3px solid #003366;
+    padding: 1rem;
+    margin: 1rem 0;
+    font-family: monospace;
+    }
+
+    .cours-exemple {
+    background: #eef6ff;
+    padding: 1rem;
+    border-left: 4px solid #2a7ae2;
+    margin: 1.5rem 0;
+    }
+
+    .cours-video {
+    text-align: center;
+    margin-top: 1rem;
+    }
+
+    .footer-texte {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 2rem;
+    }
+
+    .cours-video {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    }
+
+    .cours-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 90%;
+    height: 90%;
+    }
+  </style>

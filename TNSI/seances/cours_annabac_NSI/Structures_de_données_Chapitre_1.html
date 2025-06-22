@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapitre 1 – Structures de Données</title>
+</head>
+<body class="cours-body">
+
+  <header class="cours-header">
+    <h1 class="cours-titre">Structures de Données</h1>
+    <h2 class="cours-soustitre">Chapitre 1 : Interface et implémentation des structures de données</h2>
+  </header>
+
+  <section class="cours-section" id="intro">
+    <h3 class="section-titre">Introduction générale</h3>
+    <p class="section-paragraphe">
+      Pour créer des programmes efficaces, il faut savoir comment organiser les données. C’est le rôle des <strong>structures de données</strong>. Elles permettent de stocker, retrouver, et manipuler les données de manière rapide et organisée.
+    </p>
+    <p class="section-paragraphe">
+      Dans ce chapitre, on va apprendre deux idées clés :
+    </p>
+    <ul class="cours-liste">
+      <li><strong>L’interface</strong> : ce qu’on peut faire avec la structure</li>
+      <li><strong>L’implémentation</strong> : comment cela fonctionne à l’intérieur</li>
+    </ul>
+  </section>
+
+  <section class="cours-section" id="structure-bases">
+    <h3 class="section-titre">1. Qu’est-ce qu’une structure de données ?</h3>
+    <p class="section-paragraphe">
+      Une structure de données est un modèle pour organiser des données. Elle permet de gérer plusieurs valeurs ensemble. Chaque structure est adaptée à un besoin précis.
+    </p>
+
+    <div class="cours-exemple">
+      <p><strong>Exemple 1 :</strong> Liste (comme une liste de courses)</p>
+      <pre class="code-bloc">
+courses = ["lait", "pain", "œufs"]
+courses.append("bananes")  # Ajoute un élément
+courses[1]  # Donne "pain"
+      </pre>
+
+      <p><strong>Exemple 2 :</strong> Pile (LIFO - Last In First Out)</p>
+      <pre class="code-bloc">
+pile = []
+pile.append("dossier1")  # On empile
+pile.append("dossier2")
+pile.pop()  # On retire le dernier ajouté → "dossier2"
+      </pre>
+
+      <p><strong>Exemple 3 :</strong> File (FIFO - First In First Out)</p>
+      <pre class="code-bloc">
+from collections import deque
+file = deque()
+file.append("client1")
+file.append("client2")
+file.popleft()  # client1 sort en premier
+      </pre>
+    </div>
+  </section>
+
+  <section class="cours-section" id="interface">
+    <h3 class="section-titre">2. L’interface d’une structure</h3>
+    <p class="section-paragraphe">
+      L’interface, c’est la liste des actions disponibles. Elle décrit ce qu’on peut faire avec la structure, mais pas comment cela fonctionne.
+    </p>
+
+    <div class="cours-exemple">
+      <p><strong>Exemple : Interface d’une pile</strong></p>
+      <ul class="cours-liste">
+        <li><code>empiler(x)</code> → ajouter un élément</li>
+        <li><code>dépiler()</code> → retirer le dernier</li>
+        <li><code>sommet()</code> → voir le dernier sans le retirer</li>
+        <li><code>estVide()</code> → vérifier si la pile est vide</li>
+      </ul>
+    </div>
+
+    <div class="cours-exemple">
+      <p><strong>Exemple : Interface d’une file</strong></p>
+      <ul class="cours-liste">
+        <li><code>enfiler(x)</code> → ajouter en fin</li>
+        <li><code>défiler()</code> → retirer en début</li>
+        <li><code>tête()</code> → voir le premier</li>
+      </ul>
+    </div>
+
+    <p class="section-paragraphe">
+      Une interface est comme un contrat. Tant que la structure respecte ce contrat, l’utilisateur peut l’utiliser sans connaître son fonctionnement interne.
+    </p>
+  </section>
+
+  <section class="cours-section" id="implementation">
+    <h3 class="section-titre">3. L’implémentation d’une structure</h3>
+    <p class="section-paragraphe">
+      L’implémentation est la partie cachée : elle décrit comment l’interface est réalisée techniquement.
+    </p>
+
+    <div class="cours-exemple">
+      <p><strong>Implémenter une pile avec un tableau :</strong></p>
+      <pre class="code-bloc">
+pile = []
+
+def empiler(x):
+    pile.append(x)
+
+def dépiler():
+    return pile.pop()
+
+def sommet():
+    return pile[-1]
+
+def estVide():
+    return len(pile) == 0
+      </pre>
+    </div>
+
+    <div class="cours-exemple">
+      <p><strong>Implémenter une pile avec une liste chaînée :</strong></p>
+      <pre class="code-bloc">
+class Noeud:
+    def __init__(self, valeur, suivant=None):
+        self.valeur = valeur
+        self.suivant = suivant
+
+class Pile:
+    def __init__(self):
+        self.tete = None
+
+    def empiler(self, val):
+        self.tete = Noeud(val, self.tete)
+
+    def dépiler(self):
+        val = self.tete.valeur
+        self.tete = self.tete.suivant
+        return val
+
+    def estVide(self):
+        return self.tete is None
+      </pre>
+    </div>
+
+    <p class="section-paragraphe">
+      Les deux implémentations font exactement la même chose, mais le "moteur" est différent.
+    </p>
+  </section>
+
+  <section class="cours-section" id="analogie">
+    <h3 class="section-titre">4. Analogie simple</h3>
+    <p class="section-paragraphe">
+      Une voiture : tu tournes le volant (interface), mais tu ne sais pas exactement ce que fait le moteur ou l’ordinateur de bord (implémentation). Tu te fiches de savoir comment ça marche tant que ça marche.
+    </p>
+    <p class="section-paragraphe">
+      C’est pareil avec les structures de données : tu veux juste que ça fasse ce que tu as demandé.
+    </p>
+  </section>
+
+  
+
+  <section class="cours-section" id="resume">
+    <h3 class="section-titre">6. Résumé du chapitre</h3>
+    <ul class="cours-liste">
+      <li><strong>Structure de données</strong> : outil pour stocker et organiser les données</li>
+      <li><strong>Interface</strong> : liste des opérations disponibles</li>
+      <li><strong>Implémentation</strong> : code réel qui fait fonctionner l’interface</li>
+      <li>On peut changer l’implémentation sans changer l’interface</li>
+    </ul>
+  </section>
+
+  <section class="cours-section" id="video">
+    <h3 class="section-titre">Cours vidéo sur les structures de données</h3>
+    <div class="cours-video">
+      <iframe width="100%" height="auto" src="https://www.youtube.com/embed/0r-pSf3PwVQ" title="Structures de données pour débutants" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <section class="cours-section" id="video">
+    <h3 class="section-titre">Une autre vidéo sur les structures de données</h3>
+    <div class="cours-video">
+      <iframe width="100%" height="auto" src="https://www.youtube.com/embed/_Fc_nP9XazA" title="Structures de données pour débutants" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <style>
+    .cours-body {
+    font-family: 'Segoe UI', sans-serif;
+    padding: 2rem;
+    max-width: 900px;
+    margin: auto;
+    background-color: #fff;
+    color: #222;
+    }
+
+    .cours-titre {
+    font-size: 2.8rem;
+    text-align: center;
+    }
+
+    .cours-soustitre {
+    font-size: 1.5rem;
+    text-align: center;
+    color: #444;
+    margin-bottom: 2rem;
+    }
+
+    .section-titre {
+    font-size: 1.8rem;
+    color: #003366;
+    margin-top: 2rem;
+    }
+
+    .section-paragraphe {
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    }
+
+    .cours-liste {
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+    }
+
+    .code-bloc {
+    background: #f4f4f4;
+    border-left: 3px solid #003366;
+    padding: 1rem;
+    margin: 1rem 0;
+    font-family: monospace;
+    }
+
+    .cours-exemple {
+    background: #eef6ff;
+    padding: 1rem;
+    border-left: 4px solid #2a7ae2;
+    margin: 1.5rem 0;
+    }
+
+    .cours-video {
+    text-align: center;
+    margin-top: 1rem;
+    }
+
+    .footer-texte {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 2rem;
+    }
+
+    .cours-video {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    }
+
+    .cours-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 90%;
+    height: 90%;
+    }
+  </style>
+</body>
+</html>
