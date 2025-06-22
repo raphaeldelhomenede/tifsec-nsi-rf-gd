@@ -55,32 +55,32 @@ if ($theme && $chapitre && isset($urls[$theme][(int)$chapitre])) {
 
 <h2>Langages, programmation et algorithmique</h2>
 <ul>
-    <li><a href="?theme=langages&chapitre=1">Chapitre 1 : Modularité</a></li>
-    <li><a href="?theme=langages&chapitre=2">Chapitre 2 : Récursivité</a></li>
-    <li><a href="?theme=langages&chapitre=3">Chapitre 3 : Paradigmes</a></li>
+    <li><a href="?session=cours_annabac_NSI&theme=langages&chapitre=1">Chapitre 1 : Modularité</a></li>
+    <li><a href="?session=cours_annabac_NSI&theme=langages&chapitre=2">Chapitre 2 : Récursivité</a></li>
+    <li><a href="?session=cours_annabac_NSI&theme=langages&chapitre=3">Chapitre 3 : Paradigmes</a></li>
 </ul>
 
 <h2>Structures de données</h2>
 <ul>
-    <li><a href="?theme=structures&chapitre=1">Chapitre 1 : Structures simples</a></li>
-    <li><a href="?theme=structures&chapitre=2">Chapitre 2 : Arbres</a></li>
-    <li><a href="?theme=structures&chapitre=3">Chapitre 3 : Graphes</a></li>
+    <li><a href="?session=cours_annabac_NSI&theme=structures&chapitre=1">Chapitre 1 : Structures simples</a></li>
+    <li><a href="?session=cours_annabac_NSI&theme=structures&chapitre=2">Chapitre 2 : Arbres</a></li>
+    <li><a href="?session=cours_annabac_NSI&theme=structures&chapitre=3">Chapitre 3 : Graphes</a></li>
 </ul>
 
 <h2>Bases de données</h2>
 <ul>
-    <li><a href="?theme=bases&chapitre=1">Chapitre 1 : Modélisation</a></li>
-    <li><a href="?theme=bases&chapitre=2">Chapitre 2 : SQL</a></li>
+    <li><a href="?session=cours_annabac_NSI&theme=bases&chapitre=1">Chapitre 1 : Modélisation</a></li>
+    <li><a href="?session=cours_annabac_NSI&theme=bases&chapitre=2">Chapitre 2 : SQL</a></li>
 </ul>
 
 <h2>Architectures matérielles</h2>
 <ul>
-    <li><a href="?theme=architectures&chapitre=1">Chapitre 1 : Composants</a></li>
-    <li><a href="?theme=architectures&chapitre=2">Chapitre 2 : Réseaux</a></li>
+    <li><a href="?session=cours_annabac_NSI&theme=architectures&chapitre=1">Chapitre 1 : Composants</a></li>
+    <li><a href="?session=cours_annabac_NSI&theme=architectures&chapitre=2">Chapitre 2 : Réseaux</a></li>
 </ul>
 
 <h2>Programmation avancée</h2>
 <ul>
-    <li><a href="?theme=avancee&chapitre=1">Chapitre 1 : Calculabilité</a></li>
-    <li><a href="?theme=avancee&chapitre=2">Chapitre 2 : Programmation avancée</a></li>
+    <li><a href="?session=cours_annabac_NSI&theme=avancee&chapitre=1">Chapitre 1 : Calculabilité</a></li>
+    <li><a href="?session=cours_annabac_NSI&theme=avancee&chapitre=2">Chapitre 2 : Programmation avancée</a></li>
 </ul>
