@@ -1,12 +1,12 @@
 <?php
-function get_url_content($url) {
+function get_url_content_base64($url) {
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
     $data = curl_exec($ch);
     curl_close($ch);
-    return $data;
+    return base64_encode($data);
 }
 
 $session = $_GET['session'] ?? null;
@@ -38,49 +38,65 @@ $urls = [
     ]
 ];
 
-// Si un chapitre est demandé → on affiche **uniquement** le cours
+// Si un chapitre est demandé → afficher dans un iframe
 if ($theme && $chapitre && isset($urls[$theme][(int)$chapitre])) {
-    echo get_url_content($urls[$theme][(int)$chapitre]);
-    exit; // empêche l'affichage du menu après
+    $encoded = get_url_content_base64($urls[$theme][(int)$chapitre]);
+    echo <<<HTML
+    <style>
+        body { margin: 0; padding: 0; }
+        iframe { border: none; width: 100%; height: 100vh; }
+    </style>
+    <iframe src="data:text/html;base64,{$encoded}"></iframe>
+HTML;
+    exit;
 }
 ?>
 
 <!-- Menu visible SEULEMENT si aucun chapitre n'est sélectionné -->
 <style>
+    body { color: #555; font-family: sans-serif; }
     ul { line-height: 1.6; }
-    a { text-decoration: none; color: #0074d9; }
+    a { text-decoration: none; color: #555; }
+    a:hover { color: #000; }
 </style>
 
 <h1>📘 Cours NSI - Accès rapide aux chapitres</h1>
 
+<?php
+function base6($n) { return base_convert($n, 10, 6); }
+?>
+
 <h2>Langages, programmation et algorithmique</h2>
 <ul>
-    <li><a href="?session=cours_annabac_NSI&theme=langages&chapitre=1">Chapitre 1 : Modularité et mise au point des programmes</a></li>
-    <li><a href="?session=cours_annabac_NSI&theme=langages&chapitre=2">Chapitre 2 : Récursivité</a></li>
-    <li><a href="?session=cours_annabac_NSI&theme=langages&chapitre=3">Chapitre 3 : Paradigmes de programmation</a></li>
+    <?php for ($i = 1; $i <= 3; $i++): ?>
+        <li><a href="?session=cours_annabac_NSI&theme=langages&chapitre=<?= $i ?>">Chapitre <?= $i ?> (base 6 : <?= base6($i) ?>)</a></li>
+    <?php endfor; ?>
 </ul>
 
 <h2>Structures de données</h2>
 <ul>
-    <li><a href="?session=cours_annabac_NSI&theme=structures&chapitre=1">Chapitre 1 : Interface et implémentation des structures de données</a></li>
-    <li><a href="?session=cours_annabac_NSI&theme=structures&chapitre=2">Chapitre 2 : Structures arborescentes</a></li>
-    <li><a href="?session=cours_annabac_NSI&theme=structures&chapitre=3">Chapitre 3 : Graphes</a></li>
+    <?php for ($i = 1; $i <= 3; $i++): ?>
+        <li><a href="?session=cours_annabac_NSI&theme=structures&chapitre=<?= $i ?>">Chapitre <?= $i ?> (base 6 : <?= base6($i) ?>)</a></li>
+    <?php endfor; ?>
 </ul>
 
 <h2>Bases de données</h2>
 <ul>
-    <li><a href="?session=cours_annabac_NSI&theme=bases&chapitre=1">Chapitre 1 : Conception de bases de données</a></li>
-    <li><a href="?session=cours_annabac_NSI&theme=bases&chapitre=2">Chapitre 2 : Systèmes de gestion de bases de données – SQL</a></li>
+    <?php for ($i = 1; $i <= 2; $i++): ?>
+        <li><a href="?session=cours_annabac_NSI&theme=bases&chapitre=<?= $i ?>">Chapitre <?= $i ?> (base 6 : <?= base6($i) ?>)</a></li>
+    <?php endfor; ?>
 </ul>
 
 <h2>Architectures matérielles, systèmes d'exploitation et réseaux</h2>
 <ul>
-    <li><a href="?session=cours_annabac_NSI&theme=architectures&chapitre=1">Chapitre 1 : Composants et processus</a></li>
-    <li><a href="?session=cours_annabac_NSI&theme=architectures&chapitre=2">Chapitre 2 : Protocoles de routage et sécurisation des communications</a></li>
+    <?php for ($i = 1; $i <= 2; $i++): ?>
+        <li><a href="?session=cours_annabac_NSI&theme=architectures&chapitre=<?= $i ?>">Chapitre <?= $i ?> (base 6 : <?= base6($i) ?>)</a></li>
+    <?php endfor; ?>
 </ul>
 
 <h2>Programmation avancée et algorithmique</h2>
 <ul>
-    <li><a href="?session=cours_annabac_NSI&theme=avancee&chapitre=1">Chapitre 1 : Programmes et données – Calculabilité</a></li>
-    <li><a href="?session=cours_annabac_NSI&theme=avancee&chapitre=2">Chapitre 2 : Programmation avancée</a></li>
+    <?php for ($i = 1; $i <= 2; $i++): ?>
+        <li><a href="?session=cours_annabac_NSI&theme=avancee&chapitre=<?= $i ?>">Chapitre <?= $i ?> (base 6 : <?= base6($i) ?>)</a></li>
+    <?php endfor; ?>
 </ul>
