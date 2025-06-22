@@ -224,11 +224,11 @@ class Pile:
     }
 
     .cours-exemple {
-    background: #000000;
-    color: black;
-    padding: 1rem;
-    border-left: 4px solid #2a7ae2;
-    margin: 1.5rem 0;
+        background: #000;
+        color: white;
+        padding: 1rem;
+        border-left: 4px solid #2a7ae2;
+        margin: 1.5rem 0;
     }
 
     .cours-video {
@@ -258,5 +258,16 @@ class Pile:
     height: 90%;
     }
   </style>
+  <script>
+  // Si cette page est chargée dans une iframe, on cache le menu
+  if (window.self !== window.top) {
+    const aside = document.querySelector("aside");
+    if (aside) aside.style.display = "none";
+
+    // Et on adapte le main à la pleine largeur
+    const main = document.querySelector("main");
+    if (main) main.style.marginLeft = "0";
+  }
+</script>
 </body>
 </html>
