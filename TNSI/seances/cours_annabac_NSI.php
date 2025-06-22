@@ -6,6 +6,21 @@ function get_url_content_base64($url) {
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
     $data = curl_exec($ch);
     curl_close($ch);
+
+    // Convertir en UTF-8 si ce n’est pas déjà le cas
+    $encoding = mb_detect_encoding($data, ['UTF-8', 'ISO-8859-1', 'Windows-1252'], true);
+    if ($encoding && $encoding !== 'UTF-8') {
+        $data = mb_convert_encoding($data, 'UTF-8', $encoding);
+    }
+
+    // Assurer que le HTML a bien un <meta charset="utf-8"> dans <head>
+    $data = preg_replace(
+        '/<meta[^>]+charset=[^>]+>/i',
+        '<meta charset="utf-8">',
+        $data,
+        1
+    );
+
     return base64_encode($data);
 }
 
