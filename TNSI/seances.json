@@ -149,9 +149,9 @@
                 "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/download.html"
             },
             "Réseaux": {
-                "BakaTaida": "https://raphaeldelhomenede.github.io/tifsec/tifsec.github.io/R%C3%A9seaux/",
-                "yunranofont": "https://raphaeldelhomenede.github.io/tifsec/tifsec.github.io/R%C3%A9seaux/",
-                "default": "https://raphaeldelhomenede.github.io/tifsec/tifsec.github.io/R%C3%A9seaux/"
+                "BakaTaida": "https://raphaeldelhomenede.github.io/tifsec/tifsec.github.io/R%C3%A9seaux/pas-index.html",
+                "yunranofont": "https://raphaeldelhomenede.github.io/tifsec/tifsec.github.io/R%C3%A9seaux/pas-index.html",
+                "default": "https://raphaeldelhomenede.github.io/tifsec/tifsec.github.io/R%C3%A9seaux/pas-index.html"
             },
             "Sujet1Exercice1": {
                 "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet1Exercice1.html"
