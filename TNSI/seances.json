@@ -148,7 +148,11 @@
                 "yunranofont": "https://raphaeldelhomenede.github.io/tifsec/tifsec.github.io/R%C3%A9seaux/pas-index.html",
                 "default": "https://raphaeldelhomenede.github.io/tifsec/tifsec.github.io/R%C3%A9seaux/pas-index.html"
             },
-            "Site_T": "https://raphaeldelhomenede.github.io/tifsec/AnciensCours/Site_T"
+            "Site_T": {
+                "BakaTaida": "https://raphaeldelhomenede.github.io/tifsec/AnciensCours/Site_T",
+                "yunranofont": "https://raphaeldelhomenede.github.io/tifsec/AnciensCours/Site_T",
+                "default": "https://raphaeldelhomenede.github.io/tifsec/AnciensCours/Site_T"
+            }
         },
         [
             [
