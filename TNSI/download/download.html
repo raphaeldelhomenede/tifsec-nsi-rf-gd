@@ -1,167 +1,79 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page de Téléchargement</title>
-    <script>
-        function getQueryParam(param) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(param);
-        }
-        
-        fetch('data-fonts.json')
-            .then(response => response.json())
-            .then(fontStyles => {
-                let font = getQueryParam('font');
-                let link = document.createElement('link');
-                link.rel = 'stylesheet';
-        
-                if (fontStyles[font]) {
-                    link.href = fontStyles[font].link;
-                } else {
-                    link.href = fontStyles["default"].link;
-                }
-        
-                document.head.appendChild(link);
-            })
-            .catch(error => console.error("Erreur de chargement du JSON:", error));
-    </script>
-    <style>
-        .body {
-            margin: 0;
-            padding: 0;
-            background-color: #2b2b2b;
-            color: #fff;
-        }
+<style>
+.telechargement-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background-color: #1e1e1e;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
 
-        .main-title {
-            color: #3a6ea5;
-            margin-top: 5vh;
-            font-size: 6vw;
-        }
+.centered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3vh;
+    margin-bottom: 5vh;
+}
 
-        .intro-text {
-            color: #c7c7c7;
-            margin-top: 2vh;
-            font-size: 2vw;
-        }
+.telechargement-container .main-title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2.8em;
+    color: #3a6ea5;
+}
 
-        .container {
-            max-width: 90vw;
-            margin: 0 auto;
-            padding: 5vw;
-            background-color: #1e1e1e;
-            border-radius: 2vw;
-            box-shadow: 0 2vh 5vw rgba(0, 0, 0, 0.2);
-        }
+.telechargement-container .intro-text {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #c7c7c7;
+}
 
-        .download-btn {
-            background-color: #3a6ea5;
-            color: white;
-            padding: 3vw 6vw;
-            font-size: 2.5vw;
-            border: none;
-            border-radius: 1vw;
-            cursor: pointer;
-            margin-top: 5vh;
-            text-decoration: none;
-            display: inline-block;
-        }
+.telechargement-container .section-title {
+    text-align: center;
+    color: #3a6ea5;
+}
 
-        .download-btn:hover {
-            background-color: #1d4b6e;
-        }
+.telechargement-container .section-desc {
+    text-align: center;
+    max-width: 600px;
+    color: #c7c7c7;
+    margin: 15px 0;
+}
 
-        .link {
-            color: inherit;
-            text-decoration: none;
-        }
+.telechargement-container .download-btn {
+    margin-top: 10px;
+}
+</style>
+<div class="telechargement-container">
+    <h1 class="main-title">Page de Téléchargement</h1>
+    <p class="intro-text">Choisissez le programme que vous souhaitez télécharger :</p>
 
-        .download-section {
-            margin-bottom: 4vh;
-        }
-
-        .section-title {
-            font-size: 3vw;
-            color: #3a6ea5;
-        }
-
-        .section-desc {
-            font-size: 2vw;
-            color: #c7c7c7;
-        }
-
-        @media (max-width: 600px) {
-            .main-title {
-                font-size: 8vw;
-            }
-
-            .intro-text {
-                font-size: 4vw;
-            }
-
-            .container {
-                padding: 8vw;
-            }
-
-            .download-btn {
-                padding: 4vw 8vw;
-                font-size: 4vw;
-            }
-
-            .section-title {
-                font-size: 5vw;
-            }
-
-            .section-desc {
-                font-size: 4vw;
-            }
-        }
-    </style>
-</head>
-<body class="body">
-    <div class="container">
-        <div style="display: flex; align-items: center; justify-content: center;">
-            <h1 class="main-title">Page de Téléchargement</h1>
-            <p class="intro-text">Choisissez le programme que vous souhaitez télécharger :</p>
-        </div>
-
-        <!-- PyCharm -->
-        <div class="download-section">
-            <h2 class="section-title">Télécharger PyCharm</h2>
-            <div style="display: flex; align-items: center; justify-content: center;">
-                <p class="section-desc">PyCharm est l'un des meilleurs environnements de développement pour Python.</p>
-                <a href="?session=pycharm" class="download-btn link" target="_blank">Télécharger PyCharm</a>
-            </div>
-        </div>
-
-        <!-- WampServer -->
-        <div class="download-section">
-            <h2 class="section-title">Télécharger WampServer</h2>
-            <div style="display: flex; align-items: center; justify-content: center;">
-                <p class="section-desc">WampServer est un environnement de développement pour PHP, MySQL et Apache.</p>
-                <a href="?session=wampserver" class="download-btn link" target="_blank">Télécharger WampServer</a>
-            </div>    
-        </div>
-
-        <!-- Firefox Developer Edition -->
-        <div class="download-section">
-            <h2 class="section-title">Télécharger Firefox Developer Edition</h2>
-            <div style="display: flex; align-items: center; justify-content: center;">
-                <p class="section-desc">Firefox Developer Edition est une version spéciale de Firefox pour les développeurs.</p>
-                <a href="?session=FirefoxDeveloperEdition" class="download-btn link" target="_blank">Télécharger Firefox Developer Edition</a>
-            </div>
-        </div>
-
-        <!-- VS Code -->
-        <div class="download-section">
-            <h2 class="section-title">Télécharger VS Code</h2>
-            <p class="section-desc">VS Code est un éditeur de code populaire pour les développeurs.</p>
-            <div style="display: flex; align-items: center; justify-content: center;">
-                <a href="?session=vscode" class="download-btn link" target="_blank">Télécharger VS Code</a>
-            </div>
-        </div>
+    <!-- PyCharm -->
+    <div class="download-section centered">
+        <h2 class="section-title">Télécharger PyCharm</h2>
+        <p class="section-desc">PyCharm est l'un des meilleurs environnements de développement pour Python.</p>
+        <a href="?session=pycharm" class="download-btn link" target="_blank">Télécharger PyCharm</a>
     </div>
-</body>
-</html>
+
+    <!-- WampServer -->
+    <div class="download-section centered">
+        <h2 class="section-title">Télécharger WampServer</h2>
+        <p class="section-desc">WampServer est un environnement de développement pour PHP, MySQL et Apache.</p>
+        <a href="?session=wampserver" class="download-btn link" target="_blank">Télécharger WampServer</a>
+    </div>
+
+    <!-- Firefox Developer Edition -->
+    <div class="download-section centered">
+        <h2 class="section-title">Télécharger Firefox Developer Edition</h2>
+        <p class="section-desc">Firefox Developer Edition est une version spéciale de Firefox pour les développeurs.</p>
+        <a href="?session=FirefoxDeveloperEdition" class="download-btn link" target="_blank">Télécharger Firefox Developer Edition</a>
+    </div>
+
+    <!-- VS Code -->
+    <div class="download-section centered">
+        <h2 class="section-title">Télécharger VS Code</h2>
+        <p class="section-desc">VS Code est un éditeur de code populaire pour les développeurs.</p>
+        <a href="?session=vscode" class="download-btn link" target="_blank">Télécharger VS Code</a>
+    </div>
+</div>
