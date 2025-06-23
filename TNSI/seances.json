@@ -143,69 +143,10 @@
                 "yunranofont": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/vscode.html?font=yunranofont",
                 "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/vscode.html"
             },
-            "download": {
-                "BakaTaida": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/download.html?font=BakaTaida",
-                "yunranofont": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/download.html?font=yunranofont",
-                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/download.html"
-            },
             "Réseaux": {
                 "BakaTaida": "https://raphaeldelhomenede.github.io/tifsec/tifsec.github.io/R%C3%A9seaux/pas-index.html",
                 "yunranofont": "https://raphaeldelhomenede.github.io/tifsec/tifsec.github.io/R%C3%A9seaux/pas-index.html",
                 "default": "https://raphaeldelhomenede.github.io/tifsec/tifsec.github.io/R%C3%A9seaux/pas-index.html"
-            },
-            "Sujet1Exercice1": {
-                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet1Exercice1.html"
-            },
-            "Sujet1Exercice2": {
-                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet1Exercice2.html"
-            },
-            "Sujet2Exercice1": {
-                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet2Exercice1.html"
-            },
-            "Sujet2Exercice2": {
-                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet2Exercice2.html"
-            },
-            "Sujet3Exercice1": {
-                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet3Exercice1.html"
-            },
-            "Sujet3Exercice2": {
-                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet3Exercice2.html"
-            },
-            "Sujet4Exercice1": {
-                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet4Exercice1.html"
-            },
-            "Sujet4Exercice2": {
-                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet4Exercice2.html"
-            },
-            "Sujet5Exercice1": {
-                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet5Exercice1.html"
-            },
-            "Sujet5Exercice2": {
-                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet5Exercice2.html"
-            },
-            "Sujet6Exercice1": {
-                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet6Exercice1.html"
-            },
-            "Sujet6Exercice2": {
-                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet6Exercice2.html"
-            },
-            "Sujet7Exercice1": {
-                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet7Exercice1.html"
-            },
-            "Sujet7Exercice2": {
-                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet7Exercice2.html"
-            },
-            "Sujet8Exercice1": {
-                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet8Exercice1.html"
-            },
-            "Sujet8Exercice2": {
-                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet8Exercice2.html"
-            },
-            "pratique/chatGPT.com": {
-                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/chatGPT.com.html"
-            },
-            "pratique/sujet": {
-                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/2025-NSI/"
             }
         },
         [
@@ -371,7 +312,62 @@
                             "sujetB": "sujetB1"
                         },
                         {
-                            "t": ""
+                            "Sujet1Exercice1": {
+                                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet1Exercice1.html"
+                            },
+                            "Sujet1Exercice2": {
+                                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet1Exercice2.html"
+                            },
+                            "Sujet2Exercice1": {
+                                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet2Exercice1.html"
+                            },
+                            "Sujet2Exercice2": {
+                                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet2Exercice2.html"
+                            },
+                            "Sujet3Exercice1": {
+                                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet3Exercice1.html"
+                            },
+                            "Sujet3Exercice2": {
+                                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet3Exercice2.html"
+                            },
+                            "Sujet4Exercice1": {
+                                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet4Exercice1.html"
+                            },
+                            "Sujet4Exercice2": {
+                                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet4Exercice2.html"
+                            },
+                            "Sujet5Exercice1": {
+                                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet5Exercice1.html"
+                            },
+                            "Sujet5Exercice2": {
+                                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet5Exercice2.html"
+                            },
+                            "Sujet6Exercice1": {
+                                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet6Exercice1.html"
+                            },
+                            "Sujet6Exercice2": {
+                                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet6Exercice2.html"
+                            },
+                            "Sujet7Exercice1": {
+                                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet7Exercice1.html"
+                            },
+                            "Sujet7Exercice2": {
+                                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet7Exercice2.html"
+                            },
+                            "Sujet8Exercice1": {
+                                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet8Exercice1.html"
+                            },
+                            "Sujet8Exercice2": {
+                                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/Sujet8Exercice2.html"
+                            },
+                            "download": {
+                                "BakaTaida": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/download.html?font=BakaTaida",
+                                "yunranofont": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/download.html?font=yunranofont",
+                                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/download/download.html"
+                            },
+                            "pratique/chatGPT.com": {
+                                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/chatGPT.com.html"
+                            }
                         },
                         {
                             "sujet_bac_18_juin_2025": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/sujet_bac_18_juin_2025.php",
