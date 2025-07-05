@@ -21,6 +21,8 @@ $dataURI1 = "data:application/pdf;base64," . base64_encode($pdfContent1);
 
 <iframe src="<?php echo $dataURI; ?>" title="Sujet NSI Bac 2025"></iframe>
 
+<a href="&corrigé">Voir le corrigé</a>
+
 <?php if (isset($_GET['corrigé'])): ?>
     <h2>Correction du sujet</h2>
     <iframe src="<?php echo $dataURI1; ?>" title="Correction NSI Bac 2025"></iframe>
