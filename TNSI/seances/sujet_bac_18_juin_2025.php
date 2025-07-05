@@ -21,8 +21,9 @@ $dataURI1 = "data:application/pdf;base64," . base64_encode($pdfContent1);
 
 <?php if (isset($_GET['corrigé'])): ?>
     <h2>Correction du sujet</h2>
-    <iframe src="<?php echo $dataURI1; ?>" title="Correction NSI Bac 2025"></iframe>
+    <iframe src="<?php echo $dataURI1; ?>" title="Correction NSI Bac 18 juin 2025"></iframe>
+    <a href="?session=<?= htmlspecialchars($_GET['session'] ?? 'sujet_bac_18_juin_2025') ?>">Voir l'exercice</a>
 <?php else: ?>
-    <iframe src="<?php echo $dataURI; ?>" title="Sujet NSI Bac 2025"></iframe>
+    <iframe src="<?php echo $dataURI; ?>" title="Sujet NSI Bac 18 juin 2025"></iframe>
     <a href="?session=<?= htmlspecialchars($_GET['session'] ?? 'sujet_bac_18_juin_2025') ?>&corrigé">Voir le corrigé</a>
 <?php endif; ?>
