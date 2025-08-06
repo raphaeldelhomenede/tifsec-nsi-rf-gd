@@ -372,6 +372,9 @@
                             },
                             "pratique/chatGPT.com": {
                                 "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/pratique/html/consignes/sujets/chatGPT.com.html"
+                            },
+                            "ancienne_version_terminale": {
+                                "default": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/anciennes-versions/Site_T/ancienne_version_terminale.html"
                             }
                         },
                         {
