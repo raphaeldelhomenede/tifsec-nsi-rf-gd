@@ -91,8 +91,8 @@
         } ?>
     </div>
     <input type="text" id="nombre" placeholder="Votre nombre">
-    <button onclick="envoyer()">Envoyer</button>
-    <button onclick="arreter()">Arrêter</button>
+    <button class='button' onclick="envoyer()">Envoyer</button>
+    <button class='button' onclick="arreter()">Arrêter</button>
     <?php if (isset($_GET["attemps"]) || isset($_GET["tentatives"])) { ?>
         <h2 id="attemps">Nombre de tentatives : <?php echo $_SESSION['tentatives']; ?></h2>
     <?php } ?>
@@ -127,8 +127,8 @@
 
                     if (response.game_over) {
                         document.getElementById("nombre").disabled = true;
-                        document.querySelector("button[onclick='envoyer()']").disabled = true;
-                        document.querySelector("button[onclick='arreter()']").disabled = true;
+                        document.querySelector(".button[onclick='envoyer()']").disabled = true;
+                        document.querySelector(".button[onclick='arreter()']").disabled = true;
                     }
                 }
             };
@@ -167,3 +167,4 @@
     </script>
 
 </div>
+
