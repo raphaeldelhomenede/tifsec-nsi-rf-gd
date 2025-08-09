@@ -1,4 +1,5 @@
 <?php
+ob_start(); // Start output buffering
 session_start();
 
 $nb_min = 0;
