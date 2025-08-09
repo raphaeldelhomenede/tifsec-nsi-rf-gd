@@ -85,13 +85,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nombre'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Devine mon Nombre</title>
-    <?php if ($_GET['font'] == 'BakaTaida') { ?>
-        <link rel="stylesheet" href="https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/css/gtn-bakataida.css">
-    <?php } else if ($_GET['font'] == 'yunranofont') { ?>
-        <link rel="stylesheet" href="https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/css/gtn-yunranofont.css">
-    <?php } else { ?>
-        <link rel="stylesheet" href="https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/css/gtn.css">
-    <?php } ?>
+    <style>
+        <?php file_get_contents(https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/css/gtn.css); ?>
+    </style>
 </head>
 <body>
     <h1>Devine mon Nombre</h1>
