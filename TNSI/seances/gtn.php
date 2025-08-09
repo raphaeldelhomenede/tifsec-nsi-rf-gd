@@ -1,5 +1,8 @@
 <?php
-ob_start(); // Start output buffering
+if (headers_sent($file, $line)) {
+    die("Headers already sent in $file on line $line");
+}
+ob_start();
 session_start();
 
 $nb_min = 0;
