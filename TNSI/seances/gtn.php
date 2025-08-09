@@ -86,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nombre'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Devine mon Nombre</title>
     <style>
-        <?php file_get_contents(https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/css/gtn.css); ?>
+        <?php echo file_get_contents('https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/css/gtn.css'); ?>
     </style>
 </head>
 <body>
