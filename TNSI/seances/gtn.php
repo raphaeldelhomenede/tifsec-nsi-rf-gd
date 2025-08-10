@@ -54,7 +54,7 @@ function envoyer() {
 
 function arreter() {
     let xhr = new XMLHttpRequest();
-    xhr.open("POST", "<?php echo 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] . '?session=gtn.php.com'; ?>", true);
+    xhr.open("POST", "<?php echo (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https://' : 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] . '?session=gtn.php.com'; ?>", true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
@@ -90,4 +90,5 @@ document.getElementById("nombre").addEventListener("keydown", function(event) {
     }
 });
 </script>
+
 
