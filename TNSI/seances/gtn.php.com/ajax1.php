@@ -95,10 +95,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $_SESSION['messages'][] = ['bot', "Trop grand 📈"];
                 } else {
                     $tentatives = $_SESSION['tentatives'];
-                    $download_link = "test.php?session=gtn.php.com&download";
+                    $download_link = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] . "?session=gtn.php.com&download";
 
                     $message_final = ($tentatives <= 40)
-                        ? "<a href='$recompense1'>Félicitations</a> 🎉 Tu as trouvé le nombre " . number_format($nombre_a_trouver, 0, '.', ' ') . " en $tentatives tentatives !<br><a href='$download_link'>📥 Télécharger la partie (JSON)</a>"
+                        ? "<a href='$recompense1'>Félicitations</a> 🎉 Tu as trouvé le nombre " . number_format($nombre_a_trouver, 0, '.', ' ') . " en $tentatives tentatives !<br><a href='$download_link'>📥 Télécharger la partie (JSON)</a><br>Tu peux maintenant <button class='button' onclick="arreter()">Rejouer ou réinitialiser</button>."
                         : "<a href='$recompense2'>Bravo</a> 🎉 Tu as trouvé le nombre " . number_format($nombre_a_trouver, 0, '.', ' ') . " en $tentatives tentatives !<br><a href='$download_link'>📥 Télécharger la partie (JSON)</a>";
 
                     $_SESSION['messages'][] = ['bot', $message_final];
