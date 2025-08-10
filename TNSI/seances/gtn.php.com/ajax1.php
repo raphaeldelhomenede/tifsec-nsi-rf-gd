@@ -30,10 +30,13 @@ if (isset($_GET['session']) && $_GET['session'] === "gtn.php.com" && isset($_GET
     ];
 
     $prettyJson = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
-    $filename = "game_gtn.json";
+    function nom_de_fichier() {
+        date_default_timezone_set('Europe/Paris'); // définit l'heure de Paris
+        return "game_gtn_" . date("d-m-Y_H-i-s") . ".json"; // Exemple : game_gtn_10-08-2025_16-30-45.json
+    }
 
     header('Content-Type: application/json; charset=utf-8');
-    header('Content-Disposition: attachment; filename="' . $filename . '"');
+    header('Content-Disposition: attachment; filename="' . nom_de_fichier() . '"');
     header('Content-Length: ' . strlen($prettyJson));
     echo $prettyJson;
     exit;
@@ -63,6 +66,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'messages' => $messages,
             'pp_bot' => $pp_bot,
             'pp_user' => $pp_user
+        ]);
+        exit;
+    }
+
+    if (isset($_POST['reset1'])) {
+        // Détruire la session actuelle
+        session_unset();      // Supprime toutes les variables de session
+        session_destroy();    // Détruit la session côté serveur
+
+        // Redémarrer proprement une nouvelle session
+        session_start();
+
+        // Réinitialiser les valeurs comme au début
+        $_SESSION['nombre_a_trouver'] = rand($nb_min, $nb_max);
+        $_SESSION['tentatives'] = 0;
+        $_SESSION['messages'] = [
+            ['bot', "Nouvelle partie ! Je pense à un nombre entre " . number_format($nb_min, 0, '.', ' ') . " et " . number_format($nb_max, 0, '.', ' ') . ". Essaye de le deviner ! 🔢"]
+        ];
+
+        echo json_encode([
+            'status' => 'reset_done',
+            'message' => 'Session reset successful.'
         ]);
         exit;
     }
@@ -98,19 +123,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $download_link = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https://' : 'http://') 
                         . $_SERVER['HTTP_HOST'] 
                         . $_SERVER['PHP_SELF'] 
-                        . "?session=gtn.php.com&download=1";
+                        . "?session=gtn.php.com&download";
                     
                     $message_final = ($tentatives <= 40)
                         ? "<a href='$recompense1'>Félicitations</a> 🎉 Tu as trouvé le nombre " 
                         . number_format($nombre_a_trouver, 0, '.', ' ') 
                         . " en $tentatives tentatives !<br>"
                         . "<a href='$download_link'>📥 Télécharger la partie (JSON)</a><br>"
-                        . "Tu peux maintenant <button class='button' onclick=\"arreter()\">Rejouer ou réinitialiser</button>."
+                        . "<a href='' onclick=\"reset1(event)\">Rejouer ou réinitialiser</a>"
                         : "<a href='$recompense2'>Bravo</a> 🎉 Tu as trouvé le nombre " 
                         . number_format($nombre_a_trouver, 0, '.', ' ') 
                         . " en $tentatives tentatives !<br>"
-                        . "<a href='$download_link'>📥 Télécharger la partie (JSON)</a>" .
-                        "Tu peux maintenant <button class='button' onclick=\"arreter()\">Rejouer ou réinitialiser</button>.";
+                        . "<a href='$download_link'>📥 Télécharger la partie (JSON)</a>"
+                        . "<a href='' onclick=\"reset1(event)\">Rejouer ou réinitialiser</a>";
                     
                     $_SESSION['messages'][] = ['bot', $message_final];
 
