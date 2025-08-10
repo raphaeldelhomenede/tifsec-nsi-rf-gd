@@ -73,7 +73,7 @@ function arreter() {
 }
 
 window.addEventListener("load", function () {
-    fetch("<?php echo $_SERVER['PHP_SELF']; ?>?session=gtn.php.com")
+    fetch("<?php echo ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] . '?session=gtn.php.com'; ?>")
         .then(res => res.json())
         .then(data => {
             pp_bot = data.pp_bot;
@@ -82,6 +82,27 @@ window.addEventListener("load", function () {
         })
         .catch(err => console.error("Erreur JSON :", err));
 });
+
+function reset1(event) {
+    if (event) event.preventDefault(); // bloque le href=''
+
+    fetch('<?php echo ((!empty($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] !== "off") ? "https://" : "http://") . $_SERVER["HTTP_HOST"] . $_SERVER["PHP_SELF"] . "?session=gtn.php.com"; ?>', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: 'reset1=1'
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.status === 'reset_done') {
+            window.location.reload();  // recharge la page pour prendre en compte la nouvelle session
+        } else {
+            console.error('Reset failed:', data);
+        }
+    })
+    .catch(err => {
+        console.error('Fetch error:', err);
+    });
+}
 
 document.getElementById("nombre").addEventListener("keydown", function(event) {
     if (event.key === "Enter") {
