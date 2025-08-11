@@ -1,11 +1,16 @@
 <?php
 session_start(); // INDISPENSABLE !!
 
-$nb_min = 0;
-$nb_max = 10**9;
+function lien_absolu1270($params = '') {
+    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https://' : 'http://';
+    return $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] . $params;
+}
 
-$pp_bot = "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/ChatGPT-Logo.svg/512px-ChatGPT-Logo.svg.png";
-$pp_user = "https://i.imgur.com/uCkGBeA.png";
+$nb_min = 0;
+$nb_max = 10;
+
+$pp_bot = lien_absolu1270("?session=gtn.php.com.br&pp_bot");
+$pp_user = lien_absolu1270("?session=gtn.php.com.br&pp_user");
 
 $recompense1 = "https://tifsec-nsi.rf.gd/TNSI/session/ancienne_version_terminale";
 $recompense2 = "https://www.youtube-nocookie.com/embed/--UcD80SBXM?autoplay=1&loop=1&playlist=--UcD80SBXM&controls=0&modestbranding=1&mute=1&showinfo=0&vq=hd720&rel=0";
@@ -19,39 +24,58 @@ if (!isset($_SESSION['nombre_a_trouver'])) {
     ];
 }
 
-// GESTION DU TELECHARGEMENT JSON COMPLET (mode download)
-if (isset($_GET['session']) && $_GET['session'] === "gtn.php.com.br" && isset($_GET['download'])) {
-    // Données actuelles en session
-    $data = [
-        'messages' => $_SESSION['messages'],
-        'tentatives' => $_SESSION['tentatives'],
-        'pp_bot' => $pp_bot,
-        'pp_user' => $pp_user
-    ];
-
-    $prettyJson = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
-    function nom_de_fichier() {
-        date_default_timezone_set('Europe/Paris'); // définit l'heure de Paris
-        return "game_gtn_" . date("d-m-Y_H-i-s") . ".json"; // Exemple : game_gtn_10-08-2025_16-30-45.json
-    }
-
-    header('Content-Type: application/json; charset=utf-8');
-    header('Content-Disposition: attachment; filename="' . nom_de_fichier() . '"');
-    header('Content-Length: ' . strlen($prettyJson));
-    echo $prettyJson;
-    exit;
-}
-
 // SUIVANT LA MÉTHODE HTTP, TRAITEMENT NORMAL DU JEU
-
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     if (isset($_GET['session']) && $_GET['session'] === "gtn.php.com.br") {
-        echo json_encode([
+        $data = [
             'messages' => $_SESSION['messages'],
             'tentatives' => $_SESSION['tentatives'],
             'pp_bot' => $pp_bot,
             'pp_user' => $pp_user
-        ]);
+        ];
+
+        $prettyJson = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+        function nom_de_fichier($file_name) {
+            date_default_timezone_set('Europe/Paris'); // définit l'heure de Paris
+            return $file_name . date("d-m-Y_H-i-s") . ".json"; // Exemple : game_gtn_10-08-2025_16-30-45.json
+        }
+
+        if (isset($_GET['download'])) {
+            header('Content-Type: application/json; charset=utf-8');
+            header('Content-Disposition: attachment; filename="' . nom_de_fichier("game_gtn_") . '"');
+            header('Content-Length: ' . strlen($prettyJson));
+            echo $prettyJson;
+            exit;
+        }
+        
+        function mettre_img_in_url($id, $img_path_or_link, $img_title) {
+            if (isset($_GET[$id])) {
+                $image_data = @file_get_contents($img_path_or_link);
+
+                if ($image_data === false) {
+                    header("HTTP/1.1 404 Not Found");
+                    exit;
+                }
+
+                // Détection du type MIME
+                $finfo = new finfo(FILEINFO_MIME_TYPE);
+                $mime_type = $finfo->buffer($image_data);
+
+                // Définition des headers
+                header('Content-Type: ' . $mime_type);
+                header('Content-Length: ' . strlen($image_data));
+                header('Content-Disposition: inline; filename="' . nom_de_fichier($img_title . "_") . '"');
+
+                echo $image_data;
+                exit;
+            }
+        }
+        mettre_img_in_url("pp_bot", "https://i.imgur.com/dOBwp5V.png", "Calculatrice");
+        mettre_img_in_url("pp_user", "https://i.imgur.com/uCkGBeA.png", "pp_user");
+        
+        header('Content-Type: application/json; charset=utf-8');
+        header('Content-Disposition: inline; filename="' . nom_de_fichier("game_gtn_") . '"'); // ← ici "inline"
+        echo $prettyJson;
         exit;
     }
 }
@@ -120,21 +144,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $_SESSION['messages'][] = ['bot', "Trop grand 📈"];
                 } else {
                     $tentatives = $_SESSION['tentatives'];
-                    $download_link = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https://' : 'http://') 
-                        . $_SERVER['HTTP_HOST'] 
-                        . $_SERVER['PHP_SELF'] 
-                        . "?session=gtn.php.com.br&download";
-                    
+
+                    $download_link = lien_absolu1270("?session=gtn.php.com.br&download");
+                    $see_json_link = lien_absolu1270("?session=gtn.php.com.br");
+
                     $message_final = ($tentatives <= 40)
                         ? "<a href='$recompense1'>Félicitations</a> 🎉 Tu as trouvé le nombre " 
                         . number_format($nombre_a_trouver, 0, '.', ' ') 
                         . " en $tentatives tentatives !<br>"
                         . "<a href='$download_link'>📥 Télécharger la partie (JSON)</a><br>"
+                        . "<a href='$see_json_link'>Voir le json</a><br>"
                         . "<a href='' onclick=\"reset1(event)\">Rejouer ou réinitialiser</a>"
                         : "<a href='$recompense2'>Bravo</a> 🎉 Tu as trouvé le nombre " 
                         . number_format($nombre_a_trouver, 0, '.', ' ') 
                         . " en $tentatives tentatives !<br>"
                         . "<a href='$download_link'>📥 Télécharger la partie (JSON)</a><br>"
+                        . "<a href='$see_json_link'>Voir le json</a><br>"
                         . "<a href='' onclick=\"reset1(event)\">Rejouer ou réinitialiser</a>";
                     
                     $_SESSION['messages'][] = ['bot', $message_final];
