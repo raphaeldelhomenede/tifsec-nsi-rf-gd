@@ -32,7 +32,7 @@ function afficherMessages(messages) {
 function envoyer() {
     let nombre = document.getElementById("nombre").value.replace(/\s+/g, '');
     let xhr = new XMLHttpRequest();
-    xhr.open("POST", "<?php echo lien_absolu1270('?session=gtn.php.com.br'); ?>", true);
+    xhr.open("POST", "<?php echo (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https://' : 'http://' . $_SERVER['HTTP_HOST'] . '?session=gtn.php.com.br'; ?>", true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
@@ -54,7 +54,7 @@ function envoyer() {
 
 function arreter() {
     let xhr = new XMLHttpRequest();
-    xhr.open("POST", "<?php echo lien_absolu1270('?session=gtn.php.com.br'); ?>", true);
+    xhr.open("POST", "<?php echo (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https://' : 'http://' . $_SERVER['HTTP_HOST'] . '?session=gtn.php.com.br'; ?>", true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
@@ -73,7 +73,7 @@ function arreter() {
 }
 
 window.addEventListener("load", function () {
-    fetch("<?php echo lien_absolu1270('?session=gtn.php.com.br'); ?>")
+    fetch("<?php echo (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https://' : 'http://' . $_SERVER['HTTP_HOST'] . '?session=gtn.php.com.br'; ?>")
         .then(res => res.json())
         .then(data => {
             pp_bot = data.pp_bot;
@@ -86,7 +86,7 @@ window.addEventListener("load", function () {
 function reset1(event) {
     if (event) event.preventDefault(); // bloque le href=''
 
-    fetch('<?php echo lien_absolu1270("?session=gtn.php.com.br"); ?>', {
+    fetch('<?php echo (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https://' : 'http://' . $_SERVER['HTTP_HOST'] . '?session=gtn.php.com.br'; ?>', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: 'reset1=1'
