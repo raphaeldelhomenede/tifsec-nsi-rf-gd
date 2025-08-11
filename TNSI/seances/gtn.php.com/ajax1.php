@@ -7,7 +7,7 @@ function lien_absolu1270($params = '') {
 }
 
 $nb_min = 0;
-$nb_max = 10;
+$nb_max = 10**9;
 
 $pp_bot = lien_absolu1270("?session=gtn.php.com.br&pp_bot");
 $pp_user = lien_absolu1270("?session=gtn.php.com.br&pp_user");
