@@ -20,7 +20,7 @@ if (!isset($_SESSION['nombre_a_trouver'])) {
 }
 
 // GESTION DU TELECHARGEMENT JSON COMPLET (mode download)
-if (isset($_GET['session']) && $_GET['session'] === "gtn.php.com" && isset($_GET['download'])) {
+if (isset($_GET['session']) && $_GET['session'] === "gtn.php.com.br" && isset($_GET['download'])) {
     // Données actuelles en session
     $data = [
         'messages' => $_SESSION['messages'],
@@ -45,7 +45,7 @@ if (isset($_GET['session']) && $_GET['session'] === "gtn.php.com" && isset($_GET
 // SUIVANT LA MÉTHODE HTTP, TRAITEMENT NORMAL DU JEU
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    if (isset($_GET['session']) && $_GET['session'] === "gtn.php.com") {
+    if (isset($_GET['session']) && $_GET['session'] === "gtn.php.com.br") {
         echo json_encode([
             'messages' => $_SESSION['messages'],
             'tentatives' => $_SESSION['tentatives'],
@@ -123,7 +123,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $download_link = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https://' : 'http://') 
                         . $_SERVER['HTTP_HOST'] 
                         . $_SERVER['PHP_SELF'] 
-                        . "?session=gtn.php.com&download";
+                        . "?session=gtn.php.com.br&download";
                     
                     $message_final = ($tentatives <= 40)
                         ? "<a href='$recompense1'>Félicitations</a> 🎉 Tu as trouvé le nombre " 
