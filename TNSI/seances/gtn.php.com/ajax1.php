@@ -134,7 +134,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         : "<a href='$recompense2'>Bravo</a> 🎉 Tu as trouvé le nombre " 
                         . number_format($nombre_a_trouver, 0, '.', ' ') 
                         . " en $tentatives tentatives !<br>"
-                        . "<a href='$download_link'>📥 Télécharger la partie (JSON)</a>"
+                        . "<a href='$download_link'>📥 Télécharger la partie (JSON)</a><br>"
                         . "<a href='' onclick=\"reset1(event)\">Rejouer ou réinitialiser</a>";
                     
                     $_SESSION['messages'][] = ['bot', $message_final];
