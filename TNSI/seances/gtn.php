@@ -8,7 +8,14 @@
     <div style='display: none;'><h2 id="attemps"></h2></div>
 </div>
 
+<?php
+    $url = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http') 
+         . '://' . $_SERVER['HTTP_HOST'] 
+         . htmlspecialchars($_SERVER['PHP_SELF'], ENT_QUOTES, 'UTF-8') 
+         . '?session=gtn.php.com.br';
+?>
 <script>
+const endpointURL = "<?php echo $url; ?>";
 let pp_bot = "";
 let pp_user = "";
 let nbMessagesAffiches = 0;
@@ -32,7 +39,7 @@ function afficherMessages(messages) {
 function envoyer() {
     let nombre = document.getElementById("nombre").value.replace(/\s+/g, '');
     let xhr = new XMLHttpRequest();
-    xhr.open("POST", "<?php echo (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https://' : 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] . '?session=gtn.php.com.br'; ?>", true);
+    xhr.open("POST", endpointURL, true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
@@ -54,7 +61,7 @@ function envoyer() {
 
 function arreter() {
     let xhr = new XMLHttpRequest();
-    xhr.open("POST", "<?php echo (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https://' : 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] . '?session=gtn.php.com.br'; ?>", true);
+    xhr.open("POST", endpointURL, true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
@@ -73,7 +80,7 @@ function arreter() {
 }
 
 window.addEventListener("load", function () {
-    fetch("<?php echo (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https://' : 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] . '?session=gtn.php.com.br'; ?>")
+    fetch(endpointURL)
         .then(res => res.json())
         .then(data => {
             pp_bot = data.pp_bot;
@@ -86,7 +93,7 @@ window.addEventListener("load", function () {
 function reset1(event) {
     if (event) event.preventDefault(); // bloque le href=''
 
-    fetch('<?php echo (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https://' : 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] . '?session=gtn.php.com.br'; ?>', {
+    fetch(endpointURL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: 'reset1=1'
