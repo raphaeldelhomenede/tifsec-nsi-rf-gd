@@ -1,4 +1,4 @@
-<style><?php echo file_get_contents('https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/css/gtn.css'); ?></style>
+<link rel="stylesheet" href="<?php echo ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME'] . '?session=gtn.php.com.br&gtn_css'; ?>">
 <div class='body'>
     <h1>Devine mon Nombre</h1>
     <div class="chatbox" id="chatbox"></div>
@@ -10,9 +10,9 @@
 
 <?php
     $url = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http') 
-         . '://' . $_SERVER['HTTP_HOST'] 
-         . htmlspecialchars($_SERVER['PHP_SELF'], ENT_QUOTES, 'UTF-8') 
-         . '?session=gtn.php.com.br';
+        . '://' . $_SERVER['HTTP_HOST'] 
+        . htmlspecialchars($_SERVER['PHP_SELF'], ENT_QUOTES, 'UTF-8') 
+        . '?session=gtn.php.com.br';
 ?>
 <script>
 const endpointURL = "<?php echo $url; ?>";
