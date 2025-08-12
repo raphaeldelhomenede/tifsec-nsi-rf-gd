@@ -13,8 +13,13 @@ function lien_absolu1271($params = '') {
         return $protocol . $host . $_SERVER["PHP_SELF"] . $params;
     }
 }
-$dataURI = lien_absolu1271("?session=gtn.php.com.br&sujet_bac_18_juin_2025");
-$dataURI1 = lien_absolu1271("?session=gtn.php.com.br&corrige_sujet_bac_18_juin_2025");
+
+// Construction dynamique des URLs avec paramètres propres
+$baseParams = '?session=gtn.php.com.br';
+$sujetParam = '&sujet_bac_18_juin_2025';
+$corrigeParam = '&corrige_sujet_bac_18_juin_2025';
+$dataURI  = lien_absolu1271($baseParams . $sujetParam);
+$dataURI1 = lien_absolu1271($baseParams . $corrigeParam);
 ?>
 
 <style>
@@ -28,9 +33,9 @@ $dataURI1 = lien_absolu1271("?session=gtn.php.com.br&corrige_sujet_bac_18_juin_2
 
 <?php if (isset($_GET['corrigé'])): ?>
     <h2>Correction du sujet</h2>
-    <iframe src="<?php echo $dataURI1; ?>" title="Correction NSI Bac 18 juin 2025"></iframe>
-    <a href="<?= lien_absolu1271(htmlspecialchars($_GET['session'] ?? 'sujet_bac_18_juin_2025')) ?>">Voir l'exercice</a>
+    <iframe src="<?= $dataURI1 ?>" title="Correction NSI Bac 18 juin 2025"></iframe>
+    <a href="<?= lien_absolu1271($baseParams . $sujetParam) ?>">Voir l'exercice</a>
 <?php else: ?>
-    <iframe src="<?php echo $dataURI; ?>" title="Sujet NSI Bac 18 juin 2025"></iframe>
-    <a href="<?= lien_absolu1271(htmlspecialchars($_GET['session'] ?? 'sujet_bac_18_juin_2025')) ?>&corrigé">Voir le corrigé</a>
+    <iframe src="<?= $dataURI ?>" title="Sujet NSI Bac 18 juin 2025"></iframe>
+    <a href="<?= lien_absolu1271($baseParams . $corrigeParam . '&corrigé') ?>">Voir le corrigé</a>
 <?php endif; ?>
