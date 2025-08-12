@@ -1,19 +1,4 @@
 <?php
-function lien_absolu1271($params = '') {
-    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https://' : 'http://';
-    $host = $_SERVER['HTTP_HOST'];
-
-    if (basename($_SERVER['SCRIPT_NAME']) === 'index.php') {
-        $dir = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\');
-        if ($dir === '.' || $dir === '/') {
-            $dir = '';
-        }
-        return $protocol . $host . $dir . '/index.php' . $params;
-    } else {
-        return $protocol . $host . $_SERVER["PHP_SELF"] . $params;
-    }
-}
-
 // Construction dynamique des URLs avec paramètres propres
 $baseParams = '?session=gtn.php.com.br';
 $sujetParam = '&sujet_bac_18_juin_2025';
