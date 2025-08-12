@@ -382,7 +382,16 @@
                             "cours_annabac_NSI": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/cours_annabac_NSI.php",
                             "ancienne_version_terminale": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/varca.php",
                             "gtn.php": "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/gtn.php"
-                        }
+                        },
+                        [
+                            [
+                                {
+                                    "bo1": "?session=gtn.php.com.br&bo1",
+                                    "sujetA1": "?session=gtn.php.com.br&sujetA1",
+                                    "sujetB1": "?session=gtn.php.com.br&sujetB1"
+                                }
+                            ]
+                        ]
                     ]
                 ]
             ]
