@@ -19,8 +19,8 @@ $dataURI1 = lien_absolu1271($baseParams . $corrigeParam);
 <?php if (isset($_GET['corrigé'])): ?>
     <h2>Correction du sujet</h2>
     <iframe src="<?= $dataURI1 ?>" title="Correction NSI Bac 18 juin 2025"></iframe>
-    <a href="?session=sujet_bac_18_juin_2025&corrigé">Voir l'exercice</a>
+    <a href="<?= lien_absolu1271('?session=sujet_bac_18_juin_2025') ?>">Voir l'exercice</a>
 <?php else: ?>
     <iframe src="<?= $dataURI ?>" title="Sujet NSI Bac 18 juin 2025"></iframe>
-    <a href="<?= lien_absolu1271($baseParams . $corrigeParam . '&corrigé') ?>">Voir le corrigé</a>
+    <a href="<?= lien_absolu1271('?session=sujet_bac_18_juin_2025&corrigé') ?>">Voir le corrigé</a>
 <?php endif; ?>
