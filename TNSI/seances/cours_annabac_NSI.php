@@ -63,6 +63,17 @@ if ($theme && $chapitre && isset($urls[$theme][(int)$chapitre])) {
     </style>
     HTML;
 
+    function get_url_content_curl($url) {
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0');
+        $data = curl_exec($ch);
+        curl_close($ch);
+        return $data === false ? false : $data;
+    }
+
     $html_content = get_url_content_curl($urls[$theme][(int)$chapitre]);
     if ($html_content === false) {
         echo "<p>Erreur lors du chargement du contenu distant.</p>";
