@@ -55,7 +55,7 @@ $urls = [
 
 // Si un chapitre est demandé → afficher dans un iframe
 if ($theme && $chapitre && isset($urls[$theme][(int)$chapitre])) {
-    $encoded = get_url_content_base64($urls[$theme][(int)$chapitre]);
+    /*$encoded = get_url_content_base64($urls[$theme][(int)$chapitre]);*/
     echo <<<HTML
     <style>
         body { margin: 0; padding: 0; }
