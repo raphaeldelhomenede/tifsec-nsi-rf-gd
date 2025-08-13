@@ -1,5 +1,5 @@
 <?php
-function get_url_content_base64($url) {
+/*function get_url_content_base64($url) {
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
@@ -22,7 +22,7 @@ function get_url_content_base64($url) {
     );
 
     return base64_encode($data);
-}
+}*/
 
 $session = $_GET['session'] ?? null;
 $theme = $_GET['theme'] ?? null;
@@ -55,14 +55,14 @@ $urls = [
 
 // Si un chapitre est demandé → afficher dans un iframe
 if ($theme && $chapitre && isset($urls[$theme][(int)$chapitre])) {
-    $encoded = get_url_content_base64($urls[$theme][(int)$chapitre]);
     echo <<<HTML
     <style>
         body { margin: 0; padding: 0; }
         iframe { border: none; width: 100%; height: 100vh; }
     </style>
-    <iframe src="data:text/html;base64,{$encoded}"></iframe>
-HTML;
+    HTML;
+
+    echo file_get_contents($urls[$theme][(int)$chapitre]);
     exit;
 }
 ?>
