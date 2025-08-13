@@ -62,31 +62,13 @@ if ($theme && $chapitre && isset($urls[$theme][(int)$chapitre])) {
         iframe { border: none; width: 100%; height: 100vh; }
     </style>
     HTML;
-
-    function mettre_html_in_url($id, $url, $filename) {
-        if (isset($_GET[$id])) {
-            header("Content-Type: text/html; charset=UTF-8");
-            header("Content-Disposition: inline; filename=\"$filename.html\"");
-
-            // Récupère le contenu HTML
-            $html = @file_get_contents($url);
-
-            // Si la récupération a échoué, afficher un message d'erreur
-            if ($html === false) {
-                echo "<!-- Erreur : impossible de charger le fichier HTML depuis $url -->";
-            } else {
-                echo $html;
-            }
-            exit;
-        }
+    
+    $html_content = file_get_contents($urls[$theme][(int)$chapitre]);
+    if ($html_content === false) {
+        echo "<p>Erreur lors du chargement du contenu distant.</p>";
+    } else {
+        echo $html_content;
     }
-
-    // Appel de la fonction avec tes paramètres
-    mettre_html_in_url(
-        "langages_programmation_et_algorithmique_chapitre_1",
-        "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/cours_annabac_NSI/Langages_programmation_et_algorithmique_Chapitre_1.html",
-        "Langages_programmation_et_algorithmique_Chapitre_1"
-    );
     exit;
 }
 ?>
