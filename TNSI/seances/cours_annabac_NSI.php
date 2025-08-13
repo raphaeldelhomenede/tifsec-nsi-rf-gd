@@ -55,6 +55,7 @@ $urls = [
 
 // Si un chapitre est demandé → afficher dans un iframe
 if ($theme && $chapitre && isset($urls[$theme][(int)$chapitre])) {
+    $encoded = get_url_content_base64($urls[$theme][(int)$chapitre]);
     echo <<<HTML
     <style>
         body { margin: 0; padding: 0; }
@@ -62,7 +63,12 @@ if ($theme && $chapitre && isset($urls[$theme][(int)$chapitre])) {
     </style>
     HTML;
 
-    echo file_get_contents($urls[$theme][(int)$chapitre]);
+    $html_content = get_url_content_curl($urls[$theme][(int)$chapitre]);
+    if ($html_content === false) {
+        echo "<p>Erreur lors du chargement du contenu distant.</p>";
+    } else {
+        echo $html_content;
+    }
     exit;
 }
 ?>
