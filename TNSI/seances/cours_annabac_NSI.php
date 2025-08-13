@@ -62,8 +62,27 @@ if ($theme && $chapitre && isset($urls[$theme][(int)$chapitre])) {
         iframe { border: none; width: 100%; height: 100vh; }
     </style>
     HTML;
+
+    function get_url_content_curl($url) {
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true); // suit les redirections
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // si tu as des erreurs SSL
+        curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0'); // simule un navigateur
     
-    $html_content = file_get_contents($urls[$theme][(int)$chapitre]);
+        $response = curl_exec($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+    
+        // Vérifie si la requête a réussi
+        if ($httpCode >= 400 || $response === false) {
+            return false;
+        }
+    
+        return $response;
+    }
+
+    $html_content = get_url_content_curl($urls[$theme][(int)$chapitre]);
     if ($html_content === false) {
         echo "<p>Erreur lors du chargement du contenu distant.</p>";
     } else {
