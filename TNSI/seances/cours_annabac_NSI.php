@@ -63,23 +63,30 @@ if ($theme && $chapitre && isset($urls[$theme][(int)$chapitre])) {
     </style>
     HTML;
 
-    function get_url_content_curl($url) {
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0');
-        $data = curl_exec($ch);
-        curl_close($ch);
-        return $data === false ? false : $data;
+    function mettre_html_in_url($id, $url, $filename) {
+        if (isset($_GET[$id])) {
+            header("Content-Type: text/html; charset=UTF-8");
+            header("Content-Disposition: inline; filename=\"$filename.html\"");
+
+            // Récupère le contenu HTML
+            $html = @file_get_contents($url);
+
+            // Si la récupération a échoué, afficher un message d'erreur
+            if ($html === false) {
+                echo "<!-- Erreur : impossible de charger le fichier HTML depuis $url -->";
+            } else {
+                echo $html;
+            }
+            exit;
+        }
     }
 
-    $html_content = get_url_content_curl($urls[$theme][(int)$chapitre]);
-    if ($html_content === false) {
-        echo "<p>Erreur lors du chargement du contenu distant.</p>";
-    } else {
-        echo $html_content;
-    }
+    // Appel de la fonction avec tes paramètres
+    mettre_html_in_url(
+        "langages_programmation_et_algorithmique_chapitre_1",
+        "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/cours_annabac_NSI/Langages_programmation_et_algorithmique_Chapitre_1.html",
+        "Langages_programmation_et_algorithmique_Chapitre_1"
+    );
     exit;
 }
 ?>
