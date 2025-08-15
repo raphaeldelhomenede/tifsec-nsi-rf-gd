@@ -65,9 +65,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                 exit;
             }
         }
-        css_in_link_insert("gtn_css", "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/css/gtn.css", "style.css");
-        css_in_link_insert("index_css", "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/style.css", "style.css");
         
+        foreach (json_decode(file_get_contents('https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/gtn.php.com/css_inserts.json')) as [$id, $url, $filename]) {
+            css_in_link_insert($id, $url, $filename);
+        }
+
+        function html_in_link_insert($id, $url, $filename) {
+            if (isset($_GET[$id])) {
+                header("Content-Type: text/html");
+                header("Content-Disposition: inline; filename=\"$filename\"");
+
+                // Tente de récupérer le contenu
+                $css = @file_get_contents($url);
+
+                // Si la récupération a échoué, afficher un commentaire CSS d'erreur
+                if ($css === false) {
+                    echo "/* Erreur : impossible de charger le fichier CSS depuis $url */";
+                } else {
+                    echo $css;
+                }
+                exit;
+            }
+        }
+        
+        foreach (json_decode(file_get_contents("https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/gtn.php.com/html_inserts.json")) as [$id, $url, $filename]) {
+            html_in_link_insert($id, $url, $filename);
+        }
+
         function mettre_img_in_url($id, $img_path_or_link, $img_title) {
             if (isset($_GET[$id])) {
                 $image_data = @file_get_contents($img_path_or_link);
@@ -90,14 +114,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                 exit;
             }
         }
-        mettre_img_in_url("pp_bot", "https://i.imgur.com/dOBwp5V.png", "Calculatrice");
-        mettre_img_in_url("pp_user", "https://i.imgur.com/uCkGBeA.png", "pp_user");
-        mettre_img_in_url("bo1", "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/Programme_NSI_Tle_fichiers/spe247_annexe_1158933_002.pdf", "bo1");
-        mettre_img_in_url("sujetA1", "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/Programme_NSI_Tle_fichiers/bac_nsi_2024_sujet0a_002.pdf", "sujetA1");
-        mettre_img_in_url("sujetB1", "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/Programme_NSI_Tle_fichiers/bac_nsi_2024_sujet0b_002.pdf", "sujetB1");
-        mettre_img_in_url("ressources1", "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/Programme_NSI_Tle_fichiers/Python%203%20objectif%20jeux.pdf", "ressources1");
-        mettre_img_in_url("sujet_bac_18_juin_2025", "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/Programme_NSI_Tle_fichiers/25_NSIJ2ME1.pdf", "sujet_bac_18_juin_2025");
-        mettre_img_in_url("corrige_sujet_bac_18_juin_2025", "https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/Programme_NSI_Tle_fichiers/878444090-Correction-SpeNSI-Jour2-Bac2025-Maj.pdf", "corrige_sujet_bac_18_juin_2025");
+        $images_ancienne_version_terminale = json_decode(file_get_contents('https://raphaeldelhomenede.github.io/tifsec-nsi-rf-gd/TNSI/seances/gtn.php.com/mettre_img_in_url.json'));
+        foreach ($images_ancienne_version_terminale as [$id, $img_path_or_link, $img_title]) {
+            mettre_img_in_url($id, $img_path_or_link, $img_title);
+        }
         
         header('Content-Type: application/json; charset=utf-8');
         header('Content-Disposition: inline; filename="' . nom_de_fichier("game_gtn_") . '"'); // ← ici "inline"
