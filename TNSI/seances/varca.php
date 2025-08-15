@@ -1,267 +1,28 @@
+<link rel="stylesheet" href="?session=gtn.php.com.br&style_ancien_cours_css">
 <style>
-    body
-    {
-        font-family: Calibri;
-    }
-    
-    /* Page principale */
-    
-    .h1-1
-    {
-        display: flex;
-        align-content: center;
-        justify-content: center;
-        background-color: cornflowerblue;
-        margin: 0px 0px 0px 0px;
-        border-radius: 10px;
-        color: white;
-    }
-    
-    .button1
-    {
-        float: left;
-        position: absolute;
-        margin: 5px 0px 0px 15px;
-        padding: 5px 5px 5px 5px;
-        border: none;
-        background-color: transparent;
-        cursor: pointer;
-        border: 1px solid white;
-        color: white;
-        border-radius: 5px;
-    }
-    
-    #nav_menu ul
-    {
-        display: flex;
-        flex-wrap: wrap;
-        text-align: center;
-        justify-content: center;
-    }
-    
-    #nav_menu li
-    {
-        list-style: none;
-        margin: 0px 5px 0px 5px;
-        width: 200px;
-        height: 200px;
-    }
-    
-    a, toto
-    {
-        color: white;
-        position: relative;
-        text-decoration: none;
-    }
-    
-    .ul_menu li a div, .ul_menu li toto div
-    {
-        width: 200px;
-        height: 100px;
-        border-radius: 20px 20px 0px 0px;
-    }
-    
-    .ul_menu li a div:hover, .ul_menu li toto div:hover
-    {
-        /*opacity: 0.5;*/
-        margin-top: -20px;
-        cursor: pointer;
-    }
-    
-    .ul_menu li a p, .ul_menu li toto p
-    {
-        top: 100%;
-        width: 200px;
-        height: 60px;
-        position: relative;
-        background-color: cornflowerblue;
-        border-radius: 0px 0px 20px 20px;
-        padding-bottom: 5px;
-        display: flex;
-        flex-direction: column;
-        align-content: center;
-        justify-content: center;
-        line-height: 1;
-    }
-    
-    iframe
-    {
-        margin: 0px 0px 0px 0px;
-        padding: 0px 0px 0px 0px;
-        display: flex;
-        width: 100%;
-        height: 90vh;
-        border: none;
-        overflow-y: hidden;
-    }
-
     <?php
     $images = [
-        1 => 'https://i.imgur.com/145l25v.jpeg',
-        2 => 'https://i.imgur.com/QWvoFVm.png',
-        3 => 'https://i.imgur.com/x6AURgx.jpeg',
-        4 => 'https://i.imgur.com/S37oZSZ.jpeg',
-        5 => 'https://i.imgur.com/X7k4uVL.png',
-        6 => 'https://i.imgur.com/LFwslbg.png',
-        7 => 'https://i.imgur.com/PHsuoWO.jpeg',
-        8 => 'https://i.imgur.com/c76bnwt.png',
-        9 => 'https://i.imgur.com/y2zQKAc.jpeg',
-        10 => 'https://i.imgur.com/FUxOQ0F.png',
-        11 => 'https://i.imgur.com/0CLdVRS.png',
-        12 => 'https://i.imgur.com/filYdLb.png'
+        1 => '?session=gtn.php.com.br&ancienne_version_terminale_img_cour_',
+        2 => '?session=gtn.php.com.br&ancienne_version_terminale_img_cour_',
+        3 => '?session=gtn.php.com.br&ancienne_version_terminale_img_cour_',
+        4 => '?session=gtn.php.com.br&ancienne_version_terminale_img_cour_',
+        5 => '?session=gtn.php.com.br&ancienne_version_terminale_img_cour_',
+        6 => '?session=gtn.php.com.br&ancienne_version_terminale_img_cour_',
+        7 => '?session=gtn.php.com.br&ancienne_version_terminale_img_cour_',
+        8 => '?session=gtn.php.com.br&ancienne_version_terminale_img_cour_',
+        9 => '?session=gtn.php.com.br&ancienne_version_terminale_img_cour_',
+        10 => '?session=gtn.php.com.br&ancienne_version_terminale_img_cour_',
+        11 => '?session=gtn.php.com.br&ancienne_version_terminale_img_cour_',
+        12 => '?session=gtn.php.com.br&ancienne_version_terminale_img_cour_'
     ];
 
     foreach ($images as $num => $filename) {
         echo "#chp_{$num} div {\n";
-        echo "    background-image: url('{$filename}');\n";
+        echo "    background-image: url('{$filename}{$num}');\n";
         echo "    background-size: cover;\n";
         echo "}\n\n";
     }
     ?>
-
-    /* Cours */
-
-    .header1
-    {
-        margin: 0px 0px 0px 0px;
-        background-color: cornflowerblue;
-        border-radius: 10px 10px 10px 10px;
-    }
-    
-    #menu
-    {
-        display: flex;
-        flex-direction: row;
-        align-content: center;
-        justify-content: center;
-        margin-top: 5px;
-        text-align: center;
-    }
-    
-    .menu_hor li
-    {
-        display: inline-flex;
-        margin: 5px 0px 5px 0px;
-        padding: 5px 5px 5px 5px;
-        border: 1px solid white;
-        border-radius: 10px;
-        cursor: pointer;
-        text-align: center;
-        color: white;
-    }
-    
-    .menu_hor ul
-    {
-        margin: 0px 0px 0px 0px;
-        padding: 5px 5px 5px 5px;
-    }
-    
-    .menu_hor li:hover
-    {
-        background-color: orange;
-    }
-    
-    .principal
-    {
-        margin: 5px 0px 0px 0px;
-        height: 80vh;
-    }
-    
-    .clicable li
-    {
-        list-style-type: none;
-    }
-    
-    #left_menu
-    {
-        padding-left: 0px;
-        width: 15%;
-        height: 90vh;
-        float: left;
-        background-color: cornflowerblue;
-    }
-    
-    #left_menu li
-    {
-        margin: 5px 5px 5px 5px;
-        padding: 5px 5px 5px 5px;
-        border: 1px solid white;
-        border-radius: 5px;
-        color: white;
-        background-color: cornflowerblue;
-        list-style: none;
-    }
-    
-    #left_menu li:hover
-    {
-        background-color: orange;
-    }
-    
-    /*#content
-    {
-        margin-left: 16%;
-    }*/
-    
-    .clicable
-    {
-        padding-left: 0px;
-        float: left;
-        width: 50%;
-    }
-    
-    .clicable li
-    {
-        border: 1px solid black;
-        border-radius: 5px;
-        width: 20%;
-        margin: 5px 5px 5px 5px;
-        padding: 5px 5px 5px 5px;
-    }
-    
-    .clicable li:hover
-    {
-        color: white;
-        background-color: orange;
-    }
-    
-    .clicable li:nth-child(0)
-    {
-        background-color: orange;
-    }
-    
-    #div_cours a
-    {
-        font-style: none;
-        color: orange;
-    }
-    
-    #source_iframe
-    {
-        height: 80vh;
-        border-radius: 10px 10px 0px 0px;
-    }
-    
-    figure
-    {
-        width: 500px;
-        height: 300px;
-        margin-left: 32%;
-    }
-    
-    figure img
-    {
-        width: 500px;
-        height: 300px;
-    }
-    
-    figcaption
-    {
-        background-color: lightslategray;
-        text-align: center;
-    }
-    body {
-        background-color: goldenrod;
-    }
 </style>
 <?php
 function Thiago_Silva_et_Korumbrofuyuki_portent_du_umbro_à_Fluminense($name27_777, $is_and_if_true_27_777) {
@@ -351,13 +112,13 @@ if (isset($_GET['Cours1'])) {
     $sous_cours = sous_cours_foreach(count($titres));
     afficherMenuHorizontal(1, $titres, $sous_cours);
     $pdf_file = match ($sous_cours) {
-        1 => "1_modules_et_documentations.pdf",
-        2 => "2_deboguer_un_programme.pdf",
-        3 => "3_tests.pdf",
-        4 => "4_guide_de_style.pdf",
-        default => "1_modules_et_documentations.pdf"
+        1 => "?session=gtn.php.com.br&ancienne_version_terminale_pdf_cour_1_modules_et_documentations",
+        2 => "?session=gtn.php.com.br&ancienne_version_terminale_pdf_cour_2_deboguer_un_programme",
+        3 => "?session=gtn.php.com.br&ancienne_version_terminale_pdf_cour_3_tests",
+        4 => "?session=gtn.php.com.br&ancienne_version_terminale_pdf_cour_4_guide_de_style",
+        default => "?session=gtn.php.com.br&ancienne_version_terminale_pdf_cour_1_modules_et_documentations"
     };
-    echo "<iframe id='source_iframe' src='{$base_url}{$pdf_file}' width='100%' height='700px' style='border:none;'></iframe>";
+    echo "<iframe id='source_iframe' src='{$pdf_file}' width='100%' height='700px' style='border:none;'></iframe>";
 }
 
 if (isset($_GET['Cours2'])) {
@@ -366,10 +127,10 @@ if (isset($_GET['Cours2'])) {
         1 => "1 - Fonctionnement d'un programme recursif",
         2 => "2 - Diviser pour régner"
     ];
-    $base_url = "https://thesevendeadlysinsds.github.io/nsi.rf.gd/TNSI/pdf/2_recursivite/pdf/";
+    $base_url = "?session=gtn.php.com.br&ancienne_version_terminale_pdf_cour_";
     $sous_cours = sous_cours_foreach(count($titres));
     afficherMenuHorizontal(2, $titres, $sous_cours);
-    $pdf_file = ($sous_cours === 2) ? "2_diviser_pour_regner.pdf" : "1_fonctionnement_d_un_programme_recursif.pdf";
+    $pdf_file = ($sous_cours === 2) ? "2_diviser_pour_regner" : "1_fonctionnement_d_un_programme_recursif";
     echo "<iframe id='source_iframe' src='{$base_url}{$pdf_file}' width='100%' height='700px' style='border:none;'></iframe>";
 }
 
@@ -382,16 +143,16 @@ if (isset($_GET['Cours3'])) {
         3 => "3 - Programmation orientée objet"
     ];
 
-    $base_url = "https://thesevendeadlysinsds.github.io/nsi.rf.gd/TNSI/pdf/3_paradigmes_de_programmation/pdf/";
+    $base_url = "?session=gtn.php.com.br&ancienne_version_terminale_pdf_cour_";
     $sous_cours = sous_cours_foreach(count($titres));
     afficherMenuHorizontal(3, $titres, $sous_cours);
 
     // Sélection du bon fichier PDF
     $pdf_file = match ($sous_cours) {
-        1 => "1_les_principaux_paradigmes_de_programmation.pdf",
-        2 => "2_programmation_fonctionnelle.pdf",
-        3 => "3_programmation_orientee_objet.pdf",
-        default => "1_les_principaux_paradigmes_de_programmation.pdf"
+        1 => "1_les_principaux_paradigmes_de_programmation",
+        2 => "2_programmation_fonctionnelle",
+        3 => "3_paradigmes_de_programmation_3_programmation_orientee_objet",
+        default => "1_les_principaux_paradigmes_de_programmation"
     };
 
     echo "<iframe id='source_iframe' src='{$base_url}{$pdf_file}' width='100%' height='700px' style='border:none;'></iframe>";
@@ -411,21 +172,21 @@ if (isset($_GET['Cours4'])) {
         8 => "8 - Révision 2"
     ];
 
-    $base_url = "https://thesevendeadlysinsds.github.io/nsi.rf.gd/TNSI/pdf/4_interface_et_implementation_des_structures_de_donnees/pdf/";
+    $base_url = "?session=gtn.php.com.br&ancienne_version_terminale_pdf_cour_";
     $sous_cours = sous_cours_foreach(count($titres));
     afficherMenuHorizontal(4, $titres, $sous_cours);
 
     // Sélection du bon fichier PDF
     $pdf_file = match ($sous_cours) {
-        1 => "1_les_types_abstraits.pdf",
-        2 => "2_les_listes.pdf",
-        3 => "3_les_piles.pdf",
-        4 => "4_les_files.pdf",
-        5 => "5_les_tableaux_associatifs.pdf",
-        6 => "Exos.pdf",
-        7 => "rev1.pdf",
-        8 => "rev2.pdf",
-        default => "1_les_types_abstraits.pdf"
+        1 => "1_les_types_abstraits",
+        2 => "2_les_listes",
+        3 => "3_les_piles",
+        4 => "4_les_files",
+        5 => "5_les_tableaux_associatifs",
+        6 => "Exos",
+        7 => "rev1",
+        8 => "rev2",
+        default => "1_les_types_abstraits"
     };
 
     echo "<iframe id='source_iframe' src='{$base_url}{$pdf_file}' width='100%' height='700px' style='border:none;'></iframe>";
@@ -455,25 +216,22 @@ if (isset($_GET['Cours5'])) {
 
     // Gestion des différents fichiers (pdf ou html selon le cas)
     $pdf_file = match ($sous_cours) {
-        1 => "html/1_introduction.html",
-        2 => "html/2_les_arbres_binaires.html",
-        3 => "html/3_quelques_mesures.html",
-        4 => "html/4_definition_recursive.html",
-        5 => "html/5_genealogie.html",
-        6 => "html/6_attributs.html",
-        7 => "html/7_algo_sur_les_arbres_binaires.html",
-        8 => "../8_fiche_r%C3%A9vision_les_arbres.pdf",
-        9 => "pdf/9_exercices.pdf",
-        10 => "html/10_abr.html",
-        11 => "pdf/11_fiche_r%C3%A9vision_algo_arbres.pdf",
-        12 => "pdf/12_exercices.pdf",
-        13 => "pdf/13_Implementation_des_arbres_binaires_de_recherche_a_l_aide_de_la_POO.pdf",
-        default => "html/1_introduction.html"
+        2 => "?session=gtn.php.com.br&ancienne_version_terminale_pdf_cour_5_2_les_arbres_binaires",
+        3 => "?session=gtn.php.com.br&ancienne_version_terminale_pdf_cour_5_HlcB5vKats0",
+        4 => "?session=gtn.php.com.br&ancienne_version_terminale_pdf_cour_5_QScUqGYSFns",
+        5 => "?session=gtn.php.com.br&ancienne_version_terminale_pdf_cour_5_7KiGcDayfFQ",
+        6 => "?session=gtn.php.com.br&ancienne_version_terminale_pdf_cour_5_tKY6Dr_dqkw",
+        7 => "?session=gtn.php.com.br&ancienne_version_terminale_pdf_cour_5_SNK_M6Bbe4",
+        8 => "?session=gtn.php.com.br&ancienne_version_terminale_pdf_cour_5_8_fiche_revision_les_arbres",
+        9 => "?session=gtn.php.com.br&ancienne_version_terminale_pdf_cour_5_9_exercices",
+        10 => "?session=gtn.php.com.br&ancienne_version_terminale_pdf_cour_5_YGEYnECw7XA",
+        11 => "?session=gtn.php.com.br&ancienne_version_terminale_pdf_cour_5_11_fiche_revision_algo_arbres",
+        12 => "?session=gtn.php.com.br&ancienne_version_terminale_pdf_cour_5_12_exercices",
+        13 => "?session=gtn.php.com.br&ancienne_version_terminale_pdf_cour_5_13_Implementation_des_arbres_binaires_de_recherche_a_l_aide_de_la_POO",
+        default => "?session=gtn.php.com.br&ancienne_version_terminale_pdf_cour_5_1_introduction"
     };
 
-    $base_url = "https://thesevendeadlysinsds.github.io/nsi.rf.gd/TNSI/pdf/5_structures_arborescentes/";
-
-    echo "<iframe id='source_iframe' src='{$base_url}{$pdf_file}' width='100%' height='700px' style='border:none;'></iframe>";
+    echo "<iframe id='source_iframe' src='{$pdf_file}' width='100%' height='700px' style='border:none;'></iframe>";
 }
 
 if (isset($_GET['Cours6'])) {
@@ -488,11 +246,10 @@ if (isset($_GET['Cours6'])) {
     afficherMenuHorizontal(6, $titres, $sous_cours);
 
     $pdf_file = match ($sous_cours) {
-        1 => "1_graphes.pdf",
-        default => "1_graphes.pdf"
+        default => "?session=gtn.php.com.br&ancienne_version_terminale_pdf_cour_6_1_graphes"
     };
 
-    echo "<iframe id='source_iframe' src='{$base_url}{$pdf_file}' width='100%' height='700px' style='border:none;'></iframe>";
+    echo "<iframe id='source_iframe' src='{$pdf_file}' width='100%' height='700px' style='border:none;'></iframe>";
 }
 
 if (isset($_GET['Cours7'])) {
@@ -517,18 +274,16 @@ if (isset($_GET['Cours7'])) {
         <a href='https://isn-icn-ljm.pagesperso-orange.fr/SQL/' style='color: goldenrod; cursor: default;' target='_blank'>
         https://isn-icn-ljm.pagesperso-orange.fr/SQL/</a> les exercices à réaliser.</div>";
     } else {
-        $base_url_html = "https://thesevendeadlysinsds.github.io/nsi.rf.gd/TNSI/pdf/7_conception_de_bases_de_donnees/html/";
-        $base_url_pdf = "https://thesevendeadlysinsds.github.io/nsi.rf.gd/TNSI/pdf/7_conception_de_bases_de_donnees/pdf/";
+        $base_url_pdf = "?session=gtn.php.com.br&ancienne_version_terminale_pdf_cour_7_";
 
         $pdf_file = match ($sous_cours) {
-            1 => $base_url_html . "1_introduction.html",
-            2 => $base_url_pdf . "2_les_bases_de_donnees.pdf",
-            3 => $base_url_pdf . "3_exercices.pdf",
-            4 => $base_url_pdf . "4_SGBD.pdf",
-            5 => $base_url_pdf . "5_le_langage_SQL.pdf",
-            7 => $base_url_pdf . "7_creation_bdd.pdf",
-            8 => $base_url_pdf . "8_tp_php_mysql.pdf",
-            default => $base_url_html . "1_introduction.html"
+            2 => $base_url_pdf . "2_les_bases_de_donnees",
+            3 => $base_url_pdf . "3_exercices",
+            4 => $base_url_pdf . "4_SGBD",
+            5 => $base_url_pdf . "5_le_langage_SQL",
+            7 => $base_url_pdf . "7_creation_bdd",
+            8 => $base_url_pdf . "8_tp_php_mysql",
+            default => "?session=gtn.php.com.br&ancienne_version_terminale_pdf_cour_7_conception_de_bases_de_donnees_html_1_introduction"
         };
 
         echo "<iframe id='source_iframe' src='{$pdf_file}' width='100%' height='700px' style='border:none;'></iframe>";
@@ -586,7 +341,7 @@ if (isset($_GET['Cours9'])) {
         2 => "https://pixees.fr/informatiquelycee/n_site/nsi_term_archi_routage.html",
         3 => "https://www.youtube.com/embed/jMIAoAVbcsw",
         4 => "https://pixees.fr/informatiquelycee/n_site/nsi_term_archi_secu.html",
-        5 => "https://thesevendeadlysinsds.github.io/nsi.rf.gd/TNSI/pdf/9_protocoles_de_routage_et_sécurisation_des_communications/pdf/ra21_lycee_g_t_nsi_securisation-communications.pdf"
+        5 => "?session=gtn.php.com.br&ancienne_version_terminale_pdf_cour_5_ra21_lycee_g_t_nsi_securisation-communications"
     ];
 
     $url = $urls[$sous_cours] ?? $urls[1];
@@ -608,8 +363,8 @@ if (isset($_GET['Cours10'])) {
 
     $urls = [
         1 => "https://pixees.fr/informatiquelycee/n_site/nsi_term_calcu.html",
-        2 => "https://thesevendeadlysinsds.github.io/nsi.rf.gd/TNSI/pdf/10_programmes_et_donnees_calculabilite/pdf/RA20_NSI_G_T_calculabilite_1298636.pdf",
-        3 => "https://thesevendeadlysinsds.github.io/nsi.rf.gd/TNSI/pdf/10_programmes_et_donnees_calculabilite/pdf/article2.pdf"
+        2 => "?session=gtn.php.com.br&ancienne_version_terminale_pdf_cour_10_RA20_NSI_G_T_calculabilite_1298636",
+        3 => "?session=gtn.php.com.br&ancienne_version_terminale_pdf_cour_10_article2"
     ];
 
     $url = $urls[$sous_cours] ?? $urls[1];
@@ -635,12 +390,12 @@ if (isset($_GET['Cours11'])) {
 
     $urls = [
         1 => "https://video.umontpellier.fr/video/3561-hlin401-chap-4-diviser-pour-regner-calcul-de-rang/",
-        2 => "https://thesevendeadlysinsds.github.io/nsi.rf.gd/TNSI/pdf/11_programmation_avancee/pdf/ra21_lycee_g_t_nsi_diviser-pour-regner.pdf",
+        2 => "?session=gtn.php.com.br&ancienne_version_terminale_pdf_cour_11_ra21_lycee_g_t_nsi_diviser-pour-regner",
         3 => "https://pixees.fr/informatiquelycee/n_site/nsi_term_algo_progdyn.html",
-        4 => "https://thesevendeadlysinsds.github.io/nsi.rf.gd/TNSI/pdf/11_programmation_avancee/pdf/RA20_NSI_G_T_progdyn_1298637.pdf",
+        4 => "?session=gtn.php.com.br&ancienne_version_terminale_pdf_cour_11_RA20_NSI_G_T_progdyn_1298637",
         5 => "https://pixees.fr/informatiquelycee/n_site/nsi_term_algo_boyer.html",
-        6 => "https://thesevendeadlysinsds.github.io/nsi.rf.gd/TNSI/pdf/11_programmation_avancee/pdf/NSI_Recherche_Textuelle.pdf",
-        7 => "https://thesevendeadlysinsds.github.io/nsi.rf.gd/TNSI/pdf/11_programmation_avancee/pdf/RA20_NSI_G_T_boyer-moore_1298635.pdf"
+        6 => "?session=gtn.php.com.br&ancienne_version_terminale_pdf_cour_11_NSI_Recherche_Textuelle",
+        7 => "?session=gtn.php.com.br&ancienne_version_terminale_pdf_cour_11_RA20_NSI_G_T_boyer-moore_1298635"
     ];
 
     $url = $urls[$sous_cours] ?? $urls[1];
@@ -687,27 +442,27 @@ if (isset($_GET['Cours12'])) {
     // URLs associées
     $urls = [
         1 => [
-            1 => "https://thesevendeadlysinsds.github.io/nsi.rf.gd/TNSI/pdf/12 - Projets informatiques/1 - Introduction à la Programmation Orientée Objet.pdf",
-            2 => "https://thesevendeadlysinsds.github.io/nsi.rf.gd/TNSI/pdf/12 - Projets informatiques/2 - Exemple pratique 1 - Approche inspirée des jeux vidéo.pdf",
-            3 => "https://thesevendeadlysinsds.github.io/nsi.rf.gd/TNSI/pdf/12 - Projets informatiques/3 - Exemple pratique 2 - Approche inspirée de la vie réelle.pdf",
-            4 => "https://thesevendeadlysinsds.github.io/nsi.rf.gd/TNSI/pdf/12 - Projets informatiques/4 - Conclusion et récapitulation.pdf",
-            5 => "https://thesevendeadlysinsds.github.io/nsi.rf.gd/TNSI/pdf/12 - Projets informatiques/5 - Mini-Jeu - Aventure en forêt.pdf",
-            6 => "https://thesevendeadlysinsds.github.io/nsi.rf.gd/TNSI/pdf/12 - Projets informatiques/6 - Simulation de ville.pdf"
+            1 => "?session=gtn.php.com.br&ancienne_version_terminale_pdf_cour_12_1_-_Introduction_à_la_Programmation_Orientée_Objet",
+            2 => "?session=gtn.php.com.br&ancienne_version_terminale_pdf_cour_12_-_Projets_informatiques_2_-_Exemple_pratique_1_-_Approche_inspirée_des_jeux_vidéo",
+            3 => "?session=gtn.php.com.br&ancienne_version_terminale_pdf_cour_12_-_Projets_informatiques_3_-_Exemple_pratique_2_-_Approche_inspirée_de_la_vie_réelle",
+            4 => "?session=gtn.php.com.br&ancienne_version_terminale_pdf_cour_12_-_Projets_informatiques_4_-_Conclusion_et_récapitulation",
+            5 => "?session=gtn.php.com.br&ancienne_version_terminale_pdf_cour_12_-_Projets_informatiques_5_-_Mini-Jeu_-_Aventure_en_forêt",
+            6 => "?session=gtn.php.com.br&ancienne_version_terminale_pdf_cour_12_-_Projets_informatiques_6_-_Simulation_de_ville"
         ],
         2 => [
-            1 => "https://thesevendeadlysinsds.github.io/nsi.rf.gd/TNSI/pdf/12 - Projets informatiques/7 - Un projet de jeu vidéo.pdf",
-            2 => "https://thesevendeadlysinsds.github.io/nsi.rf.gd/TNSI/pdf/12 - Projets informatiques/8 - La gestion d'une bibliothèque.pdf"
+            1 => "?session=gtn.php.com.br&ancienne_version_terminale_pdf_cour_12_-_Projets_informatiques_7_-_Un_projet_de_jeu_vidéo",
+            2 => "?session=gtn.php.com.br&ancienne_version_terminale_pdf_cour_12_-_Projets_informatiques_8_-_La_gestion_d_une_bibliothèque"
         ],
         3 => [
-            1 => "https://thesevendeadlysinsds.github.io/nsi.rf.gd/TNSI/pdf/12 - Projets informatiques/9 - Introduction à la récursivité.pdf",
-            2 => "https://thesevendeadlysinsds.github.io/nsi.rf.gd/TNSI/pdf/12 - Projets informatiques/10 - Exemple pratique 1 - Approche inspirée des jeux vidéo.pdf",
-            3 => "https://thesevendeadlysinsds.github.io/nsi.rf.gd/TNSI/pdf/12 - Projets informatiques/11 - Exemple pratique 2 - Approche inspirée de la vie réelle.pdf",
-            4 => "https://thesevendeadlysinsds.github.io/nsi.rf.gd/TNSI/pdf/12 - Projets informatiques/12 - Conclusion et récapitulation.pdf"
+            1 => "?session=gtn.php.com.br&ancienne_version_terminale_pdf_cour_12_-_Projets_informatiques_9_-_Introduction_à_la_récursivité",
+            2 => "?session=gtn.php.com.br&ancienne_version_terminale_pdf_cour_12_-_Projets_informatiques_10_-_Exemple_pratique_1_-_Approche_inspirée_des_jeux_vidéo",
+            3 => "?session=gtn.php.com.br&ancienne_version_terminale_pdf_cour_12_-_Projets_informatiques_11_-_Exemple_pratique_2_-_Approche_inspirée_de_la_vie_réelle",
+            4 => "?session=gtn.php.com.br&ancienne_version_terminale_pdf_cour_12_-_Projets_informatiques_12_-_Conclusion_et_récapitulation"
         ],
-        4 => "https://thesevendeadlysinsds.github.io/nsi.rf.gd/TNSI/pdf/12 - Projets informatiques/Sans nom 1.pdf",
-        5 => "https://thesevendeadlysinsds.github.io/nsi.rf.gd/TNSI/pdf/12 - Projets informatiques/Sans nom 1.pdf",
-        6 => "https://thesevendeadlysinsds.github.io/nsi.rf.gd/TNSI/pdf/12 - Projets informatiques/Sans nom 1.pdf",
-        7 => "https://thesevendeadlysinsds.github.io/nsi.rf.gd/TNSI/pdf/12 - Projets informatiques/Sans nom 1.pdf"
+        4 => "?session=gtn.php.com.br&ancienne_version_terminale_pdf_cour_12_-_Projets_informatiques_Sans_nom_1",
+        5 => "?session=gtn.php.com.br&ancienne_version_terminale_pdf_cour_12_-_Projets_informatiques_Sans_nom_1",
+        6 => "?session=gtn.php.com.br&ancienne_version_terminale_pdf_cour_12_-_Projets_informatiques_Sans_nom_1",
+        7 => "?session=gtn.php.com.br&ancienne_version_terminale_pdf_cour_12_-_Projets_informatiques_Sans_nom_1"
     ];
 
     // Analyse de l'URL
