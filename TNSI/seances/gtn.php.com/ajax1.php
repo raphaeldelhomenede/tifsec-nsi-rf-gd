@@ -2,8 +2,16 @@
 session_start(); // INDISPENSABLE !!
 
 function lien_absolu1270($params = '') {
-    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https://' : 'http://';
-    return $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] . $params;
+    // Protocole : utilise HTTPS si la variable est définie ou le port est 443
+    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? 'https://' : 'http://';
+    
+    // Chemin : remplace 'index.php' à la fin par '/' ; sinon utilise le chemin complet
+    $path = (basename($_SERVER['PHP_SELF']) === 'index.php') 
+        ? rtrim(dirname($_SERVER['PHP_SELF']), '/') . '/' 
+        : $_SERVER['PHP_SELF'];
+    
+    // Retourne l'URL complète
+    return $protocol . $_SERVER['HTTP_HOST'] . $path . $params;
 }
 
 $nb_min = 0;
